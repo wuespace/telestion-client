@@ -1,29 +1,27 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Project Structure
 
 ```yaml
 root:
-  package.json
+  package.json  # includes all project info (dependencies, scripts, ...)
   README.md
   src:
-    index.tsx
-    styles.scss
-    model:
+    index.tsx   # entry point 
+    styles.scss # global styles
+    model:      # global classes/types/interfaces
       AppState.ts
       MyAwesomeType.ts
-    app:
+    app:        # app specific folder
       index.tsx
       index.test.tsx
-      components:
+      components: # app components
         Dashboard.tsx
         WidgetWrapper.tsx
-    widgets:
+    widgets:    # folder containing all widgets
       widget-1:
         index.tsx
-        components:
+        components: # widget components
           MyAwesomeComponent.tsx
-        model:
+        model:      # widget models
           MyType.ts
       widget-2:
         index.tsx
@@ -31,10 +29,10 @@ root:
           MyAwesomeComponent.tsx
         model:
           MyType.ts
-    hooks:
+    hooks:  # global reusable routines
       useSocket.ts
       useAppState.ts
-  public:
+  public:   # html, images, icons, ...
     index.html
     favicon.ico
 ```
@@ -43,7 +41,11 @@ root:
 
 In the project directory, you can run:
 
-### `yarn start`
+### `npm ci`
+
+Installation of dependencies.
+
+### `npm start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -51,12 +53,12 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 The page will reload if you make edits.<br />
 You will also see any lint errors in the console.
 
-### `yarn test`
+### `npm test`
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### `npm run build`
 
 Builds the app for production to the `build` folder.<br />
 It correctly bundles React in production mode and optimizes the build for the best performance.
@@ -67,7 +69,5 @@ Your app is ready to be deployed!
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
