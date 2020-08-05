@@ -1,0 +1,113 @@
+image:
+  node:latest
+  
+stages:
+  - install
+  - lint
+  - build
+  - test
+  - package
+  
+# These folders are cached between jobs
+cache:
+  key: ${CI_COMMIT_REF_SLUG}
+  paths:
+    - .npm/
+    - .yarn/
+    - .apt-cache/
+
+npm install:
+  stage: install
+  cache:
+    key: job_cache
+    paths:
+      - node_modules/
+  script:
+    - npm cache add .npm/
+    - npm ci
+      
+npm lint:
+  stage: lint
+  cache:
+    key: job_cache
+    paths:
+      - node_modules/
+  script:
+    - npm run prettier:ci
+    - npm run ts
+
+npm test:
+  stage: test
+  cache:
+    key: job_cache
+    paths:
+      - node_modules/
+      - build/
+  script:
+    - npm run test:coverage
+
+npm build:
+  stage: build
+  cache:
+    key: job_cache
+    paths:
+      - node_modules/
+      - build/
+  script:
+    - npm run build
+  artifacts:
+    name: '$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG'
+    path:
+      - build/
+
+npm package win:
+  stage: package
+  image: electronuserland/builder:wine
+  only:
+    - tags
+  cache:
+    key: job_cache
+    paths:
+      - node_modules/
+      - build/
+  script:
+    - npm run package:win
+  artifacts:
+    name: '$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG'
+    paths:
+      - release/*.msi
+      - release/*.exe
+
+npm package linux:
+  stage: package
+  image: electronuserland/builder:latest
+  only:
+    - tags
+  cache:
+    key: job_cache
+    paths:
+      - node_modules/
+  script:
+    - npm run package:linux
+  artifacts:
+    name: '$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG'
+    paths:
+      - release/*.AppImage
+      - release/*.deb
+      - release/*.rpm
+      - release/*.pacman
+
+npm package mac:
+  stage: package
+  image: electronuserland/builder:latest
+  only:
+    - tags
+  cache:
+    key: job_cache
+    paths:
+      - node_modules/
+  script:
+    - npm run package:mac
+  artifacts:
+    paths:
+      - release/*.zip

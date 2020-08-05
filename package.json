@@ -12,10 +12,11 @@
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"test": "react-scripts test",
+		"test:coverage": "react-scripts test --coverage --watchAll=false",
 		"prettier": "prettier --write package.json \"src/**/*\"",
 		"prettier:ci": "prettier package.json \"src/**/*\"",
 		"ts": "tsc",
-		"check": "npm run prettier && npm run ts && npm run build"
+		"check": "npm run prettier && npm run ts && npm run test:coverage && npm run build"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
@@ -36,7 +37,7 @@
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.3.2",
 		"@testing-library/user-event": "^7.1.2",
-		"@types/jest": "^24.0.0",
+		"@types/jest": "^26.0.8",
 		"@types/node": "^12.0.0",
 		"@types/react": "^16.9.0",
 		"@types/react-dom": "^16.9.0",
