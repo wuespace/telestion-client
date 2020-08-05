@@ -13,8 +13,6 @@ cache:
   key: ${CI_COMMIT_REF_SLUG}
   paths:
     - .npm/
-    - .yarn/
-    - .apt-cache/
 
 npm install:
   stage: install
@@ -23,8 +21,7 @@ npm install:
     paths:
       - node_modules/
   script:
-    - npm cache add .npm/
-    - npm ci
+    - npm ci --cache .npm --prefer-offline
       
 npm lint:
   stage: lint
