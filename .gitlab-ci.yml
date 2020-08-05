@@ -12,10 +12,12 @@ cache:
   paths:
     - .npm/
 
+before_script:
+  - npm ci --cache .npm --prefer-offline
+
 test:
   stage: test
   script:
-    - npm ci --cache .npm --prefer-offline
     - npm run prettier:ci
     - npm run ts
     - npm run test:coverage
@@ -23,7 +25,6 @@ test:
 build:
   stage: build
   script:
-    - npm ci --cache .npm --prefer-offline
     - npm run build
   artifacts:
     name: '$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG'
@@ -36,7 +37,6 @@ package-win:
   only:
     - tags
   script:
-    - npm ci --cache .npm --prefer-offline
     - npm run package:win
   artifacts:
     name: '$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG'
@@ -50,7 +50,6 @@ package-linux:
   only:
     - tags
   script:
-    - npm ci --cache .npm --prefer-offline
     - npm run package:linux
   artifacts:
     name: '$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG'
@@ -66,7 +65,6 @@ package-mac:
   only:
     - tags
   script:
-    - npm ci --cache .npm --prefer-offline
     - npm run package:mac
   artifacts:
     name: '$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG'

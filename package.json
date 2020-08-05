@@ -1,7 +1,9 @@
 {
-	"name": "temp",
+	"name": "d2-groundstation-frontend",
 	"version": "0.1.0",
 	"private": true,
+	"description": "The Groundstation Frontend for Daedalus2",
+	"homepage": "./",
 	"dependencies": {
 		"@adobe/react-spectrum": "^3.1.0",
 		"react": "^16.13.1",
@@ -11,13 +13,43 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
+		"build:electron": "npm run build && electron build/electron.js",
 		"test": "react-scripts test",
 		"test:coverage": "react-scripts test --coverage --watchAll=false",
 		"prettier": "prettier --write package.json \"src/**/*{.ts,.tsx,.js,.jsx,.html,.css,.scss}\"",
 		"prettier:ci": "prettier package.json \"src/**/*{.ts,.tsx,.js,.jsx,.html,.css,.scss}\"",
 		"ts": "tsc",
-		"check": "npm run prettier && npm run ts && npm run test:coverage && npm run build"
+		"check": "npm run prettier && npm run ts && npm run test:coverage && npm run build",
+		"electron:win": "electron-builder --win --x64",
+		"electron:mac": "electron-builder --mac",
+		"electron:linux": "electron-builder --linux",
+		"package:win": "npm run build && npm run electron:win",
+		"package:mac": "npm run build && npm run electron:mac",
+		"package:linux": "npm run build && npm run electron:linux",
+		"package:all": "npm run package:win; npm run package:mac; npm run package:linux"
 	},
+	"author": {
+		"name": "wuespace",
+		"email": "kontakt@wuespace.de",
+		"url": "https://gitlab2.informatik.uni-wuerzburg.de/wuespace/d2-groundstation/frontend"
+	},
+	"contributors": [
+		{
+			"name": "Pablo Klaschka",
+			"email": "pablo.klaschka@stud-mail.uni-wuerzburg.de",
+			"url": "https://gitlab2.informatik.uni-wuerzburg.de/wuespace/d2-groundstation/frontend"
+		},
+		{
+			"name": "Jan Tischhöfer",
+			"email": "jan.tischhoefer@stud-mail.uni-wuerzburg.de",
+			"url": "https://gitlab2.informatik.uni-wuerzburg.de/wuespace/d2-groundstation/frontend"
+		},
+		{
+			"name": "Ludwig Richter",
+			"email": "ludwig.richter@stud-mail.uni-wuerzburg.de",
+			"url": "https://gitlab2.informatik.uni-wuerzburg.de/wuespace/d2-groundstation/frontend"
+		}
+	],
 	"eslintConfig": {
 		"extends": "react-app"
 	},
@@ -33,6 +65,36 @@
 			"last 1 safari version"
 		]
 	},
+	"build": {
+		"productName": "G2-Groundstation-Frontend",
+    "appId": "com.wuespace.groundstation-frontend",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "resources",
+			"output": "release"
+    },
+    "win": {
+      "target": [
+        "portable",
+        "nsis"
+      ]
+    },
+		"mac": {
+			"category": "public.app-category.utilities",
+			"target": [
+				"zip"
+			]
+		},
+    "linux": {
+			"category": "Utility",
+      "target": [
+        "AppImage"
+      ]
+    }
+  },
 	"devDependencies": {
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.3.2",
@@ -42,6 +104,8 @@
 		"@types/react": "^16.9.0",
 		"@types/react-dom": "^16.9.0",
 		"@types/socket.io-client": "^1.4.33",
+		"electron": "^9.1.2",
+		"electron-builder": "^22.8.0",
 		"eslint-config-prettier": "^6.11.0",
 		"node-sass": "^4.14.1",
 		"prettier": "^2.0.5",
