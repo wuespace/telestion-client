@@ -1,3 +1,88 @@
+# G2 - Groundstation Frontend
+
+The Groundstation Frontend for Daedalus2 written in [TypeScript](https://www.typescriptlang.org/) with [React](https://reactjs.org/) and [Adobe Spectrum](https://spectrum.adobe.com/) as design system
+
+## Installation
+
+To install all development dependencies, go in the project root directory and run:
+```sh
+$ npm ci
+```
+
+## Running
+
+To run the project in development mode, please execute:
+```sh
+$ npm start
+```
+
+## Testing and Linting
+
+The project has numerous linters and tests to check the current state of the project.
+
+To run all checks and tests, simply execute:
+```sh
+$ npm run check
+```
+
+### Prettier
+
+[Prettier](https://prettier.io/) is an opinionated code formatter.
+It removes all original styling* and ensures that all outputted code conforms to a consistent style.
+
+To style your source files, run:
+```sh
+$ npm run prettier
+```
+
+### ESLint
+
+[ESLint](https://eslint.org/) is a code linter and analyzer. It detects syntax errors in your code.
+
+ESLint is integrated in the `start` and `build` scripts and give you many 
+
+### TypeScript
+
+[TypeScript](https://www.typescriptlang.org/) extends JavaScript by adding types.
+
+To check for type errors in your code, run:
+```sh
+$ npm run ts
+```
+
+### Jest
+
+[Jest](https://jestjs.io/) is a delightful JavaScript Testing Framework with a focus on simplicity.
+
+It tests your components with predefined unit-tests.
+
+To run all tests, call:
+```sh
+$ npm test
+```
+
+## Building
+
+Builds the app for production to the `build` folder.<br />
+It correctly bundles React in production mode and optimizes the build for the best performance.
+
+The build is minified and the filenames include the hashes.
+
+To build the current source code into a ready to deploy state, run:
+```sh
+$ npm run build
+```
+
+Or package the compiled code into an electron app, simply run:
+```sh
+$ npm run build:electron
+```
+
+To build ready to deploy electron apps for all operating systems, simply execute:
+```sh
+$ npm run package:all
+```
+
 ## Project Structure
 
 ```yaml
@@ -36,37 +121,6 @@ root:
     index.html
     favicon.ico
 ```
-
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm ci`
-
-Installation of dependencies.
-
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
 ## Learn More
 
