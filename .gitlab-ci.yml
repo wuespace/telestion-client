@@ -57,7 +57,7 @@ npm build:
     - npm run build
   artifacts:
     name: '$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG'
-    path:
+    paths:
       - build/
 
 npm package win:
