@@ -11,9 +11,9 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
+		"test": "react-scripts test",
 		"prettier": "prettier --write package.json \"src/**/*\"",
 		"prettier:ci": "prettier package.json \"src/**/*\"",
-		"lint": "eslint --ext .ts,.tsx ./src",
 		"ts": "tsc",
 		"check": "npm run prettier && npm run ts && npm run build"
 	},
@@ -42,6 +42,7 @@
 		"@types/react-dom": "^16.9.0",
 		"@types/socket.io-client": "^1.4.33",
 		"eslint-config-prettier": "^6.11.0",
+		"node-sass": "^4.14.1",
 		"prettier": "^2.0.5",
 		"react-scripts": "3.4.1",
 		"typescript": "~3.7.2"
