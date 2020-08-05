@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function WorkSpaceSelector() {
-  return (
-    <div>
-      WorkSpaceSelector
-    </div>
-  )
+	return <div>WorkSpaceSelector</div>;
 }

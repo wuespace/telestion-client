@@ -2,10 +2,8 @@ image:
   node:latest
   
 stages:
-  - install
-  - lint
-  - build
   - test
+  - build
   - package
   
 # These folders are cached between jobs
@@ -14,60 +12,31 @@ cache:
   paths:
     - .npm/
 
-npm install:
-  stage: install
-  cache:
-    key: job_cache
-    paths:
-      - node_modules/
+test:
+  stage: test
   script:
     - npm ci --cache .npm --prefer-offline
-      
-npm lint:
-  stage: lint
-  cache:
-    key: job_cache
-    paths:
-      - node_modules/
-  script:
     - npm run prettier:ci
     - npm run ts
-
-npm test:
-  stage: test
-  cache:
-    key: job_cache
-    paths:
-      - node_modules/
-      - build/
-  script:
     - npm run test:coverage
 
-npm build:
+build:
   stage: build
-  cache:
-    key: job_cache
-    paths:
-      - node_modules/
-      - build/
   script:
+    - npm ci --cache .npm --prefer-offline
     - npm run build
   artifacts:
     name: '$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG'
     paths:
       - build/
 
-npm package win:
+package-win:
   stage: package
   image: electronuserland/builder:wine
   only:
     - tags
-  cache:
-    key: job_cache
-    paths:
-      - node_modules/
-      - build/
   script:
+    - npm ci --cache .npm --prefer-offline
     - npm run package:win
   artifacts:
     name: '$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG'
@@ -75,16 +44,13 @@ npm package win:
       - release/*.msi
       - release/*.exe
 
-npm package linux:
+package-linux:
   stage: package
   image: electronuserland/builder:latest
   only:
     - tags
-  cache:
-    key: job_cache
-    paths:
-      - node_modules/
   script:
+    - npm ci --cache .npm --prefer-offline
     - npm run package:linux
   artifacts:
     name: '$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG'
@@ -94,17 +60,15 @@ npm package linux:
       - release/*.rpm
       - release/*.pacman
 
-npm package mac:
+package-mac:
   stage: package
   image: electronuserland/builder:latest
   only:
     - tags
-  cache:
-    key: job_cache
-    paths:
-      - node_modules/
   script:
+    - npm ci --cache .npm --prefer-offline
     - npm run package:mac
   artifacts:
+    name: '$CI_PROJECT_NAME-$CI_COMMIT_REF_SLUG'
     paths:
       - release/*.zip

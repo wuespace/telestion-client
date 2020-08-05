@@ -13,8 +13,8 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"test:coverage": "react-scripts test --coverage --watchAll=false",
-		"prettier": "prettier --write package.json \"src/**/*\"",
-		"prettier:ci": "prettier package.json \"src/**/*\"",
+		"prettier": "prettier --write package.json \"src/**/*{.ts,.tsx,.js,.jsx,.html,.css,.scss}\"",
+		"prettier:ci": "prettier package.json \"src/**/*{.ts,.tsx,.js,.jsx,.html,.css,.scss}\"",
 		"ts": "tsc",
 		"check": "npm run prettier && npm run ts && npm run test:coverage && npm run build"
 	},

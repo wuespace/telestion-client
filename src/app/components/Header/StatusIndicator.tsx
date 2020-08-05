@@ -1,9 +1,5 @@
-import React from 'react'
+import React from 'react';
 
 export default function StatusIndicator() {
-  return (
-    <div>
-      StatusIndicator
-    </div>
-  )
+	return <div>StatusIndicator</div>;
 }
