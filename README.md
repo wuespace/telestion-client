@@ -1,5 +1,44 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+## Project Structure
+
+```yaml
+root:
+  package.json
+  README.md
+  src:
+    index.tsx
+    styles.scss
+    model:
+      AppState.ts
+      MyAwesomeType.ts
+    app:
+      index.tsx
+      index.test.tsx
+      components:
+        Dashboard.tsx
+        WidgetWrapper.tsx
+    widgets:
+      widget-1:
+        index.tsx
+        components:
+          MyAwesomeComponent.tsx
+        model:
+          MyType.ts
+      widget-2:
+        index.tsx
+        components:
+          MyAwesomeComponent.tsx
+        model:
+          MyType.ts
+    hooks:
+      useSocket.ts
+      useAppState.ts
+  public:
+    index.html
+    favicon.ico
+```
+
 ## Available Scripts
 
 In the project directory, you can run:
