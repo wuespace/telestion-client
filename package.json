@@ -8,7 +8,8 @@
 		"@adobe/react-spectrum": "^3.1.0",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
-		"socket.io-client": "^2.3.0"
+		"socket.io-client": "^2.3.0",
+		"vertx3-eventbus-client": "^3.9.2"
 	},
 	"scripts": {
 		"start": "react-scripts start",
@@ -67,34 +68,34 @@
 	},
 	"build": {
 		"productName": "G2-Groundstation-Frontend",
-    "appId": "com.wuespace.groundstation-frontend",
-    "files": [
-      "build/**/*",
-      "node_modules/**/*"
-    ],
-    "directories": {
-      "buildResources": "resources",
+		"appId": "com.wuespace.groundstation-frontend",
+		"files": [
+			"build/**/*",
+			"node_modules/**/*"
+		],
+		"directories": {
+			"buildResources": "resources",
 			"output": "release"
-    },
-    "win": {
-      "target": [
-        "portable",
-        "nsis"
-      ]
-    },
+		},
+		"win": {
+			"target": [
+				"portable",
+				"nsis"
+			]
+		},
 		"mac": {
 			"category": "public.app-category.utilities",
 			"target": [
 				"zip"
 			]
 		},
-    "linux": {
+		"linux": {
 			"category": "Utility",
-      "target": [
-        "AppImage"
-      ]
-    }
-  },
+			"target": [
+				"AppImage"
+			]
+		}
+	},
 	"devDependencies": {
 		"@testing-library/jest-dom": "^4.2.4",
 		"@testing-library/react": "^9.3.2",
