@@ -1,18 +1,22 @@
-import Auth from '../model/Auth';
+import User from '../model/User';
+import userDashboards from './userDashboards';
 
 export default function authenticate(
 	username: string,
 	password: string,
-	cb: (auth: Auth) => void
+	cb: (user: User) => void
 ) {
 	// TODO: User validation
 	console.log('Credentials', { username, password });
 
 	setTimeout(() => {
 		console.log('Authentication successful');
+		// TODO: change user type
+		const userType = 'admin';
 		cb({
-			username: 'admin',
-			userType: 'full'
+			name: username,
+			type: userType,
+			dashboards: userDashboards[userType] || []
 		});
-	}, 2000);
+	}, 500);
 }

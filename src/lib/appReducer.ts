@@ -1,9 +1,10 @@
 import {
 	AppAction,
 	AppState,
-	FETCH_USER,
 	LOGIN,
-	LOGOUT
+	LOGOUT,
+	SET_COLOR_SCHEME,
+	SET_CONNECTION_STATE
 } from '../model/AppState';
 
 export default function appReducer(
@@ -12,11 +13,13 @@ export default function appReducer(
 ): AppState {
 	switch (action.type) {
 		case LOGIN:
-			return { ...state, auth: action.auth };
-		case FETCH_USER:
 			return { ...state, user: action.user };
 		case LOGOUT:
-			return { auth: null, user: null };
+			return { ...state, user: null };
+		case SET_COLOR_SCHEME:
+			return { ...state, colorScheme: action.colorScheme };
+		case SET_CONNECTION_STATE:
+			return { ...state, connectionState: action.connectionState };
 		default:
 			throw new Error(`Unknown action ${action['type']}`);
 	}

@@ -1,5 +1,17 @@
 import React from 'react';
+import { Flex, Image, Heading } from '@adobe/react-spectrum';
+import logo from '../../media/logo.svg';
 
 export default function Logo() {
-	return <div>Logo</div>;
+	return (
+		<Flex
+			direction="row"
+			gap="size-100"
+			justifyContent="center"
+			alignItems="center"
+		>
+			<Image src={logo} alt="Daedalus 2 Logo" />
+			<Heading level={2}>Daedalus 2 GSS</Heading>
+		</Flex>
+	);
 }

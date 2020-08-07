@@ -1,29 +1,16 @@
-import React, { useEffect } from 'react';
-import useAppState from '../../../hooks/useAppState';
-import { Flex, Heading, ProgressCircle } from '@adobe/react-spectrum';
-import { LOGOUT } from '../../../model/AppState';
-import { useHistory } from 'react-router-dom';
+import React from 'react';
+import { View, Text } from '@adobe/react-spectrum';
 
-export default function Dashboard() {
-	const history = useHistory();
-	const [state, dispatch] = useAppState();
-	const { auth, user } = state;
+import DashboardType from '../../../model/Dashboard';
 
-	useEffect(() => {
-		if (!auth) dispatch({ type: LOGOUT });
-		history.push('/');
-	}, [auth, dispatch, history]);
+interface Props {
+	dashboard: DashboardType;
+}
 
-	useEffect(() => {
-
-	}, [user]);
-
-	return user ? (
-		<div>Dashboard</div>
-	) : (
-		<Flex gap="size-200">
-			<ProgressCircle aria-label="Loading configuration…" isIndeterminate />
-			<Heading level={2}>Loading configuration…</Heading>
-		</Flex>
+export default function Dashboard({ dashboard }: Props) {
+	return (
+		<View flexGrow={1} width="100%">
+			<Text>{JSON.stringify(dashboard, null, 2)}</Text>
+		</View>
 	);
 }

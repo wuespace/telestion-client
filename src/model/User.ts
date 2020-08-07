@@ -1,6 +1,7 @@
-import DashboardStructure from './DashboardStructure';
+import Dashboard from './Dashboard';
 
 export default interface User {
 	name: string;
-	dashboardStructures: Array<DashboardStructure>;
+	type: string;
+	dashboards: Array<Dashboard>;
 }
