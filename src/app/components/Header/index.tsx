@@ -13,7 +13,7 @@ export default function Header() {
 			paddingStart="size-100"
 			paddingEnd="size-100"
 			height="size-800"
-			backgroundColor="gray-200"
+			backgroundColor="gray-300"
 		>
 			<Flex
 				direction="row"

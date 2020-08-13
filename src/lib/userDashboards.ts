@@ -23,6 +23,11 @@ const userDashboards: UserDashboards = {
 					cols: 1,
 					rows: 4,
 					widget: 'simpleWidget'
+				},
+				{
+					cols: 3,
+					rows: 2,
+					widget: 'myAwesomeWidget'
 				}
 			]
 		},
@@ -31,13 +36,13 @@ const userDashboards: UserDashboards = {
 			items: [
 				{
 					cols: 2,
-					rows: 2,
+					rows: 4,
 					widget: 'simpleWidget'
 				},
 				{
-					cols: 1,
-					rows: 2,
-					widget: 'simpleWidget'
+					cols: 2,
+					rows: 4,
+					widget: 'noWidget'
 				}
 			]
 		}
