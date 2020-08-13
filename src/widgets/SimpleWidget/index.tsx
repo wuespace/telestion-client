@@ -14,3 +14,5 @@ export default function SimpleWidget() {
 		</View>
 	);
 }
+
+SimpleWidget.channels = ['channel1', 'channel2'];

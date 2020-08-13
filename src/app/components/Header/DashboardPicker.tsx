@@ -18,6 +18,11 @@ export default function DashboardPicker() {
 		index: index.toString()
 	}));
 
+	// sync selection state with current route
+	useEffect(() => {
+		setSelected(params.id);
+	}, [params.id]);
+
 	// sync history with picker state
 	useEffect(() => {
 		const newPath = `/dashboard/${selected}`;

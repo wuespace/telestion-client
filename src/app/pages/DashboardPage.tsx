@@ -15,7 +15,7 @@ export default function DashboardPage() {
 		return dashboard ? (
 			<Dashboard dashboard={dashboard} />
 		) : (
-			<Redirect to="/dashboard" />
+			<Redirect to="/dashboard/0" />
 		);
 	}
 

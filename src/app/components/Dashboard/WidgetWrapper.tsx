@@ -2,7 +2,12 @@ import React, { FunctionComponent } from 'react';
 import WidgetList from '../../../model/WidgetList';
 import widgets from '../../../widgets';
 import NotFound from '@spectrum-icons/illustrations/NotFound';
-import { View, IllustratedMessage, Heading, Content } from '@adobe/react-spectrum';
+import {
+	View,
+	IllustratedMessage,
+	Heading,
+	Content
+} from '@adobe/react-spectrum';
 
 interface Props {
 	widget: keyof WidgetList;
@@ -11,8 +16,15 @@ interface Props {
 export default function WidgetWrapper({ widget }: Props) {
 	const Widget: FunctionComponent | null = widgets[widget] || null;
 
-	return Widget ? <Widget /> : (
-		<View width="100%" height="100%" padding="size-100" backgroundColor="gray-200">
+	return Widget ? (
+		<Widget />
+	) : (
+		<View
+			width="100%"
+			height="100%"
+			padding="size-100"
+			backgroundColor="gray-200"
+		>
 			<IllustratedMessage>
 				<NotFound />
 				<Heading>Widget not found</Heading>

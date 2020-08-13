@@ -19,9 +19,10 @@ export default function Dashboard({ dashboard }: Props) {
 				rows={['1fr', '1fr', '1fr', '1fr']}
 				gap="size-100"
 			>
-				{dashboard.items.map(item => {
+				{dashboard.items.map((item, index) => {
 					return (
 						<View
+							key={index}
 							gridRowEnd={`span ${item.rows}`}
 							gridColumnEnd={`span ${item.cols}`}
 							width="100%"

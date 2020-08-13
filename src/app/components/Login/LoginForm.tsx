@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Form, TextField, Button, Flex } from '@adobe/react-spectrum';
 
 function isValid(input: string) {
@@ -22,14 +22,14 @@ export default function LoginForm({ login }: Props) {
 		setPasswordValid(true);
 	}, [password]);
 
-	const handleLogin = () => {
+	const handleLogin = useCallback(() => {
 		if (!isValid(username)) setUsernameValid(false);
 		if (!isValid(password)) setPasswordValid(false);
 
 		if (isValid(username) && isValid(password)) {
 			login(username, password);
 		}
-	};
+	}, [login, password, username]);
 
 	return (
 		<Flex direction="column" gap="size-200">

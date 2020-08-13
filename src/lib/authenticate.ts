@@ -4,7 +4,7 @@ import userDashboards from './userDashboards';
 export default function authenticate(
 	username: string,
 	password: string,
-	cb: (user: User) => void
+	cb: (user: User | null) => void
 ) {
 	// TODO: User validation
 	console.log('Credentials', { username, password });
