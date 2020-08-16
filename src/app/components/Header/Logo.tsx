@@ -11,7 +11,7 @@ export default function Logo() {
 			alignItems="center"
 		>
 			<Image src={logo} alt="Daedalus 2 Logo" />
-			<Heading level={2}>Daedalus 2 GSS</Heading>
+			<Heading level={2}>Daedalus 2 GS</Heading>
 		</Flex>
 	);
 }
