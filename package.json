@@ -5,13 +5,32 @@
 	"description": "The Groundstation Frontend for Daedalus2",
 	"homepage": "./",
 	"dependencies": {
-		"@adobe/react-spectrum": "^3.1.0",
+		"@adobe/react-spectrum": "^3.2.0",
 		"@spectrum-icons/illustrations": "^3.1.0",
 		"@spectrum-icons/workflow": "^3.1.0",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-router-dom": "^5.2.0",
 		"vertx3-eventbus-client": "^3.9.2"
+	},
+	"devDependencies": {
+		"@testing-library/jest-dom": "^4.2.4",
+		"@testing-library/react": "^9.3.2",
+		"@testing-library/user-event": "^7.1.2",
+		"@types/jest": "^26.0.8",
+		"@types/node": "^12.0.0",
+		"@types/react": "^16.9.0",
+		"@types/react-dom": "^16.9.0",
+		"@types/react-router-dom": "^5.1.5",
+		"@types/socket.io-client": "^1.4.33",
+		"@types/vertx3-eventbus-client": "^3.5.1",
+		"electron": "^9.1.2",
+		"electron-builder": "^22.8.0",
+		"eslint-config-prettier": "^6.11.0",
+		"node-sass": "^4.14.1",
+		"prettier": "^2.0.5",
+		"react-scripts": "^3.4.3",
+		"typescript": "~3.7.2"
 	},
 	"scripts": {
 		"start": "react-scripts start",
@@ -97,24 +116,5 @@
 				"AppImage"
 			]
 		}
-	},
-	"devDependencies": {
-		"@testing-library/jest-dom": "^4.2.4",
-		"@testing-library/react": "^9.3.2",
-		"@testing-library/user-event": "^7.1.2",
-		"@types/jest": "^26.0.8",
-		"@types/node": "^12.0.0",
-		"@types/react": "^16.9.0",
-		"@types/react-dom": "^16.9.0",
-		"@types/react-router-dom": "^5.1.5",
-		"@types/socket.io-client": "^1.4.33",
-		"@types/vertx3-eventbus-client": "^3.5.1",
-		"electron": "^9.1.2",
-		"electron-builder": "^22.8.0",
-		"eslint-config-prettier": "^6.11.0",
-		"node-sass": "^4.14.1",
-		"prettier": "^2.0.5",
-		"react-scripts": "3.4.1",
-		"typescript": "~3.7.2"
 	}
 }

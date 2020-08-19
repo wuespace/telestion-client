@@ -12,22 +12,32 @@ const userDashboards: UserDashboards = {
 				{
 					cols: 2,
 					rows: 2,
-					widget: 'simpleWidget'
+					widget: 'simpleWidget',
+					props: {
+						title: 'Simple Widget'
+					}
 				},
 				{
 					cols: 1,
 					rows: 2,
-					widget: 'simpleWidget'
+					widget: 'simpleWidget',
+					props: {
+						title: 'Simple Widget'
+					}
 				},
 				{
 					cols: 1,
 					rows: 4,
-					widget: 'simpleWidget'
+					widget: 'simpleWidget',
+					props: {
+						title: 'Simple Widget'
+					}
 				},
 				{
 					cols: 3,
 					rows: 2,
-					widget: 'myAwesomeWidget'
+					widget: 'myAwesomeWidget',
+					props: {}
 				}
 			]
 		},
@@ -37,12 +47,16 @@ const userDashboards: UserDashboards = {
 				{
 					cols: 2,
 					rows: 4,
-					widget: 'simpleWidget'
+					widget: 'simpleWidget',
+					props: {
+						title: 'Simple Widget'
+					}
 				},
 				{
 					cols: 2,
 					rows: 4,
-					widget: 'noWidget'
+					widget: 'noWidget',
+					props: {}
 				}
 			]
 		}

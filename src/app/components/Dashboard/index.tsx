@@ -15,8 +15,8 @@ export default function Dashboard({ dashboard }: Props) {
 				width="100%"
 				height="100%"
 				areas={['. . . .', '. . . .', '. . . .', '. . . .']}
-				columns={['1fr', '1fr', '1fr', '1fr']}
-				rows={['1fr', '1fr', '1fr', '1fr']}
+				columns={['minmax(0, 1fr)', 'minmax(0, 1fr)', 'minmax(0, 1fr)', 'minmax(0, 1fr)']}
+				rows={['minmax(0, 1fr)', 'minmax(0, 1fr)', 'minmax(0, 1fr)', 'minmax(0, 1fr)']}
 				gap="size-100"
 			>
 				{dashboard.items.map((item, index) => {
@@ -27,8 +27,18 @@ export default function Dashboard({ dashboard }: Props) {
 							gridColumnEnd={`span ${item.cols}`}
 							width="100%"
 							height="100%"
+							position="relative"
 						>
-							<WidgetWrapper widget={item.widget} />
+							<View
+								position="absolute"
+								top={0}
+								right={0}
+								bottom={0}
+								left={0}
+								overflow="auto"
+							>
+								<WidgetWrapper widget={item.widget} props={item.props} />
+							</View>
 						</View>
 					);
 				})}

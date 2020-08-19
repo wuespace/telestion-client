@@ -13,10 +13,6 @@ export default function DashboardPicker() {
 	const params = (match?.params as { id: string }) || { id: '0' };
 
 	const [selected, setSelected] = useState<string>(params.id);
-	const options = dashboards.map((dashboard, index) => ({
-		...dashboard,
-		index: index.toString()
-	}));
 
 	// sync selection state with current route
 	useEffect(() => {
@@ -35,11 +31,11 @@ export default function DashboardPicker() {
 		<Picker
 			label="Dashboard"
 			labelPosition="side"
-			items={options}
+			items={dashboards}
 			selectedKey={selected}
 			onSelectionChange={selected => setSelected(selected as string)}
 		>
-			{item => <Item key={item.index}>{item.name}</Item>}
+			{item => <Item key={item.name}>{item.name}</Item>}
 		</Picker>
 	);
 }
