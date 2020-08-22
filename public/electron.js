@@ -20,7 +20,7 @@ function createWindow() {
 	// and load the index.html of the app.
 	const startUrl = path.resolve(__dirname, './index.html');
 	win.loadFile(startUrl);
-	win.removeMenu();
+	// win.removeMenu();
 
 	win.webContents.on('new-window', function (e, url) {
 		e.preventDefault();

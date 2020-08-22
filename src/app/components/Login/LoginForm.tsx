@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react';
-import { Form, TextField, Button, Flex } from '@adobe/react-spectrum';
+import { Form, TextField, Button, View } from '@adobe/react-spectrum';
 
 function isValid(input: string) {
 	return input.length > 0;
@@ -32,8 +32,8 @@ export default function LoginForm({ login }: Props) {
 	}, [login, password, username]);
 
 	return (
-		<Flex direction="column" gap="size-200">
-			<Form maxWidth="size-3600" isRequired>
+		<>
+			<Form maxWidth="100%" isRequired>
 				<TextField
 					autoFocus
 					label="Username"
@@ -51,10 +51,11 @@ export default function LoginForm({ login }: Props) {
 					validationState={passwordValid ? 'valid' : 'invalid'}
 				/>
 			</Form>
-			{/* TODO: change button width */}
-			<Button variant="cta" width="size-100" onPress={handleLogin}>
-				Login
-			</Button>
-		</Flex>
+			<View marginTop="size-150">
+				<Button variant="cta" onPress={handleLogin}>
+					Login
+				</Button>
+			</View>
+		</>
 	);
 }

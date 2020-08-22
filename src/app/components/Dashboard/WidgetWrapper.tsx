@@ -7,6 +7,7 @@ import WidgetProps from '../../../model/WidgetProps';
 import WidgetErrorMessage from './WidgetErrorMessage';
 
 import widgets from '../../../widgets';
+import { View } from '@adobe/react-spectrum';
 
 interface Props {
 	widget: keyof WidgetList;
@@ -61,7 +62,14 @@ export default class WidgetWrapper extends React.Component<Props, State> {
 		}
 
 		return Widget ? (
-			<Widget {...props} />
+			<View
+				backgroundColor="gray-200"
+				width="100%"
+				height="100%"
+				overflow="hidden"
+			>
+				<Widget {...props} />
+			</View>
 		) : (
 			<WidgetErrorMessage
 				image={<NotFoundIllustration />}

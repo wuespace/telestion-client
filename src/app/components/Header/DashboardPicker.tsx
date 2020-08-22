@@ -12,7 +12,7 @@ export default function DashboardPicker() {
 	const match = useRouteMatch('/dashboard/:id');
 	const params = (match?.params as { id: string }) || { id: '0' };
 
-	const [selected, setSelected] = useState<string>(params.id);
+	const [selected, setSelected] = useState(params.id);
 
 	// sync selection state with current route
 	useEffect(() => {
@@ -27,15 +27,20 @@ export default function DashboardPicker() {
 		}
 	}, [history, selected]);
 
+	const options = dashboards.map((dashboard, index) => ({
+		...dashboard,
+		id: index.toString()
+	}));
+
 	return (
 		<Picker
 			label="Dashboard"
 			labelPosition="side"
-			items={dashboards}
+			items={options}
 			selectedKey={selected}
 			onSelectionChange={selected => setSelected(selected as string)}
 		>
-			{item => <Item key={item.name}>{item.name}</Item>}
+			{item => <Item key={item.id}>{item.name}</Item>}
 		</Picker>
 	);
 }

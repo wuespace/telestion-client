@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { Flex, Heading, ProgressCircle } from '@adobe/react-spectrum';
+import {
+	Flex,
+	Heading,
+	Text,
+	Image,
+	ProgressCircle
+} from '@adobe/react-spectrum';
 import { useHistory } from 'react-router-dom';
 
 import LoginForm from './LoginForm';
@@ -7,6 +13,8 @@ import LoginForm from './LoginForm';
 import authenticate from '../../../lib/authenticate';
 import useAppState from '../../../hooks/useAppState';
 import { LOGIN } from '../../../model/AppState';
+
+import logo from '../../media/logo.svg';
 
 export default function Login() {
 	const [, dispatch] = useAppState();
@@ -31,8 +39,12 @@ export default function Login() {
 			<Heading level={2}>Logging in…</Heading>
 		</Flex>
 	) : (
-		<Flex direction="column" gap="size-200">
-			<Heading level={2}>Daedalus 2 - Groundstation</Heading>
+		<Flex direction="column" maxWidth="size-4600">
+			<Image src={logo} alignSelf="center" alt="Daedalus 2 Logo" width="size-1200" />
+			<Heading level={2}>Daedalus 2 - Ground Station</Heading>
+			<Text>
+				Please enter the credentials assigned to you by the Ground Station team
+			</Text>
 			<LoginForm login={handleLogin} />
 		</Flex>
 	);

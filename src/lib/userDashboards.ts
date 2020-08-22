@@ -12,7 +12,7 @@ const userDashboards: UserDashboards = {
 				{
 					cols: 2,
 					rows: 2,
-					widget: 'simpleWidget',
+					widget: 'mapWidget',
 					props: {
 						title: 'Simple Widget'
 					}
@@ -20,7 +20,7 @@ const userDashboards: UserDashboards = {
 				{
 					cols: 1,
 					rows: 2,
-					widget: 'simpleWidget',
+					widget: 'lineGraphWidget',
 					props: {
 						title: 'Simple Widget'
 					}
@@ -28,7 +28,7 @@ const userDashboards: UserDashboards = {
 				{
 					cols: 1,
 					rows: 4,
-					widget: 'simpleWidget',
+					widget: 'procedureWidget',
 					props: {
 						title: 'Simple Widget'
 					}
