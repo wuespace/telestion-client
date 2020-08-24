@@ -22,39 +22,71 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 */
 
-import React, { ReactNode, useReducer } from 'react';
+import React, { ReactNode, useCallback, useReducer } from 'react';
 
 import { AppAction, AppReducer, AppState } from '../../model/AppState';
 import AppStateContext from '../../lib/AppStateContext';
+import ColorScheme, { validColorSchemes } from '../../model/ColorScheme';
+
+function checkLocalStorage(
+	key: string,
+	defaultValue: ColorScheme
+): ColorScheme {
+	const storedValue = window.localStorage.getItem(key) || '';
+	if (validColorSchemes.includes(storedValue as ColorScheme))
+		return storedValue as ColorScheme;
+	return defaultValue;
+}
+
+const KEY = 'app-state';
 
 interface Props {
-	initialAppState: AppState;
+	defaultAppState: AppState;
 	reducer: AppReducer;
 	debug?: boolean;
 	children: ReactNode;
 }
 
 export default function AppStateProvider({
-	initialAppState,
+	defaultAppState,
 	reducer,
 	debug = false,
 	children
 }: Props) {
-	const debugReducer = (state: AppState, action: AppAction) => {
-		const newState = reducer(state, action);
-		console.log(
-			'Previous app state\n',
-			state,
-			'\nDispatched action\n',
-			action,
-			'\nNext app state\n',
-			newState
-		);
-		return newState;
+	const debugReducer = useCallback(
+		(state: AppState, action: AppAction) => {
+			const newState = reducer(state, action);
+			console.log(
+				'Previous app state\n',
+				state,
+				'\nDispatched action\n',
+				action,
+				'\nNext app state\n',
+				newState
+			);
+			return newState;
+		},
+		[reducer]
+	);
+
+	const storedReducer = useCallback(
+		(state: AppState, action: AppAction) => {
+			const newState = reducer(state, action);
+			window.localStorage.setItem(KEY, newState.colorScheme);
+			return newState;
+		},
+		[reducer]
+	);
+
+	const initialAppState: AppState = {
+		...defaultAppState,
+		colorScheme: checkLocalStorage(KEY, defaultAppState.colorScheme)
 	};
 
-	// TODO: use stored reducer hook
-	const value = useReducer(debug ? debugReducer : reducer, initialAppState);
+	const value = useReducer(
+		debug ? debugReducer : storedReducer,
+		initialAppState
+	);
 
 	return <AppStateContext.Provider value={value} children={children} />;
 }
