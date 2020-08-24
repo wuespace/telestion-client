@@ -49,13 +49,18 @@ export default class WidgetWrapper extends React.Component<Props, State> {
 				<WidgetErrorMessage
 					image={<NotFoundIllustration />}
 					message="Internal widget error"
-					actions={[{
-						label: 'Reload Widget',
-						variant: 'primary',
-						action: this.reloadWidget
-					}]}
+					actions={[
+						{
+							label: 'Reload Widget',
+							variant: 'primary',
+							action: this.reloadWidget
+						}
+					]}
 				>
-					<p>Please try to reload the widget. If the problem persists, contact the developers. Error details:</p>
+					<p>
+						Please try to reload the widget. If the problem persists, contact
+						the developers. Error details:
+					</p>
 					<p>{error.message}</p>
 				</WidgetErrorMessage>
 			);

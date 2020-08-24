@@ -15,8 +15,18 @@ export default function Dashboard({ dashboard }: Props) {
 				width="100%"
 				height="100%"
 				areas={['. . . .', '. . . .', '. . . .', '. . . .']}
-				columns={['minmax(0, 1fr)', 'minmax(0, 1fr)', 'minmax(0, 1fr)', 'minmax(0, 1fr)']}
-				rows={['minmax(0, 1fr)', 'minmax(0, 1fr)', 'minmax(0, 1fr)', 'minmax(0, 1fr)']}
+				columns={[
+					'minmax(0, 1fr)',
+					'minmax(0, 1fr)',
+					'minmax(0, 1fr)',
+					'minmax(0, 1fr)'
+				]}
+				rows={[
+					'minmax(0, 1fr)',
+					'minmax(0, 1fr)',
+					'minmax(0, 1fr)',
+					'minmax(0, 1fr)'
+				]}
 				gap="size-100"
 			>
 				{dashboard.items.map((item, index) => {

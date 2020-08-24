@@ -1,5 +1,6 @@
 import User from '../model/User';
 import userDashboards from './userDashboards';
+import EventBus from 'vertx3-eventbus-client';
 
 export default function authenticate(
 	username: string,
@@ -8,15 +9,25 @@ export default function authenticate(
 ) {
 	// TODO: User validation
 	console.log('Credentials', { username, password });
+	const url = 'http://localhost:8081/bridge';
+	// TODO: change user type
+	const userType = 'admin';
 
-	setTimeout(() => {
-		console.log('Authentication successful');
-		// TODO: change user type
-		const userType = 'admin';
-		cb({
-			name: username,
-			type: userType,
-			dashboards: userDashboards[userType] || []
-		});
-	}, 500);
+	const eb = new EventBus(url);
+
+	const user: User = {
+		name: username,
+		type: userType,
+		eventBus: eb,
+		dashboards: userDashboards[userType] || []
+	};
+
+	eb.onopen = () => {
+		console.log('Eventbus opened');
+		cb(user);
+	};
+
+	eb.onclose = () => {
+		console.log('Eventbus closed');
+	};
 }

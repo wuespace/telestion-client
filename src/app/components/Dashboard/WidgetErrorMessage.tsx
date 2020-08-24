@@ -41,7 +41,11 @@ export default function WidgetErrorMessage({
 				{actions && (
 					<Content>
 						{actions.map(action => (
-							<Button isQuiet={true} variant={action.variant} onPress={action.action}>
+							<Button
+								isQuiet={true}
+								variant={action.variant}
+								onPress={action.action}
+							>
 								{action.label}
 							</Button>
 						))}

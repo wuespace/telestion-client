@@ -15,6 +15,7 @@ export default function appReducer(
 		case LOGIN:
 			return { ...state, user: action.user };
 		case LOGOUT:
+			state.user?.eventBus.close();
 			return { ...state, user: null };
 		case SET_COLOR_SCHEME:
 			return { ...state, colorScheme: action.colorScheme };

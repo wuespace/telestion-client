@@ -34,13 +34,23 @@ export default function Login() {
 	};
 
 	return authenticating ? (
-		<Flex gap="size-200">
+		<Flex
+			direction="column"
+			justifyContent="center"
+			alignItems="center"
+			gap="size-200"
+		>
 			<ProgressCircle aria-label="Logging in…" isIndeterminate />
 			<Heading level={2}>Logging in…</Heading>
 		</Flex>
 	) : (
 		<Flex direction="column" maxWidth="size-4600">
-			<Image src={logo} alignSelf="center" alt="Daedalus 2 Logo" width="size-1200" />
+			<Image
+				src={logo}
+				alignSelf="center"
+				alt="Daedalus 2 Logo"
+				width="size-1200"
+			/>
 			<Heading level={2}>Daedalus 2 - Ground Station</Heading>
 			<Text>
 				Please enter the credentials assigned to you by the Ground Station team
