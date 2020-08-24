@@ -1,4 +1,4 @@
-# G2 - Groundstation Frontend
+# D2 - Ground Station Frontend
 
 The Groundstation Frontend for Daedalus2 written in [TypeScript](https://www.typescriptlang.org/) with [React](https://reactjs.org/) and [Adobe Spectrum](https://spectrum.adobe.com/) as design system
 
