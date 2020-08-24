@@ -8,8 +8,11 @@ import LoadingIndicator from '../components/LoadingIndicator';
 
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.js';
+import useDarkColorScheme from '../../hooks/useDarkColorScheme';
 
 export default function MapWidget() {
+	const isDark = useDarkColorScheme();
+
 	const position = useChannelLatest(MOCK_POSITION);
 	return (
 		<LoadingIndicator dependencies={[position]}>
@@ -26,7 +29,9 @@ export default function MapWidget() {
 							<a href="http://openstreetmap.org">
 								OpenStreetMap
 							</a> contributors'
-						url="https://tiles.stadiamaps.com/tiles/alidade_smooth_dark/{z}/{x}/{y}{r}.png"
+						url={`https://tiles.stadiamaps.com/tiles/alidade_smooth${
+							isDark ? '_dark' : ''
+						}/{z}/{x}/{y}{r}.png`}
 					/>
 					<CircleMarker center={[position.x, position.y]} radius={10} />
 				</Map>

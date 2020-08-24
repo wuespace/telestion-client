@@ -13,6 +13,7 @@
 		"react-dom": "^16.13.1",
 		"react-leaflet": "^2.7.0",
 		"react-router-dom": "^5.2.0",
+		"recharts": "^1.8.5",
 		"vertx3-eventbus-client": "^3.9.2"
 	},
 	"devDependencies": {
@@ -26,6 +27,7 @@
 		"@types/react-dom": "^16.9.0",
 		"@types/react-leaflet": "^2.5.2",
 		"@types/react-router-dom": "^5.1.5",
+		"@types/recharts": "^1.8.14",
 		"@types/socket.io-client": "^1.4.33",
 		"@types/vertx3-eventbus-client": "^3.5.1",
 		"electron": "^9.1.2",
