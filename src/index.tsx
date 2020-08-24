@@ -12,7 +12,7 @@ import appReducer from './lib/appReducer';
 ReactDOM.render(
 	<React.StrictMode>
 		{/* use debug prop to show prev state, action and next state */}
-		<AppStateProvider initialAppState={initialAppState} reducer={appReducer}>
+		<AppStateProvider defaultAppState={initialAppState} reducer={appReducer}>
 			<App />
 		</AppStateProvider>
 	</React.StrictMode>,
