@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import EventBus from 'vertx3-eventbus-client';
+import EventBus from '../lib/vertxEventBus';
 
 import {
 	changeConnectionState,
@@ -20,7 +20,7 @@ export default function useConnectionManager() {
 			if (!eventBus) {
 				const eb = new EventBus(credentials.serverUrl);
 				eb.enableReconnect(true);
-				eb.onopen = () => {
+				eb.onOpen = () => {
 					console.log('%cEventbus opened', 'color: green; font-weight: bold');
 					// change indicator to connected
 					connectionDispatch(changeConnectionState('connected'));
@@ -29,7 +29,7 @@ export default function useConnectionManager() {
 					authDispatch(setAuthenticated());
 					// authDispatch(setError('Invalid credentials'));
 				};
-				eb.onclose = () => {
+				eb.onClose = () => {
 					console.log('%cEventbus closed', 'color: red; font-weight: bold');
 					// change indicator to connected
 					connectionDispatch(changeConnectionState('disconnected'));

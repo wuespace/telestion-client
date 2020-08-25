@@ -1,4 +1,4 @@
-import { EventBus } from 'vertx3-eventbus-client';
+import EventBus from '../../lib/vertxEventBus';
 import useConnection from '../../hooks/useConnection';
 
 /**

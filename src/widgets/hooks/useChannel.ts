@@ -2,6 +2,8 @@ import { useEffect } from 'react';
 
 import { Channel } from '../../model/Channels';
 import useEventBus from './useEventBus';
+import { Callback, ErrorMessage } from '../../model/VertxEventBus';
+import JSONSerializable from '../../model/JSONSerializable';
 
 /**
  * Subscribes to the eventbus via a specific channel.
@@ -14,13 +16,13 @@ export default function useChannel(
 	 * @param data new data from the eventbus
 	 * @param error error if something went wrong or null
 	 */
-	(data: unknown, error?: Error | null) => void
+	(data: JSONSerializable | null, error: ErrorMessage | null) => void
 ): void {
 	const eventBus = useEventBus();
 
 	useEffect(() => {
-		const cb = (error: Error, message: any) => {
-			onUpdate(message.body, error);
+		const cb: Callback = (message, error) => {
+			onUpdate(message ? message.body : null, error);
 		};
 
 		try {

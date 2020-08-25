@@ -1,4 +1,4 @@
-import { EventBus } from 'vertx3-eventbus-client';
+import EventBus from '../lib/vertxEventBus';
 
 export type ConnectionState = 'connected' | 'reconnecting' | 'disconnected';
 
@@ -32,11 +32,11 @@ export function deleteEventBus(): ConnectionAction {
 		if (state.eventBus) {
 			// clean up old eventbus
 			state.eventBus.close();
-			state.eventBus.onopen = () => {};
-			state.eventBus.onclose = () => {
+			state.eventBus.onOpen = () => {};
+			state.eventBus.onClose = () => {
 				console.log('%cEventbus closed', 'color: red; font-weight: bold');
 			};
-			state.eventBus.onerror = () => {};
+			state.eventBus.onError = () => {};
 
 			return {
 				...state,
