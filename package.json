@@ -36,11 +36,13 @@
 		"node-sass": "^4.14.1",
 		"prettier": "^2.0.5",
 		"react-scripts": "^3.4.3",
+		"typedoc": "^0.18.0",
 		"typescript": "^4.0.2"
 	},
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
+		"build:docs": "typedoc --options typedoc.json",
 		"build:electron": "npm run build && electron build/electron.js",
 		"test": "react-scripts test",
 		"test:coverage": "react-scripts test --coverage --watchAll=false",
