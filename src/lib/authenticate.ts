@@ -2,10 +2,12 @@ import User from '../model/User';
 import userDashboards from './userDashboards';
 import EventBus from 'vertx3-eventbus-client';
 
-export default async function authenticate(
+export default function authenticate(
 	username: string,
 	password: string,
-	serverUrl: string
+	serverUrl: string,
+	onOpen: () => void,
+	onClose: () => void
 ): Promise<User> {
 	return new Promise((resolve, reject) => {
 		// TODO: User validation
@@ -21,6 +23,7 @@ export default async function authenticate(
 		const userType = 'admin';
 
 		const eb = new EventBus(serverUrl);
+		eb.enableReconnect(true);
 
 		const user: User = {
 			name: username,

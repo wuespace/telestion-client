@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory, useRouteMatch, Redirect } from 'react-router-dom';
 import { Picker, Item } from '@adobe/react-spectrum';
-import { useHistory, useRouteMatch } from 'react-router-dom';
 
-import useAppState from '../../../hooks/useAppState';
+import { setError } from '../../../model/AuthState';
+
+import userDashboards from '../../../lib/userDashboards';
+import useAuthState from '../../../hooks/useAuthState';
 
 export default function DashboardPicker() {
-	const [{ user }] = useAppState();
-	const { dashboards } = user!;
+	const [{ credentials }, authDispatch] = useAuthState();
 
 	const history = useHistory();
 	const match = useRouteMatch('/dashboard/:id');
@@ -26,6 +28,15 @@ export default function DashboardPicker() {
 			history.push(newPath);
 		}
 	}, [history, selected]);
+
+	if (!credentials) {
+		authDispatch(
+			setError('User credentials not available. Please log in first')
+		);
+		return <Redirect to="/" />;
+	}
+
+	const dashboards = userDashboards[credentials.username];
 
 	const options = dashboards.map((dashboard, index) => ({
 		...dashboard,

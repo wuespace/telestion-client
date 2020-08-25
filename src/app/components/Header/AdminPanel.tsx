@@ -1,4 +1,5 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 import LogOut from '@spectrum-icons/workflow/LogOut';
 import {
 	ActionButton,
@@ -8,14 +9,16 @@ import {
 	StatusLight
 } from '@adobe/react-spectrum';
 import { SpectrumStatusLightProps } from '@react-types/statuslight';
-import { useHistory } from 'react-router-dom';
 
 import ColorScheme from '../../../model/ColorScheme';
-import { LOGOUT, SET_COLOR_SCHEME } from '../../../model/AppState';
+import { changeColorScheme } from '../../../model/AppSettings';
+import { clearAuthState } from '../../../model/AuthState';
+import { ConnectionState } from '../../../model/Connection';
 
 import ColorSchemeIcon from './ColorSchemeIcon';
-import useAppState from '../../../hooks/useAppState';
-import ConnectionState from '../../../model/ConnectionState';
+import useAppSettings from '../../../hooks/useAppSettings';
+import useAuthState from '../../../hooks/useAuthState';
+import useConnection from '../../../hooks/useConnection';
 
 const nextColorScheme: { [key in ColorScheme]: ColorScheme } = {
 	system: 'light',
@@ -38,18 +41,17 @@ const statusLightDesc: { [key in ConnectionState]: string } = {
 };
 
 export default function AdminPanel() {
-	const [{ colorScheme, connectionState }, dispatch] = useAppState();
+	const [{ colorScheme }, appDispatch] = useAppSettings();
+	const [{ connectionState }] = useConnection();
+	const [, authDispatch] = useAuthState();
 	const history = useHistory();
 
 	const handleColorSchemeChange = () => {
-		dispatch({
-			type: SET_COLOR_SCHEME,
-			colorScheme: nextColorScheme[colorScheme]
-		});
+		appDispatch(changeColorScheme(nextColorScheme[colorScheme]));
 	};
 
 	const handleLogOut = () => {
-		dispatch({ type: LOGOUT });
+		authDispatch(clearAuthState());
 		// go to login page
 		history.push('/');
 	};

@@ -1,7 +1,7 @@
-import useAppState from './useAppState';
+import useAppSettings from './useAppSettings';
 
 export default function useDarkColorScheme(): boolean {
-	const [{ colorScheme }] = useAppState();
+	const [{ colorScheme }] = useAppSettings();
 
 	switch (colorScheme) {
 		case 'system':

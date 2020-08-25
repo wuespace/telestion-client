@@ -1,54 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
 	Flex,
 	Heading,
 	Text,
 	Image,
-	ProgressCircle,
 	Well
 } from '@adobe/react-spectrum';
-import { useHistory } from 'react-router-dom';
 
-import { LOGIN } from '../../../model/AppState';
-import authenticate from '../../../lib/authenticate';
+import { setCredentials } from '../../../model/AuthState';
 
-import useAppState from '../../../hooks/useAppState';
 import logo from '../../media/logo.svg';
 import LoginForm from './LoginForm';
 
-export default function Login() {
-	const [, dispatch] = useAppState();
-	const history = useHistory();
+import useAuthState from '../../../hooks/useAuthState';
 
-	const [error, setError] = useState<string>();
-	const [authenticating, setAuthenticating] = useState(false);
+export default function Login() {
+	const [{ error }, dispatch] = useAuthState();
 
 	const handleLogin = (
 		username: string,
 		password: string,
 		serverUrl: string
 	) => {
-		setAuthenticating(true);
-		authenticate(username, password, serverUrl)
-			.then(user => {
-				console.log('resolved');
-				setAuthenticating(false);
-				dispatch({ type: LOGIN, user });
-				history.push('/dashboard');
-			})
-			.catch((err: string) => {
-				console.log('rejected');
-				setAuthenticating(false);
-				setError(err);
-			});
+		dispatch(setCredentials({ username, password, serverUrl }));
 	};
 
-	return authenticating ? (
-		<Flex direction="column" justifyContent="center" alignItems="center">
-			<ProgressCircle aria-label="Logging in" isIndeterminate />
-			<Heading level={2}>Logging in…</Heading>
-		</Flex>
-	) : (
+	return (
 		<Flex direction="column" maxWidth="size-4600">
 			<Image
 				src={logo}

@@ -1,20 +1,40 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import { appSettingsReducer } from './model/AppSettings';
+import { authStateReducer } from './model/AuthState';
+import { connectionReducer } from './model/Connection';
+
 import './styles.scss';
 import * as serviceWorker from './serviceWorker';
-import App from './app';
+import defaultAppSettings from './lib/defaultAppSettings';
+import initialAuthState from './lib/initialAuthState';
+import initialConnection from './lib/initialConnection';
 
-import AppStateProvider from './app/components/AppStateProvider';
-import initialAppState from './lib/initialAppState';
-import appReducer from './lib/appReducer';
+import App from './app';
+import AppSettingsProvider from './app/components/AppSettingsProvider';
+import AuthStateProvider from './app/components/AuthStateProvider';
+import ConnectionProvider from './app/components/ConnectionProvider';
 
 ReactDOM.render(
 	<React.StrictMode>
 		{/* use debug prop to show prev state, action and next state */}
-		<AppStateProvider defaultAppState={initialAppState} reducer={appReducer}>
-			<App />
-		</AppStateProvider>
+		<AppSettingsProvider
+			defaultState={defaultAppSettings}
+			reducer={appSettingsReducer}
+		>
+			<AuthStateProvider
+				initialAuthState={initialAuthState}
+				reducer={authStateReducer}
+			>
+				<ConnectionProvider
+					initialConnection={initialConnection}
+					reducer={connectionReducer}
+				>
+					<App />
+				</ConnectionProvider>
+			</AuthStateProvider>
+		</AppSettingsProvider>
 	</React.StrictMode>,
 	document.getElementById('root')
 );
