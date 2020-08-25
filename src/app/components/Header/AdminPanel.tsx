@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import LogOut from '@spectrum-icons/workflow/LogOut';
 import {
@@ -12,13 +12,13 @@ import { SpectrumStatusLightProps } from '@react-types/statuslight';
 
 import ColorScheme from '../../../model/ColorScheme';
 import { changeColorScheme } from '../../../model/AppSettings';
-import { clearAuthState } from '../../../model/AuthState';
 import { ConnectionState } from '../../../model/Connection';
 
 import ColorSchemeIcon from './ColorSchemeIcon';
 import useAppSettings from '../../../hooks/useAppSettings';
 import useAuthState from '../../../hooks/useAuthState';
 import useConnection from '../../../hooks/useConnection';
+import { clearCredentials } from '../../../model/AuthState';
 
 const nextColorScheme: { [key in ColorScheme]: ColorScheme } = {
 	system: 'light',
@@ -42,19 +42,19 @@ const statusLightDesc: { [key in ConnectionState]: string } = {
 
 export default function AdminPanel() {
 	const [{ colorScheme }, appDispatch] = useAppSettings();
-	const [{ connectionState }] = useConnection();
 	const [, authDispatch] = useAuthState();
+	const [{ connectionState }] = useConnection();
 	const history = useHistory();
 
-	const handleColorSchemeChange = () => {
+	const handleColorSchemeChange = useCallback(() => {
 		appDispatch(changeColorScheme(nextColorScheme[colorScheme]));
-	};
+	}, [appDispatch, colorScheme]);
 
-	const handleLogOut = () => {
-		authDispatch(clearAuthState());
+	const handleLogout = useCallback(() => {
+		authDispatch(clearCredentials());
 		// go to login page
 		history.push('/');
-	};
+	}, [authDispatch, history]);
 
 	return (
 		<Flex
@@ -72,7 +72,7 @@ export default function AdminPanel() {
 			>
 				<ColorSchemeIcon colorScheme={colorScheme} />
 			</ActionButton>
-			<Button variant="negative" onPress={handleLogOut}>
+			<Button variant="negative" onPress={handleLogout}>
 				<LogOut />
 				<Text>Logout</Text>
 			</Button>

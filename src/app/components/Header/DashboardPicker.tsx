@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory, useRouteMatch, Redirect } from 'react-router-dom';
+import { useHistory, Redirect, useParams } from 'react-router-dom';
 import { Picker, Item } from '@adobe/react-spectrum';
 
 import { setError } from '../../../model/AuthState';
@@ -9,17 +9,14 @@ import useAuthState from '../../../hooks/useAuthState';
 
 export default function DashboardPicker() {
 	const [{ credentials }, authDispatch] = useAuthState();
-
 	const history = useHistory();
-	const match = useRouteMatch('/dashboard/:id');
-	const params = (match?.params as { id: string }) || { id: '0' };
-
-	const [selected, setSelected] = useState(params.id);
+	const { id } = useParams<{ id: string }>();
+	const [selected, setSelected] = useState(id);
 
 	// sync selection state with current route
 	useEffect(() => {
-		setSelected(params.id);
-	}, [params.id]);
+		setSelected(id);
+	}, [id]);
 
 	// sync history with picker state
 	useEffect(() => {

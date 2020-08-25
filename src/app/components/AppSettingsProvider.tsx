@@ -1,7 +1,8 @@
 import React, { ReactNode, useCallback, useReducer } from 'react';
+
 import AppSettings, { AppSettingsReducer } from '../../model/AppSettings';
-import AppSettingsContext from '../../lib/AppSettingsContext';
 import ColorScheme, { validColorSchemes } from '../../model/ColorScheme';
+import AppSettingsContext from '../../lib/AppSettingsContext';
 
 const KEY = 'app-settings';
 
@@ -45,18 +46,22 @@ export default function AppSettingsProvider({
 		(state, action) => {
 			const newState = reducer(state, action);
 
-			console.group('AppSettings');
+			console.groupCollapsed('%cAppSettings', 'font-weight: bold');
 			console.log(
-				'%sPrevious app settings',
-				'color: blue, font-weight: bold',
+				'%cPrevious app settings',
+				'color: blue; font-weight: bold',
 				state
 			);
 			console.log(
-				'%sDispatched app settings action',
-				'color: red, font-weight: bold',
+				'%cDispatched app settings action',
+				'color: red; font-weight: bold',
 				action
 			);
-			console.log('%sNext app settings', 'color: green', newState);
+			console.log(
+				'%cNext app settings',
+				'color: green; font-weight: bold',
+				newState
+			);
 			console.groupEnd();
 
 			return newState;

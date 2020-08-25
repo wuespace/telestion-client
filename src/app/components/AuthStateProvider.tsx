@@ -1,4 +1,5 @@
 import React, { ReactNode, useCallback, useReducer } from 'react';
+
 import AuthState, { AuthStateReducer } from '../../model/AuthState';
 import AuthStateContext from '../../lib/AuthStateContext';
 
@@ -19,18 +20,10 @@ export default function AuthStateProvider({
 		(state, action) => {
 			const newState = reducer(state, action);
 
-			console.group('AuthState');
-			console.log(
-				'%sPrevious auth state',
-				'color: blue, font-weight: bold',
-				state
-			);
-			console.log(
-				'%sDispatched auth action',
-				'color: red, font-weight: bold',
-				action
-			);
-			console.log('%sNext auth state', 'color: green', newState);
+			console.groupCollapsed('AuthState');
+			console.log('Previous auth state', state);
+			console.log('Dispatched auth action', action);
+			console.log('Next auth state', newState);
 			console.groupEnd();
 
 			return newState;

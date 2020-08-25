@@ -7,7 +7,6 @@ import {
 	Redirect
 } from 'react-router-dom';
 
-import HeaderPage from './pages/HeaderPage';
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import NotFoundPage from './pages/NotFoundPage';
@@ -21,7 +20,7 @@ export default function App() {
 	const [{ credentials }] = useAuthState();
 
 	// synchronises the connection context to the auth state
-	const userIsAuthenticated = useConnectionManager();
+	useConnectionManager();
 
 	return (
 		<Provider
@@ -36,7 +35,6 @@ export default function App() {
 				alignItems="center"
 			>
 				<Router>
-					{credentials && <HeaderPage />}
 					<Switch>
 						<Route
 							path="/"
@@ -52,11 +50,7 @@ export default function App() {
 						<Route
 							path="/dashboard/:id"
 							render={() => {
-								return credentials ? (
-									<DashboardPage userIsAuthenticated={userIsAuthenticated} />
-								) : (
-									<Redirect to="/" />
-								);
+								return credentials ? <DashboardPage /> : <Redirect to="/" />;
 							}}
 						/>
 						<Route path="/dashboard">

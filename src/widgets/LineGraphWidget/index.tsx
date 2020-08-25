@@ -33,14 +33,8 @@ export default function MapWidget() {
 						stroke={isDark ? '#6e6e6e' : '#b3b3b3'}
 						strokeDasharray="5 5"
 					/>
-					<XAxis
-						dataKey={'x'}
-						stroke={isDark ? '#e3e3e3' : '#4b4b4b'}
-					/>
-					<YAxis
-						dataKey={'y'}
-						stroke={isDark ? '#e3e3e3' : '#4b4b4b'}
-					/>
+					<XAxis dataKey={'x'} stroke={isDark ? '#e3e3e3' : '#4b4b4b'} />
+					<YAxis dataKey={'y'} stroke={isDark ? '#e3e3e3' : '#4b4b4b'} />
 					<Tooltip isUpdateAnimationActive={true} active={true} />
 				</LineChart>
 			</ResponsiveContainer>

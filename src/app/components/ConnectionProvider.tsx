@@ -20,18 +20,10 @@ export default function ConnectionProvider({
 		(state, action) => {
 			const newState = reducer(state, action);
 
-			console.group('Connection');
-			console.log(
-				'%sPrevious connection',
-				'color: blue, font-weight: bold',
-				state
-			);
-			console.log(
-				'%sDispatched connection action',
-				'color: red, font-weight: bold',
-				action
-			);
-			console.log('%sNext connection', 'color: green', newState);
+			console.groupCollapsed('Connection');
+			console.log('Previous connection', state);
+			console.log('Dispatched connection action', action);
+			console.log('Next connection', newState);
 			console.groupEnd();
 
 			return newState;

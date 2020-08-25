@@ -22,14 +22,17 @@ ReactDOM.render(
 		<AppSettingsProvider
 			defaultState={defaultAppSettings}
 			reducer={appSettingsReducer}
+			debug
 		>
 			<AuthStateProvider
 				initialAuthState={initialAuthState}
 				reducer={authStateReducer}
+				debug
 			>
 				<ConnectionProvider
 					initialConnection={initialConnection}
 					reducer={connectionReducer}
+					debug
 				>
 					<App />
 				</ConnectionProvider>

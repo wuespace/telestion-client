@@ -15,30 +15,47 @@ export type ConnectionReducer = (
 
 export function newEventBus(eventBus: EventBus): ConnectionAction {
 	return state => {
-		return {
-			...state,
-			eventBus,
-			connectionState: 'disconnected'
-		};
+		if (!state.eventBus) {
+			return {
+				...state,
+				eventBus,
+				connectionState: 'reconnecting'
+			};
+		}
+
+		throw new Error('Eventbus is already defined. Cannot create another one');
 	};
 }
 
-export function closeEventBus(): ConnectionAction {
+export function deleteEventBus(): ConnectionAction {
 	return state => {
-		state.eventBus?.close();
-		return { ...state };
+		if (state.eventBus) {
+			// clean up old eventbus
+			state.eventBus.close();
+			state.eventBus.onopen = () => {};
+			state.eventBus.onclose = () => {
+				console.log('%cEventbus closed', 'color: red; font-weight: bold');
+			};
+			state.eventBus.onerror = () => {};
+
+			return {
+				...state,
+				eventBus: null,
+				connectionState: 'disconnected'
+			};
+		}
+
+		throw new Error('Eventbus is not defined. Possible memory detected');
 	};
 }
 
 export function changeConnectionState(
 	connectionState: ConnectionState
 ): ConnectionAction {
-	return state => {
-		return {
-			...state,
-			connectionState
-		};
-	};
+	return state => ({
+		...state,
+		connectionState
+	});
 }
 
 export const connectionReducer: ConnectionReducer = (state, action) =>

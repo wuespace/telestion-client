@@ -11,12 +11,10 @@ export type AppSettingsReducer = (
 ) => AppSettings;
 
 export function changeColorScheme(colorScheme: ColorScheme): AppSettingsAction {
-	return state => {
-		return {
-			...state,
-			colorScheme
-		};
-	};
+	return state => ({
+		...state,
+		colorScheme
+	});
 }
 
 export const appSettingsReducer: AppSettingsReducer = (state, action) =>

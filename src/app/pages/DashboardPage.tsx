@@ -1,22 +1,26 @@
 import React from 'react';
 import { useParams, Redirect } from 'react-router-dom';
 import NotFound from '@spectrum-icons/illustrations/NotFound';
-import { Content, Heading, IllustratedMessage, Flex, ProgressCircle } from '@adobe/react-spectrum';
+import {
+	Content,
+	Heading,
+	IllustratedMessage,
+	Flex,
+	ProgressCircle
+} from '@adobe/react-spectrum';
 
-import Dashboard from '../components/Dashboard';
-import useAuthState from '../../hooks/useAuthState';
-import userDashboards from '../../lib/userDashboards';
 import { setError } from '../../model/AuthState';
 
-interface Props {
-	userIsAuthenticated: boolean;
-}
+import Dashboard from '../components/Dashboard';
+import Header from '../components/Header';
+import useAuthState from '../../hooks/useAuthState';
+import userDashboards from '../../lib/userDashboards';
 
-export default function DashboardPage({ userIsAuthenticated }: Props) {
-	const { id } = useParams();
-	const [{ credentials }, authDispatch] = useAuthState();
+export default function DashboardPage() {
+	const { id } = useParams<{ id: string }>();
+	const [{ credentials, authenticated }, authDispatch] = useAuthState();
 
-	if (userIsAuthenticated) {
+	if (authenticated) {
 		if (!credentials) {
 			authDispatch(
 				setError('User credentials not available. Please log in first')
@@ -24,25 +28,31 @@ export default function DashboardPage({ userIsAuthenticated }: Props) {
 			return <Redirect to="/" />;
 		}
 
-		const dashboards = userDashboards[credentials.username];
+		const dashboards = userDashboards[credentials.username] || [];
 		if (dashboards.length > 0) {
-			const dashboard = dashboards[id];
+			const dashboard = dashboards[Number.parseInt(id)];
 			return dashboard ? (
-				<Dashboard dashboard={dashboard} />
+				<>
+					<Header />
+					<Dashboard dashboard={dashboard} />
+				</>
 			) : (
 				<Redirect to="/dashboard/0" />
 			);
 		}
 
 		return (
-			<IllustratedMessage>
-				<NotFound />
-				<Heading>No dashboards found</Heading>
-				<Content>
-					Add dashboard definitions in the src/lib/userDashboards.ts file for
-					your username "{credentials.username}"
-				</Content>
-			</IllustratedMessage>
+			<>
+				<Header />
+				<IllustratedMessage>
+					<NotFound />
+					<Heading>No dashboards found</Heading>
+					<Content>
+						Add dashboard definitions in the src/lib/userDashboards.ts file for
+						your username "{credentials.username}"
+					</Content>
+				</IllustratedMessage>
+			</>
 		);
 	}
 
@@ -51,5 +61,5 @@ export default function DashboardPage({ userIsAuthenticated }: Props) {
 			<ProgressCircle aria-label="Logging in" isIndeterminate />
 			<Heading level={2}>Logging in…</Heading>
 		</Flex>
-	)
+	);
 }
