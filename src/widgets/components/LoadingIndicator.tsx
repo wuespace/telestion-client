@@ -15,7 +15,8 @@ interface Props {
  * @param timeout optional timeout to throw an error
  * @throws if some dependencies are undefined until timeout and timeout is set
  *
- * @example Render a loading indicator if position is undefined otherwise the position
+ * @example ```
+ * // Render a loading indicator if position is undefined otherwise the position
  * const [position, setPosition] = useState<Position>();
  * return (
  * 	 <LoadingIndicator dependencies={[position]}>
@@ -24,6 +25,7 @@ interface Props {
  * 	   )}
  * 	 </LoadingIndicator>
  * );
+ * ```
  */
 export default function LoadingIndicator({
 	children,

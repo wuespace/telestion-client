@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useCallback } from 'react';
+import { useHistory } from 'react-router-dom';
 import LogOut from '@spectrum-icons/workflow/LogOut';
 import {
 	ActionButton,
@@ -8,14 +9,16 @@ import {
 	StatusLight
 } from '@adobe/react-spectrum';
 import { SpectrumStatusLightProps } from '@react-types/statuslight';
-import { useHistory } from 'react-router-dom';
 
 import ColorScheme from '../../../model/ColorScheme';
-import { LOGOUT, SET_COLOR_SCHEME } from '../../../model/AppState';
+import { changeColorScheme } from '../../../model/AppSettings';
+import { ConnectionState } from '../../../model/Connection';
 
 import ColorSchemeIcon from './ColorSchemeIcon';
-import useAppState from '../../../hooks/useAppState';
-import ConnectionState from '../../../model/ConnectionState';
+import useAppSettings from '../../../hooks/useAppSettings';
+import useAuthState from '../../../hooks/useAuthState';
+import useConnection from '../../../hooks/useConnection';
+import { clearCredentials } from '../../../model/AuthState';
 
 const nextColorScheme: { [key in ColorScheme]: ColorScheme } = {
 	system: 'light',
@@ -38,21 +41,20 @@ const statusLightDesc: { [key in ConnectionState]: string } = {
 };
 
 export default function AdminPanel() {
-	const [{ colorScheme, connectionState }, dispatch] = useAppState();
+	const [{ colorScheme }, appDispatch] = useAppSettings();
+	const [, authDispatch] = useAuthState();
+	const [{ connectionState }] = useConnection();
 	const history = useHistory();
 
-	const handleColorSchemeChange = () => {
-		dispatch({
-			type: SET_COLOR_SCHEME,
-			colorScheme: nextColorScheme[colorScheme]
-		});
-	};
+	const handleColorSchemeChange = useCallback(() => {
+		appDispatch(changeColorScheme(nextColorScheme[colorScheme]));
+	}, [appDispatch, colorScheme]);
 
-	const handleLogOut = () => {
-		dispatch({ type: LOGOUT });
+	const handleLogout = useCallback(() => {
+		authDispatch(clearCredentials());
 		// go to login page
 		history.push('/');
-	};
+	}, [authDispatch, history]);
 
 	return (
 		<Flex
@@ -70,7 +72,7 @@ export default function AdminPanel() {
 			>
 				<ColorSchemeIcon colorScheme={colorScheme} />
 			</ActionButton>
-			<Button variant="negative" onPress={handleLogOut}>
+			<Button variant="negative" onPress={handleLogout}>
 				<LogOut />
 				<Text>Logout</Text>
 			</Button>

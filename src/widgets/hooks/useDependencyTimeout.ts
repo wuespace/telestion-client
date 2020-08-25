@@ -6,13 +6,14 @@ import { useEffect, useState } from 'react';
  * @param timeout timeout in seconds until the function throws, if 0 -> infinity
  * @throws if no data is received until timeout
  *
- * @example
+ * @example ```
  * const [position, setPosition] = useState<Pos>();
  *
  * // throws if no position received after 5 seconds
  * useDependencyTimeout(5, [position]);
  *
  * return <p>Latest position: {position}</p>;
+ * ```
  */
 export default function useDependencyTimeout(
 	timeout: number,

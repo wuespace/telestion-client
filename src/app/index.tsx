@@ -7,25 +7,26 @@ import {
 	Redirect
 } from 'react-router-dom';
 
-import HeaderPage from './pages/HeaderPage';
 import LoginPage from './pages/LoginPage';
 import DashboardPage from './pages/DashboardPage';
 import NotFoundPage from './pages/NotFoundPage';
 
-import useAppState from '../hooks/useAppState';
-import useConnectionStateBlinker from '../hooks/useConnectionStateBlinker';
+import useAppSettings from '../hooks/useAppSettings';
+import useAuthState from '../hooks/useAuthState';
+import useConnectionManager from '../hooks/useConnectionManager';
 
 export default function App() {
-	const [state] = useAppState();
-	const { user, colorScheme } = state;
+	const [{ colorScheme }] = useAppSettings();
+	const [{ credentials }] = useAuthState();
 
-	// TODO: REMOVE BEFORE PRODUCTION USE
-	useConnectionStateBlinker();
+	// synchronises the connection context to the auth state
+	useConnectionManager();
 
 	return (
 		<Provider
 			theme={defaultTheme}
 			colorScheme={colorScheme === 'system' ? undefined : colorScheme}
+			defaultColorScheme="dark"
 		>
 			<Flex
 				direction="column"
@@ -34,19 +35,22 @@ export default function App() {
 				alignItems="center"
 			>
 				<Router>
-					{user && <HeaderPage />}
 					<Switch>
 						<Route
 							path="/"
 							exact
 							render={() => {
-								return user ? <Redirect to="/dashboard" /> : <LoginPage />;
+								return credentials ? (
+									<Redirect to="/dashboard" />
+								) : (
+									<LoginPage />
+								);
 							}}
 						/>
 						<Route
 							path="/dashboard/:id"
 							render={() => {
-								return user ? <DashboardPage /> : <Redirect to="/" />;
+								return credentials ? <DashboardPage /> : <Redirect to="/" />;
 							}}
 						/>
 						<Route path="/dashboard">

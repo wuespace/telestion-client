@@ -36,18 +36,20 @@
 		"node-sass": "^4.14.1",
 		"prettier": "^2.0.5",
 		"react-scripts": "^3.4.3",
-		"typescript": "~3.7.2"
+		"typedoc": "^0.18.0",
+		"typescript": "^3.7.5"
 	},
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
+		"build:docs": "typedoc --options typedoc.json",
 		"build:electron": "npm run build && electron build/electron.js",
 		"test": "react-scripts test",
 		"test:coverage": "react-scripts test --coverage --watchAll=false",
 		"prettier": "prettier --write package.json \"src/**/*{.ts,.tsx,.js,.jsx,.html,.css,.scss}\"",
 		"prettier:ci": "prettier package.json \"src/**/*{.ts,.tsx,.js,.jsx,.html,.css,.scss}\"",
 		"ts": "tsc",
-		"check": "npm run prettier && npm run ts && npm run test:coverage && npm run build",
+		"check": "npm run prettier && npm run ts && npm run test:coverage && npm run build && npm run build:docs",
 		"electron:win": "electron-builder --win --x64",
 		"electron:mac": "electron-builder --mac",
 		"electron:linux": "electron-builder --linux",

@@ -10,6 +10,12 @@ interface Props {
 	login: (username: string, password: string, serverUrl: string) => void;
 }
 
+/**
+ * Defines a login form with server url, username, password and a login button that
+ * calls the login function on valid user inputs.
+ * @param login a function to call when the user wants to login
+ * @constructor a form JSX structure
+ */
 export default function LoginForm({ login }: Props) {
 	const [username, setUsername] = useState('');
 	const [password, setPassword] = useState('');

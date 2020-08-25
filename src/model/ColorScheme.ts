@@ -4,8 +4,4 @@ type ColorScheme = SpectrumColorScheme | 'system';
 
 export default ColorScheme;
 
-export const validColorSchemes: ColorScheme[] = [
-	'system',
-	'light',
-	'dark'
-];
+export const validColorSchemes: ColorScheme[] = ['system', 'light', 'dark'];

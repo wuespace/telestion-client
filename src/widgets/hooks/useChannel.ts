@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
+
 import { Channel } from '../../model/Channels';
-import useAppState from '../../hooks/useAppState';
+import useEventBus from './useEventBus';
 
 /**
  * Subscribes to the eventbus via a specific channel.
@@ -15,9 +16,7 @@ export default function useChannel(
 	 */
 	(data: unknown, error?: Error | null) => void
 ): void {
-	const [{ user }] = useAppState();
-	if (!user) throw new Error('User is not defined');
-	const { eventBus } = user;
+	const eventBus = useEventBus();
 
 	useEffect(() => {
 		const cb = (error: Error, message: any) => {

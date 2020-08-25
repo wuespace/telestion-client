@@ -1,23 +1,22 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory, Redirect, useParams } from 'react-router-dom';
 import { Picker, Item } from '@adobe/react-spectrum';
-import { useHistory, useRouteMatch } from 'react-router-dom';
 
-import useAppState from '../../../hooks/useAppState';
+import { setError } from '../../../model/AuthState';
+
+import userDashboards from '../../../lib/userDashboards';
+import useAuthState from '../../../hooks/useAuthState';
 
 export default function DashboardPicker() {
-	const [{ user }] = useAppState();
-	const { dashboards } = user!;
-
+	const [{ credentials }, authDispatch] = useAuthState();
 	const history = useHistory();
-	const match = useRouteMatch('/dashboard/:id');
-	const params = (match?.params as { id: string }) || { id: '0' };
-
-	const [selected, setSelected] = useState(params.id);
+	const { id } = useParams<{ id: string }>();
+	const [selected, setSelected] = useState(id);
 
 	// sync selection state with current route
 	useEffect(() => {
-		setSelected(params.id);
-	}, [params.id]);
+		setSelected(id);
+	}, [id]);
 
 	// sync history with picker state
 	useEffect(() => {
@@ -26,6 +25,15 @@ export default function DashboardPicker() {
 			history.push(newPath);
 		}
 	}, [history, selected]);
+
+	if (!credentials) {
+		authDispatch(
+			setError('User credentials not available. Please log in first')
+		);
+		return <Redirect to="/" />;
+	}
+
+	const dashboards = userDashboards[credentials.username];
 
 	const options = dashboards.map((dashboard, index) => ({
 		...dashboard,
