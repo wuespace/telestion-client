@@ -284,6 +284,10 @@ export default class EventBus {
 	 * is set in enableReconnect
 	 * and used in setupConnections especially in socket.onclose
 	 *
+	 * If automatic reconnect is enabled,
+	 * the event bus tries to reconnect to the backend server
+	 * in increasing time steps until a connection is re-established.
+	 *
 	 * @see {@link enableReconnect}
 	 * @see {@link setupConnection | setupConnection (here socket.onclose)}
 	 * @see {@link reconnectTimerId}
@@ -482,6 +486,8 @@ export default class EventBus {
 	 * @see {@link CLOSED}
 	 * @see {@link getStateName}
 	 *
+	 * @category Connection
+	 *
 	 * @example ```ts
 	 * const eventBus = new EventBus('http://localhost:8081/bridge');
 	 * // get current state from event bus
@@ -494,18 +500,108 @@ export default class EventBus {
 		return this.socket.readyState;
 	}
 
+	/**
+	 * Returns true if ping is enabled otherwise false.
+	 *
+	 * @see {@link enablePing}
+	 * @see {@link pingTimerId}
+	 *
+	 * @category Connection
+	 *
+	 * @example ```ts
+	 * const eventBus = new EventBus('http://localhost:8081/bridge');
+	 *
+	 * eventBus.onOpen = () => {
+	 *   console.log(eventBus.isPingEnabled);
+	 *   // -> 'true'
+	 * }
+	 * ```
+	 */
 	get isPingEnabled(): boolean {
 		return !!this.pingTimerId;
 	}
 
-	get isReconnectionEnabled(): boolean {
+	/**
+	 * Returns true if automatic reconnect is enabled otherwise false.
+	 *
+	 * @see {@link enableReconnect}
+	 * @see {@link reconnectEnabled}
+	 *
+	 * @category Connection
+	 *
+	 * @example ```ts
+	 * const eventBus = new EventBus('http://localhost:8081/bridge');
+	 *
+	 * eventBus.onOpen = () => {
+	 *   console.log(eventBus.isReconnectEnabled);
+	 *   // -> 'false'
+	 *   eventBus.enableReconnect(true);
+	 *   console.log(eventBus.isReconnectEnabled);
+	 *   // -> 'true'
+	 * }
+	 * ```
+	 */
+	get isReconnectEnabled(): boolean {
 		return this.reconnectEnabled;
 	}
 
+	/**
+	 * Returns the number of reconnection attempts
+	 * if the socket has unexpectedly closed
+	 * and automatic reconnection is enabled otherwise 0.
+	 *
+	 * Resets to 0 if the connection is re-established.
+	 *
+	 * @see {@link reconnectAttempts}
+	 * @see {@link enableReconnect}
+	 *
+	 * @category Connection
+	 *
+	 * @example ```ts
+	 * const eventBus = new EventBus('http://localhost:8081/bridge');
+	 * // enable automatic reconnect
+	 * eventBus.enableReconnect(true);
+	 *
+	 * // later, the event bus closes unexpectedly and cannot reconnect
+	 * console.log(eventBus.reconnectionAttempts);
+	 * // -> number > 0
+	 * ```
+	 */
 	get reconnectionAttempts(): number {
 		return this.reconnectAttempts;
 	}
 
+	/**
+	 * Enable or disable continuous ping message send on an open event bus.
+	 *
+	 * The ping interval can be defined in the options on event bus creation.
+	 *
+	 * Is automatically enabled when the event bus is opened
+	 * and disabled when the event bus is closed.
+	 *
+	 * **Use with caution!
+	 * The backend server closes the connection
+	 * if no ping messages are sent in a specific interval!**
+	 * @param enable true to enable continuous ping message, false to disable
+	 *
+	 * @see {@link isPingEnabled}
+	 * @see {@link "model/VertxEventBus".Options}
+	 * @see {@link onOpen}
+	 *
+	 * @category Connection
+	 *
+	 * @example ```ts
+	 * const eventBus = new EventBus('http://localhost:8081/bridge');
+	 *
+	 * eventBus.onOpen = () => {
+	 *   // disable ping message send for 1 second
+	 *   eventBus.enablePing(false);
+	 *   setTimeout(() => {
+	 *     eventBus.enablePing(true);
+	 *   }, 1000);
+	 * };
+	 * ```
+	 */
 	enablePing(enable: boolean) {
 		const { pingInterval } = this.options;
 
@@ -520,6 +616,31 @@ export default class EventBus {
 		}
 	}
 
+	/**
+	 * Enable or disable automatic reconnect on unexpected connection lost.
+	 *
+	 * If automatic reconnect is enabled,
+	 * the event bus tries to reconnect to the backend server
+	 * in increasing time steps until a connection is re-established.
+	 *
+	 * initially disabled
+	 * @param enable true to enable automatic reconnect, false to disable
+	 *
+	 * @see {@link isReconnectEnabled}
+	 * @see {@link onReconnect}
+	 *
+	 * @category Connection
+	 *
+	 * @example ```ts
+	 * const eventBus = new EventBus('http://localhost:8081/bridge');
+	 * // enable automatic reconnect
+	 * eventBus.enableReconnect(true);
+	 *
+	 * eventBus.onReconnect = () => {
+	 *   console.log('Event bus has reconnected');
+	 * };
+	 * ```
+	 */
 	enableReconnect(enable: boolean) {
 		this.reconnectEnabled = enable;
 		if (!enable && this.reconnectTimerId) {
@@ -529,6 +650,55 @@ export default class EventBus {
 		}
 	}
 
+	/**
+	 * Register an event handler to the specified channel.
+	 *
+	 * The given callback is executed when a message receives the event bus
+	 * on the specified channel.
+	 *
+	 * The specified headers are sent with the register message
+	 * that goes to the backend on the first register event call
+	 * for this specified channel.
+	 *
+	 * @param channel the channel to register the event handler
+	 * that executes the callback on incoming messages
+	 * @param callback the function that will be called
+	 * on incoming messages on the specified channel
+	 * @param headers optional headers sent with the initial register message
+	 * to the backend on the first register event
+	 *
+	 * @throws if the event bus is not open
+	 *
+	 * @see {@link unregisterHandler}
+	 * @see {@link "model/VertxEventBus".Callback}
+	 * @see {@link onOpen}
+	 *
+	 * @category Vertx EventBus
+	 *
+	 * @example ```ts
+	 * // some vertx eventbus channel to register to
+	 * const channel = 'MY_CHANNEL';
+	 *
+	 * // define a handler
+	 * const handler: Callback = (message, err) => {
+	 *   if (err) {
+	 *     console.error(err);
+	 *   } else {
+	 *     console.log(message);
+	 *   }
+	 * };
+	 *
+	 * const eventBus = new EventBus('https://localhost:8081/bridge');
+	 *
+	 * eventBus.onOpen = () => {
+	 *   eventBus.registerHandler(channel, handler);
+	 * };
+	 *
+	 * // later
+	 * // unregister handler
+	 * eventBus.unregisterHandler(channel, handler);
+	 * ```
+	 */
 	registerHandler(channel: string, callback: Callback, headers?: Headers) {
 		if (this.state !== EventBus.OPEN)
 			throw new InvalidSocketStateError(
@@ -545,6 +715,29 @@ export default class EventBus {
 		this.handlers[channel].push(callback);
 	}
 
+	/**
+	 * Unregister an event handler from the specified channel.
+	 *
+	 * The identity of the callback must be same as
+	 * in the register handler method
+	 * to successfully remove the event handler.
+	 *
+	 * The specified headers are sent with the unregister message
+	 * that goes to the backend,
+	 * if no other event handler registered for this channel.
+	 *
+	 * @param channel the channel to unregister the event handler
+	 * @param callback the callback to unregister from the channel
+	 * @param headers optional headers sent with the last unregister message
+	 * to the backend on the last unregister message
+	 *
+	 * @throws if the event bus is not open
+	 *
+	 * @see {@link registerHandler}
+	 * @see {@link "model/VertxEventBus".Callback}
+	 *
+	 * @category Vertx EventBus
+	 */
 	unregisterHandler(channel: string, callback: Callback, headers?: Headers) {
 		if (this.state !== EventBus.OPEN)
 			throw new InvalidSocketStateError(
@@ -566,6 +759,30 @@ export default class EventBus {
 		}
 	}
 
+	/**
+	 * Broadcasts or publishes a message to the specified channel.
+	 *
+	 * @param channel channel in which the message is sent
+	 * @param message message to send
+	 * @param headers optional headers sent with the event bus message
+	 *
+	 * @throws if the event bus is not open
+	 *
+	 * @see {@link onOpen}
+	 *
+	 * @category Vertx EventBus
+	 *
+	 * @example ```ts
+	 * // some vertx eventbus channel to publish to
+	 * const channel = 'MY_CHANNEL';
+	 *
+	 * const eventBus = new EventBus('http://localhost:8081/bridge');
+	 *
+	 * eventBus.onOpen = () => {
+	 *   eventBus.publish(channel, 'Hey there!');
+	 * }
+	 * ```
+	 */
 	publish(channel: string, message: any, headers?: Headers) {
 		if (this.state !== EventBus.OPEN)
 			throw new InvalidSocketStateError(
@@ -583,6 +800,37 @@ export default class EventBus {
 		);
 	}
 
+	/**
+	 * Broadcasts or publishes a message to the specified channel
+	 * and register a one-time event handler
+	 * that gets called when the first answer to the sent message is received.
+	 *
+	 * @param channel channel in which the message is sent
+	 * @param message message to send
+	 * @param callback the function
+	 * that will be called on the first received answer to the sent message
+	 * @param headers optional headers sent with the event bus message
+	 *
+	 * @throws if the event bus is not open
+	 *
+	 * @see {@link "model/VertxEventBus".Callback}
+	 * @see {@link onOpen}
+	 *
+	 * @category Vertx EventBus
+	 *
+	 * @example ```ts
+	 * // some vertx eventbus channel to send to
+	 * const channel = 'MY_CHANNEL';
+	 *
+	 * const eventBus = new EventBus('http://localhost:8081/bridge');
+	 *
+	 * eventBus.onOpen = () => {
+	 *   eventBus.send(channel, 'Ping', (message, err) => {
+	 *     console.log('Pong:', message);
+	 *   });
+	 * };
+	 * ```
+	 */
 	send(channel: string, message: any, callback: Callback, headers?: Headers) {
 		if (this.state !== EventBus.OPEN)
 			throw new InvalidSocketStateError(
@@ -604,6 +852,21 @@ export default class EventBus {
 		this.socket.send(EventBus.encodeMessage(envelope));
 	}
 
+	/**
+	 * Closes the event bus and don't receive any further event bus messages.
+	 * The connection will not be re-established automatically,
+	 * even if automatic reconnect is enabled.
+	 *
+	 * @see {@link enableReconnect}
+	 *
+	 * @category Connection
+	 *
+	 * @example ```ts
+	 * const eventBus = new EventBus('http://localhost:8081/bridge');
+	 * // close event bus
+	 * eventBus.close();
+	 * ```
+	 */
 	close() {
 		console.log('Eventbus will close now!');
 		this.enableReconnect(false);
@@ -611,6 +874,26 @@ export default class EventBus {
 		if (this.reconnectTimerId) clearTimeout(this.reconnectTimerId);
 	}
 
+	/**
+	 * Generates a unique identifier for an address used as a reply address.
+	 * @returns a unique identifier for an address
+	 *
+	 * @see {@link send}
+	 *
+	 * @category EventBus Internal
+	 *
+	 * @example ```ts
+	 * const replyAddress = EventBus.generateUUID();
+	 *
+	 * const envelope: Message = {
+	 *   type: 'send',
+	 *   address: channel,
+	 *   headers: headers || {},
+	 *   body: message,
+	 *   replyAddress
+	 * };
+	 * ```
+	 */
 	private static generateUUID() {
 		let b: number;
 		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, a => {
@@ -619,14 +902,89 @@ export default class EventBus {
 		});
 	}
 
+	/**
+	 * Encodes a message that is sent to the vertx event bus.
+	 * @param message message object to encode
+	 * @returns the encoded message
+	 *
+	 * @see {@link publish}
+	 * @see {@link send}
+	 * @see {@link "model/VertxEventBus".Message}
+	 *
+	 * @category EventBus Internal
+	 *
+	 * @example ```ts
+	 * const message: Message = {
+	 *   type: 'publish',
+	 *   address: channel,
+	 *   headers: headers || {},
+	 *   body: message
+	 * };
+	 *
+	 * this.socket.send(EventBus.encodeMessage(message));
+	 * ```
+	 */
 	private static encodeMessage(message: Message): string {
 		return JSON.stringify(message);
 	}
 
+	/**
+	 * Decodes the data received from the vertx event bus to a message object.
+	 * @param data data received from the vertx event bus
+	 * @returns the decoded message object
+	 *
+	 * @see {@link setupConnection | setupConnection (here socket.onmessage)}
+	 * @see {@link "model/VertxEventBus".Message}
+	 *
+	 * @category EventBus Internal
+	 *
+	 * @example ```ts
+	 * // data received from the socket
+	 * const data = 'some_data';
+	 *
+	 * const message = EventBus.decodeMessage(data);
+	 * ```
+	 */
 	private static decodeMessage(data: string): Message {
 		return JSON.parse(data) as Message;
 	}
 
+	/**
+	 * Creates a new web socket with SockJS with the specified options
+	 * and registers all needed event handlers to the web socket.
+	 *
+	 * It automatically tries to connect to the specified url.
+	 *
+	 * The socket onopen event handler enables continuous ping
+	 * and triggers the onReconnect event handler
+	 * if a reconnect has happened.
+	 *
+	 * The socket onclose event handler disables continuous ping,
+	 * triggers the onClose event handler
+	 * and set the reconnect timeout that creates a new SockJS web socket
+	 * if automatic reconnect is enabled.
+	 *
+	 * The socket onmessage decodes the received message,
+	 * add a reply function to the message object if the message is a reply,
+	 * check if the message is an error message
+	 * and search for event handlers that are registered to the message address.
+	 * If handlers are available, call them,
+	 * otherwise search for reply handlers
+	 * that are registered in the send method before.
+	 * If also no reply handlers were found, log an error or output a warning.
+	 * Here the backend server sends the client unhandled messages
+	 * which indicates a missing unsubscribe from the message channel.
+	 *
+	 * @param url url the SockJS socket tries to connect to
+	 * @param options optional options for the SockJS socket
+	 * @returns the web socket from SockJS
+	 *
+	 * @event onOpen if the web socket is opened
+	 * @event onClose if the web socket is closed
+	 * @event onReconnect if the web socket has reconnected
+	 *
+	 * @category EventBus Internal
+	 */
 	private setupConnection(url: string, options?: SockJS.Options): WebSocket {
 		const socket = new SockJS(url, null, options);
 
@@ -705,12 +1063,62 @@ export default class EventBus {
 		return socket;
 	}
 
+	/**
+	 * Send a ping message to the backend server
+	 * if the connection is open
+	 * to prove the backend server that the client is still connected
+	 * and has not lost connection.
+	 *
+	 * @see {@link WebSocket}
+	 * @see {@link "model/VertxEventBus".Message}
+	 *
+	 * @category EventBus Internal
+	 *
+	 * @example ```ts
+	 * if (enable && pingInterval > 0) {
+	 *   this.sendPing();
+	 *   this.pingTimerId = setInterval(() => {
+	 *     this.sendPing();
+	 *   }, pingInterval);
+	 * }
+	 * ```
+	 */
 	private sendPing() {
 		if (this.state === EventBus.OPEN) {
 			this.socket.send(EventBus.encodeMessage({ type: 'ping' }));
 		}
 	}
 
+	/**
+	 * Calculate a new reconnect delay
+	 * after the event bus tries to reconnect to the backend server
+	 * if automatic reconnect is enabled.
+	 *
+	 * The calculation is based on numerous parameters
+	 * defined in the instance options
+	 * and on the reconnect attempts.
+	 *
+	 * @returns a new reconnect delay in milliseconds
+	 *
+	 * @see {@link "model/VertxEventBus".Options}
+	 * @see {@link reconnectAttempts}
+	 * @see {@link setupConnection | setupConnection (here socket.onclose)}
+	 *
+	 * @category EventBus Internal
+	 *
+	 * @example ```ts
+	 * if (
+	 *   this.reconnectEnabled &&
+	 *   this.reconnectAttempts < this.options.reconnectAttempts
+	 * ) {
+	 *   this.reconnectTimerId = setTimeout(() => {
+	 *     this.socket = this.setupConnection(url, options);
+	 *   }, this.newReconnectDelay());
+	 *
+	 *   ++this.reconnectAttempts;
+	 * }
+	 * ```
+	 */
 	private newReconnectDelay() {
 		let ms =
 			this.options.delayMin *
@@ -725,23 +1133,69 @@ export default class EventBus {
 		return Math.min(ms, this.options.delayMax) | 0;
 	}
 
+	/**
+	 * Send a register message to the backend server
+	 * if the connection is open
+	 * to receive all messages from the vertx event bus
+	 * via the backend server.
+	 * @param channel channel to register or subscribe to
+	 * @param headers optional headers sent with the event bus message
+	 *
+	 * @see {@link WebSocket}
+	 * @see {@link "model/VertxEventBus".Message}
+	 *
+	 * @category EventBus Internal
+	 *
+	 * @example ```ts
+	 * if (!this.handlers[channel]) {
+	 *   this.handlers[channel] = [];
+	 *   // First handler for this address so we should register the connection
+	 *   this.subscribeToChannel(channel, headers);
+	 * }
+	 * ```
+	 */
 	private subscribeToChannel(channel: string, headers?: Headers) {
-		this.socket.send(
-			EventBus.encodeMessage({
-				type: 'register',
-				address: channel,
-				headers: headers || {}
-			})
-		);
+		if (this.state === EventBus.OPEN) {
+			this.socket.send(
+				EventBus.encodeMessage({
+					type: 'register',
+					address: channel,
+					headers: headers || {}
+				})
+			);
+		}
 	}
 
+	/**
+	 * Send a unregister message to the backend server
+	 * if the connection is open
+	 * to cancel the subscription
+	 * to all further messages on the specified channel.
+	 * @param channel channel to unregister or unsubscribe from
+	 * @param headers optional headers sent with the event bus message
+	 *
+	 * @see {@link WebSocket}
+	 * @see {@link "model/VertxEventBus".Message}
+	 *
+	 * @category EventBus Internal
+	 *
+	 * @example ```ts
+	 * if (newHandlers.length === 0) {
+	 *   delete this.handlers[channel];
+	 *   // No more local handlers so we should unregister the connection
+	 *   this.unsubscribeFromChannel(channel, headers);
+	 * }
+	 * ```
+	 */
 	private unsubscribeFromChannel(channel: string, headers?: Headers) {
-		this.socket.send(
-			EventBus.encodeMessage({
-				type: 'unregister',
-				address: channel,
-				headers: headers || {}
-			})
-		);
+		if (this.state === EventBus.OPEN) {
+			this.socket.send(
+				EventBus.encodeMessage({
+					type: 'unregister',
+					address: channel,
+					headers: headers || {}
+				})
+			);
+		}
 	}
 }

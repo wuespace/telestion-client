@@ -1,5 +1,7 @@
-import Logger from '../lib/Logger';
+import Logger, { BrowserLogger } from '@fliegwerk/logsemts';
 
-const logger = new Logger();
+const logger = new Logger({
+	loggers: [BrowserLogger]
+});
 
 export default logger;
