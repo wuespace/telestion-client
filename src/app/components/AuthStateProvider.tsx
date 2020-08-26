@@ -1,7 +1,9 @@
 import React, { ReactNode, useCallback, useReducer } from 'react';
 
 import AuthState, { AuthStateReducer } from '../../model/AuthState';
+
 import AuthStateContext from '../../lib/AuthStateContext';
+import useLogger from '../../hooks/useLogger';
 
 interface Props {
 	initialAuthState: AuthState;
@@ -16,19 +18,24 @@ export default function AuthStateProvider({
 	children,
 	debug
 }: Props) {
+	const logger = useLogger('Auth State Provider');
+
 	const debugReducer: AuthStateReducer = useCallback(
 		(state, action) => {
 			const newState = reducer(state, action);
 
-			console.groupCollapsed('AuthState');
-			console.log('Previous auth state', state);
-			console.log('Dispatched auth action', action);
-			console.log('Next auth state', newState);
-			console.groupEnd();
+			logger.debug(
+				'\nPrevious auth state:',
+				state,
+				'\nDispatched auth action:',
+				action,
+				'\nNext auth state:',
+				newState
+			);
 
 			return newState;
 		},
-		[reducer]
+		[logger, reducer]
 	);
 
 	const value = useReducer(debug ? debugReducer : reducer, initialAuthState);

@@ -33,7 +33,7 @@ export default function DashboardPicker() {
 		return <Redirect to="/" />;
 	}
 
-	const dashboards = userDashboards[credentials.username];
+	const dashboards = userDashboards[credentials.username] || [];
 
 	const options = dashboards.map((dashboard, index) => ({
 		...dashboard,

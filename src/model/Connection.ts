@@ -1,4 +1,7 @@
 import EventBus from '../lib/vertxEventBus';
+import loggerManager from './logger';
+
+const logger = loggerManager.getSubsystemLogger('Connection Model');
 
 export type ConnectionState = 'connected' | 'reconnecting' | 'disconnected';
 
@@ -34,7 +37,7 @@ export function deleteEventBus(): ConnectionAction {
 			state.eventBus.close();
 			state.eventBus.onOpen = () => {};
 			state.eventBus.onClose = () => {
-				console.log('%cEventbus closed', 'color: red; font-weight: bold');
+				logger.info('Event bus closed');
 			};
 			state.eventBus.onError = () => {};
 
