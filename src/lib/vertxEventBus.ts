@@ -1221,11 +1221,10 @@ export default class EventBus {
 
 	/**
 	 * Send a unregister message to the backend server
-	 * if the connection is open
 	 * to cancel the subscription
-	 * to all further messages on the specified channel.
-	 * @param channel channel to unregister or unsubscribe from
-	 * @param headers optional headers sent with the event bus message
+	 * to all future messages on the specified channel.
+	 * @param channel the channel to unregister or unsubscribe from
+	 * @param headers optional headers sent in the event bus message
 	 *
 	 * @see {@link WebSocket}
 	 * @see {@link "model/VertxEventBus".Message | Message}
