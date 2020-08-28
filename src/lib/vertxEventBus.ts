@@ -966,7 +966,7 @@ export default class EventBus {
 
 	/**
 	 * Decodes the data received from the vertx event bus to a message object.
-	 * @param data data received from the vertx event bus
+	 * @param data the data received from the vertx event bus
 	 * @returns the decoded message object
 	 *
 	 * @see {@link setupConnection | setupConnection (here socket.onmessage)}
