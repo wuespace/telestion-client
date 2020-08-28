@@ -155,7 +155,7 @@ export default class EventBus {
 	readonly options: Options;
 
 	/**
-	 * the web socket managed by the eventbus and not accessible to the outside
+	 * the web socket managed by the eventbus.
 	 *
 	 * Here are the eventbus bridge packages sent and received
 	 * if the web socket is open.
