@@ -14,8 +14,10 @@ To install all development dependencies, go in the project root directory and ru
 $ npm ci
 ```
 
-After installation make a copy of the `example.env` file
+After installation make a copy of the `.example.env` file
 and name it `.env` in the project root folder to apply final configuration 
+
+In this file, API keys and other secrets in the environment variables that are necessary for production compilation get defined.
 
 ## Running
 

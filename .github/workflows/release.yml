@@ -17,6 +17,10 @@ jobs:
         uses: actions/setup-node@v2.1.1
         with:
           node-version: 10
+      - name: set environment variables
+        uses: allenevans/set-env@v1.0.0
+        with:
+          REACT_APP_STADIA_API_KEY: ${{ secrets.stadia_api_key }}
       - run: npm ci
       - run: npm run build
       - run: zip -r build.zip build
@@ -53,7 +57,10 @@ jobs:
         uses: actions/setup-node@v2.1.1
         with:
           node-version: 10
-
+      - name: set environment variables
+        uses: allenevans/set-env@v1.0.0
+        with:
+          REACT_APP_STADIA_API_KEY: ${{ secrets.stadia_api_key }}
       - run: npm ci
       - run: npm run package:all
         env:
