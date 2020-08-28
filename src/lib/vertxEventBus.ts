@@ -889,7 +889,7 @@ export default class EventBus {
 	}
 
 	/**
-	 * Closes the event bus and don't receive any further event bus messages.
+	 * Close the event bus and stop receiving any further event bus messages.
 	 * The connection will not be re-established automatically,
 	 * even if automatic reconnect is enabled.
 	 *
