@@ -26,8 +26,8 @@ type SendFunction = (
 /**
  * Send a message on the specified channel
  * and get the first reply via a callback.
- * @param channel channel to send to
- * @returns a function that send a message and register a one-time callback
+ * @param channel the channel to send to
+ * @returns a function that sends a message and registers a one-time callback
  *
  * @see {@link EventBus.send}
  *
