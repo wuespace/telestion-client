@@ -1,3 +1,7 @@
+<p align="center">
+<img alt="Login Screen" height="720" src="./images/login-screen.png"  />
+</p>
+
 # D2 - Ground Station Frontend
 
 The Groundstation Frontend for Daedalus2 written in [TypeScript](https://www.typescriptlang.org/) with [React](https://reactjs.org/) and [Adobe Spectrum](https://spectrum.adobe.com/) as design system
