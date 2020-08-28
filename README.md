@@ -133,4 +133,3 @@ Original source code of eventbus handler here:
 and NOT here:
 - https://github.com/vert-x3/vertx-stack
 - https://github.com/vert-x3/vertx-bus-bower
-- 
