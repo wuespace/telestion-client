@@ -13,6 +13,17 @@ import { Callback, ErrorMessage } from '../../model/VertxEventBus';
 import useEventBus from './useEventBus';
 
 /**
+ * Send a message to the event bus and get the first reply via a callback.
+ */
+type SendFunction = (
+	message: JSONSerializable,
+	callback: (
+		message: JSONSerializable | null,
+		error: ErrorMessage | null
+	) => void
+) => void;
+
+/**
  * Send a message on the specified channel
  * and get the first reply via a callback.
  * @param channel channel to send to
@@ -38,7 +49,7 @@ import useEventBus from './useEventBus';
  * );
  * ```
  */
-export default function useRequest(channel: Channel) {
+export default function useRequest(channel: Channel): SendFunction {
 	const eventBus = useEventBus();
 	return useCallback(
 		(

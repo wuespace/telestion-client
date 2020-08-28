@@ -12,6 +12,11 @@ import JSONSerializable from '../../model/JSONSerializable';
 import useEventBus from './useEventBus';
 
 /**
+ * Broadcast a message to the event bus.
+ */
+type BroadcastFunction = (message: JSONSerializable) => void;
+
+/**
  * Send a broadcast on the specified channel with the returned function.
  * @param channel channel to broadcast to
  * @returns a function that broadcast a message
@@ -28,10 +33,10 @@ import useEventBus from './useEventBus';
  * return <button onClick={handleClick}>Broadcast a hello world</button>;
  * ```
  */
-export default function useBroadcast(channel: Channel) {
+export default function useBroadcast(channel: Channel): BroadcastFunction {
 	const eventBus = useEventBus();
 
-	return useCallback((message: JSONSerializable) => {
+	return useCallback<BroadcastFunction>((message: JSONSerializable) => {
 		eventBus.publish(channel, message);
 	}, [channel, eventBus]);
 }
