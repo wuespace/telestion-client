@@ -1189,12 +1189,10 @@ export default class EventBus {
 	}
 
 	/**
-	 * Send a register message to the backend server
-	 * if the connection is open
-	 * to receive all messages from the vertx event bus
-	 * via the backend server.
-	 * @param channel channel to register or subscribe to
-	 * @param headers optional headers sent with the event bus message
+	 * Send a registration message to the backend server
+	 * to receive all messages of that channel from the vertx event bus.
+	 * @param channel the channel to register or subscribe to
+	 * @param headers optional headers sent in the event bus message
 	 *
 	 * @see {@link WebSocket}
 	 * @see {@link "model/VertxEventBus".Message | Message}
