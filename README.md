@@ -128,8 +128,9 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Notice
 
-Original source code of eventbus handler here: 
+Original source code of eventbus handler here:
 - https://github.com/vert-x3/vertx-web/blob/master/vertx-web/src/client/vertx-eventbus.js
+
 and NOT here:
 - https://github.com/vert-x3/vertx-stack
 - https://github.com/vert-x3/vertx-bus-bower
