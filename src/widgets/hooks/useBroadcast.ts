@@ -36,7 +36,10 @@ type BroadcastFunction = (message: JSONSerializable) => void;
 export default function useBroadcast(channel: Channel): BroadcastFunction {
 	const eventBus = useEventBus();
 
-	return useCallback<BroadcastFunction>((message: JSONSerializable) => {
-		eventBus.publish(channel, message);
-	}, [channel, eventBus]);
+	return useCallback<BroadcastFunction>(
+		(message: JSONSerializable) => {
+			eventBus.publish(channel, message);
+		},
+		[channel, eventBus]
+	);
 }
