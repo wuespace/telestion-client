@@ -180,12 +180,12 @@ export default class EventBus {
 
 	/**
 	 * an object that stores all registered event handlers
-	 * via the registerHandler method
+	 * registered via the registerHandler method
 	 *
-	 * In the object are arrays of callbacks map to the channel they listen to.
+	 * The object contains, with the channel as key, arrays containing callbacks listening to that channel
 	 *
-	 * If no callback is listen to a channel,
-	 * the entire key-value pair is deleted.
+	 * If no callback is listening to a specific channel,
+	 * the entire key-value pair gets deleted.
 	 *
 	 * @see {@link registerHandler}
 	 * @see {@link unregisterHandler}
