@@ -32,7 +32,7 @@ export default function useConnectionManager() {
 					// authDispatch(setError('Invalid credentials'));
 				};
 				eb.onClose = () => {
-					logger.info('Event bus closed');
+					logger.warn('Event bus closed');
 					// change indicator to connected
 					connectionDispatch(changeConnectionState('disconnected'));
 					// set error and clear credentials if not authenticated
