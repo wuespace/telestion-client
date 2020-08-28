@@ -985,10 +985,10 @@ export default class EventBus {
 	}
 
 	/**
-	 * Creates a new web socket with SockJS with the specified options
+	 * Creates a new web socket using SockJS with the specified options
 	 * and registers all needed event handlers to the web socket.
 	 *
-	 * It automatically tries to connect to the specified url.
+	 * It automatically tries to connect to the specified URL.
 	 *
 	 * The socket onopen event handler enables continuous ping
 	 * and triggers the onReconnect event handler
