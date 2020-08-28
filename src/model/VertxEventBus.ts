@@ -5,13 +5,12 @@ import JSONSerializable from './JSONSerializable';
  */
 export interface Options {
 	/**
-	 * time between ping messages send to the backend server in milliseconds
+	 * time between ping messages sent to the backend server in milliseconds
 	 */
 	pingInterval: number;
 	/**
-	 * number of attempts to try to reconnect to backend server
-	 * before no more reconnects are attempted
-	 * if the connection is lost unexpectedly
+	 * number of attempts to try to reconnect to the backend server
+	 * before no more reconnects get attempted
 	 */
 	reconnectAttempts: number;
 	/**
@@ -39,14 +38,14 @@ export interface Options {
 }
 
 /**
- * headers that are send with event bus messages
+ * headers that are sent with event bus messages
  */
 export interface Headers {
 	[key: string]: any;
 }
 
 /**
- * message that is send to and received from the event bus
+ * message that is sent to and received by the event bus
  */
 export interface BaseMessage {
 	type: 'ping' | 'register' | 'unregister' | 'publish' | 'send' | 'rec' | 'err';
@@ -64,19 +63,19 @@ export interface ContentMessage extends AddressableMessage {
 }
 
 /**
- * a basic message that is send
- * to prove the backend server that the client is still connected
+ * a basic message that is sent
+ * to prove to the backend server that the client is still connected
  */
 export interface PingMessage extends BaseMessage {
 	type: 'ping';
 }
 
 /**
- * a message that is send to the backend server
+ * a message that is sent to the backend server
  * to register to a specific channel
- * to receive further messages from the event bus especially from this channel
+ * to receive future messages from the event bus from this specific channel
  *
- * to unregister or unsubscribe from the channel again,
+ * to unregister or unsubscribe from the channel,
  * use {@link UnregisterMessage}
  */
 export interface RegisterMessage extends AddressableMessage {
@@ -84,10 +83,9 @@ export interface RegisterMessage extends AddressableMessage {
 }
 
 /**
- * a message that is send to the backend server
+ * a message that is sent to the backend server
  * to unregister or unsubscribe from a specific channel
- * to not receive any further messages from the event bus
- * especially from this channel
+ * to not receive any further messages from this channel
  *
  * to register to a channel, use {@link RegisterMessage}
  */
@@ -96,7 +94,7 @@ export interface UnregisterMessage extends AddressableMessage {
 }
 
 /**
- * a message that is broadcast on the specified channel
+ * a message that gets broadcasted on a specified channel
  */
 export interface PublishMessage extends ContentMessage {
 	type: 'publish';
@@ -104,7 +102,7 @@ export interface PublishMessage extends ContentMessage {
 
 /**
  * a message that is sent on the specified channel
- * containing a reply address on this the reply are received
+ * containing a reply address gets sent
  */
 export interface SendMessage extends ContentMessage {
 	type: 'send';
@@ -118,7 +116,7 @@ export interface ReceiveMessage extends ContentMessage {
 }
 
 /**
- * a message that is received from the event bus if something gone wrong
+ * a message that is received from the event bus if something went wrong
  */
 export interface ErrorMessage extends AddressableMessage {
 	type: 'err';
@@ -128,7 +126,7 @@ export interface ErrorMessage extends AddressableMessage {
 }
 
 /**
- * a message send to and received from the event bus
+ * a message sent to and received from the event bus
  */
 export type Message =
 	| PingMessage
@@ -140,8 +138,8 @@ export type Message =
 	| ErrorMessage;
 
 /**
- * a function that are used as event handlers
- * in the event bus on receiving messages
+ * a function that is used as event handlers
+ * in the event bus when receiving messages
  *
  * @see {@link EventBus}
  * @see {@link EventBus.setupConnection | setupConnection (here socket.onmessage)}

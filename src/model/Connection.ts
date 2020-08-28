@@ -37,7 +37,7 @@ export function deleteEventBus(): ConnectionAction {
 			state.eventBus.close();
 			state.eventBus.onOpen = () => {};
 			state.eventBus.onClose = () => {
-				logger.info('Event bus closed');
+				logger.warn('Event bus closed');
 			};
 			state.eventBus.onError = () => {};
 
