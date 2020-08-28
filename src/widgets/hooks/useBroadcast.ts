@@ -19,7 +19,7 @@ type BroadcastFunction = (message: JSONSerializable) => void;
 /**
  * Send a broadcast on the specified channel with the returned function.
  * @param channel channel to broadcast to
- * @returns a function that broadcast a message
+ * @returns a function that broadcasts a message
  *
  * @see {@link EventBus.publish}
  *
