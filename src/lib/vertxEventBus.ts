@@ -1137,7 +1137,7 @@ export default class EventBus {
 	 * after the event bus tries to reconnect to the backend server
 	 * if automatic reconnect is enabled.
 	 *
-	 * The return value are between the minimum and maximum delay
+	 * The return value is between the minimum and maximum delay
 	 * and increases with increasing reconnect attempts
 	 * based on a power function.
 	 *
