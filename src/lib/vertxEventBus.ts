@@ -941,7 +941,7 @@ export default class EventBus {
 
 	/**
 	 * Encodes a message that is sent to the vertx event bus.
-	 * @param message message object to encode
+	 * @param message
 	 * @returns the encoded message
 	 *
 	 * @see {@link publish}
