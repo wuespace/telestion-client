@@ -10,7 +10,6 @@
 		"@spectrum-icons/illustrations": "^3.1.0",
 		"@spectrum-icons/workflow": "^3.1.0",
 		"leaflet": "^1.6.0",
-		"randomcolor": "^0.6.2",
 		"react": "^16.13.1",
 		"react-dom": "^16.13.1",
 		"react-leaflet": "^2.7.0",
