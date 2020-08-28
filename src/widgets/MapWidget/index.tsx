@@ -31,7 +31,9 @@ export default function MapWidget() {
 							</a> contributors'
 						url={`https://tiles.stadiamaps.com/tiles/alidade_smooth${
 							isDark ? '_dark' : ''
-						}/{z}/{x}/{y}{r}.png?api_key=${process.env.REACT_APP_STADIA_API_KEY}`}
+						}/{z}/{x}/{y}{r}.png?api_key=${
+							process.env.REACT_APP_STADIA_API_KEY
+						}`}
 					/>
 					<CircleMarker center={[position.x, position.y]} radius={10} />
 				</Map>
