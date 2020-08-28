@@ -1,7 +1,9 @@
 import React, { ReactNode, useCallback, useReducer } from 'react';
 
 import Connection, { ConnectionReducer } from '../../model/Connection';
+
 import ConnectionContext from '../../lib/ConnectionContext';
+import useLogger from '../../hooks/useLogger';
 
 interface Props {
 	initialConnection: Connection;
@@ -16,19 +18,24 @@ export default function ConnectionProvider({
 	children,
 	debug
 }: Props) {
+	const logger = useLogger('Connection Provider');
+
 	const debugReducer: ConnectionReducer = useCallback(
 		(state, action) => {
 			const newState = reducer(state, action);
 
-			console.groupCollapsed('Connection');
-			console.log('Previous connection', state);
-			console.log('Dispatched connection action', action);
-			console.log('Next connection', newState);
-			console.groupEnd();
+			logger.debug(
+				'Previous connection',
+				state,
+				'Dispatched connection action',
+				action.name,
+				'Next connection',
+				newState
+			);
 
 			return newState;
 		},
-		[reducer]
+		[logger, reducer]
 	);
 
 	const value = useReducer(debug ? debugReducer : reducer, initialConnection);

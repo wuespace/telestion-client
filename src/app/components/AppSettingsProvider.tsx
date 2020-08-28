@@ -2,7 +2,9 @@ import React, { ReactNode, useCallback, useReducer } from 'react';
 
 import AppSettings, { AppSettingsReducer } from '../../model/AppSettings';
 import ColorScheme, { validColorSchemes } from '../../model/ColorScheme';
+
 import AppSettingsContext from '../../lib/AppSettingsContext';
+import useLogger from '../../hooks/useLogger';
 
 const KEY = 'app-settings';
 
@@ -42,31 +44,24 @@ export default function AppSettingsProvider({
 	children,
 	debug
 }: Props) {
+	const logger = useLogger('App Settings Provider');
+
 	const debugReducer: AppSettingsReducer = useCallback(
 		(state, action) => {
 			const newState = reducer(state, action);
 
-			console.groupCollapsed('%cAppSettings', 'font-weight: bold');
-			console.log(
-				'%cPrevious app settings',
-				'color: blue; font-weight: bold',
-				state
-			);
-			console.log(
-				'%cDispatched app settings action',
-				'color: red; font-weight: bold',
-				action
-			);
-			console.log(
-				'%cNext app settings',
-				'color: green; font-weight: bold',
+			logger.debug(
+				'\nPrevious app settings',
+				state,
+				'\nDispatched app settings action',
+				action,
+				'\nNext app settings',
 				newState
 			);
-			console.groupEnd();
 
 			return newState;
 		},
-		[reducer]
+		[logger, reducer]
 	);
 
 	const storedReducer: AppSettingsReducer = useCallback(
