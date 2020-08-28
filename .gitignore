@@ -31,3 +31,7 @@ yarn-error.log*
 
 # Typedoc output
 docs
+
+# environment files
+.env
+.env.*

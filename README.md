@@ -1,6 +1,7 @@
 # D2 - Ground Station Frontend
 
-The Groundstation Frontend for Daedalus2 written in [TypeScript](https://www.typescriptlang.org/) with [React](https://reactjs.org/) and [Adobe Spectrum](https://spectrum.adobe.com/) as design system
+The Groundstation Frontend for Daedalus2 written in [TypeScript](https://www.typescriptlang.org/)
+with [React](https://reactjs.org/) and [Adobe Spectrum](https://spectrum.adobe.com/) as design system
 
 ## Installation
 
@@ -8,6 +9,9 @@ To install all development dependencies, go in the project root directory and ru
 ```sh
 $ npm ci
 ```
+
+After installation make a copy of the `example.env` file
+and name it `.env` in the project root folder to apply final configuration 
 
 ## Running
 
