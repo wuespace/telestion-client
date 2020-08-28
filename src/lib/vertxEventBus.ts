@@ -157,8 +157,8 @@ export default class EventBus {
 	/**
 	 * the web socket managed by the eventbus.
 	 *
-	 * Here are the eventbus bridge packages sent and received
-	 * if the web socket is open.
+	 * This is the eventbus where the eventbus bridge packages are being sent and received
+	 * when the web socket is open.
 	 *
 	 * @see {@link decodeMessage}
 	 * @see {@link encodeMessage}
