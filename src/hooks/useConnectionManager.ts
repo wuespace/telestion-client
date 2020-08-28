@@ -50,7 +50,7 @@ export default function useConnectionManager() {
 				};
 
 				eb.onReconnect = () => {
-					logger.info('Event bus has reconnected');
+					logger.success('Event bus has reconnected');
 				};
 
 				// add eventbus to connection status
