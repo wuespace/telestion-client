@@ -13,6 +13,7 @@ jobs:
         with:
           node-version: 13
       - run: npm ci
-      - run: npm run build
-      - run: npm test
       - run: npm run prettier:ci
+      - run: npm run ts
+      - run: npm run test
+      - run: npm run build
