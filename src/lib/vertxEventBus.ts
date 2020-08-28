@@ -217,7 +217,7 @@ export default class EventBus {
 
 	/**
 	 * an object that stores a specific callback for a reply message
-	 * via the send method
+	 * requested using the `send` function.
 	 *
 	 * @see {@link send}
 	 * @see {@link setupConnection}
