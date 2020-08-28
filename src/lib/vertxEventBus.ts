@@ -20,15 +20,18 @@
  * @category Utility
  */
 import SockJS from 'sockjs-client';
+
 import {
 	Callback,
 	Options,
 	Message,
 	Headers,
-	AddressableMessage,
 	ErrorMessage,
-	SuccessMessage
+	ReceiveMessage,
+	SendMessage
 } from '../model/VertxEventBus';
+import JSONSerializable from '../model/JSONSerializable';
+
 import InvalidSocketStateError from './InvalidSocketStateError';
 
 /**
@@ -810,7 +813,7 @@ export default class EventBus {
 	 * }
 	 * ```
 	 */
-	publish(channel: string, message: any, headers?: Headers) {
+	publish(channel: string, message: JSONSerializable, headers?: Headers) {
 		if (this.state !== EventBus.OPEN)
 			throw new InvalidSocketStateError(
 				EventBus.getStateName(this.state),
@@ -865,7 +868,12 @@ export default class EventBus {
 	 * };
 	 * ```
 	 */
-	send(channel: string, message: any, callback: Callback, headers?: Headers) {
+	send(
+		channel: string,
+		message: JSONSerializable,
+		callback: Callback,
+		headers?: Headers
+	) {
 		if (this.state !== EventBus.OPEN)
 			throw new InvalidSocketStateError(
 				EventBus.getStateName(this.state),
@@ -875,7 +883,7 @@ export default class EventBus {
 		const replyAddress = EventBus.generateUUID();
 		this.replyHandlers[replyAddress] = callback;
 
-		const envelope: Message = {
+		const envelope: SendMessage = {
 			type: 'send',
 			address: channel,
 			headers: headers || {},
@@ -1052,44 +1060,53 @@ export default class EventBus {
 
 		const that = this;
 		socket.onmessage = function (this: WebSocket, ev: MessageEvent) {
-			const message = EventBus.decodeMessage(ev.data) as AddressableMessage;
+			const message = EventBus.decodeMessage(ev.data) as Message;
 
-			// define a reply function on the message itself
-			if (message.replyAddress) {
-				Object.defineProperty(message, 'reply', {
-					value: function (
-						message: any,
-						callback: Callback,
-						headers?: Headers
-					) {
-						return that.send(message.replyAddress, message, callback, headers);
-					}
-				});
-			}
+			if (message.type === 'rec' || message.type === 'err') {
+				// define a reply function on the message itself
+				if (message.replyAddress) {
+					Object.defineProperty(message, 'reply', {
+						value: function (
+							message: any,
+							callback: Callback,
+							headers?: Headers
+						) {
+							return that.send(
+								message.replyAddress,
+								message,
+								callback,
+								headers
+							);
+						}
+					});
+				}
 
-			const successMessage = message.type === 'err' ? null : message;
-			const errorMessage = message.type === 'err' ? message : null;
+				const successMessage = message.type === 'err' ? null : message;
+				const errorMessage = message.type === 'err' ? message : null;
 
-			if (that.handlers[message.address]) {
-				// iterate of all registered handlers
-				that.handlers[message.address].forEach(handler => {
-					handler(
-						successMessage as SuccessMessage,
+				if (that.handlers[message.address]) {
+					// iterate of all registered handlers
+					that.handlers[message.address].forEach(handler => {
+						handler(
+							successMessage as ReceiveMessage,
+							errorMessage as ErrorMessage
+						);
+					});
+				} else if (that.replyHandlers[message.address]) {
+					that.replyHandlers[message.address](
+						successMessage as ReceiveMessage,
 						errorMessage as ErrorMessage
 					);
-				});
-			} else if (that.replyHandlers[message.address]) {
-				that.replyHandlers[message.address](
-					successMessage as SuccessMessage,
-					errorMessage as ErrorMessage
-				);
-				// call reply handler only once
-				delete that.replyHandlers[message.address];
-			} else {
-				if (errorMessage) {
-					that.onError && that.onError(errorMessage as ErrorMessage);
+					// call reply handler only once
+					delete that.replyHandlers[message.address];
+				} else {
+					if (errorMessage) {
+						that.onError && that.onError(errorMessage as ErrorMessage);
+					}
+					console.warn('No handler found for message: ', successMessage);
 				}
-				console.warn('No handler found for message: ', successMessage);
+			} else {
+				console.warn('Unknown message type received:', message);
 			}
 		};
 
@@ -1127,9 +1144,21 @@ export default class EventBus {
 	 * after the event bus tries to reconnect to the backend server
 	 * if automatic reconnect is enabled.
 	 *
-	 * The calculation is based on numerous parameters
-	 * defined in the instance options
-	 * and on the reconnect attempts.
+	 * The return value are between the minimum and maximum delay
+	 * and increases with increasing reconnect attempts
+	 * based on a power function.
+	 *
+	 * It multiplies the minimal delay with a power function
+	 * that has as base the current reconnect attempts
+	 * and as exponent the in the options defined exponent
+	 * to determine a new delay time.
+	 * Then a random number between 0 and 1 is generated
+	 * which is multiplied to the randomization factor
+	 * that describes the deviation from calculated delay time.
+	 * Now the deviation is added or subtracted to calculated delay time
+	 * based on the random factor.
+	 * Finally the minimum of the delay time
+	 * and the maximum delay time is returned.
 	 *
 	 * @returns a new reconnect delay in milliseconds
 	 *
@@ -1155,7 +1184,7 @@ export default class EventBus {
 	private newReconnectDelay() {
 		let ms =
 			this.options.delayMin *
-			Math.pow(this.options.reconnectExponent, this.reconnectTimerId);
+			Math.pow(this.options.reconnectExponent, this.reconnectAttempts);
 		if (this.options.randomizationFactor) {
 			const rand = Math.random();
 			const deviation = Math.floor(
