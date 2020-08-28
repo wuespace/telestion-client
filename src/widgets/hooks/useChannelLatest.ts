@@ -1,6 +1,9 @@
-import { Channel } from '../../model/Channels';
-import useChannel from './useChannel';
 import { useCallback, useState } from 'react';
+
+import { Channel } from '../../model/Channels';
+import JSONSerializable from '../../model/JSONSerializable';
+
+import useChannel from './useChannel';
 
 /**
  * Gets the latest information broadcast on a specific channel.
@@ -11,9 +14,9 @@ import { useCallback, useState } from 'react';
  * return <p>Latest position: {latestPos}</p>;
  */
 export default function useChannelLatest(channel: Channel): any {
-	const [state, setState] = useState<any>();
-	const cb = useCallback(message => {
-		setState(message);
+	const [state, setState] = useState<JSONSerializable>();
+	const cb = useCallback((data: JSONSerializable | null) => {
+		if (data) setState(data);
 	}, []);
 
 	useChannel(channel, cb);

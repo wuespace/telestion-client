@@ -1,14 +1,30 @@
 import { useEffect } from 'react';
 
 import { Channel } from '../../model/Channels';
-import useEventBus from './useEventBus';
 import { Callback, ErrorMessage } from '../../model/VertxEventBus';
 import JSONSerializable from '../../model/JSONSerializable';
+
+import useLogger from '../../hooks/useLogger';
+import useEventBus from './useEventBus';
 
 /**
  * Subscribes to the eventbus via a specific channel.
  * @param channel the channel address
  * @param onUpdate callback that gets called on new data
+ *
+ * @see {@link EventBus}
+ *
+ * @example ```ts
+ * const [state, setState] = useState<JSONSerializable>();
+ *
+ * const cb = useCallback((data) => {
+ *   setState(data);
+ * }, []);
+ *
+ * useChannel('SOME_CHANNEL', cb);
+ *
+ * return <p>Content: {state}</p>;
+ * ```
  */
 export default function useChannel(
 	channel: Channel,
@@ -19,6 +35,7 @@ export default function useChannel(
 	(data: JSONSerializable | null, error: ErrorMessage | null) => void
 ): void {
 	const eventBus = useEventBus();
+	const logger = useLogger('useChannel');
 
 	useEffect(() => {
 		const cb: Callback = (message, error) => {
@@ -28,14 +45,14 @@ export default function useChannel(
 		try {
 			eventBus.registerHandler(channel, cb);
 		} catch (err) {
-			console.error('Error during register of handler in eventbus', err);
+			logger.error('Error during register of handler in eventbus', err);
 		}
 		return () => {
 			try {
 				eventBus.unregisterHandler(channel, cb);
 			} catch (err) {
-				console.error('Error during unregister of handler in eventbus', err);
+				logger.error('Error during unregister of handler in eventbus', err);
 			}
 		};
-	}, [channel, eventBus, onUpdate]);
+	}, [channel, eventBus, logger, onUpdate]);
 }

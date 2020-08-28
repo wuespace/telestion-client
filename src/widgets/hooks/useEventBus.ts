@@ -14,7 +14,7 @@ import useConnection from '../../hooks/useConnection';
  * const [position, setPosition] = useState<any>();
  *
  * useEffect(() => {
- *   const cb = (error, message) => {
+ *   const cb: Callback = (error, message) => {
  *     setPosition(message.body);
  *   };
  *   // register new event handler
