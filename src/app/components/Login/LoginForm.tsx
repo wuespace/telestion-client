@@ -4,7 +4,7 @@ import { Form, TextField, Button, View } from '@adobe/react-spectrum';
 import ValidationState from '../../../model/ValidationState';
 import { isValidHttpUrl, isValidText } from '../../../lib/isValid';
 
-const DEFAULT_SERVER_URL = 'http://localhost:8081/bridge';
+const DEFAULT_SERVER_URL = 'http://localhost:8080/bridge';
 
 interface Props {
 	login: (username: string, password: string, serverUrl: string) => void;

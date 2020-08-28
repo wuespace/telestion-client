@@ -1,7 +1,7 @@
 import React from 'react';
 import { Provider, defaultTheme, Flex } from '@adobe/react-spectrum';
 import {
-	BrowserRouter as Router,
+	HashRouter as Router,
 	Route,
 	Switch,
 	Redirect
