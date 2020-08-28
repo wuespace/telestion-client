@@ -58,7 +58,7 @@
 		"package:win": "npm run build && npm run electron:win",
 		"package:mac": "npm run build && npm run electron:mac",
 		"package:linux": "npm run build && npm run electron:linux",
-		"package:all": "npm run package:win; npm run package:mac; npm run package:linux"
+		"package:all": "npm run build && npm run electron:win && npm run electron:mac && npm run electron:linux"
 	},
 	"author": {
 		"name": "wuespace",
