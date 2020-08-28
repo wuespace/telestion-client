@@ -1110,8 +1110,7 @@ export default class EventBus {
 	/**
 	 * Send a ping message to the backend server
 	 * if the connection is open
-	 * to prove the backend server that the client is still connected
-	 * and has not lost connection.
+	 * to prove to the backend server that the client is still connected.
 	 *
 	 * @see {@link WebSocket}
 	 * @see {@link "model/VertxEventBus".Message | Message}
