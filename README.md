@@ -1,5 +1,5 @@
 <p align="center">
-<img alt="Login Screen" height="720" src="./images/login-screen.png"  />
+<img alt="Login Screen" height="360" width="640" src="./images/login-screen.png"  />
 </p>
 
 # D2 - Ground Station Frontend
