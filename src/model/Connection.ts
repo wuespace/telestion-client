@@ -3,7 +3,7 @@ import loggerManager from './logger';
 
 const logger = loggerManager.getSubsystemLogger('Connection Model');
 
-export type ConnectionState = 'connected' | 'reconnecting' | 'disconnected';
+export type ConnectionState = 'connected' | 'disconnected' | 'error';
 
 export default interface Connection {
 	eventBus: EventBus | null;
@@ -22,7 +22,7 @@ export function newEventBus(eventBus: EventBus): ConnectionAction {
 			return {
 				...state,
 				eventBus,
-				connectionState: 'reconnecting'
+				connectionState: 'disconnected'
 			};
 		}
 
