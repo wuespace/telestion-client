@@ -47,7 +47,7 @@
 		"test": "react-scripts test",
 		"test:coverage": "react-scripts test --coverage --watchAll=false",
 		"prettier": "prettier --write package.json \"src/**/*{.ts,.tsx,.js,.jsx,.html,.css,.scss}\"",
-		"prettier:ci": "prettier package.json \"src/**/*{.ts,.tsx,.js,.jsx,.html,.css,.scss}\"",
+		"prettier:ci": "prettier --check package.json \"src/**/*{.ts,.tsx,.js,.jsx,.html,.css,.scss}\"",
 		"ts": "tsc",
 		"check": "npm run prettier && npm run ts && npm run test:coverage && npm run build && npm run build:docs",
 		"electron:win": "electron-builder --win --x64",
