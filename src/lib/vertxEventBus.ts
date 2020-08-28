@@ -990,26 +990,6 @@ export default class EventBus {
 	 *
 	 * It automatically tries to connect to the specified URL.
 	 *
-	 * The socket onopen event handler enables continuous ping
-	 * and triggers the onReconnect event handler
-	 * if a reconnect has happened.
-	 *
-	 * The socket onclose event handler disables continuous ping,
-	 * triggers the onClose event handler
-	 * and set the reconnect timeout that creates a new SockJS web socket
-	 * if automatic reconnect is enabled.
-	 *
-	 * The socket onmessage decodes the received message,
-	 * add a reply function to the message object if the message is a reply,
-	 * check if the message is an error message
-	 * and search for event handlers that are registered to the message address.
-	 * If handlers are available, call them,
-	 * otherwise search for reply handlers
-	 * that are registered in the send method before.
-	 * If also no reply handlers were found, log an error or output a warning.
-	 * Here the backend server sends the client unhandled messages
-	 * which indicates a missing unsubscribe from the message channel.
-	 *
 	 * @param url url the SockJS socket tries to connect to
 	 * @param options optional options for the SockJS socket
 	 * @returns the web socket from SockJS
@@ -1023,6 +1003,9 @@ export default class EventBus {
 	private setupConnection(url: string, options?: SockJS.Options): WebSocket {
 		const socket = new SockJS(url, null, options);
 
+		// The socket onopen event handler enables continuous ping
+		// and triggers the onReconnect event handler
+		// if a reconnect has happened.
 		socket.onopen = () => {
 			this.enablePing(true);
 			this.onOpen && this.onOpen();
@@ -1036,6 +1019,10 @@ export default class EventBus {
 			}
 		};
 
+		// The socket onclose event handler disables continuous ping,
+		// triggers the onClose event handler
+		// and set the reconnect timeout that creates a new SockJS web socket
+		// if automatic reconnect is enabled.
 		socket.onclose = () => {
 			this.enablePing(false);
 			this.onClose && this.onClose();
@@ -1052,6 +1039,16 @@ export default class EventBus {
 			}
 		};
 
+		// The socket onmessage decodes the received message,
+		// add a reply function to the message object if the message is a reply,
+		// check if the message is an error message
+		// and search for event handlers that are registered to the message address.
+		// If handlers are available, call them,
+		// otherwise search for reply handlers
+		// that are registered in the send method before.
+		// If also no reply handlers were found, log an error or output a warning.
+		// Here the backend server sends the client unhandled messages
+		// which indicates a missing unsubscribe from the message channel.
 		const that = this;
 		socket.onmessage = function (this: WebSocket, ev: MessageEvent) {
 			const message = EventBus.decodeMessage(ev.data) as Message;
@@ -1137,23 +1134,10 @@ export default class EventBus {
 	 * after the event bus tries to reconnect to the backend server
 	 * if automatic reconnect is enabled.
 	 *
-	 * The return value is between the minimum and maximum delay
-	 * and increases with increasing reconnect attempts
-	 * based on a power function.
-	 *
-	 * It multiplies the minimal delay with a power function
-	 * that has as base the current reconnect attempts
-	 * and as exponent the in the options defined exponent
-	 * to determine a new delay time.
-	 * Then a random number between 0 and 1 is generated
-	 * which is multiplied to the randomization factor
-	 * that describes the deviation from calculated delay time.
-	 * Now the deviation is added or subtracted to calculated delay time
-	 * based on the random factor.
-	 * Finally the minimum of the delay time
-	 * and the maximum delay time is returned.
-	 *
 	 * @returns a new reconnect delay in milliseconds
+	 * which is in the range of minimum delay
+	 * and maximum delay and increases
+	 * with increasing reconnect attempts based on a power function.
 	 *
 	 * @see {@link "model/VertxEventBus".Options | Options}
 	 * @see {@link reconnectAttempts}
@@ -1175,6 +1159,17 @@ export default class EventBus {
 	 * ```
 	 */
 	private newReconnectDelay() {
+		// It multiplies the minimal delay with a power function
+		// chat has as base the current reconnect attempts
+		// and as exponent the in the options defined exponent
+		// to determine a new delay time.
+		// Then a random number between 0 and 1 is generated
+		// which is multiplied to the randomization factor
+		// that describes the deviation from calculated delay time.
+		// Now the deviation is added or subtracted to calculated delay time
+		// based on the random factor.
+		// Finally the minimum of the delay time
+		// and the maximum delay time is returned.
 		let ms =
 			this.options.delayMin *
 			Math.pow(this.options.reconnectExponent, this.reconnectAttempts);
