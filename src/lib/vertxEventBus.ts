@@ -62,11 +62,10 @@ const defaultOptions: Options = {
  * It implements the Javascript client-side of the SockJS event bus bridge
  * based on the online documentation by the Vert.x-Team
  * and their implementation:
- * https://vertx.io/docs/vertx-web/java/#_sockjs_event_bus_bridge
- * https://github.com/vert-x3/vertx-web/blob/master/vertx-web/src/client/vertx-eventbus.js
+ * - https://vertx.io/docs/vertx-web/java/#_sockjs_event_bus_bridge
+ * - https://github.com/vert-x3/vertx-web/blob/master/vertx-web/src/client/vertx-eventbus.js
  *
- * Further information:
- * https://vertx.io/
+ * @see https://vertx.io/
  */
 export default class EventBus {
 	/**
