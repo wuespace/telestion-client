@@ -65,8 +65,8 @@ export default function useConnectionManager() {
 			}
 		} else {
 			if (eventBus) {
-				if (errorTimerId) clearTimeout(errorTimerId);
 				// user is no longer logged in
+				if (errorTimerId) clearTimeout(errorTimerId);
 				connectionDispatch(deleteEventBus());
 			}
 		}

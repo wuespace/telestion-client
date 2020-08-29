@@ -34,12 +34,12 @@ export function deleteEventBus(): ConnectionAction {
 	return state => {
 		if (state.eventBus) {
 			// clean up old eventbus
-			state.eventBus.close();
 			state.eventBus.onOpen = () => {};
 			state.eventBus.onClose = () => {
 				logger.warn('Event bus closed');
 			};
 			state.eventBus.onError = () => {};
+			state.eventBus.close();
 
 			return {
 				...state,
