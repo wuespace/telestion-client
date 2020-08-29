@@ -50,6 +50,7 @@ export default function useConnectionManager() {
 				eb.onError = err => {
 					logger.error('Event bus error: ', err);
 					connectionDispatch(changeConnectionState('error'));
+					if (errorTimerId) clearTimeout(errorTimerId);
 					errorTimerId = setTimeout(() => {
 						connectionDispatch(changeConnectionState('connected'));
 					}, 2000);
