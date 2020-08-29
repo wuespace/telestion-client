@@ -1,6 +1,6 @@
 {
 	"name": "d2-groundstation-frontend",
-	"version": "0.2.0",
+	"version": "0.2.1",
 	"private": true,
 	"description": "The Groundstation Frontend for Daedalus2",
 	"homepage": "./",
