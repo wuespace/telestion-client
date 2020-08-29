@@ -62,7 +62,7 @@ jobs:
         with:
           REACT_APP_STADIA_API_KEY: ${{ secrets.stadia_api_key }}
       - run: npm ci
-      - run: npm run package:windows
+      - run: npm run package:win
         env:
           GH_TOKEN: ${{ secrets.github_token }}
       - run: ls ./release
