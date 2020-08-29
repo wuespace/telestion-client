@@ -3,7 +3,7 @@ import { Flex, Heading, Text, Image, Well } from '@adobe/react-spectrum';
 
 import { setCredentials } from '../../../model/AuthState';
 
-import logo from '../../media/logo.svg';
+import logo from '../../media/logo.png';
 import LoginForm from './LoginForm';
 import useAuthState from '../../../hooks/useAuthState';
 
