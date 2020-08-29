@@ -25,6 +25,7 @@ export default function Login() {
 				alignSelf="center"
 				alt="Daedalus 2 Logo"
 				width="size-1200"
+				height="size-1200"
 			/>
 			<Heading level={2}>Daedalus 2 - Ground Station</Heading>
 			<Text>

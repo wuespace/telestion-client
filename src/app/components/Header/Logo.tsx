@@ -10,7 +10,7 @@ export default function Logo() {
 			justifyContent="center"
 			alignItems="center"
 		>
-			<Image src={logo} alt="Daedalus 2 Logo" />
+			<Image src={logo} alt="Daedalus 2 Logo" width="size-600" marginTop="size-50" />
 			<Heading level={2}>Daedalus 2 GS</Heading>
 		</Flex>
 	);
