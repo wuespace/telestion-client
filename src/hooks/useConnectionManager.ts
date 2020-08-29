@@ -18,25 +18,27 @@ export default function useConnectionManager() {
 	const [{ eventBus }, connectionDispatch] = useConnection();
 
 	useEffect(() => {
+		let errorTimerId: any;
 		if (credentials) {
 			if (!eventBus) {
 				const eb = new EventBus(credentials.serverUrl);
-				eb.enableReconnect(true);
+
 				eb.onOpen = () => {
 					logger.success('Event bus opened');
-					// change indicator to connected
 					connectionDispatch(changeConnectionState('connected'));
 					// TODO: add authentication
 					// user is authenticated
 					authDispatch(setAuthenticated());
 					// authDispatch(setError('Invalid credentials'));
+					eb.enableReconnect(true);
 				};
+
 				eb.onClose = () => {
 					logger.warn('Event bus closed');
-					// change indicator to connected
 					connectionDispatch(changeConnectionState('disconnected'));
 					// set error and clear credentials if not authenticated
-					if (!authenticated && eventBus) {
+					// aka automatic reconnect not enabled
+					if (!eb.isReconnectEnabled) {
 						authDispatch(
 							setError(
 								'Cannot connect to backend server. Is the server address correct?'
@@ -47,6 +49,11 @@ export default function useConnectionManager() {
 
 				eb.onError = err => {
 					logger.error('Event bus error: ', err);
+					connectionDispatch(changeConnectionState('error'));
+					if (errorTimerId) clearTimeout(errorTimerId);
+					errorTimerId = setTimeout(() => {
+						connectionDispatch(changeConnectionState('connected'));
+					}, 2000);
 				};
 
 				eb.onReconnect = () => {
@@ -59,6 +66,7 @@ export default function useConnectionManager() {
 		} else {
 			if (eventBus) {
 				// user is no longer logged in
+				if (errorTimerId) clearTimeout(errorTimerId);
 				connectionDispatch(deleteEventBus());
 			}
 		}

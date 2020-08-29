@@ -30,14 +30,14 @@ const statusLightVariant: {
 	[key in ConnectionState]: SpectrumStatusLightProps['variant'];
 } = {
 	disconnected: 'negative',
-	reconnecting: 'yellow',
-	connected: 'positive'
+	connected: 'positive',
+	error: 'yellow'
 };
 
 const statusLightDesc: { [key in ConnectionState]: string } = {
 	disconnected: 'Disconnected',
-	reconnecting: 'Reconnecting',
-	connected: 'Connected'
+	connected: 'Connected',
+	error: 'Error in Communication'
 };
 
 export default function AdminPanel() {
