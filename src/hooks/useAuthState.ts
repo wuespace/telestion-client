@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import AuthStateContext from '../lib/AuthStateContext';
+import AuthStateContext from '../model/authState/AuthStateContext';
 
 /**
  * Returns the current auth state

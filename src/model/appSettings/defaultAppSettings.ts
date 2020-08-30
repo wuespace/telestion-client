@@ -1,4 +1,4 @@
-import AppSettings from '../model/AppSettings';
+import AppSettings from './AppSettings';
 
 const defaultAppSettings: AppSettings = {
 	colorScheme: 'system'

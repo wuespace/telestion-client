@@ -1,6 +1,7 @@
 import React, { ReactNode } from 'react';
-import useDependencyTimeout from '../hooks/useDependencyTimeout';
 import { Flex, Heading, ProgressCircle } from '@adobe/react-spectrum';
+
+import useDependencyTimeout from '../hooks/useDependencyTimeout';
 
 interface Props {
 	children: () => ReactNode;

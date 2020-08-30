@@ -9,12 +9,12 @@ import {
 	ProgressCircle
 } from '@adobe/react-spectrum';
 
-import { setError } from '../../model/AuthState';
+import { setError } from '../../model/authState/AuthState';
+import userDashboards from '../../model/dashboard/userDashboards';
 
-import Dashboard from '../components/Dashboard';
-import Header from '../components/Header';
 import useAuthState from '../../hooks/useAuthState';
-import userDashboards from '../../lib/userDashboards';
+import Dashboard from '../components/Dashboard/Dashboard';
+import Header from '../components/Header/Header';
 
 export default function DashboardPage() {
 	const { id } = useParams<{ id: string }>();

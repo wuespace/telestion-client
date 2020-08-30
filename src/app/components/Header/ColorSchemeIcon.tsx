@@ -3,7 +3,7 @@ import LockClosed from '@spectrum-icons/workflow/LockClosed';
 import Light from '@spectrum-icons/workflow/Light';
 import Moon from '@spectrum-icons/workflow/Moon';
 
-import ColorScheme from '../../../model/ColorScheme';
+import ColorScheme from '../../../model/appSettings/ColorScheme';
 
 interface Props {
 	colorScheme: ColorScheme;

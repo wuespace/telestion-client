@@ -25,7 +25,7 @@ export function setCredentials(credentials: Credentials): AuthStateAction {
 	});
 }
 
-// TODO: Update docu
+// TODO: Update documentation
 /**
  * Sets the user authentication state
  * and creates an action for an auth state dispatch function.

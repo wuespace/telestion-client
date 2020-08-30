@@ -1,4 +1,4 @@
-import Connection from '../model/Connection';
+import Connection from './Connection';
 
 const initialConnection: Connection = {
 	eventBus: null,

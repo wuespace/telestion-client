@@ -1,5 +1,5 @@
-import EventBus from '../lib/vertxEventBus';
-import loggerManager from './logger';
+import EventBus from '../../lib/vertxEventBus/vertxEventBus';
+import loggerManager from '../logger';
 
 const logger = loggerManager.getSubsystemLogger('Connection Model');
 

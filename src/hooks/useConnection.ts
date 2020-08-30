@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import ConnectionContext from '../lib/ConnectionContext';
+import ConnectionContext from '../model/connection/ConnectionContext';
 
 /**
  * Returns the current connection status

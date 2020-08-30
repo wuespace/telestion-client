@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Grid } from '@adobe/react-spectrum';
 
-import DashboardType from '../../../model/Dashboard';
+import DashboardType from '../../../model/dashboard/Dashboard';
 import WidgetWrapper from './WidgetWrapper';
 
 interface Props {

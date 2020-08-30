@@ -1,20 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
-import { appSettingsReducer } from './model/AppSettings';
-import { authStateReducer } from './model/AuthState';
-import { connectionReducer } from './model/Connection';
+import { appSettingsReducer } from './model/appSettings/AppSettings';
+import { authStateReducer } from './model/authState/AuthState';
+import { connectionReducer } from './model/connection/Connection';
+import defaultAppSettings from './model/appSettings/defaultAppSettings';
+import initialAuthState from './model/authState/initialAuthState';
+import initialConnection from './model/connection/initialConnection';
 
 import './styles.scss';
 import * as serviceWorker from './serviceWorker';
-import defaultAppSettings from './lib/defaultAppSettings';
-import initialAuthState from './lib/initialAuthState';
-import initialConnection from './lib/initialConnection';
 
 import App from './app';
-import AppSettingsProvider from './app/components/AppSettingsProvider';
-import AuthStateProvider from './app/components/AuthStateProvider';
-import ConnectionProvider from './app/components/ConnectionProvider';
+import AppSettingsProvider from './app/components/Provider/AppSettingsProvider';
+import AuthStateProvider from './app/components/Provider/AuthStateProvider';
+import ConnectionProvider from './app/components/Provider/ConnectionProvider';
 
 ReactDOM.render(
 	<React.StrictMode>

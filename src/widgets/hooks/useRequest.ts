@@ -6,9 +6,12 @@
  */
 import { useCallback } from 'react';
 
-import { Channel } from '../../model/Channels';
-import JSONSerializable from '../../model/JSONSerializable';
-import { Callback, ErrorMessage } from '../../model/VertxEventBus';
+import { Channel } from '../../model/vertxEventBus/Channels';
+import JSONSerializable from '../../model/vertxEventBus/JSONSerializable';
+import {
+	Callback,
+	ErrorMessage
+} from '../../model/vertxEventBus/VertxEventBus';
 
 import useEventBus from './useEventBus';
 

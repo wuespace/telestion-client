@@ -29,8 +29,8 @@ import {
 	ErrorMessage,
 	ReceiveMessage,
 	SendMessage
-} from '../model/VertxEventBus';
-import JSONSerializable from '../model/JSONSerializable';
+} from '../../model/vertxEventBus/VertxEventBus';
+import JSONSerializable from '../../model/vertxEventBus/JSONSerializable';
 
 import InvalidSocketStateError from './InvalidSocketStateError';
 

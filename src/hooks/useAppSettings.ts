@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import AppSettingsContext from '../lib/AppSettingsContext';
+import AppSettingsContext from '../model/appSettings/AppSettingsContext';
 
 /**
  * Returns the current app settings
