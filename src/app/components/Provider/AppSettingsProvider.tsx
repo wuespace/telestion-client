@@ -1,10 +1,14 @@
 import React, { ReactNode, useCallback, useReducer } from 'react';
 
-import AppSettings, { AppSettingsReducer } from '../../model/AppSettings';
-import ColorScheme, { validColorSchemes } from '../../model/ColorScheme';
+import AppSettings, {
+	AppSettingsReducer
+} from '../../../model/appSettings/AppSettings';
+import ColorScheme, {
+	validColorSchemes
+} from '../../../model/appSettings/ColorScheme';
+import AppSettingsContext from '../../../model/appSettings/AppSettingsContext';
 
-import AppSettingsContext from '../../lib/AppSettingsContext';
-import useLogger from '../../hooks/useLogger';
+import useLogger from '../../../hooks/useLogger';
 
 const KEY = 'app-settings';
 

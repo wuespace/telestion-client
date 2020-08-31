@@ -1,4 +1,4 @@
-import AuthState from '../model/AuthState';
+import AuthState from './AuthState';
 
 const initialAuthState: AuthState = {
 	credentials: null,

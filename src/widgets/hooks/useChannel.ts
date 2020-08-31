@@ -1,8 +1,11 @@
 import { useEffect } from 'react';
 
-import { Channel } from '../../model/Channels';
-import { Callback, ErrorMessage } from '../../model/VertxEventBus';
-import JSONSerializable from '../../model/JSONSerializable';
+import { Channel } from '../../model/vertxEventBus/Channels';
+import {
+	Callback,
+	ErrorMessage
+} from '../../model/vertxEventBus/VertxEventBus';
+import JSONSerializable from '../../model/vertxEventBus/JSONSerializable';
 
 import useLogger from '../../hooks/useLogger';
 import useEventBus from './useEventBus';

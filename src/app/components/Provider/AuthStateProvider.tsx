@@ -1,9 +1,11 @@
 import React, { ReactNode, useCallback, useReducer } from 'react';
 
-import AuthState, { AuthStateReducer } from '../../model/AuthState';
+import AuthState, {
+	AuthStateReducer
+} from '../../../model/authState/AuthState';
+import AuthStateContext from '../../../model/authState/AuthStateContext';
 
-import AuthStateContext from '../../lib/AuthStateContext';
-import useLogger from '../../hooks/useLogger';
+import useLogger from '../../../hooks/useLogger';
 
 interface Props {
 	initialAuthState: AuthState;

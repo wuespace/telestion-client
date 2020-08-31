@@ -1,5 +1,6 @@
 import React from 'react';
 import { Flex, Image, Heading } from '@adobe/react-spectrum';
+
 import logo from '../../media/logo.png';
 
 export default function Logo() {

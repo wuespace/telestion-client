@@ -1,11 +1,11 @@
 import React from 'react';
 import { Content, Heading, View } from '@adobe/react-spectrum';
 
-import WidgetProps from '../../model/WidgetProps';
-import { MOCK_POSITION } from '../../model/Channels';
+import WidgetProps from '../../model/dashboard/WidgetProps';
+import { MOCK_POSITION } from '../../model/vertxEventBus/Channels';
 
-import LoadingIndicator from '../components/LoadingIndicator';
 import useChannelLatest from '../hooks/useChannelLatest';
+import LoadingIndicator from '../components/LoadingIndicator';
 
 export default function SimpleWidget({ title }: WidgetProps) {
 	if (typeof title !== 'string')

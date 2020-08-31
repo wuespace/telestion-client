@@ -1,9 +1,11 @@
 import React, { ReactNode, useCallback, useReducer } from 'react';
 
-import Connection, { ConnectionReducer } from '../../model/Connection';
+import Connection, {
+	ConnectionReducer
+} from '../../../model/connection/Connection';
+import ConnectionContext from '../../../model/connection/ConnectionContext';
 
-import ConnectionContext from '../../lib/ConnectionContext';
-import useLogger from '../../hooks/useLogger';
+import useLogger from '../../../hooks/useLogger';
 
 interface Props {
 	initialConnection: Connection;

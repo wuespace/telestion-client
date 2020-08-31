@@ -10,15 +10,15 @@ import {
 } from '@adobe/react-spectrum';
 import { SpectrumStatusLightProps } from '@react-types/statuslight';
 
-import ColorScheme from '../../../model/ColorScheme';
-import { changeColorScheme } from '../../../model/AppSettings';
-import { ConnectionState } from '../../../model/Connection';
+import ColorScheme from '../../../model/appSettings/ColorScheme';
+import { changeColorScheme } from '../../../model/appSettings/AppSettings';
+import { ConnectionState } from '../../../model/connection/Connection';
+import { clearCredentials } from '../../../model/authState/AuthState';
 
-import ColorSchemeIcon from './ColorSchemeIcon';
 import useAppSettings from '../../../hooks/useAppSettings';
 import useAuthState from '../../../hooks/useAuthState';
 import useConnection from '../../../hooks/useConnection';
-import { clearCredentials } from '../../../model/AuthState';
+import ColorSchemeIcon from './ColorSchemeIcon';
 
 const nextColorScheme: { [key in ColorScheme]: ColorScheme } = {
 	system: 'light',

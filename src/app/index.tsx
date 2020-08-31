@@ -7,13 +7,13 @@ import {
 	Redirect
 } from 'react-router-dom';
 
-import LoginPage from './pages/LoginPage';
-import DashboardPage from './pages/DashboardPage';
-import NotFoundPage from './pages/NotFoundPage';
-
 import useAppSettings from '../hooks/useAppSettings';
 import useAuthState from '../hooks/useAuthState';
 import useConnectionManager from '../hooks/useConnectionManager';
+
+import LoginPage from './pages/LoginPage';
+import DashboardPage from './pages/DashboardPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 export default function App() {
 	const [{ colorScheme }] = useAppSettings();

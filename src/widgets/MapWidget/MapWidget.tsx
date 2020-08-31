@@ -1,14 +1,14 @@
 import React from 'react';
 import { CircleMarker, Map, TileLayer } from 'react-leaflet';
 
-import { MOCK_POSITION } from '../../model/Channels';
+import { MOCK_POSITION } from '../../model/vertxEventBus/Channels';
 
 import useChannelLatest from '../hooks/useChannelLatest';
+import useDarkColorScheme from '../../hooks/useDarkColorScheme';
 import LoadingIndicator from '../components/LoadingIndicator';
 
 import 'leaflet/dist/leaflet.css';
 import 'leaflet/dist/leaflet.js';
-import useDarkColorScheme from '../../hooks/useDarkColorScheme';
 
 export default function MapWidget() {
 	const isDark = useDarkColorScheme();

@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import EventBus from '../lib/vertxEventBus';
+import EventBus from '../lib/vertxEventBus/vertxEventBus';
 
 import {
 	changeConnectionState,
 	deleteEventBus,
 	newEventBus
-} from '../model/Connection';
-import { setAuthenticated, setError } from '../model/AuthState';
+} from '../model/connection/Connection';
+import { setAuthenticated, setError } from '../model/authState/AuthState';
 
 import useAuthState from './useAuthState';
 import useConnection from './useConnection';

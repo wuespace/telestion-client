@@ -2,9 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { useHistory, Redirect, useParams } from 'react-router-dom';
 import { Picker, Item } from '@adobe/react-spectrum';
 
-import { setError } from '../../../model/AuthState';
+import { setError } from '../../../model/authState/AuthState';
+import userDashboards from '../../../model/dashboard/userDashboards';
 
-import userDashboards from '../../../lib/userDashboards';
 import useAuthState from '../../../hooks/useAuthState';
 
 export default function DashboardPicker() {

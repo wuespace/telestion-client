@@ -1,4 +1,4 @@
-import Dashboard from '../model/Dashboard';
+import Dashboard from './Dashboard';
 
 interface UserDashboards {
 	[key: string]: Dashboard[];

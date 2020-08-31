@@ -1,9 +1,9 @@
-import WidgetList from '../model/WidgetList';
+import WidgetList from '../model/dashboard/WidgetList';
 
-import SimpleWidget from './SimpleWidget';
-import MapWidget from './MapWidget';
-import ProcedureWidget from './ProcedureWidget';
-import LineGraphWidget from './LineGraphWidget';
+import SimpleWidget from './SimpleWidget/SimpleWidget';
+import MapWidget from './MapWidget/MapWidget';
+import ProcedureWidget from './ProcedureWidget/ProcedureWidget';
+import LineGraphWidget from './LineGraphWidget/LineGraphWidget';
 
 const widgets: WidgetList = {
 	simpleWidget: SimpleWidget,

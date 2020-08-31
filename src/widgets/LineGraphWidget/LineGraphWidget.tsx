@@ -9,6 +9,7 @@ import {
 	XAxis,
 	YAxis
 } from 'recharts';
+
 import useDarkColorScheme from '../../hooks/useDarkColorScheme';
 
 export default function MapWidget() {

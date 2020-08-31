@@ -1,8 +1,8 @@
 import React, { FunctionComponent } from 'react';
 import NotFoundIllustration from '@spectrum-icons/illustrations/NotFound';
 
-import WidgetList from '../../../model/WidgetList';
-import WidgetProps from '../../../model/WidgetProps';
+import WidgetList from '../../../model/dashboard/WidgetList';
+import WidgetProps from '../../../model/dashboard/WidgetProps';
 
 import WidgetErrorMessage from './WidgetErrorMessage';
 
