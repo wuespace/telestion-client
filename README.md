@@ -49,7 +49,8 @@ $ npm run prettier
 
 [ESLint](https://eslint.org/) is a code linter and analyzer. It detects syntax errors in your code.
 
-ESLint is integrated in the `start` and `build` scripts and give you many 
+ESLint is integrated in the `start` and `build` scripts and give you many rules
+to control the style, syntax and usage of Javascript functionality.
 
 ### TypeScript
 
