@@ -111,19 +111,22 @@
 			"target": [
 				"portable",
 				"nsis"
-			]
+			],
+			"icon": "win/icon.ico"
 		},
 		"mac": {
 			"category": "public.app-category.utilities",
 			"target": [
 				"zip"
-			]
+			],
+			"icon": "mac/icon.icns"
 		},
 		"linux": {
 			"category": "Utility",
 			"target": [
 				"AppImage"
-			]
+			],
+			"icon": "png"
 		}
 	}
 }
