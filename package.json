@@ -20,7 +20,7 @@
 	"devDependencies": {
 		"@testing-library/jest-dom": "^5.11.4",
 		"@testing-library/react": "^11.0.2",
-		"@testing-library/user-event": "^12.1.3",
+		"@testing-library/user-event": "^12.1.4",
 		"@types/jest": "^26.0.13",
 		"@types/leaflet": "^1.5.17",
 		"@types/node": "^14.6.4",
@@ -35,7 +35,6 @@
 		"electron-builder": "^22.8.0",
 		"eslint-config-prettier": "^6.11.0",
 		"node-sass": "^4.14.1",
-		"postcss-calc": "./node_modules_overrides/postcss-calc",
 		"prettier": "^2.1.1",
 		"react-scripts": "^3.4.3",
 		"typedoc": "^0.19.1",
@@ -98,7 +97,7 @@
 		]
 	},
 	"build": {
-		"productName": "G2-Groundstation-Frontend",
+		"productName": "D2-Groundstation-Frontend",
 		"appId": "com.wuespace.groundstation-frontend",
 		"files": [
 			"build/**/*",
