@@ -124,9 +124,10 @@
 		"linux": {
 			"category": "Utility",
 			"target": [
-				"AppImage"
+				"AppImage",
+				"pacman"
 			],
-			"icon": "png"
+			"icon": "icons/"
 		}
 	}
 }
