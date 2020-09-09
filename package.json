@@ -124,8 +124,7 @@
 		"linux": {
 			"category": "Utility",
 			"target": [
-				"AppImage",
-				"pacman"
+				"AppImage"
 			],
 			"icon": "icons/"
 		}
