@@ -1,8 +1,8 @@
 {
-	"name": "d2-groundstation-frontend",
+	"name": "d2-ground-station-frontend",
 	"version": "0.2.6",
 	"private": true,
-	"description": "The Groundstation Frontend for Daedalus2",
+	"description": "The Ground Station Frontend for Daedalus2",
 	"homepage": "./",
 	"dependencies": {
 		"@adobe/react-spectrum": "^3.3.0",
@@ -46,14 +46,14 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"check": "npm run prettier && npm run ts && npm run test && npm run build",
+		"check": "npm run prettier && npm run ts && npm run test && npm run test:e2e:ci && npm run build",
 		"build:docs": "typedoc --options typedoc.json",
 		"build:electron": "npm run build && electron build/electron.js",
 		"test:unit": "react-scripts test",
 		"test:unit:coverage": "react-scripts test --coverage --watchAll=false",
 		"test:e2e": "npm run cypress:open",
-		"prettier": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.html,.css,.scss}'",
-		"prettier:ci": "prettier --check package.json '**/*{.ts,.tsx,.js,.jsx,.html,.css,.scss}'",
+		"prettier": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml}'",
+		"prettier:ci": "prettier --check package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml}'",
 		"ts": "tsc",
 		"package:win": "npm run build && npm run electron:win",
 		"package:mac": "npm run build && npm run electron:mac",

@@ -4,120 +4,156 @@
 
 # D2 - Ground Station Frontend
 
-The Groundstation Frontend for Daedalus2 written in [TypeScript](https://www.typescriptlang.org/)
-with [React](https://reactjs.org/) and [Adobe Spectrum](https://spectrum.adobe.com/) as design system
+The Ground Station Frontend for Daedalus2 written in
+[TypeScript](https://www.typescriptlang.org/) with [React](https://reactjs.org/) and
+[Adobe Spectrum](https://spectrum.adobe.com/) as the design system
 
-## Installation
+## Getting started
 
-To install all development dependencies, go in the project root directory and run:
-```sh
+The first step is to install the development dependencies.
+They are defined in `package.json` and you can install them with the following command:
+```shell script
 $ npm ci
 ```
 
-After installation make a copy of the `.example.env` file
-and name it `.env` in the project root folder to apply final configuration 
+After the installation, make a copy of the `example.env`
+and name it `.env` in the project root folder to apply the final configuration.
+In this file, API keys and other secrets get defined as environment variables
+that are necessary for production compilation.
 
-In this file, API keys and other secrets in the environment variables that are necessary for production compilation get defined.
+More information [here](https://www.npmjs.com/package/dotenv).
 
 ## Running
 
-To run the project in development mode, please execute:
-```sh
+To build and run the project in development mode, execute:
+```shell script
 $ npm start
 ```
 
-## Testing and Linting
+## Linting and testing
 
-The project has numerous linters and tests to check the current state of the project.
+The project has numerous code style and syntax checkers.
+They fix possible wrong formatted code and inform you about syntax error.
+The unit and end-to-end check the application behavior and
+test for edge cases to find bugs in the early development phase.
 
-To run all checks and tests, simply execute:
-```sh
+To run all checks and tests, simple call:
+```shell script
 $ npm run check
 ```
 
 ### Prettier
 
 [Prettier](https://prettier.io/) is an opinionated code formatter.
-It removes all original styling* and ensures that all outputted code conforms to a consistent style.
+It formats your written code and ensures
+that all project code conforms to a consistent style.
 
-To style your source files, run:
-```sh
+To check and fix your code style, run:
+```shell script
 $ npm run prettier
 ```
 
 ### ESLint
 
-[ESLint](https://eslint.org/) is a code linter and analyzer. It detects syntax errors in your code.
+[ESLint](https://eslint.org/) is a code linter and analyzer.
+It detects syntax errors in your code.
 
-ESLint is integrated in the `start` and `build` scripts and give you many rules
-to control the style, syntax and usage of Javascript functionality.
+ESLint is integrated into the `start` and `build` scripts and
+gives you many rules to control the style, syntax, and usage of Javascript functionality.
 
 ### TypeScript
 
 [TypeScript](https://www.typescriptlang.org/) extends JavaScript by adding types.
 
-To check for type errors in your code, run:
-```sh
+To check for type mismatches and errors in your code, perform:
+```shell script
 $ npm run ts
 ```
 
 ### Jest
 
-[Jest](https://jestjs.io/) is a delightful JavaScript Testing Framework with a focus on simplicity.
+[Jest](https://jestjs.io/) is a delightful JavaScript Testing Framework
+with a focus on simplicity.
 
 It tests your components with predefined unit-tests.
 
 To run all tests, call:
-```sh
-$ npm test
+```shell script
+$ npm run test:unit
 ```
 
-## Building
+### Cypress
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[Cypress](https://www.cypress.io/) is an end-to-end test environment
+with live result feedback running in a controlled browser environment.
 
-The build is minified and the filenames include the hashes.
+It tests the application logic and behavior with predefined end-to-end tests.
 
-To build the current source code into a ready to deploy state, run:
-```sh
+To open the management window, call:
+```shell script
+$ npm run test:e2e
+```
+
+Do not forget to **start** the development server if you want to test the project:
+```shell script
+$ npm start
+```
+
+## Build and deploy
+
+The build command generates a ready-to-deploy webpage from the source code.
+
+To build the entire project, run:
+```shell script
 $ npm run build
 ```
 
-Or package the compiled code into an electron app, simply run:
-```sh
+If you want to package to compiled code into an electron app, run:
+```
 $ npm run build:electron
 ```
 
-To build ready to deploy electron apps for all operating systems, simply execute:
-```sh
+Or as an all-in-one bundle for Windows, Linux, and macOS, execute:
+```shell script
 $ npm run package:all
 ```
+
+## Stable releases
+
+In the Github
+[Releases](https://github.com/TelestionGroup/daedalus2-client/releases)
+section, there are also stable builds for all popular operating systems
+for all released versions of the project.
 
 ## Project Structure
 
 ```yaml
 root:
-  package.json  # includes all project info (dependencies, scripts, ...)
+  package.json  # describes project (dependencies, scripts, ...)
   README.md
   src:
-    index.tsx   # entry point 
-    styles.scss # global styles
-    model:      # global classes/types/interfaces
+    index.tsx    # entry point
+    styles.scss  # global styles
+    model:  # global classes/types/interfaces that define the app
       AppState.ts
       MyAwesomeType.ts
-    app:        # app specific folder
+    lib:  # global library functionality
+      isValid.ts
+    app:  # sources for the application
       index.tsx
       index.test.tsx
-      components: # app components
-        Dashboard.tsx
-        WidgetWrapper.tsx
-    widgets:    # folder containing all widgets
+      components:  # application components
+        Dashboard
+        Header
+        Provider  # application state provider
+      pages:  # possible pages for any routes in the application
+    widgets:  # sources of all widgets
+      index.ts  # registration file for every widget
       widget-1:
         index.tsx
-        components: # widget components
+        components:  # widget-1 own components
           MyAwesomeComponent.tsx
-        model:      # widget models
+        model:  # widget-1 own model definitions
           MyType.ts
       widget-2:
         index.tsx
@@ -125,12 +161,26 @@ root:
           MyAwesomeComponent.tsx
         model:
           MyType.ts
-    hooks:  # global reusable routines
+    hooks:  # global reusable component behavior
       useSocket.ts
       useAppState.ts
-  public:   # html, images, icons, ...
+  public:   # template webpage folder where React will engage
     index.html
     favicon.ico
+  cypress:  # cypress end-to-end test folder
+    README.md
+    fixtures:  # external pieces of static data
+      myData.json
+    plugins:  # plugins to extend cypress behavior
+      index.ts
+    support:  # reusable behavior for cypress tests
+      command.ts
+      index.ts
+    tests:  # actual test files
+      app:  # application end-to-end tests
+        login.spec.ts
+      widgets:  # widget end-to-end tests
+        SimpleWidget.spec.ts
 ```
 
 ## Learn More
