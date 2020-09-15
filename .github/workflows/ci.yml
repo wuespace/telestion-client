@@ -15,5 +15,6 @@ jobs:
       - run: npm ci
       - run: npm run prettier:ci
       - run: npm run ts
-      - run: npm run test
+      - run: npm run test:unit:ci
+      - run: npm run test:e2e:ci
       - run: npm run build
