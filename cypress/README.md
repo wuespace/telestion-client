@@ -57,7 +57,7 @@ You can define behaviors in a before or beforeEach within any of the cypress/sup
 
 ```ts
 beforeEach(() => {
-  cy.log('I run before every test in every spec file!');
+	cy.log('I run before every test in every spec file!');
 });
 ```
 
@@ -75,7 +75,7 @@ For learning how to write tests, look
 
 ## Further information
 
-For further information, check out the [full documentation](https://docs.cypress.io/). 
+For further information, check out the [full documentation](https://docs.cypress.io/).
 
 ## Sources and acknowledgements
 

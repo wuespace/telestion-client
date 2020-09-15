@@ -12,6 +12,7 @@ The Ground Station Frontend for Daedalus2 written in
 
 The first step is to install the development dependencies.
 They are defined in `package.json` and you can install them with the following command:
+
 ```shell script
 $ npm ci
 ```
@@ -26,6 +27,7 @@ More information [here](https://www.npmjs.com/package/dotenv).
 ## Running
 
 To build and run the project in development mode, execute:
+
 ```shell script
 $ npm start
 ```
@@ -38,6 +40,7 @@ The unit and end-to-end check the application behavior and
 test for edge cases to find bugs in the early development phase.
 
 To run all checks and tests, simple call:
+
 ```shell script
 $ npm run check
 ```
@@ -49,6 +52,7 @@ It formats your written code and ensures
 that all project code conforms to a consistent style.
 
 To check and fix your code style, run:
+
 ```shell script
 $ npm run prettier
 ```
@@ -66,6 +70,7 @@ gives you many rules to control the style, syntax, and usage of Javascript funct
 [TypeScript](https://www.typescriptlang.org/) extends JavaScript by adding types.
 
 To check for type mismatches and errors in your code, perform:
+
 ```shell script
 $ npm run ts
 ```
@@ -78,6 +83,7 @@ with a focus on simplicity.
 It tests your components with predefined unit-tests.
 
 To run all tests, call:
+
 ```shell script
 $ npm run test:unit
 ```
@@ -90,11 +96,13 @@ with live result feedback running in a controlled browser environment.
 It tests the application logic and behavior with predefined end-to-end tests.
 
 To open the management window, call:
+
 ```shell script
 $ npm run test:e2e
 ```
 
 Do not forget to **start** the development server if you want to test the project:
+
 ```shell script
 $ npm start
 ```
@@ -104,16 +112,19 @@ $ npm start
 The build command generates a ready-to-deploy webpage from the source code.
 
 To build the entire project, run:
+
 ```shell script
 $ npm run build
 ```
 
 If you want to package to compiled code into an electron app, run:
+
 ```
 $ npm run build:electron
 ```
 
 Or as an all-in-one bundle for Windows, Linux, and macOS, execute:
+
 ```shell script
 $ npm run package:all
 ```
@@ -190,8 +201,10 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 ## Notice
 
 Original source code of eventbus handler here:
+
 - https://github.com/vert-x3/vertx-web/blob/master/vertx-web/src/client/vertx-eventbus.js
 
 and NOT here:
+
 - https://github.com/vert-x3/vertx-stack
 - https://github.com/vert-x3/vertx-bus-bower
