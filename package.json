@@ -30,6 +30,7 @@
 		"@types/react-router-dom": "^5.1.5",
 		"@types/recharts": "^1.8.15",
 		"@types/sockjs-client": "^1.1.1",
+		"cross-env": "^7.0.2",
 		"cypress": "^5.1.0",
 		"electron": "^10.1.2",
 		"electron-builder": "^22.8.0",
@@ -64,7 +65,7 @@
 		"electron:win": "electron-builder --win --x64",
 		"electron:mac": "electron-builder --mac",
 		"electron:linux": "electron-builder --linux",
-		"start:ci": "BROWSER=none NODE_ENV=cypress npm run start",
+		"start:ci": "cross-env BROWSER=none NODE_ENV=cypress npm run start",
 		"test:unit:ci": "react-scripts test --watch false",
 		"test:e2e:ci": "start-server-and-test start:ci http://localhost:3000 cypress:run"
 	},
