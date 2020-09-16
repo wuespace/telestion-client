@@ -1,4 +1,4 @@
-import Logger, { BrowserLogger } from '@fliegwerk/logsemts';
+import { Logger, BrowserLogger } from '@fliegwerk/logsemts';
 
 const logger = new Logger({
 	loggers: [BrowserLogger()]
