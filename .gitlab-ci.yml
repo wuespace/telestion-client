@@ -1,11 +1,10 @@
-image:
-  node:latest
-  
+image: node:latest
+
 stages:
   - test
   - build
   - package
-  
+
 # These folders are cached between jobs
 cache:
   key: ${CI_COMMIT_REF_SLUG}

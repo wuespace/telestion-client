@@ -1,8 +1,8 @@
 {
-	"name": "d2-groundstation-frontend",
+	"name": "d2-ground-station-frontend",
 	"version": "0.2.6",
 	"private": true,
-	"description": "The Groundstation Frontend for Daedalus2",
+	"description": "The Ground Station Frontend for Daedalus2",
 	"homepage": "./",
 	"dependencies": {
 		"@adobe/react-spectrum": "^3.3.0",
@@ -29,35 +29,45 @@
 		"@types/react-leaflet": "^2.5.2",
 		"@types/react-router-dom": "^5.1.5",
 		"@types/recharts": "^1.8.15",
-		"@types/socket.io-client": "^1.4.33",
 		"@types/sockjs-client": "^1.1.1",
+		"cross-env": "^7.0.2",
+		"cypress": "^5.1.0",
 		"electron": "^10.1.2",
 		"electron-builder": "^22.8.0",
 		"eslint-config-prettier": "^6.11.0",
+		"eslint-plugin-cypress": "^2.11.1",
+		"eslint-plugin-prettier": "^3.1.4",
 		"node-sass": "^4.14.1",
 		"prettier": "^2.1.1",
 		"react-scripts": "^3.4.3",
+		"start-server-and-test": "^1.11.3",
 		"typedoc": "^0.19.1",
 		"typescript": "^3.7.5"
 	},
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
+		"check": "npm run prettier && npm run ts && npm run test:unit:ci && npm run test:e2e:ci && npm run build",
 		"build:docs": "typedoc --options typedoc.json",
 		"build:electron": "npm run build && electron build/electron.js",
-		"test": "react-scripts test",
-		"test:coverage": "react-scripts test --coverage --watchAll=false",
-		"prettier": "prettier --write package.json \"src/**/*{.ts,.tsx,.js,.jsx,.html,.css,.scss}\"",
-		"prettier:ci": "prettier --check package.json \"src/**/*{.ts,.tsx,.js,.jsx,.html,.css,.scss}\"",
+		"test:unit": "react-scripts test",
+		"test:unit:coverage": "react-scripts test --coverage --watchAll=false",
+		"test:e2e": "npm run cypress:open",
+		"prettier": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
+		"prettier:ci": "prettier --check package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
 		"ts": "tsc",
-		"check": "npm run prettier && npm run ts && npm run test:coverage && npm run build && npm run build:docs",
-		"electron:win": "electron-builder --win --x64",
-		"electron:mac": "electron-builder --mac",
-		"electron:linux": "electron-builder --linux",
 		"package:win": "npm run build && npm run electron:win",
 		"package:mac": "npm run build && npm run electron:mac",
 		"package:linux": "npm run build && npm run electron:linux",
-		"package:all": "npm run build && npm run electron:win && npm run electron:mac && npm run electron:linux"
+		"package:all": "npm run build && npm run electron:win && npm run electron:mac && npm run electron:linux",
+		"cypress:open": "cypress open",
+		"cypress:run": "cypress run",
+		"electron:win": "electron-builder --win --x64",
+		"electron:mac": "electron-builder --mac",
+		"electron:linux": "electron-builder --linux",
+		"start:ci": "cross-env BROWSER=none NODE_ENV=cypress npm run start",
+		"test:unit:ci": "react-scripts test --watch false",
+		"test:e2e:ci": "start-server-and-test start:ci http://localhost:3000 cypress:run"
 	},
 	"author": {
 		"name": "wuespace",
@@ -82,7 +92,20 @@
 		}
 	],
 	"eslintConfig": {
-		"extends": "react-app"
+		"env": {
+			"cypress/globals": true
+		},
+		"extends": [
+			"react-app",
+			"plugin:cypress/recommended",
+			"plugin:prettier/recommended",
+			"prettier/react",
+			"prettier/@typescript-eslint"
+		],
+		"plugins": [
+			"cypress",
+			"prettier"
+		]
 	},
 	"browserslist": {
 		"production": [
