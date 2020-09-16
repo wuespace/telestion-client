@@ -46,7 +46,7 @@
 	"scripts": {
 		"start": "react-scripts start",
 		"build": "react-scripts build",
-		"check": "npm run prettier && npm run ts && npm run test && npm run test:e2e:ci && npm run build",
+		"check": "npm run prettier && npm run ts && npm run test:unit:ci && npm run test:e2e:ci && npm run build",
 		"build:docs": "typedoc --options typedoc.json",
 		"build:electron": "npm run build && electron build/electron.js",
 		"test:unit": "react-scripts test",
@@ -64,7 +64,7 @@
 		"electron:win": "electron-builder --win --x64",
 		"electron:mac": "electron-builder --mac",
 		"electron:linux": "electron-builder --linux",
-		"start:ci": "NODE_ENV=cypress npm run start",
+		"start:ci": "BROWSER=none NODE_ENV=cypress npm run start",
 		"test:unit:ci": "react-scripts test --watch false",
 		"test:e2e:ci": "start-server-and-test start:ci http://localhost:3000 cypress:run"
 	},

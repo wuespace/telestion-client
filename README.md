@@ -39,7 +39,7 @@ They fix possible wrong formatted code and inform you about syntax error.
 The unit and end-to-end check the application behavior and
 test for edge cases to find bugs in the early development phase.
 
-To run all checks and tests, simple call:
+To run all checks and tests, simply call:
 
 ```shell script
 $ npm run check
@@ -135,6 +135,18 @@ In the Github
 [Releases](https://github.com/TelestionGroup/daedalus2-client/releases)
 section, there are also stable builds for all popular operating systems
 for all released versions of the project.
+
+## Documentation
+
+The project uses [TypeDoc](https://typedoc.org/) as the documentation tool.
+It converts documentation comments in TypeScript source code
+into rendered HTML documentation.
+
+To build the documentation yourself, run:
+
+```shell script
+$ npm run build:docs
+```
 
 ## Project Structure
 
