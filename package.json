@@ -127,7 +127,7 @@
 	},
 	"build": {
 		"productName": "D2-Groundstation-Frontend",
-		"appId": "com.wuespace.groundstation-frontend",
+		"appId": "de.wuespace.groundstation-frontend",
 		"files": [
 			"build/**/*",
 			"node_modules/**/*"
