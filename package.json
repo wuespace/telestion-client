@@ -3,6 +3,7 @@
 	"version": "0.2.6",
 	"private": true,
 	"description": "The Ground Station Frontend for Daedalus2",
+	"repository": "https://github.com/TelestionGroup/daedalus2-client",
 	"homepage": "./",
 	"dependencies": {
 		"@adobe/react-spectrum": "^3.3.0",
@@ -72,23 +73,28 @@
 	"author": {
 		"name": "wuespace",
 		"email": "kontakt@wuespace.de",
-		"url": "https://gitlab2.informatik.uni-wuerzburg.de/wuespace/d2-groundstation/frontend"
+		"url": "https://www.wuespace.de/"
 	},
 	"contributors": [
 		{
 			"name": "Pablo Klaschka",
-			"email": "pablo.klaschka@stud-mail.uni-wuerzburg.de",
-			"url": "https://gitlab2.informatik.uni-wuerzburg.de/wuespace/d2-groundstation/frontend"
+			"email": "contact@pabloklaschka.de",
+			"url": "https://github.com/pklaschka"
 		},
 		{
 			"name": "Jan Tischhöfer",
-			"email": "jan.tischhoefer@stud-mail.uni-wuerzburg.de",
-			"url": "https://gitlab2.informatik.uni-wuerzburg.de/wuespace/d2-groundstation/frontend"
+			"email": "jan.tischhoefer@gmail.com",
+			"url": "https://github.com/jantischhoefer"
 		},
 		{
 			"name": "Ludwig Richter",
-			"email": "ludwig.richter@stud-mail.uni-wuerzburg.de",
-			"url": "https://gitlab2.informatik.uni-wuerzburg.de/wuespace/d2-groundstation/frontend"
+			"email": "richter@fliegwerk.com",
+			"url": "https://github.com/fussel178"
+		},
+		{
+			"name": "Liam Franssen",
+			"email": "liam.franssen@stud-mail.uni-wuerzburg.de",
+			"url": "https://github.com/leecemin"
 		}
 	],
 	"eslintConfig": {
