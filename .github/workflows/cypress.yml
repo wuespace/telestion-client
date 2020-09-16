@@ -1,0 +1,18 @@
+name: End-to-end tests
+
+on: [push]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-16.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2.3.2
+
+      - name: Cypress run
+        uses: cypress-io/github-action@v1.16.1
+        # with:
+        #   record: true
+        # env:
+        #   CYPRESS_RECORD_KEY: ${{ secrets.CYPRESS_RECORD_KEY }}
+        #   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
