@@ -31,7 +31,7 @@
 		"@types/recharts": "^1.8.15",
 		"@types/sockjs-client": "^1.1.1",
 		"cross-env": "^7.0.2",
-		"cypress": "^5.1.0",
+		"cypress": "^5.2.0",
 		"electron": "^10.1.2",
 		"electron-builder": "^22.8.0",
 		"eslint-config-prettier": "^6.11.0",
