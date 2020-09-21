@@ -42,7 +42,7 @@
 		"prettier": "^2.1.2",
 		"react-scripts": "^3.4.3",
 		"start-server-and-test": "^1.11.3",
-		"typedoc": "^0.19.1",
+		"typedoc": "^0.19.2",
 		"typescript": "^3.7.5"
 	},
 	"scripts": {
