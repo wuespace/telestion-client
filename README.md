@@ -10,6 +10,8 @@ The Ground Station Frontend for Daedalus2 written in
 
 ## Getting started
 
+> **NOTE:** All commands below, unless otherwise specified, should get executed in the cloned project's root folder (that contains the `package.json`) or a subfolder thereof.
+
 The first step is to install the development dependencies.
 They are defined in `package.json` and you can install them with the following command:
 
