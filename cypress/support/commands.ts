@@ -23,3 +23,24 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite("visit", (originalFn, url, options) => { ... })
+
+Cypress.Commands.add(
+	'login',
+	(username: string, password: string, serverUrl?: string) => {
+		// fill in login form
+		cy.get('form').within(() => {
+			// rely on default server url if none is given
+			if (serverUrl) cy.get('input[name="backend-server"]').type(serverUrl);
+			cy.get('input[name="username"]').type(username);
+			cy.get('input[name="password"]').type(password);
+		});
+
+		// search for login button and click it
+		cy.contains('Login').click();
+	}
+);
+
+Cypress.Commands.add('logout', () => {
+	// search for logout button and click it
+	cy.contains('Logout').click();
+});

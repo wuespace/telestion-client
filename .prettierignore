@@ -6,3 +6,4 @@ release
 docs
 .vscode
 .idea
+.nyc_output

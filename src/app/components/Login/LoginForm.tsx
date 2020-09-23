@@ -53,6 +53,7 @@ export default function LoginForm({ login }: Props) {
 			<Form maxWidth="100%" isRequired>
 				<TextField
 					autoFocus
+					name="backend-server"
 					label="Backend Server"
 					placeholder="Server URL"
 					value={serverUrl}
@@ -60,6 +61,7 @@ export default function LoginForm({ login }: Props) {
 					validationState={serverUrlIsValid}
 				/>
 				<TextField
+					name="username"
 					label="Username"
 					placeholder="Your username"
 					value={username}
@@ -67,6 +69,7 @@ export default function LoginForm({ login }: Props) {
 					validationState={usernameIsValid}
 				/>
 				<TextField
+					name="password"
 					label="Password"
 					placeholder="Your Password"
 					type="password"
