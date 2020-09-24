@@ -1,5 +1,8 @@
 {
 	"baseUrl": "http://localhost:3000",
 	"integrationFolder": "cypress/tests",
-	"retries": 3
+	"testFiles": "**/*e2e.{js,jsx,ts,tsx}",
+	"retries": 3,
+	"experimentalComponentTesting": true,
+	"componentFolder": "src"
 }

@@ -15,9 +15,12 @@
 /**
  * @type {Cypress.PluginConfig}
  */
-export default (on: any, config: any) => {
+export default (on, config) => {
 	// `on` is used to hook into various events Cypress emits
 	// `config` is the resolved Cypress config
+
+	// setup unit tests
+	require('cypress-react-unit-test/plugins/react-scripts')(on, config);
 
 	// setup coverage
 	require('@cypress/code-coverage/task')(on, config);

@@ -1,5 +1,3 @@
-/// <reference path="../../support/index.d.ts" />
-
 describe('The Login Page', () => {
 	it('should successfully load', () => {
 		cy.visit('/');

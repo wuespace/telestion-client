@@ -13,11 +13,14 @@
 // https://on.cypress.io/configuration
 // ***********************************************************
 
+// setup react unit tests
+import 'cypress-react-unit-test/support';
+
+// setup coverage
+import '@cypress/code-coverage/support';
+
 // Import commands.js using ES2015 syntax:
 import './commands';
 
 // Alternatively you can use CommonJS syntax:
 // require('./commands')
-
-// setup coverage
-import '@cypress/code-coverage/support';
