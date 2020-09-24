@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-16.04
     steps:
       - name: Checkout
-        uses: actions/checkout@v2.3.2
+        uses: actions/checkout@v2.3.3
 
       - name: Cypress run
         uses: cypress-io/github-action@v2.2.6
