@@ -16,5 +16,5 @@
 		"jsx": "react"
 	},
 	"include": ["src"],
-	"exclude": ["**/*.spec.*"]
+	"exclude": ["**/*.e2e.*"]
 }
