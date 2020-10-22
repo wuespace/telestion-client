@@ -12,7 +12,7 @@
 		"@spectrum-icons/workflow": "^3.2.0",
 		"leaflet": "^1.7.1",
 		"react": "^16.14.0",
-		"react-dom": "^16.13.1",
+		"react-dom": "^16.14.0",
 		"react-leaflet": "^2.7.0",
 		"react-router-dom": "^5.2.0",
 		"recharts": "^1.8.5",
