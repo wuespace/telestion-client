@@ -6,7 +6,7 @@
 	"repository": "https://github.com/TelestionGroup/daedalus2-client",
 	"homepage": "./",
 	"dependencies": {
-		"@adobe/react-spectrum": "^3.4.0",
+		"@adobe/react-spectrum": "^3.5.0",
 		"@fliegwerk/logsemts": "^0.4.0",
 		"@spectrum-icons/illustrations": "^3.2.0",
 		"@spectrum-icons/workflow": "^3.2.0",
