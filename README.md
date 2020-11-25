@@ -214,7 +214,7 @@ To learn React, check out the [React documentation](https://reactjs.org/).
 
 ## Notice
 
-Original source code of eventbus handler here:
+Original source code of eventbus handler once existed here:
 
 - https://github.com/vert-x3/vertx-web/blob/master/vertx-web/src/client/vertx-eventbus.js
 
@@ -222,3 +222,7 @@ and NOT here:
 
 - https://github.com/vert-x3/vertx-stack
 - https://github.com/vert-x3/vertx-bus-bower
+
+**that no longer is the case.** Where it is now, is a mystery (please report any findings here :wink:). It was, however, last seen in
+
+- https://github.com/vert-x3/vertx-web/commit/0c257b111a13597618c92d6482253f6422b3536d#diff-def126407e3ad10b16f833b7ce3b456cf88491796a22d0f8b5965327ded79b5c
