@@ -1,0 +1,39 @@
+{
+	"name": "@wuespace/telestion-client-mock-server",
+	"description": "The mock server for the Telestion Frontend",
+	"version": "0.1.0",
+	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
+	"scripts": {
+		"test": "echo \"Error: Run tests from root\" && exit 1"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TelestionTeam/telestion-client.git",
+		"directory": "packages/mock-server"
+	},
+	"bugs": {
+		"url": "https://github.com/TelestionTeam/telestion-client/issues"
+	},
+	"author": {
+		"name": "wuespace",
+		"email": "kontakt@wuespace.de",
+		"url": "https://www.wuespace.de/"
+	},
+	"contributors": [
+		{
+			"name": "Pablo Klaschka",
+			"email": "contact@pabloklaschka.de",
+			"url": "https://github.com/pklaschka"
+		},
+		{
+			"name": "Jan Tischhöfer",
+			"email": "jan.tischhoefer@gmail.com",
+			"url": "https://github.com/jantischhoefer"
+		},
+		{
+			"name": "Ludwig Richter",
+			"email": "richter@fliegwerk.com",
+			"url": "https://github.com/fussel178"
+		}
+	]
+}

@@ -1,0 +1,51 @@
+{
+	"name": "@wuespace/telestion-client-common",
+	"description": "The common components of the Telestion Frontend",
+	"version": "0.1.0",
+	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
+	"main": "./lib/index.js",
+	"types": "./lib/index.d.ts",
+	"module": "./lib-esm/index.js",
+	"scripts": {
+		"test": "echo \"Error: Run tests from root\" && exit 1",
+		"build": "tsc && tsc --build tsconfig.esm.json",
+		"story": "start-storybook"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TelestionTeam/telestion-client.git",
+		"directory": "packages/telestion-client-common"
+	},
+	"bugs": {
+		"url": "https://github.com/TelestionTeam/telestion-client/issues"
+	},
+	"author": {
+		"name": "wuespace",
+		"email": "kontakt@wuespace.de",
+		"url": "https://www.wuespace.de/"
+	},
+	"contributors": [
+		{
+			"name": "Pablo Klaschka",
+			"email": "contact@pabloklaschka.de",
+			"url": "https://github.com/pklaschka"
+		},
+		{
+			"name": "Jan Tischhöfer",
+			"email": "jan.tischhoefer@gmail.com",
+			"url": "https://github.com/jantischhoefer"
+		},
+		{
+			"name": "Ludwig Richter",
+			"email": "richter@fliegwerk.com",
+			"url": "https://github.com/fussel178"
+		}
+	],
+	"peerDependencies": {
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1"
+	},
+	"dependencies": {
+		"@wuespace/telestion-client-core": "file:../telestion-client-core"
+	}
+}

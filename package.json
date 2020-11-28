@@ -1,74 +1,19 @@
 {
-	"name": "d2-ground-station-frontend",
-	"version": "0.2.6",
+	"name": "telestion-client",
+	"description": "Telestion frontend collection",
+	"version": "0.1.0",
 	"private": true,
-	"description": "The Ground Station Frontend for Daedalus2",
-	"repository": "https://github.com/TelestionGroup/daedalus2-client",
-	"homepage": "./",
-	"dependencies": {
-		"@adobe/react-spectrum": "^3.5.0",
-		"@fliegwerk/logsemts": "^0.4.0",
-		"@spectrum-icons/illustrations": "^3.2.0",
-		"@spectrum-icons/workflow": "^3.2.0",
-		"leaflet": "^1.7.1",
-		"react": "^16.14.0",
-		"react-dom": "^16.14.0",
-		"react-leaflet": "^2.8.0",
-		"react-router-dom": "^5.2.0",
-		"recharts": "^1.8.5",
-		"sockjs-client": "^1.5.0"
-	},
-	"devDependencies": {
-		"@testing-library/jest-dom": "^5.11.6",
-		"@testing-library/react": "^11.2.2",
-		"@testing-library/user-event": "^12.2.2",
-		"@types/jest": "^26.0.15",
-		"@types/leaflet": "^1.5.19",
-		"@types/node": "^14.14.10",
-		"@types/react": "^17.0.0",
-		"@types/react-dom": "^17.0.0",
-		"@types/react-leaflet": "^2.5.2",
-		"@types/react-router-dom": "^5.1.6",
-		"@types/recharts": "^1.8.16",
-		"@types/sockjs-client": "^1.5.0",
-		"cross-env": "^7.0.2",
-		"cypress": "^6.0.0",
-		"electron": "^11.0.3",
-		"electron-builder": "^22.9.1",
-		"eslint-config-prettier": "^6.15.0",
-		"eslint-plugin-cypress": "^2.11.2",
-		"eslint-plugin-prettier": "^3.1.4",
-		"node-sass": "^4.14.1",
-		"prettier": "^2.2.0",
-		"react-scripts": "^4.0.1",
-		"start-server-and-test": "^1.11.6",
-		"typedoc": "^0.19.2",
-		"typescript": "^4.0.5"
-	},
+	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
 	"scripts": {
-		"start": "react-scripts start",
-		"build": "react-scripts build",
-		"check": "npm run prettier && npm run ts && npm run test:unit:ci && npm run test:e2e:ci && npm run build",
-		"build:docs": "typedoc --options typedoc.json",
-		"build:electron": "npm run build && electron build/electron.js",
-		"test:unit": "react-scripts test",
-		"test:unit:coverage": "react-scripts test --coverage --watchAll=false",
-		"test:e2e": "npm run cypress:open",
-		"prettier": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
-		"prettier:ci": "prettier --check package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
-		"ts": "tsc",
-		"package:win": "npm run build && npm run electron:win",
-		"package:mac": "npm run build && npm run electron:mac",
-		"package:linux": "npm run build && npm run electron:linux",
-		"package:all": "npm run build && npm run electron:win && npm run electron:mac && npm run electron:linux",
-		"cypress:open": "cypress open",
-		"cypress:run": "cypress run",
-		"electron:win": "electron-builder --win --x64",
-		"electron:mac": "electron-builder --mac",
-		"electron:linux": "electron-builder --linux",
-		"start:ci": "cross-env BROWSER=none NODE_ENV=cypress npm run start",
-		"test:unit:ci": "react-scripts test --watch false",
-		"test:e2e:ci": "start-server-and-test start:ci http://localhost:3000 cypress:run"
+		"bootstrap": "lerna bootstrap --hoist",
+		"clean": "lerna clean"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TelestionTeam/telestion-client.git"
+	},
+	"bugs": {
+		"url": "https://github.com/TelestionTeam/telestion-client/issues"
 	},
 	"author": {
 		"name": "wuespace",
@@ -90,72 +35,25 @@
 			"name": "Ludwig Richter",
 			"email": "richter@fliegwerk.com",
 			"url": "https://github.com/fussel178"
-		},
-		{
-			"name": "Liam Franssen",
-			"email": "liam.franssen@stud-mail.uni-wuerzburg.de",
-			"url": "https://github.com/leecemin"
 		}
 	],
-	"eslintConfig": {
-		"env": {
-			"cypress/globals": true
-		},
-		"extends": [
-			"react-app",
-			"plugin:cypress/recommended",
-			"plugin:prettier/recommended",
-			"prettier/react",
-			"prettier/@typescript-eslint"
-		],
-		"plugins": [
-			"cypress",
-			"prettier"
-		]
+	"devDependencies": {
+		"@babel/core": "^7.12.9",
+		"@storybook/addon-essentials": "^6.1.7",
+		"@storybook/react": "^6.1.7",
+		"babel-loader": "^8.2.2",
+		"glob": "^7.1.6",
+		"lerna": "^3.22.1",
+		"prettier": "2.2.0",
+		"react": "^17.0.1",
+		"react-dom": "^17.0.1",
+		"typescript": "^4.1.2",
+		"yargs": "^16.1.1"
 	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	},
-	"build": {
-		"productName": "D2-Groundstation-Frontend",
-		"appId": "de.wuespace.groundstation-frontend",
-		"files": [
-			"build/**/*",
-			"node_modules/**/*"
-		],
-		"directories": {
-			"buildResources": "resources",
-			"output": "release"
-		},
-		"win": {
-			"target": [
-				"portable",
-				"nsis"
-			],
-			"icon": "win/icon.ico"
-		},
-		"mac": {
-			"category": "public.app-category.utilities",
-			"target": [
-				"zip"
-			],
-			"icon": "mac/icon.icns"
-		},
-		"linux": {
-			"category": "Utility",
-			"target": [
-				"AppImage"
-			],
-			"icon": "icons/"
-		}
+	"dependencies": {
+		"@wuespace/telestion-client-cli": "file:packages/telestion-client-cli",
+		"@wuespace/telestion-client-common": "file:packages/telestion-client-common",
+		"@wuespace/telestion-client-core": "file:packages/telestion-client-core",
+		"@wuespace/telestion-client-mock-server": "file:packages/mock-server"
 	}
 }
