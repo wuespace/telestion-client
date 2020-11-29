@@ -1,13 +1,15 @@
 const path = require('path');
 const fs = require('fs');
+const sh = require('shelljs');
 const inquirer = require('inquirer');
 const dirTree = require('directory-tree');
 const { Spinner } = require('clui');
 
 const debug = require('debug')('init');
 const logger = require('../lib/logger')('init');
-const normalize = require('../lib/normalizeModuleName');
 const makePromiseLastAtLeast = require('../lib/promiseMinimumTime');
+
+const normalize = require('../lib/normalizeModuleName');
 const processTemplateTree = require('../lib/processTemplateTree');
 const initEpilogue = require('../lib/initEpilogue');
 
@@ -157,7 +159,15 @@ async function handler(argv) {
 		debug('Process and copy template directory to new project');
 		await processTemplateTree(tree, projectPath, replacers);
 
-		//spinner.stop();
+		spinner.message('Installing dependencies ...');
+		spinner.start();
+		debug('Install command:', installCommand);
+		sh.pushd(projectPath);
+		const result = sh.exec(installCommand, { silent: !(process.env.DEBUG === 'init' || process.env.DEBUG !== '*') });
+		sh.popd();
+		spinner.stop();
+		logger.success('Dependencies installed');
+
 		logger.success('Initialized new project');
 	} catch (err) {
 		spinner.stop();
