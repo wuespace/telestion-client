@@ -1,4 +1,4 @@
-declare module "*.json" {
+declare module '*.json' {
 	const value: any;
 	export default value;
 }
@@ -8,7 +8,7 @@ declare module '*.scss' {
 }
 declare module '*.css' {
 	interface IClassNames {
-		[className: string]: string
+		[className: string]: string;
 	}
 	const classNames: IClassNames;
 	export = classNames;

@@ -1,14 +1,14 @@
-import React, { ComponentProps } from "react";
-import { Story } from "@storybook/react";
+import React, { ComponentProps } from 'react';
+import { Story } from '@storybook/react';
 
-import { MyComponent } from "./index";
+import { MyComponent } from './index';
 
 export default {
 	title: 'MyComponent',
 	component: MyComponent
-}
+};
 
-const Template: Story<ComponentProps<typeof MyComponent>> = (args) => (
+const Template: Story<ComponentProps<typeof MyComponent>> = args => (
 	<MyComponent />
 );
 

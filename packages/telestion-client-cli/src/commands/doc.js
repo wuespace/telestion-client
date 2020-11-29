@@ -6,12 +6,11 @@ const command = ['docs [keyword]', 'd'];
 const desc = 'Opens the Telestion Docs and optionally searches for a keyword';
 
 function builder(yargs) {
-	return yargs
-		.option('keyword', {
-			alias: 'k',
-			describe: 'A doc keyword to search for',
-			type: 'string'
-		});
+	return yargs.option('keyword', {
+		alias: 'k',
+		describe: 'A doc keyword to search for',
+		type: 'string'
+	});
 }
 
 async function handler(argv) {

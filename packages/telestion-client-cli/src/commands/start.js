@@ -6,12 +6,11 @@ const command = ['start', 's'];
 const desc = 'Start the development server for a Telestion Frontend Project';
 
 function builder(yargs) {
-	return yargs
-		.option('electron', {
-			alias: 'e',
-			describe: 'Build and start an electron app instead',
-			type: 'boolean'
-		});
+	return yargs.option('electron', {
+		alias: 'e',
+		describe: 'Build and start an electron app instead',
+		type: 'boolean'
+	});
 }
 
 async function handler(argv) {

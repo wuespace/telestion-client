@@ -1,12 +1,16 @@
-const debug = require('debug')('stats');
-const logger = require('../lib/logger')('stats');
+const debug = require('debug')('build');
+const logger = require('../lib/logger')('build');
 
 // yargs def
-const command = ['stats', 't'];
-const desc = 'Displays some interesting stats around a Telestion Frontend project';
+const command = ['build [platform]', 'b'];
+const desc = 'Builds a Telestion Frontend Project for different platforms';
 
 function builder(yargs) {
-	return yargs;
+	return yargs.option('platform', {
+		alias: 'p',
+		describe: 'Platform to build for',
+		type: 'array'
+	});
 }
 
 async function handler(argv) {

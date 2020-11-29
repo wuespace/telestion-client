@@ -9,7 +9,7 @@ const validate = require('validate-npm-package-name');
 function normalizeModuleName(name) {
 	const normalized = name
 		.split(' ')
-		.map((part) => part.toLowerCase())
+		.map(part => part.toLowerCase())
 		.join('-');
 
 	const results = validate(normalized);

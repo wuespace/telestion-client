@@ -8,7 +8,5 @@
 			"message": "chore(release): %s"
 		}
 	},
-	"ignoreChanges": [
-		"**/cypress/**"
-	]
+	"ignoreChanges": ["**/cypress/**"]
 }
