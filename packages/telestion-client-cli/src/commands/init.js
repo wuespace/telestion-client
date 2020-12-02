@@ -163,7 +163,9 @@ async function handler(argv) {
 		spinner.start();
 		debug('Install command:', installCommand);
 		sh.pushd(projectPath);
-		const result = sh.exec(installCommand, { silent: !(process.env.DEBUG === 'init' || process.env.DEBUG !== '*') });
+		const result = sh.exec(installCommand, {
+			silent: !(process.env.DEBUG === 'init' || process.env.DEBUG !== '*')
+		});
 		sh.popd();
 		spinner.stop();
 		logger.success('Dependencies installed');

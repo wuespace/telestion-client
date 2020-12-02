@@ -8,4 +8,4 @@ module.exports = function checkExternalDependencies(deps) {
 		logger.info('Please install them and run the command again to continue.');
 		process.exit(1);
 	}
-}
+};

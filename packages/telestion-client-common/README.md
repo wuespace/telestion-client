@@ -5,6 +5,7 @@ The common components of the Telestion Frontend
 ## Installation
 
 First, add it as dependency to your project:
+
 ```shell
 $ npm install @wuespace/telestion-client-common
 ```
@@ -12,16 +13,14 @@ $ npm install @wuespace/telestion-client-common
 Please also check that you install a supported version of `react` and `react-dom`.
 
 After installation, check out the provided components:
+
 ```tsx
 import React from 'react';
 import { ConnectionIndicator } from '@wuespace/telestion-client-common';
 
 export default function MyComponent() {
-	return (
-		<ConnectionIndicator />
-	);
+	return <ConnectionIndicator />;
 }
-
 ```
 
 For a full list of components, hooks and utility parts, check out the reference:

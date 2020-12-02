@@ -10,7 +10,13 @@ const logger = new Logger({
 			if (type === 'DEBUG') {
 				debug(`${type}:`, ...rest);
 			} else {
-				chalkLogger(type.padEnd(7, ' '), style, componentName, componentType, ...rest);
+				chalkLogger(
+					type.padEnd(7, ' '),
+					style,
+					componentName,
+					componentType,
+					...rest
+				);
 			}
 		}
 	]

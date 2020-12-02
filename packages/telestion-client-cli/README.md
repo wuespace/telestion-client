@@ -5,16 +5,19 @@ The command line interface for Telestion Frontend development
 ## Installation
 
 Simply install the command line interface globally in your workspace:
+
 ```shell
 $ npm install --global @wuespace/telestion-client-cli
 ```
 
 Or add it as a development dependency to your project:
+
 ```shell
 $ npm install @wuespace/telestion-client-cli
 ```
 
 After installation, check out the options of the cli:
+
 ```shell
 $ tc-cli --help
 ```

@@ -9,7 +9,6 @@ process.on('unhandledRejection', err => {
 	throw err;
 });
 
-
 const yargs = require('yargs');
 const debug = require('debug')('cli');
 require('../src/lib/checkExternalDependencies')(['git', 'npm']);

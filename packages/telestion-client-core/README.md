@@ -5,6 +5,7 @@ The core components of the Telestion Frontend
 ## Installation
 
 First, add it as dependency to your project:
+
 ```shell
 $ npm install @wuespace/telestion-client-core
 ```
@@ -12,20 +13,14 @@ $ npm install @wuespace/telestion-client-core
 Please also check that you install a supported version of `react` and `react-dom`.
 
 After installation, check out the provided components:
+
 ```tsx
 import React from 'react';
 import { TelestionClient, coreWidgets } from '@wuespace/telestion-client-core';
 
 export default function MyComponent() {
-	return (
-		<TelestionClient
-			widgets={[...coreWigets]}
-		>
-			...
-		</TelestionClient>
-	);
+	return <TelestionClient widgets={[...coreWigets]}>...</TelestionClient>;
 }
-
 ```
 
 For a full list of components, hooks and utility parts, check out the reference:
