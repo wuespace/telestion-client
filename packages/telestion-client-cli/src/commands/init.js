@@ -1,6 +1,5 @@
 const path = require('path');
 const fs = require('fs');
-const sh = require('shelljs');
 const inquirer = require('inquirer');
 const dirTree = require('directory-tree');
 const { Spinner } = require('clui');
@@ -8,6 +7,7 @@ const { Spinner } = require('clui');
 const debug = require('debug')('init');
 const logger = require('../lib/logger')('init');
 const makePromiseLastAtLeast = require('../lib/promiseMinimumTime');
+const exec = require('../lib/asyncExec');
 
 const normalize = require('../lib/normalizeModuleName');
 const processTemplateTree = require('../lib/processTemplateTree');
@@ -159,18 +159,59 @@ async function handler(argv) {
 		debug('Process and copy template directory to new project');
 		await processTemplateTree(tree, projectPath, replacers);
 
-		spinner.message('Installing dependencies ...');
-		spinner.start();
-		debug('Install command:', installCommand);
-		sh.pushd(projectPath);
-		const result = sh.exec(installCommand, {
-			silent: !(process.env.DEBUG === 'init' || process.env.DEBUG !== '*')
-		});
-		sh.popd();
-		spinner.stop();
-		logger.success('Dependencies installed');
+		if (!argv['skipInstall']) {
+			spinner.message('Installing dependencies ...');
+			spinner.start();
 
-		logger.success('Initialized new project');
+			debug('Install command:', installCommand);
+			try {
+				await exec(installCommand, { cwd: projectPath });
+
+				spinner.stop();
+				logger.success('Dependencies installed');
+			} catch (e) {
+				logger.error('Dependency installation failed');
+				debug(e);
+				process.exit(1);
+			}
+		}
+
+		if (!argv['skipGit']) {
+			let isGitRepo = false;
+
+			spinner.message('Initialize project as git repository');
+			spinner.start();
+
+			debug('Git init command:', gitInit);
+			try {
+				await exec(gitInit, { cwd: projectPath });
+
+				spinner.stop();
+				isGitRepo = true;
+				logger.success('Git repository initialized');
+			} catch (e) {
+				logger.error('Git repository initialization failed');
+				debug(e);
+			}
+
+			if (isGitRepo && argv['commit']) {
+				spinner.message('Add initial commit');
+				spinner.start();
+
+				debug('Git commit command:', gitCommit);
+				try {
+					await exec(gitCommit, { cwd: projectPath });
+
+					spinner.stop();
+					logger.success('Added initial commit');
+				} catch (e) {
+					logger.error('Initial commit creation failed');
+					debug(e);
+				}
+			}
+		}
+
+		logger.success('Project initialized');
 	} catch (err) {
 		spinner.stop();
 		logger.error(err);
