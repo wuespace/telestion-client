@@ -3,6 +3,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import typescript from 'rollup-plugin-typescript2';
 import postcss from 'rollup-plugin-postcss';
+import { terser } from 'rollup-plugin-terser';
 
 export default function buildConfig(inputPath, packageJson) {
 	return {
@@ -24,7 +25,15 @@ export default function buildConfig(inputPath, packageJson) {
 			resolve(),
 			commonjs(),
 			typescript({ useTsconfigDeclarationDir: true }),
-			postcss()
+			postcss(),
+			terser()
+		],
+		external: [
+			'@wuespace/mock-server',
+			'@wuespace/telestion-client-cli',
+			'@wuespace/telestion-client-common',
+			'@wuespace/telestion-client-core',
+			'@wuespace/telestion-client-template'
 		]
 	};
-};
+}
