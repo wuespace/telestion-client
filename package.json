@@ -9,8 +9,8 @@
 		"clean": "lerna clean -y",
 		"style": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
 		"style:ci": "prettier --check package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
-		"ts:all": "lerna run ts --parallel",
-		"build:all": "lerna run build --parallel"
+		"ts:all": "lerna run ts --stream",
+		"build:all": "lerna run build --stream"
 	},
 	"repository": {
 		"type": "git",
