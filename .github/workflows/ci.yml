@@ -12,6 +12,7 @@ jobs:
       - uses: actions/setup-node@v2.1.2
         with:
           node-version: 13
+      - run: npm i -g lerna
       - name: Install development dependencies
         run: npm run bootstrap
       - name: Check file styles and formattings
