@@ -19,7 +19,7 @@ jobs:
       - name: Check types
         run: npm run ts:all
       - name: Build all packages
-      - run: npm run build:all
+        run: npm run build:all
       - name: Upload telestion-client-core build artifact
         uses: actions/upload-artifact@v2.2.1
         with:
