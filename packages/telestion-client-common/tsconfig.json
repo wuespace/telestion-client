@@ -1,9 +1,15 @@
 {
-	"exclude": ["node_modules", "lib-esm", "lib", "**/*.story*", "**/*.spec*"],
-	"include": ["src"],
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
-		"outDir": "lib",
-		"declaration": true
-	}
+		"declaration": true,
+		"declarationDir": "build",
+		"esModuleInterop": true
+	},
+	"include": ["src/**/*"],
+	"exclude": [
+		"node_modules",
+		"build",
+		"src/**/*.stories.tsx",
+		"src/**/*.test.tsx"
+	]
 }

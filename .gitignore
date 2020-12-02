@@ -39,5 +39,4 @@ packages/*/node_modules
 .eslintcache
 
 # build files
-packages/*/lib
-packages/*/lib-esm
+packages/*/build
