@@ -10,7 +10,8 @@
 		"test": "echo \"Error: Run tests from root\" && exit 1",
 		"ts": "tsc",
 		"build": "rollup -c",
-		"story": "start-storybook"
+		"story": "start-storybook",
+		"prepublish": "npm run build"
 	},
 	"repository": {
 		"type": "git",

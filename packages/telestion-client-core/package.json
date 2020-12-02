@@ -11,7 +11,8 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"ts": "tsc",
 		"build": "rollup -c",
-		"story": "start-storybook"
+		"story": "start-storybook",
+		"prepublish": "npm run build"
 	},
 	"repository": {
 		"type": "git",

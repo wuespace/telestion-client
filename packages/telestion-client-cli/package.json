@@ -6,6 +6,10 @@
 	"bin": {
 		"tc-cli": "./bin/cli.js"
 	},
+	"files": [
+		"bin",
+		"src"
+	],
 	"scripts": {
 		"test": "echo \"Error: Run tests from root\" && exit 1",
 		"ts": "tsc"

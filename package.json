@@ -6,7 +6,7 @@
 	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
 	"scripts": {
 		"bootstrap": "lerna bootstrap --hoist",
-		"clean": "lerna clean",
+		"clean": "lerna clean -y",
 		"style": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
 		"style:ci": "prettier --check package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
 		"build:all": "lerna run build --parallel"
@@ -41,6 +41,7 @@
 		}
 	],
 	"devDependencies": {
+		"@adobe/react-spectrum": "^3.6.0",
 		"@babel/core": "^7.12.9",
 		"@rollup/plugin-commonjs": "^17.0.0",
 		"@rollup/plugin-node-resolve": "^11.0.0",
