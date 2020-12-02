@@ -4,6 +4,6 @@ export interface MyComponentProps {
 	text: string;
 }
 
-export function MyComponent({ text }: MyComponentProps) {
-	return <p>{text}</p>;
-}
+export const MyComponent: React.FC<MyComponentProps> = ({ text }) => (
+	<p>{text}</p>
+);
