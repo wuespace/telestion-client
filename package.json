@@ -33,7 +33,7 @@
 		"@types/sockjs-client": "^1.5.0",
 		"cross-env": "^7.0.3",
 		"cypress": "^6.1.0",
-		"electron": "^11.0.3",
+		"electron": "^11.0.4",
 		"electron-builder": "^22.9.1",
 		"eslint-config-prettier": "^6.15.0",
 		"eslint-plugin-cypress": "^2.11.2",
