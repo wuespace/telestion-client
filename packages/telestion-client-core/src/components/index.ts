@@ -1,1 +1,4 @@
-export * from './MyComponent';
+export * from './telestion-client';
+
+export * from './pages';
+export * from './preferences';
