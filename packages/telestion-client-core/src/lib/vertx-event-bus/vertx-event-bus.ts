@@ -28,7 +28,8 @@ import {
 	Message,
 	Headers,
 	ErrorMessage,
-	SendMessage, PublishMessage
+	SendMessage,
+	PublishMessage
 } from './messages';
 
 /**

@@ -1,4 +1,4 @@
-import { ConfigurableWidgetProps } from '@wuespace/telestion-client-core/model/widget/configurable-widget-props';
+import { ConfigurableWidgetProps } from '../widget/configurable-widget-props';
 
 export interface WidgetUsage {
 	width: number;

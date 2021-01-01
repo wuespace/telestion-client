@@ -34,7 +34,11 @@ export interface Auth {
 	 * @param username the users name
 	 * @param password the users password
 	 */
-	signIn(serverUrl: string, username: string, password: string): Promise<SignInResult>;
+	signIn(
+		serverUrl: string,
+		username: string,
+		password: string
+	): Promise<SignInResult>;
 
 	/**
 	 * Tries to sign out from the server and close all connections.

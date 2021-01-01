@@ -7,8 +7,9 @@ export interface WidgetsProviderProps {
 	widgets: Widget[];
 }
 
-export const WidgetsProvider: FC<WidgetsProviderProps> = ({ widgets, children }) => (
-	<widgetsContext.Provider value={widgets}>
-		{children}
-	</widgetsContext.Provider>
+export const WidgetsProvider: FC<WidgetsProviderProps> = ({
+	widgets,
+	children
+}) => (
+	<widgetsContext.Provider value={widgets}>{children}</widgetsContext.Provider>
 );

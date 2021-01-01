@@ -1,3 +1,1 @@
-export function usePreferences() {
-
-}
+export function usePreferences() {}

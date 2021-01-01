@@ -3,7 +3,7 @@ import { EventBus, ErrorMessage, Options } from '../lib/vertx-event-bus';
 
 export type ConnectionState = 'connected' | 'disconnected' | 'error';
 
-type State = {
+export type EventBusState = {
 	/**
 	 * the current eventbus instance for special purposes only
 	 */
@@ -37,16 +37,30 @@ type State = {
 	 * and opens a connection.
 	 * @param serverUrl the server URL to connect to
 	 * @param options options to configure the connection of the event bus
+	 *
+	 * @throws if {@link openEventBus} was called earlier
+	 * and an eventbus instance already opened
+	 *
+	 * @see {@link closeEventBus}
+	 * @see {@link eventBus}
+	 * @see {@link connectionState}
 	 */
 	openEventBus: (serverUrl: string, options?: Options) => void;
 
 	/**
 	 * Closes the current event bus and deletes it.
+	 *
+	 * @throws if {@link closeEventBus} was called earlier
+	 * and an eventbus instance already closed
+	 *
+	 * @see {@link openEventBus}
+	 * @see {@link eventBus}
+	 * @see {@link connectionState}
 	 */
 	closeEventBus: () => void;
 };
 
-export const useEventBus = create<State>((set, get) => ({
+export const useEventBus = create<EventBusState>((set, get) => ({
 	eventBus: null,
 	connectionState: 'disconnected',
 	error: null,
