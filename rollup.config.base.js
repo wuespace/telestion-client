@@ -22,13 +22,14 @@ export default function buildConfig(inputPath, packageJson) {
 		],
 		plugins: [
 			peerDepsExternal(),
-			resolve(),
+			resolve({ preferBuiltins: true }),
 			commonjs(),
 			typescript({ useTsconfigDeclarationDir: true }),
 			postcss(),
 			terser()
 		],
 		external: [
+			...Object.keys(packageJson.dependencies || {}),
 			'@wuespace/mock-server',
 			'@wuespace/telestion-client-cli',
 			'@wuespace/telestion-client-common',
