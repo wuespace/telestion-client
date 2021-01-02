@@ -8,7 +8,7 @@ const authenticator: Auth = new FakeAuth();
 // stores the cleanup for registered callback on authenticator
 let cleanupCb: (() => void) | null = null;
 
-type State = {
+export type AuthState = {
 	/**
 	 * the current user name who is logged in
 	 * otherwise `null` if the user is not logged in
@@ -42,7 +42,7 @@ type State = {
 	signOut(): Promise<void>;
 };
 
-export const useAuth = create<State>((set, get) => ({
+export const useAuth = create<AuthState>((set, get) => ({
 	user: null,
 	serverUrl: null,
 	signIn(

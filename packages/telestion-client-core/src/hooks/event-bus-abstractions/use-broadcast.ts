@@ -37,6 +37,7 @@ type BroadcastFunction =
  * };
  *
  * return <button onClick={handleClick}>Broadcast a hello world</button>;
+ * ```
  */
 export function useBroadcast<C extends string = string>(
 	channel: C

@@ -11,9 +11,10 @@ import { JsonSerializable } from '../../lib/vertx-event-bus';
  *
  * @throws if there is no eventbus instance
  *
- * @example
- * const latestPos = useChannelLatest('positionChannel');
+ * @example```ts
+ * const latestPos = useChannelLatest('channel:position');
  * return <p>Latest position: {latestPos}</p>;
+ * ```
  */
 export function useChannelLatest<C extends string = string>(channel: C) {
 	const [latest, setLatest] = useState<JsonSerializable>();

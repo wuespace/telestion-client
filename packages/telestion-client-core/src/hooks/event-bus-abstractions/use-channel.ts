@@ -43,7 +43,7 @@ const eventBusSelector: StateSelector<
  *   setState(data);
  * }, []);
  *
- * useChannel('SOME_CHANNEL', cb);
+ * useChannel('channel:test-data', cb);
  *
  * return <p>Content: {state}</p>;
  * ```
