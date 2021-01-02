@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import shallow from 'zustand/shallow';
 
 import { Options } from '../lib/vertx-event-bus';
-import { useAuth, useEventBus } from '../hooks';
+import { useAuth, useEventBus, usePreferences } from '../hooks';
 
 const authSelector = state => ({
 	user: state.user,
@@ -14,6 +14,8 @@ const eventBusSelector = state => ({
 	open: state.openEventBus,
 	close: state.closeEventBus
 });
+
+const preferencesSelector = state => state.update;
 
 export interface TelestionClientProps {
 	/**
@@ -51,6 +53,13 @@ const TelestionClient: FC<TelestionClientProps> = ({
 	eventBusOptions,
 	children
 }) => {
+	// set title as preference
+	const update = usePreferences(preferencesSelector);
+
+	useEffect(() => {
+		update(title);
+	}, [title, update]);
+
 	// automatic eventbus management
 	const { user, serverUrl } = useAuth(authSelector, shallow);
 	const { open, close } = useEventBus(eventBusSelector, shallow);
