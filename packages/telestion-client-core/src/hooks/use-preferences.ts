@@ -1,141 +1,179 @@
-import { ReactNode } from 'react';
 import create from 'zustand';
+import {
+	PreferencesStore,
+	GroupSelector,
+	PrefSelector,
+	PrefValue,
+	PrefRenderer,
+	Preference,
+	PreferencesGroup
+} from '../model/preferences';
+import { isEmpty } from '../lib/is-empty';
 
-import { JsonSerializable } from '../types/json-serializable';
-
-/**
- * the "name" of the preference
- */
-export type Selector = string;
-
-/**
- * Renders a React node that
- */
-export type RendererFunction = (
-	preference: JsonSerializable,
-	setPreference: (newPreference: JsonSerializable) => void
-) => ReactNode;
-
-export type PreferencesState = {
+export type PreferenceState = {
 	/**
-	 * Stores the registered preferences as selector-value pair.
+	 * Stores the registered preferences as groups of selector-value pair.
 	 *
-	 * To add, update and remove the preference use {@link update}.
+	 * To add, update and remove the preference value use {@link setValue}.
+	 *
+	 * To add, update and remove the preference renderer
+	 * use {@link setRenderer} instead.
 	 *
 	 * @example```ts
-	 * const preference = usePreferences(state => state.preferences['selector']);
+	 * const preference = usePreferences(
+	 *   state => state.preferences['group']['preference'].value
+	 * );
 	 *
 	 * return <div>{preferences}</div>;
 	 * ```
 	 */
-	preferences: Record<Selector, JsonSerializable>;
+	preferences: PreferencesStore;
 
 	/**
-	 * Stores the registered renderers for the preference.
+	 * Adds, updates or removes a preference value from the preference store.
 	 *
-	 * To add, update and remove the renderer use {@link updateRenderer}.
+	 * To access the preference a group and a preference selector is needed.
 	 *
-	 * @example```ts
-	 * import shallow from 'zustand/shallow';
+	 * If the group selector is `null`
+	 * the preference in the global scope will be used.
 	 *
-	 * const renderer = usePreferences(state => state.renderer['selector']);
-	 * const { preference, update } = usePreferences(state => ({
-	 *   preference: state.preferences['selector'],
-	 *   update: state.update
-	 * }), shallow);
-	 *
-	 * return (
-	 *   <div>
-	 *     {renderer(preference, newPref => update('selector', newPref)}
-	 *   </div>
-	 * );
-	 * ```
-	 */
-	renderer: Record<Selector, RendererFunction>;
-
-	/**
-	 * Adds, updates or removes a preference from the preference store.
-	 *
-	 * The selector specifies the "storage" space
-	 * where the preference will be stored.
-	 *
-	 * If the preference is `undefined`
-	 * the "storage" space will be cleared
-	 * and the preference removed from the store.
-	 *
-	 * @param selector the "storage" space and accessor of the preference
-	 * @param newPreference the new value for the preference
-	 * if `undefined` the preference will be removed
+	 * @param group the group of the preference
+	 * @param preference the preference name
+	 * @param newValue the new value of the preference
 	 *
 	 * @example```ts
-	 * const update = usePreferences(state => state.update);
+	 * const update = usePreferences(state => state.updateValue);
+	 * const handleClick = () => update('group', 'preference', 'My new value!');
 	 *
-	 * return (
-	 * 	 <button onClick={() => update('selector', 'Hey there!')}>
-	 * 	   Set Preference for 'selector'
-	 * 	 </button>
-	 * );
+	 * return <button onClick={handleClick}>Set Preference</button>;
 	 */
-	update: (
-		selector: Selector,
-		newPreference: JsonSerializable | undefined
+	setValue: (
+		group: GroupSelector,
+		preference: PrefSelector,
+		newValue: PrefValue
 	) => void;
 
 	/**
-	 * Adds, updates or removes a preference renderer from the renderer store.
+	 * Adds, updates or removes a preference renderer from the preference store.
 	 *
-	 * The selector specifies the "storage" space
-	 * where the renderer will be stored.
+	 * To access the preference a group and a preference selector is needed.
 	 *
-	 * If the renderer is `undefined`
-	 * the "storage" space will be cleared
-	 * and the renderer removed from the store.
+	 * If the group selector is `null`
+	 * the preference in the global scope will be used.
 	 *
-	 * @param selector the "storage" space and accessor of the preference
-	 * @param newRenderer the new renderer function for the preference
-	 * if `undefined` the renderer will be removed
+	 * @param group the group of the preference
+	 * @param preference the preference name
+	 * @param newRenderer the new renderer for the preference
 	 *
 	 * @example```ts
-	 * const updateRenderer = usePreferences(state => state.updateRenderer);
-	 *
-	 * const renderer = (data, update) => (
-	 *   <TextInput initialValue={data} onSubmit={update} />
+	 * const update = usePreferences(state => state.updateValue);
+	 * const renderer = (value, setValue) => (
+	 *   <TextInput initialValue={value} onSubmit={setValue} />
 	 * );
 	 *
-	 * return (
-	 *   <button onClick={() => updateRenderer('selector', renderer)}>
-	 *     Set Renderer for 'selector'
-	 *   </button>
-	 * );
-	 * ```
+	 * const handleClick = () => update('group', 'preference', renderer);
+	 *
+	 * return <button onClick={handleClick}>Set Renderer</button>;
 	 */
-	updateRenderer: (
-		selector: Selector,
-		newRenderer: RendererFunction | undefined
+	setRenderer: (
+		group: GroupSelector,
+		preference: PrefSelector,
+		newRenderer: PrefRenderer
 	) => void;
+
+	/**
+	 * Removes a preference from the store.
+	 *
+	 * To access the preference a group and a preference selector is needed.
+	 *
+	 * If the group selector is `null`
+	 * the preference in the global scope will be used.
+	 *
+	 * @param group the group of the preference
+	 * @param preference the name of the preference that will be removed
+	 */
+	removePreference: (group: GroupSelector, preference: PrefSelector) => void;
+
+	/**
+	 * Removes an entire group of preferences from the store.
+	 *
+	 * To access the group and a selector is needed.
+	 *
+	 * If the group selector is `null`
+	 * the preference in the global scope will be used.
+	 *
+	 * @param group the name of the group that will be removed
+	 */
+	removeGroup: (group: GroupSelector) => void;
+
+	/**
+	 * Overwrites the current preferences store with the specified store.
+	 * @param newStore the new preferences store to use
+	 */
+	setStore: (newStore: PreferencesStore) => void;
 };
 
-export const usePreferences = create<PreferencesState>((set, get) => ({
+export const usePreferences = create<PreferenceState>((set, get) => ({
 	preferences: {},
-	renderer: {},
-	update: (selector, newPreference) => {
-		const newPreferences = { ...get().preferences, [selector]: newPreference };
+	setValue: (group, preference, newValue) => {
+		const currentStore = get().preferences;
+		const currentGroup = currentStore[group];
 
-		if (typeof newPreference === 'undefined') {
-			// remove preference from store
-			delete newPreferences[selector];
-		}
+		const newPreference: Preference = {
+			// check if group already defined to avoid TypeError
+			...(currentGroup ? currentGroup[preference] : undefined),
+			value: newValue
+		};
+
+		const newStore: PreferencesStore = {
+			...currentStore,
+			[group]: {
+				...currentStore[group],
+				[preference]: newPreference
+			}
+		};
+
+		set({ preferences: newStore });
+	},
+	setRenderer: (group, preference, newRenderer) => {
+		const currentStore = get().preferences;
+		const currentGroup = currentStore[group];
+
+		const newPreference: Preference = {
+			// check if group already defined to avoid TypeError
+			...(currentGroup ? currentGroup[preference] : undefined),
+			renderer: newRenderer
+		};
+
+		const newPreferences: PreferencesStore = {
+			...currentStore,
+			[group]: {
+				...currentStore[group],
+				[preference]: newPreference
+			}
+		};
 
 		set({ preferences: newPreferences });
 	},
-	updateRenderer: (selector, newRenderer) => {
-		const newRenderers = { ...get().renderer, [selector]: newRenderer };
+	removePreference: (group, preference) => {
+		const currentStore = get().preferences;
+		// group is empty -> no preference to delete, return
+		if (isEmpty(currentStore[group] || {})) return;
 
-		if (typeof newRenderer === 'undefined') {
-			// remove preference from store
-			delete newRenderers[selector];
-		}
+		const newGroup: PreferencesGroup = { ...currentStore[group] };
+		delete newGroup[preference];
 
-		set({ renderer: newRenderers });
+		const newStore: PreferencesStore = { ...currentStore, [group]: newGroup };
+		if (isEmpty(newGroup)) delete newStore[group];
+
+		set({ preferences: newStore });
+	},
+	removeGroup: group => {
+		const newStore = { ...get().preferences };
+		delete newStore[group];
+		set({ preferences: newStore });
+	},
+	setStore: newStore => {
+		set({ preferences: newStore });
 	}
 }));

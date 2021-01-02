@@ -1,21 +1,44 @@
 import { FC, ReactNode, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { StateSelector } from 'zustand';
 import shallow from 'zustand/shallow';
 
 import { Options } from '../lib/vertx-event-bus';
-import { useAuth, useEventBus, usePreferences } from '../hooks';
+import {
+	AuthState,
+	EventBusState,
+	PreferenceState,
+	useAuth,
+	useEventBus,
+	usePreferences
+} from '../hooks';
 
-const authSelector = state => ({
+const authSelector: StateSelector<
+	AuthState,
+	{
+		user: AuthState['user'];
+		serverUrl: AuthState['serverUrl'];
+	}
+> = state => ({
 	user: state.user,
 	serverUrl: state.serverUrl
 });
 
-const eventBusSelector = state => ({
+const eventBusSelector: StateSelector<
+	EventBusState,
+	{
+		open: EventBusState['openEventBus'];
+		close: EventBusState['closeEventBus'];
+	}
+> = state => ({
 	open: state.openEventBus,
 	close: state.closeEventBus
 });
 
-const preferencesSelector = state => state.update;
+const preferencesSelector: StateSelector<
+	PreferenceState,
+	PreferenceState['setValue']
+> = state => state.setValue;
 
 export interface TelestionClientProps {
 	/**
@@ -57,7 +80,7 @@ const TelestionClient: FC<TelestionClientProps> = ({
 	const update = usePreferences(preferencesSelector);
 
 	useEffect(() => {
-		update(title);
+		update(null, 'title', title);
 	}, [title, update]);
 
 	// automatic eventbus management
