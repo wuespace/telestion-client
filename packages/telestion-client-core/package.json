@@ -13,7 +13,6 @@
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"ts": "tsc",
 		"build": "rollup -c",
-		"story": "start-storybook",
 		"prepublishOnly": "npm run build"
 	},
 	"repository": {

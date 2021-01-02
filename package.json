@@ -10,7 +10,8 @@
 		"style": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
 		"style:ci": "prettier --check package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
 		"ts:all": "lerna run ts --stream",
-		"build:all": "lerna run build --stream"
+		"build:all": "lerna run build --stream",
+		"story": "start-storybook"
 	},
 	"repository": {
 		"type": "git",
@@ -54,7 +55,9 @@
 		"@rollup/plugin-commonjs": "^17.0.0",
 		"@rollup/plugin-node-resolve": "^11.0.0",
 		"@storybook/addon-essentials": "^6.1.7",
+		"@storybook/addon-links": "^6.1.7",
 		"@storybook/react": "^6.1.7",
+		"@storybook/preset-create-react-app": "^3.1.5",
 		"@types/clui": "^0.3.0",
 		"@types/debug": "^4.1.5",
 		"@types/ejs": "^3.0.5",

@@ -10,7 +10,6 @@
 		"test": "echo \"Error: Run tests from root\" && exit 1",
 		"ts": "tsc",
 		"build": "rollup -c",
-		"story": "start-storybook",
 		"prepublishOnly": "npm run build"
 	},
 	"repository": {
