@@ -4,3 +4,4 @@ export * from './use-preferences';
 export * from './use-title';
 
 export * from './event-bus-abstractions';
+export * from './preferences-abstractions';
