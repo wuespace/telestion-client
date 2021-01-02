@@ -9,7 +9,7 @@ import {
 import {
 	PageFunctionalComponent,
 	Routing
-} from '../../types/page-functional-component';
+} from '../../model/page-functional-component';
 import { AuthRoute } from './routes/auth-route';
 import { UnAuthRoute } from './routes/un-auth-route';
 
