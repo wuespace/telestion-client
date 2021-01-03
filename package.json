@@ -5,6 +5,7 @@
 	"private": true,
 	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
 	"scripts": {
+		"postinstall": "lerna bootstrap --hoist",
 		"clean": "lerna clean -y",
 		"style": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
 		"style:ci": "prettier --check package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
@@ -76,12 +77,5 @@
 		"typescript": "^4.1.2",
 		"yargs": "^16.1.1",
 		"zustand": "^3.2.0"
-	},
-	"dependencies": {
-		"@wuespace/telestion-client-cli": "file:packages/telestion-client-cli",
-		"@wuespace/telestion-client-common": "file:packages/telestion-client-common",
-		"@wuespace/telestion-client-core": "file:packages/telestion-client-core",
-		"@wuespace/telestion-client-mock-server": "file:packages/mock-server",
-		"@wuespace/telestion-client-template": "file:packages/telestion-client-template"
 	}
 }

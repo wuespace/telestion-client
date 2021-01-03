@@ -55,6 +55,6 @@
 		"zustand": "^3.2.0"
 	},
 	"dependencies": {
-		"@wuespace/telestion-client-core": "file:../telestion-client-core"
+		"@wuespace/telestion-client-core": "v0.1.0"
 	}
 }
