@@ -56,17 +56,23 @@ If you want to contribute to the Telestion Client project, read further!
 
 This project uses [Lerna](https://lerna.js.org/) as a monorepo package management tool.
 
+First, install `lerna` globally for better repository maintenance:
+
+```
+$ npm i -g lerna
+```
+
 To install all dependencies the right way, run:
 
-```shell
-$ npm run bootstrap
+```
+$ npm ci
 ```
 
 To clear all installed dependencies, execute:
 
-```shell
+```
 $ cd /path/to/directory/root
-$ lerna clean
+$ npm run clean
 $ rm -rf node_modules
 ```
 
@@ -75,14 +81,14 @@ $ rm -rf node_modules
 Most of the time, you can use a package in the `packages` folder like a normal npm project.
 If you want to run the command over all packages in parallel, ask lerna for help:
 
-```shell
+```
 $ lerna run build --stream
 ```
 
 Differences come up, if you want to add a dependency.
 Here you must use lerna with the scope modifier:
 
-```shell
+```
 $ lerna add [packageName] [packages/prefix-*]
 ```
 
@@ -90,7 +96,7 @@ Sometimes you need to edit the `package.json` manually.
 You can add dependencies by simply adding the lines in the dependency object
 and run lerna to restructure the monorepo dependencies:
 
-```shell
+```
 $ lerna link convert
 ```
 
@@ -117,7 +123,7 @@ that detect git tags and triggers a publishing to these registries.
 
 You only need to call:
 
-```shell
+```
 $ lerna version
 $ git push
 ```
