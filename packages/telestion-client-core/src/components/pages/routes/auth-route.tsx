@@ -1,17 +1,15 @@
 import { FC } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { Route, Redirect, RouteProps } from 'react-router-dom';
 
 import { useAuth } from '../../../hooks';
 
-export interface AuthRouteProps {
+export interface AuthRouteProps
+	extends Omit<RouteProps, 'children' | 'render'> {
 	redirectPath: string;
 }
 
-export const AuthRoute: FC<AuthRouteProps> = ({
-	children,
-	redirectPath,
-	...rest
-}) => {
+const AuthRoute: FC<AuthRouteProps> = ({ children, redirectPath, ...rest }) => {
 	const { user } = useAuth();
 	return (
 		<Route
@@ -28,3 +26,18 @@ export const AuthRoute: FC<AuthRouteProps> = ({
 		/>
 	);
 };
+
+AuthRoute.propTypes = {
+	redirectPath: PropTypes.string.isRequired,
+	exact: PropTypes.bool,
+	// @ts-ignore
+	location: PropTypes.object,
+	path: PropTypes.oneOfType([
+		PropTypes.string,
+		PropTypes.arrayOf(PropTypes.string)
+	]),
+	sensitive: PropTypes.bool,
+	strict: PropTypes.bool
+};
+
+export { AuthRoute };

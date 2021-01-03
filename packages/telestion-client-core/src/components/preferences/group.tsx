@@ -1,4 +1,5 @@
 import { FC, FunctionComponent, ReactElement } from 'react';
+import PropTypes from 'prop-types';
 import { GroupContext } from './group-context';
 import { GroupSelector } from '../../model/preferences';
 import { VariableProps } from './variable';
@@ -20,6 +21,13 @@ export interface GroupProps {
 /**
  * Defines a group of variables which are typically {@link Variable} components.
  */
-export const Group: FC<GroupProps> = ({ name, children }) => (
+const Group: FC<GroupProps> = ({ name, children }) => (
 	<GroupContext name={name}>{children}</GroupContext>
 );
+
+Group.propTypes = {
+	name: PropTypes.oneOfType([PropTypes.string, null]).isRequired,
+	children: PropTypes.any
+};
+
+export { Group };

@@ -1,4 +1,5 @@
 import { Children, FC, ReactElement } from 'react';
+import PropTypes from 'prop-types';
 import {
 	HashRouter as Router,
 	Switch,
@@ -39,7 +40,12 @@ export interface PagesProps {
 	children: Child | Array<Child>;
 }
 
-export const Pages: FC<PagesProps> = ({ children }) => {
+/**
+ * The router of the application.
+ *
+ * Here are all pages managed.
+ */
+const Pages: FC<PagesProps> = ({ children }) => {
 	const routes = [];
 	const lastRoutes = [];
 
@@ -73,3 +79,9 @@ export const Pages: FC<PagesProps> = ({ children }) => {
 		</Router>
 	);
 };
+
+Pages.propTypes = {
+	children: PropTypes.any
+};
+
+export { Pages };

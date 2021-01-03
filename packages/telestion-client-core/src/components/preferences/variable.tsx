@@ -1,4 +1,5 @@
 import { FC, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { StateSelector } from 'zustand';
 import shallow from 'zustand/shallow';
 
@@ -40,11 +41,7 @@ export interface VariableProps {
  *
  * @see {@link PreferencesStore}
  */
-export const Variable: FC<VariableProps> = ({
-	name,
-	initialValue,
-	children
-}) => {
+const Variable: FC<VariableProps> = ({ name, initialValue, children }) => {
 	const { setRenderer, setValue } = usePreferences(prefSelector, shallow);
 	const group = useGroup();
 
@@ -60,3 +57,11 @@ export const Variable: FC<VariableProps> = ({
 
 	return null;
 };
+
+Variable.propTypes = {
+	name: PropTypes.string.isRequired,
+	initialValue: PropTypes.any,
+	children: PropTypes.func.isRequired
+};
+
+export { Variable };
