@@ -26,6 +26,9 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
 
+      - name: Print current environment
+        run: env
+
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
