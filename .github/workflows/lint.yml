@@ -13,7 +13,7 @@ jobs:
 
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
 
       - name: Set up Node.js
         uses: actions/setup-node@v2.1.4
@@ -25,9 +25,13 @@ jobs:
         run: npm ci
 
       - name: Run linters
-        uses: wearerequired/lint-action@v1
+        uses: wearerequired/lint-action@v1.7.0
         with:
           github_token: ${{ secrets.github_token }}
           # Enable linters
           eslint: true
           prettier: true
+          # throw out next argument from lint-action (".") to to check files outside of 'src'
+          # until pull request is merged
+          # see: https://github.com/wearerequired/lint-action/pull/46
+          eslint_args: '--ignore-pattern node_modules/ --no-error-on-unmatched-pattern "packages/*/src/**/*{.ts,.tsx,.js,.jsx}"; return;'
