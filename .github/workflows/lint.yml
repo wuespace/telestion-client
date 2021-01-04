@@ -39,8 +39,8 @@ jobs:
     strategy:
       matrix:
         package: [
-            "${GITHUB_WORKSPACE}/packages/telestion-client-core",
-            "${GITHUB_WORKSPACE}/package/telestion-client-common"
+            "./packages/telestion-client-core",
+            "./package/telestion-client-common"
         ]
     runs-on: ubuntu-latest
 
