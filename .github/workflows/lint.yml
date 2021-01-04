@@ -64,6 +64,6 @@ jobs:
           check_name: '${linter} (${dir})'
           # Enable linters
           eslint: true
-          eslint_args: '--ignore-pattern node_modules/ --no-error-on-unmatched-pattern'
+          eslint_args: '--ignore-pattern node_modules/ --no-error-on-unmatched-pattern \"src/**/*\" --'
           eslint_dir: packages/telestion-client-core
           eslint_extensions: ts,tsx,js,jsx
