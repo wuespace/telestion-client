@@ -1,0 +1,66 @@
+# Attribution goes to @pklaschka for this awesome action.
+# Taken from the chat-xd-plugin workflows
+# https://github.com/pklaschka/chat-xd-plugin/ (c) 2020 Pablo Klaschka (MIT-Licensed)
+# and modified to work in monorepo structure
+# add additional monorepo packages to build matrix to lint them
+
+name: Lint
+
+on: push
+
+jobs:
+  check-project-style:
+    name: Check style in project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 12
+
+      # prettier must be in `package.json`
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          check_name: "${linter}_root"
+          # Enable linters
+          prettier: true
+
+  lint-react-libs:
+    name: Lint React Libraries
+    strategy:
+      matrix:
+        package: [packages/telestion-client-core, package/telestion-client-common]
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out Git repository
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 12
+
+      # Eslint must be in `package.json`
+      - name: Install Node.js dependencies
+        run: npm ci
+
+      - name: Run linters
+        uses: wearerequired/lint-action@v1
+        with:
+          github_token: ${{ secrets.github_token }}
+          check_name: "${linter}_${dir}"
+          # Enable linters
+          eslint: true
+          eslint_args: "--ignore-pattern node_modules/ --no-error-on-unmatched-pattern"
+          eslint_dir: ${{ matrix.package }}
+          eslint_extensions: ts,tsx,js,jsx
