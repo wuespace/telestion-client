@@ -9,17 +9,8 @@ name: Lint
 on: push
 
 jobs:
-  set-project-path:
-    name: Updates path to access node binaries
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Append path variable
-        run: echo "$GITHUB_WORKSPACE/node_modules/.bin" >> $GITHUB_PATH
-
   check-project-style:
     name: Check style in project
-    needs: set-project-path
     runs-on: ubuntu-latest
 
     steps:
@@ -45,7 +36,6 @@ jobs:
 
   lint-react-libs:
     name: Lint React Libraries
-    needs: set-project-path
     strategy:
       matrix:
         package:
@@ -53,6 +43,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Append path variable
+        run: echo "$GITHUB_WORKSPACE/node_modules/.bin" >> $GITHUB_PATH
+
       - name: Check out Git repository
         uses: actions/checkout@v2
 
