@@ -58,7 +58,7 @@ jobs:
         run: npm ci
 
       - name: Run linters
-        uses: wearerequired/lint-action@v1
+        uses: wearerequired/lint-action@v1.6.0
         with:
           github_token: ${{ secrets.github_token }}
           check_name: '${linter} (${dir})'
