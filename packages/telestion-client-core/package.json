@@ -10,11 +10,8 @@
 		"build"
 	],
 	"scripts": {
-		"lint": "npm run ts && npm run eslint",
 		"build": "rollup -c",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"ts": "tsc --noEmit",
-		"eslint": "eslint src/**/*{.ts,.tsx,.js,.jsx} --ignore-pattern node_modules/ --no-error-on-unmatched-pattern",
 		"prepublishOnly": "npm run build"
 	},
 	"repository": {
