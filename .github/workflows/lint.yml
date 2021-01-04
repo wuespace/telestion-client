@@ -30,21 +30,20 @@ jobs:
         uses: wearerequired/lint-action@v1
         with:
           github_token: ${{ secrets.github_token }}
-          check_name: '${linter}_root'
+          check_name: '${linter} (global)'
           # Enable linters
           prettier: true
 
   lint-react-libs:
     name: Lint React Libraries
-    strategy:
-      matrix:
-        package:
-          [packages/telestion-client-core, package/telestion-client-common]
     runs-on: ubuntu-latest
 
     steps:
       - name: Append path variable
         run: echo "$GITHUB_WORKSPACE/node_modules/.bin" >> $GITHUB_PATH
+
+      - name: Current environment
+        run: env
 
       - name: Check out Git repository
         uses: actions/checkout@v2
@@ -62,11 +61,11 @@ jobs:
         uses: wearerequired/lint-action@v1
         with:
           github_token: ${{ secrets.github_token }}
-          check_name: '${linter}_${dir}'
+          check_name: '${linter} (${dir})'
           # Enable linters
           eslint: true
           eslint_args: '--ignore-pattern node_modules/ --no-error-on-unmatched-pattern'
-          eslint_dir: ${{ matrix.package }}
+          eslint_dir: packages/telestion-client-core
           eslint_extensions: ts,tsx,js,jsx
           # hack to call eslint directly
           eslint_command_prefix: ' '
