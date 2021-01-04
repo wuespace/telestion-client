@@ -9,8 +9,17 @@ name: Lint
 on: push
 
 jobs:
+  set-project-path:
+    name: Updates path to access node binaries
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Append path variable
+        run: echo "$GITHUB_WORKSPACE/node_modules/.bin" >> $GITHUB_PATH
+
   check-project-style:
     name: Check style in project
+    needs: set-project-path
     runs-on: ubuntu-latest
 
     steps:
@@ -26,9 +35,6 @@ jobs:
       - name: Install Node.js dependencies
         run: npm ci
 
-      - name: Print current environment
-        run: env
-
       - name: Run linters
         uses: wearerequired/lint-action@v1
         with:
@@ -39,6 +45,7 @@ jobs:
 
   lint-react-libs:
     name: Lint React Libraries
+    needs: set-project-path
     strategy:
       matrix:
         package: [packages/telestion-client-core, package/telestion-client-common]
