@@ -67,5 +67,3 @@ jobs:
           eslint_args: '--ignore-pattern node_modules/ --no-error-on-unmatched-pattern'
           eslint_dir: packages/telestion-client-core
           eslint_extensions: ts,tsx,js,jsx
-          # hack to call eslint directly
-          eslint_command_prefix: ' '
