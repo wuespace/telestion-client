@@ -15,7 +15,7 @@ jobs:
 
     steps:
       - name: Check out Git repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
 
       - name: Set up Node.js
         uses: actions/setup-node@v2.1.4
@@ -27,7 +27,7 @@ jobs:
         run: npm ci
 
       - name: Run linters
-        uses: wearerequired/lint-action@v1
+        uses: wearerequired/lint-action@v1.7.0
         with:
           github_token: ${{ secrets.github_token }}
           check_name: '${linter} (global)'
@@ -38,15 +38,17 @@ jobs:
     name: Lint React Libraries
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        package:
+          [packages/telestion-client-core, packages/telestion-client-common]
+
     steps:
       - name: Append path variable
         run: echo "$GITHUB_WORKSPACE/node_modules/.bin" >> $GITHUB_PATH
 
-      - name: Current environment
-        run: env
-
       - name: Check out Git repository
-        uses: actions/checkout@v2
+        uses: actions/checkout@v2.3.4
 
       - name: Set up Node.js
         uses: actions/setup-node@v2.1.4
@@ -58,12 +60,15 @@ jobs:
         run: npm ci
 
       - name: Run linters
-        uses: wearerequired/lint-action@v1.6.0
+        uses: wearerequired/lint-action@v1.7.0
         with:
           github_token: ${{ secrets.github_token }}
           check_name: '${linter} (${dir})'
           # Enable linters
           eslint: true
-          eslint_args: '--ignore-pattern node_modules/ --no-error-on-unmatched-pattern "src/**/*" --'
-          eslint_dir: packages/telestion-client-core
+          eslint_dir: ${{ matrix.package }}
           eslint_extensions: ts,tsx,js,jsx
+          # throw out next argument from lint-action (".") to to check files outside of 'src'
+          # until pull request is merged
+          # see: https://github.com/wearerequired/lint-action/pull/46
+          eslint_args: '--ignore-pattern node_modules/ --no-error-on-unmatched-pattern "src/**/*"; return;'
