@@ -1,0 +1,13 @@
+{
+	"extends": "../../tsconfig.react.json",
+	"compilerOptions": {
+		"declarationDir": "build",
+		"moduleResolution": "node"
+	},
+	"include": ["src/**/*", "typings.d.ts"],
+	"exclude": [
+		"node_modules",
+		"src/**/*.stories.tsx",
+		"src/**/*.test.tsx"
+	]
+}

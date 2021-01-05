@@ -7,6 +7,5 @@ module.exports = {
 		project: [path.join(__dirname, 'tsconfig.json')]
 	},
 	extends: [path.join(__dirname, '..', '..', '.eslintrc.react.js')],
-	rules: {},
-	ignorePatterns: ['.eslintrc.js', 'build']
+	rules: {}
 };

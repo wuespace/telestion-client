@@ -1,3 +1,11 @@
+const path = require('path');
+
 module.exports = {
-	root: true
+	root: true,
+	parserOptions: {
+		tsconfigRootDir: __dirname,
+		project: [path.join(__dirname, 'tsconfig.json')]
+	},
+	extends: [path.join(__dirname, '..', '..', '.eslintrc.react.js')],
+	rules: {}
 };

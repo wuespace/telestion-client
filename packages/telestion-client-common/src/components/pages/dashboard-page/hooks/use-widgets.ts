@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { widgetsContext } from '../contexts/widgets-context';
 
-export function useWidgets() {
+export function useWidgets(): unknown {
 	const context = useContext(widgetsContext);
 	if (!context)
 		throw new TypeError(
