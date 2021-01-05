@@ -12,17 +12,33 @@ jobs:
       - uses: actions/setup-node@v2.1.2
         with:
           node-version: 13
+
       - name: Install development dependencies
         run: npm ci
       - name: Check file styles and formattings
         run: npm run style:ci
+      - name: Lint project
+        run: npm run lint
       - name: Build all packages
         run: npm run build:all
+
       - name: Upload vertx-event-bus build artifact
         uses: actions/upload-artifact@v2.2.1
         with:
           name: vertx-event-bus_build-${{ github.run_number }}
           path: packages/vertx-event-bus/build/
+          retention-days: 7
+      - name: Upload telestion-client-types build artifact
+        uses: actions/upload-artifact@v2.2.1
+        with:
+          name: telestion-client-types_build-${{ github.run_number }}
+          path: packages/telestion-client-types/types/
+          retention-days: 7
+      - name: Upload telestion-client-prop-types build artifact
+        uses: actions/upload-artifact@v2.2.1
+        with:
+          name: telestion-client-prop-types_build-${{ github.run_number }}
+          path: packages/telestion-client-prop-types/build/
           retention-days: 7
       - name: Upload telestion-client-core build artifact
         uses: actions/upload-artifact@v2.2.1

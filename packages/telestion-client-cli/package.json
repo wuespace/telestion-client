@@ -11,8 +11,7 @@
 		"src"
 	],
 	"scripts": {
-		"test": "echo \"Error: Run tests from root\" && exit 1",
-		"ts": "tsc"
+		"test": "echo \"Error: Run tests from root\" && exit 1"
 	},
 	"repository": {
 		"type": "git",
