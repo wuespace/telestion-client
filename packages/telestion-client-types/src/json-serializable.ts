@@ -1,8 +1,6 @@
-namespace TelestionClient {
-	export type JsonSerializable =
-		| number
-		| string
-		| boolean
-		| Map<string, JsonSerializable>
-		| Array<JsonSerializable>;
-}
+export type JsonSerializable =
+	| number
+	| string
+	| boolean
+	| { [key: string]: JsonSerializable }
+	| Array<JsonSerializable>;

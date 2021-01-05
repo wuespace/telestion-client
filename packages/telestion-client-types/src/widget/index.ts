@@ -1,4 +1,4 @@
-import './config-controls-props';
-import './configurable-widget-props';
-import './widget';
-import './widget-props';
+export * from './config-controls-props';
+export * from './configurable-widget-props';
+export * from './widget';
+export * from './widget-props';

@@ -1,7 +1,9 @@
-import './json-serializable';
+import * as j from './json-serializable';
+import * as w from './widget';
 
 declare global {
 	namespace TelestionClient {
-		export type PseudoType = any;
+		export import Widget = w;
+		export import JsonSerializable = j.JsonSerializable;
 	}
 }
