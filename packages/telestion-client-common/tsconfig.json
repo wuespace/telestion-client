@@ -2,6 +2,7 @@
 	"extends": "../../tsconfig.react.json",
 	"compilerOptions": {
 		"declarationDir": "build",
+		"moduleResolution": "node"
 	},
 	"include": ["src/**/*", "typings.d.ts"],
 	"exclude": [
