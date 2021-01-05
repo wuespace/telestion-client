@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { StateSelector } from 'zustand';
 import shallow from 'zustand/shallow';
 
-import { Options } from '../lib/vertx-event-bus';
+import { Options } from '@wuespace/vertx-event-bus';
 import {
 	AuthState,
 	ebOptionsPropTypes,

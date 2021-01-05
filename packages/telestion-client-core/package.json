@@ -51,7 +51,7 @@
 	],
 	"dependencies": {
 		"@fliegwerk/logsemts": "^0.4.0-0",
-		"sockjs-client": "^1.5.0"
+		"@wuespace/vertx-event-bus": "^0.1.0"
 	},
 	"peerDependencies": {
 		"prop-types": "^15.7.2",

@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
 import { StateSelector } from 'zustand';
-
-import { EventBusState, useEventBus } from '../use-event-bus';
 import {
 	Callback,
 	ErrorMessage,
 	JsonSerializable
-} from '../../lib/vertx-event-bus';
+} from '@wuespace/vertx-event-bus';
+
+import { EventBusState, useEventBus } from '../use-event-bus';
 
 const eventBusSelector: StateSelector<
 	EventBusState,

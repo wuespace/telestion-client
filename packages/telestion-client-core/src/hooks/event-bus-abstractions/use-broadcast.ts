@@ -1,8 +1,8 @@
 import { useCallback } from 'react';
 import { StateSelector } from 'zustand';
+import { JsonSerializable } from '@wuespace/vertx-event-bus';
 
 import { EventBusState, useEventBus } from '../use-event-bus';
-import { JsonSerializable } from '../../lib/vertx-event-bus';
 
 const eventBusSelector: StateSelector<
 	EventBusState,

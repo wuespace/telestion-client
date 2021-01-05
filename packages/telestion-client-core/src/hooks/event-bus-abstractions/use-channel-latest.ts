@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
+import { JsonSerializable } from '@wuespace/vertx-event-bus';
 
 import { useChannel } from './use-channel';
-import { JsonSerializable } from '../../lib/vertx-event-bus';
 
 /**
  * Gets the latest information broadcast on a specific channel.
