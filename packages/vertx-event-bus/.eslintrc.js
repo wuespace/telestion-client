@@ -9,5 +9,5 @@ module.exports = {
 		tsconfigRootDir: __dirname,
 		project: [path.join(__dirname, 'tsconfig.json')]
 	},
-	extends: [path.join(__dirname, '..', '..', '.eslintrc.typescript.js')],
+	extends: [path.join(__dirname, '..', '..', '.eslintrc.typescript.js')]
 };
