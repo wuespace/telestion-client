@@ -1,5 +1,5 @@
 import { join } from 'path';
-import buildConfig from '../../rollup.config.base';
+import buildConfig from '../../base-configs/rollup.config.base';
 
 const packageJson = require('./package.json');
 

@@ -16,7 +16,7 @@ module.exports = {
 		'prettier',
 		'prettier/@typescript-eslint',
 		'plugin:prettier/recommended',
-		path.join(__dirname, '.eslintrc.js')
+		path.join(__dirname, 'eslint.base.js')
 	],
 	rules: {
 		// why not?

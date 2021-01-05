@@ -9,9 +9,8 @@ module.exports = {
 		}
 	},
 	extends: [
-		path.join(__dirname, '.eslintrc.typescript.js'),
+		path.join(__dirname, 'eslint.typescript.js'),
 		'airbnb/hooks',
-		'plugin:@typescript-eslint/recommended',
 		'plugin:react/recommended',
 		'prettier/react'
 	],
@@ -21,13 +20,6 @@ module.exports = {
 		}
 	},
 	rules: {
-		// defined in root .eslintrc.js, but applied so redefinition here
-		'@typescript-eslint/no-unsafe-call': 'off',
-		'@typescript-eslint/no-explicit-any': 'off',
-		'@typescript-eslint/no-unsafe-assignment': 'off',
-		'@typescript-eslint/no-unsafe-member-access': 'off',
-		'@typescript-eslint/no-unsafe-return': 'off',
-		'@typescript-eslint/no-this-alias': 'off',
 		// React v17 allows usage of jsx without importing React
 		// https://reactjs.org/blog/2020/09/22/introducing-the-new-jsx-transform.html
 		'react/react-in-jsx-scope': 'off',
