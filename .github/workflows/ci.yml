@@ -23,7 +23,7 @@ jobs:
         with:
           name: vertx-event-bus_build-${{ github.run_number }}
           path: packages/vertx-event-bus/build/
-       retention-days: 7
+          retention-days: 7
       - name: Upload telestion-client-core build artifact
         uses: actions/upload-artifact@v2.2.1
         with:
