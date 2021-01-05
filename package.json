@@ -9,7 +9,7 @@
 		"clean": "lerna clean -y",
 		"lint": "npm run lint:ts && npm run lint:eslint",
 		"lint:ts": "tsc",
-		"lint:eslint": "eslint --ignore-pattern node_modules/ --no-error-on-unmatched-pattern \"packages/*/src/**/*{.ts,.tsx,.js,.jsx}\"",
+		"lint:eslint": "eslint --ignore-pattern node_modules/ --no-error-on-unmatched-pattern \".\"",
 		"style": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
 		"style:ci": "prettier --check package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.yaml,.yml,.md}'",
 		"build:all": "lerna run build --stream",

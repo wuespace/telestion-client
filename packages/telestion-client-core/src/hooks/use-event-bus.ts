@@ -1,5 +1,9 @@
 import create from 'zustand';
 import { EventBus, ErrorMessage, Options } from '../lib/vertx-event-bus';
+import { getLogger } from '../lib/logger';
+import PropTypes from 'prop-types';
+
+const logger = getLogger('Connection State');
 
 export type ConnectionState = 'connected' | 'disconnected' | 'error';
 
@@ -66,7 +70,7 @@ export const useEventBus = create<EventBusState>((set, get) => ({
 	error: null,
 	lastErrorMessage: null,
 	openEventBus: (serverUrl, options) => {
-		let errorTimerId: any;
+		let errorTimerId: NodeJS.Timeout;
 
 		if (get().eventBus) {
 			throw new TypeError(
@@ -79,16 +83,20 @@ export const useEventBus = create<EventBusState>((set, get) => ({
 		eb.onOpen = () => {
 			eb.enableReconnect(true);
 			set({ connectionState: 'connected' });
+			logger.info('Eventbus opened');
 		};
 
 		eb.onClose = () => {
 			if (errorTimerId) clearTimeout(errorTimerId);
 			set({ connectionState: 'disconnected' });
+			logger.warn('Eventbus closed');
+
 			if (!eb.isReconnectEnabled) {
 				// it's a connection error
 				// close eventbus and delete it
 				eb.close();
 				set({ eventBus: null, error: 'Could not connect to server url' });
+				logger.error('Could not connect to server url');
 			}
 		};
 
@@ -97,6 +105,7 @@ export const useEventBus = create<EventBusState>((set, get) => ({
 				set({ connectionState: 'connected' });
 			}, 2000);
 			set({ connectionState: 'error', lastErrorMessage: message });
+			logger.warn('Received error message:', message);
 		};
 
 		set({ eventBus: eb });
@@ -113,3 +122,12 @@ export const useEventBus = create<EventBusState>((set, get) => ({
 		set({ eventBus: null });
 	}
 }));
+
+export const ebOptionsPropTypes = PropTypes.shape({
+	pingInterval: PropTypes.number,
+	reconnectAttempts: PropTypes.number,
+	reconnectExponent: PropTypes.number,
+	delayMin: PropTypes.number,
+	delayMax: PropTypes.number,
+	randomizationFactor: PropTypes.number
+});

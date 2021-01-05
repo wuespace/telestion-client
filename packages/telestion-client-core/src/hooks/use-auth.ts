@@ -1,5 +1,8 @@
 import create from 'zustand';
 import { Auth, FakeAuth } from '../lib/auth';
+import { getLogger } from '../lib/logger';
+
+const logger = getLogger('Auth State');
 
 // one project wide authenticator
 // TODO: configurable authenticator via TelestionClient component
@@ -56,15 +59,17 @@ export const useAuth = create<AuthState>((set, get) => ({
 			cleanupCb = null;
 		}
 
-		return authenticator.signIn(serverUrl, username, password).then(res => {
-			cleanupCb = authenticator.onAuthStateChanged(res => {
-				if (res.type === 'signOut' || res.user !== get().user) {
-					set({ user: null, serverUrl: null });
-				}
+		return authenticator
+			.signIn(serverUrl, username, password)
+			.then(signInRes => {
+				cleanupCb = authenticator.onAuthStateChanged(changeRes => {
+					if (changeRes.type === 'signOut' || changeRes.user !== get().user) {
+						set({ user: null, serverUrl: null });
+					}
+				});
+				set({ user: signInRes.user, serverUrl });
+				return signInRes.user;
 			});
-			set({ user: res.user, serverUrl: serverUrl });
-			return res.user;
-		});
 	},
 	signOut(): Promise<void> {
 		// clean up callback
@@ -76,7 +81,7 @@ export const useAuth = create<AuthState>((set, get) => ({
 		return authenticator.signOut().then(res => {
 			set({ user: null, serverUrl: null });
 			if (res.reason) {
-				console.warn(res.reason);
+				logger.warn('User signed out because:', res.reason);
 			}
 		});
 	}

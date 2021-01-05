@@ -6,6 +6,8 @@ import { JsonSerializable } from '../../lib/vertx-event-bus';
 /**
  * Gets the latest information broadcast on a specific channel.
  * @param channel the channel address
+ * @returns the last received message
+ * or `undefined` if no message was received yet
  *
  * @typeParam C union of all possible channels (defaults to `string`)
  *
@@ -16,7 +18,9 @@ import { JsonSerializable } from '../../lib/vertx-event-bus';
  * return <p>Latest position: {latestPos}</p>;
  * ```
  */
-export function useChannelLatest<C extends string = string>(channel: C) {
+export function useChannelLatest<C extends string = string>(
+	channel: C
+): JsonSerializable | undefined {
 	const [latest, setLatest] = useState<JsonSerializable>();
 
 	// useCallback here to preserve identity of callback function

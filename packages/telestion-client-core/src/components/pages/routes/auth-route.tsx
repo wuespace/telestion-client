@@ -1,4 +1,5 @@
-import { FC } from 'react';
+/* eslint-disable react/jsx-props-no-spreading */
+import { ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import { Route, Redirect, RouteProps } from 'react-router-dom';
 
@@ -7,9 +8,11 @@ import { useAuth } from '../../../hooks';
 export interface AuthRouteProps
 	extends Omit<RouteProps, 'children' | 'render'> {
 	redirectPath: string;
+
+	children: ReactNode;
 }
 
-const AuthRoute: FC<AuthRouteProps> = ({ children, redirectPath, ...rest }) => {
+export const AuthRoute = ({ children, redirectPath, ...rest }: AuthRouteProps) => {
 	const { user } = useAuth();
 	return (
 		<Route
@@ -30,7 +33,6 @@ const AuthRoute: FC<AuthRouteProps> = ({ children, redirectPath, ...rest }) => {
 AuthRoute.propTypes = {
 	redirectPath: PropTypes.string.isRequired,
 	exact: PropTypes.bool,
-	// @ts-ignore
 	location: PropTypes.object,
 	path: PropTypes.oneOfType([
 		PropTypes.string,
@@ -39,5 +41,3 @@ AuthRoute.propTypes = {
 	sensitive: PropTypes.bool,
 	strict: PropTypes.bool
 };
-
-export { AuthRoute };

@@ -6,6 +6,7 @@
 // ignoring them. In the future, promise rejections that are not handled will
 // terminate the Node.js process with a non-zero exit code.
 process.on('unhandledRejection', err => {
+	console.error(err);
 	throw err;
 });
 
@@ -14,6 +15,7 @@ const debug = require('debug')('cli');
 require('../src/lib/checkExternalDependencies')(['git', 'npm']);
 
 debug('Build yargs parser');
+// noinspection JSUnresolvedFunction
 yargs
 	.scriptName('tc-cli')
 	.commandDir('../src/commands')

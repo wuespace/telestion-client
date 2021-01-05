@@ -1,6 +1,6 @@
 import { FunctionComponent } from 'react';
 
-interface AbstractRouting {
+export interface AbstractRouting {
 	/**
 	 * The component will be rendered
 	 * if the given path matches the current application route.
@@ -18,7 +18,7 @@ interface AbstractRouting {
 	exact?: boolean;
 }
 
-interface AbstractRedirect extends AbstractRouting {
+export interface AbstractRedirect extends AbstractRouting {
 	/**
 	 * the path the application will be redirected
 	 * if the routing type does not match current application state
@@ -87,7 +87,8 @@ export type Routing = DefaultRouting | UnAuthRouting | AuthRouting;
  * An extended version of the {@link FunctionComponent} from React
  * which includes routing based on the application route and state.
  */
-export interface PageFunctionalComponent<P = {}> extends FunctionComponent<P> {
+export interface PageFunctionalComponent<P = Record<string, unknown>>
+	extends FunctionComponent<P> {
 	/**
 	 * the routing for the component
 	 *
@@ -99,4 +100,4 @@ export interface PageFunctionalComponent<P = {}> extends FunctionComponent<P> {
 /**
  * Shorthand type for {@link PageFunctionalComponent}
  */
-export type PFC<P = {}> = PageFunctionalComponent<P>;
+export type PFC<P = Record<string, unknown>> = PageFunctionalComponent<P>;

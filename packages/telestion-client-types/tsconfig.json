@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"module": "commonjs",
+		"target": "es5",
+		"declaration": true,
+		"declarationDir": "./types",
+		"allowJs": true,
+		"checkJs": true,
+		"allowSyntheticDefaultImports": true,
+		"emitDeclarationOnly": true
+	},
+	"include": ["src"],
+	"exclude": ["node_modules", "types"]
+}

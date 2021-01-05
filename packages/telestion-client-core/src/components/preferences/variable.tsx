@@ -1,4 +1,4 @@
-import { FC, useEffect } from 'react';
+import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { StateSelector } from 'zustand';
 import shallow from 'zustand/shallow';
@@ -41,27 +41,33 @@ export interface VariableProps {
  *
  * @see {@link PreferencesStore}
  */
-const Variable: FC<VariableProps> = ({ name, initialValue, children }) => {
+export const Variable = ({ name, initialValue, children }: VariableProps) => {
 	const { setRenderer, setValue } = usePreferences(prefSelector, shallow);
 	const group = useGroup();
 
 	useEffect(() => {
-		// if not in group context, use global scope
-		setValue(group ? group : null, name, initialValue);
-	}, [group, name, initialValue]);
+		if (initialValue) {
+			// if not in group context, use global scope
+			setValue(group, name, initialValue);
+		}
+	}, [group, name, initialValue, setValue]);
 
 	useEffect(() => {
 		// if not in group context, use global scope
-		setRenderer(group ? group : null, name, children);
-	}, [group, name, children]);
+		setRenderer(group, name, children);
+	}, [group, name, children, setRenderer]);
 
 	return null;
 };
 
 Variable.propTypes = {
 	name: PropTypes.string.isRequired,
-	initialValue: PropTypes.any,
+	initialValue: PropTypes.oneOfType([
+		PropTypes.number,
+		PropTypes.string,
+		PropTypes.bool,
+		PropTypes.object,
+		PropTypes.array
+	]),
 	children: PropTypes.func.isRequired
 };
-
-export { Variable };

@@ -1,4 +1,4 @@
-import { FC, FunctionComponent, ReactElement } from 'react';
+import { FunctionComponent, ReactElement } from 'react';
 import PropTypes from 'prop-types';
 import { GroupProps } from './group';
 import { VariableProps } from './variable';
@@ -15,10 +15,8 @@ export interface PreferencesProps {
  * Wrapper component for {@link Group} and {@link Variable}
  * which defining renderer for application preferences.
  */
-const Preferences: FC<PreferencesProps> = ({ children }) => <>{children}</>;
+export const Preferences = ({ children }: PreferencesProps) => <>{children}</>;
 
 Preferences.propTypes = {
-	children: PropTypes.any
+	children: PropTypes.node
 };
-
-export { Preferences };

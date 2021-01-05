@@ -1,4 +1,4 @@
-import { Children, FC, ReactElement } from 'react';
+import { Children, ReactElement, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import {
 	HashRouter as Router,
@@ -8,13 +8,14 @@ import {
 } from 'react-router-dom';
 
 import {
+	AbstractRedirect,
 	PageFunctionalComponent,
 	Routing
 } from '../../model/page-functional-component';
 import { AuthRoute } from './routes/auth-route';
 import { UnAuthRoute } from './routes/un-auth-route';
 
-function buildRedirect(redirect) {
+function buildRedirect(redirect: AbstractRedirect) {
 	return (
 		<DefaultRoute path={redirect.path} exact={redirect.exact}>
 			<Redirect to={redirect.redirectPath} />
@@ -34,7 +35,7 @@ const defaultRouting = {
 	additionalRedirects: []
 };
 
-type Child = ReactElement<any, PageFunctionalComponent<any>>;
+type Child = ReactElement<unknown, PageFunctionalComponent<unknown>>;
 
 export interface PagesProps {
 	children: Child | Array<Child>;
@@ -45,9 +46,9 @@ export interface PagesProps {
  *
  * Here are all pages managed.
  */
-const Pages: FC<PagesProps> = ({ children }) => {
-	const routes = [];
-	const lastRoutes = [];
+export const Pages = ({ children }: PagesProps) => {
+	const routes: ReactNode[] = [];
+	const lastRoutes: ReactNode[] = [];
 
 	Children.forEach(children, (child: Child) => {
 		const routing = { ...defaultRouting, ...child.type.routing };
@@ -81,7 +82,5 @@ const Pages: FC<PagesProps> = ({ children }) => {
 };
 
 Pages.propTypes = {
-	children: PropTypes.any
+	children: PropTypes.node
 };
-
-export { Pages };

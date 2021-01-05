@@ -31,7 +31,4 @@ jobs:
           # Enable linters
           eslint: true
           prettier: true
-          # throw out next argument from lint-action (".") to to check files outside of 'src'
-          # until pull request is merged
-          # see: https://github.com/wearerequired/lint-action/pull/46
-          eslint_args: '--ignore-pattern node_modules/ --no-error-on-unmatched-pattern "packages/*/src/**/*{.ts,.tsx,.js,.jsx}"; return;'
+          eslint_args: '--ignore-pattern node_modules/ --no-error-on-unmatched-pattern'

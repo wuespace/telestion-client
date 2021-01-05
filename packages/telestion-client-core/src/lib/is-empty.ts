@@ -7,6 +7,6 @@
  * @param obj the object to test
  * @returns `true` if the object is empty
  */
-export function isEmpty(obj: object): boolean {
+export function isEmpty(obj: Record<string, unknown>): boolean {
 	return Object.keys(obj).length === 0 && obj.constructor === Object;
 }

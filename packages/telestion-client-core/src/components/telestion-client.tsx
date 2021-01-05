@@ -1,4 +1,4 @@
-import { FC, ReactNode, useEffect } from 'react';
+import { ReactNode, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { StateSelector } from 'zustand';
 import shallow from 'zustand/shallow';
@@ -6,6 +6,7 @@ import shallow from 'zustand/shallow';
 import { Options } from '../lib/vertx-event-bus';
 import {
 	AuthState,
+	ebOptionsPropTypes,
 	EventBusState,
 	PreferenceState,
 	useAuth,
@@ -13,6 +14,7 @@ import {
 	usePreferences
 } from '../hooks';
 
+// zustand selectors
 const authSelector: StateSelector<
 	AuthState,
 	{
@@ -63,6 +65,8 @@ export interface TelestionClientProps {
 	 * @see {@link Options}
 	 */
 	eventBusOptions?: Options;
+
+	children: ReactNode;
 }
 
 /**
@@ -70,17 +74,17 @@ export interface TelestionClientProps {
  * Every part of the Telestion Frontend Application is a child
  * of this component.
  */
-const TelestionClient: FC<TelestionClientProps> = ({
+export const TelestionClient = ({
 	title = 'Telestion Client',
 	wrapper,
 	eventBusOptions,
 	children
-}) => {
+}: TelestionClientProps) => {
 	// set title as preference
 	const update = usePreferences(preferencesSelector);
 
 	useEffect(() => {
-		update(null, 'title', title);
+		update('null', 'title', title);
 	}, [title, update]);
 
 	// automatic eventbus management
@@ -88,7 +92,7 @@ const TelestionClient: FC<TelestionClientProps> = ({
 	const { open, close } = useEventBus(eventBusSelector, shallow);
 
 	useEffect(() => {
-		if (user) {
+		if (user && serverUrl) {
 			// user authenticated -> open
 			open(serverUrl, eventBusOptions);
 			// on change of user, server url or options -> close first
@@ -102,14 +106,5 @@ const TelestionClient: FC<TelestionClientProps> = ({
 TelestionClient.propTypes = {
 	title: PropTypes.string,
 	wrapper: PropTypes.func,
-	eventBusOptions: PropTypes.shape({
-		pingInterval: PropTypes.number,
-		reconnectAttempts: PropTypes.number,
-		reconnectExponent: PropTypes.number,
-		delayMin: PropTypes.number,
-		delayMax: PropTypes.number,
-		randomizationFactor: PropTypes.number
-	})
+	eventBusOptions: ebOptionsPropTypes
 };
-
-export { TelestionClient };

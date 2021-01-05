@@ -55,7 +55,7 @@ export function useChannel<C extends string = string>(
 	 * @param error error if something went wrong or `null`
 	 */
 	(data: JsonSerializable | null, error: ErrorMessage | null) => void
-) {
+): void {
 	const eventBus = useEventBus(eventBusSelector);
 
 	if (!eventBus) {

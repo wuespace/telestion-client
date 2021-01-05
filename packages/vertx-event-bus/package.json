@@ -1,0 +1,56 @@
+{
+	"name": "@wuespace/vertx-event-bus",
+	"description": "Vert.x EventBus Client for the Vert.x Telestion Backend",
+	"version": "0.1.0",
+	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
+	"main": "build/index.js",
+	"module": "build/index.es.js",
+	"types": "build/index.d.ts",
+	"files": [
+		"build"
+	],
+	"scripts": {
+		"build": "rollup -c",
+		"test": "echo \"Error: no test specified\" && exit 1",
+		"prepublishOnly": "npm run build"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TelestionTeam/telestion-client.git",
+		"directory": "packages/vertx-event-bus"
+	},
+	"bugs": {
+		"url": "https://github.com/TelestionTeam/telestion-client/issues"
+	},
+	"author": {
+		"name": "wuespace",
+		"email": "kontakt@wuespace.de",
+		"url": "https://www.wuespace.de/"
+	},
+	"contributors": [
+		{
+			"name": "Liam Franssen",
+			"email": "liam.franssen@stud-mail.uni-wuerzburg.de",
+			"url": "https://github.com/leecemin"
+		},
+		{
+			"name": "Pablo Klaschka",
+			"email": "contact@pabloklaschka.de",
+			"url": "https://github.com/pklaschka"
+		},
+		{
+			"name": "Jan Tischhöfer",
+			"email": "jan.tischhoefer@gmail.com",
+			"url": "https://github.com/jantischhoefer"
+		},
+		{
+			"name": "Ludwig Richter",
+			"email": "richter@fliegwerk.com",
+			"url": "https://github.com/fussel178"
+		}
+	],
+	"dependencies": {
+		"@fliegwerk/logsemts": "^0.4.0-0",
+		"sockjs-client": "^1.5.0"
+	}
+}

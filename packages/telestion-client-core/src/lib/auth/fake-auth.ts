@@ -7,6 +7,11 @@ export class FakeAuth implements Auth {
 
 	private username: string;
 
+	constructor() {
+		this.serverUrl = '';
+		this.username = '';
+	}
+
 	signIn(
 		serverUrl: string,
 		username: string,
@@ -55,7 +60,14 @@ export class FakeAuth implements Auth {
 		});
 	}
 
+	// eslint-disable-next-line @typescript-eslint/no-unused-vars
 	onAuthStateChanged(cb: (res: AuthResult) => void): () => void {
+		if (this.username !== '') {
+			// cb({ type: 'signIn', user: this.username });
+		} else {
+			// cb({ type: 'signOut' });
+		}
+
 		return () => {};
 	}
 }

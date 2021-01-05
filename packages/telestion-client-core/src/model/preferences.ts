@@ -32,7 +32,7 @@ export type Selector = string;
 
 export type PrefSelector = Selector;
 
-export type GroupSelector = Selector | null;
+export type GroupSelector = Selector | 'null';
 
 /**
  * a preference with value and renderer
