@@ -30,5 +30,7 @@ jobs:
           github_token: ${{ secrets.github_token }}
           # Enable linters
           eslint: true
-          prettier: true
+          eslint_extensions: 'js,jsx,ts,tsx'
           eslint_args: '--ignore-pattern node_modules/ --no-error-on-unmatched-pattern'
+          prettier: true
+          prettier_extensions: 'ts,tsx,js,jsx,json,html,css,scss,sass,yaml,yml,md'
