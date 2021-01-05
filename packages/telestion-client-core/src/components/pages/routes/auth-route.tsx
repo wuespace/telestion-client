@@ -12,7 +12,11 @@ export interface AuthRouteProps
 	children: ReactNode;
 }
 
-export const AuthRoute = ({ children, redirectPath, ...rest }: AuthRouteProps) => {
+export const AuthRoute = ({
+	children,
+	redirectPath,
+	...rest
+}: AuthRouteProps) => {
 	const { user } = useAuth();
 	return (
 		<Route

@@ -1,5 +1,5 @@
 import { createContext, ReactNode } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { Widget } from '../../../../model/widget/widget';
 
 export const widgetsContext = createContext<Widget[] | null>(null);

@@ -1,7 +1,8 @@
 import create from 'zustand';
+import PropTypes from 'prop-types';
+
 import { EventBus, ErrorMessage, Options } from '../lib/vertx-event-bus';
 import { getLogger } from '../lib/logger';
-import PropTypes from 'prop-types';
 
 const logger = getLogger('Connection State');
 

@@ -12,7 +12,11 @@ export interface UnAuthRouteProps
 	children: ReactNode;
 }
 
-export const UnAuthRoute = ({ children, redirectPath, ...rest }: UnAuthRouteProps) => {
+export const UnAuthRoute = ({
+	children,
+	redirectPath,
+	...rest
+}: UnAuthRouteProps) => {
 	const { user } = useAuth();
 	return (
 		<Route

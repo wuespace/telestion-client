@@ -16,9 +16,6 @@ module.exports = {
 		// Too restrictive, writing ugly code to defend against a very unlikely scenario: https://eslint.org/docs/rules/no-prototype-builtins
 		'no-prototype-builtins': 'off',
 		'no-bitwise': 'warn',
-		// https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
-		'import/prefer-default-export': 'off',
-		'import/no-default-export': 'error',
 		// why not?
 		'no-plusplus': 'off',
 		// Use function hoisting to improve code readability
@@ -30,6 +27,7 @@ module.exports = {
 		// to inform the user and not slap him
 		'prettier/prettier': 'warn'
 	},
+	ignorePatterns: ['.eslintrc.js', 'rollup.*.js'],
 	overrides: [
 		{
 			files: ['*/**/rollup.*.js'],

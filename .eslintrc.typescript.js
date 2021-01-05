@@ -9,14 +9,14 @@ module.exports = {
 	},
 	plugins: ['@typescript-eslint', 'jest', 'prettier'],
 	extends: [
-		path.join(__dirname, '.eslintrc.js'),
 		'airbnb-typescript',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
 		'plugin:jest/recommended',
 		'prettier',
 		'prettier/@typescript-eslint',
-		'plugin:prettier/recommended'
+		'plugin:prettier/recommended',
+		path.join(__dirname, '.eslintrc.js')
 	],
 	rules: {
 		// why not?
@@ -36,8 +36,20 @@ module.exports = {
 		'@typescript-eslint/no-unsafe-assignment': 'off',
 		'@typescript-eslint/no-unsafe-member-access': 'off',
 		'@typescript-eslint/no-unsafe-return': 'off',
+		// https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
+		'import/prefer-default-export': 'off',
+		'import/no-default-export': 'error',
 		// treat wrong format as warning instead of error
 		// to inform the user and not slap him
 		'prettier/prettier': 'warn'
-	}
+	},
+	ignorePatterns: ['build'],
+	overrides: [
+		{
+			files: ['typings.d.ts'],
+			rules: {
+				'import/no-default-export': 'off'
+			}
+		}
+	]
 };

@@ -1,10 +1,7 @@
-const path = require("path");
+const path = require('path');
 
 module.exports = {
 	root: true,
-	env: {
-		node: false
-	},
 	plugins: ['react'],
 	settings: {
 		react: {
