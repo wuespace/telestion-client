@@ -43,6 +43,11 @@
 			"url": "https://github.com/fussel178"
 		}
 	],
+	"husky": {
+		"hooks": {
+			"pre-commit": "pretty-quick --staged"
+		}
+	},
 	"devDependencies": {
 		"@adobe/react-spectrum": "^3.6.0",
 		"@babel/core": "^7.12.9",
@@ -74,10 +79,12 @@
 		"eslint-plugin-react": "^7.22.0",
 		"eslint-plugin-react-hooks": "^4.2.0",
 		"glob": "^7.1.6",
+		"husky": "^4.3.6",
 		"jest": "^26.6.3",
 		"lerna": "^3.22.1",
 		"node-sass": "^5.0.0",
 		"prettier": "2.2.0",
+		"pretty-quick": "^3.1.0",
 		"prop-types": "^15.7.2",
 		"react": "^17.0.1",
 		"react-dom": "^17.0.1",
