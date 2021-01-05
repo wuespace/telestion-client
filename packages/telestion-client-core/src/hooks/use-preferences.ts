@@ -19,7 +19,7 @@ export type PreferenceState = {
 	 * To add, update and remove the preference renderer
 	 * use {@link setRenderer} instead.
 	 *
-	 * @example```ts
+	 * @example ```ts
 	 * const preference = usePreferences(
 	 *   state => state.preferences['group']['preference'].value
 	 * );
@@ -41,7 +41,7 @@ export type PreferenceState = {
 	 * @param preference the preference name
 	 * @param newValue the new value of the preference
 	 *
-	 * @example```ts
+	 * @example ```ts
 	 * const update = usePreferences(state => state.updateValue);
 	 * const handleClick = () => update('group', 'preference', 'My new value!');
 	 *
@@ -65,7 +65,7 @@ export type PreferenceState = {
 	 * @param preference the preference name
 	 * @param newRenderer the new renderer for the preference
 	 *
-	 * @example```ts
+	 * @example ```ts
 	 * const update = usePreferences(state => state.updateValue);
 	 * const renderer = (value, setValue) => (
 	 *   <TextInput initialValue={value} onSubmit={setValue} />

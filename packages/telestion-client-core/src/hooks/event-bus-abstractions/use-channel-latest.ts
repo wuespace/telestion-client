@@ -13,7 +13,7 @@ import { useChannel } from './use-channel';
  *
  * @throws if there is no eventbus instance
  *
- * @example```ts
+ * @example ```ts
  * const latestPos = useChannelLatest('channel:position');
  * return <p>Latest position: {latestPos}</p>;
  * ```

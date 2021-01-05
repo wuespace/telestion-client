@@ -16,7 +16,7 @@ import {
  * @param preference the name of the preference
  * @returns the current value of the preference
  *
- * @example```ts
+ * @example ```ts
  * const myPref = usePrefValue('myGroup', 'myPref');
  *
  * return <div>{myPref}</div>;
