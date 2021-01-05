@@ -3,5 +3,5 @@
 module.exports = telestionClientPropTypes;
 
 function telestionClientPropTypes() {
-    // TODO
+	// TODO
 }

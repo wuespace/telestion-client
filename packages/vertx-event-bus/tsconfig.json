@@ -10,9 +10,5 @@
 		"sourceMap": true
 	},
 	"include": ["src/**/*", "typings.d.ts"],
-	"exclude": [
-		"node_modules",
-		"build",
-		"src/**/*.test.ts*"
-	]
+	"exclude": ["node_modules", "build", "src/**/*.test.ts*"]
 }

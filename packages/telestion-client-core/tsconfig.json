@@ -1,7 +1,7 @@
 {
 	"extends": "../../tsconfig.react.json",
 	"compilerOptions": {
-		"declarationDir": "build",
+		"declarationDir": "build"
 	},
 	"include": ["src/**/*", "typings.d.ts"],
 	"exclude": [

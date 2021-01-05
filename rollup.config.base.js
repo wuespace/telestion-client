@@ -12,7 +12,7 @@ export const monorepoPackages = [
 	'@wuespace/telestion-client-prop-types',
 	'@wuespace/telestion-client-template',
 	'@wuespace/telestion-client-types',
-	'@wuespace/vertx-event-bus',
+	'@wuespace/vertx-event-bus'
 ];
 
 export default function buildConfig(inputPath, packageJson) {

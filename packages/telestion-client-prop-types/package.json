@@ -1,8 +1,8 @@
 {
-  "name": "@wuespace/telestion-client-prop-types",
-  "description": "Common PropTypes of the Telestion Client project",
-  "version": "0.1.0",
-  "homepage": "https://github.com/TelestionTeam/telestion-client#readme",
+	"name": "@wuespace/telestion-client-prop-types",
+	"description": "Common PropTypes of the Telestion Client project",
+	"version": "0.1.0",
+	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
 	"main": "build/index.js",
 	"module": "build/index.es.js",
 	"types": "build/index.d.ts",
@@ -19,9 +19,9 @@
 		"url": "git+https://github.com/TelestionTeam/telestion-client.git",
 		"directory": "packages/telestion-client-prop-types"
 	},
-  "bugs": {
-    "url": "https://github.com/TelestionTeam/telestion-client/issues"
-  },
+	"bugs": {
+		"url": "https://github.com/TelestionTeam/telestion-client/issues"
+	},
 	"author": {
 		"name": "wuespace",
 		"email": "kontakt@wuespace.de",
