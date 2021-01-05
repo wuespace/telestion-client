@@ -3,8 +3,16 @@
 	"description": "The mock server for the Telestion Frontend",
 	"version": "0.1.0",
 	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
+	"main": "build/index.js",
+	"module": "build/index.es.js",
+	"types": "build/index.d.ts",
+	"files": [
+		"build"
+	],
 	"scripts": {
-		"test": "echo \"Error: Run tests from root\" && exit 1"
+		"build": "rollup -c",
+		"test": "echo \"Error: Run tests from root\" && exit 1",
+		"prepublishOnly": "npm run build"
 	},
 	"repository": {
 		"type": "git",
@@ -40,5 +48,8 @@
 			"email": "richter@fliegwerk.com",
 			"url": "https://github.com/fussel178"
 		}
-	]
+	],
+	"dependencies": {
+		"sockjs": "^0.3.21"
+	}
 }
