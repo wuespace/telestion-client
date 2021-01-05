@@ -49,5 +49,11 @@
 	],
 	"dependencies": {
 		"@types/react": "^17.0.0"
+	},
+	"peerDependencies": {
+		"react": "^17.0.1"
+	},
+	"devDependencies": {
+		"typedoc": "^0.20.12"
 	}
 }

@@ -7,3 +7,6 @@ declare global {
 		export import JsonSerializable = j.JsonSerializable;
 	}
 }
+
+export * from './json-serializable';
+export * from './widget';

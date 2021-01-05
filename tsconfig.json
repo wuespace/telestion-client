@@ -67,14 +67,29 @@
 		"skipLibCheck": true /* Skip type checking of declaration files. */,
 		"forceConsistentCasingInFileNames": true /* Disallow inconsistently-cased references to the same file. */
 	},
-	"include": [
-		"packages/*/src",
-		".eslintrc.js",
-		".eslintrc.react.js",
-		"packages/telestion-client-core/.eslintrc.js",
-		"packages/telestion-client-common/.eslintrc.js",
-		"packages/telestion-client-types/.eslintrc.js",
-		"packages/vertx-event-bus/.eslintrc.js"
-	],
-	"exclude": ["node_modules"]
+	//	"include": [
+	//		"packages/*/src",
+	//		".eslintrc.js",
+	//		".eslintrc.react.js",
+	//		"packages/telestion-client-core/.eslintrc.js",
+	//		"packages/telestion-client-common/.eslintrc.js",
+	//		"packages/telestion-client-types/.eslintrc.js",
+	//		"packages/vertx-event-bus/.eslintrc.js"
+	//	],
+	"exclude": ["node_modules"],
+	"files": [],
+	"references": [
+		{
+			"path": "./packages/telestion-client-common"
+		},
+		{
+			"path": "./packages/telestion-client-core"
+		},
+		{
+			"path": "./packages/telestion-client-types"
+		},
+		{
+			"path": "./packages/vertx-event-bus"
+		}
+	]
 }

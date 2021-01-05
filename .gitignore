@@ -41,3 +41,4 @@ packages/*/node_modules
 # build files
 packages/*/build
 packages/telestion-client-types/types
+/docs

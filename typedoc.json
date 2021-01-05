@@ -1,0 +1,10 @@
+{
+	"entryPoints": [
+		"./packages/telestion-client-core/src/index.ts",
+		"./packages/telestion-client-common/src/index.ts",
+		"./packages/telestion-client-types/src/index.ts",
+		"./packages/vertx-event-bus/src/index.ts"
+	],
+	"tsconfig": "./tsconfig.json",
+	"out": "docs"
+}

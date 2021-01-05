@@ -27,7 +27,7 @@ module.exports = {
 		// to inform the user and not slap him
 		'prettier/prettier': 'warn'
 	},
-	ignorePatterns: ['.eslintrc.js', 'rollup.*.js'],
+	ignorePatterns: ['.eslintrc.js', 'rollup.*.js', 'docs'],
 	overrides: [
 		{
 			files: ['*/**/rollup.*.js'],
