@@ -7,7 +7,7 @@ module.exports = {
 		ecmaVersion: 11,
 		sourceType: 'module'
 	},
-	plugins: ['@typescript-eslint', 'jest', 'prettier'],
+	plugins: ['@typescript-eslint', 'jest', 'tsdoc', 'jsdoc', 'prettier'],
 	extends: [
 		'airbnb-typescript',
 		'plugin:@typescript-eslint/recommended',
@@ -39,6 +39,28 @@ module.exports = {
 		// https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
 		'import/prefer-default-export': 'off',
 		'import/no-default-export': 'error',
+		// documentation via fliegdoc
+		'tsdoc/syntax': 'error',
+		'@typescript-eslint/no-inferrable-types': 0,
+		'jsdoc/require-jsdoc': [
+			'error',
+			{
+				contexts: [
+					'TSInterfaceDeclaration',
+					'TSTypeAliasDeclaration',
+					'TSEnumDeclaration'
+				]
+			}
+		],
+		'jsdoc/require-description': 1,
+		'jsdoc/require-param-description': 'error',
+		'jsdoc/require-hyphen-before-param-description': 'error',
+		'jsdoc/no-types': 'error',
+		'jsdoc/require-throws': 'error',
+		'jsdoc/require-param-type': 0,
+		'jsdoc/require-property-type': 0,
+		'jsdoc/require-returns-type': 0,
+		'jsdoc/require-example': 2,
 		// treat wrong format as warning instead of error
 		// to inform the user and not slap him
 		'prettier/prettier': 'warn'
