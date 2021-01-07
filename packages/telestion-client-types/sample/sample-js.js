@@ -33,14 +33,6 @@ let pageAuthRouting;
  * @type {TelestionClient.Page.Routing}
  */
 let pageRouting;
-/**
- * @type {TelestionClient.Page.PageFunctionalComponent}
- */
-let pagePageFunctionalComponent;
-/**
- * @type {TelestionClient.Page.PFC}
- */
-let pagePFC;
 
 // widget
 /**

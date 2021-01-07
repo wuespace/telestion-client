@@ -9,8 +9,6 @@ namespace AnotherPlace {
 	let pageUnAuthRouting: TelestionClient.Page.UnAuthRouting;
 	let pageAuthRouting: TelestionClient.Page.AuthRouting;
 	let pageRouting: TelestionClient.Page.Routing;
-	let pagePageFunctionalComponent: TelestionClient.Page.PageFunctionalComponent;
-	let pagePFC: TelestionClient.Page.PFC;
 	// widget
 	let widgetConfigControlsProps: TelestionClient.Widget.ConfigControlsProps;
 	let widgetConfigurableWidgetProps: TelestionClient.Widget.ConfigurableWidgetProps;

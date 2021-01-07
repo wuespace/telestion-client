@@ -1,1 +1,1 @@
-export * from './page-functional-component';
+export * from './preferences';

@@ -1,5 +1,3 @@
-import { FunctionComponent } from 'react';
-
 export interface AbstractRouting {
 	/**
 	 * The component will be rendered
@@ -51,7 +49,7 @@ interface BaseRouting extends AbstractRouting {
 	 *
 	 * @see {@link AdditionalRedirect}
 	 */
-	additionalRedirects: Array<AdditionalRedirect>;
+	additionalRedirects?: Array<AdditionalRedirect>;
 }
 
 /**
@@ -82,23 +80,8 @@ export interface AuthRouting extends BaseRouting, AbstractRedirect {
 	type: 'auth';
 }
 
+/**
+ * an object for routing based on the application route and state
+ * only necessary in the {@link "@wuespace/telestion-client-core".Pages} component
+ */
 export type Routing = DefaultRouting | UnAuthRouting | AuthRouting;
-
-/**
- * An extended version of the {@link FunctionComponent} from React
- * which includes routing based on the application route and state.
- */
-export interface PageFunctionalComponent<P = Record<string, unknown>>
-	extends FunctionComponent<P> {
-	/**
-	 * the routing for the component
-	 *
-	 * only necessary in the {@link "@wuespace/telestion-client-core".Pages} component
-	 */
-	routing: Routing;
-}
-
-/**
- * Shorthand type for {@link PageFunctionalComponent}
- */
-export type PFC<P = Record<string, unknown>> = PageFunctionalComponent<P>;

@@ -2,6 +2,10 @@ const path = require('path');
 
 module.exports = {
 	root: true,
+	globals: {
+		// @wuespace/telestion-client-types namespace
+		TelestionClient: 'readonly'
+	},
 	parserOptions: {
 		tsconfigRootDir: __dirname,
 		project: [path.join(__dirname, 'tsconfig.json')]
