@@ -30,6 +30,9 @@ module.exports = {
 		// please use object default values instead
 		// https://react-typescript-cheatsheet.netlify.app/docs/basic/getting-started/default_props
 		'react/require-default-props': 'off',
+		// warn on missing key props
+		// https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-key.md
+		'react/jsx-key': ['warn', { checkFragmentShorthand: true }],
 		// too restrictive, libraries also don't have better prop types
 		'react/forbid-prop-types': [
 			'error',
