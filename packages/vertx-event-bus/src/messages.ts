@@ -1,3 +1,6 @@
+/**
+ * type for a valid message to transfer via the event bus
+ */
 export type JsonSerializable =
 	| number
 	| string
@@ -13,22 +16,65 @@ export interface Headers {
 }
 
 /**
- * message that is sent to and received by the event bus
+ * a generic message that is sent to and received by the event bus
  */
 export interface BaseMessage {
+	/**
+	 * every message must have a type
+	 * so backend and frontend can differentiate
+	 * between received and sent messages
+	 */
 	type: 'ping' | 'register' | 'unregister' | 'publish' | 'send' | 'rec' | 'err';
 }
 
+/**
+ * a message that is addressable to a specific locations on the event bus
+ */
 export interface AddressableMessage extends BaseMessage {
+	/**
+	 * the address of a event bus location registered to the backend
+	 */
 	address: string;
+	/**
+	 * additional headers that will be sent with the message
+	 */
 	headers: Headers;
+	/**
+	 * optional reply address to send a message back
+	 *
+	 * very useful for a send-receive pattern
+	 * where a backend node sends a message and waits for a receiving message
+	 */
 	replyAddress?: string;
+	/**
+	 * Sends a message back to the sender with a actual content.
+	 * @param message - the content that will be sent with the message
+	 * @param callback - a callback function that will be invoked
+	 * if the sender reply again.
+	 * @param headers - additional headers to send with the message
+	 *
+	 * @example
+	 * ```ts
+	 * eb.registerHandler('awesome-channel', message => {
+	 *   if (message.replyAddress) {
+	 *     console.log(message.body); // ping
+	 *     message.reply('pong', () => {});
+	 *   }
+	 * });
+	 * ```
+	 */
 	// not possible to fix because of circular dependencies
 	// eslint-disable-next-line no-use-before-define
 	reply?: (message: any, callback: Callback, headers?: Headers) => void;
 }
 
+/**
+ * a message with actual content that will be transferred with the message
+ */
 export interface ContentMessage extends AddressableMessage {
+	/**
+	 * the content that will be transferred with the message
+	 */
 	body: JsonSerializable;
 }
 
@@ -90,8 +136,17 @@ export interface ReceiveMessage extends ContentMessage {
  */
 export interface ErrorMessage extends AddressableMessage {
 	type: 'err';
+	/**
+	 * the failure code of the received error
+	 */
 	failureCode: number;
+	/**
+	 * additional error type of the received message
+	 */
 	failureType: string;
+	/**
+	 * additional information about the received error
+	 */
 	message: string;
 }
 
@@ -114,7 +169,8 @@ export type Message =
  * @see {@link EventBus}
  * @see {@link EventBus.setupConnection | setupConnection (here socket.onmessage)}
  *
- * @example ```ts
+ * @example
+ * ```ts
  * // some vertx channel
  * const channel = 'VERTX_CHANNEL';
  *
