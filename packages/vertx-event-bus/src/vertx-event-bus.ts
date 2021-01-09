@@ -42,8 +42,8 @@ const logger = getLogger('Vert.x Eventbus');
  * @example
  * ```ts
  * constructor(url: string, options?: Partial<Options>) {
- *   this.options = { ...defaultOptions, ...options };
- *   ...
+ * 	this.options = { ...defaultOptions, ...options };
+ * 	...
  * }
  * ```
  */
@@ -151,7 +151,7 @@ export class EventBus {
 	 * ```ts
 	 * // set ping interval to 2 seconds
 	 * const eventBus = new EventBus('http://localhost:9870/bridge', {
-	 *   pingInterval: 2000
+	 * 	pingInterval: 2000
 	 * });
 	 *
 	 * // read ping interval
@@ -177,8 +177,8 @@ export class EventBus {
 	 *
 	 * // all methods and accessors of the web socket are available
 	 * this.socket.onmessage = function (this: WebSocket, ev: EventMessage) {
-	 * 	 const message = EventBus.decodeMessage(ev.data);
-	 * 	 console.log('Received message:', message);
+	 * 	const message = EventBus.decodeMessage(ev.data);
+	 * 	console.log('Received message:', message);
 	 * }
 	 * ```
 	 */
@@ -209,13 +209,13 @@ export class EventBus {
 	 *
 	 * // check if channel is available
 	 * if (this.handlers[channel]) {
-	 *   // iterate of all registered handlers
-	 *   that.handlers[message.address].forEach(handler => {
-	 *     handler(
-	 *       successMessage as SuccessMessage,
-	 *       errorMessage as ErrorMessage
-	 *     );
-	 *   });
+	 * 	// iterate of all registered handlers
+	 * 	that.handlers[message.address].forEach(handler => {
+	 * 		handler(
+	 * 			successMessage as SuccessMessage,
+	 * 			errorMessage as ErrorMessage
+	 * 		);
+	 * 	});
 	 * }
 	 * ```
 	 */
@@ -239,12 +239,12 @@ export class EventBus {
 	 *
 	 * // check if channel is available
 	 * if (this.replyHandlers[message.address]) {
-	 *   this.replyHandlers[message.address](
-	 *     successMessage as SuccessMessage,
-	 *     errorMessage as ErrorMessage
-	 *   );
-	 *   // call reply handler only once
-	 *   delete that.replyHandlers[message.address];
+	 * 	this.replyHandlers[message.address](
+	 * 		successMessage as SuccessMessage,
+	 * 		errorMessage as ErrorMessage
+	 *	);
+	 * 	// call reply handler only once
+	 * 	delete that.replyHandlers[message.address];
 	 * }
 	 * ```
 	 */
@@ -263,11 +263,11 @@ export class EventBus {
 	 * const message = { type: 'rec', address: 'SOME_UUID' body: {} };
 	 *
 	 * if (this.state !== EventBus.OPEN) {
-	 *   // eventbus closed -> store
-	 *   this.pendingMessages.push(message);
+	 * 	// eventbus closed -> store
+	 * 	this.pendingMessages.push(message);
 	 * } else {
-	 *   // eventbus open -> send directly
-	 *   this.sendMessage(message);
+	 * 	// eventbus open -> send directly
+	 * 	this.sendMessage(message);
 	 * }
 	 * ```
 	 */
@@ -291,7 +291,7 @@ export class EventBus {
 	 *
 	 * if (this.pingTimerId) clearInterval(this.pingTimerId);
 	 * this.pingTimerId = setInterval(() => {
-	 *   this.sendPing();
+	 * 	this.sendPing();
 	 * }, pingInterval);
 	 * ```
 	 */
@@ -318,14 +318,14 @@ export class EventBus {
 	 * ```ts
 	 * if (this.pingTimerId) clearInterval(this.pingTimerId);
 	 * if (
-	 *   this.reconnectEnabled &&
-	 *   this.reconnectAttempts < this.options.reconnectAttempts
+	 * 	this.reconnectEnabled &&
+	 * 	this.reconnectAttempts < this.options.reconnectAttempts
 	 * ) {
-	 *   this.reconnectTimerId = setTimeout(() => {
-	 *     this.socket = this.setupConnection(url, options);
-	 *   }, this.newReconnectDelay());
+	 * 	this.reconnectTimerId = setTimeout(() => {
+	 * 		this.socket = this.setupConnection(url, options);
+	 * 		}, this.newReconnectDelay());
 	 *
-	 *   this.reconnectAttempts++;
+	 * 	this.reconnectAttempts++;
 	 * }
 	 * ```
 	 */
@@ -349,11 +349,11 @@ export class EventBus {
 	 * @example
 	 * ```ts
 	 * if (this.reconnectEnabled) {
-	 *   this.reconnectTimerId = setTimeout(() => {
-	 *     this.socket = this.setupConnection(url, options);
-	 *   }, this.newReconnectDelay());
+	 * 	this.reconnectTimerId = setTimeout(() => {
+	 * 		this.socket = this.setupConnection(url, options);
+	 * 	}, this.newReconnectDelay());
 	 *
-	 *   ++this.reconnectAttempts;
+	 * 	this.reconnectAttempts++;
 	 * }
 	 * ```
 	 */
@@ -373,11 +373,11 @@ export class EventBus {
 	 * @example
 	 * ```ts
 	 * if (this.reconnectEnabled) {
-	 *   this.reconnectTimerId = setTimeout(() => {
-	 *     this.socket = this.setupConnection(url, options);
-	 *   }, this.newReconnectDelay());
+	 * 	this.reconnectTimerId = setTimeout(() => {
+	 * 		this.socket = this.setupConnection(url, options);
+	 * 	}, this.newReconnectDelay());
 	 *
-	 *   ++this.reconnectAttempts;
+	 * 	this.reconnectAttempts++;
 	 * }
 	 * ```
 	 */
@@ -407,9 +407,9 @@ export class EventBus {
 	 * const eb = new EventBus('http://localhost:9870/bridge');
 	 *
 	 * eb.onOpen = () => {
-	 *   console.log(eb.messageCount); // 0
-	 *   eb.send('awesome-channel', 'Hello World!');
-	 *   console.log(eb.messageCount); // 1
+	 * 	console.log(eb.messageCount); // 0
+	 * 	eb.send('awesome-channel', 'Hello World!');
+	 * 	console.log(eb.messageCount); // 1
 	 * };
 	 * ```
 	 */
@@ -428,7 +428,7 @@ export class EventBus {
 	 * const eventBus = new EventBus('http://localhost:9870/bridge');
 	 *
 	 * eventBus.onOpen = () => {
-	 *   console.log('Event bus has opened');
+	 * 	console.log('Event bus has opened');
 	 * };
 	 *
 	 * // on connection is open or successful reconnect
@@ -454,7 +454,7 @@ export class EventBus {
 	 * const eventBus.enableReconnect(true);
 	 *
 	 * eventBus.onClose = () => {
-	 *   console.log('Event bus has lost connection');
+	 * 	console.log('Event bus has lost connection');
 	 * };
 	 *
 	 * // on connection loss or reconnect failure
@@ -478,7 +478,7 @@ export class EventBus {
 	 * const eventBus.enableReconnect(true);
 	 *
 	 * eventBus.onReconnect = () => {
-	 *   console.log('Event bus has reconnected after a connection loss');
+	 * 	console.log('Event bus has reconnected after a connection loss');
 	 * };
 	 *
 	 * // on successful reconnect
@@ -502,7 +502,7 @@ export class EventBus {
 	 * const eventBus = new EventBus('http://localhost:9870/bridge');
 	 *
 	 * eventBus.onError = (err) => {
-	 *   console.log('Received error message:', err);
+	 * 	console.log('Received error message:', err);
 	 * };
 	 *
 	 * // on an error message
@@ -538,8 +538,8 @@ export class EventBus {
 	 * const eventBus = new EventBus('http://localhost:9870/bridge');
 	 * // set an event listener when the the event bus is open
 	 * eventBus.onOpen = () => {
-	 *   // publish a simple message to the event bus
-	 *   eventBus.publish(channel, 'Hello World');
+	 * 	// publish a simple message to the event bus
+	 * 	eventBus.publish(channel, 'Hello World');
 	 * };
 	 * ```
 	 */
@@ -596,8 +596,8 @@ export class EventBus {
 	 * const eventBus = new EventBus('http://localhost:9870/bridge');
 	 *
 	 * eventBus.onOpen = () => {
-	 *   console.log(eventBus.isPingEnabled);
-	 *   // -> 'true'
+	 * 	console.log(eventBus.isPingEnabled);
+	 * 	// -> 'true'
 	 * }
 	 * ```
 	 */
@@ -617,11 +617,11 @@ export class EventBus {
 	 * const eventBus = new EventBus('http://localhost:9870/bridge');
 	 *
 	 * eventBus.onOpen = () => {
-	 *   console.log(eventBus.isReconnectEnabled);
-	 *   // -> 'false'
-	 *   eventBus.enableReconnect(true);
-	 *   console.log(eventBus.isReconnectEnabled);
-	 *   // -> 'true'
+	 * 	console.log(eventBus.isReconnectEnabled);
+	 * 	// -> 'false'
+	 * 	eventBus.enableReconnect(true);
+	 * 	console.log(eventBus.isReconnectEnabled);
+	 * 	// -> 'true'
 	 * }
 	 * ```
 	 */
@@ -677,11 +677,11 @@ export class EventBus {
 	 * const eventBus = new EventBus('http://localhost:9870/bridge');
 	 *
 	 * eventBus.onOpen = () => {
-	 *   // disable ping message send for 1 second
-	 *   eventBus.enablePing(false);
-	 *   setTimeout(() => {
-	 *     eventBus.enablePing(true);
-	 *   }, 1000);
+	 * 	// disable ping message send for 1 second
+	 * 	eventBus.enablePing(false);
+	 * 	setTimeout(() => {
+	 * 		eventBus.enablePing(true);
+	 * 	}, 1000);
 	 * };
 	 * ```
 	 */
@@ -721,7 +721,7 @@ export class EventBus {
 	 * eventBus.enableReconnect(true);
 	 *
 	 * eventBus.onReconnect = () => {
-	 *   console.log('Event bus has reconnected');
+	 * 	console.log('Event bus has reconnected');
 	 * };
 	 * ```
 	 */
@@ -764,17 +764,17 @@ export class EventBus {
 	 *
 	 * // define a handler
 	 * const handler: Callback = (message, err) => {
-	 *   if (err) {
-	 *     console.error(err);
-	 *   } else {
-	 *     console.log(message);
-	 *   }
+	 * 	if (err) {
+	 * 		console.error(err);
+	 * 	} else {
+	 * 		console.log(message);
+	 * 	}
 	 * };
 	 *
 	 * const eventBus = new EventBus('https://localhost:9870/bridge');
 	 *
 	 * eventBus.onOpen = () => {
-	 *   eventBus.registerHandler(channel, handler);
+	 * 	eventBus.registerHandler(channel, handler);
 	 * };
 	 *
 	 * // later
@@ -819,17 +819,17 @@ export class EventBus {
 	 *
 	 * // define a handler
 	 * const handler: Callback = (message, err) => {
-	 *   if (err) {
-	 *     console.error(err);
-	 *   } else {
-	 *     console.log(message);
-	 *   }
+	 * 	if (err) {
+	 * 		console.error(err);
+	 * 	} else {
+	 * 		console.log(message);
+	 * 	}
 	 * };
 	 *
 	 * const eventBus = new EventBus('https://localhost:9870/bridge');
 	 *
 	 * eventBus.onOpen = () => {
-	 *   eventBus.registerHandler(channel, handler);
+	 * 	eventBus.registerHandler(channel, handler);
 	 * };
 	 *
 	 * // later
@@ -877,7 +877,7 @@ export class EventBus {
 	 * const eventBus = new EventBus('http://localhost:9870/bridge');
 	 *
 	 * eventBus.onOpen = () => {
-	 *   eventBus.publish(channel, 'Hey there!');
+	 * 	eventBus.publish(channel, 'Hey there!');
 	 * }
 	 * ```
 	 */
@@ -927,9 +927,9 @@ export class EventBus {
 	 * const eventBus = new EventBus('http://localhost:9870/bridge');
 	 *
 	 * eventBus.onOpen = () => {
-	 *   eventBus.send(channel, 'Ping', (message, err) => {
-	 *     console.log('Pong:', message);
-	 *   });
+	 * 	eventBus.send(channel, 'Ping', (message, err) => {
+	 * 		console.log('Pong:', message);
+	 * 	});
 	 * };
 	 * ```
 	 */
@@ -992,11 +992,11 @@ export class EventBus {
 	 * const replyAddress = EventBus.generateUUID();
 	 *
 	 * const envelope: Message = {
-	 *   type: 'send',
-	 *   address: channel,
-	 *   headers: headers || {},
-	 *   body: message,
-	 *   replyAddress
+	 * 	type: 'send',
+	 * 	address: channel,
+	 * 	headers: headers || {},
+	 * 	body: message,
+	 * 	replyAddress
 	 * };
 	 * ```
 	 */
@@ -1022,10 +1022,10 @@ export class EventBus {
 	 * @example
 	 * ```ts
 	 * const message: Message = {
-	 *   type: 'publish',
-	 *   address: channel,
-	 *   headers: headers || {},
-	 *   body: message
+	 * 	type: 'publish',
+	 * 	address: channel,
+	 * 	headers: headers || {},
+	 * 	body: message
 	 * };
 	 *
 	 * this.socket.send(EventBus.encodeMessage(message));
@@ -1073,7 +1073,7 @@ export class EventBus {
 	 * @example
 	 * ```ts
 	 * constructor(url: string) {
-	 *   this.socket = this.setupConnection(url);
+	 * 	this.socket = this.setupConnection(url);
 	 * }
 	 * ```
 	 */
@@ -1203,10 +1203,10 @@ export class EventBus {
 	 * @example
 	 * ```ts
 	 * if (enable && pingInterval > 0) {
-	 *   this.sendPing();
-	 *   this.pingTimerId = setInterval(() => {
-	 *     this.sendPing();
-	 *   }, pingInterval);
+	 * 	this.sendPing();
+	 * 	this.pingTimerId = setInterval(() => {
+	 * 		this.sendPing();
+	 * 	}, pingInterval);
 	 * }
 	 * ```
 	 */
@@ -1228,9 +1228,9 @@ export class EventBus {
 	 * @example
 	 * ```ts
 	 * if (!this.handlers[channel]) {
-	 *   this.handlers[channel] = [];
-	 *   // First handler for this address so we should register the connection
-	 *   this.subscribeToChannel(channel, headers);
+	 * 	this.handlers[channel] = [];
+	 * 	// First handler for this address so we should register the connection
+	 * 	this.subscribeToChannel(channel, headers);
 	 * }
 	 * ```
 	 */
@@ -1259,9 +1259,9 @@ export class EventBus {
 	 * @example
 	 * ```ts
 	 * if (newHandlers.length === 0) {
-	 *   delete this.handlers[channel];
-	 *   // No more local handlers so we should unregister the connection
-	 *   this.unsubscribeFromChannel(channel, headers);
+	 * 	delete this.handlers[channel];
+	 * 	// No more local handlers so we should unregister the connection
+	 * 	this.unsubscribeFromChannel(channel, headers);
 	 * }
 	 * ```
 	 */
@@ -1287,10 +1287,10 @@ export class EventBus {
 	 * @example
 	 * ```ts
 	 * const envelope: PublishMessage = {
-	 *   type: 'publish',
-	 *   address: channel,
-	 *   headers: headers || {},
-	 *   body: message
+	 * 	type: 'publish',
+	 * 	address: channel,
+	 * 	headers: headers || {},
+	 * 	body: message
 	 * };
 	 *
 	 * this.sendMessage(envelope);
@@ -1319,14 +1319,14 @@ export class EventBus {
 	 * @example
 	 * ```ts
 	 * if (
-	 *   this.reconnectEnabled &&
-	 *   this.reconnectAttempts < this.options.reconnectAttempts
+	 * 	this.reconnectEnabled &&
+	 * 	this.reconnectAttempts < this.options.reconnectAttempts
 	 * ) {
-	 *   this.reconnectTimerId = setTimeout(() => {
-	 *     this.socket = this.setupConnection(url, options);
-	 *   }, this.newReconnectDelay());
+	 * 	this.reconnectTimerId = setTimeout(() => {
+	 * 		this.socket = this.setupConnection(url, options);
+	 * 	}, this.newReconnectDelay());
 	 *
-	 *   ++this.reconnectAttempts;
+	 * 	this.reconnectAttempts++;
 	 * }
 	 * ```
 	 */

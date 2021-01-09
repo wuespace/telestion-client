@@ -1,4 +1,4 @@
-/* eslint-disable import/no-default-export,@typescript-eslint/no-explicit-any */
+/* eslint-disable import/no-default-export,@typescript-eslint/no-explicit-any,jsdoc/require-jsdoc */
 declare module '*.json' {
 	const value: any;
 	export default value;

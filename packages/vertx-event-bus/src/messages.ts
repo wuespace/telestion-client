@@ -56,10 +56,10 @@ export interface AddressableMessage extends BaseMessage {
 	 * @example
 	 * ```ts
 	 * eb.registerHandler('awesome-channel', message => {
-	 *   if (message.replyAddress) {
-	 *     console.log(message.body); // ping
-	 *     message.reply('pong', () => {});
-	 *   }
+	 * 	if (message.replyAddress) {
+	 * 		console.log(message.body); // ping
+	 * 		message.reply('pong', () => {});
+	 * 	}
 	 * });
 	 * ```
 	 */
@@ -177,13 +177,13 @@ export type Message =
  * const eventBus = new EventBus('http://localhost:8081/');
  *
  * eventBus.onopen = () => {
- *   eventBus.registerHandler(channel, (message, error) => {
- *     if (message) {
- *       console.log('Received message:', message);
- *     } else {
- *       console.error('Received error:', error);
- *     }
- *   });
+ * 	eventBus.registerHandler(channel, (message, error) => {
+ * 		if (message) {
+ * 			console.log('Received message:', message);
+ * 		} else {
+ * 			console.error('Received error:', error);
+ * 		}
+ * 	});
  * };
  * ```
  */

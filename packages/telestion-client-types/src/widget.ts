@@ -30,13 +30,13 @@ export type BasePropType = JsonSerializable;
  * Initialization of basic, advanced and invalid properties
  * ```ts
  * const myProps: GenericProps = {
- *   basic: 'Where is the box?',
- *   advanced: {
- *     part1: 'Test it!',
- *     part2: false,
- *     part3: 3.14
- *   },
- *   invalid: () => console.log('Ohh...') // not allowed
+ * 	basic: 'Where is the box?',
+ * 	advanced: {
+ * 		part1: 'Test it!',
+ * 		part2: false,
+ * 		part3: 3.14
+ * 	},
+ * 	invalid: () => console.log('Ohh...') // not allowed
  * };
  * ```
  */
@@ -60,23 +60,23 @@ export interface GenericProps {
  * import { ReactNode } from 'react';
  *
  * interface WidgetProps extends GenericProps {
- *   type: 'basic' | 'advanced';
+ * 	type: 'basic' | 'advanced';
  * }
  *
  * interface RendererProps extends BaseRendererProps<WidgetProps> {}
  *
  * function Widget({ title, type }: RendererProps): ReactNode {
- *   return (
- *     <div>
- *       <p>Title: {title}</p>
- *       <p>Type: {type}</p>
- *     </div>
- *   );
+ * 	return (
+ * 		<div>
+ * 			<p>Title: {title}</p>
+ * 			<p>Type: {type}</p>
+ * 		</div>
+ * 	);
  * }
  *
  * export const myWidget: Widget<WidgetProps> = {
- *   name: 'My Widget',
- *   Widget: Widget
+ * 	name: 'My Widget',
+ * 	Widget: Widget
  * };
  * ```
  */
@@ -133,12 +133,12 @@ export interface GlobalRendererProps extends GenericProps {
  * import { ReactNode } from 'react';
  *
  * function Widget({ title, type }: BaseRendererProps): ReactNode {
- *   return <p>Title: {title}</p>;
+ * 	return <p>Title: {title}</p>;
  * }
  *
  * export const verySimpleWidget: Widget<WidgetProps> = {
- *   name: 'Very simple Widget',
- *   Widget: Widget
+ * 	name: 'Very simple Widget',
+ * 	Widget: Widget
  * };
  * ```
  *
@@ -148,26 +148,25 @@ export interface GlobalRendererProps extends GenericProps {
  * import { ReactNode } from 'react';
  *
  * interface WidgetProps extends GenericProps {
- *   type: 'basic' | 'advanced';
+ * 	type: 'basic' | 'advanced';
  * }
  *
  * interface RendererProps extends BaseRendererProps<WidgetProps> {}
  *
  * function Widget({ title, type }: RendererProps): ReactNode {
- *   return (
- *     <div>
- *       <p>Title: {title}</p>
- *       <p>Type: {type}</p>
- *     </div>
- *   );
+ * 	return (
+ * 		<div>
+ * 			<p>Title: {title}</p>
+ * 			<p>Type: {type}</p>
+ * 		</div>
+ * 	);
  * }
  *
  * export const myWidget: Widget<WidgetProps> = {
- *   name: 'My Widget',
- *   Widget: Widget
+ * 	name: 'My Widget',
+ * 	Widget: Widget
  * };
  * ```
- *
  */
 export type BaseRendererProps<P extends GenericProps = GenericProps> = P &
 	GlobalRendererProps;
