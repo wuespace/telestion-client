@@ -1,87 +1,150 @@
+/**
+ * Defines a generic routing interface for a Page component.
+ */
 export interface AbstractRouting {
 	/**
-	 * The component will be rendered
-	 * if the given path matches the current application route.
+	 * Describes the path of the Page component.
 	 *
-	 * @see https://reactrouter.com/web/api/Route
+	 * The Page will be rendered
+	 * if the application path resolves to the specified path.
+	 *
+	 * @see {@link https://reactrouter.com/web/api/Route}
 	 */
 	path: string;
 
 	/**
-	 * When {@code true} the path will only match
-	 * if the application route is exactly the same as the path.
+	 * When it is `true` the Path will only match
+	 * if the application route is exactly the same as the specified path above.
 	 *
-	 * @see https://reactrouter.com/web/api/Route/exact-bool
+	 * @see {@link path}
+	 * @see {@link https://reactrouter.com/web/api/Route/exact-bool}
 	 */
 	exact?: boolean;
 }
 
+/**
+ * Defines a generic routing interface
+ * with an additional redirect specifier for a Page component.
+ *
+ * @see {@link AbstractRouting}
+ */
 export interface AbstractRedirect extends AbstractRouting {
 	/**
-	 * the path the application will be redirected
-	 * if the routing type does not match current application state
+	 * Describes the path the application will be redirected
+	 * if the routing type does not match current application state.
 	 *
-	 * @see https://reactrouter.com/web/api/Redirect
+	 * @see {@link UnAuthRouting}
+	 * @see {@link AuthRouting}
+	 * @see {@link https://reactrouter.com/web/api/Redirect}
 	 */
 	redirectPath: string;
 }
 
+/**
+ * Specifies an additional redirect which will add a route to the application
+ * when the application path matches the application are redirected
+ * to the specified path.
+ *
+ * @see {@link AbstractRouting}
+ * @see {@link AbstractRedirect}
+ */
 export interface AdditionalRedirect extends AbstractRedirect {
 	/**
-	 * If {@code true} the additional redirect will be inserted
+	 * If it is `true` the additional redirect will be inserted
 	 * after all registered routes in the
-	 * {@link "@wuespace/telestion-client-core".Pages} component
+	 * {@link @wuespace/telestion-client-core#Pages | Pages renderer component}
 	 * otherwise it will be directly attached
 	 * after the routing definition of the component.
+	 *
+	 * @see {@link @wuespace/telestion-client-core#Pages}
+	 * @see {@link AbstractRedirect}
 	 */
 	last: boolean;
 }
 
+/**
+ * Defines a basic routing object for a Page component.
+ *
+ * @see {@link AbstractRouting}
+ */
 interface BaseRouting extends AbstractRouting {
 	/**
-	 * the type of redirect for the component to use
+	 * Describes the type of redirect for the Page component to use.
+	 *
+	 * This can be a {@link DefaultRouting | default routing}
+	 * or some application state dependent routing
+	 * like {@link UnAuthRouting | unauthorized routing}
+	 * or {@link AuthRouting | authorized routing}.
+	 *
+	 * @see {@link DefaultRouting}
+	 * @see {@link UnAuthRouting}
+	 * @see {@link AuthRouting}
 	 */
 	type: string;
 
 	/**
-	 * additional redirects defined by the component
-	 * which will always redirect based on the entry
+	 * Defines additional redirects that will be added to the
+	 * {@link @wuespace/telestion-client-core#Pages | Pages renderer component}
+	 * additionally.
 	 *
 	 * @see {@link AdditionalRedirect}
+	 * @see {@link @wuespace/telestion-client-core#Pages}
 	 */
 	additionalRedirects?: Array<AdditionalRedirect>;
 }
 
 /**
- * the default type of routing
+ * Specifies the default type of routing for a Page component.
  *
  * It not depends on the application state
- * and will always be reachable under the given {@link path}.
+ * and will always be reachable under the given
+ * {@link AbstractRouting.path | path}.
+ *
+ * @see {@link AbstractRouting}
  */
 export interface DefaultRouting extends BaseRouting {
 	type: 'default';
 }
 
 /**
- * The component will only be rendered
- * if the user in the application is unauthorized (or logged out)
- * otherwise the app will be redirected to the given {@link redirectPath}
+ * Specifies an unauthorized type of routing for a Page component.
+ *
+ * The Page will only be rendered
+ * if the user is unauthorized (or logged out) in the application
+ * otherwise the app will be redirected to the given
+ * {@link AbstractRedirect.redirectPath}.
+ *
+ * @see {@link BaseRouting}
+ * @see {@link AbstractRedirect}
  */
 export interface UnAuthRouting extends BaseRouting, AbstractRedirect {
 	type: 'unAuth';
 }
 
 /**
- * The component will only be rendered
- * if the user in the application is authorized (or logged in)
- * otherwise the app will be redirected to the given {@link redirectPath}
+ * Specifies an authorized type of routing for a Page component.
+ *
+ * The Page will only be rendered
+ * if the user is authorized (or logged in) in the application
+ * otherwise the app will be redirected to the given
+ * {@link AbstractRedirect.redirectPath}.
+ *
+ * @see {@link BaseRouting}
+ * @see {@link AbstractRedirect}
  */
 export interface AuthRouting extends BaseRouting, AbstractRedirect {
 	type: 'auth';
 }
 
 /**
- * an object for routing based on the application route and state
- * only necessary in the {@link "@wuespace/telestion-client-core".Pages} component
+ * Defines an object type for routing information of a Page in Telestion Client.
+ * It can be based on the application route and state and is important for Pages
+ * used in the
+ * {@link @wuespace/telestion-client-core#Pages | Pages renderer component}.
+ *
+ * @see {@link DefaultRouting}
+ * @see {@link UnAuthRouting}
+ * @see {@link AuthRouting}
+ * @see {@link @wuespace/telestion-client-core#Pages}
  */
 export type Routing = DefaultRouting | UnAuthRouting | AuthRouting;

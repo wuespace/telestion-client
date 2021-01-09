@@ -1,10 +1,7 @@
-// json-serializable
-/**
- * @type {TelestionClient.JsonSerializable}
- */
-let json;
-
+//
 // page-functional-component
+//
+
 /**
  * @type {TelestionClient.Page.AbstractRouting}
  */
@@ -34,20 +31,50 @@ let pageAuthRouting;
  */
 let pageRouting;
 
+//
 // widget
+//
 /**
- * @type {TelestionClient.Widget.ConfigControlsProps}
+ * @type {TelestionClient.Widget.BasePropType}
+ */
+let widgetBasePropType;
+/**
+ * @type {TelestionClient.Widget.GenericProps}
+ */
+let widgetGenericProps;
+/**
+ * @type {TelestionClient.Widget.GenericComponent}
+ */
+let widgetGenericComponent;
+/**
+ * @type {TelestionClient.Widget.GlobalRendererProps}
+ */
+let widgetGlobalRendererProps;
+/**
+ * @type {TelestionClient.Widget.BaseRendererProps}
+ */
+let widgetBaseRendererProps;
+/**
+ * @type {TelestionClient.Widget.BaseConfigControlsProps}
  */
 let widgetConfigControlsProps;
-/**
- * @type {TelestionClient.Widget.ConfigurableWidgetProps}
- */
-let widgetConfigurableWidgetProps;
 /**
  * @type {TelestionClient.Widget.Widget}
  */
 let widgetWidget;
+
+//
+// user config
+//
 /**
- * @type {TelestionClient.Widget.WidgetProps}
+ * @type {TelestionClient.UserConfig.WidgetDefinition}
  */
-let widgetWidgetProps;
+let userDashboardsWidgetDefinition;
+/**
+ * @type {TelestionClient.UserConfig.Dashboard}
+ */
+let userDashboardsDashboard;
+/**
+ * @type {TelestionClient.UserConfig.UserConfig}
+ */
+let userDashboardUserConfig;

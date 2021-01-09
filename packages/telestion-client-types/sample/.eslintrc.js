@@ -23,7 +23,10 @@ module.exports = {
 	rules: {
 		'no-unused-vars': 'off',
 		'@typescript-eslint/no-namespace': 'off',
-		'@typescript-eslint/no-unused-vars': 'off'
+		'@typescript-eslint/no-unused-vars': 'off',
+		// documentation
+		'tsdoc/syntax': 'off',
+		'jsdoc/require-jsdoc': 'off'
 	},
 	ignorePatterns: ['sample', 'types']
 };
