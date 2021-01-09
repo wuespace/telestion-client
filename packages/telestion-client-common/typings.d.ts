@@ -1,3 +1,4 @@
+/* eslint-disable jsdoc/require-jsdoc */
 declare module '*.json' {
 	const value: any;
 	export default value;
