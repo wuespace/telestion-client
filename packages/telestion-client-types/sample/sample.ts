@@ -35,4 +35,12 @@ namespace AnotherPlace {
 	let userDashboardsWidgetDefinition: TelestionClient.UserConfig.WidgetDefinition;
 	let userDashboardsDashboard: TelestionClient.UserConfig.Dashboard;
 	let userDashboardUserConfig: TelestionClient.UserConfig.UserConfig;
+
+	//
+	// auth
+	//
+	let authSignInResult: TelestionClient.Auth.SignInResult;
+	let authSignOutResult: TelestionClient.Auth.SignOutResult;
+	let authAuthResult: TelestionClient.Auth.AuthResult;
+	let authAuth: TelestionClient.Auth.Auth;
 }

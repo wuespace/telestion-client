@@ -78,3 +78,23 @@ let userDashboardsDashboard;
  * @type {TelestionClient.UserConfig.UserConfig}
  */
 let userDashboardUserConfig;
+
+//
+// auth
+//
+/**
+ * @type {TelestionClient.Auth.SignInResult}
+ */
+let authSignInResult;
+/**
+ * @type {TelestionClient.Auth.SignOutResult}
+ */
+let authSignOutResult;
+/**
+ * @types {TelestionClient.Auth.AuthResult}
+ */
+let authAuthResult;
+/**
+ * @types {TelestionClient.Auth.Auth}
+ */
+let authAuth;
