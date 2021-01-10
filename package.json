@@ -13,7 +13,9 @@
 		"build:all": "lerna run build --stream",
 		"story": "start-storybook",
 		"docs": "npm run docs:types",
-		"docs:types": "fliegdoc build --serve --port 4040"
+		"docs:ci": "npm run docs:types:ci",
+		"docs:types": "fliegdoc build --serve --port 4040",
+		"docs:types:ci": "fliegdoc build"
 	},
 	"repository": {
 		"type": "git",

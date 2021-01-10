@@ -20,7 +20,7 @@ jobs:
       - name: Install development dependencies
         run: npm ci
       - name: Build documentation
-        run: npm run docs
+        run: npm run docs:ci
       - name: Finalize build
         run: touch docs/.nojekyll
 
