@@ -17,7 +17,7 @@ jobs:
       - name: Setup Node 💿
         uses: actions/setup-node@v2.1.2
         with:
-          node-version: 14
+          node-version: 15
 
       - name: Install development dependencies 📚
         run: npm ci
