@@ -31,7 +31,7 @@ export interface EventBusState extends Record<string, unknown> {
 	 * It can lead to weird bugs tricky to resolve
 	 * because the object does not change its identity once it is created.
 	 * React instead is based on detecting changes and only re-renders
-	 * if a value identity has changed causing different ui and app states.
+	 * if a value identity has changed causing differences in ui and app states.
 	 *
 	 * @see {@link @wuespace/vertx-event-bus#EventBus}
 	 */
