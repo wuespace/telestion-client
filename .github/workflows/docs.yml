@@ -1,4 +1,4 @@
-name: Docs Generator
+name: Docs
 on:
   push:
     branches:
@@ -8,23 +8,25 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - name: Checkout 📥
+        uses: actions/checkout@v2.3.4
         with:
           # If you're using actions/checkout@v2 you must set persist-credentials to false
           # in most cases for the deployment to work correctly.
           persist-credentials: false
-      - uses: actions/setup-node@v2.1.2
+      - name: Setup Node 💿
+        uses: actions/setup-node@v2.1.2
         with:
           node-version: 14
 
-      - name: Install development dependencies
+      - name: Install development dependencies 📚
         run: npm ci
-      - name: Build documentation
+      - name: Build documentation 🛠️
         run: npm run docs:ci
-      - name: Finalize build
+      - name: Finalize build 🪄
         run: touch docs/.nojekyll
 
-      - name: Deploy documentation
+      - name: Deploy documentation 🚀
         uses: JamesIves/github-pages-deploy-action@3.7.1
         with:
           GITHUB_TOKEN: ${{ secrets.github_token }}
