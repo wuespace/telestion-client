@@ -4,14 +4,14 @@ import { StateSelector } from 'zustand';
 import shallow from 'zustand/shallow';
 
 import { useGroup } from './group-context';
-import { PreferenceState, usePreferences } from '../../hooks';
+import { PreferencesState, usePreferences } from '../../hooks';
 import { PrefRenderer, PrefSelector, PrefValue } from '../../model/preferences';
 
 const prefSelector: StateSelector<
-	PreferenceState,
+	PreferencesState,
 	{
-		setValue: PreferenceState['setValue'];
-		setRenderer: PreferenceState['setRenderer'];
+		setValue: PreferencesState['setValue'];
+		setRenderer: PreferencesState['setRenderer'];
 	}
 > = state => ({ setValue: state.setValue, setRenderer: state.setRenderer });
 

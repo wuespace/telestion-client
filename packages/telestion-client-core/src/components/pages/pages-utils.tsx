@@ -6,7 +6,7 @@ import {
 } from 'react';
 import { Routing } from '@wuespace/telestion-client-types';
 
-import { getType, hasOwnProperty, isObj } from '../../lib/type-helpers';
+import { getType, hasOwnProperty, isObj } from '../../lib/core-utils';
 
 // temporary solution for typing type property on createElement components
 // TODO: Redesign types for Page components

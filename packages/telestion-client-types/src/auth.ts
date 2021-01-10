@@ -44,6 +44,13 @@ export interface SignInResult extends BaseResult {
 	 * @see {@link Auth.signIn}
 	 */
 	user: string;
+
+	/**
+	 * the url of the eventbus server to connect to after authentication
+	 *
+	 * @see {@link Auth.signIn}
+	 */
+	eventBusUrl: string;
 }
 
 /**
@@ -89,8 +96,8 @@ export type AuthResult = SignInResult | SignOutResult;
 /**
  * A definition for an authenticator.
  *
- * It may be used in the {@link useAuth} hook to authenticate users
- * via given credentials.
+ * It may be used in the {@link @wuespace/telestion-client-core#useAuth}
+ * hook to authenticate users via given credentials.
  *
  * @see {@link Auth.signIn}
  * @see {@link Auth.signOut}
@@ -121,7 +128,7 @@ export interface Auth {
 	 * and resolves if the authentication was successful
 	 * and otherwise rejects if the authentication was not successful.
 	 *
-	 * @param serverUrl - the server to authenticate to
+	 * @param authServerUrl - the url of the authentication server
 	 * @param username - the users name
 	 * @param password - the users password
 	 *
@@ -134,21 +141,21 @@ export interface Auth {
 	 * const authenticator: Auth = new SomeAuth(); // implements Auth
 	 *
 	 * export function signIn(
-	 * 	serverUrl: string,
+	 * 	authServerUrl: string,
 	 * 	username: string,
 	 * 	password: string
 	 * ): Promise<string> {
 	 * 	return authenticator
-	 * 		.signIn(serverUrl, username, password)
+	 * 		.signIn(authServerUrl, username, password)
 	 * 		.then(signInRes => {
-	 * 			set({ user: signInRes.user, serverUrl });
+	 * 			set({ user: signInRes.user, authServerUrl });
 	 * 			return signInRes.user;
 	 * 		});
 	 * };
 	 * ```
 	 */
 	signIn(
-		serverUrl: string,
+		authServerUrl: string,
 		username: string,
 		password: string
 	): Promise<SignInResult>;

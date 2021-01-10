@@ -1,14 +1,23 @@
-import { Auth, AuthResult, SignInResult, SignOutResult } from './auth';
+import {
+	Auth,
+	AuthResult,
+	SignInResult,
+	SignOutResult
+} from '@wuespace/telestion-client-types';
 
+/**
+ * Fake authenticator that accepts every username with every password
+ * and therefore always resolves.
+ */
 export class FakeAuth implements Auth {
 	private isAuthenticated = false;
 
-	private serverUrl: string;
+	private eventBusUrl: string;
 
 	private username: string;
 
 	constructor() {
-		this.serverUrl = '';
+		this.eventBusUrl = '';
 		this.username = '';
 	}
 
@@ -23,24 +32,34 @@ export class FakeAuth implements Auth {
 			}
 
 			if (this.isAuthenticated) {
-				if (serverUrl !== this.serverUrl || username !== this.username) {
+				if (serverUrl !== this.eventBusUrl || username !== this.username) {
 					reject(new Error('Already signed in with other credentials'));
 				}
 
 				resolve({
 					type: 'signIn',
 					user: this.username,
+					eventBusUrl: this.eventBusUrl,
 					reason: 'Already signed in with given credentials'
 				});
 			}
 
 			if (serverUrl && username && password) {
 				this.isAuthenticated = true;
-				this.serverUrl = serverUrl;
+				// TODO: change in production
+				this.eventBusUrl = serverUrl;
 				this.username = username;
 				// fake sign in delay
 				// TODO: Remove in production
-				setTimeout(() => resolve({ type: 'signIn', user: username }), 500);
+				setTimeout(
+					() =>
+						resolve({
+							type: 'signIn',
+							user: username,
+							eventBusUrl: this.eventBusUrl
+						}),
+					500
+				);
 			}
 		});
 	}
@@ -52,7 +71,7 @@ export class FakeAuth implements Auth {
 			}
 
 			this.isAuthenticated = false;
-			this.serverUrl = '';
+			this.eventBusUrl = '';
 			this.username = '';
 			// fake sign out delay
 			// TODO: Remove in production

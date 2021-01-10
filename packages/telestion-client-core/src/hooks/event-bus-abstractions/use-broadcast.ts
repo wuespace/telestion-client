@@ -14,22 +14,24 @@ const eventBusSelector: StateSelector<
  */
 type BroadcastFunction =
 	/**
-	 * @param message the message that will be broadcast
+	 * @param message - the message that will be broadcast
 	 */
 	(message: JsonSerializable) => void;
 
 /**
  * Send a broadcast on the specified channel with the returned function.
- * @param channel channel to broadcast to
+ * @param channel - channel to broadcast to
  * @returns a function that broadcasts a message
  *
- * @typeParam C union of all possible channels (defaults to `string`)
+ * @typeParam C - union of all possible channels (defaults to `string`)
  *
  * @throws if there is no eventbus instance
  *
+ * @see {@link useEventBus}
  * @see {@link EventBus.publish}
  *
- * @example ```ts
+ * @example
+ * ```ts
  * const broadcast = useBroadcast('channel:hello-world');
  *
  * const handleClick = () => {

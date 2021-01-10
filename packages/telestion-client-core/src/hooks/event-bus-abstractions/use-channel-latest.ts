@@ -5,15 +5,19 @@ import { useChannel } from './use-channel';
 
 /**
  * Gets the latest information broadcast on a specific channel.
- * @param channel the channel address
+ * @param channel - the channel address
  * @returns the last received message
  * or `undefined` if no message was received yet
  *
- * @typeParam C union of all possible channels (defaults to `string`)
+ * @typeParam C - union of all possible channels (defaults to `string`)
  *
  * @throws if there is no eventbus instance
  *
- * @example ```ts
+ * @see {@link useChannel}
+ * @see {@link useEventBus}
+ *
+ * @example
+ * ```ts
  * const latestPos = useChannelLatest('channel:position');
  * return <p>Latest position: {latestPos}</p>;
  * ```

@@ -18,8 +18,8 @@ const eventBusSelector: StateSelector<
  */
 type SendFunction =
 	/**
-	 * @param message the message that will be sent
-	 * @param callback the function that will be called
+	 * @param message - the message that will be sent
+	 * @param callback - the function that will be called
 	 * when the reply returned from the eventbus
 	 */
 	(
@@ -33,16 +33,18 @@ type SendFunction =
 /**
  * Send a message on the specified channel
  * and get the first reply via a callback.
- * @param channel the channel to send to
+ * @param channel - the channel to send to
  * @returns a function that sends a message and registers a one-time callback
  *
- * @typeParam C union of all possible channels (defaults to `string`)
+ * @typeParam C - union of all possible channels (defaults to `string`)
  *
  * @throws if there is no eventbus instance
  *
+ * @see {@link useEventBus}
  * @see {@link EventBus.send}
  *
- * @example ```ts
+ * @example
+ * ```ts
  * const [answer, setAnswer] = useState<JSONSerializable>();
  * const send = useRequest('channel:send-my-anything');
  *

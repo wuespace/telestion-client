@@ -8,7 +8,7 @@ import {
 	AuthState,
 	ebOptionsPropTypes,
 	EventBusState,
-	PreferenceState,
+	PreferencesState,
 	useAuth,
 	useEventBus,
 	usePreferences
@@ -38,8 +38,8 @@ const eventBusSelector: StateSelector<
 });
 
 const preferencesSelector: StateSelector<
-	PreferenceState,
-	PreferenceState['setValue']
+	PreferencesState,
+	PreferencesState['setValue']
 > = state => state.setValue;
 
 export interface TelestionClientProps {

@@ -12,11 +12,14 @@ import {
  * If the group selector is `null`
  * the preference in the global scope will be used.
  *
- * @param group the group of the preference
- * @param preference the name of the preference
+ * @param group - the group of the preference
+ * @param preference - the name of the preference
  * @returns the current value of the preference
  *
- * @example ```ts
+ * @see {@link usePreferences}
+ *
+ * @example
+ * ```ts
  * const myPref = usePrefValue('myGroup', 'myPref');
  *
  * return <div>{myPref}</div>;

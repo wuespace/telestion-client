@@ -18,7 +18,7 @@ const eventBusSelector: StateSelector<
  *
  * **Important note:**
  *
- * Please preserve identity of the `onUpdate` function
+ * Please preserve the identity of the `onUpdate` function
  * to minimize registers and unregisters on the eventbus.
  *
  * For example use {@link useCallback} from React,
@@ -26,17 +26,19 @@ const eventBusSelector: StateSelector<
  * use {@link useChannelLatest} instead.
  * It handles the caveats for you.
  *
- * @param channel the channel address
- * @param onUpdate callback that gets called on new data
+ * @param channel - the channel address
+ * @param onUpdate - callback that gets called on new data
  *
- * @typeParam C union of all possible channels (defaults to `string`)
+ * @typeParam C - union of all possible channels (defaults to `string`)
  *
  * @throws if there is no eventbus instance
  *
+ * @see {@link useEventBus}
  * @see {@link useChannelLatest}
  * @see {@link EventBus}
  *
- * @example ```ts
+ * @example
+ * ```ts
  * const [state, setState] = useState<JSONSerializable>();
  *
  * const cb = useCallback((data) => {
@@ -51,8 +53,8 @@ const eventBusSelector: StateSelector<
 export function useChannel<C extends string = string>(
 	channel: C,
 	onUpdate: /**
-	 * @param data new data from the eventbus
-	 * @param error error if something went wrong or `null`
+	 * @param data - new data from the eventbus
+	 * @param error - error if something went wrong or `null`
 	 */
 	(data: JsonSerializable | null, error: ErrorMessage | null) => void
 ): void {
