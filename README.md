@@ -42,7 +42,7 @@ Finished!
 Now you a ready to go and develop your project groundstation frontend!
 
 A little overwhelmed by the project size or lost the track of the project structure?
-Don't worry! Take a look at our extensive documentation (coming soon™)
+Don't worry! Take a look at our extensive [documentation](https://telestionteam.github.io/telestion-client/)
 or at projects that are already using the Telestion client in action:
 
 - [link_daedalus2]
