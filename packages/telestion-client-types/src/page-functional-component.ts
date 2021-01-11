@@ -80,7 +80,7 @@ interface BaseRouting extends AbstractRouting {
 	 * @see {@link UnAuthRouting}
 	 * @see {@link AuthRouting}
 	 */
-	type: string;
+	type: 'default' | 'unAuth' | 'auth';
 
 	/**
 	 * Defines additional redirects that will be added to the

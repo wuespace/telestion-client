@@ -6,7 +6,5 @@ module.exports = {
 		tsconfigRootDir: __dirname,
 		project: [path.join(__dirname, 'tsconfig.json')]
 	},
-	extends: [
-		path.join(__dirname, '..', '..', 'base-configs', 'eslint.typescript.js')
-	]
+	extends: [path.join(__dirname, '..', '..', 'base-configs', 'eslint.react.js')]
 };

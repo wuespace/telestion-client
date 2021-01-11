@@ -7,7 +7,7 @@ interface BaseResult {
 	/**
 	 * the type of the auth result
 	 */
-	type: string;
+	type: 'signIn' | 'signOut';
 
 	/**
 	 * optional reason why the authentication state has changed
@@ -27,7 +27,7 @@ interface BaseResult {
  * ```ts
  * const authenticator: Auth = new SomeAuth(); // implements Auth
  *
- * authenticator.signIn('http://localhost:9870/bridge/', 'alice', '12345')
+ * authenticator.signIn('http://localhost:9870/bridge', 'alice', '12345')
  * 	.then(signInRes => {
  * 		console.log(`User ${signInRes} signed in`);
  * 		if (signInRes.reason) {
