@@ -1,5 +1,5 @@
 module.exports = {
-	baseUrl: '/',
+	baseUrl: '/telestion-client/',
 	outDir: './docs',
 	readme: './README.md',
 	modules: [
