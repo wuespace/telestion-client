@@ -34,8 +34,8 @@ export default function buildConfig(inputPath, packageJson) {
 			peerDepsExternal(),
 			resolve({ preferBuiltins: true }),
 			commonjs(),
-			typescript({ useTsconfigDeclarationDir: true }),
-			terser()
+			typescript({ useTsconfigDeclarationDir: true })
+			// terser()
 		],
 		external: [
 			...Object.keys(packageJson.dependencies || {}),

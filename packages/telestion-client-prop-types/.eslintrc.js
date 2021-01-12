@@ -6,5 +6,16 @@ module.exports = {
 		tsconfigRootDir: __dirname,
 		project: [path.join(__dirname, 'tsconfig.json')]
 	},
-	extends: [path.join(__dirname, '..', '..', 'base-configs', 'eslint.react.js')]
+	extends: [
+		path.join(__dirname, '..', '..', 'base-configs', 'eslint.react.js')
+	],
+	overrides: [
+		{
+			files: ['**/tests/lib/**/*', '**/tests/samples/**/*'],
+			rules: {
+				'jest/no-export': 'off',
+				'import/no-extraneous-dependencies': 'off'
+			}
+		}
+	]
 };

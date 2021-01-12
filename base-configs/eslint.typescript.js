@@ -36,6 +36,14 @@ module.exports = {
 		'@typescript-eslint/no-unsafe-assignment': 'off',
 		'@typescript-eslint/no-unsafe-member-access': 'off',
 		'@typescript-eslint/no-unsafe-return': 'off',
+		// allow numeric types in template expressions
+		// https://github.com/typescript-eslint/typescript-eslint/blob/master/packages/eslint-plugin/docs/rules/restrict-template-expressions.md
+		'@typescript-eslint/restrict-template-expressions': [
+			'error',
+			{
+				allowNumber: true
+			}
+		],
 		// https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
 		'import/prefer-default-export': 'off',
 		'import/no-default-export': 'error',
