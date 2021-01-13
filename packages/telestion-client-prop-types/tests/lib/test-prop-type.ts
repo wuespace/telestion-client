@@ -32,11 +32,11 @@ export type TestCase<T = unknown> = [string, T];
  * });
  * ```
  */
-export function testPropType(
+export function testPropType<T>(
 	title: string,
 	propType: Requireable<unknown>,
-	valid: Array<TestCase>,
-	invalid: Array<TestCase>
+	valid: Array<TestCase<T>>,
+	invalid: Array<TestCase<T>>
 ): void {
 	beforeEach(() => {
 		resetWarningCache();

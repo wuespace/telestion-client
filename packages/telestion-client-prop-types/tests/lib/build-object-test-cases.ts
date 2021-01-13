@@ -166,6 +166,21 @@ export function buildTestsWithObjectsMissingRequiredKeys<
 // object key type tests
 //
 
+/**
+ * Type definition for an atomic type
+ */
+type Atomic =
+	| undefined
+	| null
+	| boolean
+	| number
+	| string
+	| Record<string, unknown>
+	| Array<unknown>
+	// eslint-disable-next-line @typescript-eslint/ban-types
+	| Function
+	| symbol;
+
 const atomicTypes = [
 	'undefined',
 	'null',
@@ -183,7 +198,7 @@ const atomicTypes = [
  */
 type AtomicType = typeof atomicTypes[number];
 
-const sampleAtomicTypes: { [key in AtomicType]: unknown } = {
+const sampleAtomicTypes: { [key in AtomicType]: Atomic } = {
 	undefined,
 	null: null,
 	boolean: true,
@@ -219,10 +234,15 @@ function toString(type: unknown): string {
 /**
  * Generates valid test cases for PropType object keys
  * using given value types.
- * @param key - the key of the object
+ *
+ * @param fullObj - the full specified object
+ * with all required and optional defined keys
+ * @param key - the key of the object to test
  * @param validTypes - valid types of the value assigned to key
- * @param mergeWith - an object to merge with generated object
  * @returns invalid test cases for PropType object keys
+ *
+ * @typeParam T - the type of valid types
+ * @typeParam M - the type of the object to merge
  *
  * @see {@link TestCase}
  * @see {@link testPropType}
@@ -232,22 +252,23 @@ function toString(type: unknown): string {
  *
  * ```
  */
-export function buildTestsWithValidObjectKeyValues(
-	key: string,
-	validTypes: unknown | Array<unknown>,
-	mergeWith: Record<string, unknown>
-): TestCase<Record<string, unknown>>[] {
+export function buildTestsWithValidObjectKeyValues<
+	O extends Record<string, unknown>,
+	T
+>(fullObj: O, key: keyof O, validTypes: T | Array<T>): Array<TestCase<O>> {
 	if (Array.isArray(validTypes)) {
-		return validTypes.map((type: unknown) => [
-			`object key '${key}' with valid type: '${toString(type)}'`,
-			{ ...mergeWith, [key]: type }
+		return validTypes.map(type => [
+			`object key '${key.toString()}' with valid type: '${toString(type)}'`,
+			{ ...fullObj, [key]: type }
 		]);
 	}
 
 	return [
 		[
-			`object key '${key}' with valid type: '${toString(validTypes)}'`,
-			{ ...mergeWith, [key]: validTypes }
+			`object key '${key.toString()}' with valid type: '${toString(
+				validTypes
+			)}'`,
+			{ ...fullObj, [key]: validTypes }
 		]
 	];
 }
@@ -255,9 +276,11 @@ export function buildTestsWithValidObjectKeyValues(
 /**
  * Generates invalid test cases for PropType object keys
  * using wrong value types.
- * @param key - the key of the object
+ *
+ * @param fullObj - the full specified object
+ * with all required and optional defined keys
+ * @param key - the key of the object to test
  * @param validTypes - valid types of the value assigned to key
- * @param mergeWith - an object to merge with generated object
  * @returns invalid test cases for PropType object keys
  *
  * @see {@link TestCase}
@@ -268,11 +291,13 @@ export function buildTestsWithValidObjectKeyValues(
  *
  * ```
  */
-export function buildTestsWithInvalidObjectKeyValues(
-	key: string,
-	validTypes: AtomicType | Array<AtomicType>,
-	mergeWith: Record<string, unknown>
-): TestCase<Record<string, unknown>>[] {
+export function buildTestsWithInvalidObjectKeyValues<
+	O extends Record<string, unknown>
+>(
+	fullObj: O,
+	key: keyof O,
+	validTypes: AtomicType | Array<AtomicType>
+): Array<TestCase<O>> {
 	return atomicTypes
 		.filter(type =>
 			Array.isArray(validTypes)
@@ -280,7 +305,7 @@ export function buildTestsWithInvalidObjectKeyValues(
 				: type !== validTypes
 		)
 		.map(type => [
-			`object key '${key}' with invalid type: '${type}'`,
-			{ ...mergeWith, [key]: sampleAtomicTypes[type] }
+			`object key '${key.toString()}' with invalid type: '${type}'`,
+			{ ...fullObj, [key]: sampleAtomicTypes[type] }
 		]);
 }
