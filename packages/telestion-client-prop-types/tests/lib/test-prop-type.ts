@@ -1,4 +1,4 @@
-import { checkPropTypes, Requireable } from 'prop-types';
+import { checkPropTypes, resetWarningCache, Requireable } from 'prop-types';
 
 // nice spy to check if console.error has been called
 const consoleSpy = jest.spyOn(console, 'error').mockImplementation();
@@ -39,16 +39,22 @@ export function testPropType(
 	invalid: Array<TestCase>
 ): void {
 	beforeEach(() => {
+		resetWarningCache();
 		consoleSpy.mockClear();
 	});
 
 	if (valid.length > 0) {
 		describe(`Test ${title} for valid cases`, () => {
 			it.each(valid)('should pass on %s', (_, entry) => {
-				console.log(`TypeSpec: { prop: ${JSON.stringify(propType)} }`);
-				console.log(`Values: { prop: ${JSON.stringify(entry)} }`);
+				const fullComponentPropType = {
+					toTest: propType
+				};
 
-				checkPropTypes({ prop: propType }, { prop: entry }, 'prop', title);
+				const props = {
+					toTest: entry
+				};
+
+				checkPropTypes(fullComponentPropType, props, 'prop', title);
 
 				expect(consoleSpy).not.toHaveBeenCalled();
 			});
@@ -58,10 +64,15 @@ export function testPropType(
 	if (invalid.length > 0) {
 		describe(`Test ${title} for invalid cases`, () => {
 			it.each(invalid)('should fail on %s', (_, entry) => {
-				console.log(`TypeSpec: { prop: ${JSON.stringify(propType)} }`);
-				console.log(`Values: { prop: ${JSON.stringify(entry)} }`);
+				const fullComponentPropType = {
+					toTest: propType
+				};
 
-				checkPropTypes({ prop: propType }, { prop: entry }, 'prop', title);
+				const props = {
+					toTest: entry
+				};
+
+				checkPropTypes(fullComponentPropType, props, 'prop', title);
 
 				expect(consoleSpy).toHaveBeenCalled();
 			});

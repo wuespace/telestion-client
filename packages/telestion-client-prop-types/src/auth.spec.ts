@@ -1,23 +1,27 @@
 import { testPropType } from '../tests/lib/test-prop-type';
 
-import { authResultPropType, signInResultPropType } from './auth';
+import { authResultTypePropType, signInResultPropType } from './auth';
 import {
 	buildTestsWithInvalidObjectKeyValues,
 	buildTestsWithObjectsMissingRequiredKeys,
+	buildTestsWithValidObjectKeyValues,
 	buildTestsWithValidObjects
 } from '../tests/lib/build-object-test-cases';
 
 describe('Tests for authentication', () => {
-	describe.only('Tests for AuthResultType', () => {
+	describe('Tests for AuthResultType', () => {
 		testPropType(
 			'AuthResultType',
-			authResultPropType,
-			[['blabla', 'signIn']],
-			[]
+			authResultTypePropType,
+			[
+				["specific string: 'signIn'", 'signIn'],
+				["specific string: 'signOut'", 'signOut']
+			],
+			[['generic string', 'The Box']]
 		);
 	});
 
-	/* const fullSignIn = {
+	const fullSignIn = {
 		type: 'signIn',
 		reason: 'Because why not? :D',
 		user: 'alice',
@@ -29,15 +33,23 @@ describe('Tests for authentication', () => {
 			'SignInResult',
 			signInResultPropType,
 			[
-				[
-					"object key 'type' with valid string: 'signIn'",
-					{ ...fullSignIn, type: 'signIn' }
-				],
 				...buildTestsWithValidObjects(fullSignIn, [
 					'type',
 					'user',
 					'eventBusUrl'
-				])
+				]),
+				...buildTestsWithValidObjectKeyValues('type', 'signIn', fullSignIn),
+				...buildTestsWithValidObjectKeyValues(
+					'reason',
+					[undefined, null, 'anything'],
+					fullSignIn
+				),
+				...buildTestsWithValidObjectKeyValues('user', 'alice', fullSignIn),
+				...buildTestsWithValidObjectKeyValues(
+					'eventBusUrl',
+					'http://localhost:9870/bridge',
+					fullSignIn
+				)
 			],
 			[
 				...buildTestsWithObjectsMissingRequiredKeys(fullSignIn, [
@@ -46,7 +58,11 @@ describe('Tests for authentication', () => {
 					'eventBusUrl'
 				]),
 				...buildTestsWithInvalidObjectKeyValues('type', 'string', fullSignIn),
-				...buildTestsWithInvalidObjectKeyValues('reason', 'string', fullSignIn),
+				...buildTestsWithInvalidObjectKeyValues(
+					'reason',
+					['undefined', 'null', 'string'],
+					fullSignIn
+				),
 				...buildTestsWithInvalidObjectKeyValues('user', 'string', fullSignIn),
 				...buildTestsWithInvalidObjectKeyValues(
 					'eventBusUrl',
@@ -59,5 +75,5 @@ describe('Tests for authentication', () => {
 				]
 			]
 		);
-	}); */
+	});
 });

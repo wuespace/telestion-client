@@ -174,7 +174,8 @@ const atomicTypes = [
 	'string',
 	'object',
 	'array',
-	'function'
+	'function',
+	'symbol'
 ] as const;
 
 /**
@@ -190,8 +191,66 @@ const sampleAtomicTypes: { [key in AtomicType]: unknown } = {
 	string: 'The Box',
 	object: {},
 	array: [],
-	function: () => {}
+	function: () => {},
+	symbol: Symbol('example symbol')
 };
+
+/**
+ * Returns a stringified version of type.
+ * @param type - the type to stringify
+ * @returns the stringified version of type
+ *
+ * @example
+ * ```ts
+ *
+ * ```
+ */
+function toString(type: unknown): string {
+	if (typeof type === 'undefined') {
+		return 'undefined';
+	}
+	if (type === null) {
+		return 'null';
+	}
+
+	return (type as any).toString();
+}
+
+/**
+ * Generates valid test cases for PropType object keys
+ * using given value types.
+ * @param key - the key of the object
+ * @param validTypes - valid types of the value assigned to key
+ * @param mergeWith - an object to merge with generated object
+ * @returns invalid test cases for PropType object keys
+ *
+ * @see {@link TestCase}
+ * @see {@link testPropType}
+ *
+ * @example
+ * ```ts
+ *
+ * ```
+ */
+export function buildTestsWithValidObjectKeyValues(
+	key: string,
+	validTypes: unknown | Array<unknown>,
+	mergeWith: Record<string, unknown>
+): TestCase<Record<string, unknown>>[] {
+	if (Array.isArray(validTypes)) {
+		return validTypes.map((type: unknown) => [
+			`object key '${key}' with valid type: '${toString(type)}'`,
+			{ ...mergeWith, [key]: type }
+		]);
+	}
+
+	return [
+		[
+			`object key '${key}' with valid type: '${toString(validTypes)}'`,
+			{ ...mergeWith, [key]: validTypes }
+		]
+	];
+}
 
 /**
  * Generates invalid test cases for PropType object keys
