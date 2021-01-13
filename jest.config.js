@@ -1,6 +1,6 @@
 module.exports = {
 	rootDir: '.',
-	coverageReporters: ['json'],
+	coverageReporters: ['json', 'text', 'text-summary', 'lcov'],
 	projects: [
 		{
 			displayName: 'PropTypes',
@@ -11,6 +11,10 @@ module.exports = {
 			},
 			preset: 'ts-jest',
 			testEnvironment: 'node',
+			coveragePathIgnorePatterns: [
+				'/node_modules/',
+				'<rootDir>/packages/telestion-client-prop-types/tests/'
+			],
 			testMatch: [
 				'<rootDir>/packages/telestion-client-prop-types/src/**/?(*.)+(spec|test).[jt]s'
 			]

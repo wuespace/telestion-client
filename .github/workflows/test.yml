@@ -1,0 +1,25 @@
+name: Test and Coverage
+
+on: [push, pull_request]
+
+jobs:
+  jest-unit-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 📥
+        uses: actions/checkout@v2.3.4
+      - name: Setup Node 💿
+        uses: actions/setup-node@v2.1.2
+        with:
+          node-version: 14
+
+      - name: Install development dependencies 📚
+        run: npm ci
+
+      - name: Run unit tests and report coverage
+        uses: mattallty/jest-github-action@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          # this is just an example, this could be any command that will trigger jest
+          test-command: 'npm run test:unit'

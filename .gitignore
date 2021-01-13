@@ -42,3 +42,7 @@ packages/*/node_modules
 packages/*/build
 packages/telestion-client-types/types
 /docs
+
+# coverage reports
+coverage
+jest.results.json
