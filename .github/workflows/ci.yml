@@ -21,8 +21,6 @@ jobs:
         run: npm run style:ci
       - name: Build all packages 🛠️
         run: npm run build:all
-      - name: Lint project 📌
-        run: npm run lint
 
       - name: Upload vertx-event-bus build artifact 📤
         uses: actions/upload-artifact@v2.2.1
@@ -54,3 +52,6 @@ jobs:
           name: telestion-client-common_build-${{ github.run_number }}
           path: packages/telestion-client-common/build/
           retention-days: 7
+
+      - name: Lint project 📌
+        run: npm run lint
