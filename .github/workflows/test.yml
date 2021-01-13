@@ -16,6 +16,8 @@ jobs:
       - name: Install development dependencies 📚
         run: npm ci
 
+      - name: Build all packages 🛠️
+        run: npm run build:all
       - name: Run unit tests and generate coverage 🛃
         run: npm run test:unit
 
@@ -32,6 +34,8 @@ jobs:
       - name: Install development dependencies 📚
         run: npm ci
 
+      - name: Build all packages 🛠️
+        run: npm run build:all
       - name: Generate and publish code coverage to code climate 📠
         uses: paambaati/codeclimate-action@v2.7.5
         env:
