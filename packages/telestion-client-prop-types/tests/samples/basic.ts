@@ -2,7 +2,7 @@
 import { TestCase } from '../lib/test-prop-type';
 
 export const undefinedCase: TestCase = ['undefined', undefined];
-export const nullCase: TestCase = ['null', undefined];
+export const nullCase: TestCase = ['null', null];
 export const numberCase: TestCase = ['number', 42];
 export const boolCase: TestCase = ['boolean', true];
 export const stringCase: TestCase = ['string', 'The Box'];

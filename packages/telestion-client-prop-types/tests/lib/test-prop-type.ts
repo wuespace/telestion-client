@@ -47,7 +47,7 @@ export function testPropType<T>(
 		describe(`Test ${title} for valid cases`, () => {
 			it.each(valid)('should pass on %s', (_, entry) => {
 				const fullComponentPropType = {
-					toTest: propType
+					toTest: propType.isRequired
 				};
 
 				const props = {
@@ -65,7 +65,7 @@ export function testPropType<T>(
 		describe(`Test ${title} for invalid cases`, () => {
 			it.each(invalid)('should fail on %s', (_, entry) => {
 				const fullComponentPropType = {
-					toTest: propType
+					toTest: propType.isRequired
 				};
 
 				const props = {
