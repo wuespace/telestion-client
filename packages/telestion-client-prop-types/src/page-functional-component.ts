@@ -73,25 +73,6 @@ export const routingTypePropType = PropTypes.oneOf([
 ]);
 
 /**
- * PropType for a base routing
- *
- * See {@link @wuespace/telestion-client-types#BaseRouting}
- * for further information.
- *
- * For more information about using PropTypes,
- * see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
- *
- * @see {@link @wuespace/vertx-event-bus#BaseRouting}
- * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
- */
-export const baseRoutingPropType = PropTypes.shape({
-	path: PropTypes.string.isRequired,
-	exact: PropTypes.bool,
-	type: routingTypePropType.isRequired,
-	additionalRedirects: PropTypes.arrayOf(additionalRedirectPropType)
-});
-
-/**
  * PropType for a default routing
  *
  * See {@link @wuespace/telestion-client-types#DefaultRouting}
@@ -106,7 +87,7 @@ export const baseRoutingPropType = PropTypes.shape({
 export const defaultRoutingPropType = PropTypes.shape({
 	path: PropTypes.string.isRequired,
 	exact: PropTypes.bool,
-	type: PropTypes.oneOf(['default']),
+	type: PropTypes.oneOf(['default']).isRequired,
 	additionalRedirects: PropTypes.arrayOf(additionalRedirectPropType)
 });
 
@@ -126,7 +107,7 @@ export const unAuthRoutingPropType = PropTypes.shape({
 	path: PropTypes.string.isRequired,
 	exact: PropTypes.bool,
 	redirectPath: PropTypes.string.isRequired,
-	type: PropTypes.oneOf(['unAuth']),
+	type: PropTypes.oneOf(['unAuth']).isRequired,
 	additionalRedirects: PropTypes.arrayOf(additionalRedirectPropType)
 });
 
@@ -146,7 +127,7 @@ export const authRoutingPropType = PropTypes.shape({
 	path: PropTypes.string.isRequired,
 	exact: PropTypes.bool,
 	redirectPath: PropTypes.string.isRequired,
-	type: PropTypes.oneOf(['auth']),
+	type: PropTypes.oneOf(['auth']).isRequired,
 	additionalRedirects: PropTypes.arrayOf(additionalRedirectPropType)
 });
 

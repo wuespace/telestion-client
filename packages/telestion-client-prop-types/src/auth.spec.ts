@@ -1,5 +1,4 @@
 import { TestCase, testPropType } from '../tests/lib/test-prop-type';
-
 import {
 	authPropType,
 	authResultPropType,
