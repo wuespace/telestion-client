@@ -12,7 +12,8 @@
 	"scripts": {
 		"build": "rollup -c",
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"prepublishOnly": "npm run build"
+		"prepublishOnly": "npm run build",
+		"clean": "rimraf build"
 	},
 	"repository": {
 		"type": "git",

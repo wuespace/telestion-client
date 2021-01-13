@@ -10,7 +10,8 @@
 	"scripts": {
 		"build": "tsc -p .",
 		"test": "tsc -p sample",
-		"prepublishOnly": "npm run build"
+		"prepublishOnly": "npm run build",
+		"clean": "rimraf types"
 	},
 	"repository": {
 		"type": "git",
@@ -52,8 +53,5 @@
 	},
 	"peerDependencies": {
 		"react": "^17.0.1"
-	},
-	"devDependencies": {
-		"typedoc": "^0.20.12"
 	}
 }
