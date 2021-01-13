@@ -7,7 +7,8 @@ import { useGroup } from './group-context';
 import { PreferencesState, usePreferences } from '../../hooks';
 import { PrefRenderer, PrefSelector, PrefValue } from '../../model/preferences';
 
-const prefSelector: StateSelector<
+// preference selector
+const selector: StateSelector<
 	PreferencesState,
 	{
 		setValue: PreferencesState['setValue'];
@@ -15,34 +16,70 @@ const prefSelector: StateSelector<
 	}
 > = state => ({ setValue: state.setValue, setRenderer: state.setRenderer });
 
+/**
+ * React Props of {@link Variable}
+ *
+ * For more information about React Props, please look here:
+ * {@link https://reactjs.org/docs/components-and-props.html}
+ *
+ * @see {@link Variable}
+ * @see {@link https://reactjs.org/docs/components-and-props.html}
+ */
 export interface VariableProps {
 	/**
-	 * the name of the preference
+	 * The name of the preference.
 	 */
 	name: PrefSelector;
 
 	/**
-	 * the initial value of the preference
+	 * The initial value of the preference.
 	 */
 	initialValue?: PrefValue;
 
 	/**
-	 * the renderer function for preference
+	 * The renderer function for the preference.
 	 */
 	children: PrefRenderer;
 }
 
 /**
- * Defines a renderer for a preference.
+ * Component to define a preference for the application
+ * and a renderer for this preference.
  *
  * If it is wrapped in the {@link Group} component,
  * the renderer will be registered for
- * the preference in that group otherwise for the preference in the global scope.
+ * the preference in that group
+ * otherwise for the preference in the global scope.
  *
- * @see {@link PreferencesStore}
+ * @see {@link Group}
+ * @see {@link Preferences}
+ * @see {@link usePreferences}
+ * @see {@link VariableProps}
+ *
+ * @example
+ * ```ts
+ * function MyPreferences() {
+ * 	return (
+ * 		<Preferences>
+ * 			<Variable name="myPref">
+ * 				{(value, setValue) => (
+ * 					<input value={value} onChange={event => setValue(event.target.value)} />
+ * 				)}
+ * 			</Variable>
+ * 			<Group name="SomeGroup">
+ * 				<Variable name="groupedPref">
+ * 					{(value, setValue) => (
+ * 						<input value={value} onChange={event => setValue(event.target.value)} />
+ * 					)}
+ * 				</Variable>
+ * 			</Group>
+ * 		</Preferences>
+ * 	);
+ * }
+ * ```
  */
-export const Variable = ({ name, initialValue, children }: VariableProps) => {
-	const { setRenderer, setValue } = usePreferences(prefSelector, shallow);
+export function Variable({ name, initialValue, children }: VariableProps) {
+	const { setRenderer, setValue } = usePreferences(selector, shallow);
 	const group = useGroup();
 
 	useEffect(() => {
@@ -57,8 +94,9 @@ export const Variable = ({ name, initialValue, children }: VariableProps) => {
 		setRenderer(group, name, children);
 	}, [group, name, children, setRenderer]);
 
+	// this component intentionally returns nothing
 	return null;
-};
+}
 
 Variable.propTypes = {
 	name: PropTypes.string.isRequired,

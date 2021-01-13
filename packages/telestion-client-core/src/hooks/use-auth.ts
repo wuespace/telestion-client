@@ -18,7 +18,7 @@ const authenticator: Auth = new FakeAuth();
 let cleanupCb: (() => void) | null = null;
 
 /**
- *
+ * Current authentication data stored here.
  */
 export interface Authentication {
 	/**

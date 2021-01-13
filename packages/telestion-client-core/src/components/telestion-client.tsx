@@ -1,110 +1,87 @@
-import { ReactNode, useEffect } from 'react';
+import { ReactElement, ReactNode, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { StateSelector } from 'zustand';
-import shallow from 'zustand/shallow';
 
-import { Options } from '@wuespace/vertx-event-bus';
-import {
-	AuthState,
-	ebOptionsPropTypes,
-	EventBusState,
-	PreferencesState,
-	useAuth,
-	useEventBus,
-	usePreferences
-} from '../hooks';
+import { PreferencesState, usePreferences } from '../hooks';
 
-// zustand selectors
-const authSelector: StateSelector<
-	AuthState,
-	{
-		user: AuthState['user'];
-		serverUrl: AuthState['serverUrl'];
-	}
-> = state => ({
-	user: state.user,
-	serverUrl: state.serverUrl
-});
-
-const eventBusSelector: StateSelector<
-	EventBusState,
-	{
-		open: EventBusState['openEventBus'];
-		close: EventBusState['closeEventBus'];
-	}
-> = state => ({
-	open: state.openEventBus,
-	close: state.closeEventBus
-});
-
-const preferencesSelector: StateSelector<
+// preferences selector
+const selector: StateSelector<
 	PreferencesState,
 	PreferencesState['setValue']
 > = state => state.setValue;
 
+/**
+ * React Props of {@link TelestionClient}
+ *
+ * For more information about React Props, please look here:
+ * {@link https://reactjs.org/docs/components-and-props.html}
+ *
+ * @see {@link TelestionClient}
+ * @see {@link https://reactjs.org/docs/components-and-props.html}
+ */
 export interface TelestionClientProps {
 	/**
-	 * the title of the application
+	 * The title of the application.
 	 *
-	 * can be used with the {@link useTitle} hook
-	 * to get a consistent state of the application
+	 * The title can be used with the {@link useTitle} hook
+	 * to get a consistent title of the application.
 	 */
 	title?: string;
 
 	/**
-	 * Additional wrapper function
-	 * that will "wrap" the children into additional contexts, setups, hoc, etc.
-	 * @param children the children components
+	 * A function that will "wrap" the children into
+	 * additional contexts, setups, HOCs, ...
+	 *
+	 * @param children - the children components
 	 * of the {@link TelestionClient} component
-	 * @return a valid react node
+	 * @returns a valid react element
 	 */
-	wrapper?: (children?: ReactNode) => ReactNode;
+	wrapper?: (children: ReactNode) => ReactElement;
 
 	/**
-	 * additional options for the eventbus
-	 * @see {@link Options}
+	 * Additional children given to the Telestion Client.
+	 * It renders them in his context.
+	 *
+	 * @see {@link https://reactjs.org/docs/glossary.html#propschildren}
 	 */
-	eventBusOptions?: Options;
-
-	children: ReactNode;
+	children?: ReactNode;
 }
 
 /**
- * The main component of the Telestion Frontend.
- * Every part of the Telestion Frontend Application is a child
+ * The "root" component of a Telestion Client.
+ *
+ * Every part of a Telestion Client application should be a child
  * of this component.
+ *
+ * @see {@link TelestionClientProps}
+ *
+ * @example
+ * A very simple Telestion Client
+ * ```ts
+ * import ReactDOM from 'react-dom';
+ *
+ * ReactDOM.render(
+ * 	<TelestionClient />,
+ * 	document.getElementById('root')
+ * );
+ * ```
  */
-export const TelestionClient = ({
+export function TelestionClient({
 	title = 'Telestion Client',
 	wrapper,
-	eventBusOptions,
 	children
-}: TelestionClientProps) => {
-	// set title as preference
-	const update = usePreferences(preferencesSelector);
+}: TelestionClientProps) {
+	const update = usePreferences(selector);
 
 	useEffect(() => {
 		update('null', 'title', title);
 	}, [title, update]);
 
-	// automatic eventbus management
-	const { user, serverUrl } = useAuth(authSelector, shallow);
-	const { open, close } = useEventBus(eventBusSelector, shallow);
-
-	useEffect(() => {
-		if (user && serverUrl) {
-			// user authenticated -> open
-			open(serverUrl, eventBusOptions);
-			// on change of user, server url or options -> close first
-			return () => close();
-		}
-	}, [user, serverUrl, eventBusOptions, open, close]);
-
 	return <>{wrapper ? wrapper(children) : children}</>;
-};
+}
 
 TelestionClient.propTypes = {
 	title: PropTypes.string,
 	wrapper: PropTypes.func,
-	eventBusOptions: ebOptionsPropTypes
+	children: PropTypes.node
 };
