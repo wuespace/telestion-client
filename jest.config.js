@@ -18,7 +18,9 @@ module.exports = {
 				'<rootDir>/node_modules/',
 				'<rootDir>/packages/telestion-client-prop-types/node_modules/',
 				'<rootDir>/packages/telestion-client-prop-types/build/',
-				'<rootDir>/packages/telestion-client-prop-types/tests/'
+				'<rootDir>/packages/telestion-client-prop-types/tests/',
+				'<rootDir>/packages/vertx-event-bus/build/',
+				'<rootDir>/packages/telestion-client-prop-types/node_modules/@wuespace/vertx-event-bus/build/index.js'
 			],
 			testMatch: [
 				'<rootDir>/packages/telestion-client-prop-types/src/**/?(*.)+(spec|test).[jt]s'
