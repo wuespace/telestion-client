@@ -11,8 +11,13 @@ module.exports = {
 			},
 			preset: 'ts-jest',
 			testEnvironment: 'node',
+			collectCoverageFrom: [
+				'<rootDir>/packages/telestion-client-prop-types/src/**'
+			],
 			coveragePathIgnorePatterns: [
-				'/node_modules/',
+				'<rootDir>/node_modules/',
+				'<rootDir>/packages/telestion-client-prop-types/node_modules/',
+				'<rootDir>/packages/telestion-client-prop-types/build/',
 				'<rootDir>/packages/telestion-client-prop-types/tests/'
 			],
 			testMatch: [
