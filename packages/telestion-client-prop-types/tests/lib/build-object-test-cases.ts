@@ -255,32 +255,21 @@ function toString(type: unknown): string {
 export function buildTestsWithValidObjectKeyValues<
 	O extends Record<string, unknown>,
 	T
->(fullObj: O, key: keyof O, validTypes: T | Array<T>): Array<TestCase<O>> {
-	if (Array.isArray(validTypes)) {
-		return validTypes.map(type => [
-			`object key '${key.toString()}' with valid type: '${toString(type)}'`,
-			{ ...fullObj, [key]: type }
-		]);
-	}
-
-	return [
-		[
-			`object key '${key.toString()}' with valid type: '${toString(
-				validTypes
-			)}'`,
-			{ ...fullObj, [key]: validTypes }
-		]
-	];
+>(fullObj: O, key: keyof O, validTypes: Array<T>): Array<TestCase<O>> {
+	return validTypes.map(type => [
+		`object key '${key.toString()}' with valid type: '${toString(type)}'`,
+		{ ...fullObj, [key]: type }
+	]);
 }
 
 /**
  * Generates invalid test cases for PropType object keys
- * using wrong value types.
+ * using wrong values provided via arguments.
  *
  * @param fullObj - the full specified object
  * with all required and optional defined keys
  * @param key - the key of the object to test
- * @param validTypes - valid types of the value assigned to key
+ * @param invalidTypes - invalid types of the value assigned to key
  * @returns invalid test cases for PropType object keys
  *
  * @see {@link TestCase}
@@ -292,18 +281,38 @@ export function buildTestsWithValidObjectKeyValues<
  * ```
  */
 export function buildTestsWithInvalidObjectKeyValues<
+	O extends Record<string, unknown>,
+	T
+>(fullObj: O, key: keyof O, invalidTypes: Array<T>): Array<TestCase<O>> {
+	return invalidTypes.map(type => [
+		`object key '${key.toString()}' with invalid type: '${toString(type)}'`,
+		{ ...fullObj, [key]: type }
+	]);
+}
+
+/**
+ * Generates invalid test cases for PropType object keys
+ * using wrong value atomics.
+ *
+ * @param fullObj - the full specified object
+ * with all required and optional defined keys
+ * @param key - the key of the object to test
+ * @param validTypes - valid atomic types of the value assigned to key
+ * @returns invalid test cases for PropType object keys
+ *
+ * @see {@link TestCase}
+ * @see {@link testPropType}
+ *
+ * @example
+ * ```ts
+ *
+ * ```
+ */
+export function buildTestsWithInvalidObjectKeyAtomics<
 	O extends Record<string, unknown>
->(
-	fullObj: O,
-	key: keyof O,
-	validTypes: AtomicType | Array<AtomicType>
-): Array<TestCase<O>> {
+>(fullObj: O, key: keyof O, validTypes: Array<AtomicType>): Array<TestCase<O>> {
 	return atomicTypes
-		.filter(type =>
-			Array.isArray(validTypes)
-				? !validTypes.includes(type)
-				: type !== validTypes
-		)
+		.filter(type => !validTypes.includes(type))
 		.map(type => [
 			`object key '${key.toString()}' with invalid type: '${type}'`,
 			{ ...fullObj, [key]: sampleAtomicTypes[type] }

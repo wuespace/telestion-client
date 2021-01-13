@@ -7,7 +7,7 @@ import {
 	signOutResultPropType
 } from './auth';
 import {
-	buildTestsWithInvalidObjectKeyValues,
+	buildTestsWithInvalidObjectKeyAtomics,
 	buildTestsWithObjectsMissingRequiredKeys,
 	buildTestsWithValidObjectKeyValues,
 	buildTestsWithValidObjects
@@ -35,18 +35,16 @@ describe('Tests for authentication', () => {
 
 	const validTestsForSignInResult: Array<TestCase<typeof fullSignIn>> = [
 		...buildTestsWithValidObjects(fullSignIn, ['type', 'user', 'eventBusUrl']),
-		...buildTestsWithValidObjectKeyValues(fullSignIn, 'type', 'signIn'),
+		...buildTestsWithValidObjectKeyValues(fullSignIn, 'type', ['signIn']),
 		...buildTestsWithValidObjectKeyValues(fullSignIn, 'reason', [
 			undefined,
 			null,
 			'anything'
 		]),
-		...buildTestsWithValidObjectKeyValues(fullSignIn, 'user', 'alice'),
-		...buildTestsWithValidObjectKeyValues(
-			fullSignIn,
-			'eventBusUrl',
+		...buildTestsWithValidObjectKeyValues(fullSignIn, 'user', ['alice']),
+		...buildTestsWithValidObjectKeyValues(fullSignIn, 'eventBusUrl', [
 			'http://localhost:9870/bridge'
-		)
+		])
 	];
 
 	const invalidTestsForSignInResult: Array<TestCase<typeof fullSignIn>> = [
@@ -55,18 +53,16 @@ describe('Tests for authentication', () => {
 			'user',
 			'eventBusUrl'
 		]),
-		...buildTestsWithInvalidObjectKeyValues(fullSignIn, 'type', 'string'),
-		...buildTestsWithInvalidObjectKeyValues(fullSignIn, 'reason', [
+		...buildTestsWithInvalidObjectKeyAtomics(fullSignIn, 'type', ['string']),
+		...buildTestsWithInvalidObjectKeyAtomics(fullSignIn, 'reason', [
 			'undefined',
 			'null',
 			'string'
 		]),
-		...buildTestsWithInvalidObjectKeyValues(fullSignIn, 'user', 'string'),
-		...buildTestsWithInvalidObjectKeyValues(
-			fullSignIn,
-			'eventBusUrl',
+		...buildTestsWithInvalidObjectKeyAtomics(fullSignIn, 'user', ['string']),
+		...buildTestsWithInvalidObjectKeyAtomics(fullSignIn, 'eventBusUrl', [
 			'string'
-		),
+		]),
 		[
 			"object key 'type' with generic string",
 			{ ...fullSignIn, type: 'The Box' }
@@ -89,7 +85,7 @@ describe('Tests for authentication', () => {
 
 	const validTestsForSignOutResult: Array<TestCase<typeof fullSignOut>> = [
 		...buildTestsWithValidObjects(fullSignOut, ['type']),
-		...buildTestsWithValidObjectKeyValues(fullSignOut, 'type', 'signOut'),
+		...buildTestsWithValidObjectKeyValues(fullSignOut, 'type', ['signOut']),
 		...buildTestsWithValidObjectKeyValues(fullSignOut, 'reason', [
 			undefined,
 			null,
@@ -99,8 +95,8 @@ describe('Tests for authentication', () => {
 
 	const invalidTestsForSignOutResult: Array<TestCase<typeof fullSignOut>> = [
 		...buildTestsWithObjectsMissingRequiredKeys(fullSignOut, ['type']),
-		...buildTestsWithInvalidObjectKeyValues(fullSignOut, 'type', 'string'),
-		...buildTestsWithInvalidObjectKeyValues(fullSignOut, 'reason', [
+		...buildTestsWithInvalidObjectKeyAtomics(fullSignOut, 'type', ['string']),
+		...buildTestsWithInvalidObjectKeyAtomics(fullSignOut, 'reason', [
 			'undefined',
 			'null',
 			'string'
@@ -137,13 +133,11 @@ describe('Tests for authentication', () => {
 			'signOut',
 			'onAuthStateChanged'
 		]),
-		...buildTestsWithValidObjectKeyValues(fullAuth, 'signIn', () => {}),
-		...buildTestsWithValidObjectKeyValues(fullAuth, 'signOut', () => {}),
-		...buildTestsWithValidObjectKeyValues(
-			fullAuth,
-			'onAuthStateChanged',
+		...buildTestsWithValidObjectKeyValues(fullAuth, 'signIn', [() => {}]),
+		...buildTestsWithValidObjectKeyValues(fullAuth, 'signOut', [() => {}]),
+		...buildTestsWithValidObjectKeyValues(fullAuth, 'onAuthStateChanged', [
 			() => {}
-		)
+		])
 	];
 
 	const invalidTestsForAuth: Array<TestCase<typeof fullAuth>> = [
@@ -152,13 +146,11 @@ describe('Tests for authentication', () => {
 			'signOut',
 			'onAuthStateChanged'
 		]),
-		...buildTestsWithInvalidObjectKeyValues(fullAuth, 'signIn', 'function'),
-		...buildTestsWithInvalidObjectKeyValues(fullAuth, 'signOut', 'function'),
-		...buildTestsWithInvalidObjectKeyValues(
-			fullAuth,
-			'onAuthStateChanged',
+		...buildTestsWithInvalidObjectKeyAtomics(fullAuth, 'signIn', ['function']),
+		...buildTestsWithInvalidObjectKeyAtomics(fullAuth, 'signOut', ['function']),
+		...buildTestsWithInvalidObjectKeyAtomics(fullAuth, 'onAuthStateChanged', [
 			'function'
-		)
+		])
 	];
 
 	describe('Tests for Auth', () => {

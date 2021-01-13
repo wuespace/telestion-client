@@ -10,6 +10,7 @@ import {
 	unAuthRoutingPropType
 } from './page-functional-component';
 import {
+	buildTestsWithInvalidObjectKeyAtomics,
 	buildTestsWithInvalidObjectKeyValues,
 	buildTestsWithObjectsMissingRequiredKeys,
 	buildTestsWithValidObjectKeyValues,
@@ -26,11 +27,9 @@ describe('Tests for page functional component', () => {
 		TestCase<typeof fullAbstractRouting>
 	> = [
 		...buildTestsWithValidObjects(fullAbstractRouting, ['path']),
-		...buildTestsWithValidObjectKeyValues(
-			fullAbstractRouting,
-			'path',
+		...buildTestsWithValidObjectKeyValues(fullAbstractRouting, 'path', [
 			'/route'
-		),
+		]),
 		...buildTestsWithValidObjectKeyValues(fullAbstractRouting, 'exact', [
 			undefined,
 			null,
@@ -42,12 +41,10 @@ describe('Tests for page functional component', () => {
 		TestCase<typeof fullAbstractRouting>
 	> = [
 		...buildTestsWithObjectsMissingRequiredKeys(fullAbstractRouting, ['path']),
-		...buildTestsWithInvalidObjectKeyValues(
-			fullAbstractRouting,
-			'path',
+		...buildTestsWithInvalidObjectKeyAtomics(fullAbstractRouting, 'path', [
 			'string'
-		),
-		...buildTestsWithInvalidObjectKeyValues(fullAbstractRouting, 'exact', [
+		]),
+		...buildTestsWithInvalidObjectKeyAtomics(fullAbstractRouting, 'exact', [
 			'undefined',
 			'null',
 			'boolean'
@@ -75,11 +72,9 @@ describe('Tests for page functional component', () => {
 			'path',
 			'redirectPath'
 		]),
-		...buildTestsWithValidObjectKeyValues(
-			fullAbstractRedirect,
-			'path',
+		...buildTestsWithValidObjectKeyValues(fullAbstractRedirect, 'path', [
 			'/route'
-		),
+		]),
 		...buildTestsWithValidObjectKeyValues(fullAbstractRedirect, 'exact', [
 			undefined,
 			null,
@@ -88,7 +83,7 @@ describe('Tests for page functional component', () => {
 		...buildTestsWithValidObjectKeyValues(
 			fullAbstractRedirect,
 			'redirectPath',
-			'/another-route'
+			['/another-route']
 		)
 	];
 
@@ -99,20 +94,18 @@ describe('Tests for page functional component', () => {
 			'path',
 			'redirectPath'
 		]),
-		...buildTestsWithInvalidObjectKeyValues(
-			fullAbstractRedirect,
-			'path',
+		...buildTestsWithInvalidObjectKeyAtomics(fullAbstractRedirect, 'path', [
 			'string'
-		),
-		...buildTestsWithInvalidObjectKeyValues(fullAbstractRedirect, 'exact', [
+		]),
+		...buildTestsWithInvalidObjectKeyAtomics(fullAbstractRedirect, 'exact', [
 			'undefined',
 			'null',
 			'boolean'
 		]),
-		...buildTestsWithInvalidObjectKeyValues(
+		...buildTestsWithInvalidObjectKeyAtomics(
 			fullAbstractRedirect,
 			'redirectPath',
-			'string'
+			['string']
 		)
 	];
 
@@ -138,11 +131,9 @@ describe('Tests for page functional component', () => {
 			'redirectPath',
 			'last'
 		]),
-		...buildTestsWithValidObjectKeyValues(
-			fullAdditionalRedirect,
-			'path',
+		...buildTestsWithValidObjectKeyValues(fullAdditionalRedirect, 'path', [
 			'/route'
-		),
+		]),
 		...buildTestsWithValidObjectKeyValues(fullAdditionalRedirect, 'exact', [
 			undefined,
 			null,
@@ -151,9 +142,11 @@ describe('Tests for page functional component', () => {
 		...buildTestsWithValidObjectKeyValues(
 			fullAdditionalRedirect,
 			'redirectPath',
-			'/another-route'
+			['/another-route']
 		),
-		...buildTestsWithValidObjectKeyValues(fullAdditionalRedirect, 'last', true)
+		...buildTestsWithValidObjectKeyValues(fullAdditionalRedirect, 'last', [
+			true
+		])
 	];
 
 	const invalidTestsForAdditionalRedirect: Array<
@@ -164,26 +157,22 @@ describe('Tests for page functional component', () => {
 			'redirectPath',
 			'last'
 		]),
-		...buildTestsWithInvalidObjectKeyValues(
-			fullAdditionalRedirect,
-			'path',
+		...buildTestsWithInvalidObjectKeyAtomics(fullAdditionalRedirect, 'path', [
 			'string'
-		),
-		...buildTestsWithInvalidObjectKeyValues(fullAdditionalRedirect, 'exact', [
+		]),
+		...buildTestsWithInvalidObjectKeyAtomics(fullAdditionalRedirect, 'exact', [
 			'undefined',
 			'null',
 			'boolean'
 		]),
-		...buildTestsWithInvalidObjectKeyValues(
+		...buildTestsWithInvalidObjectKeyAtomics(
 			fullAdditionalRedirect,
 			'redirectPath',
-			'string'
+			['string']
 		),
-		...buildTestsWithInvalidObjectKeyValues(
-			fullAdditionalRedirect,
-			'last',
+		...buildTestsWithInvalidObjectKeyAtomics(fullAdditionalRedirect, 'last', [
 			'boolean'
-		)
+		])
 	];
 
 	describe('Tests for AdditionalRedirect', () => {
@@ -222,17 +211,17 @@ describe('Tests for page functional component', () => {
 		TestCase<typeof fullDefaultRouting>
 	> = [
 		...buildTestsWithValidObjects(fullDefaultRouting, ['path', 'type']),
-		...buildTestsWithValidObjectKeyValues(fullDefaultRouting, 'path', '/route'),
+		...buildTestsWithValidObjectKeyValues(fullDefaultRouting, 'path', [
+			'/route'
+		]),
 		...buildTestsWithValidObjectKeyValues(fullDefaultRouting, 'exact', [
 			undefined,
 			null,
 			true
 		]),
-		...buildTestsWithValidObjectKeyValues(
-			fullDefaultRouting,
-			'type',
+		...buildTestsWithValidObjectKeyValues(fullDefaultRouting, 'type', [
 			'default'
-		),
+		]),
 		...buildTestsWithValidObjectKeyValues(
 			fullDefaultRouting,
 			'additionalRedirects',
@@ -247,22 +236,18 @@ describe('Tests for page functional component', () => {
 			'path',
 			'type'
 		]),
-		...buildTestsWithInvalidObjectKeyValues(
-			fullDefaultRouting,
-			'path',
+		...buildTestsWithInvalidObjectKeyAtomics(fullDefaultRouting, 'path', [
 			'string'
-		),
-		...buildTestsWithInvalidObjectKeyValues(fullDefaultRouting, 'exact', [
+		]),
+		...buildTestsWithInvalidObjectKeyAtomics(fullDefaultRouting, 'exact', [
 			'undefined',
 			'null',
 			'boolean'
 		]),
-		...buildTestsWithInvalidObjectKeyValues(
-			fullDefaultRouting,
-			'type',
+		...buildTestsWithInvalidObjectKeyAtomics(fullDefaultRouting, 'type', [
 			'string'
-		),
-		...buildTestsWithInvalidObjectKeyValues(
+		]),
+		...buildTestsWithInvalidObjectKeyAtomics(
 			fullDefaultRouting,
 			'additionalRedirects',
 			['undefined', 'null', 'array']
@@ -274,7 +259,13 @@ describe('Tests for page functional component', () => {
 			'DefaultRouting',
 			defaultRoutingPropType,
 			validTestsForDefaultRouting,
-			invalidTestsForDefaultRouting
+			[
+				...invalidTestsForDefaultRouting,
+				...buildTestsWithInvalidObjectKeyValues(fullDefaultRouting, 'type', [
+					'unAuth',
+					'auth'
+				])
+			]
 		);
 	});
 
@@ -283,77 +274,6 @@ describe('Tests for page functional component', () => {
 		type: 'unAuth',
 		redirectPath: '/another-route'
 	};
-
-	const validTestsForUnAuthRouting: Array<
-		TestCase<typeof fullUnAuthRouting>
-	> = [
-		...buildTestsWithValidObjects(fullUnAuthRouting, [
-			'path',
-			'redirectPath',
-			'type'
-		]),
-		...buildTestsWithValidObjectKeyValues(fullUnAuthRouting, 'path', '/route'),
-		...buildTestsWithValidObjectKeyValues(fullUnAuthRouting, 'exact', [
-			undefined,
-			null,
-			true
-		]),
-		...buildTestsWithValidObjectKeyValues(
-			fullUnAuthRouting,
-			'redirectPath',
-			'/another-route'
-		),
-		...buildTestsWithValidObjectKeyValues(fullUnAuthRouting, 'type', 'unAuth'),
-		...buildTestsWithValidObjectKeyValues(
-			fullUnAuthRouting,
-			'additionalRedirects',
-			[undefined, null, []]
-		)
-	];
-
-	const invalidTestsForUnAuthRouting: Array<
-		TestCase<typeof fullUnAuthRouting>
-	> = [
-		...buildTestsWithObjectsMissingRequiredKeys(fullUnAuthRouting, [
-			'path',
-			'redirectPath',
-			'type'
-		]),
-		...buildTestsWithInvalidObjectKeyValues(
-			fullUnAuthRouting,
-			'path',
-			'string'
-		),
-		...buildTestsWithInvalidObjectKeyValues(fullUnAuthRouting, 'exact', [
-			'undefined',
-			'null',
-			'boolean'
-		]),
-		...buildTestsWithInvalidObjectKeyValues(
-			fullUnAuthRouting,
-			'redirectPath',
-			'string'
-		),
-		...buildTestsWithInvalidObjectKeyValues(
-			fullUnAuthRouting,
-			'type',
-			'string'
-		),
-		...buildTestsWithInvalidObjectKeyValues(
-			fullUnAuthRouting,
-			'additionalRedirects',
-			['undefined', 'null', 'array']
-		)
-	];
-
-	describe('Tests for UnAuthRouting', () => {
-		testPropType(
-			'UnAuthRouting',
-			unAuthRoutingPropType,
-			validTestsForUnAuthRouting,
-			invalidTestsForUnAuthRouting
-		);
-	});
 
 	const fullAuthRouting = {
 		...partBaseRouting,
@@ -367,18 +287,16 @@ describe('Tests for page functional component', () => {
 			'redirectPath',
 			'type'
 		]),
-		...buildTestsWithValidObjectKeyValues(fullAuthRouting, 'path', '/route'),
+		...buildTestsWithValidObjectKeyValues(fullAuthRouting, 'path', ['/route']),
 		...buildTestsWithValidObjectKeyValues(fullAuthRouting, 'exact', [
 			undefined,
 			null,
 			true
 		]),
-		...buildTestsWithValidObjectKeyValues(
-			fullAuthRouting,
-			'redirectPath',
+		...buildTestsWithValidObjectKeyValues(fullAuthRouting, 'redirectPath', [
 			'/another-route'
-		),
-		...buildTestsWithValidObjectKeyValues(fullAuthRouting, 'type', 'auth'),
+		]),
+		...buildTestsWithValidObjectKeyValues(fullAuthRouting, 'type', ['auth']),
 		...buildTestsWithValidObjectKeyValues(
 			fullAuthRouting,
 			'additionalRedirects',
@@ -386,38 +304,89 @@ describe('Tests for page functional component', () => {
 		)
 	];
 
-	const invalidTestsForAuthRouting: Array<TestCase<typeof fullAuthRouting>> = [
-		...buildTestsWithObjectsMissingRequiredKeys(fullAuthRouting, [
+	const validTestsForUnAuthRouting: Array<
+		TestCase<typeof fullUnAuthRouting>
+	> = [
+		...buildTestsWithValidObjects(fullUnAuthRouting, [
 			'path',
 			'redirectPath',
 			'type'
 		]),
-		...buildTestsWithInvalidObjectKeyValues(fullAuthRouting, 'path', 'string'),
-		...buildTestsWithInvalidObjectKeyValues(fullAuthRouting, 'exact', [
+		...buildTestsWithValidObjectKeyValues(fullUnAuthRouting, 'path', [
+			'/route'
+		]),
+		...buildTestsWithValidObjectKeyValues(fullUnAuthRouting, 'exact', [
+			undefined,
+			null,
+			true
+		]),
+		...buildTestsWithValidObjectKeyValues(fullUnAuthRouting, 'redirectPath', [
+			'/another-route'
+		]),
+		...buildTestsWithValidObjectKeyValues(fullUnAuthRouting, 'type', [
+			'unAuth'
+		]),
+		...buildTestsWithValidObjectKeyValues(
+			fullUnAuthRouting,
+			'additionalRedirects',
+			[undefined, null, []]
+		)
+	];
+
+	const invalidTestsForAnyAuthRouting: Array<
+		TestCase<typeof fullUnAuthRouting | typeof fullAuthRouting>
+	> = [
+		...buildTestsWithObjectsMissingRequiredKeys(fullUnAuthRouting, [
+			'path',
+			'redirectPath',
+			'type'
+		]),
+		...buildTestsWithInvalidObjectKeyAtomics(fullUnAuthRouting, 'path', [
+			'string'
+		]),
+		...buildTestsWithInvalidObjectKeyAtomics(fullUnAuthRouting, 'exact', [
 			'undefined',
 			'null',
 			'boolean'
 		]),
-		...buildTestsWithInvalidObjectKeyValues(
-			fullAuthRouting,
+		...buildTestsWithInvalidObjectKeyAtomics(
+			fullUnAuthRouting,
 			'redirectPath',
-			'string'
+			['string']
 		),
-		...buildTestsWithInvalidObjectKeyValues(fullAuthRouting, 'type', 'string'),
-		...buildTestsWithInvalidObjectKeyValues(
-			fullAuthRouting,
+		...buildTestsWithInvalidObjectKeyAtomics(fullUnAuthRouting, 'type', [
+			'string'
+		]),
+		...buildTestsWithInvalidObjectKeyAtomics(
+			fullUnAuthRouting,
 			'additionalRedirects',
 			['undefined', 'null', 'array']
 		)
 	];
 
-	describe('Tests for AuthRouting', () => {
+	describe('Tests for UnAuthRouting', () => {
 		testPropType(
-			'AuthRouting',
-			authRoutingPropType,
-			validTestsForAuthRouting,
-			invalidTestsForAuthRouting
+			'UnAuthRouting',
+			unAuthRoutingPropType,
+			validTestsForUnAuthRouting,
+			[
+				...invalidTestsForAnyAuthRouting,
+				...buildTestsWithInvalidObjectKeyValues(fullUnAuthRouting, 'type', [
+					'default',
+					'auth'
+				])
+			]
 		);
+	});
+
+	describe('Tests for AuthRouting', () => {
+		testPropType('AuthRouting', authRoutingPropType, validTestsForAuthRouting, [
+			...invalidTestsForAnyAuthRouting,
+			...buildTestsWithInvalidObjectKeyValues(fullAuthRouting, 'type', [
+				'default',
+				'unAuth'
+			])
+		]);
 	});
 
 	describe('Tests for Routing (aka DefaultRouting, UnAuthRouting and AuthRouting)', () => {
@@ -429,11 +398,7 @@ describe('Tests for page functional component', () => {
 				...validTestsForUnAuthRouting,
 				...validTestsForAuthRouting
 			],
-			[
-				...invalidTestsForDefaultRouting,
-				...invalidTestsForUnAuthRouting,
-				...invalidTestsForAuthRouting
-			]
+			[...invalidTestsForDefaultRouting, ...invalidTestsForAnyAuthRouting]
 		);
 	});
 });
