@@ -1,17 +1,5 @@
 import { ReactNode } from 'react';
-
-/**
- * a type that only allows JSON serializable data
- *
- * @see {@link JSON.parse}
- * @see {@link JSON.stringify}
- */
-type JsonSerializable =
-	| number
-	| string
-	| boolean
-	| { [key: string]: JsonSerializable }
-	| Array<JsonSerializable>;
+import { JsonSerializable } from '../json-serializable';
 
 /**
  * Defines the basic prop-type of Widget component.
