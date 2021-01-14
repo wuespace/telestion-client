@@ -23,6 +23,14 @@ jobs:
         with:
           node-version: 14
 
+      - name: Restore npm cache ♻️
+        uses: actions/cache@v2.1.3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install development dependencies 📚
         run: npm ci
       - name: Build all packages 🛠️
@@ -34,7 +42,7 @@ jobs:
           WORKSPACE: ''
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          ouput: reports
+          output: reports
           # Scan auto-detects the languages in your project. To override uncomment the below variable and set the type
           # type: credscan,java
           # type: python

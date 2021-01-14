@@ -13,6 +13,14 @@ jobs:
         with:
           node-version: 14
 
+      - name: Restore npm cache ♻️
+        uses: actions/cache@v2.1.3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
       - name: Install development dependencies 📚
         run: npm ci
 
@@ -30,6 +38,14 @@ jobs:
         uses: actions/setup-node@v2.1.2
         with:
           node-version: 14
+
+      - name: Restore npm cache ♻️
+        uses: actions/cache@v2.1.3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
 
       - name: Install development dependencies 📚
         run: npm ci
