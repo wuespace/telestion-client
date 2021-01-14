@@ -8,9 +8,8 @@ import {
 } from 'react-router-dom';
 import { AbstractRedirect } from '@wuespace/telestion-client-types';
 
-import { AuthRoute } from './routes/auth-route';
-import { UnAuthRoute } from './routes/un-auth-route';
-import { isValidChild, parseRouting } from './pages-utils';
+import { UnAuthRoute, AuthRoute } from './routes';
+import { isValidChild, parseRouting } from './lib';
 
 // components used for routing based on authentication state
 const routeComponents = {
