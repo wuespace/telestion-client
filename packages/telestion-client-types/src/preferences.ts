@@ -49,7 +49,7 @@ export type PrefSelector = Selector;
 export type GroupSelector = Selector | 'null';
 
 /**
- * a preference with value and renderer
+ * a preference with a value and renderer
  *
  * @typeParam T - the type of the preference
  * (defaults to {@link PrefValue})
