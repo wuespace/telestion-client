@@ -54,6 +54,6 @@
 		"react": "^17.0.1"
 	},
 	"dependencies": {
-		"@wuespace/vertx-event-bus": "^0.1.0"
+		"@wuespace/vertx-event-bus": "file:../vertx-event-bus"
 	}
 }

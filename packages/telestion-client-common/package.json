@@ -51,9 +51,9 @@
 		}
 	],
 	"dependencies": {
-		"@wuespace/telestion-client-core": "v0.1.0",
-		"@wuespace/telestion-client-types": "^0.1.0",
-		"@wuespace/telestion-client-prop-types": "^0.1.0"
+		"@wuespace/telestion-client-core": "file:../telestion-client-core",
+		"@wuespace/telestion-client-prop-types": "file:../telestion-client-prop-types",
+		"@wuespace/telestion-client-types": "file:../telestion-client-types"
 	},
 	"peerDependencies": {
 		"@adobe/react-spectrum": "^3.6.0",

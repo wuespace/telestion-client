@@ -52,9 +52,9 @@
 	],
 	"dependencies": {
 		"@fliegwerk/logsemts": "^0.4.0-0",
-		"@wuespace/vertx-event-bus": "^0.1.0",
-		"@wuespace/telestion-client-types": "^0.1.0",
-		"@wuespace/telestion-client-prop-types": "^0.1.0"
+		"@wuespace/telestion-client-prop-types": "file:../telestion-client-prop-types",
+		"@wuespace/telestion-client-types": "file:../telestion-client-types",
+		"@wuespace/vertx-event-bus": "file:../vertx-event-bus"
 	},
 	"peerDependencies": {
 		"prop-types": "^15.7.2",

@@ -11,6 +11,7 @@
 	"bugs": {
 		"url": "https://github.com/TelestionTeam/telestion-client/issues"
 	},
+	"templateDir": "template",
 	"author": {
 		"name": "wuespace",
 		"email": "kontakt@wuespace.de",
@@ -43,11 +44,14 @@
 		"@spectrum-icons/illustrations": "^3.2.0",
 		"@spectrum-icons/ui": "^3.2.0",
 		"@spectrum-icons/workflow": "^3.2.0",
-		"@wuespace/telestion-client-common": "v0.1.0",
-		"@wuespace/telestion-client-core": "v0.1.0",
+		"@wuespace/telestion-client-common": "file:../telestion-client-common",
+		"@wuespace/telestion-client-core": "file:../telestion-client-core",
 		"react": "^17.0.1",
 		"react-dom": "^17.0.1",
 		"react-router-dom": "^5.2.0",
 		"zustand": "^3.2.0"
+	},
+	"devDependencies": {
+		"@types/react": "^17.0.0"
 	}
 }
