@@ -1,5 +1,10 @@
 import PropTypes from 'prop-types';
 
+const abstractRouting = {
+	path: PropTypes.string.isRequired,
+	exact: PropTypes.bool
+};
+
 /**
  * PropType for an abstract routing
  *
@@ -12,10 +17,12 @@ import PropTypes from 'prop-types';
  * @see {@link @wuespace/vertx-event-bus#AbstractRouting}
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
-export const abstractRoutingPropType = PropTypes.shape({
-	path: PropTypes.string.isRequired,
-	exact: PropTypes.bool
-});
+export const abstractRoutingPropType = PropTypes.shape(abstractRouting);
+
+const abstractRedirect = {
+	...abstractRouting,
+	redirectPath: PropTypes.string.isRequired
+};
 
 /**
  * PropType for an abstract redirect
@@ -29,11 +36,12 @@ export const abstractRoutingPropType = PropTypes.shape({
  * @see {@link @wuespace/vertx-event-bus#AbstractRedirect}
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
-export const abstractRedirectPropType = PropTypes.shape({
-	path: PropTypes.string.isRequired,
-	exact: PropTypes.bool,
-	redirectPath: PropTypes.string.isRequired
-});
+export const abstractRedirectPropType = PropTypes.shape(abstractRedirect);
+
+const additionalRedirect = {
+	...abstractRedirect,
+	last: PropTypes.bool.isRequired
+};
 
 /**
  * PropType for an additional redirect
@@ -47,12 +55,7 @@ export const abstractRedirectPropType = PropTypes.shape({
  * @see {@link @wuespace/vertx-event-bus#AdditionalRedirect}
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
-export const additionalRedirectPropType = PropTypes.shape({
-	path: PropTypes.string.isRequired,
-	exact: PropTypes.bool,
-	redirectPath: PropTypes.string.isRequired,
-	last: PropTypes.bool.isRequired
-});
+export const additionalRedirectPropType = PropTypes.shape(additionalRedirect);
 
 /**
  * PropType for an routing type
@@ -72,6 +75,12 @@ export const routingTypePropType = PropTypes.oneOf([
 	'auth'
 ]);
 
+const baseRouting = {
+	...abstractRouting,
+	type: routingTypePropType.isRequired,
+	additionalRedirects: PropTypes.arrayOf(additionalRedirectPropType)
+};
+
 /**
  * PropType for a default routing
  *
@@ -85,10 +94,8 @@ export const routingTypePropType = PropTypes.oneOf([
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
 export const defaultRoutingPropType = PropTypes.shape({
-	path: PropTypes.string.isRequired,
-	exact: PropTypes.bool,
-	type: PropTypes.oneOf(['default']).isRequired,
-	additionalRedirects: PropTypes.arrayOf(additionalRedirectPropType)
+	...baseRouting,
+	type: PropTypes.oneOf(['default']).isRequired
 });
 
 /**
@@ -104,11 +111,9 @@ export const defaultRoutingPropType = PropTypes.shape({
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
 export const unAuthRoutingPropType = PropTypes.shape({
-	path: PropTypes.string.isRequired,
-	exact: PropTypes.bool,
-	redirectPath: PropTypes.string.isRequired,
-	type: PropTypes.oneOf(['unAuth']).isRequired,
-	additionalRedirects: PropTypes.arrayOf(additionalRedirectPropType)
+	...baseRouting,
+	...abstractRedirect,
+	type: PropTypes.oneOf(['unAuth']).isRequired
 });
 
 /**
@@ -124,11 +129,9 @@ export const unAuthRoutingPropType = PropTypes.shape({
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
 export const authRoutingPropType = PropTypes.shape({
-	path: PropTypes.string.isRequired,
-	exact: PropTypes.bool,
-	redirectPath: PropTypes.string.isRequired,
-	type: PropTypes.oneOf(['auth']).isRequired,
-	additionalRedirects: PropTypes.arrayOf(additionalRedirectPropType)
+	...baseRouting,
+	...abstractRedirect,
+	type: PropTypes.oneOf(['auth']).isRequired
 });
 
 /**

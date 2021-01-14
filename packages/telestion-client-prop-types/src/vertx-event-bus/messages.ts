@@ -56,6 +56,10 @@ export const messageTypePropType = PropTypes.oneOf([
 	'err'
 ]);
 
+const baseMessage = {
+	type: messageTypePropType.isRequired
+};
+
 /**
  * PropType for a base message
  *
@@ -68,9 +72,14 @@ export const messageTypePropType = PropTypes.oneOf([
  * @see {@link @wuespace/vertx-event-bus#BaseMessage}
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
-export const baseMessagePropType = PropTypes.shape({
-	type: messageTypePropType.isRequired
-});
+export const baseMessagePropType = PropTypes.shape(baseMessage);
+
+const addressableMessage = {
+	...baseMessage,
+	headers: headersPropType.isRequired,
+	replyAddress: PropTypes.string,
+	reply: PropTypes.func
+};
 
 /**
  * PropType for a addressable message
@@ -84,12 +93,12 @@ export const baseMessagePropType = PropTypes.shape({
  * @see {@link @wuespace/vertx-event-bus#AddressableMessage}
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
-export const addressableMessagePropType = PropTypes.shape({
-	type: messageTypePropType.isRequired,
-	headers: headersPropType.isRequired,
-	replyAddress: PropTypes.string,
-	reply: PropTypes.func
-});
+export const addressableMessagePropType = PropTypes.shape(addressableMessage);
+
+const contentMessage = {
+	...addressableMessage,
+	body: jsonSerializablePropType.isRequired
+};
 
 /**
  * PropType for a content message.
@@ -103,13 +112,7 @@ export const addressableMessagePropType = PropTypes.shape({
  * @see {@link @wuespace/vertx-event-bus#ContentMessage}
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
-export const contentMessagePropType = PropTypes.shape({
-	type: messageTypePropType.isRequired,
-	headers: headersPropType.isRequired,
-	replyAddress: PropTypes.string,
-	reply: PropTypes.func,
-	body: jsonSerializablePropType.isRequired
-});
+export const contentMessagePropType = PropTypes.shape(contentMessage);
 
 /**
  * PropType for a ping message
@@ -123,6 +126,7 @@ export const contentMessagePropType = PropTypes.shape({
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
 export const pingMessagePropType = PropTypes.shape({
+	...baseMessage,
 	type: PropTypes.oneOf(['ping']).isRequired
 });
 
@@ -139,10 +143,8 @@ export const pingMessagePropType = PropTypes.shape({
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
 export const registerMessagePropType = PropTypes.shape({
-	type: PropTypes.oneOf(['register']).isRequired,
-	headers: headersPropType.isRequired,
-	replyAddress: PropTypes.string,
-	reply: PropTypes.func
+	...addressableMessage,
+	type: PropTypes.oneOf(['register']).isRequired
 });
 
 /**
@@ -158,10 +160,8 @@ export const registerMessagePropType = PropTypes.shape({
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
 export const unregisterMessagePropType = PropTypes.shape({
-	type: PropTypes.oneOf(['unregister']).isRequired,
-	headers: headersPropType.isRequired,
-	replyAddress: PropTypes.string,
-	reply: PropTypes.func
+	...addressableMessage,
+	type: PropTypes.oneOf(['unregister']).isRequired
 });
 
 /**
@@ -177,11 +177,8 @@ export const unregisterMessagePropType = PropTypes.shape({
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
 export const publishMessagePropType = PropTypes.shape({
-	type: PropTypes.oneOf(['publish']).isRequired,
-	headers: headersPropType.isRequired,
-	replyAddress: PropTypes.string,
-	reply: PropTypes.func,
-	body: jsonSerializablePropType.isRequired
+	...contentMessage,
+	type: PropTypes.oneOf(['publish']).isRequired
 });
 
 /**
@@ -197,11 +194,8 @@ export const publishMessagePropType = PropTypes.shape({
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
 export const sendMessagePropType = PropTypes.shape({
-	type: PropTypes.oneOf(['send']).isRequired,
-	headers: headersPropType.isRequired,
-	replyAddress: PropTypes.string,
-	reply: PropTypes.func,
-	body: jsonSerializablePropType.isRequired
+	...contentMessage,
+	type: PropTypes.oneOf(['send']).isRequired
 });
 
 /**
@@ -217,11 +211,8 @@ export const sendMessagePropType = PropTypes.shape({
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
 export const receiveMessagePropType = PropTypes.shape({
-	type: PropTypes.oneOf(['rec']).isRequired,
-	headers: headersPropType.isRequired,
-	replyAddress: PropTypes.string,
-	reply: PropTypes.func,
-	body: jsonSerializablePropType.isRequired
+	...contentMessage,
+	type: PropTypes.oneOf(['rec']).isRequired
 });
 
 /**
@@ -237,10 +228,8 @@ export const receiveMessagePropType = PropTypes.shape({
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
 export const errorMessagePropType = PropTypes.shape({
+	...addressableMessage,
 	type: PropTypes.oneOf(['err']).isRequired,
-	headers: headersPropType.isRequired,
-	replyAddress: PropTypes.string,
-	reply: PropTypes.func,
 	failureCode: PropTypes.number.isRequired,
 	failureType: PropTypes.string.isRequired,
 	message: PropTypes.string.isRequired

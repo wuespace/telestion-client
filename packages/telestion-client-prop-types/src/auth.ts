@@ -14,6 +14,11 @@ import PropTypes from 'prop-types';
  */
 export const authResultTypePropType = PropTypes.oneOf(['signIn', 'signOut']);
 
+const baseResult = {
+	type: authResultTypePropType.isRequired,
+	reason: PropTypes.string
+};
+
 /**
  * PropType for a sign in result
  *
@@ -27,8 +32,8 @@ export const authResultTypePropType = PropTypes.oneOf(['signIn', 'signOut']);
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
 export const signInResultPropType = PropTypes.shape({
+	...baseResult,
 	type: PropTypes.oneOf(['signIn']).isRequired,
-	reason: PropTypes.string,
 	user: PropTypes.string.isRequired,
 	eventBusUrl: PropTypes.string.isRequired
 });
@@ -46,8 +51,8 @@ export const signInResultPropType = PropTypes.shape({
  * @see {@link https://reactjs.org/docs/typechecking-with-proptypes.html}
  */
 export const signOutResultPropType = PropTypes.shape({
-	type: PropTypes.oneOf(['signOut']).isRequired,
-	reason: PropTypes.string
+	...baseResult,
+	type: PropTypes.oneOf(['signOut']).isRequired
 });
 
 /**
