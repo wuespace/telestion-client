@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import { jsonSerializablePropType } from './vertx-event-bus';
+import { jsonSerializablePropType } from '../json-serializable';
 
 /**
  * PropType for a base prop-type of a widget component

@@ -6,7 +6,6 @@ import {
 	contentMessagePropType,
 	errorMessagePropType,
 	headersPropType,
-	jsonSerializablePropType,
 	messagePropType,
 	messageTypePropType,
 	pingMessagePropType,
@@ -36,15 +35,6 @@ import {
 } from '../../tests/lib/build-object-test-cases';
 
 describe('Tests for event bus messages', () => {
-	describe('Tests for JsonSerializable', () => {
-		testPropType(
-			'JsonSerializable',
-			jsonSerializablePropType,
-			[arrayCase, boolCase, numberCase, stringCase, objectCase],
-			[undefinedCase, nullCase, functionCase]
-		);
-	});
-
 	describe('Tests for Headers', () => {
 		testPropType(
 			'Headers',

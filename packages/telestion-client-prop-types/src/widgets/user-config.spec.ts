@@ -1,4 +1,4 @@
-import { TestCase, testPropType } from '../tests/lib/test-prop-type';
+import { TestCase, testPropType } from '../../tests/lib/test-prop-type';
 import {
 	dashboardPropType,
 	userConfigPropType,
@@ -9,7 +9,7 @@ import {
 	buildTestsWithObjectsMissingRequiredKeys,
 	buildTestsWithValidObjectKeyValues,
 	buildTestsWithValidObjects
-} from '../tests/lib/build-object-test-cases';
+} from '../../tests/lib/build-object-test-cases';
 
 describe('Tests for user config', () => {
 	const fullWidgetDefinition = {
