@@ -2,10 +2,14 @@ import { useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { StateSelector } from 'zustand';
 import shallow from 'zustand/shallow';
+import {
+	PrefRenderer,
+	PrefSelector,
+	PrefValue
+} from '@wuespace/telestion-client-types';
 
 import { useGroup } from './group-context';
 import { PreferencesState, usePreferences } from '../../hooks';
-import { PrefRenderer, PrefSelector, PrefValue } from '../../model/preferences';
 
 // preference selector
 const selector: StateSelector<

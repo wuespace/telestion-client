@@ -7,7 +7,7 @@ import {
 	PrefRenderer,
 	Preference,
 	PreferencesGroup
-} from '../model/preferences';
+} from '@wuespace/telestion-client-types';
 import { isEmpty } from '../lib/core-utils';
 
 /**

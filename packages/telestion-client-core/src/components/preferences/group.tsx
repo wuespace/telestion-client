@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import PropTypes from 'prop-types';
+import { GroupSelector } from '@wuespace/telestion-client-types';
 
 import { GroupContext } from './group-context';
-import { GroupSelector } from '../../model/preferences';
 
 /**
  * React Props of {@link Group}

@@ -1,6 +1,6 @@
 import { createContext, ReactNode, useContext } from 'react';
 import PropTypes from 'prop-types';
-import { GroupSelector } from '../../model/preferences';
+import { GroupSelector } from '@wuespace/telestion-client-types';
 
 // React context for the Variable component
 const groupContext = createContext<GroupSelector | null>(null);

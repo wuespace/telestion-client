@@ -1,10 +1,10 @@
 import { useCallback } from 'react';
-import { usePreferences } from '../use-preferences';
 import {
 	GroupSelector,
 	PrefSelector,
 	PrefValue
-} from '../../model/preferences';
+} from '@wuespace/telestion-client-types';
+import { usePreferences } from '../use-preferences';
 
 /**
  * Returns the current value of a preference in a group.
