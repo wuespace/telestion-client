@@ -43,4 +43,21 @@ namespace AnotherPlace {
 	let authSignOutResult: TelestionClient.Auth.SignOutResult;
 	let authAuthResult: TelestionClient.Auth.AuthResult;
 	let authAuth: TelestionClient.Auth.Auth;
+
+	//
+	// json serializable
+	//
+	let jsonSerializable: TelestionClient.JsonSerializable;
+
+	//
+	// preferences
+	//
+	let preferencesPrefValue: TelestionClient.Preferences.PrefValue;
+	let preferencesPrefRenderer: TelestionClient.Preferences.PrefRenderer;
+	let preferencesSelector: TelestionClient.Preferences.Selector;
+	let preferencesPrefSelector: TelestionClient.Preferences.PrefSelector;
+	let preferencesGroupSelector: TelestionClient.Preferences.GroupSelector;
+	let preferencesPreference: TelestionClient.Preferences.Preference;
+	let preferencesPreferencesGroup: TelestionClient.Preferences.PreferencesGroup;
+	let preferencesPreferencesStore: TelestionClient.Preferences.PreferencesStore;
 }

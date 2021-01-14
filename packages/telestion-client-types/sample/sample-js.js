@@ -91,10 +91,54 @@ let authSignInResult;
  */
 let authSignOutResult;
 /**
- * @types {TelestionClient.Auth.AuthResult}
+ * @type {TelestionClient.Auth.AuthResult}
  */
 let authAuthResult;
 /**
- * @types {TelestionClient.Auth.Auth}
+ * @type {TelestionClient.Auth.Auth}
  */
 let authAuth;
+
+//
+// json serializable
+//
+/**
+ * @type {TelestionClient.JsonSerializable}
+ */
+let jsonSerializable;
+
+//
+// preferences
+//
+/**
+ * @type {TelestionClient.Preferences.PrefValue}
+ */
+let preferencesPrefValue;
+/**
+ * @type {TelestionClient.Preferences.PrefRenderer}
+ */
+let preferencesPrefRenderer;
+/**
+ * @type {TelestionClient.Preferences.Selector}
+ */
+let preferencesSelector;
+/**
+ * @type {TelestionClient.Preferences.PrefSelector}
+ */
+let preferencesPrefSelector;
+/**
+ * @type {TelestionClient.Preferences.GroupSelector}
+ */
+let preferencesGroupSelector;
+/**
+ * @type {TelestionClient.Preferences.Preference}
+ */
+let preferencesPreference;
+/**
+ * @type {TelestionClient.Preferences.PreferencesGroup}
+ */
+let preferencesPreferencesGroup;
+/**
+ * @type {TelestionClient.Preferences.PreferencesStore}
+ */
+let preferencesPreferencesStore;
