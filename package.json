@@ -5,7 +5,6 @@
 	"private": true,
 	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
 	"scripts": {
-		"postinstall": "lerna bootstrap --hoist",
 		"clean": "npm run clean:builds && npm run clean:docs && npm run clean:coverage && npm run clean:dep",
 		"clean:dep": "lerna clean -y",
 		"clean:builds": "lerna run clean --stream",
