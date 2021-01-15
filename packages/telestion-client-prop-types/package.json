@@ -50,10 +50,10 @@
 		}
 	],
 	"peerDependencies": {
-		"prop-types": "^15.7.2",
 		"react": "^17.0.1"
 	},
 	"dependencies": {
-		"@wuespace/vertx-event-bus": "file:../vertx-event-bus"
+		"@wuespace/vertx-event-bus": "file:../vertx-event-bus",
+		"prop-types": "^15.7.2"
 	}
 }

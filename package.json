@@ -61,8 +61,10 @@
 	"devDependencies": {
 		"@adobe/react-spectrum": "^3.6.0",
 		"@babel/core": "^7.12.9",
+		"@react-spectrum/tabs": "^3.0.0-alpha.3",
 		"@rollup/plugin-commonjs": "^17.0.0",
 		"@rollup/plugin-node-resolve": "^11.0.0",
+		"@spectrum-icons/workflow": "^3.2.0",
 		"@storybook/addon-essentials": "^6.1.14",
 		"@storybook/addon-links": "^6.1.14",
 		"@storybook/react": "^6.1.14",
