@@ -4,6 +4,7 @@ import * as w from './widgets/widget';
 import * as u from './widgets/user-config';
 import * as a from './auth';
 import * as e from './preferences';
+import * as n from './notification';
 
 declare global {
 	namespace TelestionClient {
@@ -13,6 +14,7 @@ declare global {
 		export import UserConfig = u;
 		export import Auth = a;
 		export import Preferences = e;
+		export import Notification = n;
 	}
 }
 
@@ -22,3 +24,4 @@ export * from './widgets/widget';
 export * from './widgets/user-config';
 export * from './auth';
 export * from './preferences';
+export * from './notification';

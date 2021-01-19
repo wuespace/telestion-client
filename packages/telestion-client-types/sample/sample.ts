@@ -60,4 +60,10 @@ namespace AnotherPlace {
 	let preferencesPreference: TelestionClient.Preferences.Preference;
 	let preferencesPreferencesGroup: TelestionClient.Preferences.PreferencesGroup;
 	let preferencesPreferencesStore: TelestionClient.Preferences.PreferencesStore;
+
+	//
+	// notification
+	//
+	let notificationNotificationType: TelestionClient.Notification.NotificationType;
+	let notificationNotification: TelestionClient.Notification.Notification;
 }

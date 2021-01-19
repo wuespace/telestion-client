@@ -142,3 +142,15 @@ let preferencesPreferencesGroup;
  * @type {TelestionClient.Preferences.PreferencesStore}
  */
 let preferencesPreferencesStore;
+
+//
+// notification
+//
+/**
+ * @type {TelestionClient.Notification.NotificationType}
+ */
+let notificationNotificationType;
+/**
+ * @type {TelestionClient.Notification.Notification}
+ */
+let notificationNotification;
