@@ -1,8 +1,5 @@
 {
 	"extends": "../../base-configs/tsconfig.typescript.json",
-	"compilerOptions": {
-		"declarationDir": "build"
-	},
-	"include": ["src/**/*", "typings.d.ts"],
-	"exclude": ["node_modules", "build", "src/**/*.test.ts*"]
+	"include": ["src", "typings.d.ts"],
+	"exclude": ["node_modules", "build"]
 }

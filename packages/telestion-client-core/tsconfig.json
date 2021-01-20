@@ -1,13 +1,5 @@
 {
 	"extends": "../../base-configs/tsconfig.react.json",
-	"compilerOptions": {
-		"declarationDir": "build"
-	},
-	"include": ["src/**/*", "typings.d.ts"],
-	"exclude": [
-		"node_modules",
-		"build",
-		"src/**/*.stories.tsx",
-		"src/**/*.test.tsx"
-	]
+	"include": ["src", "typings.d.ts"],
+	"exclude": ["node_modules", "build"]
 }

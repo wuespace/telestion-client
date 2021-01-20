@@ -1,0 +1,14 @@
+{
+	"extends": "./tsconfig.json",
+	"compilerOptions": {
+		"declarationDir": "build"
+	},
+	"include": ["src", "typings.d.ts"],
+	"exclude": [
+		"node_modules",
+		"build",
+		"src/**/*.test.ts*",
+		"src/**/*.spec.ts*",
+		"src/**/*.stories.ts*"
+	]
+}
