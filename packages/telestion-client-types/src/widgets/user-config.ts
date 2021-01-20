@@ -149,8 +149,31 @@ export interface Dashboard {
 }
 
 /**
- * Describes some dashboard definitions associated to a user.
- * When the user is logged in, the dashboard page will render
+ * A type definition for a username in a user configuration.
+ *
+ * @see {@link UserConfig}
+ */
+export type Username = string;
+
+/**
+ * User information mapped to a username and stored in a user configuration.
+ *
+ * @see {@link UserConfig}
+ * @see {@link Username}
+ */
+export interface UserInformation {
+	/**
+	 * The dashboards associated to the user.
+	 *
+	 * @see {@link Dashboard}
+	 */
+	dashboards: Array<Dashboard>;
+}
+
+/**
+ * Describes an entire user configuration.
+ * It is a map between the username and its stored information.
+ * When the user is logged in, typically the dashboard page will render
  * these definitions for the logged in username.
  *
  * @see {@link Dashboard}
@@ -159,37 +182,27 @@ export interface Dashboard {
  * A very simple user dashboard association
  * ```ts
  * const userConfig: UserConfig = {
- * 	username: 'Alice',
- * 	dashboards: [
- * 		{
- * 			title: 'My awesome dashboard',
- * 			columns: 4,
- * 			rows: 4,
- * 			widgets: [
- * 				{
- * 					width: 2,
- * 					height: 2,
- * 					widgetName: 'myWidget',
- * 					title: 'My awesome widget',
- * 					initialProps: {
- * 						value: 'TheBox'
+ * 	'Alice': {
+ * 		dashboards: [
+ * 			{
+ * 				title: 'My awesome dashboard',
+ * 				columns: 4,
+ * 				rows: 4,
+ * 				widgets: [
+ * 					{
+ * 						width: 2,
+ * 						height: 2,
+ * 						widgetName: 'myWidget',
+ * 						title: 'My awesome widget',
+ * 						initialProps: {
+ * 							value: 'TheBox'
+ * 						}
  * 					}
- * 				}
- * 			]
- * 		}
- * 	]
+ * 				]
+ * 			}
+ * 		]
+ * 	}
  * }
  * ```
  */
-export interface UserConfig {
-	/**
-	 * the name of the user which has some dashboard definitions
-	 */
-	username: string;
-	/**
-	 * the dashboards associated to the user
-	 *
-	 * @see {@link Dashboard}
-	 */
-	dashboards: Array<Dashboard>;
-}
+export type UserConfig = Record<Username, UserInformation>;
