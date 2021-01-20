@@ -3,8 +3,8 @@ import { StateSelector } from 'zustand';
 import shallow from 'zustand/shallow';
 import { Options } from '@wuespace/vertx-event-bus';
 
-import { AuthState, useAuth } from './use-auth';
-import { EventBusState, useEventBus } from './use-event-bus';
+import { AuthState, useAuth } from '../stores/use-auth';
+import { EventBusState, useEventBus } from '../stores/use-event-bus';
 
 // zustand selectors
 const authSelector: StateSelector<AuthState, AuthState['auth']> = state =>

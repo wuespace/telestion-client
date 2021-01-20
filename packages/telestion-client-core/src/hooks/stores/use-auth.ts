@@ -1,12 +1,12 @@
-import create, { UseStore } from 'zustand';
+import create, { State, UseStore } from 'zustand';
 import {
 	Auth,
 	SignInResult,
 	SignOutResult
 } from '@wuespace/telestion-client-types';
 
-import { FakeAuth } from '../lib/auth';
-import { getLogger } from '../lib/logger';
+import { FakeAuth } from '../../lib/auth';
+import { getLogger } from '../../lib/logger';
 
 const logger = getLogger('Auth State');
 
@@ -50,7 +50,7 @@ export interface Authentication {
  * @see {@link AuthState.signIn}
  * @see {@link AuthState.signOut}
  */
-export interface AuthState extends Record<string, unknown> {
+export interface AuthState extends State {
 	/**
 	 * Stores the current authentication state of the application.
 	 * Contains the username, the authentication and the event bus URL.

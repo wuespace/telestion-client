@@ -1,6 +1,5 @@
 import { useCallback, useState } from 'react';
 import { JsonSerializable } from '@wuespace/vertx-event-bus';
-
 import { useChannel } from './use-channel';
 
 /**

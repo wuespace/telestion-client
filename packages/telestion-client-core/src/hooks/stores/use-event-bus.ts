@@ -1,15 +1,28 @@
-import create, { UseStore } from 'zustand';
+import create, { State, UseStore } from 'zustand';
 import { EventBus, ErrorMessage, Options } from '@wuespace/vertx-event-bus';
-import { getLogger } from '../lib/logger';
+import { getLogger } from '../../lib/logger';
 
-const logger = getLogger('Connection State');
+const logger = getLogger('EventBus State');
 
 /**
- * the connection state type of an event bus
+ * The connection state type of an event bus.
+ *
+ * * Possible states:
+ * - `'connected'` if the eventbus is currently connected
+ * to the backend server
+ * - `'disconnected'` if the eventbus is currently disconnected
+ * from the backend server
+ * - `'error'` if the eventbus is currently open
+ * and an error message was received
+ * - `'noEventBus'` - if currently no event bus exists
  *
  * @see {@link EventBusState.connectionState}
  */
-export type ConnectionState = 'connected' | 'disconnected' | 'error';
+export type ConnectionState =
+	| 'connected'
+	| 'disconnected'
+	| 'error'
+	| 'noEventBus';
 
 /**
  * The event bus state and actions of the Telestion Client Core.
@@ -20,7 +33,7 @@ export type ConnectionState = 'connected' | 'disconnected' | 'error';
  * @see {@link EventBusState.openEventBus}
  * @see {@link EventBusState.closeEventBus}
  */
-export interface EventBusState extends Record<string, unknown> {
+export interface EventBusState extends State {
 	/**
 	 * the current eventbus instance if an event bus was opened
 	 * otherwise it is `null`
@@ -40,13 +53,7 @@ export interface EventBusState extends Record<string, unknown> {
 	/**
 	 * the current connection state of the event bus
 	 *
-	 * Possible states:
-	 * - `'connected'` if the eventbus is currently connected
-	 * to the backend server
-	 * - `'disconnected'` if the eventbus is currently disconnected
-	 * from the backend server
-	 * - `'error'` if the eventbus is currently open
-	 * and an error message was received
+	 * @see {@link ConnectionState}
 	 */
 	connectionState: ConnectionState;
 
@@ -184,7 +191,7 @@ export interface EventBusState extends Record<string, unknown> {
 export const useEventBus: UseStore<EventBusState> = create<EventBusState>(
 	(set, get) => ({
 		eventBus: null,
-		connectionState: 'disconnected',
+		connectionState: 'noEventBus',
 		error: null,
 		lastErrorMessage: null,
 		openEventBus: (serverUrl, options) => {
@@ -226,7 +233,7 @@ export const useEventBus: UseStore<EventBusState> = create<EventBusState>(
 				logger.warn('Received error message:', message);
 			};
 
-			set({ eventBus: eb });
+			set({ eventBus: eb, connectionState: 'disconnected' });
 		},
 		closeEventBus: () => {
 			if (!get().eventBus) {
@@ -237,7 +244,7 @@ export const useEventBus: UseStore<EventBusState> = create<EventBusState>(
 
 			// close and delete
 			get().eventBus?.close();
-			set({ eventBus: null });
+			set({ eventBus: null, connectionState: 'noEventBus' });
 		}
 	})
 );

@@ -6,7 +6,7 @@ import {
 	JsonSerializable
 } from '@wuespace/vertx-event-bus';
 
-import { EventBusState, useEventBus } from '../use-event-bus';
+import { EventBusState, useEventBus } from '../../stores/use-event-bus';
 
 const eventBusSelector: StateSelector<
 	EventBusState,

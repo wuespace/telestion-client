@@ -1,4 +1,4 @@
-import create, { UseStore } from 'zustand';
+import create, { State, UseStore } from 'zustand';
 import {
 	PreferencesStore,
 	GroupSelector,
@@ -8,7 +8,7 @@ import {
 	Preference,
 	PreferencesGroup
 } from '@wuespace/telestion-client-types';
-import { isEmpty } from '../lib/core-utils';
+import { isEmpty } from '../../lib/core-utils';
 
 /**
  * The preference state and actions of the Telestion Client Core.
@@ -18,7 +18,7 @@ import { isEmpty } from '../lib/core-utils';
  * @see {@link PreferencesState.preferences}
  * @see {@link PreferencesState.setValue}
  */
-export interface PreferencesState extends Record<string, unknown> {
+export interface PreferencesState extends State {
 	/**
 	 * Stores the registered preferences as groups of selector-value pair.
 	 *

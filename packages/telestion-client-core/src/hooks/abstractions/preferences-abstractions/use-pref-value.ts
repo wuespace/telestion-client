@@ -4,7 +4,7 @@ import {
 	PrefSelector,
 	PrefValue
 } from '@wuespace/telestion-client-types';
-import { usePreferences } from '../use-preferences';
+import { usePreferences } from '../../stores/use-preferences';
 
 /**
  * Returns the current value of a preference in a group.
