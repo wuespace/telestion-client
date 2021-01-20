@@ -26,7 +26,7 @@ export default function buildConfig(inputPath, packageJson) {
 			peerDepsExternal(),
 			resolve({ preferBuiltins: true }),
 			commonjs(),
-			typescript({ useTsconfigDeclarationDir: true }),
+			typescript({ tsconfig: 'tsconfig.build.json' }),
 			postcss(),
 			terser()
 		],
