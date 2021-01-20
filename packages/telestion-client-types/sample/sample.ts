@@ -32,9 +32,11 @@ namespace AnotherPlace {
 	//
 	// user config
 	//
-	let userDashboardsWidgetDefinition: TelestionClient.UserConfig.WidgetDefinition;
-	let userDashboardsDashboard: TelestionClient.UserConfig.Dashboard;
-	let userDashboardUserConfig: TelestionClient.UserConfig.UserConfig;
+	let userConfigWidgetDefinition: TelestionClient.UserConfig.WidgetDefinition;
+	let userConfigDashboard: TelestionClient.UserConfig.Dashboard;
+	let userConfigUsername: TelestionClient.UserConfig.Username;
+	let userConfigUserInformation: TelestionClient.UserConfig.UserInformation;
+	let userConfigUserConfig: TelestionClient.UserConfig.UserConfig;
 
 	//
 	// auth

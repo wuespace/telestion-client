@@ -69,11 +69,24 @@ let widgetWidget;
 /**
  * @type {TelestionClient.UserConfig.WidgetDefinition}
  */
-let userDashboardsWidgetDefinition;
+let userConfigWidgetDefinition;
 /**
  * @type {TelestionClient.UserConfig.Dashboard}
  */
-let userDashboardsDashboard;
+let userConfigDashboard;
+/**
+ * @type {TelestionClient.UserConfig.Username}
+ */
+let userConfigUsername;
+/**
+ * @type {TelestionClient.UserConfig.UserInformation}
+ */
+let userConfigUserInformation;
+/**
+ * @type {TelestionClient.UserConfig.UserConfig}
+ */
+let userConfigUserConfig;
+
 /**
  * @type {TelestionClient.UserConfig.UserConfig}
  */
