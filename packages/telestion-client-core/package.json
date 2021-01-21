@@ -11,7 +11,7 @@
 	],
 	"scripts": {
 		"build": "rollup -c",
-		"test": "echo \"Error: no test specified\" && exit 1",
+		"test": "echo \"Warning: No test script specified!\"",
 		"prepublishOnly": "npm run build",
 		"clean": "rimraf build"
 	},

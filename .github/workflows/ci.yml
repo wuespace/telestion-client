@@ -60,6 +60,3 @@ jobs:
           name: telestion-client-common_build-${{ github.run_number }}
           path: packages/telestion-client-common/build/
           retention-days: 7
-
-      - name: Lint project 📌
-        run: npm run lint
