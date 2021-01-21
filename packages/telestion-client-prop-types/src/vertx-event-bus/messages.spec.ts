@@ -7,22 +7,7 @@ import {
 	TestCase,
 	testPropType
 } from '../../tests/lib';
-import {
-	addressableMessagePropType,
-	baseMessagePropType,
-	callbackPropType,
-	contentMessagePropType,
-	errorMessagePropType,
-	headersPropType,
-	messagePropType,
-	messageTypePropType,
-	pingMessagePropType,
-	publishMessagePropType,
-	receiveMessagePropType,
-	registerMessagePropType,
-	sendMessagePropType,
-	unregisterMessagePropType
-} from './messages';
+import { callbackPropType, messagePropType } from './messages';
 import {
 	arrayCase,
 	basicTypeCases,
@@ -34,6 +19,20 @@ import {
 	stringCase,
 	undefinedCase
 } from '../../tests/samples/basic';
+import {
+	addressableMessagePropType,
+	baseMessagePropType,
+	contentMessagePropType,
+	errorMessagePropType,
+	headersPropType,
+	messageTypePropType,
+	pingMessagePropType,
+	publishMessagePropType,
+	receiveMessagePropType,
+	registerMessagePropType,
+	sendMessagePropType,
+	unregisterMessagePropType
+} from './message-types';
 
 describe('Tests for event bus messages', () => {
 	describe('Tests for Headers', () => {
