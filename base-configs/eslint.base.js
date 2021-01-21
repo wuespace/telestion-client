@@ -28,7 +28,9 @@ module.exports = {
 		],
 		// treat wrong format as warning instead of error
 		// to inform the user and not slap him
-		'prettier/prettier': 'warn'
+		'prettier/prettier': 'warn',
+		'max-lines': ['warn', { max: 250 }],
+		'max-lines-per-function': ['warn', 25]
 	},
 	ignorePatterns: ['.eslintrc.js', 'rollup.*.js', 'docs'],
 	overrides: [
