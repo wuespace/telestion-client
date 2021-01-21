@@ -80,6 +80,7 @@ const logger = getLogger('EventBus State');
  * ```
  */
 export const useEventBus: UseStore<EventBusState> = create<EventBusState>(
+	// eslint-disable-next-line max-lines-per-function
 	(set, get) => ({
 		eventBus: null,
 		connectionState: 'noEventBus',

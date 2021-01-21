@@ -20,6 +20,8 @@
 import SockJS from 'sockjs-client';
 
 import { Options } from './options';
+import { getLogger } from './logger';
+import { defaultOptions } from './vertx-event-bus-default-options';
 import {
 	Callback,
 	ErrorMessage,
@@ -29,8 +31,6 @@ import {
 	PublishMessage,
 	SendMessage
 } from './messages';
-import { getLogger } from './logger';
-import { defaultOptions } from './vertx-event-bus-default-options';
 
 const logger = getLogger('Vert.x Eventbus');
 
