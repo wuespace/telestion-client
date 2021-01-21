@@ -1,12 +1,5 @@
-import create, { State, UseStore } from 'zustand';
-
-export type ColorScheme = 'light' | 'dark' | 'system';
-
-export interface ColorSchemeState extends State {
-	colorScheme: ColorScheme;
-
-	set: (colorScheme: ColorScheme) => void;
-}
+import create, { UseStore } from 'zustand';
+import { ColorSchemeState } from './use-color-scheme.model';
 
 export const useColorScheme: UseStore<ColorSchemeState> = create<ColorSchemeState>(
 	set => ({
