@@ -227,46 +227,12 @@ export interface PreferencesState extends State {
 export const usePreferences: UseStore<PreferencesState> = create<PreferencesState>(
 	(set, get) => ({
 		preferences: {},
-		setValue: (group, preference, newValue) => {
-			const currentStore = get().preferences;
-			const currentGroup = currentStore[group];
-
-			const newPreference: Preference = {
-				// check if group already defined to avoid TypeError
-				...(currentGroup ? currentGroup[preference] : undefined),
-				value: newValue
-			};
-
-			const newStore: PreferencesStore = {
-				...currentStore,
-				[group]: {
-					...currentStore[group],
-					[preference]: newPreference
-				}
-			};
-
-			set({ preferences: newStore });
-		},
-		setRenderer: (group, preference, newRenderer) => {
-			const currentStore = get().preferences;
-			const currentGroup = currentStore[group];
-
-			const newPreference: Preference = {
-				// check if group already defined to avoid TypeError
-				...(currentGroup ? currentGroup[preference] : undefined),
-				renderer: newRenderer
-			};
-
-			const newPreferences: PreferencesStore = {
-				...currentStore,
-				[group]: {
-					...currentStore[group],
-					[preference]: newPreference
-				}
-			};
-
-			set({ preferences: newPreferences });
-		},
+		setValue: (group, preference, newValue) =>
+			set(state => setPrefValue(state, group, preference, 'value', newValue)),
+		setRenderer: (group, preference, newRenderer) =>
+			set(state =>
+				setPrefValue(state, group, preference, 'renderer', newRenderer)
+			),
 		removePreference: (group, preference) => {
 			const currentStore = get().preferences;
 			// group is empty -> no preference to delete, return
@@ -290,3 +256,51 @@ export const usePreferences: UseStore<PreferencesState> = create<PreferencesStat
 		}
 	})
 );
+
+/**
+ * Returns a {@link PreferencesState}, based on the `currentState`, with `[key]` set to `value` on the preference
+ * `preference` in the group `group`.
+ *
+ * @param currentState - the current state
+ * @param group - the selector of the group the preference is in.
+ * @param preference - the name of the preference
+ * @param key - the key of the value that gets updated. Either `'value'` or `'renderer'`
+ * @param value - the new value
+ *
+ * @returns the new state, including the applied changes.
+ *
+ * @example
+ * ```ts
+ * setValue: (group, preference, newValue) =>
+ *   set(
+ *     state => setPrefValue(state, group, preference, 'value', newValue)
+ *   ),
+ * ```
+ */
+function setPrefValue(
+	currentState: PreferencesState,
+	group: GroupSelector,
+	preference: PrefSelector,
+	key: 'value' | 'renderer',
+	value: any
+) {
+	const currentStore = currentState.preferences;
+	const currentGroup = currentStore[group];
+
+	const newPreference: Preference = {
+		// check if group already defined to avoid TypeError
+		...(currentGroup ? currentGroup[preference] : undefined)
+	};
+
+	newPreference[key] = value;
+
+	const newPreferences: PreferencesStore = {
+		...currentStore,
+		[group]: {
+			...currentStore[group],
+			[preference]: newPreference
+		}
+	};
+
+	return { preferences: newPreferences };
+}
