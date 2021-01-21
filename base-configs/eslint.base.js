@@ -30,7 +30,7 @@ module.exports = {
 		// to inform the user and not slap him
 		'prettier/prettier': 'warn',
 		'max-lines': ['warn', { max: 250 }],
-		'max-lines-per-function': ['warn', 25]
+		'max-lines-per-function': ['warn', 50]
 	},
 	ignorePatterns: ['.eslintrc.js', 'rollup.*.js', 'docs'],
 	overrides: [
@@ -40,6 +40,13 @@ module.exports = {
 				sourceType: 'module'
 			},
 			rules: {}
+		},
+		{
+			files: ['*/**/*.spec.ts', '*/**/*.spec.js'],
+			rules: {
+				'max-lines': 0,
+				'max-lines-per-function': 0
+			}
 		}
 	]
 };
