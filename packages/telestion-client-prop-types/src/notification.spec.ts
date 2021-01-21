@@ -1,4 +1,11 @@
-import { testPropType } from '../tests/lib/test-prop-type';
+import {
+	buildTestsWithInvalidObjectKeyAtomics,
+	buildTestsWithInvalidObjectKeyValues,
+	buildTestsWithObjectsMissingRequiredKeys,
+	buildTestsWithValidObjectKeyValues,
+	buildTestsWithValidObjects,
+	testPropType
+} from '../tests/lib';
 import { notificationPropType, notificationTypePropType } from './notification';
 import {
 	arrayCase,
@@ -10,13 +17,6 @@ import {
 	stringCase,
 	undefinedCase
 } from '../tests/samples/basic';
-import {
-	buildTestsWithInvalidObjectKeyAtomics,
-	buildTestsWithInvalidObjectKeyValues,
-	buildTestsWithObjectsMissingRequiredKeys,
-	buildTestsWithValidObjectKeyValues,
-	buildTestsWithValidObjects
-} from '../tests/lib/build-object-test-cases';
 
 describe('Tests for notification', () => {
 	describe('Tests for NotificationType', () => {

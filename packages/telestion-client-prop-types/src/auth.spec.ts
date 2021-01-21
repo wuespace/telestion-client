@@ -1,4 +1,11 @@
-import { TestCase, testPropType } from '../tests/lib/test-prop-type';
+import {
+	buildTestsWithInvalidObjectKeyAtomics,
+	buildTestsWithObjectsMissingRequiredKeys,
+	buildTestsWithValidObjectKeyValues,
+	buildTestsWithValidObjects,
+	TestCase,
+	testPropType
+} from '../tests/lib';
 import {
 	authPropType,
 	authResultPropType,
@@ -6,12 +13,6 @@ import {
 	signInResultPropType,
 	signOutResultPropType
 } from './auth';
-import {
-	buildTestsWithInvalidObjectKeyAtomics,
-	buildTestsWithObjectsMissingRequiredKeys,
-	buildTestsWithValidObjectKeyValues,
-	buildTestsWithValidObjects
-} from '../tests/lib/build-object-test-cases';
 
 describe('Tests for authentication', () => {
 	describe('Tests for AuthResultType', () => {

@@ -1,5 +1,5 @@
 import { EventBus } from '@wuespace/vertx-event-bus';
-import { testPropType } from '../../tests/lib/test-prop-type';
+import { testPropType } from '../../tests/lib';
 import { eventBusPropType } from './vertx-event-bus';
 import {
 	arrayCase,

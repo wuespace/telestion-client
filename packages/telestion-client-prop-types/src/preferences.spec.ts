@@ -1,4 +1,9 @@
-import { testPropType } from '../tests/lib/test-prop-type';
+import {
+	buildTestsWithInvalidObjectKeyAtomics,
+	buildTestsWithValidObjectKeyValues,
+	buildTestsWithValidObjects,
+	testPropType
+} from '../tests/lib';
 import {
 	groupSelectorPropType,
 	preferencePropType,
@@ -19,11 +24,6 @@ import {
 	stringCase,
 	undefinedCase
 } from '../tests/samples/basic';
-import {
-	buildTestsWithInvalidObjectKeyAtomics,
-	buildTestsWithValidObjectKeyValues,
-	buildTestsWithValidObjects
-} from '../tests/lib/build-object-test-cases';
 
 describe('Tests for preferences', () => {
 	describe('Tests for PrefValue', () => {

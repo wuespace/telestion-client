@@ -1,10 +1,10 @@
-import { testPropType } from '../../tests/lib/test-prop-type';
-import { optionsPropType } from './options';
 import {
 	buildTestsWithInvalidObjectKeyAtomics,
 	buildTestsWithValidObjectKeyValues,
-	buildTestsWithValidObjects
-} from '../../tests/lib/build-object-test-cases';
+	buildTestsWithValidObjects,
+	testPropType
+} from '../../tests/lib';
+import { optionsPropType } from './options';
 
 describe('Tests for event bus options', () => {
 	const fullOptions = {

@@ -1,5 +1,11 @@
 import { createElement } from 'react';
-import { testPropType } from '../../tests/lib/test-prop-type';
+import {
+	buildTestsWithInvalidObjectKeyAtomics,
+	buildTestsWithObjectsMissingRequiredKeys,
+	buildTestsWithValidObjectKeyValues,
+	buildTestsWithValidObjects,
+	testPropType
+} from '../../tests/lib';
 import {
 	basePropTypePropType,
 	genericPropsPropType,
@@ -16,12 +22,6 @@ import {
 	stringCase,
 	undefinedCase
 } from '../../tests/samples/basic';
-import {
-	buildTestsWithInvalidObjectKeyAtomics,
-	buildTestsWithObjectsMissingRequiredKeys,
-	buildTestsWithValidObjectKeyValues,
-	buildTestsWithValidObjects
-} from '../../tests/lib/build-object-test-cases';
 
 describe('Tests for widgets', () => {
 	describe('Tests for BasePropType', () => {

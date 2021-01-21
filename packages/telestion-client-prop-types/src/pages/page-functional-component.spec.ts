@@ -1,4 +1,12 @@
-import { TestCase, testPropType } from '../../tests/lib/test-prop-type';
+import {
+	buildTestsWithInvalidObjectKeyAtomics,
+	buildTestsWithInvalidObjectKeyValues,
+	buildTestsWithObjectsMissingRequiredKeys,
+	buildTestsWithValidObjectKeyValues,
+	buildTestsWithValidObjects,
+	TestCase,
+	testPropType
+} from '../../tests/lib';
 import {
 	abstractRedirectPropType,
 	abstractRoutingPropType,
@@ -9,13 +17,6 @@ import {
 	routingTypePropType,
 	unAuthRoutingPropType
 } from './page-functional-component';
-import {
-	buildTestsWithInvalidObjectKeyAtomics,
-	buildTestsWithInvalidObjectKeyValues,
-	buildTestsWithObjectsMissingRequiredKeys,
-	buildTestsWithValidObjectKeyValues,
-	buildTestsWithValidObjects
-} from '../../tests/lib/build-object-test-cases';
 
 describe('Tests for page functional component', () => {
 	const fullAbstractRouting = {

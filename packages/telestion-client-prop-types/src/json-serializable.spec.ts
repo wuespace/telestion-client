@@ -1,4 +1,4 @@
-import { testPropType } from '../tests/lib/test-prop-type';
+import { testPropType } from '../tests/lib';
 import {
 	arrayCase,
 	boolCase,
