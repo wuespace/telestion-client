@@ -21,19 +21,19 @@ or download and install them directly:
 After you set up these tools, install our command line interface:
 
 ```shell
-$ npm install --global @wuespace/telestion-client-cli
+npm install --global @wuespace/telestion-client-cli
 ```
 
 Then go into your projects folder:
 
 ```shell
-$ cd myProjects
+cd myProjects
 ```
 
 Here initialize a new project with:
 
 ```shell
-$ tc-cli init
+tc-cli init
 ```
 
 The command line interface will guide you through the setup process.
@@ -59,21 +59,21 @@ This project uses [Lerna](https://lerna.js.org/) as a monorepo package managemen
 First, install `lerna` globally for better repository maintenance:
 
 ```
-$ npm i -g lerna
+npm i -g lerna
 ```
 
 To install all dependencies the right way, run:
 
 ```
-$ npm ci
+npm ci
 ```
 
 To clear all installed dependencies, execute:
 
 ```
-$ cd /path/to/directory/root
-$ npm run clean
-$ rm -rf node_modules
+cd /path/to/directory/root
+npm run clean
+rm -rf node_modules
 ```
 
 ### Developing and Testing
@@ -82,14 +82,14 @@ Most of the time, you can use a package in the `packages` folder like a normal n
 If you want to run the command over all packages in parallel, ask lerna for help:
 
 ```
-$ lerna run build --stream
+lerna run build --stream
 ```
 
 Differences come up, if you want to add a dependency.
 Here you must use lerna with the scope modifier:
 
 ```
-$ lerna add [packageName] [packages/prefix-*]
+lerna add [packageName] [packages/prefix-*]
 ```
 
 Sometimes you need to edit the `package.json` manually.
@@ -97,7 +97,7 @@ You can add dependencies by simply adding the lines in the dependency object
 and run lerna to restructure the monorepo dependencies:
 
 ```
-$ lerna link convert
+lerna link convert
 ```
 
 To add a dependency to a monorepo package,
@@ -124,8 +124,8 @@ that detect git tags and triggers a publishing to these registries.
 You only need to call:
 
 ```
-$ lerna version
-$ git push
+lerna version
+git push
 ```
 
 ## Documentation
