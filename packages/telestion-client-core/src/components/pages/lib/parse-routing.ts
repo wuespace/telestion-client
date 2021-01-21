@@ -54,29 +54,40 @@ export function parseRouting(componentName: string, obj: unknown): Routing {
 		);
 	}
 
-	if (!(hasOwnProperty(obj, 'path') && typeof obj.path === 'string')) {
-		const type = getType(obj.path);
-		throw new TypeError(
-			`Invalid type for path of page ${componentName}.` +
-				` (expected: string, got: ${type})`
-		);
-	}
+	checkProperty(componentName, obj, 'path', 'string');
 
 	if (obj.type === 'auth' || obj.type === 'unAuth') {
-		if (
-			!(
-				hasOwnProperty(obj, 'redirectPath') &&
-				typeof obj.redirectPath === 'string'
-			)
-		) {
-			const type = getType(obj.redirectPath);
-			throw new TypeError(
-				`Invalid type for redirect path of page ${componentName}.` +
-					` (expected: string, got: ${type})`
-			);
-		}
+		checkProperty(componentName, obj, 'redirectPath', 'string');
 	}
 
 	// TypeScript is dumb
-	return obj as Routing;
+	return (obj as unknown) as Routing;
+}
+
+/**
+ * Throws a `TypeError` if the `obj[prop]` doesn't exist or `typeof obj[prop] !== expectedType`.
+ *
+ * @param pageName - the page's name, for the error message
+ * @param obj - the object whose properties should get checked
+ * @param prop - the key/name of the prop in `obj` that gets checked
+ * @param expectedType - the expected type. Must equal the expected `typeof obj[prop]`.
+ *
+ * @example
+ * ```ts
+ * checkProperty(componentName, obj, 'path', 'string');
+ * ```
+ */
+function checkProperty(
+	pageName: string,
+	obj: Record<string, unknown>,
+	prop: keyof typeof obj,
+	expectedType: string
+) {
+	if (!(hasOwnProperty(obj, prop) && typeof obj[prop] === expectedType)) {
+		const actualType = getType(obj.path);
+		throw new TypeError(
+			`Invalid type for ${prop} of page ${pageName}.` +
+				` (expected: ${actualType}, got: ${actualType})`
+		);
+	}
 }
