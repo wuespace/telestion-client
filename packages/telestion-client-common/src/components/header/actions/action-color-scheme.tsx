@@ -7,11 +7,7 @@ import Light from '@spectrum-icons/workflow/Light';
 import Moon from '@spectrum-icons/workflow/Moon';
 import LockClosed from '@spectrum-icons/workflow/LockClosed';
 
-import {
-	ColorScheme,
-	ColorSchemeState,
-	useColorScheme
-} from '../../../hooks/stores/use-color-scheme';
+import { ColorScheme, ColorSchemeState, useColorScheme } from '../../../hooks';
 
 const colorSchemeIcon: { [key in ColorScheme]: any } = {
 	light: Light,

@@ -2,7 +2,7 @@ import { Dispatch, SetStateAction, useCallback } from 'react';
 import { StateSelector } from 'zustand';
 import { Dashboard, Username } from '@wuespace/telestion-client-types';
 
-import { UserConfigState, useUserConfig } from '../stores/use-user-config';
+import { UserConfigState, useUserConfig } from '../stores';
 
 // static user config selector
 const updateSelector: StateSelector<

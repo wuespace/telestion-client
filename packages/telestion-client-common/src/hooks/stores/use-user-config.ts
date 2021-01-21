@@ -4,7 +4,7 @@ import {
 	UserInformation,
 	Username
 } from '@wuespace/telestion-client-types';
-import { SetPartialStateAction } from '../../lib/utility-types';
+import { SetPartialStateAction } from '../../lib';
 
 const initialUserConfig: UserConfig = {};
 
