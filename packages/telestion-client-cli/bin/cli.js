@@ -12,7 +12,7 @@ process.on('unhandledRejection', err => {
 
 const yargs = require('yargs');
 const debug = require('debug')('cli');
-require('../src/lib/checkExternalDependencies')(['git', 'npm']);
+require('../src/lib/check-external-deps')(['git', 'npm']);
 
 debug('Build yargs parser');
 // noinspection JSUnresolvedFunction

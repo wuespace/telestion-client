@@ -1,3 +1,5 @@
+const initializeGitRepsitory = require('../lib/init/git-init');
+
 const path = require('path');
 const fs = require('fs');
 const inquirer = require('inquirer');
@@ -6,18 +8,14 @@ const { Spinner } = require('clui');
 
 const debug = require('debug')('init');
 const logger = require('../lib/logger')('init');
-const makePromiseLastAtLeast = require('../lib/promiseMinimumTime');
-const exec = require('../lib/asyncExec');
+const makePromiseLastAtLeast = require('../lib/promise-minimum-time');
 
-const normalize = require('../lib/normalizeModuleName');
-const processTemplateTree = require('../lib/processTemplateTree');
-const initEpilogue = require('../lib/initEpilogue');
+const normalize = require('../lib/init/normalize-module-name');
+const processTemplateTree = require('../lib/init/process-template-tree');
+const initEpilogue = require('../lib/init/init-epilogue');
+const npmInstall = require('../lib/init/npm-install');
 
 const spinner = new Spinner('', ['⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷']);
-
-const installCommand = 'npm install';
-const gitInit = 'git init';
-const gitCommit = 'git -am "Initial commit"';
 
 // yargs defs
 const command = ['init [name]', 'i'];
@@ -49,34 +47,43 @@ function builder(yargs) {
 		});
 }
 
-async function handler(argv) {
-	// gathering information
-	debug('Arguments:', argv);
-
-	if (!argv['name']) {
-		try {
-			const answers = await inquirer.prompt({
-				type: 'input',
-				name: 'name',
-				message: "What's the name of your new project?",
-				validate: input => {
-					if (!input) return 'Please provide a name for your project';
-					if (input !== path.basename(input))
-						return 'Please provide a valid name for your project';
-					return true;
-				}
+async function getTemplateDirTree(templatePath) {
+	// Create template tree, all files have their file name + an .ejs extension
+	debug('Build template directory tree');
+	const tree = await makePromiseLastAtLeast(
+		(async () => {
+			return dirTree(templatePath, {
+				exclude: [
+					/\.git$/,
+					/bootstremplatr\.json$/,
+					/package\.json$/,
+					/node_modules$/
+				]
 			});
-			debug('Inquirer name answers:', answers);
-			argv['name'] = answers['name'];
-		} catch (error) {
-			if (error.isTtyError) {
-				logger.error('Prompt could not be rendered in the current environment');
-			}
-			throw error;
-		}
-	}
+		})(),
+		5000
+	);
+	debug('Parsed template directory tree:', tree);
+	return tree;
+}
 
-	const projectName = argv['name'];
+async function askProjectName() {
+	const answers = await inquirer.prompt({
+		type: 'input',
+		name: 'name',
+		message: "What's the name of your new project?",
+		validate: input => {
+			if (!input) return 'Please provide a name for your project';
+			if (input !== path.basename(input))
+				return 'Please provide a valid name for your project';
+			return true;
+		}
+	});
+	debug('Inquirer name answers:', answers);
+	return answers['name'];
+}
+
+function normalizeAndExtractNames(projectName) {
 	let moduleName;
 	try {
 		moduleName = normalize(projectName);
@@ -91,6 +98,25 @@ async function handler(argv) {
 	const templatePath = path.dirname(
 		require.resolve('@wuespace/telestion-client-template/package.json')
 	);
+	return { moduleName, projectPath, templatePath };
+}
+
+async function preprocessArgv(argv) {
+	if (!argv['name']) {
+		try {
+			argv['name'] = await askProjectName();
+		} catch (error) {
+			if (error['isTtyError']) {
+				logger.error('Prompt could not be rendered in the current environment');
+			}
+			throw error;
+		}
+	}
+
+	const projectName = argv['name'];
+	let { moduleName, projectPath, templatePath } = normalizeAndExtractNames(
+		projectName
+	);
 	debug('Template path:', templatePath);
 	debug('Project path:', projectPath);
 
@@ -102,28 +128,42 @@ async function handler(argv) {
 		);
 		process.exit(1);
 	}
+	return { projectName, moduleName, projectPath, templatePath };
+}
+
+function getReplacers(templatePath, moduleName, projectName) {
+	debug('Read template package.json');
+	const templatePackageJson = require(path.join(templatePath, 'package.json'));
+	debug('Template package.json:', templatePackageJson);
+
+	const replacers = {
+		moduleName,
+		projectName,
+		dependencies: JSON.stringify(templatePackageJson.dependencies, null, '\t'),
+		devDependencies: JSON.stringify(
+			templatePackageJson.devDependencies,
+			null,
+			'\t'
+		)
+	};
+	debug('Final replacers:', replacers);
+	return replacers;
+}
+
+async function handler(argv) {
+	// gathering information
+	debug('Arguments:', argv);
+	let {
+		projectName,
+		moduleName,
+		projectPath,
+		templatePath
+	} = await preprocessArgv(argv);
 
 	try {
 		spinner.message('Parse template project ...');
 		spinner.start();
-
-		// Create template tree, all files have their file name + an .ejs extension
-		debug('Build template directory tree');
-		let tree;
-		await makePromiseLastAtLeast(
-			(async () => {
-				tree = dirTree(templatePath, {
-					exclude: [
-						/\.git$/,
-						/bootstremplatr\.json$/,
-						/package\.json$/,
-						/node_modules$/
-					]
-				});
-				debug('Parsed template directory tree:', tree);
-			})(),
-			5000
-		);
+		let tree = await getTemplateDirTree(templatePath);
 		spinner.stop();
 		logger.success('Parsed template project');
 
@@ -131,84 +171,18 @@ async function handler(argv) {
 		spinner.start();
 		await new Promise(resolve => setTimeout(resolve, 2000));
 		spinner.stop();
-
-		debug('Read template package.json');
-		const templatePackageJson = require(path.join(
-			templatePath,
-			'package.json'
-		));
-		debug('Template package.json:', templatePackageJson);
-
-		const replacers = {
-			moduleName,
-			projectName,
-			dependencies: JSON.stringify(
-				templatePackageJson.dependencies,
-				null,
-				'\t'
-			),
-			devDependencies: JSON.stringify(
-				templatePackageJson.devDependencies,
-				null,
-				'\t'
-			)
-		};
-		debug('Final replacers:', replacers);
+		const replacers = getReplacers(templatePath, moduleName, projectName);
 
 		// Process the root node of the template into the target dir
 		debug('Process and copy template directory to new project');
 		await processTemplateTree(tree, projectPath, replacers);
 
 		if (!argv['skipInstall']) {
-			spinner.message('Installing dependencies ...');
-			spinner.start();
-
-			debug('Install command:', installCommand);
-			try {
-				await exec(installCommand, { cwd: projectPath });
-
-				spinner.stop();
-				logger.success('Dependencies installed');
-			} catch (e) {
-				logger.error('Dependency installation failed');
-				debug(e);
-				process.exit(1);
-			}
+			await npmInstall(projectPath, spinner, logger, debug);
 		}
 
 		if (!argv['skipGit']) {
-			let isGitRepo = false;
-
-			spinner.message('Initialize project as git repository');
-			spinner.start();
-
-			debug('Git init command:', gitInit);
-			try {
-				await exec(gitInit, { cwd: projectPath });
-
-				spinner.stop();
-				isGitRepo = true;
-				logger.success('Git repository initialized');
-			} catch (e) {
-				logger.error('Git repository initialization failed');
-				debug(e);
-			}
-
-			if (isGitRepo && argv['commit']) {
-				spinner.message('Add initial commit');
-				spinner.start();
-
-				debug('Git commit command:', gitCommit);
-				try {
-					await exec(gitCommit, { cwd: projectPath });
-
-					spinner.stop();
-					logger.success('Added initial commit');
-				} catch (e) {
-					logger.error('Initial commit creation failed');
-					debug(e);
-				}
-			}
+			await initializeGitRepsitory(projectPath, argv, spinner, logger, debug);
 		}
 
 		logger.success('Project initialized');

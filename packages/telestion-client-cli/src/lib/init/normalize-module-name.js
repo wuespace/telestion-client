@@ -13,7 +13,7 @@ function normalizeModuleName(name) {
 		.join('-');
 
 	const results = validate(normalized);
-	if (!results.validForNewPackages) {
+	if (!results['validForNewPackages']) {
 		throw [].concat(results['errors'] || [], results['warnings'] || []);
 	}
 
