@@ -1,7 +1,7 @@
 node_modules
 node_modules_overrides
-build
-packages/telestion-client-types/types
+packages/*/build
+packages/*/types
 coverage
 release
 docs

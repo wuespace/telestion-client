@@ -1,8 +1,9 @@
 {
 	"extends": "./tsconfig.json",
 	"compilerOptions": {
-		"declaration": true
+		"declaration": true,
+		"declarationDir": "types"
 	},
 	"include": ["src"],
-	"exclude": ["node_modules", "build", "src/**/*.spec.ts"]
+	"exclude": ["node_modules", "build", "types", "src/**/*.spec.ts"]
 }

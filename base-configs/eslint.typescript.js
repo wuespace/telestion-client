@@ -41,7 +41,8 @@ module.exports = {
 		'@typescript-eslint/restrict-template-expressions': [
 			'error',
 			{
-				allowNumber: true
+				allowNumber: true,
+				allowAny: true
 			}
 		],
 		// https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
@@ -73,7 +74,7 @@ module.exports = {
 		// to inform the user and not slap him
 		'prettier/prettier': 'warn'
 	},
-	ignorePatterns: ['build'],
+	ignorePatterns: ['build', 'types'],
 	overrides: [
 		{
 			files: ['typings.d.ts'],
