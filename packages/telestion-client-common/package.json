@@ -11,9 +11,9 @@
 	],
 	"scripts": {
 		"build": "rollup -c",
-		"test": "echo \"Error: Run tests from root\" && exit 1",
+		"test": "echo \"Warning: No test script specified!\"",
 		"prepublishOnly": "npm run build",
-		"clean": "rimraf clean"
+		"clean": "rimraf build"
 	},
 	"repository": {
 		"type": "git",
@@ -60,6 +60,7 @@
 	"peerDependencies": {
 		"@adobe/react-spectrum": "^3.6.0",
 		"@react-spectrum/tabs": "^3.0.0-alpha.3",
+		"@spectrum-icons/illustrations": "^3.2.1",
 		"@spectrum-icons/workflow": "^3.2.0",
 		"react": "^17.0.1",
 		"react-dom": "^17.0.1",
