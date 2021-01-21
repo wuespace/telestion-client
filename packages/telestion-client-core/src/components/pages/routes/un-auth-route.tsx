@@ -1,10 +1,10 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { ReactNode } from 'react';
-import PropTypes from 'prop-types';
 import { Route, Redirect, RouteProps } from 'react-router-dom';
 import { StateSelector } from 'zustand';
 
 import { AuthState, useAuth } from '../../../hooks';
+import { AuthUnAuthRoutePropTypes } from './prop-types';
 
 // auth selector
 const selector: StateSelector<AuthState, AuthState['auth']> = state =>
@@ -77,14 +77,4 @@ export function UnAuthRoute({
 	);
 }
 
-UnAuthRoute.propTypes = {
-	redirectPath: PropTypes.string.isRequired,
-	exact: PropTypes.bool,
-	location: PropTypes.object,
-	path: PropTypes.oneOfType([
-		PropTypes.string,
-		PropTypes.arrayOf(PropTypes.string)
-	]),
-	sensitive: PropTypes.bool,
-	strict: PropTypes.bool
-};
+UnAuthRoute.propTypes = AuthUnAuthRoutePropTypes;
