@@ -1,2 +1,11 @@
+# only edit text files
+* text=auto
 # don't use CRLF line endings
-* text oel=lf
+*.* text eol=lf
+
+# binaries
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
