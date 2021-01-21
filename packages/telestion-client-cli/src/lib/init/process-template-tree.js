@@ -48,14 +48,12 @@ async function processFile(node, targetPath, replacers) {
  * @param replacers
  * @return {Promise<void>}
  */
-module.exports = async function processTemplateTree(
-	node,
-	targetPath,
-	replacers
-) {
+async function processTemplateTree(node, targetPath, replacers) {
 	if (node.type === 'directory') {
 		await processDirectory(node, targetPath, replacers);
 	} else if (node.type === 'file') {
 		await processFile(node, targetPath, replacers);
 	}
-};
+}
+
+module.exports = processTemplateTree;
