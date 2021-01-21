@@ -1,6 +1,7 @@
 {
 	"name": "telestion-client",
 	"description": "Telestion frontend collection",
+	"license": "MIT",
 	"version": "0.1.0",
 	"private": true,
 	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
@@ -128,7 +129,7 @@
 		"@wuespace/telestion-client-cli": "file:packages/telestion-client-cli",
 		"@wuespace/telestion-client-common": "file:packages/telestion-client-common",
 		"@wuespace/telestion-client-core": "file:packages/telestion-client-core",
-		"@wuespace/telestion-client-mock-server": "file:packages/mock-server",
+		"@wuespace/telestion-client-mock-server": "file:packages/vertx-mock-server",
 		"@wuespace/telestion-client-prop-types": "file:packages/telestion-client-prop-types",
 		"@wuespace/telestion-client-template": "file:packages/telestion-client-template",
 		"@wuespace/telestion-client-types": "file:packages/telestion-client-types",

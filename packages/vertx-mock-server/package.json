@@ -1,6 +1,7 @@
 {
-	"name": "@wuespace/telestion-client-mock-server",
-	"description": "The mock server for the Telestion Frontend",
+	"name": "@wuespace/vertx-mock-server",
+	"description": "The Vert.x event bus mock server for Telestion Client",
+	"license": "MIT",
 	"version": "0.1.0",
 	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
 	"main": "build/index.js",

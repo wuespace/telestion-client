@@ -9,6 +9,11 @@ module.exports = {
 			mainFile: 'index.ts'
 		},
 		{
+			package: './packages/vertx-mock-server/package.json',
+			tsconfig: './packages/vertx-mock-server/tsconfig.json',
+			mainFile: 'index.ts'
+		},
+		{
 			package: './packages/telestion-client-types/package.json',
 			tsconfig: './packages/telestion-client-types/tsconfig.json',
 			mainFile: 'index.ts'

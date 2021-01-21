@@ -1,6 +1,7 @@
 {
 	"name": "@wuespace/vertx-event-bus",
-	"description": "Vert.x EventBus Client for the Vert.x Telestion Backend",
+	"description": "The Vert.x event bus client for Telestion Client",
+	"license": "MIT",
 	"version": "0.1.0",
 	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
 	"main": "build/index.js",

@@ -1,30 +1,25 @@
-# Vert.x event bus client
+# Vert.x event bus mock server
 
-The Vert.x event bus client for Telestion Client.
+The Vert.x event bus mock server for Telestion Client.
 
 ## Installation
 
 First, add it as a dependency to your project:
 
 ```shell
-npm install @wuespace/vertx-event-bus
+npm install @wuespace/vertx-mock-server
 ```
 
 After installation, check out the exported members:
 
 ```ts
-import { EventBus } from '@wuespace/vertx-event-bus';
+import { MockServer } from '@wuespace/vertx-mock-server';
 
-const eventBus = new EventBus('http://localhost:9870/bridge');
-
-eventBus.onOpen = () => {
-	eventBus.publish('eventbus-channel', 'Hello World!');
-	eventBus.close();
-};
+const mockServer = new MockServer();
 ```
 
 For a full list of all exported members, check out the reference: \
-https://telestionteam.github.io/telestion-client/@wuespace/vertx-event-bus/
+https://telestionteam.github.io/telestion-client/@wuespace/vertx-mock-server/
 
 ## Contributing
 

@@ -1,6 +1,6 @@
 {
 	"name": "@wuespace/telestion-client-cli",
-	"description": "The command line interface for Telestion Frontend development",
+	"description": "The command line interface for the Telestion Client development",
 	"version": "0.1.0",
 	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
 	"bin": {
@@ -11,6 +11,7 @@
 		"src"
 	],
 	"scripts": {
+		"build": "echo \"Warning: No build script specified!\"",
 		"test": "echo \"Warning: No test script specified!\""
 	},
 	"repository": {

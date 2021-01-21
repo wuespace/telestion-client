@@ -1,6 +1,7 @@
 {
 	"name": "@wuespace/telestion-client-template",
-	"description": "The template for a Telestion Frontend project",
+	"description": "The template for a Telestion Client project",
+	"license": "MIT",
 	"version": "0.1.0",
 	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
 	"repository": {
