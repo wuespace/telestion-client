@@ -7,7 +7,7 @@ import * as e from './preferences';
 import * as n from './notification';
 
 declare global {
-	namespace TelestionClient {
+	namespace TelestionClientTypes {
 		export import JsonSerializable = j.JsonSerializable;
 		export import Page = p;
 		export import Widget = w;

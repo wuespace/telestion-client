@@ -2,70 +2,70 @@ namespace AnotherPlace {
 	//
 	// page-functional-component
 	//
-	let pageAbstractRouting: TelestionClient.Page.AbstractRouting;
-	let pageAbstractRedirect: TelestionClient.Page.AbstractRedirect;
-	let pageAdditionalRedirect: TelestionClient.Page.AdditionalRedirect;
-	let pageDefaultRouting: TelestionClient.Page.DefaultRouting;
-	let pageUnAuthRouting: TelestionClient.Page.UnAuthRouting;
-	let pageAuthRouting: TelestionClient.Page.AuthRouting;
-	let pageRouting: TelestionClient.Page.Routing;
+	let pageAbstractRouting: TelestionClientTypes.Page.AbstractRouting;
+	let pageAbstractRedirect: TelestionClientTypes.Page.AbstractRedirect;
+	let pageAdditionalRedirect: TelestionClientTypes.Page.AdditionalRedirect;
+	let pageDefaultRouting: TelestionClientTypes.Page.DefaultRouting;
+	let pageUnAuthRouting: TelestionClientTypes.Page.UnAuthRouting;
+	let pageAuthRouting: TelestionClientTypes.Page.AuthRouting;
+	let pageRouting: TelestionClientTypes.Page.Routing;
 
 	//
 	// widget
 	//
-	let widgetBasePropType: TelestionClient.Widget.BasePropType;
-	let widgetGenericProps: TelestionClient.Widget.GenericProps;
-	let widgetGenericComponent: TelestionClient.Widget.GenericComponent;
-	let widgetGlobalRendererProps: TelestionClient.Widget.GlobalRendererProps;
-	let widgetBaseRendererProps: TelestionClient.Widget.BaseRendererProps;
-	let widgetConfigControlsProps: TelestionClient.Widget.BaseConfigControlsProps;
-	let widgetWidget: TelestionClient.Widget.Widget;
+	let widgetBasePropType: TelestionClientTypes.Widget.BasePropType;
+	let widgetGenericProps: TelestionClientTypes.Widget.GenericProps;
+	let widgetGenericComponent: TelestionClientTypes.Widget.GenericComponent;
+	let widgetGlobalRendererProps: TelestionClientTypes.Widget.GlobalRendererProps;
+	let widgetBaseRendererProps: TelestionClientTypes.Widget.BaseRendererProps;
+	let widgetConfigControlsProps: TelestionClientTypes.Widget.BaseConfigControlsProps;
+	let widgetWidget: TelestionClientTypes.Widget.Widget;
 
-	interface WidgetProps extends TelestionClient.Widget.GenericProps {
+	interface WidgetProps extends TelestionClientTypes.Widget.GenericProps {
 		value: string;
 	}
 
-	let widgetBaseRendererPropsExtended: TelestionClient.Widget.BaseRendererProps<WidgetProps>;
-	let widgetConfigControlsPropsExtended: TelestionClient.Widget.BaseConfigControlsProps<WidgetProps>;
-	let widgetWidgetExtended: TelestionClient.Widget.Widget<WidgetProps>;
+	let widgetBaseRendererPropsExtended: TelestionClientTypes.Widget.BaseRendererProps<WidgetProps>;
+	let widgetConfigControlsPropsExtended: TelestionClientTypes.Widget.BaseConfigControlsProps<WidgetProps>;
+	let widgetWidgetExtended: TelestionClientTypes.Widget.Widget<WidgetProps>;
 
 	//
 	// user config
 	//
-	let userConfigWidgetDefinition: TelestionClient.UserConfig.WidgetDefinition;
-	let userConfigDashboard: TelestionClient.UserConfig.Dashboard;
-	let userConfigUsername: TelestionClient.UserConfig.Username;
-	let userConfigUserInformation: TelestionClient.UserConfig.UserInformation;
-	let userConfigUserConfig: TelestionClient.UserConfig.UserConfig;
+	let userConfigWidgetDefinition: TelestionClientTypes.UserConfig.WidgetDefinition;
+	let userConfigDashboard: TelestionClientTypes.UserConfig.Dashboard;
+	let userConfigUsername: TelestionClientTypes.UserConfig.Username;
+	let userConfigUserInformation: TelestionClientTypes.UserConfig.UserInformation;
+	let userConfigUserConfig: TelestionClientTypes.UserConfig.UserConfig;
 
 	//
 	// auth
 	//
-	let authSignInResult: TelestionClient.Auth.SignInResult;
-	let authSignOutResult: TelestionClient.Auth.SignOutResult;
-	let authAuthResult: TelestionClient.Auth.AuthResult;
-	let authAuth: TelestionClient.Auth.Auth;
+	let authSignInResult: TelestionClientTypes.Auth.SignInResult;
+	let authSignOutResult: TelestionClientTypes.Auth.SignOutResult;
+	let authAuthResult: TelestionClientTypes.Auth.AuthResult;
+	let authAuth: TelestionClientTypes.Auth.Auth;
 
 	//
 	// json serializable
 	//
-	let jsonSerializable: TelestionClient.JsonSerializable;
+	let jsonSerializable: TelestionClientTypes.JsonSerializable;
 
 	//
 	// preferences
 	//
-	let preferencesPrefValue: TelestionClient.Preferences.PrefValue;
-	let preferencesPrefRenderer: TelestionClient.Preferences.PrefRenderer;
-	let preferencesSelector: TelestionClient.Preferences.Selector;
-	let preferencesPrefSelector: TelestionClient.Preferences.PrefSelector;
-	let preferencesGroupSelector: TelestionClient.Preferences.GroupSelector;
-	let preferencesPreference: TelestionClient.Preferences.Preference;
-	let preferencesPreferencesGroup: TelestionClient.Preferences.PreferencesGroup;
-	let preferencesPreferencesStore: TelestionClient.Preferences.PreferencesStore;
+	let preferencesPrefValue: TelestionClientTypes.Preferences.PrefValue;
+	let preferencesPrefRenderer: TelestionClientTypes.Preferences.PrefRenderer;
+	let preferencesSelector: TelestionClientTypes.Preferences.Selector;
+	let preferencesPrefSelector: TelestionClientTypes.Preferences.PrefSelector;
+	let preferencesGroupSelector: TelestionClientTypes.Preferences.GroupSelector;
+	let preferencesPreference: TelestionClientTypes.Preferences.Preference;
+	let preferencesPreferencesGroup: TelestionClientTypes.Preferences.PreferencesGroup;
+	let preferencesPreferencesStore: TelestionClientTypes.Preferences.PreferencesStore;
 
 	//
 	// notification
 	//
-	let notificationNotificationType: TelestionClient.Notification.NotificationType;
-	let notificationNotification: TelestionClient.Notification.Notification;
+	let notificationNotificationType: TelestionClientTypes.Notification.NotificationType;
+	let notificationNotification: TelestionClientTypes.Notification.Notification;
 }
