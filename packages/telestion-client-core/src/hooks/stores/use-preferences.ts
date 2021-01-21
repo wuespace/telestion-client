@@ -283,7 +283,7 @@ function setPrefValue(
 	preference: PrefSelector,
 	key: 'value' | 'renderer',
 	value: any
-) {
+): Partial<PreferencesState> {
 	const currentStore = currentState.preferences;
 	const currentGroup = currentStore[group];
 

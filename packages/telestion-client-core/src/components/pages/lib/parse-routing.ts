@@ -65,12 +65,14 @@ export function parseRouting(componentName: string, obj: unknown): Routing {
 }
 
 /**
- * Throws a `TypeError` if the `obj[prop]` doesn't exist or `typeof obj[prop] !== expectedType`.
+ * Checks the `obj` for a `prop` and throws if it's invalid
  *
  * @param pageName - the page's name, for the error message
  * @param obj - the object whose properties should get checked
  * @param prop - the key/name of the prop in `obj` that gets checked
  * @param expectedType - the expected type. Must equal the expected `typeof obj[prop]`.
+ *
+ * @throws a `TypeError` if the `obj[prop]` doesn't exist or `typeof obj[prop] !== expectedType`.
  *
  * @example
  * ```ts
@@ -81,8 +83,9 @@ function checkProperty(
 	pageName: string,
 	obj: Record<string, unknown>,
 	prop: keyof typeof obj,
-	expectedType: string
-) {
+	expectedType: 'string' | 'boolean' | 'number'
+): void {
+	// eslint-disable-next-line valid-typeof
 	if (!(hasOwnProperty(obj, prop) && typeof obj[prop] === expectedType)) {
 		const actualType = getType(obj.path);
 		throw new TypeError(
