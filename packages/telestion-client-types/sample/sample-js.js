@@ -3,31 +3,31 @@
 //
 
 /**
- * @type {TelestionClient.Page.AbstractRouting}
+ * @type {TelestionClientTypes.Page.AbstractRouting}
  */
 let pageAbstractRouting;
 /**
- * @type {TelestionClient.Page.AbstractRedirect}
+ * @type {TelestionClientTypes.Page.AbstractRedirect}
  */
 let pageAbstractRedirect;
 /**
- * @type {TelestionClient.Page.AdditionalRedirect}
+ * @type {TelestionClientTypes.Page.AdditionalRedirect}
  */
 let pageAdditionalRedirect;
 /**
- * @type {TelestionClient.Page.DefaultRouting}
+ * @type {TelestionClientTypes.Page.DefaultRouting}
  */
 let pageDefaultRouting;
 /**
- * @page {TelestionClient.Page.UnAuthRouting}
+ * @page {TelestionClientTypes.Page.UnAuthRouting}
  */
 let pageUnAuthRouting;
 /**
- * @type {TelestionClient.Page.AuthRouting}
+ * @type {TelestionClientTypes.Page.AuthRouting}
  */
 let pageAuthRouting;
 /**
- * @type {TelestionClient.Page.Routing}
+ * @type {TelestionClientTypes.Page.Routing}
  */
 let pageRouting;
 
@@ -35,31 +35,31 @@ let pageRouting;
 // widget
 //
 /**
- * @type {TelestionClient.Widget.BasePropType}
+ * @type {TelestionClientTypes.Widget.BasePropType}
  */
 let widgetBasePropType;
 /**
- * @type {TelestionClient.Widget.GenericProps}
+ * @type {TelestionClientTypes.Widget.GenericProps}
  */
 let widgetGenericProps;
 /**
- * @type {TelestionClient.Widget.GenericComponent}
+ * @type {TelestionClientTypes.Widget.GenericComponent}
  */
 let widgetGenericComponent;
 /**
- * @type {TelestionClient.Widget.GlobalRendererProps}
+ * @type {TelestionClientTypes.Widget.GlobalRendererProps}
  */
 let widgetGlobalRendererProps;
 /**
- * @type {TelestionClient.Widget.BaseRendererProps}
+ * @type {TelestionClientTypes.Widget.BaseRendererProps}
  */
 let widgetBaseRendererProps;
 /**
- * @type {TelestionClient.Widget.BaseConfigControlsProps}
+ * @type {TelestionClientTypes.Widget.BaseConfigControlsProps}
  */
 let widgetConfigControlsProps;
 /**
- * @type {TelestionClient.Widget.Widget}
+ * @type {TelestionClientTypes.Widget.Widget}
  */
 let widgetWidget;
 
@@ -67,28 +67,28 @@ let widgetWidget;
 // user config
 //
 /**
- * @type {TelestionClient.UserConfig.WidgetDefinition}
+ * @type {TelestionClientTypes.UserConfig.WidgetDefinition}
  */
 let userConfigWidgetDefinition;
 /**
- * @type {TelestionClient.UserConfig.Dashboard}
+ * @type {TelestionClientTypes.UserConfig.Dashboard}
  */
 let userConfigDashboard;
 /**
- * @type {TelestionClient.UserConfig.Username}
+ * @type {TelestionClientTypes.UserConfig.Username}
  */
 let userConfigUsername;
 /**
- * @type {TelestionClient.UserConfig.UserInformation}
+ * @type {TelestionClientTypes.UserConfig.UserInformation}
  */
 let userConfigUserInformation;
 /**
- * @type {TelestionClient.UserConfig.UserConfig}
+ * @type {TelestionClientTypes.UserConfig.UserConfig}
  */
 let userConfigUserConfig;
 
 /**
- * @type {TelestionClient.UserConfig.UserConfig}
+ * @type {TelestionClientTypes.UserConfig.UserConfig}
  */
 let userDashboardUserConfig;
 
@@ -96,19 +96,19 @@ let userDashboardUserConfig;
 // auth
 //
 /**
- * @type {TelestionClient.Auth.SignInResult}
+ * @type {TelestionClientTypes.Auth.SignInResult}
  */
 let authSignInResult;
 /**
- * @type {TelestionClient.Auth.SignOutResult}
+ * @type {TelestionClientTypes.Auth.SignOutResult}
  */
 let authSignOutResult;
 /**
- * @type {TelestionClient.Auth.AuthResult}
+ * @type {TelestionClientTypes.Auth.AuthResult}
  */
 let authAuthResult;
 /**
- * @type {TelestionClient.Auth.Auth}
+ * @type {TelestionClientTypes.Auth.Auth}
  */
 let authAuth;
 
@@ -116,7 +116,7 @@ let authAuth;
 // json serializable
 //
 /**
- * @type {TelestionClient.JsonSerializable}
+ * @type {TelestionClientTypes.JsonSerializable}
  */
 let jsonSerializable;
 
@@ -124,35 +124,35 @@ let jsonSerializable;
 // preferences
 //
 /**
- * @type {TelestionClient.Preferences.PrefValue}
+ * @type {TelestionClientTypes.Preferences.PrefValue}
  */
 let preferencesPrefValue;
 /**
- * @type {TelestionClient.Preferences.PrefRenderer}
+ * @type {TelestionClientTypes.Preferences.PrefRenderer}
  */
 let preferencesPrefRenderer;
 /**
- * @type {TelestionClient.Preferences.Selector}
+ * @type {TelestionClientTypes.Preferences.Selector}
  */
 let preferencesSelector;
 /**
- * @type {TelestionClient.Preferences.PrefSelector}
+ * @type {TelestionClientTypes.Preferences.PrefSelector}
  */
 let preferencesPrefSelector;
 /**
- * @type {TelestionClient.Preferences.GroupSelector}
+ * @type {TelestionClientTypes.Preferences.GroupSelector}
  */
 let preferencesGroupSelector;
 /**
- * @type {TelestionClient.Preferences.Preference}
+ * @type {TelestionClientTypes.Preferences.Preference}
  */
 let preferencesPreference;
 /**
- * @type {TelestionClient.Preferences.PreferencesGroup}
+ * @type {TelestionClientTypes.Preferences.PreferencesGroup}
  */
 let preferencesPreferencesGroup;
 /**
- * @type {TelestionClient.Preferences.PreferencesStore}
+ * @type {TelestionClientTypes.Preferences.PreferencesStore}
  */
 let preferencesPreferencesStore;
 
@@ -160,10 +160,10 @@ let preferencesPreferencesStore;
 // notification
 //
 /**
- * @type {TelestionClient.Notification.NotificationType}
+ * @type {TelestionClientTypes.Notification.NotificationType}
  */
 let notificationNotificationType;
 /**
- * @type {TelestionClient.Notification.Notification}
+ * @type {TelestionClientTypes.Notification.Notification}
  */
 let notificationNotification;
