@@ -31,12 +31,7 @@ export function NavBar({ links }: NavBarProps) {
 		// render tab list with empty contents
 		// and hear on selection change instead
 		return (
-			<Tabs
-				isQuiet
-				height="100%"
-				items={links}
-				onSelectionChange={changeAppPath}
-			>
+			<Tabs height="100%" items={links} onSelectionChange={changeAppPath}>
 				{link => (
 					<Item title={link.title} key={link.path}>
 						<></>
