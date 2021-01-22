@@ -37,9 +37,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install development dependencies 📚
-        run: npm ci --ignore-scripts
-      - name: Build all packages 🛠️
-        run: npm run build:all
+        run: npm ci
 
       - name: Perform Scan 👁️
         uses: ShiftLeftSecurity/scan-action@master

@@ -24,7 +24,7 @@ jobs:
             ${{ runner.os }}-node-
 
       - name: Install development dependencies 📚
-        run: npm ci --ignore-scriptsq
+        run: npm ci
       - name: Check file styles and formattings ✨
         run: npm run style:ci
       - name: Build all packages 🛠️
