@@ -29,7 +29,7 @@ jobs:
 
       # Eslint and Prettier must be in `package.json`
       - name: Install development dependencies 📚
-        run: npm ci
+        run: npm ci --ignore-scripts
 
       - name: Build all packages 🛠️
         run: npm run build:all
