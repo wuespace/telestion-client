@@ -4,6 +4,8 @@ import { Dashboard, Username } from '@wuespace/telestion-client-types';
 
 import { UserConfigState, useUserConfig } from '../stores';
 
+export type DispatchDashboards = Dispatch<SetStateAction<Array<Dashboard>>>;
+
 // static user config selector
 const updateSelector: StateSelector<
 	UserConfigState,
@@ -47,7 +49,7 @@ const updateSelector: StateSelector<
  */
 export function useDashboards(
 	username: Username
-): [Array<Dashboard>, Dispatch<SetStateAction<Array<Dashboard>>>] {
+): [Array<Dashboard> | undefined, DispatchDashboards] {
 	// never updates again
 	const update = useUserConfig(updateSelector);
 	// updates only on changed dashboards and changed username

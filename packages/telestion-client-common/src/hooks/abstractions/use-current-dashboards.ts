@@ -1,9 +1,8 @@
-import { Dispatch, SetStateAction } from 'react';
 import { StateSelector } from 'zustand';
 import { Dashboard } from '@wuespace/telestion-client-types';
 import { AuthState, useAuth } from '@wuespace/telestion-client-core';
 
-import { useDashboards } from './use-dashboards';
+import { DispatchDashboards, useDashboards } from './use-dashboards';
 
 // auth selector
 const selector: StateSelector<AuthState, AuthState['auth']> = state =>
@@ -44,8 +43,8 @@ const selector: StateSelector<AuthState, AuthState['auth']> = state =>
  * ```
  */
 export function useCurrentDashboards(): [
-	Array<Dashboard>,
-	Dispatch<SetStateAction<Array<Dashboard>>>
+	Array<Dashboard> | undefined,
+	DispatchDashboards
 ] {
 	const auth = useAuth(selector);
 	// The username '' actually never exists
