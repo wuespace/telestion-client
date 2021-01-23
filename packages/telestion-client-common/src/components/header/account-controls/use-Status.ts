@@ -15,7 +15,7 @@ const eventBusSelector: StateSelector<EventBusState, ConnectionState> = ({
 	connectionState
 }) => connectionState;
 
-const mapToState: { [key in ConnectionState]: string } = {
+const mapToConnectionStatus: { [key in ConnectionState]: string } = {
 	connected: 'Connected with backend server',
 	disconnected: 'Disconnected from backend server',
 	error: 'Error message received from backend server',
@@ -35,12 +35,12 @@ export function useStatus(): Array<Scope> {
 		return [
 			{
 				description: 'Connection status',
-				state: mapToState[connectionStatus]
+				state: mapToConnectionStatus[connectionStatus]
 			},
 			{
 				description: 'Account',
 				state: auth
-					? `Logged in with username '${auth.username}'`
+					? `Logged in with username "${auth.username}"`
 					: 'Logged out'
 			},
 			{

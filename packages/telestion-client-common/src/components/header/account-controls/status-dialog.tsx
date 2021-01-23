@@ -1,15 +1,24 @@
 import { ReactNode, useMemo } from 'react';
+import { StateSelector } from 'zustand';
 import {
 	Content,
 	Dialog,
 	Divider,
 	Heading,
 	Grid,
-	Text
+	Text,
+	Provider
 } from '@adobe/react-spectrum';
 import { useStatus } from './use-Status';
+import { ColorScheme, ColorSchemeState, useColorScheme } from '../../../hooks';
+
+// color scheme selector
+const selector: StateSelector<ColorSchemeState, ColorScheme> = ({
+	colorScheme
+}) => colorScheme;
 
 export function StatusDialog() {
+	const colorScheme = useColorScheme(selector);
 	const status = useStatus();
 
 	const items = useMemo(() => {
@@ -26,14 +35,20 @@ export function StatusDialog() {
 	}, [status]);
 
 	return (
-		<Dialog>
-			<Heading>Status</Heading>
-			<Divider />
-			<Content>
-				<Grid columns="max-content auto" columnGap="size-200" rowGap="size-100">
-					{items}
-				</Grid>
-			</Content>
-		</Dialog>
+		<Provider colorScheme={colorScheme !== 'system' ? colorScheme : undefined}>
+			<Dialog>
+				<Heading>Status</Heading>
+				<Divider />
+				<Content>
+					<Grid
+						columns="max-content auto"
+						columnGap="size-200"
+						rowGap="size-100"
+					>
+						{items}
+					</Grid>
+				</Content>
+			</Dialog>
+		</Provider>
 	);
 }
