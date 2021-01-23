@@ -36,7 +36,7 @@ export function useDashboardState(
 	// get current dashboard id
 	const { id } = useParams<{ id: DashboardPickerKey | undefined }>();
 	// check authentication state
-	const isHidden = useAuth(selector);
+	const isLoggedOut = useAuth(selector);
 	// store selected key
 	const [selected, setSelected] = useState<DashboardPickerKey>(
 		id || DP_EMPTY_KEY
@@ -75,6 +75,6 @@ export function useDashboardState(
 		selected,
 		onSelectionChange,
 		isDisabled: !dashboards,
-		isHidden
+		isHidden: isLoggedOut
 	};
 }

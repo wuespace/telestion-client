@@ -32,7 +32,7 @@ export function useNavBarState(links: Array<Link> = []): NavBarState {
 	// get current app path
 	const location = useLocation();
 	// check authentication state
-	const isHidden = useAuth(selector);
+	const isLoggedOut = useAuth(selector);
 	// store selected key
 	const [selected, setSelected] = useState<NavBarKey>(NAV_BAR_EMPTY_KEY);
 
@@ -65,6 +65,6 @@ export function useNavBarState(links: Array<Link> = []): NavBarState {
 		items: links,
 		selected,
 		onSelectionChange,
-		isHidden: isHidden || links.length === 0
+		isHidden: isLoggedOut || links.length === 0
 	};
 }

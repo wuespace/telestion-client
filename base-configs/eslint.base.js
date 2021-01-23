@@ -26,6 +26,14 @@ module.exports = {
 			'error',
 			{ functions: false, classes: true, variables: true }
 		],
+		// allow voids as statements
+		// https://eslint.org/docs/rules/no-void
+		'no-void': [
+			'error',
+			{
+				allowAsStatement: true
+			}
+		],
 		// treat wrong format as warning instead of error
 		// to inform the user and not slap him
 		'prettier/prettier': 'warn',
