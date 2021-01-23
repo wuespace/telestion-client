@@ -1,8 +1,22 @@
+import { useMemo } from 'react';
+import { useParams } from 'react-router-dom';
 import { Routing } from '@wuespace/telestion-client-types';
-import { Dashboard } from './dashboard';
+
+import { Dashboard } from './dashboard/dashboard';
+import { NoDashboardsMessage } from './no-dashboards-message';
+import { useCurrentDashboards } from '../../../hooks';
 
 export function DashboardPage() {
-	return <Dashboard />;
+	const { id } = useParams<{ id: string }>();
+	const [dashboards] = useCurrentDashboards();
+
+	const idAsNumber = useMemo(() => Number.parseInt(id, 10), [id]);
+
+	if (!dashboards) {
+		return <NoDashboardsMessage />;
+	}
+
+	return <Dashboard dashboard={dashboards[idAsNumber]} />;
 }
 
 const routing: Routing = {
