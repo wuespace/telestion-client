@@ -1,6 +1,7 @@
-import { Dashboard as DashboardType } from '@wuespace/telestion-client-types';
-import { Grid, View } from '@adobe/react-spectrum';
 import { useMemo } from 'react';
+import { Grid, View } from '@adobe/react-spectrum';
+import { Dashboard as DashboardType } from '@wuespace/telestion-client-types';
+
 import { OverflowFix } from './overflow-fix';
 import { WidgetRenderer } from '../widget-renderer/widget-renderer';
 
@@ -43,7 +44,7 @@ export function Dashboard({ dashboard }: DashboardProps) {
 						backgroundColor="gray-100"
 						borderRadius="regular"
 					>
-						<WidgetRenderer widget={widget} />
+						<WidgetRenderer widgetDefinition={widget} />
 					</OverflowFix>
 				))}
 			</Grid>
