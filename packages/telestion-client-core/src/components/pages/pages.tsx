@@ -59,6 +59,18 @@ function buildRedirect(redirect: AbstractRedirect) {
  */
 export interface PagesProps {
 	/**
+	 * React nodes that are always rendered above the active page.
+	 * E.g. useful for an application header.
+	 */
+	preNodes?: ReactNode;
+
+	/**
+	 * React nodes that are always rendered below the active page.
+	 * E.g. useful for an application footer.
+	 */
+	postNodes?: ReactNode;
+
+	/**
 	 * Pages that the application can have.
 	 * The {@link Pages} component renders them based on the application state.
 	 *
@@ -92,7 +104,7 @@ export interface PagesProps {
  * }
  * ```
  */
-export function Pages({ children }: PagesProps) {
+export function Pages({ preNodes, postNodes, children }: PagesProps) {
 	const routes: ReactNode[] = [];
 	const lastRoutes: ReactNode[] = [];
 
@@ -131,10 +143,12 @@ export function Pages({ children }: PagesProps) {
 
 	return (
 		<Router>
+			{preNodes}
 			<Switch>
 				{routes}
 				{lastRoutes}
 			</Switch>
+			{postNodes}
 		</Router>
 	);
 }
