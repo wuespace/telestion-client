@@ -51,13 +51,10 @@ export function useDashboardState(
 		(key: ReactText) => {
 			// apply key to state
 			setSelected(key as DashboardPickerKey);
+			const newPath = `/dashboard/${key}`;
 			// set route to selected key
-			if (key !== DP_EMPTY_KEY) {
-				const newPath = `/dashboard/${key}`;
-				// don't push if same path
-				if (history.location.pathname !== newPath) {
-					history.push(newPath);
-				}
+			if (key !== DP_EMPTY_KEY && newPath !== history.location.pathname) {
+				history.push(newPath);
 			}
 		},
 		[history]
