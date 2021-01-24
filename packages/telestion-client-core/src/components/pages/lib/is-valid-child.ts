@@ -49,10 +49,5 @@ export interface PageReactElement<
  * ```
  */
 export function isValidChild(child: ReactNode): child is PageReactElement {
-	return (
-		isValidElement(child) &&
-		isObj(child) &&
-		hasOwnProperty(child, 'type') &&
-		isObj(child.type)
-	);
+	return isValidElement(child) && isObj(child) && hasOwnProperty(child, 'type');
 }
