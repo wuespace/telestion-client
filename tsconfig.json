@@ -29,20 +29,20 @@
 		/* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
 		"moduleResolution": "node",
 		/* Base directory to resolve non-absolute module names. */
-		"baseUrl": "./",
+		"baseUrl": "packages",
 		/* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
 		"allowSyntheticDefaultImports": true,
 		/* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
 		"esModuleInterop": true,
 		/* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
 		"paths": {
-			"@wuespace/vertx-event-bus": ["packages/vertx-event-bus"],
-			"@wuespace/telestion-client-types": ["packages/telestion-client-types"],
+			"@wuespace/vertx-event-bus": ["vertx-event-bus/src"],
+			"@wuespace/telestion-client-types": ["telestion-client-types/src"],
 			"@wuespace/telestion-client-prop-types": [
-				"packages/telestion-client-prop-types"
+				"telestion-client-prop-types/src"
 			],
-			"@wuespace/telestion-client-core": ["packages/telestion-client-core"],
-			"@wuespace/telestion-client-common": ["packages/telestion-client-common"]
+			"@wuespace/telestion-client-core": ["telestion-client-core/src"],
+			"@wuespace/telestion-client-common": ["telestion-client-common/src"]
 		},
 
 		//

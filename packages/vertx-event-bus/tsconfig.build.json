@@ -1,7 +1,6 @@
 {
-	"extends": "./tsconfig.json",
+	"extends": "../../base-configs/tsconfig.typescript.build.json",
 	"compilerOptions": {
-		"declaration": true,
 		"declarationDir": "types"
 	},
 	"include": ["src", "typings.d.ts"],
