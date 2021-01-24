@@ -1,4 +1,5 @@
 export * from './actions';
-export * from './action-color-scheme';
 export * from './action-divider';
-export * from './action-notification';
+export * from './color-scheme-action';
+export * from './notification-action';
+export * from './fullscreen-action';

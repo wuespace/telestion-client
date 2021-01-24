@@ -39,7 +39,7 @@ const selector: StateSelector<
 	set: state.set
 });
 
-export function ActionColorScheme() {
+export function ColorSchemeAction() {
 	const { colorScheme, set } = useColorScheme(selector, shallow);
 	const Icon = colorSchemeIcon[colorScheme];
 

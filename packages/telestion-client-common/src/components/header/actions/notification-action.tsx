@@ -21,7 +21,7 @@ const selector: StateSelector<
 	toggle: state.toggle
 });
 
-export function ActionNotification() {
+export function NotificationAction() {
 	const { isMuted, toggle } = useNotifications(selector, shallow);
 
 	return (
