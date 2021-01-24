@@ -1,7 +1,7 @@
 import { Routing } from '@wuespace/telestion-client-types';
 import { getType, hasOwnProperty, isObj } from '../../../lib/core-utils';
 
-const types: Array<Routing['type']> = ['auth', 'unAuth', 'default'];
+const types = ['auth', 'unAuth', 'default'];
 
 /**
  * Checks the routing object of a page
@@ -44,13 +44,15 @@ export function parseRouting(componentName: string, obj: unknown): Routing {
 		!(
 			hasOwnProperty(obj, 'type') &&
 			typeof obj.type === 'string' &&
-			obj.type in types
+			types.includes(obj.type)
 		)
 	) {
 		const type = getType(obj.type);
 		throw new TypeError(
 			`Invalid routing type for page ${componentName}.` +
-				` (expected: ${types.map(elem => `'${elem}'`).join(', ')}, got: ${type}`
+				` (expected: ${types
+					.map(elem => `'${elem}'`)
+					.join(', ')}, got: ${type})`
 		);
 	}
 
