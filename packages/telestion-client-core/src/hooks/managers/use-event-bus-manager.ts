@@ -2,6 +2,7 @@ import { useEffect } from 'react';
 import { StateSelector } from 'zustand';
 import shallow from 'zustand/shallow';
 
+import { useLogger } from '../use-logger';
 import { AuthState, EventBusState, useAuth, useEventBus } from '../stores';
 import { EventBusManagerOptions } from './use-event-bus-manager.model';
 
@@ -48,19 +49,22 @@ const eventBusSelector: StateSelector<
  */
 export function useEventBusManager(options: EventBusManagerOptions = {}): void {
 	const { onOpen, onClose, options: ebOptions } = options;
+	const logger = useLogger('Event bus manager');
 	const auth = useAuth(authSelector);
 	const { open, close } = useEventBus(eventBusSelector, shallow);
 
 	useEffect(() => {
 		if (auth) {
+			logger.debug('Signed in -> open event bus');
 			open(auth.eventBusUrl, ebOptions);
 			if (onOpen) onOpen();
 			// on change of authentication -> close event bus
 			return () => {
+				logger.debug('Signed out -> close event bus');
 				close();
 				if (onClose) onClose();
 			};
 		}
 		return () => {};
-	}, [auth, close, ebOptions, onClose, onOpen, open, options]);
+	}, [auth, close, ebOptions, logger, onClose, onOpen, open, options]);
 }

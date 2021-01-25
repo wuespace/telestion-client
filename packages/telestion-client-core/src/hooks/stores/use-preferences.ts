@@ -6,8 +6,12 @@ import {
 	PreferencesStore,
 	PrefSelector
 } from '@wuespace/telestion-client-types';
+
 import { isEmpty } from '../../lib/core-utils';
 import { PreferencesState } from './use-preferences.model';
+import { getLogger } from '../../lib';
+
+const logger = getLogger('Preferences');
 
 /**
  * Returns the preferences application state and actions to interact with.
@@ -107,14 +111,17 @@ export const usePreferences: UseStore<PreferencesState> = create<PreferencesStat
 			if (isEmpty(newGroup)) delete newStore[group];
 
 			set({ preferences: newStore });
+			logger.info(`Preference ${preference} removed from group ${group}`);
 		},
 		removeGroup: group => {
 			const newStore = { ...get().preferences };
 			delete newStore[group];
 			set({ preferences: newStore });
+			logger.info(`Group ${group} removed`);
 		},
 		setStore: newStore => {
 			set({ preferences: newStore });
+			logger.info('Preference store replaced');
 		}
 	})
 );
@@ -146,6 +153,7 @@ function setPrefValue(
 	key: 'value' | 'renderer',
 	value: any
 ): Partial<PreferencesState> {
+	logger.debug(`Update ${group}.${preference}.${key}`);
 	const currentStore = currentState.preferences;
 	const currentGroup = currentStore[group];
 

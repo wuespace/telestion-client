@@ -1,5 +1,8 @@
 import create, { UseStore } from 'zustand';
 import { NotificationState } from './use-notification.model';
+import { getLogger } from '../../lib';
+
+const logger = getLogger('Notifications');
 
 /**
  * Returns the notification state and actions to interact with.
@@ -80,9 +83,11 @@ export const useNotifications: UseStore<NotificationState> = create<Notification
 		notifications: [],
 		isMuted: false,
 		add: notifications => {
+			logger.debug('Add new notifications');
 			if (!notifications.length) return;
 			// dismiss all notifications on mute
 			if (get().isMuted) {
+				logger.info('Mute all notifications');
 				notifications.forEach(notification => {
 					// eslint-disable-next-line no-param-reassign
 					notification.isDismissed = true;
@@ -91,6 +96,7 @@ export const useNotifications: UseStore<NotificationState> = create<Notification
 			set({ notifications: [...get().notifications, ...notifications] });
 		},
 		dismiss: notifications => {
+			logger.debug('Dismiss notifications');
 			if (!notifications.length) return;
 			const storeNotifications = get().notifications;
 			storeNotifications.forEach(current => {
@@ -102,6 +108,7 @@ export const useNotifications: UseStore<NotificationState> = create<Notification
 			set({ notifications: [...storeNotifications] });
 		},
 		showAll: () => {
+			logger.debug('Show all notifications');
 			const { notifications } = get();
 			notifications.forEach(current => {
 				// eslint-disable-next-line no-param-reassign
@@ -110,6 +117,7 @@ export const useNotifications: UseStore<NotificationState> = create<Notification
 			set({ notifications: [...notifications] });
 		},
 		mute: () => {
+			logger.debug('Mute all further notifications');
 			const { notifications } = get();
 			notifications.forEach(notification => {
 				// eslint-disable-next-line no-param-reassign
@@ -118,9 +126,11 @@ export const useNotifications: UseStore<NotificationState> = create<Notification
 			set({ notifications: [...notifications], isMuted: true });
 		},
 		unmute: () => {
+			logger.debug('Unmute all further notifications');
 			set({ isMuted: false });
 		},
 		toggle: () => {
+			logger.debug('Toggle mute state to', !get().isMuted);
 			set({ isMuted: !get().isMuted });
 		}
 	})

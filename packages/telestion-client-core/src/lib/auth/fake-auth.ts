@@ -4,6 +4,9 @@ import {
 	SignInResult,
 	SignOutResult
 } from '@wuespace/telestion-client-types';
+import { getLogger } from '../logger';
+
+const logger = getLogger('Fake auth');
 
 /**
  * Fake authenticator that accepts every username with every password
@@ -26,18 +29,28 @@ export class FakeAuth implements Auth {
 		username: string,
 		password: string
 	): Promise<SignInResult> {
+		logger.debug('SignIn called');
 		return new Promise((resolve, reject) => {
 			if (username === 'thebox') {
+				logger.error('Tried to find The Box...  and failed');
 				reject(new Error('The Box is not here. Please look somewhere else'));
 				return;
 			}
 
 			if (this.isAuthenticated) {
 				if (serverUrl !== this.eventBusUrl || username !== this.username) {
+					logger.error(
+						'Already signed in with other credentials',
+						`(${this.username})`
+					);
 					reject(new Error('Already signed in with other credentials'));
 					return;
 				}
 
+				logger.warn(
+					'Already signed with current credentials',
+					`(${this.username})`
+				);
 				resolve({
 					type: 'signIn',
 					user: this.username,
@@ -48,6 +61,9 @@ export class FakeAuth implements Auth {
 			}
 
 			if (serverUrl && username && password) {
+				logger.debug('Server URL:', serverUrl);
+				logger.debug('Username:', username);
+
 				this.isAuthenticated = true;
 				// TODO: change in production
 				this.eventBusUrl = serverUrl;
@@ -68,8 +84,10 @@ export class FakeAuth implements Auth {
 	}
 
 	signOut(): Promise<SignOutResult> {
+		logger.debug('SignOut called');
 		return new Promise(resolve => {
 			if (!this.isAuthenticated) {
+				logger.warn('Already signed out');
 				resolve({ type: 'signOut', reason: 'Already signed out' });
 				return;
 			}
@@ -85,6 +103,7 @@ export class FakeAuth implements Auth {
 
 	// eslint-disable-next-line no-unused-vars,@typescript-eslint/no-unused-vars
 	onAuthStateChanged(cb: (res: AuthResult) => void): () => void {
+		logger.debug('OnAuthStateChanged called');
 		if (this.username !== '') {
 			// cb({ type: 'signIn', user: this.username });
 		} else {

@@ -87,6 +87,7 @@ export const useEventBus: UseStore<EventBusState> = create<EventBusState>(
 		error: null,
 		lastErrorMessage: null,
 		openEventBus: (serverUrl, options) => {
+			logger.debug('Create and open event bus');
 			let errorTimerId: NodeJS.Timeout;
 
 			if (get().eventBus) {
@@ -96,17 +97,17 @@ export const useEventBus: UseStore<EventBusState> = create<EventBusState>(
 			}
 
 			const eb = new EventBus(serverUrl, options);
+			eb.enableReconnect(true);
 
 			eb.onOpen = () => {
-				eb.enableReconnect(true);
+				logger.success('Event bus opened!');
 				set({ connectionState: 'connected' });
-				logger.info('Eventbus opened');
 			};
 
 			eb.onClose = () => {
+				logger.warn('Event bus closed');
 				if (errorTimerId) clearTimeout(errorTimerId);
 				set({ connectionState: 'disconnected' });
-				logger.warn('Eventbus closed');
 
 				if (!eb.isReconnectEnabled) {
 					// it's a connection error
@@ -128,7 +129,9 @@ export const useEventBus: UseStore<EventBusState> = create<EventBusState>(
 			set({ eventBus: eb, connectionState: 'disconnected' });
 		},
 		closeEventBus: () => {
+			logger.debug('Close event bus');
 			if (!get().eventBus) {
+				logger.error('Event bus already closed');
 				throw new TypeError(
 					'Eventbus is already closed. Possible memory leak detected.'
 				);
