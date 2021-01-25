@@ -4,6 +4,9 @@ import { Dashboard, Username } from '@wuespace/telestion-client-types';
 
 import { UserConfigState, useUserConfig } from '../stores';
 
+/**
+ * A dispatch function type to change dashboards in a React `useState` style.
+ */
 export type DispatchDashboards = Dispatch<SetStateAction<Array<Dashboard>>>;
 
 // static user config selector
