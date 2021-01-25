@@ -91,6 +91,7 @@ export const useEventBus: UseStore<EventBusState> = create<EventBusState>(
 			let errorTimerId: NodeJS.Timeout;
 
 			if (get().eventBus) {
+				logger.error('Event bus already exists');
 				throw new TypeError(
 					'Eventbus is already created. No need to create another one.'
 				);
@@ -105,17 +106,9 @@ export const useEventBus: UseStore<EventBusState> = create<EventBusState>(
 			};
 
 			eb.onClose = () => {
-				logger.warn('Event bus closed');
+				logger.warn('Could not connect to backend');
 				if (errorTimerId) clearTimeout(errorTimerId);
 				set({ connectionState: 'disconnected' });
-
-				if (!eb.isReconnectEnabled) {
-					// it's a connection error
-					// close eventbus and delete it
-					eb.close();
-					set({ eventBus: null, error: 'Could not connect to server url' });
-					logger.error('Could not connect to server url');
-				}
 			};
 
 			eb.onError = message => {
@@ -131,7 +124,7 @@ export const useEventBus: UseStore<EventBusState> = create<EventBusState>(
 		closeEventBus: () => {
 			logger.debug('Close event bus');
 			if (!get().eventBus) {
-				logger.error('Event bus already closed');
+				logger.error('Event bus already closed and removed');
 				throw new TypeError(
 					'Eventbus is already closed. Possible memory leak detected.'
 				);
