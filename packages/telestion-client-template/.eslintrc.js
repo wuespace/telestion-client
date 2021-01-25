@@ -9,5 +9,6 @@ module.exports = {
 	extends: [
 		path.join(__dirname, '..', '..', 'base-configs', 'eslint.react.js')
 	],
-	rules: {}
+	rules: {},
+	ignorePatterns: ['template']
 };
