@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { ActionButton } from '@adobe/react-spectrum';
+import { TooltipTrigger, Tooltip, ActionButton } from '@adobe/react-spectrum';
 
 import FullScreen from '@spectrum-icons/workflow/FullScreen';
 import FullScreenExit from '@spectrum-icons/workflow/FullScreenExit';
@@ -27,11 +27,16 @@ export function FullscreenAction() {
 	}, [isFullscreen]);
 
 	return (
-		<ActionButton
-			isDisabled={!documentRef.current.fullscreenEnabled}
-			onPress={toggleFullscreen}
-		>
-			{isFullscreen ? <FullScreenExit /> : <FullScreen />}
-		</ActionButton>
+		<TooltipTrigger>
+			<ActionButton
+				isDisabled={!documentRef.current.fullscreenEnabled}
+				onPress={toggleFullscreen}
+			>
+				{isFullscreen ? <FullScreenExit /> : <FullScreen />}
+			</ActionButton>
+			<Tooltip>
+				{isFullscreen ? 'Leave fullscreen mode' : 'Go into fullscreen mode'}
+			</Tooltip>
+		</TooltipTrigger>
 	);
 }
