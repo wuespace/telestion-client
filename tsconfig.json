@@ -53,6 +53,7 @@
 		/* Disallow inconsistently-cased references to the same file. */
 		"forceConsistentCasingInFileNames": true
 	},
+	"include": ["types.d.ts"],
 	"exclude": ["node_modules"],
 	"references": [
 		{ "path": "./packages/vertx-event-bus" },

@@ -37,5 +37,7 @@ export const defaultLicensePlugin = license({
 export const defaultTerserPlugin = terser({
 	format: {
 		comments: 'some'
-	}
+	},
+	keep_classnames: true,
+	keep_fnames: true
 });
