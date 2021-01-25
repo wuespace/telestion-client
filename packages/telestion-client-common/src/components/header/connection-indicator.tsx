@@ -29,6 +29,27 @@ const selector: StateSelector<
 	EventBusState['connectionState']
 > = state => state.connectionState;
 
+/**
+ * Part of the Telestion Client Common header.
+ *
+ * It displays the current connection status of the event bus
+ * with a status light.
+ *
+ * @see {@link @wuespace/telestion-client-core#ConnectionState}
+ * @see {@link https://react-spectrum.adobe.com/react-spectrum/StatusLight.html}
+ * @see {@link Header}
+ *
+ * @example
+ * ```ts
+ * function AppHeader() {
+ * 	return (
+ * 		<Header
+ * 			right={<ConnectionIndicator />}
+ * 		/>
+ * 	);
+ * }
+ * ```
+ */
 export function ConnectionIndicator() {
 	const state = useEventBus(selector);
 
