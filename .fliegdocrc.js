@@ -5,12 +5,12 @@ module.exports = {
 	modules: [
 		{
 			package: './packages/vertx-event-bus/package.json',
-			tsconfig: './packages/vertx-event-bus/tsconfig.json',
+			tsconfig: './packages/vertx-event-bus/tsconfig.build.json',
 			mainFile: 'index.ts'
 		},
 		{
 			package: './packages/vertx-mock-server/package.json',
-			tsconfig: './packages/vertx-mock-server/tsconfig.json',
+			tsconfig: './packages/vertx-mock-server/tsconfig.build.json',
 			mainFile: 'index.ts'
 		},
 		{
@@ -20,17 +20,17 @@ module.exports = {
 		},
 		{
 			package: './packages/telestion-client-prop-types/package.json',
-			tsconfig: './packages/telestion-client-prop-types/tsconfig.json',
+			tsconfig: './packages/telestion-client-prop-types/tsconfig.build.json',
 			mainFile: 'index.ts'
 		},
 		{
 			package: './packages/telestion-client-core/package.json',
-			tsconfig: './packages/telestion-client-core/tsconfig.json',
+			tsconfig: './packages/telestion-client-core/tsconfig.build.json',
 			mainFile: 'index.ts'
 		},
 		{
 			package: './packages/telestion-client-common/package.json',
-			tsconfig: './packages/telestion-client-common/tsconfig.json',
+			tsconfig: './packages/telestion-client-common/tsconfig.build.json',
 			mainFile: 'index.ts'
 		}
 	],
