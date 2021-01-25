@@ -32,7 +32,8 @@ export function WidgetErrorMessage({
 			width="100%"
 			height="100%"
 			padding="size-100"
-			backgroundColor="gray-200"
+			backgroundColor="gray-100"
+			borderRadius="regular"
 		>
 			<IllustratedMessage>
 				{image}
