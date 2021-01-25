@@ -25,32 +25,32 @@ export function Header({ left, center, right }: HeaderProps) {
 					>
 						{left ?? <></>}
 					</Flex>
-				</Flex>
 
-				<Flex
-					flex={1}
-					height="100%"
-					marginStart="size-200"
-					marginEnd="size-200"
-					direction="row"
-					alignItems="center"
-					justifyContent="center"
-					gap="size-200"
-				>
-					{center ?? <></>}
-				</Flex>
+					<Flex
+						flex={1}
+						height="100%"
+						marginStart="size-200"
+						marginEnd="size-200"
+						direction="row"
+						alignItems="center"
+						justifyContent="center"
+						gap="size-200"
+					>
+						{center ?? <></>}
+					</Flex>
 
-				<Flex
-					flex={1}
-					height="100%"
-					marginStart="size-200"
-					marginEnd="size-200"
-					direction="row"
-					alignItems="center"
-					justifyContent="end"
-					gap="size-200"
-				>
-					{right ?? <></>}
+					<Flex
+						flex={1}
+						height="100%"
+						marginStart="size-200"
+						marginEnd="size-200"
+						direction="row"
+						alignItems="center"
+						justifyContent="end"
+						gap="size-200"
+					>
+						{right ?? <></>}
+					</Flex>
 				</Flex>
 			</View>
 		</Provider>
