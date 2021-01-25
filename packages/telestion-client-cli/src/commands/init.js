@@ -44,6 +44,12 @@ function builder(yargs) {
 			describe: 'Skips installation of dependencies',
 			type: 'boolean',
 			default: false
+		})
+		.option('template', {
+			alias: 't',
+			describe: 'Specify a template module',
+			type: 'string',
+			default: '@wuespace/telestion-client-template'
 		});
 }
 
@@ -52,14 +58,7 @@ async function getTemplateDirTree(templatePath) {
 	debug('Build template directory tree');
 	const tree = await makePromiseLastAtLeast(
 		(async () => {
-			return dirTree(templatePath, {
-				exclude: [
-					/\.git$/,
-					/bootstremplatr\.json$/,
-					/package\.json$/,
-					/node_modules$/
-				]
-			});
+			return dirTree(templatePath);
 		})(),
 		5000
 	);
@@ -83,7 +82,7 @@ async function askProjectName() {
 	return answers['name'];
 }
 
-function normalizeAndExtractNames(projectName) {
+function normalizeAndExtractNames(projectName, templateModuleName) {
 	let moduleName;
 	try {
 		moduleName = normalize(projectName);
@@ -95,10 +94,28 @@ function normalizeAndExtractNames(projectName) {
 	debug('Module Name:', moduleName);
 
 	const projectPath = path.join(process.cwd(), moduleName);
-	const templatePath = path.dirname(
-		require.resolve('@wuespace/telestion-client-template/package.json')
-	);
-	return { moduleName, projectPath, templatePath };
+
+	try {
+		const { templateDir } = require(`${templateModuleName}/package.json`);
+
+		if (typeof templateDir !== 'string') {
+			logger.error("Template module package.json missing key 'templateDir'");
+			process.exit(1);
+		}
+
+		const templateModulePath = path.dirname(
+			require.resolve(`${templateModuleName}/package.json`)
+		);
+		const templatePath = path.join(templateModulePath, templateDir);
+
+		return { moduleName, projectPath, templateModulePath, templatePath };
+	} catch (err) {
+		logger.error(`Template module '${templateModuleName}' was not found`);
+		logger.info(
+			`Please check the module name or install with npm install -g ${templateModuleName}`
+		);
+		process.exit(404);
+	}
 }
 
 async function preprocessArgv(argv) {
@@ -114,9 +131,15 @@ async function preprocessArgv(argv) {
 	}
 
 	const projectName = argv['name'];
-	let { moduleName, projectPath, templatePath } = normalizeAndExtractNames(
-		projectName
-	);
+	const templateModuleName = argv['template'];
+
+	let {
+		moduleName,
+		projectPath,
+		templatePath,
+		templateModulePath
+	} = normalizeAndExtractNames(projectName, templateModuleName);
+
 	debug('Template path:', templatePath);
 	debug('Project path:', projectPath);
 
@@ -128,12 +151,18 @@ async function preprocessArgv(argv) {
 		);
 		process.exit(1);
 	}
-	return { projectName, moduleName, projectPath, templatePath };
+	return {
+		projectName,
+		moduleName,
+		projectPath,
+		templatePath,
+		templateModulePath
+	};
 }
 
-function getReplacers(templatePath, moduleName, projectName) {
+function getReplacers({ templateModulePath, moduleName, projectName }) {
 	debug('Read template package.json');
-	const templatePackageJson = require(path.join(templatePath, 'package.json'));
+	const templatePackageJson = require(`${templateModulePath}/package.json`);
 	debug('Template package.json:', templatePackageJson);
 
 	const replacers = {
@@ -157,7 +186,8 @@ async function handler(argv) {
 		projectName,
 		moduleName,
 		projectPath,
-		templatePath
+		templatePath,
+		templateModulePath
 	} = await preprocessArgv(argv);
 
 	try {
@@ -171,7 +201,11 @@ async function handler(argv) {
 		spinner.start();
 		await new Promise(resolve => setTimeout(resolve, 2000));
 		spinner.stop();
-		const replacers = getReplacers(templatePath, moduleName, projectName);
+		const replacers = getReplacers({
+			templateModulePath,
+			moduleName,
+			projectName
+		});
 
 		// Process the root node of the template into the target dir
 		debug('Process and copy template directory to new project');
