@@ -40,7 +40,7 @@ module.exports = {
 		'max-lines': ['warn', { max: 250 }],
 		'max-lines-per-function': ['warn', 50]
 	},
-	ignorePatterns: ['.eslintrc.js', 'rollup.*.js', 'docs'],
+	ignorePatterns: ['.eslintrc.js', 'rollup.*.js', 'docs', 'types.d.ts'],
 	overrides: [
 		{
 			files: ['*/**/rollup.*.js'],
