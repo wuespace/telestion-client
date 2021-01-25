@@ -35,7 +35,14 @@ export function Dashboard({ dashboard }: DashboardProps) {
 			padding="size-100"
 			backgroundColor="gray-50"
 		>
-			<Grid areas={areas} rows={rows} columns={columns} gap="size-100">
+			<Grid
+				width="100%"
+				height="100%"
+				areas={areas}
+				rows={rows}
+				columns={columns}
+				gap="size-100"
+			>
 				{dashboard.widgets.map(widget => (
 					<OverflowFix
 						key={`${widget.title}-w${widget.width}-h${widget.height}`}
