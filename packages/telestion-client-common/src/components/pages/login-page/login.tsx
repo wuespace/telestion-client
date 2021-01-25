@@ -22,9 +22,10 @@ export function Login() {
 		({ serverUrl, username, password }: Submission) => {
 			setIsLoading(true);
 			setError(null);
-			signIn(serverUrl, username, password)
-				.finally(() => setIsLoading(false))
-				.catch(err => setError(err));
+			signIn(serverUrl, username, password).catch(err => {
+				setIsLoading(false);
+				setError(err);
+			});
 		},
 		[signIn]
 	);
