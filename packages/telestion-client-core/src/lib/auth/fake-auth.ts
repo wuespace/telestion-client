@@ -27,13 +27,15 @@ export class FakeAuth implements Auth {
 		password: string
 	): Promise<SignInResult> {
 		return new Promise((resolve, reject) => {
-			if (username !== 'thebox') {
+			if (username === 'thebox') {
 				reject(new Error('The Box is not here. Please look somewhere else'));
+				return;
 			}
 
 			if (this.isAuthenticated) {
 				if (serverUrl !== this.eventBusUrl || username !== this.username) {
 					reject(new Error('Already signed in with other credentials'));
+					return;
 				}
 
 				resolve({
@@ -42,6 +44,7 @@ export class FakeAuth implements Auth {
 					eventBusUrl: this.eventBusUrl,
 					reason: 'Already signed in with given credentials'
 				});
+				return;
 			}
 
 			if (serverUrl && username && password) {
@@ -58,7 +61,7 @@ export class FakeAuth implements Auth {
 							user: username,
 							eventBusUrl: this.eventBusUrl
 						}),
-					500
+					1500
 				);
 			}
 		});
@@ -68,6 +71,7 @@ export class FakeAuth implements Auth {
 		return new Promise(resolve => {
 			if (!this.isAuthenticated) {
 				resolve({ type: 'signOut', reason: 'Already signed out' });
+				return;
 			}
 
 			this.isAuthenticated = false;
@@ -75,7 +79,7 @@ export class FakeAuth implements Auth {
 			this.username = '';
 			// fake sign out delay
 			// TODO: Remove in production
-			setTimeout(() => resolve({ type: 'signOut' }), 100);
+			setTimeout(() => resolve({ type: 'signOut' }), 1000);
 		});
 	}
 
