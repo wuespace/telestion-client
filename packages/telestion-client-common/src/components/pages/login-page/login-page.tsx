@@ -4,7 +4,13 @@ import { Login } from './login';
 
 export function LoginPage() {
 	return (
-		<Flex direction="column" justifyContent="center" alignItems="center">
+		<Flex
+			width="100%"
+			height="100%"
+			direction="column"
+			justifyContent="center"
+			alignItems="center"
+		>
 			<Login />
 		</Flex>
 	);
