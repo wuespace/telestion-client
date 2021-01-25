@@ -106,9 +106,14 @@ export const useEventBus: UseStore<EventBusState> = create<EventBusState>(
 			};
 
 			eb.onClose = () => {
-				logger.warn('Could not connect to backend');
 				if (errorTimerId) clearTimeout(errorTimerId);
-				set({ connectionState: 'disconnected' });
+				// disconnect only on automatic reconnect enabled
+				if (eb.isReconnectEnabled) {
+					logger.warn('Could not connect to backend');
+					set({ connectionState: 'disconnected' });
+				} else {
+					logger.warn('Event bus closed');
+				}
 			};
 
 			eb.onError = message => {
