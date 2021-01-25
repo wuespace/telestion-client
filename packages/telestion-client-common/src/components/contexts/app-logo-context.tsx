@@ -40,7 +40,7 @@ export interface AppLogoContextProps {
  * ```ts
  * interface Props {
  * 	appLogo?: string;
- * 	children: ReactNode;
+ * 	children: ReactElement | Array<ReactElement>;
  * }
  *
  * function MyWrapper({ appLogo, children }: Props) {
@@ -69,7 +69,7 @@ AppLogoContext.propTypes = {
  * Returns the path to the current application logo.
  * It can be replaced by a custom logo in the {@link CommonWrapper} component.
  *
- * @throws TypeError - if not in an appLogo context
+ * @throws TypeError - if called outside of the {@link CommonWrapper}
  *
  * @see {@link AppLogoContext}
  * @see {@link CommonWrapper}
