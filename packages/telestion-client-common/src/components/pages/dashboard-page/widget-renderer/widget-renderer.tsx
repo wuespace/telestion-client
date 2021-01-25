@@ -39,7 +39,8 @@ export function WidgetRenderer({ widgetDefinition }: WidgetRendererProps) {
 	const widgets = useWidgets();
 
 	const Widget = useMemo(() => {
-		return widgets.filter(({ name }) => name === widgetName)[0].Widget || null;
+		const available = widgets.filter(({ name }) => name === widgetName);
+		return available[0] ? available[0].Widget : null;
 	}, [widgetName, widgets]);
 
 	if (Widget) {
