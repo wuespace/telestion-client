@@ -12,12 +12,62 @@ const selector: StateSelector<ColorSchemeState, ColorScheme> = ({
 	colorScheme
 }) => colorScheme;
 
+/**
+ * React Props of {@link CommonWrapper}
+ *
+ * For more information about React Props, please look here:
+ * {@link https://reactjs.org/docs/components-and-props.html}
+ *
+ * @see {@link CommonWrapper}
+ * @see {@link https://reactjs.org/docs/components-and-props.html}
+ */
 export interface CommonWrapperProps {
+	/**
+	 * A custom application logo instead of the default Telestion logo.
+	 */
 	appLogo?: string;
+	/**
+	 * Registered widgets for the application to use.
+	 */
 	widgets?: Array<Widget>;
+	/**
+	 * The children received from the wrapper function of the "root" component
+	 * {@link @wuespace/telestion-client-core#TelestionClient}.
+	 */
 	children: ReactElement | ReactElement[];
 }
 
+/**
+ * The wrapper component of the Telestion Client Common library.
+ *
+ * It defines the basic display structure in form of a vertical flex element.
+ *
+ * @see {@link CommonWrapperProps}
+ *
+ * @example
+ * ```ts
+ * const widgets: Array<Widget> = [
+ * 	...commonWidgets,
+ * 	...projectWidgets
+ * ];
+ *
+ * function App() {
+ * 	return (
+ * 		<TelestionClient
+ * 			wrapper={children => (
+ * 			  <CommonWrapper widgets={widgets}>
+ * 			  	{children}
+ * 			 	</CommonWrapper>
+ * 			)}
+ * 		>
+ * 			<Pages>
+ * 				...
+ * 			</Pages>
+ * 		</TelestionClient>
+ * 	);
+ * }
+ * ```
+ */
 export function CommonWrapper({
 	appLogo,
 	widgets,
