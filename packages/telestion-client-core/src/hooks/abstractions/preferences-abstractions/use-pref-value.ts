@@ -30,9 +30,13 @@ export function usePrefValue(
 	preference: PrefSelector
 ): PrefValue | undefined {
 	return usePreferences(
-		useCallback(state => (state.preferences[group] || {})[preference].value, [
-			group,
-			preference
-		])
+		useCallback(
+			state => {
+				const prefGroup = state.preferences[group] || {};
+				const pref = prefGroup[preference] || {};
+				return pref.value;
+			},
+			[group, preference]
+		)
 	);
 }
