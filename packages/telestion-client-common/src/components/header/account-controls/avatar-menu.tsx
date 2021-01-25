@@ -11,10 +11,10 @@ import LogOut from '@spectrum-icons/workflow/LogOut';
 const selector: StateSelector<
 	AuthState,
 	{
-		isLoggedOut: boolean;
+		auth: AuthState['auth'];
 		signOut: AuthState['signOut'];
 	}
-> = ({ auth, signOut }) => ({ isLoggedOut: !auth, signOut });
+> = ({ auth, signOut }) => ({ auth, signOut });
 
 export interface AvatarMenuProps {
 	onStatusClick: () => void;
@@ -22,7 +22,7 @@ export interface AvatarMenuProps {
 
 export function AvatarMenu({ onStatusClick }: AvatarMenuProps) {
 	const history = useHistory();
-	const { isLoggedOut, signOut } = useAuth(selector);
+	const { auth, signOut } = useAuth(selector);
 
 	const handleAction = useCallback(
 		(key: ReactText) => {
@@ -39,12 +39,12 @@ export function AvatarMenu({ onStatusClick }: AvatarMenuProps) {
 
 	return (
 		<Menu onAction={handleAction}>
-			<Section title="Hello User!">
+			<Section title={auth ? `Hello ${auth.username}!` : `Sign in`}>
 				<Item key="status">
 					<InfoOutline size="S" />
 					<Text>Status</Text>
 				</Item>
-				{isLoggedOut ? (
+				{!auth ? (
 					<Item key="login">
 						<Login size="S" />
 						<Text>Login</Text>
