@@ -1,8 +1,13 @@
+import { Flex } from '@adobe/react-spectrum';
 import { Routing } from '@wuespace/telestion-client-types';
 import { Login } from './login';
 
 export function LoginPage() {
-	return <Login />;
+	return (
+		<Flex direction="column" justifyContent="center" alignItems="center">
+			<Login />
+		</Flex>
+	);
 }
 
 const routing: Routing = {
