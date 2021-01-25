@@ -64,8 +64,8 @@
 		"@react-spectrum/tabs": "^3.0.0-alpha.3",
 		"@spectrum-icons/illustrations": "^3.2.1",
 		"@spectrum-icons/workflow": "^3.2.0",
+		"@types/react": "^17.0.0",
 		"react": "^17.0.1",
-		"react-dom": "^17.0.1",
 		"react-router": "^5.2.0",
 		"react-router-dom": "^5.2.0"
 	}
