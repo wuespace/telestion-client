@@ -19,6 +19,7 @@ export function DashboardPicker() {
 	return (
 		<TooltipTrigger>
 			<Picker
+				aria-label="Select a dashboard to view"
 				placeholder="No dashboards"
 				isDisabled={isDisabled}
 				items={items}

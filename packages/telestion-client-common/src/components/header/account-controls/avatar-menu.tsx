@@ -30,7 +30,7 @@ export function AvatarMenu({ onStatusClick }: AvatarMenuProps) {
 				onStatusClick();
 			} else if (key === 'logout') {
 				void signOut();
-			} else if (key === 'login') {
+			} else if (key === 'login' && history.location.pathname !== '/login') {
 				history.push('/login');
 			}
 		},
