@@ -23,7 +23,8 @@ const selector: StateSelector<ColorSchemeState, ColorScheme> = ({
  */
 export interface CommonWrapperProps {
 	/**
-	 * A custom application logo instead of the default Telestion logo.
+	 * Path to a custom application logo that are used
+	 * instead of the default Telestion logo.
 	 */
 	appLogo?: string;
 	/**
