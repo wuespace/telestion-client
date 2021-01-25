@@ -57,7 +57,11 @@ export function LoginForm({ isLoading, onSubmit }: LoginFormProps) {
 			</Form>
 
 			<View marginTop="size-150">
-				<LoginButton isLoading={isLoading} onPress={login} />
+				<LoginButton
+					isDisabled={!serverUrl || !username || !password}
+					isLoading={isLoading}
+					onPress={login}
+				/>
 			</View>
 		</>
 	);
