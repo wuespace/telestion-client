@@ -1,0 +1,33 @@
+* {
+	box-sizing: border-box;
+}
+
+body,
+html {
+	margin: 0;
+}
+
+input + svg,
+	button svg {
+	padding-right: 0 !important;
+	padding-left: 0 !important;
+}
+
+/**
+ * make electron app feel more native
+ *
+ *   * Prevent dragging all HTML elements, specially:
+ *   	- images
+ *   	- links (anchors)
+ *
+ *   * Prevent text selection
+ */
+
+*,
+*::after,
+*::before {
+	-webkit-user-select: none;
+	-webkit-user-drag: none;
+	-webkit-app-region: no-drag;
+	cursor: default;
+}

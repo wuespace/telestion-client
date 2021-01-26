@@ -1,90 +1,37 @@
-on:
-  push:
-    # Sequence of patterns matched against refs/tags
-    tags:
-      - 'v*' # Push events to matching v*, i.e. v1.0, v20.15.10
+# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
+# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
 
-name: Release
+name: Lerna Release
+
+on: workflow_dispatch
 
 jobs:
-  build-web:
-    name: Create Release and build web platform
+  release:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout code
+      - name: Checkout 📥
         uses: actions/checkout@v2.3.4
-      - name: Install Node.js, NPM and Yarn
-        uses: actions/setup-node@v2.1.4
+      - name: Setup Node 💿
+        uses: actions/setup-node@v2.1.2
         with:
-          node-version: 10
-      - name: set environment variables
-        uses: allenevans/set-env@v2.0.1
-        with:
-          REACT_APP_STADIA_API_KEY: ${{ secrets.stadia_api_key }}
-      - run: npm ci
-      - run: npm run build
-      - run: zip -r build.zip build
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
+          node-version: 14
+
+      - name: Setup git
+        run: |
+          git config --global user.name "${GITHUB_ACTOR}"
+          git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+      - name: Install lerna globally
+        run: npm i -g lerna
+      - name: Install development dependencies
+        run: npm ci
+      - name: Lerna version and GitHub release
+        run: lerna version --conventional-commits --create-release github --yes
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} # This token is provided by Actions, you do not need to create your own token
-        with:
-          tag_name: ${{ github.ref }}
-          release_name: ${{ github.ref }}
-          body: |
-            See [Changelog](https://github.com/TelestionGroup/daedalus2-client/master/CHANGELOG.md)
-          draft: true
-          prerelease: true
-      - name: Upload Release Asset
-        uses: actions/upload-release-asset@v1
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup npm
+        run: echo //registry.npmjs.org/:_authToken=${NPM_TOKEN} > .npmrc
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: ./build.zip
-          asset_name: web.zip
-          asset_content_type: application/zip
-  native-windows:
-    runs-on: windows-latest
-    needs: [build-web]
-
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2.3.4
-
-      - name: Install Node.js, NPM
-        uses: actions/setup-node@v2.1.4
-        with:
-          node-version: 10
-      - name: set environment variables
-        uses: allenevans/set-env@v2.0.1
-        with:
-          REACT_APP_STADIA_API_KEY: ${{ secrets.stadia_api_key }}
-      - run: npm ci
-      - run: npm run package:win
-        env:
-          GH_TOKEN: ${{ secrets.github_token }}
-      - run: ls ./release
-
-  native-linux:
-    runs-on: ubuntu-latest
-    needs: [build-web]
-
-    steps:
-      - name: Check out Git repository
-        uses: actions/checkout@v2.3.4
-
-      - name: Install Node.js, NPM
-        uses: actions/setup-node@v2.1.4
-        with:
-          node-version: 10
-      - name: set environment variables
-        uses: allenevans/set-env@v2.0.1
-        with:
-          REACT_APP_STADIA_API_KEY: ${{ secrets.stadia_api_key }}
-      - run: npm ci
-      - run: npm run package:linux
-        env:
-          GH_TOKEN: ${{ secrets.github_token }}
-      - run: ls ./release
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish to npm registry
+        run: lerna publish from-git

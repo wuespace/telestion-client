@@ -1,0 +1,70 @@
+{
+	"name": "@wuespace/telestion-client-cli",
+	"description": "The command line interface for the Telestion Client development",
+	"version": "0.3.0",
+	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
+	"bin": {
+		"tc-cli": "./bin/cli.js"
+	},
+	"files": [
+		"bin",
+		"src"
+	],
+	"scripts": {
+		"build": "echo \"Warning: No build script specified!\"",
+		"test": "echo \"Warning: No test script specified!\""
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TelestionTeam/telestion-client.git",
+		"directory": "packages/telestion-client-cli"
+	},
+	"bugs": {
+		"url": "https://github.com/TelestionTeam/telestion-client/issues"
+	},
+	"author": {
+		"name": "wuespace",
+		"email": "kontakt@wuespace.de",
+		"url": "https://www.wuespace.de/"
+	},
+	"contributors": [
+		{
+			"name": "Liam Franssen",
+			"email": "liam.franssen@stud-mail.uni-wuerzburg.de",
+			"url": "https://github.com/leecemin"
+		},
+		{
+			"name": "Pablo Klaschka",
+			"email": "contact@pabloklaschka.de",
+			"url": "https://github.com/pklaschka"
+		},
+		{
+			"name": "Jan Tischhöfer",
+			"email": "jan.tischhoefer@gmail.com",
+			"url": "https://github.com/jantischhoefer"
+		},
+		{
+			"name": "Ludwig Richter",
+			"email": "richter@fliegwerk.com",
+			"url": "https://github.com/fussel178"
+		}
+	],
+	"dependencies": {
+		"@craco/craco": "^6.0.0",
+		"@fliegwerk/logsemts": "^0.4.0-0",
+		"@wuespace/telestion-client-template": "file:../telestion-client-template",
+		"chalk": "^4.1.0",
+		"clui": "^0.3.6",
+		"debug": "^4.3.1",
+		"directory-tree": "^2.2.5",
+		"ejs": "^3.1.5",
+		"electroner": "^4.0.9",
+		"electron": "^11.2.0",
+		"inquirer": "^7.3.3",
+		"shelljs": "^0.8.4",
+		"validate-npm-package-name": "^3.0.0",
+		"webpack": "^4.46.0",
+		"webpack-dev-server": "^3.11.2",
+		"yargs": "^16.2.0"
+	}
+}

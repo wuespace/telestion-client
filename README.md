@@ -1,228 +1,148 @@
-<p align="center">
-<img alt="Dashboard Page" height="360" width="640" src="./images/frontend-dashboard.png"  />
-</p>
+# Telestion Client
 
-# D2 - Ground Station Frontend
+[![Maintainability](https://api.codeclimate.com/v1/badges/97fadf70f54a759cfaa4/maintainability)](https://codeclimate.com/github/TelestionTeam/telestion-client/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/97fadf70f54a759cfaa4/test_coverage)](https://codeclimate.com/github/TelestionTeam/telestion-client/test_coverage)
 
-The Ground Station Frontend for Daedalus2 written in
-[TypeScript](https://www.typescriptlang.org/) with [React](https://reactjs.org/) and
-[Adobe Spectrum](https://spectrum.adobe.com/) as the design system
+This is the Telestion Client Library Monorepo.
 
-## Getting started
+## Getting Started
 
-> **NOTE:** All commands below, unless otherwise specified, should get executed in the cloned project's root folder (that contains the `package.json`) or a subfolder thereof.
+You likely want to start your own project with a specific frontend client in mind.
+This repository only contains the base parts that are later assembled in a specific implementation for your project.
 
-The first step is to install the development dependencies.
-They are defined in `package.json` and you can install them with the following command:
+To make the start relatively easy,
+we provide you a full featured command line interface and dynamic template generator
+that gets project setup done in no time, so you can directly start developing and playing around with components.
 
-```shell script
-$ npm ci
+Before you are ready to takeoff, you need some tools in your hand.
+First, please install the following application via your distribution package manager
+or download and install them directly:
+
+- [NodeJS](https://nodejs.org/en/) ([Download](https://nodejs.org/en/download/))
+- [npm](https://www.npmjs.com/) ([Installation instructions](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm))
+
+After you set up these tools, install our command line interface:
+
+```shell
+npm install --global @wuespace/telestion-client-cli
 ```
 
-After the installation, make a copy of the `example.env`
-and name it `.env` in the project root folder to apply the final configuration.
-In this file, API keys and other secrets get defined as environment variables
-that are necessary for production compilation.
+Then go into your projects folder:
 
-More information [here](https://www.npmjs.com/package/dotenv).
-
-## Running
-
-To build and run the project in development mode, execute:
-
-```shell script
-$ npm start
+```shell
+cd myProjects
 ```
 
-## Linting and testing
+Here initialize a new project with:
 
-The project has numerous code style and syntax checkers.
-They fix possible wrong formatted code and inform you about syntax error.
-The unit and end-to-end check the application behavior and
-test for edge cases to find bugs in the early development phase.
-
-To run all checks and tests, simply call:
-
-```shell script
-$ npm run check
+```shell
+tc-cli init
 ```
 
-### Prettier
+The command line interface will guide you through the setup process.
 
-[Prettier](https://prettier.io/) is an opinionated code formatter.
-It formats your written code and ensures
-that all project code conforms to a consistent style.
+Finished!
+Now you a ready to go and develop your project groundstation frontend!
 
-To check and fix your code style, run:
+A little overwhelmed by the project size or lost the track of the project structure?
+Don't worry! Take a look at our extensive [documentation](https://telestionteam.github.io/telestion-client/)
+or at projects that are already using the Telestion client in action:
 
-```shell script
-$ npm run prettier
-```
+- [link_daedalus2]
+- [link_trex2]
 
-### ESLint
+If you want to contribute to the Telestion Client project, read further!
 
-[ESLint](https://eslint.org/) is a code linter and analyzer.
-It detects syntax errors in your code.
+## Contributing
 
-ESLint is integrated into the `start` and `build` scripts and
-gives you many rules to control the style, syntax, and usage of Javascript functionality.
+### Installation
 
-### TypeScript
+This project uses [Lerna](https://lerna.js.org/) as a monorepo package management tool.
 
-[TypeScript](https://www.typescriptlang.org/) extends JavaScript by adding types.
-
-To check for type mismatches and errors in your code, perform:
-
-```shell script
-$ npm run ts
-```
-
-### Jest
-
-[Jest](https://jestjs.io/) is a delightful JavaScript Testing Framework
-with a focus on simplicity.
-
-It tests your components with predefined unit-tests.
-
-To run all tests, call:
-
-```shell script
-$ npm run test:unit
-```
-
-### Cypress
-
-[Cypress](https://www.cypress.io/) is an end-to-end test environment
-with live result feedback running in a controlled browser environment.
-
-It tests the application logic and behavior with predefined end-to-end tests.
-
-To open the management window, call:
-
-```shell script
-$ npm run test:e2e
-```
-
-Do not forget to **start** the development server if you want to test the project:
-
-```shell script
-$ npm start
-```
-
-## Build and deploy
-
-The build command generates a ready-to-deploy webpage from the source code.
-
-To build the entire project, run:
-
-```shell script
-$ npm run build
-```
-
-If you want to package to compiled code into an electron app, run:
+First, install `lerna` globally for better repository maintenance:
 
 ```
-$ npm run build:electron
+npm i -g lerna
 ```
 
-Or as an all-in-one bundle for Windows, Linux, and macOS, execute:
+To install all dependencies the right way, run:
 
-```shell script
-$ npm run package:all
+```
+npm ci
 ```
 
-## Stable releases
+To clear all installed dependencies, execute:
 
-In the Github
-[Releases](https://github.com/TelestionGroup/daedalus2-client/releases)
-section, there are also stable builds for all popular operating systems
-for all released versions of the project.
+```
+cd /path/to/directory/root
+npm run clean
+rm -rf node_modules
+```
+
+### Developing and Testing
+
+Most of the time, you can use a package in the `packages` folder like a normal npm project.
+If you want to run the command over all packages in parallel, ask lerna for help:
+
+```
+lerna run build --stream
+```
+
+Differences come up, if you want to add a dependency.
+Here you must use lerna with the scope modifier:
+
+```
+lerna add [packageName] [packages/prefix-*]
+```
+
+Sometimes you need to edit the `package.json` manually.
+You can add dependencies by simply adding the lines in the dependency object
+and run lerna to restructure the monorepo dependencies:
+
+```
+lerna link convert
+```
+
+To add a dependency to a monorepo package,
+use a file URI with a relative path to the package instead of a version number.
+Lerna inserts at publishing the most recent version of the linked monorepo package automatically:
+
+```json
+{
+	"dependencies": {
+		"@wuespace/telestion-client-cli": "file:../telestion-client-cli"
+	}
+}
+```
+
+### Publishing
+
+To publish a new version of the project,
+lerna intelligently selects the packages that have change since the last publish,
+increase their version and publishes them.
+
+The actual publish process to npm and Github packages is handled by some neat Github-Actions
+that detect git tags and triggers a publishing to these registries.
+
+You only need to call:
+
+```
+lerna version
+git push
+```
 
 ## Documentation
 
-The project uses [TypeDoc](https://typedoc.org/) as the documentation tool.
-It converts documentation comments in TypeScript source code
-into rendered HTML documentation.
+### Project Structure
 
-To build the documentation yourself, run:
+| Package                   | Description                                                                                                                                     |
+| ------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| telestion-client-core     | Contains the core components of the Telestion Client that are essential for developing a Telestion frontend.                                    |
+| telestion-client-common   | Contains more common components that not necessary for a working frontend project but are highly recommended by the Telestion development team. |
+| telestion-client-template | Contains the template structure for a future Telestion Client project.                                                                          |
+| telestion-client-cli      | Bundles the full-featured command line interface of the Telestion Client.                                                                       |
+| mock-server               | Contains a mock server that simulates a connection with the Telestion backend only for testing purposes.                                        |
 
-```shell script
-$ npm run build:docs
-```
+## About
 
-## Project Structure
-
-```yaml
-root:
-  package.json  # describes project (dependencies, scripts, ...)
-  README.md
-  src:
-    index.tsx    # entry point
-    styles.scss  # global styles
-    model:  # global classes/types/interfaces that define the app
-      AppState.ts
-      MyAwesomeType.ts
-    lib:  # global library functionality
-      isValid.ts
-    app:  # sources for the application
-      index.tsx
-      index.test.tsx
-      components:  # application components
-        Dashboard
-        Header
-        Provider  # application state provider
-      pages:  # possible pages for any routes in the application
-    widgets:  # sources of all widgets
-      index.ts  # registration file for every widget
-      widget-1:
-        index.tsx
-        components:  # widget-1 own components
-          MyAwesomeComponent.tsx
-        model:  # widget-1 own model definitions
-          MyType.ts
-      widget-2:
-        index.tsx
-        components:
-          MyAwesomeComponent.tsx
-        model:
-          MyType.ts
-    hooks:  # global reusable component behavior
-      useSocket.ts
-      useAppState.ts
-  public:   # template webpage folder where React will engage
-    index.html
-    favicon.ico
-  cypress:  # cypress end-to-end test folder
-    README.md
-    fixtures:  # external pieces of static data
-      myData.json
-    plugins:  # plugins to extend cypress behavior
-      index.ts
-    support:  # reusable behavior for cypress tests
-      command.ts
-      index.ts
-    tests:  # actual test files
-      app:  # application end-to-end tests
-        login.spec.ts
-      widgets:  # widget end-to-end tests
-        SimpleWidget.spec.ts
-```
-
-## Learn More
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-## Notice
-
-Original source code of eventbus handler once existed here:
-
-- https://github.com/vert-x3/vertx-web/blob/master/vertx-web/src/client/vertx-eventbus.js
-
-and NOT here:
-
-- https://github.com/vert-x3/vertx-stack
-- https://github.com/vert-x3/vertx-bus-bower
-
-**that no longer is the case.** Where it is now, is a mystery (please report any findings here :wink:). It was, however, last seen in
-
-- https://github.com/vert-x3/vertx-web/commit/0c257b111a13597618c92d6482253f6422b3536d#diff-def126407e3ad10b16f833b7ce3b456cf88491796a22d0f8b5965327ded79b5c
+This is part of [Telestion](https://telestion.wuespace.de/), a project by [WueSpace e.V.](https://www.wuespace.de/)

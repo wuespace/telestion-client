@@ -1,0 +1,58 @@
+{
+	"name": "@wuespace/telestion-client-types",
+	"description": "Types for Telestion Client and their projects",
+	"license": "MIT",
+	"version": "0.3.0",
+	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
+	"types": "types/index.d.ts",
+	"files": [
+		"types"
+	],
+	"scripts": {
+		"build": "tsc -p .",
+		"test": "tsc -p sample",
+		"prepublishOnly": "npm run build",
+		"clean": "rimraf types"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TelestionTeam/telestion-client.git",
+		"directory": "packages/telestion-client-types"
+	},
+	"bugs": {
+		"url": "https://github.com/TelestionTeam/telestion-client/issues"
+	},
+	"author": {
+		"name": "wuespace",
+		"email": "kontakt@wuespace.de",
+		"url": "https://www.wuespace.de/"
+	},
+	"contributors": [
+		{
+			"name": "Liam Franssen",
+			"email": "liam.franssen@stud-mail.uni-wuerzburg.de",
+			"url": "https://github.com/leecemin"
+		},
+		{
+			"name": "Pablo Klaschka",
+			"email": "contact@pabloklaschka.de",
+			"url": "https://github.com/pklaschka"
+		},
+		{
+			"name": "Jan Tischhöfer",
+			"email": "jan.tischhoefer@gmail.com",
+			"url": "https://github.com/jantischhoefer"
+		},
+		{
+			"name": "Ludwig Richter",
+			"email": "richter@fliegwerk.com",
+			"url": "https://github.com/fussel178"
+		}
+	],
+	"dependencies": {
+		"@types/react": "^17.0.0"
+	},
+	"peerDependencies": {
+		"react": "^17.0.1"
+	}
+}

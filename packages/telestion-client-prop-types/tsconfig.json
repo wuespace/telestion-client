@@ -1,0 +1,5 @@
+{
+	"extends": "../../base-configs/tsconfig.typescript.json",
+	"include": ["src", "tests"],
+	"exclude": ["node_modules", "build", "types"]
+}

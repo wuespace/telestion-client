@@ -1,0 +1,8 @@
+{
+	"extends": "./tsconfig.react.json",
+	"compilerOptions": {
+		"declaration": true,
+		// reset paths because build should use node_modules instead
+		"paths": {}
+	}
+}

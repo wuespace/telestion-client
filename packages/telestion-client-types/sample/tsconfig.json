@@ -1,0 +1,15 @@
+{
+	"compilerOptions": {
+		"strict": true,
+		"module": "commonjs",
+		"target": "esnext",
+		"outDir": "out",
+		"allowJs": true,
+		"checkJs": true,
+		"noEmit": true,
+		"sourceMap": true,
+		"moduleResolution": "Node",
+		"types": ["../types/"]
+	},
+	"exclude": ["node_modules"]
+}

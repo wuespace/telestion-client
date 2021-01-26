@@ -1,0 +1,72 @@
+{
+	"name": "@wuespace/telestion-client-common",
+	"description": "The common components of the Telestion Client",
+	"license": "MIT",
+	"version": "0.3.0",
+	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
+	"main": "build/index.js",
+	"module": "build/index.es.js",
+	"types": "build/index.d.ts",
+	"files": [
+		"build"
+	],
+	"scripts": {
+		"build": "rollup -c",
+		"test": "echo \"Warning: No test script specified!\"",
+		"prepublishOnly": "npm run build",
+		"clean": "rimraf build types"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TelestionTeam/telestion-client.git",
+		"directory": "packages/telestion-client-common"
+	},
+	"bugs": {
+		"url": "https://github.com/TelestionTeam/telestion-client/issues"
+	},
+	"author": {
+		"name": "wuespace",
+		"email": "kontakt@wuespace.de",
+		"url": "https://www.wuespace.de/"
+	},
+	"contributors": [
+		{
+			"name": "Liam Franssen",
+			"email": "liam.franssen@stud-mail.uni-wuerzburg.de",
+			"url": "https://github.com/leecemin"
+		},
+		{
+			"name": "Pablo Klaschka",
+			"email": "contact@pabloklaschka.de",
+			"url": "https://github.com/pklaschka"
+		},
+		{
+			"name": "Jan Tischhöfer",
+			"email": "jan.tischhoefer@gmail.com",
+			"url": "https://github.com/jantischhoefer"
+		},
+		{
+			"name": "Ludwig Richter",
+			"email": "richter@fliegwerk.com",
+			"url": "https://github.com/fussel178"
+		}
+	],
+	"dependencies": {
+		"@wuespace/telestion-client-core": "file:../telestion-client-core",
+		"@wuespace/telestion-client-prop-types": "file:../telestion-client-prop-types",
+		"@wuespace/telestion-client-types": "file:../telestion-client-types",
+		"prop-types": "^15.7.2",
+		"react-error-boundary": "^3.1.0",
+		"zustand": "^3.2.0"
+	},
+	"peerDependencies": {
+		"@adobe/react-spectrum": "^3.6.0",
+		"@react-spectrum/tabs": "^3.0.0-alpha.3",
+		"@spectrum-icons/illustrations": "^3.2.1",
+		"@spectrum-icons/workflow": "^3.2.0",
+		"@types/react": "^17.0.0",
+		"react": "^17.0.1",
+		"react-router": "^5.2.0",
+		"react-router-dom": "^5.2.0"
+	}
+}

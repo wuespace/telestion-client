@@ -1,0 +1,17 @@
+import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
+import {TelestionClient} from "./telestion-client";
+
+<Meta title="Core/TelestionClient" component={TelestionClient} />
+
+# TelestionClient
+
+<Canvas>
+	<Story name="Pure TelestionClient">
+		<TelestionClient>
+		</TelestionClient>
+	</Story>
+	<Story name="TelestionClient with a title">
+		<TelestionClient title={'Hello World'}>
+		</TelestionClient>
+	</Story>
+</Canvas>

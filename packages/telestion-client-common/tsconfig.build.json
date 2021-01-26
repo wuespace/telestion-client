@@ -1,0 +1,15 @@
+{
+	"extends": "../../base-configs/tsconfig.react.build.json",
+	"compilerOptions": {
+		"declarationDir": "types"
+	},
+	"include": ["src", "typings.d.ts"],
+	"exclude": [
+		"node_modules",
+		"build",
+		"types",
+		"src/**/*.test.ts*",
+		"src/**/*.spec.ts*",
+		"src/**/*.stories.ts*"
+	]
+}
