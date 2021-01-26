@@ -13,13 +13,15 @@ npm install @wuespace/telestion-client-common
 Please also check that you install a supported version of:
 
 - `react`
-- `react-dom`
+- `react-router`
+- `react-router-dom`
 - `@adobe/react-spectrum`
 - `@react-spectrum/tabs`
 - `@spectrum-icons/illustrations`
 - `@spectrum-icons/workflow`
+- `@types/react`
 
-for React support and UI library support.
+for React, routing and UI library support.
 
 After installation, check out the provided components:
 
