@@ -45,6 +45,7 @@
 		"@spectrum-icons/illustrations": "^3.2.0",
 		"@spectrum-icons/ui": "^3.2.0",
 		"@spectrum-icons/workflow": "^3.2.0",
+		"@react-spectrum/tabs": "^3.0.0-alpha.3",
 		"@wuespace/telestion-client-common": "file:../telestion-client-common",
 		"@wuespace/telestion-client-core": "file:../telestion-client-core",
 		"electron": "^11.2.1",
