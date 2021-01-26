@@ -15,7 +15,7 @@ jobs:
           # in most cases for the deployment to work correctly.
           persist-credentials: false
       - name: Setup Node 💿
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v2.1.4
         with:
           node-version: 14
 

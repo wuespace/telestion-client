@@ -24,7 +24,7 @@ jobs:
       # 3. Invoke Scan with the github token. Leave the workspace empty to use relative url
 
       - name: Setup Node 💿
-        uses: actions/setup-node@v2.1.2
+        uses: actions/setup-node@v2.1.4
         with:
           node-version: 14
 
