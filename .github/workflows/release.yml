@@ -34,4 +34,4 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish to npm registry
-        run: lerna publish from-git
+        run: lerna publish from-git --yes
