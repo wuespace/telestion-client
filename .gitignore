@@ -34,6 +34,7 @@ packages/*/node_modules
 # environment files
 .env
 .env.*
+.npmrc
 
 # cache
 .eslintcache
