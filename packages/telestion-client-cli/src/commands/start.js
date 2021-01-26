@@ -1,6 +1,4 @@
-const Webpack = require('webpack');
-const { createWebpackDevConfig } = require('@craco/craco');
-const WebpackDevServer = require('webpack-dev-server');
+const electroner = require('electroner');
 
 const debug = require('debug')('start');
 const logger = require('../lib/logger')('start');
@@ -18,6 +16,11 @@ function builder(yargs) {
 }
 
 async function handler(argv) {
+	// dynamically load dependencies
+	const Webpack = require('webpack');
+	const { createWebpackDevConfig } = require('@craco/craco');
+	const WebpackDevServer = require('webpack-dev-server');
+
 	// gathering information
 	debug('Arguments:', argv);
 
@@ -33,8 +36,6 @@ async function handler(argv) {
 	const server = new WebpackDevServer(compiler, devServerOptions);
 
 	server.listen(3000, '127.0.0.1', () => {
-		const electroner = require('electroner');
-
 		electroner('http://localhost:3000', {});
 		logger.info('Webpack dev server listening on http://localhost:3000');
 	});
