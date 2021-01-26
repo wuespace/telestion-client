@@ -66,5 +66,8 @@
 		"webpack": "^4.46.0",
 		"webpack-dev-server": "^3.11.2",
 		"yargs": "^16.2.0"
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }

@@ -54,5 +54,8 @@
 	"dependencies": {
 		"@types/sockjs": "^0.3.32",
 		"sockjs": "^0.3.21"
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }

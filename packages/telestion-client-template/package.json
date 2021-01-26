@@ -64,5 +64,8 @@
 		"@wuespace/telestion-client-types": "file:../telestion-client-types",
 		"react-scripts": "^4.0.1",
 		"typescript": "^4.1.3"
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }

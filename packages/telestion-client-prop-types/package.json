@@ -57,5 +57,8 @@
 	"dependencies": {
 		"@wuespace/vertx-event-bus": "file:../vertx-event-bus",
 		"prop-types": "^15.7.2"
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }
