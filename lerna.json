@@ -1,16 +1,12 @@
 {
-	"version": "0.3.2",
+	"version": "0.3.3",
 	"npmClient": "npm",
-	"packages": [
-		"packages/*"
-	],
+	"packages": ["packages/*"],
 	"command": {
 		"version": {
 			"allowBranch": "main",
 			"message": "chore(release): %s"
 		}
 	},
-	"ignoreChanges": [
-		"**/cypress/**"
-	]
+	"ignoreChanges": ["**/cypress/**"]
 }
