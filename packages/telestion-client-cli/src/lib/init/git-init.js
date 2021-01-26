@@ -1,7 +1,7 @@
 const exec = require('../async-exec');
 
 const gitInit = 'git init';
-const gitCommit = 'git -am "Initial commit"';
+const gitCommit = 'git commit -am "Initial commit"';
 
 async function runGitInit(debug, projectPath, spinner, logger) {
 	let isGitRepo = false;
@@ -35,7 +35,7 @@ async function makeInitialCommit(projectPath, spinner, logger, debug) {
 	}
 }
 
-module.exports = async function initializeGitRepsitory(
+module.exports = async function initializeGitRepository(
 	projectPath,
 	argv,
 	spinner,

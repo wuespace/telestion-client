@@ -1,5 +1,3 @@
-const initializeGitRepsitory = require('../lib/init/git-init');
-
 const path = require('path');
 const fs = require('fs');
 const inquirer = require('inquirer');
@@ -8,12 +6,14 @@ const { Spinner } = require('clui');
 
 const debug = require('debug')('init');
 const logger = require('../lib/logger')('init');
+
 const makePromiseLastAtLeast = require('../lib/promise-minimum-time');
 
 const normalize = require('../lib/init/normalize-module-name');
 const processTemplateTree = require('../lib/init/process-template-tree');
-const initEpilogue = require('../lib/init/init-epilogue');
 const npmInstall = require('../lib/init/npm-install');
+const initializeGitRepository = require('../lib/init/git-init');
+const initEpilogue = require('../lib/init/init-epilogue');
 
 const spinner = new Spinner('', ['⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷']);
 
@@ -216,7 +216,7 @@ async function handler(argv) {
 		}
 
 		if (!argv['skipGit']) {
-			await initializeGitRepsitory(projectPath, argv, spinner, logger, debug);
+			await initializeGitRepository(projectPath, argv, spinner, logger, debug);
 		}
 
 		logger.success('Project initialized');
