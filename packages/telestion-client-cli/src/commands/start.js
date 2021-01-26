@@ -1,3 +1,7 @@
+const Webpack = require('webpack');
+const { createWebpackDevConfig } = require('@craco/craco');
+const WebpackDevServer = require('webpack-dev-server');
+
 const debug = require('debug')('start');
 const logger = require('../lib/logger')('start');
 
@@ -17,9 +21,23 @@ async function handler(argv) {
 	// gathering information
 	debug('Arguments:', argv);
 
-	// for implementation examples, look at the @server-state/cli refactoring branch
-	logger.error('Not implemented');
-	process.exit(1);
+	const webpackConfig = createWebpackDevConfig({
+		webpack: { configure: { stats: 'errors-only' } }
+	});
+
+	const compiler = Webpack(webpackConfig);
+	const devServerOptions = Object.assign({}, webpackConfig.devServer, {
+		open: false,
+		transportMode: 'ws'
+	});
+	const server = new WebpackDevServer(compiler, devServerOptions);
+
+	server.listen(3000, '127.0.0.1', () => {
+		const electroner = require('electroner');
+
+		electroner('http://localhost:3000', {});
+		logger.info('Webpack dev server listening on http://localhost:3000');
+	});
 }
 
 module.exports = {

@@ -50,6 +50,7 @@
 		}
 	],
 	"dependencies": {
+		"@craco/craco": "^6.0.0",
 		"@fliegwerk/logsemts": "^0.4.0-0",
 		"@wuespace/telestion-client-template": "file:../telestion-client-template",
 		"chalk": "^4.1.0",
@@ -57,9 +58,13 @@
 		"debug": "^4.3.1",
 		"directory-tree": "^2.2.5",
 		"ejs": "^3.1.5",
+		"electroner": "^4.0.9",
+		"electron": "^11.2.0",
 		"inquirer": "^7.3.3",
 		"shelljs": "^0.8.4",
 		"validate-npm-package-name": "^3.0.0",
+		"webpack": "^4.46.0",
+		"webpack-dev-server": "^3.11.2",
 		"yargs": "^16.2.0"
 	}
 }
