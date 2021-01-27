@@ -36,6 +36,12 @@ jobs:
           name: vertx-event-bus_build-${{ github.run_number }}
           path: packages/vertx-event-bus/build/
           retention-days: 7
+      - name: Upload vertx-mock-server build artifact 📤
+        uses: actions/upload-artifact@v2.2.2
+        with:
+          name: vertx-mock-server_build-${{ github.run_number }}
+          path: packages/vertx-mock-server/build/
+          retention-days: 7
       - name: Upload telestion-client-types build artifact 📤
         uses: actions/upload-artifact@v2.2.2
         with:
