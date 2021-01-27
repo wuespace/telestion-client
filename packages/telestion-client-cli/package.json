@@ -63,7 +63,7 @@
 		"inquirer": "^7.3.3",
 		"shelljs": "^0.8.4",
 		"validate-npm-package-name": "^3.0.0",
-		"webpack": "^4.46.0",
+		"webpack": "^5.18.0",
 		"webpack-dev-server": "^3.11.2",
 		"yargs": "^16.2.0"
 	},
