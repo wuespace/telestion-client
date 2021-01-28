@@ -1,8 +1,13 @@
 {
 	"name": "<%- moduleName %>",
 	"version": "0.0.0",
+	"scripts": {
+		"start": "tc-cli start",
+		"build": "tc-cli build",
+		"stats": "tc-cli stats"
+	},
 	"private": true,
-	"description": "",
+	"description": "<%- moduleName %>, a Telestion PSC generated using the telestion-client-cli",
 	"dependencies": <%- dependencies %>,
 	"devDependencies": <%- devDependencies %>
 }
