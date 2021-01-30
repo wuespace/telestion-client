@@ -10,6 +10,7 @@ updates:
     schedule:
       interval: 'daily'
     versioning-strategy: increase-if-necessary
+    open-pull-request-limit: 10
     commit-message:
       prefix: 'chore'
       include: 'scope'
@@ -18,6 +19,7 @@ updates:
     directory: '/' # Location of package manifests
     schedule:
       interval: 'daily'
+    open-pull-request-limit: 10
     commit-message:
       prefix: 'chore'
       include: 'scope'
