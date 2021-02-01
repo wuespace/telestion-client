@@ -121,7 +121,7 @@
 		"rollup-plugin-postcss": "^3.1.8",
 		"rollup-plugin-terser": "^7.0.2",
 		"rollup-plugin-typescript2": "^0.29.0",
-		"ts-jest": "~26.4.4",
+		"ts-jest": "~26.5.0",
 		"typescript": "~4.1.2",
 		"yargs": "^16.1.1",
 		"zustand": "^3.3.1"
