@@ -1,5 +1,5 @@
-import { AddressableMessage } from './addressable-message';
 import { JsonSerializable } from '../../json-serializable';
+import { AddressableMessage } from './addressable-message';
 
 /**
  * a message with actual content that will be transferred with the message

@@ -1,3 +1,5 @@
+import { ChannelAddress } from '../channel';
+
 import { BaseMessage } from './base-message';
 import { Headers } from './headers';
 import type { Callback } from './callback';
@@ -9,7 +11,7 @@ export interface AddressableMessage extends BaseMessage {
 	/**
 	 * the address of a event bus location registered to the backend
 	 */
-	address: string;
+	address: ChannelAddress;
 	/**
 	 * additional headers that will be sent with the message
 	 */
