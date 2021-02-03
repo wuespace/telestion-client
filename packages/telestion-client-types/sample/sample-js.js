@@ -227,3 +227,7 @@ let vertxEventBusSendMessage;
  * @type {TelestionClientTypes.VertxEventBus.UnregisterMessage}
  */
 let vertxEventBusUnregisterMessage;
+/**
+ * @type {TelestionClientTypes.VertxEventBus.ChannelAddress}
+ */
+let vertxEventBusChannelAddress;

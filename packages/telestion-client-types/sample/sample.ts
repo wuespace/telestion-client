@@ -86,4 +86,5 @@ namespace AnotherPlace {
 	let vertxEventBusRegisterMessage: TelestionClientTypes.VertxEventBus.RegisterMessage;
 	let vertxEventBusSendMessage: TelestionClientTypes.VertxEventBus.SendMessage;
 	let vertxEventBusUnregisterMessage: TelestionClientTypes.VertxEventBus.UnregisterMessage;
+	let vertxEventBusChannelAddress: TelestionClientTypes.VertxEventBus.ChannelAddress;
 }
