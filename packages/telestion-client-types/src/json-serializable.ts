@@ -8,5 +8,5 @@ export type JsonSerializable =
 	| number
 	| string
 	| boolean
-	| Map<string, JsonSerializable>
+	| { [key: string]: JsonSerializable }
 	| Array<JsonSerializable>;
