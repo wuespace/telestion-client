@@ -167,3 +167,63 @@ let notificationNotificationType;
  * @type {TelestionClientTypes.Notification.Notification}
  */
 let notificationNotification;
+
+//
+// vertx-event-bus
+//
+/**
+ * @type {TelestionClientTypes.VertxEventBus.Options}
+ */
+let vertxEventBusOptions;
+/**
+ * @type {TelestionClientTypes.VertxEventBus.AddressableMessage}
+ */
+let vertxEventBusAddressableMessage;
+/**
+ * @type {TelestionClientTypes.VertxEventBus.BaseMessage}
+ */
+let vertxEventBusBaseMessage;
+/**
+ * @type {TelestionClientTypes.VertxEventBus.Callback}
+ */
+let vertxEventBusCallback;
+/**
+ * @type {TelestionClientTypes.VertxEventBus.ContentMessage}
+ */
+let vertxEventBusContentMessage;
+/**
+ * @type {TelestionClientTypes.VertxEventBus.ErrorMessage}
+ */
+let vertxEventBusErrorMessage;
+/**
+ * @type {TelestionClientTypes.VertxEventBus.Headers}
+ */
+let vertxEventBusHeaders;
+/**
+ * @type {TelestionClientTypes.VertxEventBus.Message}
+ */
+let vertxEventBusMessage;
+/**
+ * @type {TelestionClientTypes.VertxEventBus.PingMessage}
+ */
+let vertxEventBusPingMessage;
+/**
+ * @type {TelestionClientTypes.VertxEventBus.PublishMessage}
+ */
+let vertxEventBusPublishMessage;
+/**
+ * @type {TelestionClientTypes.VertxEventBus.ReceiveMessage}
+ */
+let vertxEventBusReceiveMessage;
+/**
+ * @type {TelestionClientTypes.VertxEventBus.RegisterMessage}
+ */
+let vertxEventBusRegisterMessage;
+/**
+ * @type {TelestionClientTypes.VertxEventBus.SendMessage}
+ */
+let vertxEventBusSendMessage;
+/**
+ * @type {TelestionClientTypes.VertxEventBus.UnregisterMessage}
+ */
+let vertxEventBusUnregisterMessage;

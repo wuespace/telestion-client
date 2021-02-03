@@ -68,4 +68,22 @@ namespace AnotherPlace {
 	//
 	let notificationNotificationType: TelestionClientTypes.Notification.NotificationType;
 	let notificationNotification: TelestionClientTypes.Notification.Notification;
+
+	//
+	// vertx-event-bus
+	//
+	let vertxEventBusOptions: TelestionClientTypes.VertxEventBus.Options;
+	let vertxEventBusAddressableMessage: TelestionClientTypes.VertxEventBus.AddressableMessage;
+	let vertxEventBusBaseMessage: TelestionClientTypes.VertxEventBus.BaseMessage;
+	let vertxEventBusCallback: TelestionClientTypes.VertxEventBus.Callback;
+	let vertxEventBusContentMessage: TelestionClientTypes.VertxEventBus.ContentMessage;
+	let vertxEventBusErrorMessage: TelestionClientTypes.VertxEventBus.ErrorMessage;
+	let vertxEventBusHeaders: TelestionClientTypes.VertxEventBus.Headers;
+	let vertxEventBusMessage: TelestionClientTypes.VertxEventBus.Message;
+	let vertxEventBusPingMessage: TelestionClientTypes.VertxEventBus.PingMessage;
+	let vertxEventBusPublishMessage: TelestionClientTypes.VertxEventBus.PublishMessage;
+	let vertxEventBusReceiveMessage: TelestionClientTypes.VertxEventBus.ReceiveMessage;
+	let vertxEventBusRegisterMessage: TelestionClientTypes.VertxEventBus.RegisterMessage;
+	let vertxEventBusSendMessage: TelestionClientTypes.VertxEventBus.SendMessage;
+	let vertxEventBusUnregisterMessage: TelestionClientTypes.VertxEventBus.UnregisterMessage;
 }
