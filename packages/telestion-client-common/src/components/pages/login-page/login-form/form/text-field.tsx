@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { TextField as SpectrumTextField } from '@adobe/react-spectrum';
 import { SpectrumTextFieldProps } from '@react-types/textfield';
-import { ValidationState } from '../../../../lib/validate-inputs';
+import { ValidationState } from './validate-inputs';
 
 export type TextFieldProps = Omit<
 	SpectrumTextFieldProps,

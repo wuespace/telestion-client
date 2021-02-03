@@ -1,68 +1,37 @@
-import { useCallback, useState } from 'react';
-import { Form, View } from '@adobe/react-spectrum';
+import { useState, useCallback } from 'react';
+import { StateSelector } from 'zustand';
+import { Well } from '@adobe/react-spectrum';
+import { AuthState, useAuth } from '@wuespace/telestion-client-core';
 
-import { TextField } from './text-field';
-import { LoginButton } from './login-button';
-import { isValidHttpUrl, isValidText } from '../../../../lib/validate-inputs';
+import { Form, Submission } from './form/form';
 
-export interface Submission {
-	serverUrl: string;
-	username: string;
-	password: string;
-}
+// auth selector
+const selector: StateSelector<AuthState, AuthState['signIn']> = ({ signIn }) =>
+	signIn;
 
-export interface LoginFormProps {
-	isLoading: boolean;
+export function LoginForm() {
+	const signIn = useAuth(selector);
 
-	onSubmit: (submission: Submission) => void;
-}
+	const [isLoading, setIsLoading] = useState(false);
+	const [error, setError] = useState<Error | null>(null);
 
-export function LoginForm({ isLoading, onSubmit }: LoginFormProps) {
-	const [serverUrl, setServerUrl] = useState<string | null>('');
-	const [username, setUsername] = useState<string | null>('');
-	const [password, setPassword] = useState<string | null>('');
+	const handleSubmit = useCallback(
+		({ serverUrl, username, password }: Submission) => {
+			setIsLoading(true);
+			setError(null);
 
-	const login = useCallback(() => {
-		if (serverUrl && username && password) {
-			onSubmit({ serverUrl, username, password });
-		}
-	}, [onSubmit, password, serverUrl, username]);
+			signIn(serverUrl, username, password).catch(err => {
+				setIsLoading(false);
+				setError(err);
+			});
+		},
+		[signIn]
+	);
 
 	return (
 		<>
-			<Form maxWidth="100%" isRequired isDisabled={isLoading}>
-				<TextField
-					autoFocus
-					label="Backend Server"
-					placeholder="Server URL"
-					initialValue=""
-					onChange={setServerUrl}
-					validator={isValidHttpUrl}
-				/>
-				<TextField
-					label="Username"
-					placeholder="Your username"
-					initialValue=""
-					onChange={setUsername}
-					validator={isValidText}
-				/>
-				<TextField
-					label="Password"
-					placeholder="Your password"
-					type="password"
-					initialValue=""
-					onChange={setPassword}
-					validator={isValidText}
-				/>
-			</Form>
-
-			<View marginTop="size-150">
-				<LoginButton
-					isDisabled={!serverUrl || !username || !password}
-					isLoading={isLoading}
-					onPress={login}
-				/>
-			</View>
+			{error ? <Well>{error.message}</Well> : <></>}
+			<Form isLoading={isLoading} onSubmit={handleSubmit} />
 		</>
 	);
 }
