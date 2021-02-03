@@ -1,4 +1,4 @@
-import { Options } from './options';
+import { Options } from '@wuespace/telestion-client-types';
 
 /**
  * the default options for the event bus

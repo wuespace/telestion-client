@@ -19,10 +19,8 @@
  */
 import SockJS from 'sockjs-client';
 
-import { Options } from './options';
-import { getLogger } from './logger';
-import { defaultOptions } from './vertx-event-bus-default-options';
 import {
+	Options,
 	Callback,
 	ErrorMessage,
 	Headers,
@@ -30,7 +28,9 @@ import {
 	Message,
 	PublishMessage,
 	SendMessage
-} from './messages';
+} from '@wuespace/telestion-client-types';
+import { getLogger } from './logger';
+import { defaultOptions } from './vertx-event-bus-default-options';
 
 const logger = getLogger('Vert.x Eventbus');
 
