@@ -1,8 +1,12 @@
 import { Flex } from '@adobe/react-spectrum';
 import { Routing } from '@wuespace/telestion-client-types';
-import { Login } from './login';
+import { ReactElement } from 'react';
 
-export function LoginPage() {
+export interface LoginPageProps {
+	children: ReactElement | Array<ReactElement>;
+}
+
+export function LoginPage({ children }: LoginPageProps) {
 	return (
 		<Flex
 			width="100%"
@@ -11,7 +15,9 @@ export function LoginPage() {
 			justifyContent="center"
 			alignItems="center"
 		>
-			<Login />
+			<Flex direction="column" maxWidth="size-4600">
+				{children}
+			</Flex>
 		</Flex>
 	);
 }
