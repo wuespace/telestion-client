@@ -5,6 +5,7 @@ import * as u from './widgets/user-config';
 import * as a from './auth';
 import * as e from './preferences';
 import * as n from './notification';
+import * as v from './vertx-event-bus';
 
 declare global {
 	namespace TelestionClientTypes {
@@ -15,6 +16,7 @@ declare global {
 		export import Auth = a;
 		export import Preferences = e;
 		export import Notification = n;
+		export import VertxEventBus = v;
 	}
 }
 
@@ -25,3 +27,4 @@ export * from './widgets/user-config';
 export * from './auth';
 export * from './preferences';
 export * from './notification';
+export * from './vertx-event-bus';
