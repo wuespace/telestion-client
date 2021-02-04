@@ -1,9 +1,15 @@
-import { ErrorMessage, JsonSerializable } from '@wuespace/vertx-event-bus';
+import {
+	ErrorMessage,
+	JsonSerializable
+} from '@wuespace/telestion-client-types';
 
 /**
- * Send a message to the event bus and get the first reply via a callback.
+ * Sends a message to the event bus and get the first reply via a callback.
+ *
+ * @typeParam T - the type of the received data in the callback
+ * (defaults to JSON serializable data)
  */
-export type SendFunction =
+export type SendFunction<T extends JsonSerializable> =
 	/**
 	 * @param message - the message that will be sent
 	 * @param callback - the function that will be called
@@ -11,8 +17,5 @@ export type SendFunction =
 	 */
 	(
 		message: JsonSerializable,
-		callback: (
-			message: JsonSerializable | null,
-			error: ErrorMessage | null
-		) => void
+		callback: (message: T | null, error: ErrorMessage | null) => void
 	) => void;

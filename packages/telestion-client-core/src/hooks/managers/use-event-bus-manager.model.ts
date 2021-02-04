@@ -1,4 +1,4 @@
-import { Options } from '@wuespace/vertx-event-bus';
+import { Options } from '@wuespace/telestion-client-types';
 
 /**
  * Optional parameters to configure the event bus manager.
@@ -7,7 +7,7 @@ export interface EventBusManagerOptions {
 	/**
 	 * Optional parameters for the event bus instance.
 	 *
-	 * @see {@link @wuespace/vertx-event-bus#Options}
+	 * @see {@link @wuespace/telestion-client-types#Options}
 	 */
 	options?: Options;
 
