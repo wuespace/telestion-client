@@ -1,3 +1,4 @@
+/* eslint-disable max-lines-per-function */
 import { useCallback, useState } from 'react';
 import { Form as RSForm, View } from '@adobe/react-spectrum';
 
