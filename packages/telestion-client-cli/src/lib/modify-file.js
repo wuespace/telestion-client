@@ -43,7 +43,7 @@ function modifyFile(filePath, replacers) {
 
 		const newLines = [
 			lines[insertionMarkLineIndex].replace(
-				'// IMPORT_INSERT_MARK',
+				replacer.needle,
 				replacer.text
 			)
 		];
