@@ -16,6 +16,11 @@ jobs:
         with:
           node-version: 14
 
+      - name: Setup git
+        run: |
+          git config --global user.name "Ludwig Richter"
+          git config --global user.email "ludwig.richter@stud-mail.uni-wuerzburg.de"
+          git config --global commit.gpgsign false
       - name: Install lerna globally
         run: npm i -g lerna
       - name: Install development dependencies
