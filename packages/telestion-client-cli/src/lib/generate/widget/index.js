@@ -3,6 +3,7 @@ const createWidgetIndexTS = require('./createWidgetIndexTS');
 
 const fs = require('fs');
 const path = require('path');
+const { camelCase, paramCase } = require('change-case');
 const { INSERT_BELOW, INSERT_ABOVE, modifyFile } = require('../../modify-file');
 const logger = require('../lib/logger')('widget-generator');
 
@@ -18,23 +19,24 @@ function generateWidget(argv) {
 		process.exit(1);
 	}
 
-	const safeName = argv['name'].toLowerCase().split(' ').join('_');
-	const widgetFolder = path.join(widgetsFolder, safeName);
+	const nameAsCamelCase = camelCase(argv['name']);
+	const folderName = paramCase(argv['name']);
+	const widgetFolder = path.join(widgetsFolder, folderName);
 	fs.mkdirSync(widgetFolder);
-	createWidgetIndexTS(widgetFolder, safeName);
-	createWidgetTSX(widgetFolder, safeName);
+	createWidgetIndexTS(widgetFolder, nameAsCamelCase);
+	createWidgetTSX(widgetFolder, nameAsCamelCase);
 
 	let allWidgetsIndexFile = path.join(widgetsFolder, 'index.ts');
 	modifyFile(allWidgetsIndexFile, [
 		{
 			needle: '// IMPORT_INSERT_MARK',
 			position: INSERT_ABOVE,
-			text: `import { widget as ${safeName} } from './${safeName}';`
+			text: `import { widget as ${nameAsCamelCase} } from './${folderName}';`
 		},
 		{
 			needle: '// ARRAY_FIRST_ELEMENT_INSERT_MARK',
 			position: INSERT_BELOW,
-			text: safeName + ','
+			text: nameAsCamelCase + ','
 		}
 	]);
 }
