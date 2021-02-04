@@ -2,7 +2,7 @@
 	"name": "@wuespace/telestion-client-template",
 	"description": "The template for a Telestion Client project",
 	"license": "MIT",
-	"version": "0.3.3",
+	"version": "0.3.4",
 	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
 	"repository": {
 		"type": "git",
