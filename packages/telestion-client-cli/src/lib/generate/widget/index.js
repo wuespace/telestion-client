@@ -39,6 +39,9 @@ function generateWidget(argv) {
 			text: nameAsCamelCase + ','
 		}
 	]);
+
+	logger.success(`Widget ${nameAsCamelCase} created successfully.`);
+	logger.info(`You can find it at ${widgetFolder}.`);
 }
 
 module.exports = generateWidget;
