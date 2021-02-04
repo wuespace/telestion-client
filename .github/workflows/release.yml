@@ -20,9 +20,9 @@ jobs:
 
       - name: Setup git
         run: |
-          git config --global user.name "Ludwig Richter"
-          git config --global user.email "ludwig.richter@stud-mail.uni-wuerzburg.de"
-          git config --global commit.gpgsign false
+          git config --local user.name "GitHub Action"
+          git config --local user.email "action@github.com"
+          git config --local commit.gpgsign false
       - name: Install lerna globally
         run: npm i -g lerna
       - name: Install development dependencies
