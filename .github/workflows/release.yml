@@ -20,10 +20,11 @@ jobs:
 
       - name: Setup git
         run: |
-          git config --local user.name "Ludwig Richter"
-          git config --local user.email "ludwig.richter@stud-mail.uni-wuerzburg.de"
-          git config --local commit.gpgsign false
-          git remote set-url origin "https://fussel178:${GH_RELEASE_TOKEN}@github.com/TelestionTeam/telestion-client.git"
+          git config --local user.name "${GITHUB_ACTOR}"
+          git config --local user.email "${GITHUB_ACTOR}@users.noreply.github.com"
+          git remote set-url origin "https://@{GITHUB_ACTOR}:${GH_RELEASE_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
+        env:
+          GH_RELEASE_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
       - name: Install lerna globally
         run: npm i -g lerna
       - name: Install development dependencies
