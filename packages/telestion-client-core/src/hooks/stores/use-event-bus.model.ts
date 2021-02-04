@@ -1,5 +1,6 @@
 import { State } from 'zustand';
-import { ErrorMessage, EventBus, Options } from '@wuespace/vertx-event-bus';
+import { EventBus } from '@wuespace/vertx-event-bus';
+import { ErrorMessage, Options } from '@wuespace/telestion-client-types';
 
 /**
  * The connection state type of an event bus.

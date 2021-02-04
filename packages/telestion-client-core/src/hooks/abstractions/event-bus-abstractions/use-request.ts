@@ -1,6 +1,10 @@
 import { useCallback } from 'react';
 import { StateSelector } from 'zustand';
-import { Callback } from '@wuespace/vertx-event-bus';
+import {
+	Callback,
+	ChannelAddress,
+	JsonSerializable
+} from '@wuespace/telestion-client-types';
 
 import { EventBusState, useEventBus } from '../../stores';
 import { SendFunction } from './use-request.model';
@@ -11,14 +15,16 @@ const eventBusSelector: StateSelector<
 > = state => state.eventBus;
 
 /**
- * Send a message on the specified channel
+ * Sends a message on the specified address
  * and get the first reply via a callback.
- * @param channel - the channel to send to
+ *
+ * @param address - the channel with the address to send the message to
  * @returns a function that sends a message and registers a one-time callback
  *
- * @typeParam C - union of all possible channels (defaults to `string`)
+ * @typeParam T - the type of the received data in the callback
+ * (defaults to JSON serializable data)
  *
- * @throws if there is no eventbus instance
+ * @throws TypeError - if there is no eventbus instance
  *
  * @see {@link useEventBus}
  * @see {@link EventBus.send}
@@ -26,7 +32,7 @@ const eventBusSelector: StateSelector<
  * @example
  * ```ts
  * const [answer, setAnswer] = useState<JSONSerializable>();
- * const send = useRequest('channel:send-my-anything');
+ * const send = useRequest('address:send-my-anything');
  *
  * const handleClick = () => {
  *   send('Ping', (message: JSONSerializable) => {
@@ -42,13 +48,13 @@ const eventBusSelector: StateSelector<
  * );
  * ```
  */
-export function useRequest<C extends string = string>(
-	channel: C
-): SendFunction {
+export function useRequest<T extends JsonSerializable = JsonSerializable>(
+	address: ChannelAddress
+): SendFunction<T> {
 	const eventBus = useEventBus(eventBusSelector);
 
 	if (!eventBus) {
-		throw new Error(
+		throw new TypeError(
 			'There is no eventbus instance to send and receive to. ' +
 				'Please check if the eventbus was created and try again.'
 		);
@@ -57,10 +63,10 @@ export function useRequest<C extends string = string>(
 	return useCallback(
 		(sendMessage, callback) => {
 			const cb: Callback = (recMessage, error) => {
-				callback(recMessage ? recMessage.body : null, error);
+				callback(recMessage ? (recMessage.body as T | null) : null, error);
 			};
-			eventBus.send(channel, sendMessage, cb);
+			eventBus.send(address, sendMessage, cb);
 		},
-		[eventBus, channel]
+		[eventBus, address]
 	);
 }

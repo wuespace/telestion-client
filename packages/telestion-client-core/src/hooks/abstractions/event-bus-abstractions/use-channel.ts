@@ -2,9 +2,10 @@ import { useEffect } from 'react';
 import { StateSelector } from 'zustand';
 import {
 	Callback,
+	ChannelAddress,
 	ErrorMessage,
 	JsonSerializable
-} from '@wuespace/vertx-event-bus';
+} from '@wuespace/telestion-client-types';
 
 import { EventBusState, useEventBus } from '../../stores';
 
@@ -14,7 +15,7 @@ const eventBusSelector: StateSelector<
 > = state => state.eventBus;
 
 /**
- * Subscribes to the eventbus via a specific channel.
+ * Subscribes to an event bus channel specified by an address.
  *
  * **Important note:**
  *
@@ -26,12 +27,13 @@ const eventBusSelector: StateSelector<
  * use {@link useChannelLatest} instead.
  * It handles the caveats for you.
  *
- * @param channel - the channel address
- * @param onUpdate - callback that gets called on new data
+ * @param address - the channel with the address to receive data from
+ * @param onUpdate - callback that gets called on new received data
  *
- * @typeParam C - union of all possible channels (defaults to `string`)
+ * @typeParam T - the type of the received data
+ * (defaults to JSON serializable data)
  *
- * @throws if there is no eventbus instance
+ * @throws TypeError - if there is no eventbus instance
  *
  * @see {@link useEventBus}
  * @see {@link useChannelLatest}
@@ -50,18 +52,18 @@ const eventBusSelector: StateSelector<
  * return <p>Content: {state}</p>;
  * ```
  */
-export function useChannel<C extends string = string>(
-	channel: C,
+export function useChannel<T extends JsonSerializable = JsonSerializable>(
+	address: ChannelAddress,
 	onUpdate: /**
 	 * @param data - new data from the eventbus
 	 * @param error - error if something went wrong or `null`
 	 */
-	(data: JsonSerializable | null, error: ErrorMessage | null) => void
+	(data: T | null, error: ErrorMessage | null) => void
 ): void {
 	const eventBus = useEventBus(eventBusSelector);
 
 	if (!eventBus) {
-		throw new Error(
+		throw new TypeError(
 			'There is no eventbus instance to subscribe to. ' +
 				'Please check if the eventbus was created and try again.'
 		);
@@ -69,11 +71,11 @@ export function useChannel<C extends string = string>(
 
 	useEffect(() => {
 		const cb: Callback = (message, error) => {
-			onUpdate(message ? message.body : null, error);
+			onUpdate(message ? (message.body as T | null) : null, error);
 		};
 
-		eventBus.registerHandler(channel, cb);
+		eventBus.registerHandler(address, cb);
 		// clean up callback
-		return () => eventBus.unregisterHandler(channel, cb);
-	}, [eventBus, channel, onUpdate]);
+		return () => eventBus.unregisterHandler(address, cb);
+	}, [eventBus, address, onUpdate]);
 }

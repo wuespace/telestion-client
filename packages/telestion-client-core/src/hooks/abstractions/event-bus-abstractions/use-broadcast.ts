@@ -1,6 +1,9 @@
 import { useCallback } from 'react';
 import { StateSelector } from 'zustand';
-import { JsonSerializable } from '@wuespace/vertx-event-bus';
+import {
+	ChannelAddress,
+	JsonSerializable
+} from '@wuespace/telestion-client-types';
 
 import { EventBusState, useEventBus } from '../../stores';
 
@@ -19,20 +22,18 @@ type BroadcastFunction =
 	(message: JsonSerializable) => void;
 
 /**
- * Send a broadcast on the specified channel with the returned function.
- * @param channel - channel to broadcast to
+ * Sends a broadcast on the specified address with the returned function.
+ * @param address - the channel with the address to broadcast to
  * @returns a function that broadcasts a message
  *
- * @typeParam C - union of all possible channels (defaults to `string`)
- *
- * @throws if there is no eventbus instance
+ * @throws TypeError - if there is no eventbus instance
  *
  * @see {@link useEventBus}
  * @see {@link EventBus.publish}
  *
  * @example
  * ```ts
- * const broadcast = useBroadcast('channel:hello-world');
+ * const broadcast = useBroadcast('address:hello-world');
  *
  * const handleClick = () => {
  *   broadcast('Hello World');
@@ -41,13 +42,11 @@ type BroadcastFunction =
  * return <button onClick={handleClick}>Broadcast a hello world</button>;
  * ```
  */
-export function useBroadcast<C extends string = string>(
-	channel: C
-): BroadcastFunction {
+export function useBroadcast(address: ChannelAddress): BroadcastFunction {
 	const eventBus = useEventBus(eventBusSelector);
 
 	if (!eventBus) {
-		throw new Error(
+		throw new TypeError(
 			'There is no eventbus instance to broadcast to. ' +
 				'Please check if the eventbus was created and try again.'
 		);
@@ -55,8 +54,8 @@ export function useBroadcast<C extends string = string>(
 
 	return useCallback(
 		message => {
-			eventBus.publish(channel, message);
+			eventBus.publish(address, message);
 		},
-		[eventBus, channel]
+		[eventBus, address]
 	);
 }
