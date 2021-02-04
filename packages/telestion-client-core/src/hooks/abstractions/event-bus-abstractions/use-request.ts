@@ -63,7 +63,7 @@ export function useRequest<T extends JsonSerializable = JsonSerializable>(
 	return useCallback(
 		(sendMessage, callback) => {
 			const cb: Callback = (recMessage, error) => {
-				callback(recMessage ? (recMessage.body as T | null) : null, error);
+				callback(recMessage ? (recMessage.body as T) : null, error);
 			};
 			eventBus.send(address, sendMessage, cb);
 		},

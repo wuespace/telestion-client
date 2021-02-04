@@ -71,7 +71,7 @@ export function useChannel<T extends JsonSerializable = JsonSerializable>(
 
 	useEffect(() => {
 		const cb: Callback = (message, error) => {
-			onUpdate(message ? (message.body as T | null) : null, error);
+			onUpdate(message ? (message.body as T) : null, error);
 		};
 
 		eventBus.registerHandler(address, cb);
