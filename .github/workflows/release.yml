@@ -25,6 +25,7 @@ jobs:
           git remote set-url origin "https://@{GITHUB_ACTOR}:${GH_RELEASE_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
           echo "Git remote origin URL: $(git remote get-url origin)"
         env:
+          GITHUB_ACTOR: ${{ github.actor }}
           GH_RELEASE_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
       - name: Install lerna globally
         run: npm i -g lerna
