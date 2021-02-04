@@ -54,6 +54,7 @@
 		"@fliegwerk/logsemts": "^0.4.0-0",
 		"@wuespace/telestion-client-template": "file:../telestion-client-template",
 		"chalk": "^4.1.0",
+		"change-case": "^4.1.2",
 		"clui": "^0.3.6",
 		"debug": "^4.3.1",
 		"directory-tree": "^2.2.5",
