@@ -23,6 +23,7 @@ jobs:
           git config --local user.name "GitHub Action"
           git config --local user.email "action@github.com"
           git config --local commit.gpgsign false
+          git remote set-url origin "https://$GITHUB_ACTOR:$GH_RELEASE_TOKEN@github.com/$GITHUB_REPOSITORY.git"
       - name: Install lerna globally
         run: npm i -g lerna
       - name: Install development dependencies
