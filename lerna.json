@@ -2,10 +2,51 @@
 	"version": "0.3.4",
 	"npmClient": "npm",
 	"packages": ["packages/*"],
+	"changelogPreset": {
+		"name": "conventionalcommits",
+		"types": [
+			{
+				"type": "feat",
+				"section": "Features"
+			},
+			{
+				"type": "fix",
+				"section": "Bug Fixes"
+			},
+			{
+				"type": "chore",
+				"hidden": true
+			},
+			{
+				"type": "docs",
+				"section": "Documentation Changes"
+			},
+			{
+				"type": "style",
+				"hidden": true
+			},
+			{
+				"type": "refactor",
+				"hidden": true
+			},
+			{
+				"type": "perf",
+				"hidden": true
+			},
+			{
+				"type": "test",
+				"hidden": true
+			}
+		],
+		"issuePrefixes": ["#"],
+		"issueUrlFormat": "{{host}}/{{owner}}/{{repository}}/issues/{{id}}",
+		"commitUrlFormat": "{{host}}/{{owner}}/{{repository}}/commit/{{hash}}",
+		"compareUrlFormat": "{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}",
+		"userUrlFormat": "{{host}}/{{user}}"
+	},
 	"command": {
 		"version": {
 			"allowBranch": "main",
-			"changelogPreset": "conventionalcommits",
 			"message": "chore(release): %s"
 		}
 	},
