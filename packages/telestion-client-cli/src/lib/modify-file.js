@@ -42,10 +42,7 @@ function modifyFile(filePath, replacers) {
 		);
 
 		const newLines = [
-			lines[insertionMarkLineIndex].replace(
-				replacer.needle,
-				replacer.text
-			)
+			lines[insertionMarkLineIndex].replace(replacer.needle, replacer.text)
 		];
 
 		if (replacer.position === INSERT_ABOVE) {
