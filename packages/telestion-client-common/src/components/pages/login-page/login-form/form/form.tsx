@@ -15,9 +15,18 @@ export interface FormProps {
 	isLoading: boolean;
 
 	onSubmit: (submission: Submission) => void;
+
+	initialServerURL?: string;
+
+	initialUsername?: string;
 }
 
-export function Form({ isLoading, onSubmit }: FormProps) {
+export function Form({
+	isLoading,
+	onSubmit,
+	initialServerURL = '',
+	initialUsername = ''
+}: FormProps) {
 	const [serverUrl, setServerUrl] = useState<string | null>('');
 	const [username, setUsername] = useState<string | null>('');
 	const [password, setPassword] = useState<string | null>('');
@@ -35,14 +44,14 @@ export function Form({ isLoading, onSubmit }: FormProps) {
 					autoFocus
 					label="Backend Server"
 					placeholder="Server URL"
-					initialValue=""
+					initialValue={initialServerURL}
 					onChange={setServerUrl}
 					validator={isValidHttpUrl}
 				/>
 				<TextField
 					label="Username"
 					placeholder="Your username"
-					initialValue=""
+					initialValue={initialUsername}
 					onChange={setUsername}
 					validator={isValidText}
 				/>
@@ -50,7 +59,6 @@ export function Form({ isLoading, onSubmit }: FormProps) {
 					label="Password"
 					placeholder="Your password"
 					type="password"
-					initialValue=""
 					onChange={setPassword}
 					validator={isValidText}
 				/>

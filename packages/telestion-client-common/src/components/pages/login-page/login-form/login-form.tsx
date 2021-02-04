@@ -9,7 +9,16 @@ import { Form, Submission } from './form/form';
 const selector: StateSelector<AuthState, AuthState['signIn']> = ({ signIn }) =>
 	signIn;
 
-export function LoginForm() {
+export interface LoginFormProps {
+	initialServerURL?: string;
+
+	initialUsername?: string;
+}
+
+export function LoginForm({
+	initialServerURL,
+	initialUsername
+}: LoginFormProps) {
 	const signIn = useAuth(selector);
 
 	const [isLoading, setIsLoading] = useState(false);
@@ -31,7 +40,12 @@ export function LoginForm() {
 	return (
 		<>
 			{error ? <Well>{error.message}</Well> : <></>}
-			<Form isLoading={isLoading} onSubmit={handleSubmit} />
+			<Form
+				isLoading={isLoading}
+				onSubmit={handleSubmit}
+				initialServerURL={initialServerURL}
+				initialUsername={initialUsername}
+			/>
 		</>
 	);
 }
