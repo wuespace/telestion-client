@@ -5,7 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const { camelCase, paramCase } = require('change-case');
 const { INSERT_BELOW, INSERT_ABOVE, modifyFile } = require('../../modify-file');
-const logger = require('../lib/logger')('widget-generator');
+const logger = require('../../logger')('widget-generator');
 
 function generateWidget(argv) {
 	const widgetsFolder = path.join(process.cwd(), 'src', 'widgets');
