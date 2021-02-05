@@ -1,11 +1,65 @@
+import { ReactElement } from 'react';
 import { Flex } from '@adobe/react-spectrum';
 import { Routing } from '@wuespace/telestion-client-types';
-import { ReactElement } from 'react';
 
+/**
+ * React Props of {@link LoginPageProps}
+ *
+ * For more information about React Props, please look here:
+ * {@link https://reactjs.org/docs/components-and-props.html}
+ *
+ * @see {@link LoginPageProps}
+ * @see {@link https://reactjs.org/docs/components-and-props.html}
+ */
 export interface LoginPageProps {
+	/**
+	 * Components that the login page should render.
+	 *
+	 * Typical pre-defined components are:
+	 * - {@link LoginTitle}
+	 * - {@link LoginLogo}
+	 * - {@link LoginDescription}
+	 * - {@link LoginForm}
+	 */
 	children: ReactElement | Array<ReactElement>;
 }
 
+/**
+ * A Telestion Client page that renders a login page
+ * where the user typically enters his credentials
+ * to login in the application.
+ *
+ * It only renders if nobody is authenticated
+ * otherwise it redirects to the dashboard page.
+ *
+ * It defines vertical display layout to align its children.
+ *
+ * Possible children components are:
+ * - {@link LoginTitle}
+ * - {@link LoginLogo}
+ * - {@link LoginDescription}
+ * - {@link LoginForm}
+ *
+ * @see {@Link LoginPageProps}
+ * @see {@link LoginTitle}
+ * @see {@link LoginLogo}
+ * @see {@link LoginDescription}
+ * @see {@link LoginForm}
+ *
+ * @example
+ * ```ts
+ * function MyLoginPage() {
+ * 	return (
+ * 		<LoginPage>
+ * 			<LoginTitle />
+ * 			<LoginLogo />
+ * 			<LoginDescription />
+ * 			<LoginForm initialServerURL="http://localhost:9870/bridge" />
+ * 		</LoginPage>
+ * 	);
+ * }
+ * ```
+ */
 export function LoginPage({ children }: LoginPageProps) {
 	return (
 		<Flex
@@ -22,6 +76,12 @@ export function LoginPage({ children }: LoginPageProps) {
 	);
 }
 
+/**
+ * The routing for the login page of Telestion Client Common package.
+ *
+ * It only renders if nobody is authenticated
+ * otherwise it redirects to the dashboard page.
+ */
 const routing: Routing = {
 	type: 'unAuth',
 	path: '/login',
