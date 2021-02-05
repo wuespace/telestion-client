@@ -1,6 +1,6 @@
 /**
- * Defines an object with entered user information
- * from the {@link Form} component.
+ * Defines an object with user information
+ * entered in the {@link Form} component.
  */
 export interface Submission {
 	/**
@@ -30,7 +30,7 @@ export interface Submission {
  */
 export interface FormProps {
 	/**
-	 * Indicates that the page is currently loading and user input is allowed.
+	 * Indicates that the page is currently loading and user input is not allowed.
 	 */
 	isLoading: boolean;
 

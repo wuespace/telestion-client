@@ -26,7 +26,7 @@ export interface LoginFormProps {
 	initialServerURL?: string;
 
 	/**
-	 * The initial value of the username text file
+	 * The initial value of the username text field
 	 * in the {@link LoginForm} component.
 	 */
 	initialUsername?: string;
@@ -34,7 +34,7 @@ export interface LoginFormProps {
 
 /**
  * The form component that renders the react-spectrum login form
- * where the user enters his information and credentials to log in with.
+ * where the user enters their information and credentials to log in with.
  *
  * This component belongs to the {@link LoginPage}
  *

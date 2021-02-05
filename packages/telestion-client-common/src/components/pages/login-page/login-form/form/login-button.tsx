@@ -17,8 +17,8 @@ export interface LoginButtonProps {
 	isDisabled: boolean;
 
 	/**
-	 * Indicates that the page is currently loading and user input is allowed.
-	 * The button is disabled and renders a loading indicator.
+	 * Indicates that the page is currently loading and user input is not allowed.
+	 * If `true`, the button is disabled and renders a loading indicator.
 	 */
 	isLoading: boolean;
 
@@ -39,7 +39,7 @@ export interface LoginButtonProps {
  * If it is loading, the user no longer can trigger
  * the {@link LoginButtonProps.onPress} event
  * but instead of disabling the button
- * it renders a indeterminate loading indicator.
+ * it renders an indeterminate loading indicator.
  *
  * @see {@link LoginButtonProps}
  *
