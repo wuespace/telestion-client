@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.0](https://github.com/TelestionTeam/telestion-client/compare/v0.3.3...v0.4.0) (2021-02-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **event-bus:** The types for the event bus are now accessible in the @wuespace/telestion-client-types package.
+
+### Features
+
+* **event-bus:** Remove types and import them from types package instead ([40788b2](https://github.com/TelestionTeam/telestion-client/commit/40788b251dc4dc3060a414092b75eb069cde7438))
+
+
+
 ## 0.3.4 (2021-02-04)
 
 **Note:** Version bump only for package @wuespace/vertx-event-bus

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.4.0](https://github.com/TelestionTeam/telestion-client/compare/v0.3.3...v0.4.0) (2021-02-05)
+
+
+### Features
+
+* **types:** Add channel address as type and integrate it into message types ([b9569d7](https://github.com/TelestionTeam/telestion-client/commit/b9569d736ca52672516031ace56d1dd8c1aa3b98))
+* **types:** Import types from vertx-event-bus ([90fd513](https://github.com/TelestionTeam/telestion-client/commit/90fd513937a2cb628bc15b120ea88ffff11b8e01))
+
+
+### Bug Fixes
+
+* **types:** Change type definition for Json serializable data from Map to mapped object ([3fff598](https://github.com/TelestionTeam/telestion-client/commit/3fff59873ca7f6f17af86cda3004eca7cf38d08e))
+
+
+
 ## 0.3.4 (2021-02-04)
 
 **Note:** Version bump only for package @wuespace/telestion-client-types
