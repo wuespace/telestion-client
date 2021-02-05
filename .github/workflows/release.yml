@@ -42,7 +42,7 @@ jobs:
       - name: Install development dependencies
         run: npm ci
       - name: Add node_modules binaries to path
-        run: echo "{GITHUB_WORKSPACE}/node_modules/.bin" >> $GITHUB_PATH
+        run: echo "${GITHUB_WORKSPACE}/node_modules/.bin" >> $GITHUB_PATH
 
         # Lerna will create the change log from the conventional commits,
         # increase to the necessary package version and push its changes.
