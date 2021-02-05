@@ -14,8 +14,8 @@ import { useTitle } from '@wuespace/telestion-client-core';
  * function MyLoginPage() {
  * 	return (
  * 		<LoginPage>
- * 			<LoginTitle />
  * 			<LoginLogo />
+ * 			<LoginTitle />
  * 			<LoginDescription />
  * 			<LoginForm initialServerURL="http://localhost:9870/bridge" />
  * 		</LoginPage>
