@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.0](https://github.com/TelestionTeam/telestion-client/compare/v0.5.0...v0.6.0) (2021-02-05)
+
+
+### Features
+
+* **common:** Divide login page into compound components for better usability ([7e2112d](https://github.com/TelestionTeam/telestion-client/commit/7e2112d3aa0f1b7e418a4d6089a08c5ee0650149))
+* **common:** Make initial values for text fields in login form accessible for project ([204e947](https://github.com/TelestionTeam/telestion-client/commit/204e947830f95aa6f6663ba428bf4e3c3b6ca757))
+* **template:** Add refactor recommendation for login page as default to the template ([c59697e](https://github.com/TelestionTeam/telestion-client/commit/c59697eb04741bee15de9e1158b6f7932cbe0448))
+
+
+### Documentation Changes
+
+* **common:** Apply suggestions from code review for login page ([12b8af7](https://github.com/TelestionTeam/telestion-client/commit/12b8af779d77f3057af54f63af195bcdb6753902))
+* **common:** Document internal form component for the login page ([602fe16](https://github.com/TelestionTeam/telestion-client/commit/602fe16432da3f994fc971c14dd2ee54377ef071)), closes [#272](https://github.com/TelestionTeam/telestion-client/issues/272)
+* **common:** Document login button component for the login page ([72de6a9](https://github.com/TelestionTeam/telestion-client/commit/72de6a9cccf76470cf6149f38e23e53861cf6ab2)), closes [#272](https://github.com/TelestionTeam/telestion-client/issues/272)
+* **common:** Document login description component for the login page ([953ad14](https://github.com/TelestionTeam/telestion-client/commit/953ad14a778d4aa29b313f267a2c786358523bf6)), closes [#272](https://github.com/TelestionTeam/telestion-client/issues/272)
+* **common:** Document login form component for the login page ([b1005bf](https://github.com/TelestionTeam/telestion-client/commit/b1005bf4a54666508bda52e33c4623d6dee9212a)), closes [#272](https://github.com/TelestionTeam/telestion-client/issues/272)
+* **common:** Document login logo component for the login page ([635cf66](https://github.com/TelestionTeam/telestion-client/commit/635cf66ca0041e7b8710ddb936994ee86f6f9245)), closes [#272](https://github.com/TelestionTeam/telestion-client/issues/272)
+* **common:** Document login title component for the login page ([c080799](https://github.com/TelestionTeam/telestion-client/commit/c080799c77d054246b7c0846db2bad01b3bca092)), closes [#272](https://github.com/TelestionTeam/telestion-client/issues/272)
+* **common:** Document text field component for the login page ([6315ae5](https://github.com/TelestionTeam/telestion-client/commit/6315ae53ea0c09d8eb2ca62831b5246a0e19d44e)), closes [#272](https://github.com/TelestionTeam/telestion-client/issues/272)
+* **common:** Document the login page ([f6f7664](https://github.com/TelestionTeam/telestion-client/commit/f6f766489d253afacc8162ff49eb587f53a7a5e1)), closes [#272](https://github.com/TelestionTeam/telestion-client/issues/272)
+
+
+
 ## [0.5.0](https://github.com/TelestionTeam/telestion-client/compare/v0.4.0...v0.5.0) (2021-02-05)
 
 
