@@ -11,7 +11,7 @@ import { isValidHttpUrl, isValidText } from './validate-inputs';
  * The form component that renders the react-spectrum login form
  * where the user enters his information and credentials to log in with.
  *
- * The user submits his login information
+ * The user submits their login information
  * via the {@link FormProps.onSubmit} event.
  *
  * If the loading state is `true` all user input is blocked.

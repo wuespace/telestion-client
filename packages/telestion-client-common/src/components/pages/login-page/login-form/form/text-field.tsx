@@ -20,7 +20,7 @@ export type TextFieldProps = Omit<
 > & {
 	/**
 	 * The initial value of the text field.
-	 * If it not defined the text field is initially empty.
+	 * If it isn't defined, the text field is initially empty.
 	 */
 	initialValue?: string;
 
@@ -37,7 +37,7 @@ export type TextFieldProps = Omit<
 	onChange?: (value: string | null) => void;
 
 	/**
-	 * The validator function that "tests" the current content if it is valid.
+	 * The validator function that "tests" if the current content is valid.
 	 * @param text - the current content of the text field to test
 	 * @returns the validation state of the tested content
 	 */

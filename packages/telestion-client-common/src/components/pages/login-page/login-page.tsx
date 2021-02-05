@@ -26,13 +26,13 @@ export interface LoginPageProps {
 
 /**
  * A Telestion Client page that renders a login page
- * where the user typically enters his credentials
- * to login in the application.
+ * where the user typically enters their credentials
+ * to log into the application.
  *
- * It only renders if nobody is authenticated
- * otherwise it redirects to the dashboard page.
+ * It only renders if nobody is authenticated.
+ * Otherwise, it redirects to the dashboard page.
  *
- * It defines vertical display layout to align its children.
+ * It aligns its children vertically.
  *
  * Possible children components are:
  * - {@link LoginTitle}
@@ -79,8 +79,8 @@ export function LoginPage({ children }: LoginPageProps) {
 /**
  * The routing for the login page of Telestion Client Common package.
  *
- * It only renders if nobody is authenticated
- * otherwise it redirects to the dashboard page.
+ * It only renders if nobody is authenticated.
+ * Otherwise, it redirects to the dashboard page.
  */
 const routing: Routing = {
 	type: 'unAuth',
