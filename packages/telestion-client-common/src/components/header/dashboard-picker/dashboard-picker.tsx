@@ -2,6 +2,32 @@ import { TooltipTrigger, Tooltip, Picker, Item } from '@adobe/react-spectrum';
 import { useCurrentDashboards } from '../../../hooks';
 import { useDashboardState } from './use-dashboard-state';
 
+/**
+ * Part of the Telestion Client Common header.
+ *
+ * It displays a picker element which lists all available dashboards
+ * the current user have.
+ *
+ * If the user has no dashboard defined yet, it renders a placeholder message.
+ * It detects path changes and triggers path changes
+ * to the necessary dashboard page.
+ *
+ * If nobody is logged in, it hides itself a valid authentication arrives.
+ *
+ * @see {@link https://react-spectrum.adobe.com/react-spectrum/Picker.html}
+ * @see {@link Header}
+ *
+ * @example
+ * ```ts
+ * function AppHeader() {
+ * 	return (
+ * 		<Header
+ * 			middle={<DashboardPicker />}
+ * 		/>
+ * 	);
+ * }
+ * ```
+ */
 export function DashboardPicker() {
 	const [dashboards] = useCurrentDashboards();
 	const {
