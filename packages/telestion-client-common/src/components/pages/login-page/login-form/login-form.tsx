@@ -3,7 +3,7 @@ import { StateSelector } from 'zustand';
 import { Well } from '@adobe/react-spectrum';
 import { AuthState, useAuth } from '@wuespace/telestion-client-core';
 
-import { Form, Submission } from './form/form';
+import { Form, Submission } from './form';
 
 // auth selector
 const selector: StateSelector<AuthState, AuthState['signIn']> = ({ signIn }) =>

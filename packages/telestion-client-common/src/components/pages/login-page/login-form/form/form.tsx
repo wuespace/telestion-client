@@ -2,26 +2,37 @@
 import { useCallback, useState } from 'react';
 import { Form as RSForm, View } from '@adobe/react-spectrum';
 
+import { FormProps } from './form.model';
 import { TextField } from './text-field';
 import { LoginButton } from './login-button';
 import { isValidHttpUrl, isValidText } from './validate-inputs';
 
-export interface Submission {
-	serverUrl: string;
-	username: string;
-	password: string;
-}
-
-export interface FormProps {
-	isLoading: boolean;
-
-	onSubmit: (submission: Submission) => void;
-
-	initialServerURL?: string;
-
-	initialUsername?: string;
-}
-
+/**
+ * The form component that renders the react-spectrum login form
+ * where the user enters his information and credentials to log in with.
+ *
+ * The user submits his login information
+ * via the {@link FormProps.onSubmit} event.
+ *
+ * If the loading state is `true` all user input is blocked.
+ *
+ * @see {@link FormProps}
+ *
+ * @example
+ * ```ts
+ * function MyForm() {
+ * 	const [isLoading, setIsLoading] = useState(false);
+ *
+ * 	const handleSubmit = (submission: Submission) => {
+ * 		setIsLoading(true);
+ * 		alert(`User ${submission.username} tries to log in!`);
+ * 		setTimeout(() => setIsLoading(false), 1000);
+ * 	};
+ *
+ * 	return <Form isLoading={isLoading} onSubmit={handleSubmit} />;
+ * }
+ * ```
+ */
 export function Form({
 	isLoading,
 	onSubmit,
