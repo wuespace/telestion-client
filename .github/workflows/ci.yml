@@ -1,9 +1,10 @@
 name: CI
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
   build:
+    name: Build all packages
     runs-on: ubuntu-latest
     env:
       CI: true
@@ -25,8 +26,6 @@ jobs:
 
       - name: Install development dependencies 📚
         run: npm ci
-      - name: Check file styles and formattings ✨
-        run: npm run style:ci
       - name: Build all packages 🛠️
         run: npm run build:all
 

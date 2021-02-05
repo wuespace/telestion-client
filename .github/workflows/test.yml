@@ -4,6 +4,7 @@ on: [push, pull_request]
 
 jobs:
   jest-unit-tests:
+    name: Running unit tests using Jest
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 📥
@@ -29,7 +30,8 @@ jobs:
       - name: Run unit tests and generate coverage 🛃
         run: npm run test
 
-  code-coverage:
+  code-climate-report:
+    name: Report code coverage to code climate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 📥

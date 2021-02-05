@@ -1,9 +1,10 @@
-name: Lerna Release
+name: Release
 
 on: workflow_dispatch
 
 jobs:
   release:
+    name: Release and publish a new project version
     runs-on: ubuntu-latest
     steps:
       # The credentials from the GitHub runner are not useful here,
