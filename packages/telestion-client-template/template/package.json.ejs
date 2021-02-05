@@ -2,7 +2,9 @@
 	"name": "<%- moduleName %>",
 	"version": "0.0.0",
 	"scripts": {
-		"start": "tc-cli start",
+		"start": "npm run start:electron",
+		"start:electron": "tc-cli start --electron",
+		"start:browser": "tc-cli start --browser",
 		"build": "tc-cli build",
 		"stats": "tc-cli stats"
 	},
