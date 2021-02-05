@@ -1,0 +1,42 @@
+name: CLI E2E Test
+on: [push]
+
+jobs:
+  cli-e2e-test:
+    name: CLI E2E Test
+    runs-on: ubuntu-latest
+    continue-on-error: true
+    steps:
+      - name: Checkout 📥
+        uses: actions/checkout@v2.3.4
+        with:
+          fetch-depth: 0
+      - name: Setup Node 💿
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14
+      - name: Install verdaccio 🐱‍
+        run: npm install -g verdaccio lerna
+      - name: Install development dependencies 📚
+        run: npm ci
+      - name: Run verdaccio
+        run: |
+          verdaccio &
+          VERDACCIO_PID=$!
+          echo "VERDACCIO_PID=$!" >> $GITHUB_ENV
+          npm config set registry http://localhost:4873
+      - name: Publish to verdaccio
+        run: lerna publish --no-git-tag-version --no-push --registry="http://localhost:4873/" --yes --allow-branch *
+      - name: Install CLI from verdaccio
+        run: npm install -g @wuespace/telestion-client-cli
+      - name: Initialize PSC Project
+        working-directory: '~'
+        run: tc-cli init psc
+      - name: Run tc-cli commands
+        working-directory: '~/psc'
+        run: |
+          tc-cli generate widget test-widget
+          tc-cli stats
+          tc-cli build
+      - name: Stop verdaccio 🛑
+        run: kill -SIGHUP "$VERDACCIO_PID"
