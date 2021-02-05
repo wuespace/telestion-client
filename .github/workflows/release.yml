@@ -1,6 +1,3 @@
-# This workflow will run tests using node and then publish a package to GitHub Packages when a release is created
-# For more information see: https://help.github.com/actions/language-and-framework-guides/publishing-nodejs-packages
-
 name: Lerna Release
 
 on: workflow_dispatch
@@ -9,6 +6,13 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+      # The credentials from the GitHub runner are not useful here,
+      # because we need to push to a restricted branch,
+      # so maintainer access is required.
+      # We also need to fetch the entire commit history because lerna builds a change log out of commit messages.
+      # More information:
+      # https://www.conventionalcommits.org/en/v1.0.0/
+      # https://github.com/lerna/lerna/tree/main/commands/version
       - name: Checkout 📥
         uses: actions/checkout@v2.3.4
         with:
@@ -19,6 +23,12 @@ jobs:
         with:
           node-version: 14
 
+        # To push to the parent repository, git need a short setup workflow.
+        # The user who has triggered the workflow in the actions tab
+        # also "commits" the changelog and package.json updates.
+        # We also need to re-set the origin URL,
+        # because we make use of the pushing to GitHub repositories
+        # via an access token.
       - name: Setup git
         run: |
           git config --local user.name "${GITHUB_ACTOR}"
@@ -31,11 +41,19 @@ jobs:
         run: npm i -g lerna
       - name: Install development dependencies
         run: npm ci
+
+        # Lerna will create the change log from the conventional commits,
+        # increase to the necessary package version and push its changes.
+        # Additionally it generates a github release
+        # which also includes the current change log.
       - name: Lerna version and GitHub release
         run: lerna version --conventional-commits --create-release github --yes
         env:
           GH_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
 
+        # Build a .npmrc configuration file
+        # that will be used from npm and lerna
+        # to publish to the npm registry with the given token.
       - name: Setup npm
         run: |
           touch "${GITHUB_WORKSPACE}/.npmrc"
@@ -44,4 +62,6 @@ jobs:
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish to npm registry
-        run: echo "Lets push something :D" # lerna publish from-git --yes
+        # Skip access verification to circumvent lerna calling 'npm whoami'
+        # because we are not logged in with npm and use the npm token method instead.
+        run: lerna publish from-git --no-verify-access --yes
