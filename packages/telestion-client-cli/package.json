@@ -1,7 +1,7 @@
 {
 	"name": "@wuespace/telestion-client-cli",
 	"description": "The command line interface for the Telestion Client development",
-	"version": "0.4.0",
+	"version": "0.5.0",
 	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
 	"bin": {
 		"tc-cli": "./bin/cli.js"
