@@ -9,12 +9,52 @@ import { Form, Submission } from './form';
 const selector: StateSelector<AuthState, AuthState['signIn']> = ({ signIn }) =>
 	signIn;
 
+/**
+ * React Props of {@link LoginForm}
+ *
+ * For more information about React Props, please look here:
+ * {@link https://reactjs.org/docs/components-and-props.html}
+ *
+ * @see {@link LoginForm}
+ * @see {@link https://reactjs.org/docs/components-and-props.html}
+ */
 export interface LoginFormProps {
+	/**
+	 * The initial value of the server url text field
+	 * in the {@link LoginForm} component.
+	 */
 	initialServerURL?: string;
 
+	/**
+	 * The initial value of the username text file
+	 * in the {@link LoginForm} component.
+	 */
 	initialUsername?: string;
 }
 
+/**
+ * The form component that renders the react-spectrum login form
+ * where the user enters his information and credentials to log in with.
+ *
+ * This component belongs to the {@link LoginPage}
+ *
+ * @see {@link FormProps}
+ * @see {@link LoginPage}
+ *
+ * @example
+ * ```ts
+ * function MyLoginPage() {
+ * 	return (
+ * 		<LoginPage>
+				<LoginTitle />
+				<LoginLogo />
+				<LoginDescription />
+				<LoginForm initialServerURL="http://localhost:9870/bridge" />
+			</LoginPage>
+ * 	);
+ * }
+ * ```
+ */
 export function LoginForm({
 	initialServerURL,
 	initialUsername
