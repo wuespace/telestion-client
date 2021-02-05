@@ -31,13 +31,6 @@ jobs:
       - name: Login and publish to verdaccio
         run: |
           npm-cli-adduser -u thebox -p where -e thebox@nothere.com -r http://localhost:4873
-          npm whoami
-          lerna exec 'npm publish --registry="http://localhost:4873"'
-        env:
-          NPM_USER: thebox
-          NPM_PASS: 'where-is-the-box?'
-          NPM_EMAIL: 'thebox@not-here.dot.com.lol'
-          NPM_REGISTRY: 'http://localhost:4873/'
       - name: WhoAmI
         run: npm whoami
       - name: Publish
@@ -45,10 +38,11 @@ jobs:
       - name: Install CLI from verdaccio
         run: npm install -g @wuespace/telestion-client-cli
       - name: Initialize PSC Project
-        working-directory: '~'
+        working-directory: '../../'
         run: tc-cli init psc
+        continue-on-error: true
       - name: Run tc-cli commands
-        working-directory: '~/psc'
+        working-directory: '../../psc'
         run: |
           tc-cli generate widget test-widget
           tc-cli stats
