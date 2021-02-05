@@ -1,0 +1,18 @@
+import {
+	LoginPage as TCLoginPage,
+	LoginTitle,
+	LoginLogo,
+	LoginDescription,
+	LoginForm
+} from "@wuespace/telestion-client-common";
+
+export function LoginPage() {
+	return (
+		<TCLoginPage>
+			<LoginTitle />
+			<LoginLogo />
+			<LoginDescription />
+			<LoginForm initialServerURL="http://localhost:9870/bridge" />
+		</TCLoginPage>
+	);
+}
