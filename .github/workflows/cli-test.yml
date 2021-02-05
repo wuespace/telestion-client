@@ -15,8 +15,8 @@ jobs:
         uses: actions/setup-node@v2.1.4
         with:
           node-version: 14
-      - name: Install verdaccio 🐱‍
-        run: npm install -g verdaccio lerna
+      - name: Install global dependencies 🐱‍
+        run: npm install -g verdaccio lerna npm-cli-adduser
       - name: Install development dependencies 📚
         run: npm ci
 
@@ -26,12 +26,22 @@ jobs:
           VERDACCIO_PID=$!
           echo "VERDACCIO_PID=$!" >> $GITHUB_ENV
           npm config set registry http://localhost:4873
-
       - name: Replace package versions
         run: npm run meta:replace-versions
-      - name: Publish to verdaccio
-        run: lerna exec 'npm publish --registry="http://localhost:4873/"'
-
+      - name: Login and publish to verdaccio
+        run: |
+          npm-cli-adduser -u thebox -p where -e thebox@nothere.com -r http://localhost:4873
+          npm whoami
+          lerna exec 'npm publish --registry="http://localhost:4873"'
+        env:
+          NPM_USER: thebox
+          NPM_PASS: 'where-is-the-box?'
+          NPM_EMAIL: 'thebox@not-here.dot.com.lol'
+          NPM_REGISTRY: 'http://localhost:4873/'
+      - name: WhoAmI
+        run: npm whoami
+      - name: Publish
+        run: lerna exec 'npm publish --registry="http://localhost:4873"'
       - name: Install CLI from verdaccio
         run: npm install -g @wuespace/telestion-client-cli
       - name: Initialize PSC Project
