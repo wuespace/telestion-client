@@ -1,4 +1,5 @@
 const electroner = require('electroner');
+const openUrl = require('../lib/open-url');
 
 const debug = require('debug')('start');
 const logger = require('../lib/logger')('start');
@@ -8,11 +9,19 @@ const command = ['start', 's'];
 const desc = 'Start the development server for a Telestion Frontend Project';
 
 function builder(yargs) {
-	return yargs.option('electron', {
-		alias: 'e',
-		describe: 'Build and start an electron app instead',
-		type: 'boolean'
-	});
+	return yargs
+		.option('electron', {
+			alias: 'e',
+			describe: 'Start as an electron app',
+			boolean: true,
+			conflicts: 'browser'
+		})
+		.option('browser', {
+			alias: 'b',
+			describe: 'Run in browser',
+			boolean: true,
+			conflicts: 'electron'
+		});
 }
 
 async function handler(argv) {
@@ -36,7 +45,8 @@ async function handler(argv) {
 	const server = new WebpackDevServer(compiler, devServerOptions);
 
 	server.listen(3000, '127.0.0.1', () => {
-		electroner('http://localhost:3000', {});
+		if (argv.browser) openUrl('http://localhost:3000');
+		else if (argv.electron) electroner('http://localhost:3000', {});
 		logger.info('Webpack dev server listening on http://localhost:3000');
 	});
 }
