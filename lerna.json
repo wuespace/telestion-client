@@ -1,9 +1,7 @@
 {
 	"version": "0.4.0",
 	"npmClient": "npm",
-	"packages": [
-		"packages/*"
-	],
+	"packages": ["packages/*"],
 	"changelogPreset": {
 		"name": "conventionalcommits",
 		"types": [
@@ -40,9 +38,7 @@
 				"hidden": true
 			}
 		],
-		"issuePrefixes": [
-			"#"
-		],
+		"issuePrefixes": ["#"],
 		"issueUrlFormat": "{{host}}/{{owner}}/{{repository}}/issues/{{id}}",
 		"commitUrlFormat": "{{host}}/{{owner}}/{{repository}}/commit/{{hash}}",
 		"compareUrlFormat": "{{host}}/{{owner}}/{{repository}}/compare/{{previousTag}}...{{currentTag}}",
@@ -54,7 +50,5 @@
 			"message": "chore(release): %s"
 		}
 	},
-	"ignoreChanges": [
-		"**/cypress/**"
-	]
+	"ignoreChanges": ["**/cypress/**"]
 }
