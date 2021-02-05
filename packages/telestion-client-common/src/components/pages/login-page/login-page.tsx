@@ -51,13 +51,15 @@ export interface LoginPageProps {
  * function MyLoginPage() {
  * 	return (
  * 		<LoginPage>
- * 			<LoginTitle />
  * 			<LoginLogo />
+ * 			<LoginTitle />
  * 			<LoginDescription />
  * 			<LoginForm initialServerURL="http://localhost:9870/bridge" />
  * 		</LoginPage>
  * 	);
  * }
+ *
+ * MyLoginPage.routing = TCLoginPage.routing;
  * ```
  */
 export function LoginPage({ children }: LoginPageProps) {

@@ -1,5 +1,5 @@
 import { Image } from '@adobe/react-spectrum';
-import { useLogo } from '../../contexts/app-logo-context';
+import { useLogo } from '../../contexts';
 
 /**
  * The login logo component that renders the current application logo
@@ -14,13 +14,15 @@ import { useLogo } from '../../contexts/app-logo-context';
  * function MyLoginPage() {
  * 	return (
  * 		<LoginPage>
- * 			<LoginTitle />
  * 			<LoginLogo />
+ * 			<LoginTitle />
  * 			<LoginDescription />
  * 			<LoginForm initialServerURL="http://localhost:9870/bridge" />
  * 		</LoginPage>
  * 	);
  * }
+ *
+ * MyLoginPage.routing = TCLoginPage.routing;
  * ```
  */
 export function LoginLogo() {
