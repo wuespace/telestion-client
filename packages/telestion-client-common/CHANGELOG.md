@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.6.1](https://github.com/TelestionTeam/telestion-client/compare/v0.6.0...v0.6.1) (2021-02-05)
+
+
+### Bug Fixes
+
+* Fix custom login page implementation in both template and documentation ([715e27c](https://github.com/TelestionTeam/telestion-client/commit/715e27c04dd20aa8bffb589ac67d6e8d77d7fb26)), closes [#290](https://github.com/TelestionTeam/telestion-client/issues/290) [#292](https://github.com/TelestionTeam/telestion-client/issues/292)
+
+
+
 ## [0.6.0](https://github.com/TelestionTeam/telestion-client/compare/v0.5.0...v0.6.0) (2021-02-05)
 
 
