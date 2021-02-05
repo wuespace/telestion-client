@@ -5,8 +5,10 @@ import { useEffect, useState } from 'react';
  * @param dependencies - the dependencies to check if they are undefined
  * @param timeout - the timeout in milliseconds until the function throws,
  * if it is 0 it waits indefinitely
+ * @returns the current state of undefined dependencies
  *
- * @throws Error - if no data is received until timeout
+ * @throws Error - if some dependencies are undefined until timeout
+ * and timeout is set
  *
  * @example
  * ```ts
@@ -20,7 +22,7 @@ import { useEffect, useState } from 'react';
  */
 export function useDependencyTimeout(
 	timeout: number,
-	dependencies: any[]
+	dependencies: Array<any>
 ): boolean {
 	const [isUndefined, setIsUndefined] = useState(true);
 	const [error, setError] = useState<Error>();
