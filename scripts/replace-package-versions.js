@@ -78,7 +78,8 @@ function replacePackageVersions(packageJson, packageNames, version) {
 	return {
 		...packageJson,
 		dependencies: newDependencies,
-		devDependencies: newDevDependencies
+		devDependencies: newDevDependencies,
+		version
 	};
 }
 
@@ -139,33 +140,45 @@ function getPackageName(packagePath) {
 	return typeof packageJson.name === 'string' ? packageJson.name : undefined;
 }
 
-const lernaJsonPath = path.join(process.cwd(), 'lerna.json');
+require('yargs').command(
+	'$0 [newVersion]',
+	'replace the versions',
+	yargs =>
+		yargs.positional('newVersion', {
+			type: 'string',
+			describe: 'The new version',
+			required: false
+		}),
+	argv => {
+		const lernaJsonPath = path.join(process.cwd(), 'lerna.json');
 
-if (!fs.existsSync(lernaJsonPath)) {
-	console.error('lerna.json does not exist.');
-	console.error('Please go into the project root and try again.');
-	process.exit(1);
-}
+		if (!fs.existsSync(lernaJsonPath)) {
+			console.error('lerna.json does not exist.');
+			console.error('Please go into the project root and try again.');
+			process.exit(1);
+		}
 
-// pull current project version and paths to all packages
-const { version, packages } = require(lernaJsonPath);
+		// pull current project version and paths to all packages
+		const { version, packages } = require(lernaJsonPath);
 
-// contains all paths to all project packages
-const packagePaths = packages
-	.map(packagesPath => path.join(process.cwd(), packagesPath))
-	.reduce((accumulator, packagesPath) => {
-		accumulator.push(...glob.sync(packagesPath));
-		return accumulator;
-	}, []);
+		// contains all paths to all project packages
+		const packagePaths = packages
+			.map(packagesPath => path.join(process.cwd(), packagesPath))
+			.reduce((accumulator, packagesPath) => {
+				accumulator.push(...glob.sync(packagesPath));
+				return accumulator;
+			}, []);
 
-// contains all package names in the project
-const packageNames = packagePaths.map(packagePath =>
-	getPackageName(packagePath)
-);
+		// contains all package names in the project
+		const packageNames = packagePaths.map(packagePath =>
+			getPackageName(packagePath)
+		);
 
-// update package.json in all packages
-for (const packagePath of packagePaths) {
-	editPackageJson(packagePath, packageNames, version);
-}
+		// update package.json in all packages
+		for (const packagePath of packagePaths) {
+			editPackageJson(packagePath, packageNames, argv['newVersion'] || version);
+		}
 
-console.log('Finished');
+		console.log('Finished');
+	}
+).argv;
