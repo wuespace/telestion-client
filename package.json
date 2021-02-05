@@ -23,7 +23,8 @@
 		"docs": "npm run docs:types",
 		"docs:ci": "npm run docs:types:ci",
 		"docs:types": "fliegdoc build --serve --port 4040",
-		"docs:types:ci": "fliegdoc build"
+		"docs:types:ci": "fliegdoc build",
+		"meta:replace-versions": "node ./scripts/replace-package-versions.js"
 	},
 	"repository": {
 		"type": "git",

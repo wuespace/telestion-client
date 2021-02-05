@@ -19,14 +19,19 @@ jobs:
         run: npm install -g verdaccio lerna
       - name: Install development dependencies 📚
         run: npm ci
+
       - name: Run verdaccio
         run: |
           verdaccio &
           VERDACCIO_PID=$!
           echo "VERDACCIO_PID=$!" >> $GITHUB_ENV
           npm config set registry http://localhost:4873
+
+      - name: Replace package versions
+        run: npm run meta:replace-versions
       - name: Publish to verdaccio
-        run: lerna publish --no-git-tag-version --no-push --registry="http://localhost:4873/" --yes --allow-branch *
+        run: lerna exec 'npm publish --registry="http://localhost:4873/"'
+
       - name: Install CLI from verdaccio
         run: npm install -g @wuespace/telestion-client-cli
       - name: Initialize PSC Project
@@ -38,5 +43,6 @@ jobs:
           tc-cli generate widget test-widget
           tc-cli stats
           tc-cli build
+
       - name: Stop verdaccio 🛑
         run: kill -SIGHUP "$VERDACCIO_PID"
