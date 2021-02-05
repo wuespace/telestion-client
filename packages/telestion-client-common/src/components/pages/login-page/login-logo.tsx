@@ -1,6 +1,28 @@
 import { Image } from '@adobe/react-spectrum';
 import { useLogo } from '../../contexts/app-logo-context';
 
+/**
+ * The login logo component that renders the current application logo
+ * in the login page.
+ *
+ * This component belongs to the {@link LoginPage}
+ *
+ * @see {@link LoginPage}
+ *
+ * @example
+ * ```ts
+ * function MyLoginPage() {
+ * 	return (
+ * 		<LoginPage>
+ * 			<LoginTitle />
+ * 			<LoginLogo />
+ * 			<LoginDescription />
+ * 			<LoginForm initialServerURL="http://localhost:9870/bridge" />
+ * 		</LoginPage>
+ * 	);
+ * }
+ * ```
+ */
 export function LoginLogo() {
 	const appLogo = useLogo();
 
