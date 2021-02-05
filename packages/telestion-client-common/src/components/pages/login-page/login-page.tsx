@@ -58,6 +58,8 @@ export interface LoginPageProps {
  * 		</LoginPage>
  * 	);
  * }
+ *
+ * MyLoginPage.routing = TCLoginPage.routing;
  * ```
  */
 export function LoginPage({ children }: LoginPageProps) {

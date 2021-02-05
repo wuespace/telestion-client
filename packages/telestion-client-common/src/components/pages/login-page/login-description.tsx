@@ -56,6 +56,8 @@ export interface LoginDescriptionProps {
  * 		</LoginPage>
  * 	);
  * }
+ *
+ * MyLoginPage.routing = TCLoginPage.routing;
  * ```
  */
 export function LoginDescription({

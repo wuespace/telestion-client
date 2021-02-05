@@ -53,6 +53,8 @@ export interface LoginFormProps {
  * 		</LoginPage>
  * 	);
  * }
+ *
+ * MyLoginPage.routing = TCLoginPage.routing;
  * ```
  */
 export function LoginForm({

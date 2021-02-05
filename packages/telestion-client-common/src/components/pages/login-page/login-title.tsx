@@ -21,6 +21,8 @@ import { useTitle } from '@wuespace/telestion-client-core';
  * 		</LoginPage>
  * 	);
  * }
+ *
+ * MyLoginPage.routing = TCLoginPage.routing;
  * ```
  */
 export function LoginTitle() {
