@@ -75,6 +75,8 @@ export const NAV_BAR_EMPTY_KEY = '';
  *
  * @param links - the links the navigation bar should render
  *
+ * @see {@link NavBarState}
+ *
  * @example
  * ```ts
  * function MyNavBar() {
