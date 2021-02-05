@@ -38,10 +38,10 @@ jobs:
 
       - name: Setup npm
         run: |
-          'echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > .npmrc'
-          pwd
-          cat .npmrc
+          touch "${GITHUB_WORKSPACE}/.npmrc"
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > "${GITHUB_WORKSPACE}/.npmrc"
+          cat "${GITHUB_WORKSPACE}/.npmrc"
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
       - name: Publish to npm registry
-        run: lerna publish from-git --yes
+        run: echo "Lets push something :D" # lerna publish from-git --yes
