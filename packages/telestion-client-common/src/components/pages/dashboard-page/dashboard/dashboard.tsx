@@ -5,10 +5,48 @@ import { Dashboard as DashboardType } from '@wuespace/telestion-client-types';
 import { OverflowFix } from './overflow-fix';
 import { WidgetRenderer } from '../widget-renderer/widget-renderer';
 
+/**
+ * React Props of {@link OverflowFix}
+ *
+ * For more information about React Props, please look here:
+ * {@link https://reactjs.org/docs/components-and-props.html}
+ *
+ * @see {@link OverflowFix}
+ * @see {@link https://reactjs.org/docs/components-and-props.html}
+ */
 export interface DashboardProps {
+	/**
+	 * The current dashboard to render.
+	 */
 	dashboard: DashboardType;
 }
 
+/**
+ * Renders an entire dashboard.
+ *
+ * The dashboard has a defined number of columns and rows
+ * where the widgets of the dashboard are rendered in.
+ * Every widget has a width and height defined in full columns and rows.
+ *
+ * Internally it uses the CSS grid system to align the widgets.
+ * For more information about the CSS Grid system, take a look here:
+ * https://css-tricks.com/snippets/css/complete-guide-grid/
+ *
+ * Additionally every widget is rendered in an overflow fix
+ * which prevents the widget to break the page and application layout.
+ *
+ * @see {@link https://css-tricks.com/snippets/css/complete-guide-grid/}
+ * @see {@link OverflowFix}
+ *
+ * @example
+ * ```ts
+ * function MyDashboardRenderer() {
+ * 	const myDashboard: Dashboard = {...};
+ *
+ * 	return <Dashboard dashboard={myDashboard} />;
+ * }
+ * ```
+ */
 export function Dashboard({ dashboard }: DashboardProps) {
 	const areas = useMemo(
 		() =>
