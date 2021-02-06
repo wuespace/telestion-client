@@ -9,7 +9,7 @@ import {
 	Text,
 	Provider
 } from '@adobe/react-spectrum';
-import { useStatus } from './use-Status';
+import { useStatus } from './use-status';
 import { ColorScheme, ColorSchemeState, useColorScheme } from '../../../hooks';
 
 // color scheme selector
