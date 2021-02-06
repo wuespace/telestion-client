@@ -80,7 +80,7 @@ function reportStats({
 	widgets,
 	projectPath
 }) {
-	if (json) {
+	if (!json) {
 		logger.info(
 			`Statistics for the Telestion PSC project ${name ?? 'Anonymous'} @ ${
 				version ?? 'Unknown version'
