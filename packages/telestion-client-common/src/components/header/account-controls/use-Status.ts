@@ -22,11 +22,60 @@ const mapToConnectionStatus: { [key in ConnectionState]: string } = {
 	noEventBus: 'No connection setup'
 };
 
+/**
+ * A scope is an information entry in the status dialog.
+ * It contains a description and a state.
+ * The description is usually rendered before the state.
+ */
 interface Scope {
+	/**
+	 * The description of the information entry or scope.
+	 */
 	description: string;
+	/**
+	 * The current state of the scope.
+	 */
 	state: string;
 }
 
+/**
+ * Returns the current status information
+ * that are usually rendered by the {@link StatusDialog}.
+ *
+ * The returned information contain a description with the current state.
+ *
+ * @see {@link StatusDialog}
+ *
+ * @example
+ * ```ts
+ * function MyStatusView() {
+ * 	const status = useStatus();
+ *
+ * 	const items = useMemo(() => {
+ * 		const children: Array<ReactNode> = [];
+ *
+ * 		status.forEach(({ description, state }) => {
+ * 			children.push(
+ * 				<Text key={`${description}-description`}>{description}</Text>
+ * 			);
+ * 			children.push(<Text key={`${description}-state`}>{state}</Text>);
+ * 		});
+ *
+ * 		return children;
+ * 	}, [status]);
+ *
+ * 	return (
+ * 		<Grid
+ * 			columns="max-content auto"
+ * 			columnGap="size-200"
+ * 			rowGap="size-100"
+ * 		>
+ * 			{items}
+ * 		</Grid>
+ * 	);
+ * }
+ * ```
+ */
 export function useStatus(): Array<Scope> {
 	const auth = useAuth(authSelector);
 	const connectionStatus = useEventBus(eventBusSelector);
