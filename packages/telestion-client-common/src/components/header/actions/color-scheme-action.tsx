@@ -39,6 +39,34 @@ const selector: StateSelector<
 	set: state.set
 });
 
+/**
+ * Part of the header actions.
+ *
+ * This action lets the user control the current color scheme
+ * of the application.
+ *
+ * Three states are possible:
+ * - system
+ * - light
+ * - dark
+ *
+ * On every click, the color scheme switches to the next state:
+ * `system -> light -> dark -> system -> ...`
+ *
+ * @see {@link ColorScheme}
+ * @see {@link Actions}
+ *
+ * @example
+ * ```ts
+ * function MyActions() {
+ * 	return (
+ * 		<Actions>
+ * 			<ColorSchemeAction />
+ * 		</Actions>
+ * 	);
+ * }
+ * ```
+ */
 export function ColorSchemeAction() {
 	const { colorScheme, set } = useColorScheme(selector, shallow);
 	const Icon = colorSchemeIcon[colorScheme];
