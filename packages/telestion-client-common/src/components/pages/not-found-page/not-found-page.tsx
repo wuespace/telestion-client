@@ -41,7 +41,7 @@ export function NotFoundPage() {
 /**
  * The routing for the not found page of Telestion Client Common package.
  *
- * It renders always regardless if someone is authenticated or not.
+ * It renders regardless if someone is authenticated or not.
  */
 const routing: Routing = {
 	type: 'default',

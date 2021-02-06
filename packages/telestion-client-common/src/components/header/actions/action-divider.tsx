@@ -4,9 +4,9 @@ import { Divider } from '@adobe/react-spectrum';
  * Part of the header actions.
  *
  * This is a special action
- * where the actions around this action divided via a vertical bar.
+ * where the actions around this action are divided via a vertical bar.
  *
- * The action is useful the group registered actions into subgroup
+ * The action is useful grouping registered actions into subgroups
  * for a better overview.
  *
  * This is also specified in the Adobe Spectrum Design:

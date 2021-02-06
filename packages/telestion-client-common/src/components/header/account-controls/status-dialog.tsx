@@ -18,15 +18,15 @@ const selector: StateSelector<ColorSchemeState, ColorScheme> = ({
 }) => colorScheme;
 
 /**
- * Renders a status dialog containing the current application status
- * like the event bus connection status or the logged in username.
+ * Renders a status dialog containing the current application state
+ * (for example, the event bus connection status and the logged in username).
  *
  * The entries are defined in the {@link useStatus} hook.
  *
- * It contains a {@link @adobe/react-spectrum#Dialog}
- * which can be controlled with a {@link @adobe/react-spectrum#DialogContainer}.
+ * This component contains a {@link @adobe/react-spectrum#Dialog}
+ * which can be controlled using a {@link @adobe/react-spectrum#DialogContainer}.
  *
- * Typically it opens on the status button click in the {@link AvatarMenu}.
+ * Typically, it opens when the status button in the {@link AvatarMenu} gets clicked.
  *
  * @see {@link useStatus}
  *

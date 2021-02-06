@@ -27,7 +27,7 @@ const selector: StateSelector<
  */
 export interface AvatarMenuProps {
 	/**
-	 * An event that triggers if the user pressed the status menu entry.
+	 * An event that triggers when the user presses the status menu entry.
 	 */
 	onStatusClick: () => void;
 }
@@ -35,7 +35,7 @@ export interface AvatarMenuProps {
 /**
  * Renders the account controls menu.
  *
- * It contains actions to login and logout from the application
+ * It contains actions to log into and out of the application
  * and show the current app status.
  *
  * Typically used with the {@link AvatarButton} in a

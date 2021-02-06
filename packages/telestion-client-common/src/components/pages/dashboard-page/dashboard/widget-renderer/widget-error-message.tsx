@@ -9,7 +9,7 @@ import {
 import { SpectrumButtonProps } from '@react-types/button';
 
 /**
- * An action a user can take if an widget error message render.
+ * An action that a user can take in a {@link WidgetErrorMessage}.
  */
 export interface Action {
 	/**
@@ -23,7 +23,7 @@ export interface Action {
 	variant: SpectrumButtonProps['variant'];
 
 	/**
-	 * The event trigger if a user presses the action button
+	 * The event that gets triggered when a user presses the action button
 	 * associated with this action.
 	 */
 	action: () => void;
@@ -40,7 +40,7 @@ export interface Action {
  */
 export interface WidgetErrorMessageProps {
 	/**
-	 * The image that render in the illustrated message.
+	 * The image that renders in the illustrated message.
 	 */
 	image: ReactElement;
 
@@ -57,19 +57,18 @@ export interface WidgetErrorMessageProps {
 	actions?: Array<Action>;
 
 	/**
-	 * The content part of the illustrated message.
+	 * The illustrated message's content.
 	 */
 	children: ReactNode;
 }
 
 /**
- * Renders a customizable illustrated message.from React Spectrum
+ * Renders a customizable illustrated message from React Spectrum
  * specialized for widget errors.
  *
- * The image, message and content can be modified.
+ * The image, message, and content can be modified.
  *
- * Additional actions can take place.
- * The user can then decide what to do next.
+ * The user can then choose from one of the actions passed via the `actions` property.
  *
  * @see {@link WidgetErrorMessageProps}
  *

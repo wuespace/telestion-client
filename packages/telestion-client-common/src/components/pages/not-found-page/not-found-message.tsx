@@ -6,9 +6,9 @@ import NotFound from '@spectrum-icons/illustrations/NotFound';
 
 /**
  * Renders an illustrated message from React Spectrum
- * containing a 404 page not found heading and a button to return
- * to the dashboard page if the some is authenticated.
- * Otherwise it returns to the login page.
+ * containing a _404 page not found_ heading and a button to return
+ * to the dashboard page, if the user is logged in.
+ * Otherwise, redirects to the login page.
  *
  * It is usually used in the {@link NotFoundPage}.
  *

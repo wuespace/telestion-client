@@ -3,8 +3,7 @@ import NotFound from '@spectrum-icons/illustrations/NotFound';
 
 /**
  * Renders an illustrated message from React Spectrum
- * containing a no dashboards heading.
- * It indicates that a user has no dashboards created yet.
+ * containing a _no dashboards_ heading for when no dashboard has been created for the current user.
  *
  * It is usually used in the {@link DashboardPage}.
  *
