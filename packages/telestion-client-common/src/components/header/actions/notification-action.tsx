@@ -21,6 +21,31 @@ const selector: StateSelector<
 	toggle: state.toggle
 });
 
+/**
+ * Part of the header actions.
+ *
+ * This action lets the user control the current notification state
+ * of the application.
+ *
+ * The user can switch between normal notification mode and silent
+ * where no more notifications are displayed.
+ * For more information take a look on the
+ * {@link @wuespace/telestion-client-core#useNotifications} hook.
+ *
+ * @see {@link @wuespace/telestion-client-core#useNotifications}
+ * @see {@link Actions}
+ *
+ * @example
+ * ```ts
+ * function MyActions() {
+ * 	return (
+ * 		<Actions>
+ * 			<NotificationAction />
+ * 		</Actions>
+ * 	);
+ * }
+ * ```
+ */
 export function NotificationAction() {
 	const { isMuted, toggle } = useNotifications(selector, shallow);
 
