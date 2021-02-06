@@ -35,6 +35,7 @@ export interface DashboardProps {
  * Additionally every widget is rendered in an overflow fix
  * which prevents the widget to break the page and application layout.
  *
+ * @see {@link DashboardProps}
  * @see {@link https://css-tricks.com/snippets/css/complete-guide-grid/}
  * @see {@link OverflowFix}
  *

@@ -26,7 +26,8 @@ export interface OverflowFixProps extends ViewProps {
  * In the background it uses the {@link @adobe/react-spectrum#View} component.
  * All props of this component are passed through to the outer view container.
  *
- * {@link @adobe/react-spectrum#View}
+ * @see {@link OverflowFixProps}
+ * @see {@link @adobe/react-spectrum#View}
  *
  * @example
  * ```ts

@@ -42,6 +42,7 @@ export interface AvatarMenuProps {
  * {@link @adobe/react-spectrum#MenuTrigger}
  * to control the menu with the avatar button.
  *
+ * @see {@link AvatarMenuProps}
  * @see {@link AvatarButton}
  *
  * @example
