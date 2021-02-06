@@ -27,8 +27,8 @@ const selector: StateSelector<
  * This action lets the user control the current notification state
  * of the application.
  *
- * The user can switch between normal notification mode and silent
- * where no more notifications are displayed.
+ * The user can switch between normal notification and silent mode.
+ * In silent mode, no more notifications are displayed.
  * For more information take a look on the
  * {@link @wuespace/telestion-client-core#useNotifications} hook.
  *

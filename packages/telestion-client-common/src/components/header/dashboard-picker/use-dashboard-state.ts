@@ -51,9 +51,9 @@ export interface PickerState {
 	selected: DashboardPickerKey;
 
 	/**
-	 * A handler that changes the currently active picker element
+	 * A handler that changes the currently selected picker element
 	 * and the application path to the new dashboard.
-	 * The application typically will then render the dashboard
+	 * The application will then, typically, render the dashboard
 	 * with the specified {@link Item.key}.
 	 *
 	 * @param key - the key of the pressed item
@@ -61,14 +61,14 @@ export interface PickerState {
 	onSelectionChange: (key: ReactText) => void;
 
 	/**
-	 * If `true` the dashboard picker should be disabled
+	 * If `true`, the dashboard picker should be disabled
 	 * and show the placeholder text
 	 * because there are no registered dashboards.
 	 */
 	isDisabled: boolean;
 
 	/**
-	 * If `true` the dashboard picker should hide itself.
+	 * If `true`, the dashboard picker should hide itself.
 	 */
 	isHidden: boolean;
 }

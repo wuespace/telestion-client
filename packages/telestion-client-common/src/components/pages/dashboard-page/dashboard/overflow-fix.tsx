@@ -14,17 +14,17 @@ import { ViewProps } from '@react-types/view';
  */
 export interface OverflowFixProps extends ViewProps {
 	/**
-	 * The components which are possibly overflow.
+	 * The components which are possibly overflowing.
 	 */
 	children: ReactNode;
 }
 
 /**
- * Prevents that the children of this component overflow
- * and break the layout of the application.
+ * Prevents the children of this component from overflowing
+ * and breaking the application's layout.
  *
- * In the background it uses the {@link @adobe/react-spectrum#View} component.
- * All props of this component are passed through to the outer view container.
+ * In the background, it uses the {@link @adobe/react-spectrum#View} component.
+ * All props of this component get passed to the outer {@link @adobe/react-spectrum#View} container.
  *
  * @see {@link OverflowFixProps}
  * @see {@link @adobe/react-spectrum#View}

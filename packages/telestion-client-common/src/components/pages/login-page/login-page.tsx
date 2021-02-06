@@ -42,8 +42,8 @@ export interface LoginPageProps {
  *
  * * **Attention**
  *
- * If you create your own login page, please pass through
- * the routing information so the pages component read it
+ * If you create your own login page, please pass
+ * the routing information so that the pages component read it
  * and render the page the right way:
  * `MyLoginPage.routing = TCLoginPage.routing;`
  *

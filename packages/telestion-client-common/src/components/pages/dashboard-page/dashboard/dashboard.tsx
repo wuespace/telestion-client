@@ -24,16 +24,16 @@ export interface DashboardProps {
 /**
  * Renders an entire dashboard.
  *
- * The dashboard has a defined number of columns and rows
- * where the widgets of the dashboard are rendered in.
- * Every widget has a width and height defined in full columns and rows.
+ * The dashboard has a defined number of rows and columns
+ * into which the dashboard's widgets get rendered.
+ * Every widget has a width and height defined in full rows and columns.
  *
- * Internally it uses the CSS grid system to align the widgets.
- * For more information about the CSS Grid system, take a look here:
+ * Internally, it uses the CSS grid system to align the widgets.
+ * For more information about the CSS Grid system, take a look at
  * https://css-tricks.com/snippets/css/complete-guide-grid/
  *
- * Additionally every widget is rendered in an overflow fix
- * which prevents the widget to break the page and application layout.
+ * Additionally, every widget is rendered in an overflow fix
+ * which prevents the widget from breaking the page or application layout.
  *
  * @see {@link DashboardProps}
  * @see {@link https://css-tricks.com/snippets/css/complete-guide-grid/}

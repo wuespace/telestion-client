@@ -8,7 +8,7 @@ import { StatusDialog } from './status-dialog';
  * Part of the Telestion Client Common header.
  *
  * This header component lets the user review
- * and control his login and authentication status.
+ * and control their login and authentication status.
  *
  * It displays the current login status
  * as well as some further information about the event bus state.

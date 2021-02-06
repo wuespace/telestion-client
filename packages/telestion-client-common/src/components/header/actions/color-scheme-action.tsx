@@ -46,9 +46,9 @@ const selector: StateSelector<
  * of the application.
  *
  * Three states are possible:
- * - system
- * - light
- * - dark
+ * - `'system'`
+ * - `'light'`
+ * - `'dark'`
  *
  * On every click, the color scheme switches to the next state:
  * `system -> light -> dark -> system -> ...`

@@ -28,7 +28,7 @@ export interface ActionsProps {
  * Part of the Telestion Client Common header.
  *
  * It displays customizable actions
- * which gives the user direct access the application settings.
+ * which gives the user direct access to the application settings.
  *
  * Predefined and ready-to-use actions are:
  * - {@link ColorSchemeAction}

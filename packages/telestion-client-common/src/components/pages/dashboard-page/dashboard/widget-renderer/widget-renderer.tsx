@@ -9,10 +9,10 @@ import { WidgetErrorMessage } from './widget-error-message';
 import { useWidgets } from '../../../../contexts/widgets-context';
 
 /**
- * Special component that renders in case of an error in an widget.
- * It renders a widget error message and allows the user to reload the widget.
+ * Special component that renders when an error occurs inside a widget.
+ * The component generates a widget error message and allows the user to reload the widget.
  *
- * It has a predefined structure through the react-error-boundary package.
+ * It has a predefined structure based on the react-error-boundary package.
  *
  * @see {@link WidgetErrorMessage}
  * @see {@link react-error-boundary#ErrorBoundary}
@@ -61,7 +61,7 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
  */
 export interface WidgetRendererProps {
 	/**
-	 * The definition of the widget that should be rendered.
+	 * The {@link @wuespace/telestion-client-types#WidgetDefinition} rendered by the {@link WidgetRenderer}.
 	 */
 	widgetDefinition: WidgetDefinition;
 }
@@ -69,18 +69,18 @@ export interface WidgetRendererProps {
 /**
  * The main widget renderer component.
  * It searches for the widget in the registered application widgets
- * and renders it if it has found the widget.
- * Otherwise a widget error message is rendered which tells the user
- * that the widget with specified name does not exist in the widget database.
+ * and renders it.
+ * If the component can't find the widget, it shows a widget error message that tells the user
+ * that the widget with this specified name does not exist in the widget database.
  *
- * If the widget exists the widget renderer displays it and surrounds it
+ * If the widget exists, the widget renderer displays it and surrounds it
  * with an error boundary to catch potential bugs and errors in the widgets.
- * These errors do not break the entire application,
+ * Therefore, errors within the widget don't break the entire application,
  * but only the widget renderer itself.
- * If an error occurs, the fallback widget is rendered
+ * If an error occurs, the fallback widget gets rendered
  * with an option to reload the widget and "try again".
  *
- * New widgets can be registered in the {@link CommonWrapper} component.
+ * You can register new widgets in the {@link CommonWrapper} component.
  *
  * @see {@link WidgetRendererProps}
  * @see {@link ErrorFallback}

@@ -7,7 +7,7 @@ import FullScreenExit from '@spectrum-icons/workflow/FullScreenExit';
 /**
  * Part of the header actions.
  *
- * This action lets the user control the fullscreen of the application.
+ * This action lets the user control whether the application gets shown in fullscreen.
  *
  * The user can switch between default window mode and fullscreen mode
  * where the application or browser content is rendered over the entire screen.

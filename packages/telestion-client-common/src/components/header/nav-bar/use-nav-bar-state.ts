@@ -14,14 +14,14 @@ export type NavBarKey = string;
 
 /**
  * A link in the navigation bar.
- * It has a title that is shown and a path
+ * It has a title that gets shown and a path
  * where the application is redirecting
  * if the user presses the navigation link.
  */
 export interface Link {
 	/**
 	 * The title of the navigation link.
-	 * Is shown in the navigation page.
+	 * Gets shown on the navigation page.
 	 */
 	title: string;
 
@@ -38,7 +38,7 @@ export interface Link {
  */
 export interface NavBarState {
 	/**
-	 * The links the navigation should render.
+	 * The links that the navigation should render.
 	 *
 	 * @see {@link Link}
 	 */
@@ -53,15 +53,15 @@ export interface NavBarState {
 	/**
 	 * A handler that changes the currently selected navigation element
 	 * and the application path.
-	 * The application typically will then render a new registered page.
+	 * The application will then, typically, render another registered page.
 	 *
 	 * @param key - the key of the pressed item
 	 */
 	onSelectionChange: (key: ReactText) => void;
 
 	/**
-	 * If `true` the navigation should not render a navigation bar
-	 * and should instead render a simple message like an application title.
+	 * If `true`, the navigation should not render a navigation bar,
+	 * and should, instead, render a simple message like an application title.
 	 */
 	isHidden: boolean;
 }
