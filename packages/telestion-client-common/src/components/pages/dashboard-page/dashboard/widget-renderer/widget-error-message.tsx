@@ -8,19 +8,96 @@ import {
 } from '@adobe/react-spectrum';
 import { SpectrumButtonProps } from '@react-types/button';
 
+/**
+ * An action a user can take if an widget error message render.
+ */
 export interface Action {
+	/**
+	 * The label of the action button.
+	 */
 	label: string;
+
+	/**
+	 * The variant of the action button.
+	 */
 	variant: SpectrumButtonProps['variant'];
+
+	/**
+	 * The event trigger if a user presses the action button
+	 * associated with this action.
+	 */
 	action: () => void;
 }
 
+/**
+ * React Props of {@link WidgetErrorMessage}
+ *
+ * For more information about React Props, please look here:
+ * {@link https://reactjs.org/docs/components-and-props.html}
+ *
+ * @see {@link WidgetErrorMessage}
+ * @see {@link https://reactjs.org/docs/components-and-props.html}
+ */
 export interface WidgetErrorMessageProps {
+	/**
+	 * The image that render in the illustrated message.
+	 */
 	image: ReactElement;
+
+	/**
+	 * The heading in the illustrated message.
+	 */
 	message: string;
+
+	/**
+	 * Additional actions the user can take.
+	 *
+	 * @see {@link Action}
+	 */
 	actions?: Array<Action>;
+
+	/**
+	 * The content part of the illustrated message.
+	 */
 	children: ReactNode;
 }
 
+/**
+ * Renders a customizable illustrated message.from React Spectrum
+ * specialized for widget errors.
+ *
+ * The image, message and content can be modified.
+ *
+ * Additional actions can take place.
+ * The user can then decide what to do next.
+ *
+ * @see {@link WidgetErrorMessageProps}
+ *
+ * @example
+ * ```ts
+ * function MyWidgetError() {
+ * 	return (
+ * 		<WidgetErrorMessage>
+ * 			image={<NotFound />}
+ * 			message="Internal widget error"
+ * 			actions={[
+ * 				{
+ * 					label: 'Reload widget',
+ * 					variant: 'primary',
+ * 					action: resetErrorBoundary
+ * 				}
+ * 			]}
+ * 		>
+ * 			<p>
+ * 				Please try to reload the widget. If the problem persists, contact the
+ * 				developers. Error details:
+ * 			</p>
+ * 			<p>{error.message}</p>
+ * 		</WidgetErrorMessage>
+ * 	);
+ * }
+ * ```
+ */
 export function WidgetErrorMessage({
 	image,
 	message,
