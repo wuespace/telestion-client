@@ -2,7 +2,8 @@ const exec = require('../async-exec');
 const logger = require('../logger')('git-init');
 
 const gitInit = 'git init';
-const gitCommit = 'git commit -am "Initial commit"';
+const gitAdd = 'git add .';
+const gitCommit = 'git commit -m "Initial commit"';
 
 async function runGitInit(projectPath) {
 	let isGitRepo = false;
@@ -23,6 +24,7 @@ async function runGitInit(projectPath) {
 async function makeInitialCommit(projectPath) {
 	logger.debug('Git commit command:', gitCommit);
 	try {
+		await exec(gitAdd, { cwd: projectPath });
 		await exec(gitCommit, { cwd: projectPath });
 	} catch (e) {
 		throw new Error('Initial commit failed. Details: ' + e.message);
