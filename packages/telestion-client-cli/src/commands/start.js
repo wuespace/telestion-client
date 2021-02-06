@@ -1,7 +1,6 @@
 const electroner = require('electroner');
 const openUrl = require('../lib/open-url');
 
-const debug = require('debug')('start');
 const logger = require('../lib/logger')('start');
 
 // yargs def
@@ -31,7 +30,7 @@ async function handler(argv) {
 	const WebpackDevServer = require('webpack-dev-server');
 
 	// gathering information
-	debug('Arguments:', argv);
+	logger.debug('Arguments:', argv);
 
 	const webpackConfig = createWebpackDevConfig({
 		webpack: { configure: { stats: 'errors-only' } }

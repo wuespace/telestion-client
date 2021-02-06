@@ -1,4 +1,3 @@
-const debug = require('debug')('generate');
 const logger = require('../lib/logger')('generate');
 const generateWidget = require('../lib/generate/widget');
 
@@ -20,7 +19,7 @@ function builder(yargs) {
 
 async function handler(argv) {
 	// gathering information
-	debug('Arguments:', argv);
+	logger.debug('Arguments:', argv);
 
 	// for implementation examples, look at the @server-state/cli refactoring branch
 	if (argv['component'] === 'widget' || argv['component'] === 'w') {
