@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/TelestionTeam/telestion-client/compare/v0.6.1...v0.7.0) (2021-02-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* **cli:** Before, running `tc-cli start` opened the PSC as an Electron app, by default. To replicate this behavior, you'll now have to pass the `--electron` or `-e` argument to the command.
+
+In summary, replace `tc-cli start` with `tc-cli start -e` to keep the same behavior.
+
+### Features
+
+* **cli:** Add option to open the PSC in either an Electron window or a browser in `tc-cli start` ([5fd359c](https://github.com/TelestionTeam/telestion-client/commit/5fd359c6d5e04208be15c41e37a9c1612eb463b0))
+
+
+### Bug Fixes
+
+* **cli:** Add files before commiting the initial commit in `tc-cli init` ([8e0ac3c](https://github.com/TelestionTeam/telestion-client/commit/8e0ac3c6963e79c3606283151a9bfcacc465a7b7))
+* **cli:** Fix `TypeError: Cannot read property 'message' of undefined` in `tc-cli init` command ([6f4d1a3](https://github.com/TelestionTeam/telestion-client/commit/6f4d1a376210f8ec368f1ad80f8b2f09bcf9d6f8))
+* **cli:** In `tc-cli stats`, fix reverted json to non-json output behavior. ([c2451c6](https://github.com/TelestionTeam/telestion-client/commit/c2451c6b4df1b998304aed80cdded8f5331ec17f))
+
+
+
 ### [0.6.1](https://github.com/TelestionTeam/telestion-client/compare/v0.6.0...v0.6.1) (2021-02-05)
 
 **Note:** Version bump only for package @wuespace/telestion-client-cli

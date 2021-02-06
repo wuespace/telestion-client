@@ -3,6 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/TelestionTeam/telestion-client/compare/v0.6.1...v0.7.0) (2021-02-06)
+
+
+### ⚠ BREAKING CHANGES
+
+* **cli:** Before, running `tc-cli start` opened the PSC as an Electron app, by default. To replicate this behavior, you'll now have to pass the `--electron` or `-e` argument to the command.
+
+In summary, replace `tc-cli start` with `tc-cli start -e` to keep the same behavior.
+
+### Features
+
+* **cli:** Add option to open the PSC in either an Electron window or a browser in `tc-cli start` ([5fd359c](https://github.com/TelestionTeam/telestion-client/commit/5fd359c6d5e04208be15c41e37a9c1612eb463b0))
+* **template:** Adjust PSC template's npm scripts to accommodate for new `tc-cli start` behavior ([95bc391](https://github.com/TelestionTeam/telestion-client/commit/95bc3915bc61253f94f250b563faa68a456a33c9))
+
+
+### Bug Fixes
+
+* **cli:** Add files before commiting the initial commit in `tc-cli init` ([8e0ac3c](https://github.com/TelestionTeam/telestion-client/commit/8e0ac3c6963e79c3606283151a9bfcacc465a7b7))
+* **cli:** Fix `TypeError: Cannot read property 'message' of undefined` in `tc-cli init` command ([6f4d1a3](https://github.com/TelestionTeam/telestion-client/commit/6f4d1a376210f8ec368f1ad80f8b2f09bcf9d6f8))
+* **cli:** In `tc-cli stats`, fix reverted json to non-json output behavior. ([c2451c6](https://github.com/TelestionTeam/telestion-client/commit/c2451c6b4df1b998304aed80cdded8f5331ec17f))
+
+
+### Documentation Changes
+
+* **common:** Add reference to props ([0083f67](https://github.com/TelestionTeam/telestion-client/commit/0083f67f8a18a847993808f830d6454fe32b8505))
+* **common:** Apply more suggestions from code review ([62754fa](https://github.com/TelestionTeam/telestion-client/commit/62754fa6c2604584ade2bed8b94424787f561066))
+* **common:** Apply suggestions from code review ([c0923c8](https://github.com/TelestionTeam/telestion-client/commit/c0923c8e53354b6673b38ce9b28e13dac1f91f28))
+* **common:** Document all page components ([e3400f7](https://github.com/TelestionTeam/telestion-client/commit/e3400f7780b3ad7b1c2b95fc2da95e9ecabcd879))
+* **common:** Document the account controls component ([859c640](https://github.com/TelestionTeam/telestion-client/commit/859c640576b7cb87774c6f0e0801824a79a234fd))
+* **common:** Document the action divider component ([b9a4cd1](https://github.com/TelestionTeam/telestion-client/commit/b9a4cd15908c0de3c3df1af4507f9e8c7394c3e7))
+* **common:** Document the avatar button component ([8c99c96](https://github.com/TelestionTeam/telestion-client/commit/8c99c96edc812535ddb84d49e3ad3277677347be))
+* **common:** Document the avatar menu component ([765bfb1](https://github.com/TelestionTeam/telestion-client/commit/765bfb17ab65fef6b81023a09e4895fc909d86a6))
+* **common:** Document the color scheme action component ([10db0be](https://github.com/TelestionTeam/telestion-client/commit/10db0be6651a3d810fdb5c242758b9c7d9debb40))
+* **common:** Document the dashboard component ([79dc52b](https://github.com/TelestionTeam/telestion-client/commit/79dc52bc72767a0fef43425c875e3e020145b7bb))
+* **common:** Document the dashboard picker component ([2d98394](https://github.com/TelestionTeam/telestion-client/commit/2d98394db9ddeb15c2a716193bd2d38d1885c854))
+* **common:** Document the fullscreen action component ([c505c16](https://github.com/TelestionTeam/telestion-client/commit/c505c16b0a5e8b4b23848ea9e7950e5edde027a3))
+* **common:** Document the header actions component ([497c7bd](https://github.com/TelestionTeam/telestion-client/commit/497c7bd3888002afa34ab38c959e9ee66e150bb1))
+* **common:** Document the no dashboards message component ([2b0c005](https://github.com/TelestionTeam/telestion-client/commit/2b0c00594559630a689c1d11dcbe7bea9cf52d70))
+* **common:** Document the not found message component ([9dee2d3](https://github.com/TelestionTeam/telestion-client/commit/9dee2d3d3af3ea46c02a1597baed0dc353dc321a))
+* **common:** Document the notification action component ([0cedf76](https://github.com/TelestionTeam/telestion-client/commit/0cedf768cd443ef4fec15b7b103c4432960e3a5f))
+* **common:** Document the overflow fix component ([db0ea7b](https://github.com/TelestionTeam/telestion-client/commit/db0ea7b9f2525e327559e9b9695ed85dba57f08c))
+* **common:** Document the status dialog component ([831db05](https://github.com/TelestionTeam/telestion-client/commit/831db056c1e3a19ffde11787b1f0b1c9f81c860b))
+* **common:** Document the use dashboard state hook ([8309e3c](https://github.com/TelestionTeam/telestion-client/commit/8309e3cfe1c15b8dacd5b0ad1dbc4f3086e51e1c))
+* **common:** Document the use nav bar state hook ([9b0a9b1](https://github.com/TelestionTeam/telestion-client/commit/9b0a9b1184d2584949cc0b875eda0775ccacc8c8))
+* **common:** Document the use status hook ([cb7e052](https://github.com/TelestionTeam/telestion-client/commit/cb7e052b3f182d869a0d28283e6f46d3bdd82f28))
+* **common:** Document the widget error message component ([2fab124](https://github.com/TelestionTeam/telestion-client/commit/2fab124da7716de0da51027a2709473a0607541f))
+* **common:** Document the widget renderer component ([d88e2ad](https://github.com/TelestionTeam/telestion-client/commit/d88e2ad02390e32f2332a48c480695f83af1f6eb))
+
+
+
 ### [0.6.1](https://github.com/TelestionTeam/telestion-client/compare/v0.6.0...v0.6.1) (2021-02-05)
 
 
