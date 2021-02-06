@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.7.1](https://github.com/TelestionTeam/telestion-client/compare/v0.7.0...v0.7.1) (2021-02-06)
+
+
+### Bug Fixes
+
+* **common:** Type Error in login description component ([ae8b07c](https://github.com/TelestionTeam/telestion-client/commit/ae8b07c719ac78e9c935d4712827ce644e4eb3a7)), closes [#303](https://github.com/TelestionTeam/telestion-client/issues/303)
+
+
+
 ## [0.7.0](https://github.com/TelestionTeam/telestion-client/compare/v0.6.1...v0.7.0) (2021-02-06)
 
 
