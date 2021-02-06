@@ -40,11 +40,19 @@ export interface LoginPageProps {
  * - {@link LoginDescription}
  * - {@link LoginForm}
  *
+ * * **Attention**
+ *
+ * If you create your own login page, please pass through
+ * the routing information so the pages component read it
+ * and render the page the right way:
+ * `MyLoginPage.routing = TCLoginPage.routing;`
+ *
  * @see {@Link LoginPageProps}
  * @see {@link LoginTitle}
  * @see {@link LoginLogo}
  * @see {@link LoginDescription}
  * @see {@link LoginForm}
+ * @see {@link @wuespace/telestion-client-core#Pages}
  *
  * @example
  * ```ts
