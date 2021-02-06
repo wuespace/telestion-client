@@ -1,52 +1,46 @@
 const exec = require('../async-exec');
+const logger = require('../logger')('git-init');
 
 const gitInit = 'git init';
 const gitCommit = 'git commit -am "Initial commit"';
 
-async function runGitInit(debug, projectPath, spinner, logger) {
+async function runGitInit(projectPath) {
 	let isGitRepo = false;
-	debug('Git init command:', gitInit);
+	logger.debug('Git init command:', gitInit);
 	try {
 		await exec(gitInit, { cwd: projectPath });
 
-		spinner.stop();
 		isGitRepo = true;
-		logger.success('Git repository initialized');
 	} catch (e) {
-		logger.error('Git repository initialization failed');
-		debug(e);
+		throw new Error(`Git init failed. Details: ${e.message}`);
 	}
 	return isGitRepo;
 }
 
-async function makeInitialCommit(projectPath, spinner, logger, debug) {
-	spinner.message('Add initial commit');
-	spinner.start();
-
-	debug('Git commit command:', gitCommit);
+/**
+ * @param {string} projectPath
+ */
+async function makeInitialCommit(projectPath) {
+	logger.debug('Git commit command:', gitCommit);
 	try {
 		await exec(gitCommit, { cwd: projectPath });
-
-		spinner.stop();
-		logger.success('Added initial commit');
 	} catch (e) {
-		logger.error('Initial commit creation failed');
-		debug(e);
+		throw new Error('Initial commit failed. Details: ' + e.message);
 	}
 }
 
-module.exports = async function initializeGitRepository(
-	projectPath,
-	argv,
-	spinner,
-	logger,
-	debug
-) {
-	spinner.message('Initialize project as git repository');
-	spinner.start();
-	const isGitRepo = await runGitInit(debug, projectPath, spinner, logger);
+/**
+ * Initializes a git repository.
+ *
+ * Additionally to `git init`, creates an initial commit if `commit` is true
+ * @param {string} projectPath
+ * @param {boolean} commit
+ * @return {Promise<void>}
+ */
+module.exports = async function initializeGitRepository(projectPath, commit) {
+	const isGitRepo = await runGitInit(projectPath);
 
-	if (isGitRepo && argv['commit']) {
+	if (isGitRepo && commit) {
 		await makeInitialCommit(projectPath);
 	}
 };

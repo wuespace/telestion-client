@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 
-const debug = require('debug')('stats');
 const logger = require('../lib/logger')('stats');
 
 // yargs def
@@ -19,7 +18,7 @@ function builder(yargs) {
 }
 
 async function handler(argv) {
-	debug('Arguments:', argv);
+	logger.debug('Arguments:', argv);
 
 	const projectPath = process.cwd();
 

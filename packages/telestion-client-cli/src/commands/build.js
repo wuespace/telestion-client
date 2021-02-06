@@ -1,4 +1,3 @@
-const debug = require('debug')('build');
 const logger = require('../lib/logger')('build');
 
 // yargs def
@@ -15,7 +14,7 @@ function builder(yargs) {
 
 async function handler(argv) {
 	// gathering information
-	debug('Arguments:', argv);
+	logger.debug('Arguments:', argv);
 
 	// for implementation examples, look at the @server-state/cli refactoring branch
 	logger.error('Not implemented');
