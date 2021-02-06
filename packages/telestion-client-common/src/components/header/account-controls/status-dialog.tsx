@@ -17,6 +17,43 @@ const selector: StateSelector<ColorSchemeState, ColorScheme> = ({
 	colorScheme
 }) => colorScheme;
 
+/**
+ * Renders a status dialog containing the current application status
+ * like the event bus connection status or the logged in username.
+ *
+ * The entries are defined in the {@link useStatus} hook.
+ *
+ * It contains a {@link @adobe/react-spectrum#Dialog}
+ * which can be controlled with a {@link @adobe/react-spectrum#DialogContainer}.
+ *
+ * Typically it opens on the status button click in the {@link AvatarMenu}.
+ *
+ * @see {@link useStatus}
+ *
+ * @example
+ * ```ts
+ * function MyAccountControls() {
+ * 	// dialog open state
+ * 	const [isOpen, setOpen] = useState(false);
+ *
+ * 	const openDialog = useCallback(() => setOpen(true), []);
+ * 	const closeDialog = useCallback(() => setOpen(false), []);
+ *
+ * 	return (
+ * 		<>
+ * 			<MenuTrigger>
+ * 				<AvatarButton />
+ * 				<AvatarMenu onStatusClick={openDialog} />
+ * 			</MenuTrigger>
+ *
+ * 			<DialogContainer type="modal" isDismissable onDismiss={closeDialog}>
+ * 				{isOpen && <StatusDialog />}
+ * 			</DialogContainer>
+ * 		</>
+ * 	);
+ * }
+ * ```
+ */
 export function StatusDialog() {
 	const colorScheme = useColorScheme(selector);
 	const status = useStatus();
