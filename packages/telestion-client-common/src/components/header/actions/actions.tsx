@@ -36,6 +36,7 @@ export interface ActionsProps {
  * - {@link NotificationAction}
  * - {@link ActionDivider}
  *
+ * @see {@link ActionsProps}
  * @see {@link ColorSchemeAction}
  * @see {@link FullscreenAction}
  * @see {@link NotificationAction}

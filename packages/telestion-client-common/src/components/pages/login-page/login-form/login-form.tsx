@@ -38,6 +38,7 @@ export interface LoginFormProps {
  *
  * This component belongs to the {@link LoginPage}
  *
+ * @see {@link LoginFormProps}
  * @see {@link FormProps}
  * @see {@link LoginPage}
  *
