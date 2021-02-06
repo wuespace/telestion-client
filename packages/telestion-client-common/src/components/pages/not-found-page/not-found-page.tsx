@@ -3,17 +3,17 @@ import { NotFoundMessage } from './not-found-message';
 
 /**
  * A Telestion Client page that renders a fallback page
- * if the current route does not fit to a page higher up in the list.
- * It displays a "not found" message and a button to return
- * to the dashboard page if the some is authenticated.
- * Otherwise it returns to the login page.
+ * if the current route doesn't fit a page higher up in the list.
+ * The component displays a _"not found"_ message and a button to return
+ * to the dashboard page if the user is logged in.
+ * Otherwise, the component redirects to the login page.
  *
- * It renders always regardless if someone is authenticated or not.
+ * It renders regardless if the user is authenticated or not.
  *
  * **Attention**
  *
- * If you create your own not found page, please pass through
- * the routing information so the pages component read it
+ * If you create your own not found page, please pass
+ * the routing information so that the pages component read it
  * and render the page the right way:
  * `MyNotFoundPage.routing = TCNotFoundPage.routing;`
  *

@@ -39,10 +39,11 @@ interface Scope {
 }
 
 /**
- * Returns the current status information
- * that are usually rendered by the {@link StatusDialog}.
+ * Returns the current status information (usually rendered by the {@link StatusDialog}).
  *
- * The returned information contain a description with the current state.
+ * The returned `Scope` is an array of objects containing a `description` and a `state`.
+ * `description`, then, provides a headline for a subsystem, 
+ * while `state` describes the current state of that subsystem.
  *
  * @see {@link StatusDialog}
  *
