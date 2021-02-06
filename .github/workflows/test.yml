@@ -58,3 +58,73 @@ jobs:
           CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_REPORTER_ID }}
         with:
           coverageCommand: npm run test:unit
+
+  cli-e2e-test:
+    name: CLI E2E Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 📥
+        uses: actions/checkout@v2.3.4
+      - name: Setup Node 💿
+        uses: actions/setup-node@v2.1.4
+        with:
+          node-version: 14
+
+      - name: Restore npm cache ♻️
+        uses: actions/cache@v2.1.3
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install global dependencies 🐱‍
+        run: npm install -g verdaccio lerna npm-cli-adduser
+      - name: Install development dependencies 📚
+        run: npm ci
+
+      - name: Run verdaccio
+        run: |
+          verdaccio &
+          VERDACCIO_PID=$!
+          echo "VERDACCIO_PID=$!" >> $GITHUB_ENV
+          npm config set registry http://localhost:4873
+
+      - name: Replace package versions
+        run: npm run meta:replace-versions -- 999.999.999
+      - name: Login and publish to verdaccio
+        run: |
+          npm-cli-adduser -u thebox -p where -e thebox@nothere.com -r http://localhost:4873
+      - name: Npm get logged in user
+        run: npm whoami
+      - name: Publish to verdaccio
+        run: lerna exec 'npm publish --registry="http://localhost:4873"'
+
+      - name: Install CLI from verdaccio
+        run: npm install -g @wuespace/telestion-client-cli
+      - name: Show help output of CLI
+        run: tc-cli --help
+      - name: Initialize PSC Project
+        working-directory: '../../'
+        run: tc-cli init psc
+        continue-on-error: true
+
+      - name: Generate a new widget in the PSC
+        working-directory: '../../psc'
+        run: |
+          tc-cli generate --help
+          tc-cli generate widget test-widget
+      - name: Show stats of the PSC
+        working-directory: '../../psc'
+        run: |
+          tc-cli stats --help
+          tc-cli stats
+      - name: Build the PSC
+        working-directory: '../../psc'
+        continue-on-error: true
+        run: |
+          tc-cli build --help
+          tc-cli build
+
+      - name: Stop verdaccio 🛑
+        run: kill -SIGHUP "$VERDACCIO_PID"
