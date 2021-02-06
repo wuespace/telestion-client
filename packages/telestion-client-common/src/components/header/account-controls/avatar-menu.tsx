@@ -16,10 +16,46 @@ const selector: StateSelector<
 	}
 > = ({ auth, signOut }) => ({ auth, signOut });
 
+/**
+ * React Props of {@link AvatarMenu}
+ *
+ * For more information about React Props, please look here:
+ * {@link https://reactjs.org/docs/components-and-props.html}
+ *
+ * @see {@link AvatarMenu}
+ * @see {@link https://reactjs.org/docs/components-and-props.html}
+ */
 export interface AvatarMenuProps {
+	/**
+	 * An event that triggers if the user pressed the status menu entry.
+	 */
 	onStatusClick: () => void;
 }
 
+/**
+ * Renders the account controls menu.
+ *
+ * It contains actions to login and logout from the application
+ * and show the current app status.
+ *
+ * Typically used with the {@link AvatarButton} in a
+ * {@link @adobe/react-spectrum#MenuTrigger}
+ * to control the menu with the avatar button.
+ *
+ * @see {@link AvatarButton}
+ *
+ * @example
+ * ```ts
+ * function MyAccountControls() {
+ * 	return (
+ * 		<MenuTrigger>
+ * 			<AvatarButton />
+ * 			<AvatarMenu />
+ * 		</MenuTrigger>
+ * 	);
+ * }
+ * ```
+ */
 export function AvatarMenu({ onStatusClick }: AvatarMenuProps) {
 	const history = useHistory();
 	const { auth, signOut } = useAuth(selector);
