@@ -64,7 +64,7 @@ export function LoginDescription({
 	description,
 	children
 }: LoginDescriptionProps) {
-	if (children) return children;
+	if (children) return <>{children}</>;
 
 	return (
 		<Text>
