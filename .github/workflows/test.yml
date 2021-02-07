@@ -124,7 +124,6 @@ jobs:
           tc-cli stats
       - name: Build the PSC
         working-directory: '../../psc'
-        continue-on-error: true
         run: |
           tc-cli build --help
           tc-cli build
