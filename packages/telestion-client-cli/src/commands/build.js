@@ -22,10 +22,10 @@ async function handler(argv) {
 	try {
 		logger.info('Reading configuration');
 		const config = await getConfig();
-		logger.success('Found configuration file at: ' + config.filepath);
+		logger.success('Found configuration file at: ' + config['filepath']);
 		logger.debug('Config', config);
 
-		let projectRoot = path.dirname(config.filepath);
+		let projectRoot = path.dirname(config['filepath']);
 		process.chdir(projectRoot);
 		logger.debug('Arguments:', argv);
 
@@ -40,16 +40,17 @@ async function handler(argv) {
 		logger.success('Electron main thread has been compiled successfully.');
 
 		logger.info('Packaging Electron app');
-		await withAdjustedPackageJsonRun(projectRoot, async () => {
-			/**
-			 * @type {string[]}
-			 */
-			const files = await packageElectronApp();
-			logger.info(
-				'Generated files:',
-				'\n' + files.map(file => `- ${file}`).join('\n')
-			);
-		});
+		/**
+		 * @type {string[]}
+		 */
+		const files = await withAdjustedPackageJsonRun(
+			projectRoot,
+			async () => await packageElectronApp()
+		);
+		logger.info(
+			'Generated files:',
+			'\n' + files.map(file => `- ${file}`).join('\n')
+		);
 		logger.success('Electron app has been packaged successfully.');
 	} catch (e) {
 		logger.error(
