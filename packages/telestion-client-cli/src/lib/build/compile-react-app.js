@@ -9,7 +9,7 @@ async function compileReactApp() {
 	process.env.SKIP_PREFLIGHT_CHECK = 'true';
 	// craco, in the background, imports (and runs) the `react-scripts build` script.
 	// Unfortunately, that script runs asynchronously and there's no nice way to detect completion.
-	// In order to run tasks after compiling the React app in the right order, we therefore inject `console.log`
+	// To run tasks after compiling the React app in the right order, we therefore inject `console.log`
 	// with a custom function. If `react-scripts` logs "Compiled successfully.", we know that the compilation is complete.
 	const originalConsoleLog = console.log;
 	/**
@@ -26,14 +26,14 @@ async function compileReactApp() {
 				message[0].includes('Compiled successfully.')
 			) {
 				// Set a timeout to allow for final messages to get printed before continuing
-				// (while 'Compiled successfully.' is the string that easiest to detect, a
-				// few lines follow it in the log)
+				// while 'Compiled successfully.' is the string that easiest to detect, a
+				// few lines follow it in the log.
 				setTimeout(resolve, 250);
 			}
 		};
 	});
 
-	// `build`, internally, overrides the require cache to inject a custom config into `react-scripts`.
+	// `build`, internally, overrides the require-cache to inject a custom config into `react-scripts`.
 	// Then, it just imports (and thus, runs) the `react-scripts build` script.
 	const { build } = require(`@craco/craco/lib/cra`);
 	build({

@@ -17,7 +17,7 @@ const REPLACE = Symbol('Replace the line with the insertion mark');
  * @typedef {Object} Replacer
  * @property {string} needle - the string for which the file gets searched in the replacer.
  * @property {string} text - the text that gets inserted above/below/instead of the `needle`, depending on the `position`
- * @property {INSERT_ABOVE | INSERT_BELOW | REPLACE} position - the position where `text` gets inserted relative to the
+ * @property {INSERT_ABOVE | INSERT_BELOW | REPLACE} position - the position where `text` gets inserted, compared to the
  * `needle`'s line.
  */
 
@@ -52,9 +52,9 @@ function modifyFile(filePath, replacers) {
 		} else if (replacer.position !== REPLACE) {
 			throw new Error(
 				'Internal Error: No valid position specified in replacer passed to modifyFile. ' +
-					'This is an internal error, and as a user, you should never get to see this. Somehow, somethings seems ' +
+					'This is an internal error, and as a user, you should never get to see this. Somehow, something seems ' +
 					'to have mal-functioned. If you could report this (including the output) to the Telestion Team, ' +
-					'we would appreciate that a lot. Sorry, and thank you very much in advance.'
+					'we would appreciate that a lot. Sorry, and thank you in advance.'
 			);
 		}
 

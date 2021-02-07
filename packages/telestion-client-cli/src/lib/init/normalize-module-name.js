@@ -2,7 +2,7 @@ const validate = require('validate-npm-package-name');
 
 /**
  * Replaces whitespaces with minus and lowercase every character.
- * Additionally it checks for a valid npm package name.
+ * Additionally, it checks for a valid npm package name.
  * @param name string to normalize
  * @returns {string} normalized string
  */

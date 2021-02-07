@@ -9,7 +9,7 @@ const logger = require('../logger')('template-tree-processor');
 async function processDirectory(node, targetPath, replacers) {
 	debug('Processing dir', node.path, 'for target', targetPath);
 	sh.mkdir(targetPath); // create the directory (pretty much self-explanatory)
-	logger.success('Created directory:', targetPath);
+	logger.success('Created the directory:', targetPath);
 
 	await Promise.all(
 		node.children.map(
@@ -34,10 +34,10 @@ async function processFile(node, targetPath, replacers) {
 			targetPathWithoutEJSExtension,
 			await ejs.renderFile(node.path, replacers)
 		); // Render the template into the target path (without the .ejs extension)
-		logger.success('Created file:', targetPathWithoutEJSExtension);
+		logger.success('Created the file:', targetPathWithoutEJSExtension);
 	} else {
 		sh.cp(node.path, targetPath);
-		logger.success('Created file:', targetPath);
+		logger.success('Created the file:', targetPath);
 	}
 }
 

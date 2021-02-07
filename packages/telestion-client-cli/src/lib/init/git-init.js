@@ -34,7 +34,7 @@ async function makeInitialCommit(projectPath) {
 /**
  * Initializes a git repository.
  *
- * Additionally to `git init`, creates an initial commit if `commit` is true
+ * After running `git init`, the function creates an initial commit if `commit` is true
  * @param {string} projectPath
  * @param {boolean} commit
  * @return {Promise<void>}

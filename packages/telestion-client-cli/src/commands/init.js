@@ -69,7 +69,7 @@ async function handler(argv) {
 		spinner.stop();
 		logger.success('Parsed template project');
 
-		spinner.message('Initialize new project with template ...');
+		spinner.message('Initialize new project with the template ...');
 		spinner.start();
 		await new Promise(resolve => setTimeout(resolve, 2000));
 		spinner.stop();

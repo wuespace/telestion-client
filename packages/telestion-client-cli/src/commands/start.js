@@ -1,4 +1,4 @@
-const electroner = require('electroner');
+const runElectron = require('electroner');
 const openUrl = require('../lib/open-url');
 
 const logger = require('../lib/logger')('start');
@@ -45,7 +45,7 @@ async function handler(argv) {
 
 	server.listen(3000, '127.0.0.1', () => {
 		if (argv.browser) openUrl('http://localhost:3000');
-		else if (argv.electron) electroner('http://localhost:3000', {});
+		else if (argv.electron) runElectron('http://localhost:3000', {});
 		logger.info('Webpack dev server listening on http://localhost:3000');
 	});
 }
