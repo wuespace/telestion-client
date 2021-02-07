@@ -15,7 +15,7 @@ function generateWidget(argv) {
 	) {
 		logger.error('It looks like your not inside a Telestion PSC Folder.');
 		logger.info("Expected to find folder ./src/widgets, but couldn't.");
-		logger.info('Please re-run this command inside a PSC directory.');
+		logger.info('Please re-run "tc-cli generate" inside a PSC directory.');
 		process.exit(1);
 	}
 

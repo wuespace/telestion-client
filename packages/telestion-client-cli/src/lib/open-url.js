@@ -18,7 +18,9 @@ function openUrl(url) {
 			command = 'xdg-open';
 			break;
 		default:
-			throw new Error('Unsupported platform: ' + process.platform);
+			throw new Error(
+				'Running on an unsupported platform: ' + process.platform
+			);
 	}
 
 	spawn(command, [url]);
