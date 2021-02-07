@@ -1,4 +1,7 @@
+/* global PLUGINS */
 const { app, BrowserWindow } = require('electron');
+
+console.log({ PLUGINS });
 
 function createWindow() {
 	const mainWindow = new BrowserWindow({
@@ -15,6 +18,12 @@ function createWindow() {
 
 app.on('ready', () => {
 	createWindow();
+
+	PLUGINS.forEach(plugin => {
+		if (typeof plugin === 'object' && typeof plugin.onReady === 'function') {
+			plugin.onReady();
+		}
+	});
 
 	app.on('activate', function () {
 		if (BrowserWindow.getAllWindows().length === 0) createWindow();
