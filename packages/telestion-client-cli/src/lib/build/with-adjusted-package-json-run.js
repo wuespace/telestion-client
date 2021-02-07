@@ -9,7 +9,13 @@ const path = require('path');
  *
  * @param {string} projectRoot - the path to the PSC's root directory
  * @param {function(): Promise<*>} fn - the callback function that gets called while the package.json is adjusted.
- * @return {Promise<void>}
+ * @return {Promise<*>} resolves or rejects with the fn's return value
+ *
+ * @example
+ * ```js
+ * const results = await withAdjustedPackageJsonRun(projectRoot, packageElectronApp);
+ * console.log({ results });
+ * ```
  */
 async function withAdjustedPackageJsonRun(projectRoot, fn) {
 	// temporarily replace package.json
@@ -18,6 +24,8 @@ async function withAdjustedPackageJsonRun(projectRoot, fn) {
 	const origPackageJSONContent = fs.readFileSync(packageJSONPath).toString();
 	fs.writeFileSync(tempPackageJSONPath, origPackageJSONContent);
 
+	// move all dependencies to the devDependencies
+	// TODO: Keep "native" dependencies registered in the config as dependencies in the modified package.json
 	const oldPackageJSON = JSON.parse(origPackageJSONContent);
 	const newPackageJSON = {
 		...oldPackageJSON,
@@ -29,10 +37,15 @@ async function withAdjustedPackageJsonRun(projectRoot, fn) {
 	};
 	fs.writeFileSync(packageJSONPath, JSON.stringify(newPackageJSON));
 
-	await fn();
+	// call the function
+	const result = await fn();
 
+	// reset package.json to original state
 	fs.writeFileSync(packageJSONPath, origPackageJSONContent);
 	fs.rmSync(tempPackageJSONPath);
+
+	// return fn's return value
+	return result;
 }
 
 module.exports = withAdjustedPackageJsonRun;
