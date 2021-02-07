@@ -5,22 +5,38 @@ const logger = require('../logger')('electron-thread-build');
  * Compiles the `electron.js` file for the main thread of the Electron application.
  *
  * @param {string} projectRoot - the PSC's root path
+ * @param {string[]} plugins - list of paths to plugins (.ts or .js)
  * @return {Promise<void>}
  */
-async function compileElectronMainThread(projectRoot) {
+async function compileElectronMainThread(projectRoot, plugins) {
 	const webpack = require('webpack');
-	const webpackConfig = buildWebpackConfig(projectRoot);
+	const webpackConfig = buildWebpackConfig(projectRoot, plugins);
 	const compiler = webpack(webpackConfig);
 	await runWebpackCompilerAsync(compiler);
 }
 
 /**
+ * The ts-loader configuration to additionally compile TS-based plugins
+ */
+const tsLoaderConfig = {
+	test: /\.ts$/,
+	loader: require.resolve('ts-loader'),
+	options: {
+		compilerOptions: {
+			noEmit: false
+		}
+	},
+	exclude: /node_modules/
+};
+
+/**
  * Creates a webpack config for compiling the Electron Main Process
  *
- * @param {string} projectRoot - the PSC root directory's path
+ * @param {string} projectRoot - absolute path to the PSC's root directory
+ * @param {string[]} plugins - paths to plugin files (`.ts` or `.js`)
  * @return {webpack.Configuration}
  */
-function buildWebpackConfig(projectRoot) {
+function buildWebpackConfig(projectRoot, plugins) {
 	return {
 		entry: require.resolve('./static/electron-main.js'),
 		mode: 'production',
@@ -32,20 +48,45 @@ function buildWebpackConfig(projectRoot) {
 			libraryTarget: 'commonjs2'
 		},
 		node: false,
+		plugins: [getPluginProviderPlugin(projectRoot, plugins)],
 		externals: { electron: 'electron' },
 		module: {
 			rules: [
 				{
-					test: /\.tsx?$/,
-					use: require.resolve('ts-loader'),
-					exclude: /node_modules/
-				}
+					test: require.resolve('./static/electron-main.js'),
+					use: {
+						loader: require.resolve(
+							'./custom-webpack-loader/electron-main-import-plugins'
+						),
+						options: { plugins }
+					}
+				},
+				tsLoaderConfig
 			]
 		},
 		resolve: {
-			extensions: ['.tsx', '.ts', '.js']
+			extensions: ['.ts', '.js']
 		}
 	};
+}
+
+/**
+ * Get a plugin configuration such that global variables `PLUGIN_0`, `PLUGIN_1`, ... exist in the `electron-main.js`
+ * context
+ *
+ * @param {string} projectRoot - absolute path to the PSC's root directory
+ * @param {string[]} plugins - paths to plugin files (`.ts` or `.js`)
+ * @return {webpack.ProvidePlugin}
+ */
+function getPluginProviderPlugin(projectRoot, plugins) {
+	return new (require('webpack').ProvidePlugin)(
+		Object.fromEntries(
+			plugins.map((pluginPath, index) => [
+				'PLUGIN_' + index,
+				path.resolve(projectRoot, pluginPath)
+			])
+		)
+	);
 }
 
 /**

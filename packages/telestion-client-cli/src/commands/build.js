@@ -36,7 +36,7 @@ async function handler(argv) {
 		logger.info('Compiling PSC at', projectRoot);
 
 		logger.info('Compiling Electron main thread');
-		await compileElectronMainThread(projectRoot);
+		await compileElectronMainThread(projectRoot, config.config?.plugins || []);
 		logger.success('Electron main thread has been compiled successfully.');
 
 		logger.info('Packaging Electron app');
