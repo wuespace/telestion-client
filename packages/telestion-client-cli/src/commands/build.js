@@ -40,7 +40,16 @@ async function handler(argv) {
 		logger.success('Electron main thread has been compiled successfully.');
 
 		logger.info('Packaging Electron app');
-		await withAdjustedPackageJsonRun(projectRoot, () => packageElectronApp());
+		await withAdjustedPackageJsonRun(projectRoot, async () => {
+			/**
+			 * @type {string[]}
+			 */
+			const files = await packageElectronApp();
+			logger.info(
+				'Generated files:',
+				'\n' + files.map(file => `- ${file}`).join('\n')
+			);
+		});
 		logger.success('Electron app has been packaged successfully.');
 	} catch (e) {
 		logger.error(
