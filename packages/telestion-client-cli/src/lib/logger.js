@@ -8,7 +8,7 @@ const logger = new Logger({
 	loggers: [
 		(type, style, componentName, componentType, ...rest) => {
 			if (type === 'DEBUG') {
-				debug(componentName)(`${type}:`, ...rest);
+				debug(componentName)(...rest);
 			} else {
 				chalkLogger(
 					type.padEnd(7, ' '),
