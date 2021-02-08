@@ -1,5 +1,6 @@
 {
 	"name": "<%- moduleName %>",
+	"description": "<%- moduleName %>, a Telestion PSC generated using the telestion-client-cli",
 	"version": "0.0.0",
 	"homepage": ".",
 	"scripts": {
@@ -7,10 +8,16 @@
 		"start:electron": "tc-cli start --electron",
 		"start:browser": "tc-cli start --browser",
 		"build": "tc-cli build",
-		"stats": "tc-cli stats"
+		"stats": "tc-cli stats",
+		"style": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.sass,.yaml,.yml,.md}'",
+		"style:ci": "prettier --list-different package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.sass,.yaml,.yml,.md}'"
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "pretty-quick --staged"
+		}
 	},
 	"private": true,
-	"description": "<%- moduleName %>, a Telestion PSC generated using the telestion-client-cli",
 	"eslintConfig": {
 		"extends": [
 			"react-app",
