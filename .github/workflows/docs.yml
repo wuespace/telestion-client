@@ -35,7 +35,7 @@ jobs:
         run: touch docs/.nojekyll
 
       - name: Deploy documentation 🚀
-        uses: JamesIves/github-pages-deploy-action@3.7.1
+        uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
           GITHUB_TOKEN: ${{ secrets.github_token }}
           BRANCH: gh-pages
