@@ -1,5 +1,5 @@
 const path = require('path');
-const getConfig = require('./config');
+const getConfig = require('./get-config');
 const logger = require('./logger')('cli-preparations');
 
 /**
