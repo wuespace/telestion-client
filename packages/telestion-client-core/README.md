@@ -86,4 +86,4 @@ Made with [contributors-img](https://contrib.rocks).
 
 ## About
 
-This is part of [Telestion](https://telestion.wuespace.de/), a project by [WueSpace e.V.](https://www.wuespace.de/).
+This is part of [Telestion](https://telestion.wuespace.de/), a project by [WüSpace e.V.](https://www.wuespace.de/).
