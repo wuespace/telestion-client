@@ -13,7 +13,7 @@ async function getConfig() {
 
 	if (config === null) {
 		throw new Error(
-			'No config file found. Expected to find .telestionrc, telestion.get-config.js, or something similar. ' +
+			'No config file found. Expected to find .telestionrc, telestion.config.js, or something similar. ' +
 				'Please create a config file and try again.'
 		);
 	}
