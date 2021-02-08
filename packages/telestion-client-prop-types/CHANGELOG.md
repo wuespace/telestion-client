@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.0](https://github.com/TelestionTeam/telestion-client/compare/v0.7.1...v0.8.0) (2021-02-08)
+
+
+### Features
+
+* **template:** Add `@wuespace/telestion-client-prop-types` as default dependency of newly initialized PSC projects ([3d7d4ec](https://github.com/TelestionTeam/telestion-client/commit/3d7d4ec6e504e3568d66feee5789c76c259f0367))
+
+
+### Documentation Changes
+
+* WueSpace becomes WüSpace (a typo in previous commits) ([9c44d69](https://github.com/TelestionTeam/telestion-client/commit/9c44d696f0d5502ce5222a90011e892b8a7054c2))
+* **prop-types:** Update the package's README.md ([59a1a0c](https://github.com/TelestionTeam/telestion-client/commit/59a1a0cb1b7689f3e15ed457897f1c43171b1dee))
+
+
+
 ## [0.7.0](https://github.com/TelestionTeam/telestion-client/compare/v0.6.1...v0.7.0) (2021-02-06)
 
 **Note:** Version bump only for package @wuespace/telestion-client-prop-types

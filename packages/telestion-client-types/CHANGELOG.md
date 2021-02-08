@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.0](https://github.com/TelestionTeam/telestion-client/compare/v0.7.1...v0.8.0) (2021-02-08)
+
+
+### Documentation Changes
+
+* WueSpace becomes WüSpace (a typo in previous commits) ([9c44d69](https://github.com/TelestionTeam/telestion-client/commit/9c44d696f0d5502ce5222a90011e892b8a7054c2))
+* **types:** Update the package's README.md ([81753df](https://github.com/TelestionTeam/telestion-client/commit/81753dfd4a8a86837aac62c9bb3701ed76159bea))
+
+
+
 ## [0.7.0](https://github.com/TelestionTeam/telestion-client/compare/v0.6.1...v0.7.0) (2021-02-06)
 
 **Note:** Version bump only for package @wuespace/telestion-client-types

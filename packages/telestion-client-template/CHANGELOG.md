@@ -3,6 +3,59 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.0](https://github.com/TelestionTeam/telestion-client/compare/v0.7.1...v0.8.0) (2021-02-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **template:** While, in and of itself, this doesn't constitute a breaking change, issues may arise in PSCs generated using the template before this change. This is why we want to bring special attention to it.
+
+  To fix PSCs generated before with versions prior to this, add the following property to the PSC's `package.json`:
+
+  ```json
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "react-app/jest"
+    ]
+  }
+  ```
+
+  You won't have to do this steps for PSCs generated with the new version.
+* **cli:** PSC's now require a `telestion.config.js` file in the PSC's root directory (next to the `package.json`).
+
+  To migrate PSCs generated with older versions of the CLI, please add a `telestion.config.js` file with the following content into the root PSC directory, next to the `package.json`:
+  ```js
+  module.exports = {}
+  ```
+* **template:** Setting the `homepage` to `'.'` is required for building native applications from PSC projects using `tc-cli build`. For projects generated before this change, please manually add the following line to your PSC's `package.json`:
+```json
+"homepage": "."
+```
+
+### Features
+
+* **cli:** Add configuration file parsing to the CLI ([f2760e3](https://github.com/TelestionTeam/telestion-client/commit/f2760e3f0c377c2cc9c9b409d71460db68927581))
+* **template:** Add `@wuespace/telestion-client-prop-types` as default dependency of newly initialized PSC projects ([3d7d4ec](https://github.com/TelestionTeam/telestion-client/commit/3d7d4ec6e504e3568d66feee5789c76c259f0367))
+* **template:** Add prettier in template for new PSCs ([3165a18](https://github.com/TelestionTeam/telestion-client/commit/3165a1833e7d8aa77638522d66db23dd229ef6f0))
+
+
+### Bug Fixes
+
+* **template:** Add `eslintConfig` to PSC package.json ([050664e](https://github.com/TelestionTeam/telestion-client/commit/050664ea4555c2ea01669e44e972de20e1783bc8)), closes [#305](https://github.com/TelestionTeam/telestion-client/issues/305)
+* **template:** Add `homepage` specifier to PSC package.json ([b7ee792](https://github.com/TelestionTeam/telestion-client/commit/b7ee792083a6237b107808227c7bb8f70df317ab))
+* **template:** Fix `devDependencies` in template ([b01b2d5](https://github.com/TelestionTeam/telestion-client/commit/b01b2d5fecb2a30d7434af63a690cba8b8fa4dc0))
+
+
+### Documentation Changes
+
+* WueSpace becomes WüSpace (a typo in previous commits) ([9c44d69](https://github.com/TelestionTeam/telestion-client/commit/9c44d696f0d5502ce5222a90011e892b8a7054c2))
+* **template:** Include project structure description in PSC README.md ([e3893cb](https://github.com/TelestionTeam/telestion-client/commit/e3893cbe5f54d7a75f07efc4418c320234aa4d96))
+* **template:** Update the package's README.md ([747efe1](https://github.com/TelestionTeam/telestion-client/commit/747efe117054e3b655e7ad9f5fa3cbcae5842a79))
+* **template:** Update the template's PSC README.md ([2d95652](https://github.com/TelestionTeam/telestion-client/commit/2d956527d80f08fef4ed07820dde25c0e8aef8b1))
+
+
+
 ### [0.7.1](https://github.com/TelestionTeam/telestion-client/compare/v0.7.0...v0.7.1) (2021-02-06)
 
 **Note:** Version bump only for package @wuespace/telestion-client-template
