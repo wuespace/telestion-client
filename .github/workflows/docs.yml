@@ -10,10 +10,6 @@ jobs:
     steps:
       - name: Checkout 📥
         uses: actions/checkout@v2.3.4
-        with:
-          # If you're using actions/checkout@v2 you must set persist-credentials to false
-          # in most cases for the deployment to work correctly.
-          persist-credentials: false
       - name: Setup Node 💿
         uses: actions/setup-node@v2.1.4
         with:
@@ -37,7 +33,6 @@ jobs:
       - name: Deploy documentation 🚀
         uses: JamesIves/github-pages-deploy-action@4.0.0
         with:
-          GITHUB_TOKEN: ${{ secrets.github_token }}
-          BRANCH: gh-pages
-          FOLDER: docs
-          CLEAN: true
+          branch: gh-pages
+          folder: docs
+          clean: true
