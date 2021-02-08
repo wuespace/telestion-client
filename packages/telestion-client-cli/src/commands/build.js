@@ -2,7 +2,7 @@ const compileElectronMainThread = require('../lib/build/compile-electron-main-th
 const compileReactApp = require('../lib/build/compile-react-app');
 const withAdjustedPackageJsonRun = require('../lib/build/with-adjusted-package-json-run');
 const packageElectronApp = require('../lib/build/package-electron-app');
-const prepareEnvironment = require('../lib/prepare-environment');
+const runInPscProjectDir = require('../lib/run-in-psc-project-dir');
 const logger = require('../lib/logger')('build');
 
 // yargs def
@@ -18,9 +18,7 @@ function builder(yargs) {
 }
 
 async function handler() {
-	try {
-		let { config, projectRoot } = await prepareEnvironment();
-
+	return runInPscProjectDir(async (config, projectRoot) => {
 		logger.info('Compiling PSC React app');
 		await compileReactApp();
 		logger.success('React build complete.');
@@ -44,15 +42,7 @@ async function handler() {
 			'\n' + files.map(file => `- ${file}`).join('\n')
 		);
 		logger.success('Electron app has been packaged successfully.');
-	} catch (e) {
-		logger.error(
-			'An error has occurred during the build process. Details:',
-			'\n',
-			e.message
-		);
-		logger.debug(e.stackTrace);
-		process.exit(1);
-	}
+	}, 'build');
 }
 
 module.exports = {

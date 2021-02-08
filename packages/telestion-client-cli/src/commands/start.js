@@ -2,7 +2,7 @@ const path = require('path');
 const runElectron = require('electroner');
 const openUrl = require('../lib/open-url');
 const compileElectronMainThread = require('../lib/build/compile-electron-main-thread');
-const prepareEnvironment = require('../lib/prepare-environment');
+const runInPscProjectDir = require('../lib/run-in-psc-project-dir');
 
 const logger = require('../lib/logger')('start');
 
@@ -26,10 +26,8 @@ function builder(yargs) {
 		});
 }
 
-async function handler(argv) {
-	try {
-		let { config, projectRoot } = await prepareEnvironment();
-
+function handler(argv) {
+	return runInPscProjectDir(async (config, projectRoot) => {
 		// dynamically load dependencies
 		const { start } = require('@craco/craco/lib/cra');
 
@@ -55,15 +53,7 @@ async function handler(argv) {
 				process.exit(0);
 			});
 		}
-	} catch (e) {
-		logger.error(
-			'An error has occurred during the start process. Details:',
-			'\n',
-			e.message
-		);
-		logger.debug(e.stackTrace);
-		process.exit(1);
-	}
+	}, 'start');
 }
 
 module.exports = {
