@@ -6,6 +6,7 @@
 	"bin": {
 		"tc-cli": "./bin/cli.js"
 	},
+	"main": "src/api.js",
 	"files": [
 		"bin",
 		"src"
