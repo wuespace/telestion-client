@@ -30,7 +30,7 @@ const mockServer = new MockServer();
 For a full list of all exported members, check out the reference:
 https://telestionteam.github.io/telestion-client/@wuespace/vertx-mock-server/
 
-### Package structure
+## Package structure
 
 ```
 .

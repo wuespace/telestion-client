@@ -35,7 +35,7 @@ eventBus.onOpen = () => {
 For a full list of all exported members, check out the reference:
 https://telestionteam.github.io/telestion-client/@wuespace/vertx-event-bus/
 
-### Package structure
+## Package structure
 
 ```
 .
