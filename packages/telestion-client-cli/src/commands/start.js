@@ -1,8 +1,8 @@
 const path = require('path');
 const runElectron = require('electroner');
 const openUrl = require('../lib/open-url');
-const getConfig = require('../lib/config');
 const compileElectronMainThread = require('../lib/build/compile-electron-main-thread');
+const prepareEnvironment = require('../lib/prepare-environment');
 
 const logger = require('../lib/logger')('start');
 
@@ -28,13 +28,7 @@ function builder(yargs) {
 
 async function handler(argv) {
 	try {
-		logger.info('Reading configuration');
-		const config = await getConfig();
-		logger.success('Found configuration file at: ' + config['filepath']);
-		logger.debug('Config', config);
-
-		let projectRoot = path.dirname(config['filepath']);
-		process.chdir(projectRoot);
+		let { config, projectRoot } = await prepareEnvironment();
 
 		// dynamically load dependencies
 		const { start } = require('@craco/craco/lib/cra');
@@ -53,7 +47,7 @@ async function handler(argv) {
 			logger.info('Compiling Electron main thread');
 			await compileElectronMainThread(
 				projectRoot,
-				config.config?.plugins || [],
+				config?.plugins || [],
 				false
 			);
 			logger.success('Electron main thread has been compiled successfully.');
