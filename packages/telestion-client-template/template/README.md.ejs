@@ -34,6 +34,37 @@ To build the entire project, run:
 npm run build
 ```
 
+## Project structure
+
+The project structure is like the structure created by `create-react-app` (_CRA_), plus some special structures:
+
+```
+.
+├── public (static files, cf. CRA documentation)
+│   ├── index.html
+│   ├── favicon.ico
+│   └── [...]
+├── src
+│   ├── components
+│   │   ├── app.tsx (the overall PSC React App)
+│   │   ├── header.tsx (the header component)
+│   │   └── login-page.tsx (the login page)
+│   ├── model
+│   │   └── sample-user-config.ts (the initial user config)
+│   ├── widgets
+│   │   ├── sample-widget (a sample widget included in the template)
+│   │   │   ├── index.ts (widget meta model, including a unique widget name)
+│   │   │   └── widget.tsx (widget component definition)
+│   │   └── index.ts (array of widgets)
+│   ├── index.css
+│   ├── index.tsx
+│   └── [...]
+├── package.json
+├── README.md (you're here :P)
+├── telestion.config.js (configuration of the PSC, such as plugins, etc.)
+└── tsconfig.json (configuration for TypeScript compilation)
+```
+
 ## Learn More
 
 To get started with PSC Development, you can take a look at the _PSC Developer Manual_. It contains many explanations of the most important concepts, practical guides, references, and more.
