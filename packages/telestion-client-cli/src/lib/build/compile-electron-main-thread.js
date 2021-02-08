@@ -6,11 +6,17 @@ const logger = require('../logger')('electron-thread-build');
  *
  * @param {string} projectRoot - the PSC's root path
  * @param {string[]} plugins - list of paths to plugins (.ts or .js)
+ * @param {boolean} [production=true] - whether to use a production build config. In development,
+ * http://localhost:3000 gets used
  * @return {Promise<void>}
  */
-async function compileElectronMainThread(projectRoot, plugins) {
+async function compileElectronMainThread(
+	projectRoot,
+	plugins,
+	production = true
+) {
 	const webpack = require('webpack');
-	const webpackConfig = buildWebpackConfig(projectRoot, plugins);
+	const webpackConfig = buildWebpackConfig(projectRoot, plugins, production);
 	const compiler = webpack(webpackConfig);
 	await runWebpackCompilerAsync(compiler);
 }
@@ -34,12 +40,14 @@ const tsLoaderConfig = {
  *
  * @param {string} projectRoot - absolute path to the PSC's root directory
  * @param {string[]} plugins - paths to plugin files (`.ts` or `.js`)
+ * @param {boolean} [production=true] - whether to use a production build config. In development,
+ * http://localhost:3000 gets used
  * @return {webpack.Configuration}
  */
-function buildWebpackConfig(projectRoot, plugins) {
+function buildWebpackConfig(projectRoot, plugins, production = true) {
 	return {
 		entry: require.resolve('./static/electron-main.js'),
-		mode: 'production',
+		mode: production ? 'production' : 'development',
 		target: 'node',
 		stats: 'errors-warnings',
 		output: {

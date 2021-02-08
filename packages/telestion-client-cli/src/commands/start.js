@@ -1,5 +1,8 @@
+const path = require('path');
 const runElectron = require('electroner');
 const openUrl = require('../lib/open-url');
+const getConfig = require('../lib/config');
+const compileElectronMainThread = require('../lib/build/compile-electron-main-thread');
 
 const logger = require('../lib/logger')('start');
 
@@ -24,30 +27,49 @@ function builder(yargs) {
 }
 
 async function handler(argv) {
-	// dynamically load dependencies
-	const Webpack = require('webpack');
-	const { createWebpackDevConfig } = require('@craco/craco');
-	const WebpackDevServer = require('webpack-dev-server');
+	try {
+		logger.info('Reading configuration');
+		const config = await getConfig();
+		logger.success('Found configuration file at: ' + config['filepath']);
+		logger.debug('Config', config);
 
-	// gathering information
-	logger.debug('Arguments:', argv);
+		let projectRoot = path.dirname(config['filepath']);
+		process.chdir(projectRoot);
 
-	const webpackConfig = createWebpackDevConfig({
-		webpack: { configure: { stats: 'errors-only' } }
-	});
+		// dynamically load dependencies
+		const { start } = require('@craco/craco/lib/cra');
 
-	const compiler = Webpack(webpackConfig);
-	const devServerOptions = Object.assign({}, webpackConfig.devServer, {
-		open: false,
-		transportMode: 'ws'
-	});
-	const server = new WebpackDevServer(compiler, devServerOptions);
+		// Disable the PREFLIGHT_CHECK as react-scripts, otherwise, aborts warning about multiple webpack versions.
+		process.env.SKIP_PREFLIGHT_CHECK = 'true';
+		// Disable opening the app in the Browser. We'll do that manually, should it come to that.
+		process.env.BROWSER = 'none';
+		start({
+			// craco config
+			reactScriptsVersion: 'react-scripts'
+		}); // runs asynchronously
 
-	server.listen(3000, '127.0.0.1', () => {
 		if (argv.browser) openUrl('http://localhost:3000');
-		else if (argv.electron) runElectron('http://localhost:3000', {});
-		logger.info('Webpack dev server listening on http://localhost:3000');
-	});
+		else if (argv.electron) {
+			logger.info('Compiling Electron main thread');
+			await compileElectronMainThread(
+				projectRoot,
+				config.config?.plugins || [],
+				false
+			);
+			logger.success('Electron main thread has been compiled successfully.');
+			runElectron(path.join(projectRoot, 'build', 'electron.js'), {}, () => {
+				process.exit(0);
+			});
+		}
+	} catch (e) {
+		logger.error(
+			'An error has occurred during the start process. Details:',
+			'\n',
+			e.message
+		);
+		logger.debug(e.stackTrace);
+		process.exit(1);
+	}
 }
 
 module.exports = {
