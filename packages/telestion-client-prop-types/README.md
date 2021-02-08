@@ -9,7 +9,9 @@ npm: [`@wuespace/telestion-client-prop-types`](https://www.npmjs.com/package/@wu
 [![GitHub](https://img.shields.io/github/license/TelestionTeam/telestion-client)](LICENSE)
 [![Twitter Follow](https://img.shields.io/twitter/follow/wuespace?style=social)](https://twitter.com/wuespace)
 
-Helpful PropTypes for types exported by the `@wuespace/telestion-client-types` package. Used, among other places, in `@wuespace/telestion-client-common`.
+Helpful PropTypes for types exported by the `@wuespace/telestion-client-types` package.
+
+**This package is included in PSCs bootstrapped using the Telestion Client CLI by default.**
 
 ## Installation
 

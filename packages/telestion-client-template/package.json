@@ -48,6 +48,7 @@
 		"@spectrum-icons/workflow": "^3.2.0",
 		"@wuespace/telestion-client-common": "file:../telestion-client-common",
 		"@wuespace/telestion-client-core": "file:../telestion-client-core",
+		"@wuespace/telestion-client-prop-types": "file:../telestion-client-prop-types",
 		"electron": "^11.2.1",
 		"react": "^17.0.1",
 		"react-dom": "^17.0.1",
