@@ -15,9 +15,9 @@ The template used by the Telestion Client CLI for generating _Project-Specific C
 
 You usually do not need this package as a direct dependency.
 If you want to start a new project with this template,
-please use the [Telestion Client CLI](https://github.com/TelestionTeam/telestion-client/tree/main/packages/telestion-client-cli) or at the [Telestion Client monorepo](https://github.com/TelestionTeam/telestion-client/) as a starting point.
+please use the [Telestion Client CLI](https://github.com/TelestionTeam/telestion-client/tree/main/packages/telestion-client-cli).
 
-### Package structure
+## Package structure
 
 ```
 .

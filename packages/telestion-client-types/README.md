@@ -44,7 +44,7 @@ https://telestionteam.github.io/telestion-client/@wuespace/telestion-client-type
 For the equivalent PropTypes, check out the reference here:
 https://telestionteam.github.io/telestion-client/@wuespace/telestion-client-prop-types/
 
-### Package structure
+## Package structure
 
 ```
 .

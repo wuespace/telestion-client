@@ -36,7 +36,7 @@ function App() {
 For a full list of components, hooks and utility parts, check out the reference:
 https://telestionteam.github.io/telestion-client/@wuespace/telestion-client-core/
 
-### Package structure
+## Package structure
 
 ```
 .

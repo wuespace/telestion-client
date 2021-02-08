@@ -37,7 +37,7 @@ For a full reference, check out the help pages for each command or take a look a
 
 You can find the latest versions (in PDF format) in the [Documentation Repo Releases](https://github.com/TelestionTeam/telestion-docs/releases/latest).
 
-### Package structure
+## Package structure
 
 The package internally uses [yargs](http://yargs.js.org/) to build an interactive command line
 and does all the argument parsing.
