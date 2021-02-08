@@ -126,9 +126,7 @@ For the documentation on contributing to this repository, please take a look at 
 
 Thank you to all contributors of this repository:
 
-<a href="https://github.com/TelestionTeam/telestion-client/graphs/contributors">
-  <img alt="Contributors" src="https://contrib.rocks/image?repo=TelestionTeam/telestion-client" />
-</a>
+[![Contributors](https://contrib.rocks/image?repo=TelestionTeam/telestion-client)](https://github.com/TelestionTeam/telestion-client/graphs/contributors)
 
 Made with [contributors-img](https://contrib.rocks).
 
