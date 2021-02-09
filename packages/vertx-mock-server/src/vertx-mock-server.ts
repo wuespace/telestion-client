@@ -10,17 +10,17 @@ export class VertxMockServer {
 	 */
 	private readonly httpServer: http.Server;
 
-	constructor() {
+	constructor(prefix = '/bridge') {
 		this.eventBus = sockjs.createServer();
 		this.httpServer = http.createServer();
-		this.setupEventBus();
+		this.setupEventBus(prefix);
 	}
 
-	listen(port = 9870): void {
-		this.httpServer.listen(port, '0.0.0.0');
+	listen(port = 9870, hostname = '0.0.0.0'): void {
+		this.httpServer.listen(port, hostname);
 	}
 
-	private setupEventBus(): void {
+	private setupEventBus(prefix: string): void {
 		// define handlers
 		this.eventBus.on('connection', conn => {
 			console.log('Event bus opened');
@@ -34,6 +34,6 @@ export class VertxMockServer {
 		});
 
 		// install handlers
-		this.eventBus.installHandlers(this.httpServer, { prefix: '/bridge' });
+		this.eventBus.installHandlers(this.httpServer, { prefix });
 	}
 }
