@@ -34,6 +34,6 @@ export class VertxMockServer {
 		});
 
 		// install handlers
-		this.eventBus.installHandlers(this.httpServer, { prefix: 'bridge' });
+		this.eventBus.installHandlers(this.httpServer, { prefix: '/bridge' });
 	}
 }
