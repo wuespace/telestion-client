@@ -3,12 +3,12 @@ import http from 'http';
 import sockjs from 'sockjs';
 
 export class VertxMockServer {
-	private readonly eventBus: sockjs.Server;
+	protected readonly eventBus: sockjs.Server;
 
 	/**
 	 * The generated http server where sockjs attaches to.
 	 */
-	private readonly httpServer: http.Server;
+	protected readonly httpServer: http.Server;
 
 	constructor(prefix = '/bridge') {
 		this.eventBus = sockjs.createServer();
