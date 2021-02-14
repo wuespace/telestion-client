@@ -73,7 +73,7 @@ import { Header } from '@wuespace/telestion-client-common';
 ## Examples
 
 <Canvas>
-	<Story height={'64px'} name="Empty header" args={{}}>
+	<Story height={'256px'} name="Empty header" args={{}} inline={false}>
 		{args => (
 			<CommonWrapper>
 				<Header {...args} />
@@ -96,7 +96,7 @@ import { Header } from '@wuespace/telestion-client-common';
 
 <Canvas>
 	<Story
-		height={'64px'}
+		height={'256px'}
 		name="Common header"
 		args={{
 			left: (
@@ -115,6 +115,7 @@ import { Header } from '@wuespace/telestion-client-common';
 				</>
 			)
 		}}
+		inline={false}
 	>
 		{args => (
 			<CommonWrapper>

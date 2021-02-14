@@ -51,7 +51,8 @@ import {
 
 <Canvas>
 	<Story
-		height={'64px'}
+		height={'128px'}
+		inline={false}
 		name="Notification Action"
 		args={{ children: [<NotificationAction />] }}
 	>
@@ -69,7 +70,8 @@ import {
 
 <Canvas>
 	<Story
-		height={'64px'}
+		height={'128px'}
+		inline={false}
 		name="Color Schema Switcher"
 		args={{ children: [<ColorSchemeAction />] }}
 	>
@@ -87,7 +89,8 @@ import {
 
 <Canvas>
 	<Story
-		height={'64px'}
+		height={'128px'}
+		inline={false}
 		name="Fullscreen Toggle"
 		args={{ children: [<FullscreenAction />] }}
 	>
@@ -107,7 +110,8 @@ Divider:
 
 <Canvas>
 	<Story
-		height={'64px'}
+		height={'128px'}
+		inline={false}
 		name="Multiple Actions"
 		args={{
 			children: [
@@ -134,7 +138,7 @@ To keep things consistent, please use an icon-only `<ActionButton />` from the A
 a tooltip:
 
 <Canvas>
-	<Story height={'64px'} name="Custom Action" args={{}}>
+	<Story height={'128px'} name="Custom Action" args={{}} inline={false}>
 		{args => (
 			<CommonWrapper>
 				<Header

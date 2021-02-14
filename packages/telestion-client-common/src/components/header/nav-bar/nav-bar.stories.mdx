@@ -42,7 +42,7 @@ import { NavBar } from '@wuespace/telestion-client-common';
 ## Examples
 
 <Canvas>
-	<Story height={'64px'} name="No links" args={{}}>
+	<Story height={'128px'} name="No links" args={{}} inline={false}>
 		{args => (
 			<CommonWrapper>
 				<Header left={<NavBar {...args} />} />
@@ -50,7 +50,7 @@ import { NavBar } from '@wuespace/telestion-client-common';
 		)}
 	</Story>
 	<Story
-		height={'64px'}
+		height={'128px'}
 		name="Custom links"
 		args={{
 			links: [
@@ -64,6 +64,7 @@ import { NavBar } from '@wuespace/telestion-client-common';
 				}
 			]
 		}}
+		inline={false}
 	>
 		{args => (
 			<CommonWrapper>
