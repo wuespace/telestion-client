@@ -1,0 +1,45 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+	Description
+} from '@storybook/addon-docs/blocks';
+import { CommonWrapper } from '../../common-wrapper';
+import { Header } from '../header';
+import { AccountControls } from './account-controls';
+
+<Meta
+	title="Common/Header/Account Controls"
+	component={AccountControls}
+	argTypes={{
+		onCustomActionClick: { action: 'clicked', table: { disable: true } },
+		children: { table: { disable: true } }
+	}}
+/>
+
+# Actions
+
+<Description of={AccountControls} />
+
+## Importing
+
+```tsx
+import { AccountControls } from '@wuespace/telestion-client-common';
+```
+
+## Examples
+
+<Canvas>
+	<Story height={'64px'} name="Custom Action" args={{}}>
+		{args => (
+			<CommonWrapper>
+				<Header right={<AccountControls {...args} />} />
+			</CommonWrapper>
+		)}
+	</Story>
+</Canvas>
+
+## Properties
+
+n/a

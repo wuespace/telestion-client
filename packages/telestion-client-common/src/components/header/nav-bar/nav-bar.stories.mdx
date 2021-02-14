@@ -1,0 +1,80 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+	Description
+} from '@storybook/addon-docs/blocks';
+import { CommonWrapper } from '../../common-wrapper';
+import { Header } from '../header';
+import { NavBar } from './nav-bar';
+import { TelestionClient, useAuth } from '@wuespace/telestion-client-core';
+import { MemoryRouter } from 'react-router';
+
+<Meta
+	title="Common/Header/Navigation Bar"
+	component={NavBar}
+	decorators={[
+		Story => {
+			useAuth
+				.getState()
+				.signIn('http://localhost:9870/bridge', 'alice', '12345');
+			return (
+				<TelestionClient>
+					<MemoryRouter>
+						<Story />
+					</MemoryRouter>
+				</TelestionClient>
+			);
+		}
+	]}
+	argTypes={{}}
+/>
+
+# Navigation Bar
+
+<Description of={NavBar} />
+
+## Importing
+
+```tsx
+import { NavBar } from '@wuespace/telestion-client-common';
+```
+
+## Examples
+
+<Canvas>
+	<Story height={'64px'} name="No links" args={{}}>
+		{args => (
+			<CommonWrapper>
+				<Header left={<NavBar {...args} />} />
+			</CommonWrapper>
+		)}
+	</Story>
+	<Story
+		height={'64px'}
+		name="Custom links"
+		args={{
+			links: [
+				{
+					title: 'Dashboard',
+					path: '/dashboard'
+				},
+				{
+					title: 'Preferences',
+					path: '/preferences'
+				}
+			]
+		}}
+	>
+		{args => (
+			<CommonWrapper>
+				<Header left={<NavBar links={args.links} {...args} />} />
+			</CommonWrapper>
+		)}
+	</Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable of={NavBar} />
