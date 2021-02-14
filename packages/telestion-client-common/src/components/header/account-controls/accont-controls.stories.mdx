@@ -10,6 +10,7 @@ import { Header } from '../header';
 import { AccountControls } from './account-controls';
 import { TelestionClient, useAuth } from '@wuespace/telestion-client-core';
 import { MemoryRouter } from 'react-router';
+import { Button, Content } from '@adobe/react-spectrum';
 
 <Meta
 	title="Common/Header/Account Controls"
@@ -49,6 +50,18 @@ import { AccountControls } from '@wuespace/telestion-client-common';
 		{args => (
 			<CommonWrapper>
 				<Header right={<AccountControls />} />
+				<Content margin={16}>
+					<Button
+						variant={'secondary'}
+						onPress={() => {
+							useAuth
+								.getState()
+								.signIn('http://localhost:9870/bridge', 'alice', '12345');
+						}}
+					>
+						Log In
+					</Button>
+				</Content>
 			</CommonWrapper>
 		)}
 	</Story>
