@@ -50,8 +50,14 @@ const selector: StateSelector<
  * }
  * ```
  */
-export function ConnectionIndicator() {
-	const state = useEventBus(selector);
+export function ConnectionIndicator({
+	overrideState
+}: {
+	overrideState?: 'connected' | 'disconnected' | 'error' | 'noEventBus';
+}) {
+	const ebState = useEventBus(selector);
+	const state = overrideState ?? ebState;
+	// TODO: Clean up the override and props
 
 	return (
 		<View
