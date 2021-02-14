@@ -1,4 +1,4 @@
 export const parameters = {
-	controls: { expanded: true },
-	viewMode: 'docs'
+	controls: { expanded: true }
+	// viewMode: 'docs'
 };
