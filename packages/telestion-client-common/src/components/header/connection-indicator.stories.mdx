@@ -1,0 +1,77 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+	Description
+} from '@storybook/addon-docs/blocks';
+import { ConnectionIndicator } from './connection-indicator';
+import { TelestionClient } from '@wuespace/telestion-client-core';
+import { CommonWrapper } from '../common-wrapper';
+
+<Meta
+	title="Common/Header/ConnectionIndicator"
+	component={ConnectionIndicator}
+/>
+
+# Connection Indicator
+
+<Description of={ConnectionIndicator} />
+
+## Importing
+
+```tsx
+import { ConnectionIndicator } from '@wuespace/telestion-client-common';
+```
+
+## Examples
+
+<Canvas>
+	<Story height={'64px'} name="Default (no override)" args={{}}>
+		{args => (
+			<CommonWrapper>
+				<ConnectionIndicator {...args} />
+			</CommonWrapper>
+		)}
+	</Story>
+	<Story height={'64px'} name="Connected" args={{ overrideState: 'connected' }}>
+		{args => (
+			<CommonWrapper>
+				<ConnectionIndicator {...args} />
+			</CommonWrapper>
+		)}
+	</Story>
+	<Story
+		height={'64px'}
+		name="Disconnected"
+		args={{ overrideState: 'disconnected' }}
+	>
+		{args => (
+			<CommonWrapper>
+				<ConnectionIndicator {...args} />
+			</CommonWrapper>
+		)}
+	</Story>
+	<Story height={'64px'} name="Error" args={{ overrideState: 'error' }}>
+		{args => (
+			<CommonWrapper>
+				<ConnectionIndicator {...args} />
+			</CommonWrapper>
+		)}
+	</Story>
+	<Story
+		height={'64px'}
+		name="No EventBus"
+		args={{ overrideState: 'noEventBus' }}
+	>
+		{args => (
+			<CommonWrapper>
+				<ConnectionIndicator {...args} />
+			</CommonWrapper>
+		)}
+	</Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable of={ConnectionIndicator} />
