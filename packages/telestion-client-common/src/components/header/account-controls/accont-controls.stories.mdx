@@ -8,10 +8,24 @@ import {
 import { CommonWrapper } from '../../common-wrapper';
 import { Header } from '../header';
 import { AccountControls } from './account-controls';
+import { TelestionClient, useAuth } from '@wuespace/telestion-client-core';
+import { MemoryRouter } from 'react-router';
 
 <Meta
 	title="Common/Header/Account Controls"
 	component={AccountControls}
+	decorators={[
+		Story => {
+			useAuth
+				.getState()
+				.signIn('http://localhost:9870/bridge', 'alice', '12345');
+			return (
+				<TelestionClient>
+					<MemoryRouter>{Story()}</MemoryRouter>
+				</TelestionClient>
+			);
+		}
+	]}
 	argTypes={{
 		onCustomActionClick: { action: 'clicked', table: { disable: true } },
 		children: { table: { disable: true } }
@@ -31,10 +45,10 @@ import { AccountControls } from '@wuespace/telestion-client-common';
 ## Examples
 
 <Canvas>
-	<Story height={'64px'} name="Custom Action" args={{}}>
+	<Story height={'64px'} name="Account Controls" args={{}}>
 		{args => (
 			<CommonWrapper>
-				<Header right={<AccountControls {...args} />} />
+				<Header right={<AccountControls />} />
 			</CommonWrapper>
 		)}
 	</Story>

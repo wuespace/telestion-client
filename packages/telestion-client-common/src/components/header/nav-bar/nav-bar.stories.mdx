@@ -21,9 +21,7 @@ import { MemoryRouter } from 'react-router';
 				.signIn('http://localhost:9870/bridge', 'alice', '12345');
 			return (
 				<TelestionClient>
-					<MemoryRouter>
-						<Story />
-					</MemoryRouter>
+					<MemoryRouter>{Story()}</MemoryRouter>
 				</TelestionClient>
 			);
 		}
