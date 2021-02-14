@@ -1,17 +1,65 @@
-import { Meta, Story, Canvas } from '@storybook/addon-docs/blocks';
-import {TelestionClient} from "./telestion-client";
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+	Description
+} from '@storybook/addon-docs/blocks';
+import { TelestionClient } from './telestion-client';
+import { TitleUser } from '../.storybook/title-user';
 
 <Meta title="Core/TelestionClient" component={TelestionClient} />
 
-# TelestionClient
+# Telestion Client
+
+## Import
+
+```tsx
+import { TelestionClient } from '@wuespace/telestion-client-core';
+```
+
+## Examples
+
+To get some data in these examples, we'll define a simple helper component:
+
+```tsx
+import { useTitle } from '@wuespace/telestion-client-core';
+
+export function TitleUser() {
+	const title = useTitle();
+
+	return <p>Title: {title}</p>;
+}
+```
+
+### Default Title
 
 <Canvas>
-	<Story name="Pure TelestionClient">
-		<TelestionClient>
-		</TelestionClient>
-	</Story>
-	<Story name="TelestionClient with a title">
-		<TelestionClient title={'Hello World'}>
-		</TelestionClient>
+	<Story name="Pure TelestionClient" inline={false}>
+		{args => (
+			<TelestionClient {...args}>
+				<TitleUser />
+			</TelestionClient>
+		)}
 	</Story>
 </Canvas>
+
+### Custom Title
+
+<Canvas>
+	<Story
+		name="TelestionClient with a title"
+		args={{ title: 'Hello World' }}
+		inline={false}
+	>
+		{args => (
+			<TelestionClient {...args}>
+				<TitleUser />
+			</TelestionClient>
+		)}
+	</Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable of={TelestionClient} />
