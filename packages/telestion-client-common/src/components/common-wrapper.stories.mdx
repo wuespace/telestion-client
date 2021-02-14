@@ -1,0 +1,69 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+	Description
+} from '@storybook/addon-docs/blocks';
+import { CommonWrapper } from './common-wrapper';
+import otherLogo from '../media/default-avatar.png';
+import { AppLogo } from './header';
+
+<Meta
+	title="Common/CommonWrapper"
+	component={CommonWrapper}
+	argTypes={{
+		appLogo: {
+			control: {
+				type: 'select',
+				options: [undefined, otherLogo]
+			},
+			expanded: true
+		},
+		widgets: {
+			table: {
+				disable: true
+			}
+		},
+		children: {
+			table: {
+				disable: true
+			}
+		}
+	}}
+/>
+
+# Common Wrapper
+
+<Description of={CommonWrapper} />
+
+## Importing
+
+```tsx
+import { CommonWrapper } from '@wuespace/telestion-client-common';
+```
+
+## Examples
+
+<Canvas>
+	<Story height={'64px'} name="Without props" args={{}}>
+		{args => (
+			<CommonWrapper {...args}>
+				<AppLogo />
+				Hello world
+			</CommonWrapper>
+		)}
+	</Story>
+	<Story height={'64px'} name="With custom logo" args={{ appLogo: otherLogo }}>
+		{args => (
+			<CommonWrapper {...args}>
+				<AppLogo />
+				Hello world
+			</CommonWrapper>
+		)}
+	</Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable of={CommonWrapper} />

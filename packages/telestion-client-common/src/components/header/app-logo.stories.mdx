@@ -1,0 +1,62 @@
+import { AppLogo } from './app-logo';
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+	Description
+} from '@storybook/addon-docs/blocks';
+import newLogo from '../../media/default-avatar.png';
+import { AppLogoContext } from '../contexts/app-logo-context';
+
+<Meta
+	title="Common/Header/Logo"
+	component={AppLogo}
+	argTypes={{
+		logo: {
+			description: 'Logo passed to the wrapper',
+			control: {
+				type: 'select',
+				options: [newLogo]
+			}
+		}
+	}}
+/>
+
+# App Logo
+
+<Description of={AppLogo} />
+
+## Importing
+
+```tsx
+import { AppLogo } from '@wuespace/telestion-client-common';
+```
+
+## Examples
+
+<Canvas>
+	<Story height={'64px'} name="Default logo" args={{}}>
+		{args => (
+			<AppLogoContext appLogo={args.logo}>
+				<AppLogo />
+			</AppLogoContext>
+		)}
+	</Story>
+</Canvas>
+
+You can customize the logo by passing `appLogo` to the `<AppLogoContext />` (or, more commonly, the `<CommonWrapper />`):
+
+<Canvas>
+	<Story height={'64px'} name="Custom logo" args={{ logo: newLogo }}>
+		{args => (
+			<AppLogoContext appLogo={args.logo}>
+				<AppLogo />
+			</AppLogoContext>
+		)}
+	</Story>
+</Canvas>
+
+## Properties
+
+n/a
