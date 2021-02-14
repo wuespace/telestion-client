@@ -1,0 +1,158 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+	Description
+} from '@storybook/addon-docs/blocks';
+import { Actions } from './actions';
+import { CommonWrapper } from '../../common-wrapper';
+import { NotificationAction } from './notification-action';
+import { ColorSchemeAction } from './color-scheme-action';
+import { FullscreenAction } from './fullscreen-action';
+import { Header } from '../header';
+import { ActionDivider } from './action-divider';
+import CustomIcon from '@spectrum-icons/workflow/Actions';
+import { TooltipTrigger, Tooltip, ActionButton } from '@adobe/react-spectrum';
+
+<Meta
+	title="Common/Header/Actions"
+	component={Actions}
+	argTypes={{
+		onCustomActionClick: { action: 'clicked', table: { disable: true } },
+		children: { table: { disable: true } }
+	}}
+/>
+
+# Actions
+
+<Description of={Actions} />
+
+## Importing
+
+```tsx
+import {
+	Actions,
+	ColorSchemeAction,
+	NotificationAction,
+	FullscreenAction,
+	ActionDivider
+} from '@wuespace/telestion-client-common';
+```
+
+## Examples
+
+### Notification Action
+
+<Description of={NotificationAction} />
+
+<Canvas>
+	<Story
+		height={'64px'}
+		name="Notification Action"
+		args={{ children: [<NotificationAction />] }}
+	>
+		{args => (
+			<CommonWrapper>
+				<Header right={<Actions {...args} />} />
+			</CommonWrapper>
+		)}
+	</Story>
+</Canvas>
+
+### Color Scheme Switcher
+
+<Description of={ColorSchemeAction} />
+
+<Canvas>
+	<Story
+		height={'64px'}
+		name="Color Schema Switcher"
+		args={{ children: [<ColorSchemeAction />] }}
+	>
+		{args => (
+			<CommonWrapper>
+				<Header right={<Actions {...args} />} />
+			</CommonWrapper>
+		)}
+	</Story>
+</Canvas>
+
+### Fullscreen Toggle Action
+
+<Description of={FullscreenAction} />
+
+<Canvas>
+	<Story
+		height={'64px'}
+		name="Fullscreen Toggle"
+		args={{ children: [<FullscreenAction />] }}
+	>
+		{args => (
+			<CommonWrapper>
+				<Header right={<Actions {...args} />} />
+			</CommonWrapper>
+		)}
+	</Story>
+</Canvas>
+
+### Multiple Actions with Divider
+
+Divider:
+
+<Description of={ActionDivider} />
+
+<Canvas>
+	<Story
+		height={'64px'}
+		name="Multiple Actions"
+		args={{
+			children: [
+				<NotificationAction />,
+				<FullscreenAction />,
+				<ActionDivider />,
+				<ColorSchemeAction />
+			]
+		}}
+	>
+		{args => (
+			<CommonWrapper>
+				<Header right={<Actions {...args} />} />
+			</CommonWrapper>
+		)}
+	</Story>
+</Canvas>
+
+### Custom Action
+
+You can also define a custom action button.
+
+To keep things consistent, please use an icon-only `<ActionButton />` from the Adobe Spectrum Design system and include
+a tooltip:
+
+<Canvas>
+	<Story height={'64px'} name="Custom Action" args={{}}>
+		{args => (
+			<CommonWrapper>
+				<Header
+					right={
+						<Actions>
+							<TooltipTrigger>
+								<ActionButton onPress={args.onCustomActionClick}>
+									<CustomIcon />
+								</ActionButton>
+								<Tooltip>Click me to achieve something</Tooltip>
+							</TooltipTrigger>
+						</Actions>
+					}
+				/>
+			</CommonWrapper>
+		)}
+	</Story>
+</Canvas>
+
+## Properties
+
+### Actions Wrapper
+
+<ArgsTable of={Actions} />
