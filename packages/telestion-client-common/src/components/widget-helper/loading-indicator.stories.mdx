@@ -1,0 +1,84 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+	Description
+} from '@storybook/addon-docs/blocks';
+import { CommonWrapper } from '../common-wrapper';
+import { Text } from '@adobe/react-spectrum';
+Text.displayName = 'ReactSpectrum.Text';
+import { LoadingIndicator } from './loading-indicator';
+import { StorybookErrorBoundary } from '../storybook/storybook-error-boundary';
+
+<Meta
+	title="Common/Widget Helper/Loading Indicator"
+	component={LoadingIndicator}
+	decorators={[
+		Story => {
+			return (
+				<CommonWrapper>
+					<StorybookErrorBoundary>{Story()}</StorybookErrorBoundary>
+				</CommonWrapper>
+			);
+		}
+	]}
+/>
+
+# Loading Indicator
+
+<Description of={LoadingIndicator} />
+
+## Importing
+
+```tsx
+import { LoadingIndicator } from '@wuespace/telestion-client-common';
+```
+
+## Examples
+
+<Canvas>
+	<Story
+		height={'256px'}
+		name="Infinite Loading"
+		args={{
+			dependencies: [undefined],
+			timeout: 0
+		}}
+		inline={false}
+	>
+		{args => <LoadingIndicator {...args} />}
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story
+		height={'256px'}
+		name="Loading with timeout"
+		args={{
+			dependencies: [undefined],
+			timeout: 2000
+		}}
+		inline={false}
+	>
+		{args => <LoadingIndicator {...args} />}
+	</Story>
+</Canvas>
+
+<Canvas>
+	<Story
+		height={'256px'}
+		name="Done"
+		inline={false}
+		args={{
+			dependencies: ['now defined'],
+			children: () => <Text>I'm defined now</Text>
+		}}
+	>
+		{args => <LoadingIndicator {...args} />}
+	</Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable of={LoadingIndicator} />
