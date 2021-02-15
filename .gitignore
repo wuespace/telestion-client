@@ -43,6 +43,7 @@ packages/*/node_modules
 packages/*/build
 packages/*/types
 /docs
+/storybook-static
 
 # coverage reports
 coverage

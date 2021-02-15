@@ -7,6 +7,7 @@ release
 docs
 .vscode
 .idea
+storybook-static
 package-lock.json
 CHANGELOG.md
 lerna.json
