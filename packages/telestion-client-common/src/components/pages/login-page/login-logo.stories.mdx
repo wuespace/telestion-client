@@ -1,0 +1,55 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+	Description
+} from '@storybook/addon-docs/blocks';
+import { CommonWrapper } from '../../common-wrapper';
+import { LoginPage } from './login-page';
+import { LoginLogo } from './login-logo';
+import { TelestionClient } from '@wuespace/telestion-client-core';
+import otherLogo from '../../../media/default-avatar.png';
+
+<Meta title="Common/Pages/Login Page/Login Logo" component={LoginLogo} />
+
+# Login Logo
+
+<Description of={LoginLogo} />
+
+## Importing
+
+```tsx
+import { LoginLogo } from '@wuespace/telestion-client-common';
+```
+
+## Examples
+
+<Canvas>
+	<Story name="Default" inline={false} height={'256px'} args={{}}>
+		{args => (
+			<TelestionClient>
+				<CommonWrapper>
+					<LoginPage>
+						<LoginLogo {...args} />
+					</LoginPage>
+				</CommonWrapper>
+			</TelestionClient>
+		)}
+	</Story>
+	<Story name="Custom Logo" inline={false} height={'256px'} args={{}}>
+		{args => (
+			<TelestionClient>
+				<CommonWrapper appLogo={otherLogo}>
+					<LoginPage>
+						<LoginLogo {...args} />
+					</LoginPage>
+				</CommonWrapper>
+			</TelestionClient>
+		)}
+	</Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable of={LoginLogo} />

@@ -1,0 +1,90 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+	Description
+} from '@storybook/addon-docs/blocks';
+import { CommonWrapper } from '../../common-wrapper';
+import { LoginPage } from './login-page';
+import { LoginDescription } from './login-description';
+
+<Meta
+	title="Common/Pages/Login Page/Login Description"
+	component={LoginDescription}
+/>
+
+# Login Description
+
+<Description of={LoginDescription} />
+
+## Importing
+
+```tsx
+import { LoginDescription } from '@wuespace/telestion-client-common';
+```
+
+## Examples
+
+### Default login description
+
+<Canvas>
+	<Story name="Default" inline={false} height={'256px'} args={{}}>
+		{args => (
+			<CommonWrapper>
+				<LoginPage>
+					<LoginDescription {...args} />
+				</LoginPage>
+			</CommonWrapper>
+		)}
+	</Story>
+</Canvas>
+
+### Overwritten description text
+
+<Canvas>
+	<Story
+		name="Overwritten description"
+		inline={false}
+		height={'256px'}
+		args={{ description: 'Hello world' }}
+	>
+		{args => (
+			<CommonWrapper>
+				<LoginPage>
+					<LoginDescription {...args} />
+				</LoginPage>
+			</CommonWrapper>
+		)}
+	</Story>
+</Canvas>
+
+### Overwritten description content
+
+<Canvas>
+	<Story
+		name="Overwritten description content"
+		inline={false}
+		height={'256px'}
+		args={{
+			children: (
+				<>
+					<h3>Some headline</h3>
+					<p>Test</p>
+				</>
+			)
+		}}
+	>
+		{args => (
+			<CommonWrapper>
+				<LoginPage>
+					<LoginDescription {...args} />
+				</LoginPage>
+			</CommonWrapper>
+		)}
+	</Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable of={LoginDescription} />
