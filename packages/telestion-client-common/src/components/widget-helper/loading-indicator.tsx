@@ -12,18 +12,26 @@ import { useDependencyTimeout } from '../../hooks/use-dependency-timeout';
  * @see {@link https://reactjs.org/docs/components-and-props.html}
  */
 export interface LoadingIndicatorProps {
+	/**
+	 * a function to children to display
+	 * if all dependencies are defined
+	 */
 	children: () => ReactElement | Array<ReactElement>;
+
+	/**
+	 * the dependencies to check if they are undefined
+	 */
 	dependencies: Array<any>;
+
+	/**
+	 * the timeout in milliseconds until the function throws,
+	 * if it is 0 it waits indefinitely
+	 */
 	timeout?: number;
 }
 
 /**
  * Renders a loading indicator if some of the dependencies are not defined.
- * @param children - a function to children to display
- * if all dependencies are defined
- * @param dependencies - he dependencies to check if they are undefined
- * @param timeout - the timeout in milliseconds until the function throws,
- * if it is 0 it waits indefinitely
  *
  * @throws Error - if some dependencies are undefined until timeout
  * and timeout is set
