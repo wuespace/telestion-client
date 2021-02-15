@@ -1,0 +1,65 @@
+import {
+	Meta,
+	Story,
+	Canvas,
+	ArgsTable,
+	Description
+} from '@storybook/addon-docs/blocks';
+import { TelestionClient } from '@wuespace/telestion-client-core';
+import { MemoryRouter } from 'react-router';
+import { useUserConfig } from '../../../hooks';
+import { NotFoundPage } from './not-found-page';
+import { CommonWrapper } from '../../common-wrapper';
+
+<Meta
+	title="Common/Pages/Not Found Page"
+	component={NotFoundPage}
+	decorators={[
+		Story => {
+			useUserConfig.setState({
+				userConfig: {
+					alice: {
+						dashboards: [{ title: 'Dashboard A' }, { title: 'Dashboard B' }]
+					}
+				}
+			});
+			return (
+				<TelestionClient>
+					<MemoryRouter>{Story()}</MemoryRouter>
+				</TelestionClient>
+			);
+		}
+	]}
+	argTypes={{}}
+/>
+
+# Not Found Page
+
+<Description of={NotFoundPage} />
+
+## Importing
+
+```tsx
+import { NotFoundPage } from '@wuespace/telestion-client-common';
+```
+
+## Examples
+
+<Canvas>
+	<Story
+		name="Not Found Page"
+		inline={false}
+		height={'512px'}
+		args={{ children: ['Test'] }}
+	>
+		{args => (
+			<CommonWrapper>
+				<NotFoundPage {...args} />
+			</CommonWrapper>
+		)}
+	</Story>
+</Canvas>
+
+## Properties
+
+<ArgsTable of={NotFoundPage} />
