@@ -7,6 +7,7 @@
 	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
 	"scripts": {
 		"prepare": "npm run build:all",
+		"chromatic": "chromatic --skip 'dependabot/**' --project-token=CHROMATIC_PROJECT_TOKEN",
 		"clean": "npm run clean:builds && npm run clean:docs && npm run clean:coverage && npm run clean:dep",
 		"clean:dep": "lerna clean -y",
 		"clean:builds": "lerna run clean --stream",
