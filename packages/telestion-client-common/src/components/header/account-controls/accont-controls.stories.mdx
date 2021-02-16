@@ -17,9 +17,7 @@ import { Button, Content } from '@adobe/react-spectrum';
 	component={AccountControls}
 	decorators={[
 		Story => {
-			useAuth
-				.getState()
-				.signIn('http://localhost:9870/bridge', 'alice', '12345');
+			useAuth.setState({ auth: { username: 'alice' } });
 			return (
 				<TelestionClient>
 					<MemoryRouter>{Story()}</MemoryRouter>
@@ -54,9 +52,7 @@ import { AccountControls } from '@wuespace/telestion-client-common';
 					<Button
 						variant={'secondary'}
 						onPress={() => {
-							useAuth
-								.getState()
-								.signIn('http://localhost:9870/bridge', 'alice', '12345');
+							useAuth.setState({ auth: { username: 'alice' } });
 						}}
 					>
 						Log In

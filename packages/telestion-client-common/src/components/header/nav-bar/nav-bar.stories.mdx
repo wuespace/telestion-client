@@ -16,9 +16,7 @@ import { MemoryRouter } from 'react-router';
 	component={NavBar}
 	decorators={[
 		Story => {
-			useAuth
-				.getState()
-				.signIn('http://localhost:9870/bridge', 'alice', '12345');
+			useAuth.setState({ auth: { username: 'alice' } });
 			return (
 				<TelestionClient>
 					<MemoryRouter>{Story()}</MemoryRouter>

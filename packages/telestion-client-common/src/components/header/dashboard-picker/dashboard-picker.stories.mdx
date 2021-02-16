@@ -17,9 +17,7 @@ import { useUserConfig } from '../../../hooks';
 	component={DashboardPicker}
 	decorators={[
 		Story => {
-			useAuth
-				.getState()
-				.signIn('http://localhost:9870/bridge', 'alice', '12345');
+			useAuth.setState({ auth: { username: 'alice' } });
 			useUserConfig.setState({
 				userConfig: {
 					alice: {

@@ -24,9 +24,7 @@ import { Actions, ColorSchemeAction } from './actions';
 	component={Header}
 	decorators={[
 		Story => {
-			useAuth
-				.getState()
-				.signIn('http://localhost:9870/bridge', 'alice', '12345');
+			useAuth.setState({ auth: { username: 'alice' } });
 			useUserConfig.setState({
 				userConfig: {
 					alice: {
@@ -81,9 +79,7 @@ import { Header } from '@wuespace/telestion-client-common';
 					<Button
 						variant={'secondary'}
 						onPress={() => {
-							useAuth
-								.getState()
-								.signIn('http://localhost:9870/bridge', 'alice', '12345');
+							useAuth.setState({ auth: { username: 'alice' } });
 						}}
 					>
 						Log In
@@ -124,9 +120,7 @@ import { Header } from '@wuespace/telestion-client-common';
 					<Button
 						variant={'secondary'}
 						onPress={() => {
-							useAuth
-								.getState()
-								.signIn('http://localhost:9870/bridge', 'alice', '12345');
+							useAuth.setState({ auth: { username: 'alice' } });
 						}}
 					>
 						Log In
