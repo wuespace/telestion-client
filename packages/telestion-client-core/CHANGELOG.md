@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.0](https://github.com/TelestionTeam/telestion-client/compare/v0.9.0...v0.10.0) (2021-02-23)
+
+
+### Documentation Changes
+
+* Document new storybook-internal component folders in package `README.md`s ([89e8754](https://github.com/TelestionTeam/telestion-client/commit/89e8754a8ee9501fd5da0c6eaac0e19a87ba085e))
+* **common:** Improve storybook stories ([1cd24d1](https://github.com/TelestionTeam/telestion-client/commit/1cd24d1842d981d4dae026092062520d84b2672f))
+* **core:** Improve storybook stories for `TelestionClient` ([dfdc8e1](https://github.com/TelestionTeam/telestion-client/commit/dfdc8e1c04a914dd753793623f9cc51fa49cfaa3))
+
+
+
 ## [0.9.0](https://github.com/TelestionTeam/telestion-client/compare/v0.8.0...v0.9.0) (2021-02-09)
 
 **Note:** Version bump only for package @wuespace/telestion-client-core

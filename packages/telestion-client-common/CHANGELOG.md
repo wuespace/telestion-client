@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.0](https://github.com/TelestionTeam/telestion-client/compare/v0.9.0...v0.10.0) (2021-02-23)
+
+
+### Features
+
+* **common:** Add `overrideState` to `ConnectionIndicator` for debugging purposes ([92492fa](https://github.com/TelestionTeam/telestion-client/commit/92492faaa32a90595e3f511b6affdf62d4df23a3))
+
+
+### Bug Fixes
+
+* **common:** Fix Dashboard rendering issues ([73afae2](https://github.com/TelestionTeam/telestion-client/commit/73afae2104247843cd81fce6742cc41d4a59148c))
+
+
+### Documentation Changes
+
+* Document new storybook-internal component folders in package `README.md`s ([89e8754](https://github.com/TelestionTeam/telestion-client/commit/89e8754a8ee9501fd5da0c6eaac0e19a87ba085e))
+* Improve storybook stories ([4b662bf](https://github.com/TelestionTeam/telestion-client/commit/4b662bf12e60b6217e9487dee7bf45dc0940198b))
+* **common:** Add storybook stories for `AccountControls` and `NavBar` ([b6c73d5](https://github.com/TelestionTeam/telestion-client/commit/b6c73d56dd62eb2f198e71cf08c998fbf77bd013))
+* **common:** Add storybook stories for `Actions`, `NotificationAction`, `ColorSchemeAction`, `FullscreenAction`, and `ActionDivider`. ([ea47787](https://github.com/TelestionTeam/telestion-client/commit/ea4778767db4ddf0bd15d1565adf21fa316627b8))
+* **common:** Add storybook stories for `CommonWrapper` and `AppLogo` ([29b408c](https://github.com/TelestionTeam/telestion-client/commit/29b408c0398666ce54e87e6fb5f23ce7f6e9c202))
+* **common:** Add storybook stories for `ConnectionIndicator` ([346096a](https://github.com/TelestionTeam/telestion-client/commit/346096a3fa664b62d036f4e3ab73bb9d05fc0c6a))
+* **common:** Add storybook stories for `DashboardPicker` ([5aab481](https://github.com/TelestionTeam/telestion-client/commit/5aab481a8736271c0c74e3b79f42a5fa2d406f1b))
+* **common:** Add storybook stories for `Header` ([2574afa](https://github.com/TelestionTeam/telestion-client/commit/2574afa6b921b5156fe065d8f9214f8e3ec941e6))
+* **common:** Fix storybook stories for `AccountControls` ([ce373af](https://github.com/TelestionTeam/telestion-client/commit/ce373af071603c30998c46809fb50ac7b8709c52))
+* **common:** Fix storybook stories for `AccountControls` and `NavBar` ([4edd201](https://github.com/TelestionTeam/telestion-client/commit/4edd2016490588cefd83c64a66d1a38a882dec0c))
+* **common:** Fix storybook stories for `Actions` ([476607c](https://github.com/TelestionTeam/telestion-client/commit/476607c8ee0800af4458a766059b36b8aed3c27a))
+* **common:** Improve storybook stories ([1cd24d1](https://github.com/TelestionTeam/telestion-client/commit/1cd24d1842d981d4dae026092062520d84b2672f))
+* **core:** Add storybook stories for `DashboardPage`, `LoginPage`, and `NotFoundPage` ([7c38682](https://github.com/TelestionTeam/telestion-client/commit/7c38682d7fb88a59146434463a5e0400d6d1f1a2))
+* **core:** Add storybook stories for `LoadingIndicator` ([ebb96ce](https://github.com/TelestionTeam/telestion-client/commit/ebb96cebc79efa81871d4c7460c7c9d916f97564))
+* **core:** Add storybook stories for `LoginDescription`, `LoginForm`, `LoginLogo`, and `LoginTitle` ([69c8c4a](https://github.com/TelestionTeam/telestion-client/commit/69c8c4a59a9b1292ddec9e15f5b7b7b8127e4e61))
+
+
+
 ## [0.9.0](https://github.com/TelestionTeam/telestion-client/compare/v0.8.0...v0.9.0) (2021-02-09)
 
 **Note:** Version bump only for package @wuespace/telestion-client-common
