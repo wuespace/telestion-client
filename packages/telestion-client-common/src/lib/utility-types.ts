@@ -39,6 +39,9 @@ export type SetPartialStateAction<S> =
  * It adds the type `undefined` to possible type of every tuple element.
  *
  * @typeParam T - the tuple to extend its elements with undefined
+ *
+ * See {@link https://github.com/microsoft/TypeScript/pull/26063}
+ * for more information.
  */
 export type Undefinable<T extends readonly any[]> = {
 	[P in keyof T]: T[P] | undefined;
