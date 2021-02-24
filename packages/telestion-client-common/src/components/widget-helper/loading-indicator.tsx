@@ -37,8 +37,8 @@ export interface LoadingIndicatorProps<T extends readonly any[]> {
 	dependencies: [...Undefinable<T>];
 
 	/**
-	 * the timeout in milliseconds until the function throws,
-	 * if it is 0 it waits indefinitely
+	 * The timeout in milliseconds until the function throws,
+	 * if it is 0 it waits indefinitely.
 	 */
 	timeout?: number;
 }
