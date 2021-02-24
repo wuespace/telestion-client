@@ -8,6 +8,9 @@ module.exports = {
 			version: 'detect'
 		}
 	},
+	globals: {
+		JSX: 'readonly'
+	},
 	extends: [
 		path.join(__dirname, 'eslint.typescript.js'),
 		'airbnb/hooks',
