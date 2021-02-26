@@ -73,7 +73,7 @@ export interface HeaderProps {
 export function Header({ left, center, right }: HeaderProps) {
 	return (
 		<Provider flex={0} width="100%" colorScheme="dark" isQuiet>
-			<View width="100%" height="size-700" backgroundColor="gray-200">
+			<View width="100%" height="size-600" backgroundColor="gray-200">
 				<Flex direction="row" width="100%" height="100%" alignItems="center">
 					<Flex
 						flex={1}
