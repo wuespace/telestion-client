@@ -7,15 +7,11 @@ module.exports = {
 		ecmaVersion: 11,
 		sourceType: 'module'
 	},
-	plugins: ['@typescript-eslint', 'jest', 'tsdoc', 'jsdoc', 'prettier'],
+	plugins: ['@typescript-eslint', 'tsdoc', 'jsdoc'],
 	extends: [
 		'airbnb-typescript',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
-		'plugin:jest/recommended',
-		'prettier',
-		'prettier/@typescript-eslint',
-		'plugin:prettier/recommended',
 		path.join(__dirname, 'eslint.base.js')
 	],
 	rules: {
