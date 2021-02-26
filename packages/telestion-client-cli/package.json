@@ -64,7 +64,7 @@
 		"electron": "^11.2.0",
 		"electron-builder": "^22.9.1",
 		"electroner": "^4.0.9",
-		"inquirer": "^7.3.3",
+		"inquirer": "^8.0.0",
 		"loader-utils": "^2.0.0",
 		"shelljs": "^0.8.4",
 		"ts-loader": "^8.0.15",
