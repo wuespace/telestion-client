@@ -11,5 +11,6 @@ export default buildConfig(
 		process.cwd(),
 		buildTsConfig.compilerOptions.declarationDir,
 		'index.d.ts'
-	)
+	),
+	['http']
 );
