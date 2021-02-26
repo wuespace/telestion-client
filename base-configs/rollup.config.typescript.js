@@ -53,7 +53,12 @@ export default function buildConfig(
 					format: 'es'
 				}
 			],
-			plugins: [dts(), defaultLicensePlugin]
+			plugins: [dts(), defaultLicensePlugin],
+			external: [
+				...Object.keys(packageJson.dependencies || {}),
+				...monorepoPackages,
+				...additionalExternals
+			]
 		}
 	];
 }
