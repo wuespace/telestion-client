@@ -20,15 +20,15 @@
 import SockJS from 'sockjs-client';
 
 import {
-	Options,
 	Callback,
+	ChannelAddress,
 	ErrorMessage,
 	Headers,
 	JsonSerializable,
 	Message,
+	Options,
 	PublishMessage,
-	SendMessage,
-	ChannelAddress
+	SendMessage
 } from '@wuespace/telestion-client-types';
 import { getLogger } from './logger';
 import { defaultOptions } from './vertx-event-bus-default-options';

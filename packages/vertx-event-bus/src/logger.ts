@@ -1,4 +1,4 @@
-import { Logger, PlainLogger, ComponentLogger } from '@fliegwerk/logsemts';
+import { ComponentLogger, Logger, PlainLogger } from '@fliegwerk/logsemts';
 
 const logger = new Logger({
 	loggers: [PlainLogger()]
