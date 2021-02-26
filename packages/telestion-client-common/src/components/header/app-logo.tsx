@@ -1,5 +1,5 @@
 import { View, Image } from '@adobe/react-spectrum';
-import { useLogo } from '../contexts/app-logo-context';
+import { useLogo } from '../contexts';
 
 /**
  * Part of the Telestion Client Common header.
@@ -25,7 +25,7 @@ import { useLogo } from '../contexts/app-logo-context';
 export function AppLogo() {
 	const appLogo = useLogo();
 	return (
-		<View width="size-500" height="size-500">
+		<View width="size-400" height="size-400">
 			<Image src={appLogo} alt="Application Logo" objectFit="contain" />
 		</View>
 	);
