@@ -81,7 +81,6 @@ export function NavBar({ links }: NavBarProps) {
 	// and hear on selection change instead
 	return (
 		<Tabs
-			height="100%"
 			items={items}
 			selectedKey={selected}
 			onSelectionChange={onSelectionChange}
