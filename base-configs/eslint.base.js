@@ -9,8 +9,13 @@ module.exports = {
 	globals: {
 		NodeJS: 'readonly'
 	},
-	plugins: ['prettier'],
-	extends: ['eslint:recommended', 'prettier', 'plugin:prettier/recommended'],
+	plugins: ['jest', 'prettier'],
+	extends: [
+		'eslint:recommended',
+		'plugin:jest/recommended',
+		'prettier',
+		'plugin:prettier/recommended'
+	],
 	parserOptions: {
 		ecmaVersion: 11,
 		sourceType: 'script'
