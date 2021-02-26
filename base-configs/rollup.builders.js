@@ -6,6 +6,7 @@ import {
 	licensePlugin,
 	postCssPlugin,
 	resolvePlugin,
+	filesizePlugin,
 	terserPlugin,
 	typeScriptPlugin
 } from './rollup.plugins';
@@ -60,6 +61,7 @@ export function buildTSLibrary(paths) {
 			resolvePlugin(),
 			commonJsPlugin(),
 			typeScriptPlugin(),
+			filesizePlugin(),
 			terserPlugin(),
 			licensePlugin()
 		]
@@ -95,6 +97,7 @@ export function buildReactLibrary(paths) {
 			commonJsPlugin(),
 			typeScriptPlugin(),
 			postCssPlugin(),
+			filesizePlugin(),
 			terserPlugin(),
 			licensePlugin()
 		]

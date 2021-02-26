@@ -12,6 +12,7 @@ import postcss from 'rollup-plugin-postcss';
 
 import license from 'rollup-plugin-license';
 import { terser } from 'rollup-plugin-terser';
+import filesize from 'rollup-plugin-filesize';
 
 /**
  * Excludes all dependencies from the build.
@@ -101,3 +102,9 @@ export const terserPlugin = () =>
 		keep_classnames: true,
 		keep_fnames: true
 	});
+
+/**
+ * Displays the file size of every built file.
+ * @returns {Plugin}
+ */
+export const filesizePlugin = () => filesize();
