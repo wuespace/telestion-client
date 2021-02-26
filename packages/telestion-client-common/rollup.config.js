@@ -1,16 +1,22 @@
 import { join } from 'path';
-import buildConfig from '../../base-configs/rollup.config.react';
+import {
+	buildReactLibrary,
+	buildTSDeclarations
+} from '../../base-configs/rollup.builders';
 
-const packageJson = require('./package.json');
 const buildTsConfig = require('./tsconfig.build.json');
 
-export default buildConfig(
-	join(process.cwd(), 'src', 'index.ts'),
-	packageJson,
-	join(
+/**
+ * @type {BuildPaths}
+ */
+const paths = {
+	packageJsonPath: join(process.cwd(), 'package.json'),
+	inputPath: join(process.cwd(), 'src', 'index.ts'),
+	typesRootPath: join(
 		process.cwd(),
 		buildTsConfig.compilerOptions.declarationDir,
 		'index.d.ts'
-	),
-	['zustand/shallow']
-);
+	)
+};
+
+export default [buildReactLibrary(paths), buildTSDeclarations(paths)];
