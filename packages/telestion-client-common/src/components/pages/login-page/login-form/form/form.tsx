@@ -49,11 +49,18 @@ export function Form({
 		}
 	}, [onSubmit, password, serverUrl, username]);
 
+	const [focused, setFocused] = useState(() => {
+		if (initialUsername) return 2;
+		if (initialServerURL) return 1;
+		return 0;
+	});
+
 	return (
 		<>
 			<RSForm maxWidth="100%" isRequired isDisabled={isLoading}>
 				<TextField
-					autoFocus
+					autoFocus={focused === 0}
+					onNext={() => setFocused(1)}
 					label="Backend Server"
 					placeholder="Server URL"
 					initialValue={initialServerURL}
@@ -61,6 +68,8 @@ export function Form({
 					validator={isValidHttpUrl}
 				/>
 				<TextField
+					autoFocus={focused === 1}
+					onNext={() => setFocused(2)}
 					label="Username"
 					placeholder="Your username"
 					initialValue={initialUsername}
@@ -68,6 +77,8 @@ export function Form({
 					validator={isValidText}
 				/>
 				<TextField
+					autoFocus={focused === 2}
+					onNext={login}
 					label="Password"
 					placeholder="Your password"
 					type="password"

@@ -42,6 +42,12 @@ export type TextFieldProps = Omit<
 	 * @returns the validation state of the tested content
 	 */
 	validator?: (text: string) => ValidationState;
+
+	/**
+	 * Gets called when the user presses the enter key in the text field
+	 * with a valid value
+	 */
+	onNext?: () => void;
 };
 
 /**
@@ -74,6 +80,7 @@ export function TextField({
 	initialValue = '',
 	onChange,
 	validator,
+	onNext,
 	...textFieldProps
 }: TextFieldProps) {
 	const [value, setValue] = useState(initialValue);
@@ -97,6 +104,9 @@ export function TextField({
 	return (
 		<SpectrumTextField
 			value={value}
+			onKeyUp={e =>
+				e.key === 'Enter' && isValid === 'valid' && onNext && onNext()
+			}
 			onChange={setValue}
 			validationState={isValid}
 			{...textFieldProps}
