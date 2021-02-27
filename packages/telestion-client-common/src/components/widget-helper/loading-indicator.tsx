@@ -29,7 +29,7 @@ export interface LoadingIndicatorProps<T extends readonly any[]> {
 	children: /**
 	 * @param dependencies - the defined dependencies passed through from
 	 * {@link LoadingIndicatorProps.dependencies}
-	 */ (dependencies: [...T]) => JSX.Element;
+	 */ (...dependencies: [...T]) => JSX.Element;
 
 	/**
 	 * The dependencies to check if some of them are undefined.
@@ -57,12 +57,14 @@ export interface LoadingIndicatorProps<T extends readonly any[]> {
  * otherwise the child which displays the current position.
  * ```ts
  * const [position, setPosition] = useState<Position>();
+ * const [height, setHeight] = useState<number>();
+ *
  * return (
- * 	 <LoadingIndicator dependencies={[position]}>
- * 	   {([currentPos]) => (
- * 	     <p>{currentPos}</p>
- * 	   )}
- * 	 </LoadingIndicator>
+ * 	<LoadingIndicator dependencies={[position, height]}>
+ * 		{(currentPos, currentHeight) => (
+ * 			<p>{currentPos} - {currentHeight}</p>
+ * 		)}
+ * 	</LoadingIndicator>
  * );
  * ```
  */
@@ -72,7 +74,7 @@ export function LoadingIndicator<T extends readonly any[]>({
 	timeout = 0
 }: LoadingIndicatorProps<T>) {
 	if (useDependencyTimeout(timeout, dependencies)) {
-		return children(dependencies);
+		return children(...dependencies);
 	}
 
 	return (
