@@ -11,6 +11,10 @@
 		"bin",
 		"src"
 	],
+	"engines": {
+		"node": ">=12"
+	},
+	"license": "MIT",
 	"scripts": {
 		"build": "echo \"Warning: No build script specified!\"",
 		"test": "echo \"Warning: No test script specified!\""
