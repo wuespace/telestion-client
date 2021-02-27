@@ -19,7 +19,7 @@ import filesize from 'rollup-plugin-filesize';
  * Uses the package.json from the specified path.
  *
  * @param {string} packagePath - the path to the package.json to use
- * @param {string[]?} include - optional additional externals
+ * @param {string[]} [include=[]] - optional additional externals
  * @returns {Plugin}
  */
 export const externalsPlugin = (packagePath, include) =>

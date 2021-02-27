@@ -14,7 +14,7 @@ import {
 /**
  * @typedef BuildPaths
  * @type {object}
- * @property {string} packageJsonPath - the path to the package.json
+ * @property {string} packageJsonPath - the path to the `package.json`
  * @property {string} inputPath - the path to the entry source file
  * @property {string} typesRootPath - the path to the package types built via tsc
  */
