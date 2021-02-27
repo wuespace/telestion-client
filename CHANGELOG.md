@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.10.1](https://github.com/TelestionTeam/telestion-client/compare/v0.10.0...v0.10.1) (2021-02-27)
+
+
+### Bug Fixes
+
+* **common:** Fix tabs in `NavBar` to adjust to new header height introduced in 555b9a1fd212a580ca23d151247ad94216a81384 ([7309a86](https://github.com/TelestionTeam/telestion-client/commit/7309a8658513647dd432ffc27995cbe444024ee2))
+* **common:** Reduce header height (from `size-700` to `size-600`) to abide by Spectrum guidelines and fix layout issues with tabs in the `NavBar` component ([6c99744](https://github.com/TelestionTeam/telestion-client/commit/6c99744a9b0e8bfa3365b58c7f4ffb7d3fd0eb56))
+* **common:** Reduce size of `AppLogo` from `size-500` to `size-400` to adjust to the different header height introduced in 555b9a1fd212a580ca23d151247ad94216a81384 ([844fa9f](https://github.com/TelestionTeam/telestion-client/commit/844fa9f8daa2c9fc0313cd08cdd42decdd686d0f))
+* **deps:** Regenerate package-lock.json to fix compatibility issues with React Spectrum 3.8 ([1fcc9d3](https://github.com/TelestionTeam/telestion-client/commit/1fcc9d318941912be61da5b612bb19412e551a1e))
+
+
+
 ## [0.10.0](https://github.com/TelestionTeam/telestion-client/compare/v0.9.0...v0.10.0) (2021-02-23)
 
 
