@@ -1,6 +1,6 @@
-import { ReactElement } from 'react';
+import { ReactNode } from 'react';
 import { Flex, Heading, ProgressCircle } from '@adobe/react-spectrum';
-import { useDependencyTimeout } from '../../hooks/use-dependency-timeout';
+import { useDependencyTimeout } from '../../hooks';
 
 /**
  * React Props of {@link LoadingIndicator}
@@ -16,7 +16,7 @@ export interface LoadingIndicatorProps {
 	 * a function to children to display
 	 * if all dependencies are defined
 	 */
-	children: () => ReactElement | Array<ReactElement>;
+	children: () => ReactNode;
 
 	/**
 	 * the dependencies to check if they are undefined
@@ -71,5 +71,5 @@ export function LoadingIndicator({
 		);
 	}
 
-	return children();
+	return <>{children()}</>;
 }
