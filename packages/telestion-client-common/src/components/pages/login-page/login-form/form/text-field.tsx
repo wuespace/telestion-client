@@ -45,7 +45,7 @@ export type TextFieldProps = Omit<
 
 	/**
 	 * Gets called when the user presses the enter key in the text field
-	 * with a valid value
+	 * with a valid value.
 	 */
 	onNext?: () => void;
 };
