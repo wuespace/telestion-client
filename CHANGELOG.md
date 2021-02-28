@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.0](https://github.com/TelestionTeam/telestion-client/compare/v0.10.1...v0.11.0) (2021-02-28)
+
+
+### Features
+
+* **common:** Add keyboard controls to the `LoginForm` component ([7fe4f3b](https://github.com/TelestionTeam/telestion-client/commit/7fe4f3b21449a2e86c06054380da094ec9865cac)), closes [#364](https://github.com/TelestionTeam/telestion-client/issues/364)
+
+
+### Bug Fixes
+
+* **common:** Fix types of `LoadingIndicator` ([1885d07](https://github.com/TelestionTeam/telestion-client/commit/1885d0741489e364545c619524ef35ede8708c50))
+
+
+### Documentation Changes
+
+* Add legal notice link to documentation ([e72ff14](https://github.com/TelestionTeam/telestion-client/commit/e72ff14e235a34f27a017aecd0f5c40d7db808e7))
+
+
+
 ### [0.10.1](https://github.com/TelestionTeam/telestion-client/compare/v0.10.0...v0.10.1) (2021-02-27)
 
 
