@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.11.1](https://github.com/TelestionTeam/telestion-client/compare/v0.11.0...v0.11.1) (2021-03-01)
+
+
+### Bug Fixes
+
+* **types:** Add possible types to JSON serializable in object and array ([455a708](https://github.com/TelestionTeam/telestion-client/commit/455a708ae8118be9af9b8a79f4d5ec5500260bc9))
+
+
+
 ## [0.11.0](https://github.com/TelestionTeam/telestion-client/compare/v0.10.1...v0.11.0) (2021-02-28)
 
 
