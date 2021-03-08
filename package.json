@@ -122,7 +122,7 @@
 		"react-test-renderer": "^17.0.1",
 		"rimraf": "^3.0.2",
 		"rollup": "^2.36.1",
-		"rollup-plugin-dts": "^2.0.1",
+		"rollup-plugin-dts": "^3.0.1",
 		"rollup-plugin-filesize": "^9.1.0",
 		"rollup-plugin-license": "^2.2.0",
 		"rollup-plugin-node-externals": "^2.2.0",
