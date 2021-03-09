@@ -29,7 +29,7 @@ export type BasePropType = JsonSerializable;
  * ```
  */
 export interface GenericProps {
-	[key: string]: BasePropType;
+	[key: string]: BasePropType | undefined;
 }
 
 /**
