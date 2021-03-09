@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.11.2](https://github.com/TelestionTeam/telestion-client/compare/v0.11.1...v0.11.2) (2021-03-09)
+
+
+### Bug Fixes
+
+* **types:** Allow undefined in generic props for widgets ([450bd38](https://github.com/TelestionTeam/telestion-client/commit/450bd38abb3255ebfe339f08f70a8f358b91f076))
+
+
+
 ### [0.11.1](https://github.com/TelestionTeam/telestion-client/compare/v0.11.0...v0.11.1) (2021-03-01)
 
 
