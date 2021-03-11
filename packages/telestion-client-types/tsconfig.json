@@ -7,6 +7,7 @@
 		"declarationDir": "./types",
 		"allowJs": true,
 		"checkJs": true,
+		"skipLibCheck": true,
 		"allowSyntheticDefaultImports": true,
 		"emitDeclarationOnly": true
 	},
