@@ -78,7 +78,7 @@ export function ColorSchemeAction() {
 
 	return (
 		<TooltipTrigger>
-			<ActionButton onPress={handleChange}>
+			<ActionButton onPress={handleChange} isQuiet>
 				<Icon />
 			</ActionButton>
 			<Tooltip>{colorSchemeTooltip[colorScheme]}</Tooltip>

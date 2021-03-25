@@ -52,6 +52,7 @@ export function FullscreenAction() {
 			<ActionButton
 				isDisabled={!documentRef.current.fullscreenEnabled}
 				onPress={toggleFullscreen}
+				isQuiet
 			>
 				{isFullscreen ? <FullScreenExit /> : <FullScreen />}
 			</ActionButton>
