@@ -134,7 +134,7 @@ Divider:
 
 You can also define a custom action button.
 
-To keep things consistent, please use an icon-only `<ActionButton />` from the Adobe Spectrum Design system and include
+To keep things consistent, please use an icon-only `<ActionButton isQuiet />` from the Adobe Spectrum Design system and include
 a tooltip:
 
 <Canvas>
@@ -145,7 +145,7 @@ a tooltip:
 					right={
 						<Actions>
 							<TooltipTrigger>
-								<ActionButton onPress={args.onCustomActionClick}>
+								<ActionButton onPress={args.onCustomActionClick} isQuiet>
 									<CustomIcon />
 								</ActionButton>
 								<Tooltip>Click me to achieve something</Tooltip>

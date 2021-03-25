@@ -12,10 +12,9 @@ module.exports = {
 		JSX: 'readonly'
 	},
 	extends: [
-		path.join(__dirname, 'eslint.typescript.js'),
 		'airbnb/hooks',
 		'plugin:react/recommended',
-		'prettier/react'
+		path.join(__dirname, 'eslint.typescript.js')
 	],
 	parserOptions: {
 		ecmaFeatures: {

@@ -24,7 +24,7 @@ import defaultAvatar from '../../../media/default-avatar.png';
  */
 export function AvatarButton() {
 	return (
-		<ActionButton>
+		<ActionButton isQuiet>
 			<View width="size-350" height="size-350">
 				<img
 					src={defaultAvatar}

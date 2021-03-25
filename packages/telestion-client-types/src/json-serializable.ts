@@ -5,8 +5,9 @@
  * @see {@link JSON.stringify}
  */
 export type JsonSerializable =
+	| null
 	| number
 	| string
 	| boolean
-	| { [key: string]: JsonSerializable }
+	| { [key: string]: JsonSerializable | undefined }
 	| Array<JsonSerializable>;

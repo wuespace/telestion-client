@@ -38,6 +38,7 @@ module.exports = {
 	externalLinks: {
 		GitHub: 'https://github.com/TelestionTeam/telestion-client/',
 		Homepage: 'https://telestion.wuespace.de/',
-		'React Spectrum Libraries': 'https://react-spectrum.adobe.com/'
+		'React Spectrum Libraries': 'https://react-spectrum.adobe.com/',
+		'Legal Notice': 'https://www.wuespace.de/legal-notice/'
 	}
 };

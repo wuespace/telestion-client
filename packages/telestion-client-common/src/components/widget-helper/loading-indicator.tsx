@@ -29,7 +29,7 @@ export interface LoadingIndicatorProps<T extends readonly any[]> {
 	children: /**
 	 * @param dependencies - the defined dependencies passed through from
 	 * {@link LoadingIndicatorProps.dependencies}
-	 */ (...dependencies: [...T]) => JSX.Element;
+	 */ (...dependencies: [...T]) => JSX.Element | string | number | null;
 
 	/**
 	 * The dependencies to check if some of them are undefined.

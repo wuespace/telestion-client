@@ -2,7 +2,7 @@
 	"name": "@wuespace/telestion-client-common",
 	"description": "The common components of the Telestion Client",
 	"license": "MIT",
-	"version": "0.10.0",
+	"version": "0.11.2",
 	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
 	"main": "build/index.js",
 	"module": "build/index.es.js",
@@ -60,8 +60,8 @@
 		"zustand": "^3.2.0"
 	},
 	"peerDependencies": {
-		"@adobe/react-spectrum": "^3.6.0",
-		"@react-spectrum/tabs": "^3.0.0-alpha.3",
+		"@adobe/react-spectrum": "^3.9.0",
+		"@react-spectrum/tabs": "^3.0.0-beta.0",
 		"@spectrum-icons/illustrations": "^3.2.1",
 		"@spectrum-icons/workflow": "^3.2.0",
 		"@types/react": "^17.0.0",
