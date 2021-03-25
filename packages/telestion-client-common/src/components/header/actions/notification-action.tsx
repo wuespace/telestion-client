@@ -51,7 +51,7 @@ export function NotificationAction() {
 
 	return (
 		<TooltipTrigger>
-			<ActionButton onPress={toggle}>
+			<ActionButton onPress={toggle} isQuiet>
 				{isMuted ? <RemoveCircle /> : <Bell />}
 			</ActionButton>
 			<Tooltip>

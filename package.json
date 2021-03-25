@@ -65,9 +65,9 @@
 		}
 	},
 	"devDependencies": {
-		"@adobe/react-spectrum": "^3.6.0",
+		"@adobe/react-spectrum": "^3.9.0",
 		"@babel/core": "^7.12.9",
-		"@react-spectrum/tabs": "^3.0.0-alpha.3",
+		"@react-spectrum/tabs": "^3.0.0-beta.0",
 		"@rollup/plugin-commonjs": "^17.0.0",
 		"@rollup/plugin-image": "^2.0.6",
 		"@rollup/plugin-node-resolve": "^11.0.0",
@@ -142,7 +142,7 @@
 		"@wuespace/telestion-client-prop-types": "file:packages/telestion-client-prop-types",
 		"@wuespace/telestion-client-template": "file:packages/telestion-client-template",
 		"@wuespace/telestion-client-types": "file:packages/telestion-client-types",
-		"@wuespace/vertx-mock-server": "file:packages/vertx-mock-server",
-		"@wuespace/vertx-event-bus": "file:packages/vertx-event-bus"
+		"@wuespace/vertx-event-bus": "file:packages/vertx-event-bus",
+		"@wuespace/vertx-mock-server": "file:packages/vertx-mock-server"
 	}
 }
