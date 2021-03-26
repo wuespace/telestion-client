@@ -1,4 +1,6 @@
 name: Code Analysis
+
+# Events that trigger this workflow
 on:
   push:
     branches: [main]

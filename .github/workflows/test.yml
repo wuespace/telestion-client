@@ -1,5 +1,6 @@
 name: Test and Coverage
 
+# Events that trigger this workflow
 on: [push, pull_request]
 
 jobs:
@@ -29,35 +30,6 @@ jobs:
         run: npm run build:all
       - name: Run unit tests and generate coverage 🛃
         run: npm run test
-
-  code-climate-report:
-    name: Report code coverage to code climate
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout 📥
-        uses: actions/checkout@v2.3.4
-      - name: Setup Node 💿
-        uses: actions/setup-node@v2.1.5
-        with:
-          node-version: 14
-
-      - name: Restore npm cache ♻️
-        uses: actions/cache@v2.1.4
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      - name: Install development dependencies 📚
-        run: npm ci
-
-      - name: Generate and publish code coverage to code climate 📠
-        uses: paambaati/codeclimate-action@v2.7.5
-        env:
-          CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_REPORTER_ID }}
-        with:
-          coverageCommand: npm run test:unit
 
   cli-e2e-test:
     name: CLI E2E Test

@@ -1,13 +1,16 @@
-name: Docs
+name: Code Climate
 
 # Events that trigger this workflow
 on:
   push:
     branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
-  build-and-deploy:
-    name: Build and deploy documentation
+  code-climate-report:
+    name: Report code coverage to code climate
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 📥
@@ -27,14 +30,10 @@ jobs:
 
       - name: Install development dependencies 📚
         run: npm ci
-      - name: Build documentation 🛠️
-        run: npm run docs:ci
-      - name: Finalize build 🪄
-        run: touch docs/.nojekyll
 
-      - name: Deploy documentation 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.0
+      - name: Generate and publish code coverage to code climate 📠
+        uses: paambaati/codeclimate-action@v2.7.5
+        env:
+          CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_REPORTER_ID }}
         with:
-          branch: gh-pages
-          folder: docs
-          clean: true
+          coverageCommand: npm run test:unit
