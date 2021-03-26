@@ -8,6 +8,9 @@ module.exports = {
 			version: 'detect'
 		}
 	},
+	globals: {
+		JSX: 'readonly'
+	},
 	extends: [
 		'airbnb/hooks',
 		'plugin:react/recommended',

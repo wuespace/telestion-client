@@ -33,3 +33,16 @@ export type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
 export type SetPartialStateAction<S> =
 	| Partial<S>
 	| ((prevState: S) => Partial<S>);
+
+/**
+ * Makes all elements in a tuple undefinable.
+ * It adds the type `undefined` to possible type of every tuple element.
+ *
+ * @typeParam T - the tuple to extend its elements with undefined
+ *
+ * See {@link https://github.com/microsoft/TypeScript/pull/26063}
+ * for more information.
+ */
+export type Undefinable<T extends readonly any[]> = {
+	[P in keyof T]: T[P] | undefined;
+};
