@@ -4,7 +4,13 @@
 
 name: Lint
 
-on: push
+# Events that trigger this workflow
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   run-linters:

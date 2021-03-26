@@ -1,5 +1,6 @@
 name: Release
 
+# Events that trigger this workflow
 on: workflow_dispatch
 
 jobs:

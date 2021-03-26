@@ -1,11 +1,13 @@
 # Workflow name
 name: 'Chromatic'
 
-# Event for the workflow
+# Events that trigger this workflow
 on:
   push:
-    branches-ignore:
-      - 'dependabot/**'
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
 
 jobs:
   chromatic-deployment:
