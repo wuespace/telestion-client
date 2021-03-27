@@ -115,6 +115,10 @@ export class MockServer {
 		delete this.callbacks[id];
 	}
 
+	protected getConnections(): Array<Connection> {
+		return [...this.connections];
+	}
+
 	private setupEventBus(prefix: string): void {
 		// define handlers
 		this.eventBus.on('connection', conn => {
