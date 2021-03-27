@@ -3,17 +3,17 @@ import sockjs, { Connection } from 'sockjs';
 import {
 	ChannelAddress,
 	JsonSerializable,
+	Message,
 	PublishMessage,
 	SendMessage
 } from '@wuespace/telestion-client-types';
 
 import {
-	SendHandlerId,
-	PublishHandlerId,
-	SendHandler,
-	PublishHandler,
 	ErrorContent,
-	ListenOptions
+	ListenOptions,
+	CallbackId,
+	Callback,
+	CallbackArgs
 } from './model';
 import {
 	getLogger,
@@ -35,14 +35,10 @@ export class MockServer {
 	private connections: Connection[];
 
 	/**
-	 * Holds all registered send handlers
+	 * Holds all registered callbacks.
 	 */
-	private readonly sendHandlers: Array<
-		readonly [channel: ChannelAddress, callback: SendHandler]
-	>;
-
-	private readonly publishHandlers: Array<
-		readonly [channel: ChannelAddress, callback: PublishHandler]
+	private readonly callbacks: Array<
+		readonly [channel: ChannelAddress, callback: Callback]
 	>;
 
 	/**
@@ -60,7 +56,7 @@ export class MockServer {
 
 	onConnection?(connection: Connection): void;
 
-	onMessage?(message: JsonSerializable): void;
+	onMessage?(message: Message): boolean | void;
 
 	onClosedConnection?(connection: Connection): void;
 
@@ -84,8 +80,7 @@ export class MockServer {
 	 */
 	constructor(prefix = '/bridge') {
 		this.connections = [];
-		this.sendHandlers = [];
-		this.publishHandlers = [];
+		this.callbacks = [];
 
 		this.eventBus = sockjs.createServer();
 		this.httpServer = http.createServer();
@@ -112,26 +107,12 @@ export class MockServer {
 		this.pushMessage(encodeErrorMessage(channel, error));
 	}
 
-	protected handle(
-		channel: ChannelAddress,
-		callback: SendHandler
-	): SendHandlerId {
-		return this.sendHandlers.push([channel, callback]);
+	protected register(channel: ChannelAddress, callback: Callback): CallbackId {
+		return this.callbacks.push([channel, callback]);
 	}
 
-	protected unhandle(id: SendHandlerId): void {
-		delete this.sendHandlers[id];
-	}
-
-	protected register(
-		channel: ChannelAddress,
-		callback: PublishHandler
-	): PublishHandlerId {
-		return this.publishHandlers.push([channel, callback]);
-	}
-
-	protected unregister(id: PublishHandlerId): void {
-		delete this.publishHandlers[id];
+	protected unregister(id: CallbackId): void {
+		delete this.callbacks[id];
 	}
 
 	private setupEventBus(prefix: string): void {
@@ -150,19 +131,13 @@ export class MockServer {
 		this.eventBus.installHandlers(this.httpServer, { prefix });
 	}
 
-	private pushMessage(data: string): void {
-		this.connections.forEach(conn => conn.write(data));
-	}
-
 	private handleData(conn: Connection, data: string): void {
 		const message = decodeMessage(data);
+		if (this.onMessage?.(message)) return;
+
 		// filter for send and publish messages
-		if (message.type === 'send') {
-			this.onMessage?.(message.body);
-			this.processSendMessage(conn, message);
-		} else if (message.type === 'publish') {
-			this.onMessage?.(message.body);
-			this.processPublishMessage(message);
+		if (message.type === 'send' || message.type === 'publish') {
+			this.processMessage(conn, message);
 		} else if (message.type === 'rec') {
 			// 'rec' messages are only valid from backend to frontend
 			logger.warn(
@@ -177,9 +152,28 @@ export class MockServer {
 		this.onClosedConnection?.(conn);
 	}
 
-	private processSendMessage(conn: Connection, message: SendMessage): void {
-		// handle response from hook
-		const handleRespond: (response: JsonSerializable) => void = response => {
+	private processMessage(
+		conn: Connection,
+		message: SendMessage | PublishMessage
+	): void {
+		const args: CallbackArgs = {
+			message: message.body,
+			type: message.type,
+			respond: MockServer.buildRespondHandler(conn, message)
+		};
+
+		this.callbacks.forEach(([channel, callback]) => {
+			if (channel === message.address) {
+				callback(args);
+			}
+		});
+	}
+
+	private static buildRespondHandler(
+		conn: Connection,
+		message: SendMessage | PublishMessage
+	): (response: JsonSerializable) => void {
+		return response => {
 			if (message.replyAddress) {
 				const responseData = encodeReceiveMessage(
 					message.replyAddress,
@@ -193,21 +187,9 @@ export class MockServer {
 				);
 			}
 		};
-
-		// loop through registered handlers and pick the right ones
-		this.sendHandlers.forEach(([channel, callback]) => {
-			if (channel === message.address) {
-				callback(message.body, handleRespond);
-			}
-		});
 	}
 
-	private processPublishMessage(message: PublishMessage): void {
-		// loop through registered handlers and pick the right ones
-		this.publishHandlers.forEach(([channel, callback]) => {
-			if (channel === message.address) {
-				callback(message.body);
-			}
-		});
+	private pushMessage(data: string): void {
+		this.connections.forEach(conn => conn.write(data));
 	}
 }
