@@ -1,5 +1,5 @@
 import { Connection } from 'sockjs';
-import { JsonSerializable } from '@wuespace/telestion-client-types';
+import { Message } from '@wuespace/telestion-client-types';
 
 /**
  * Defines an event handler that gets called
@@ -48,7 +48,7 @@ export interface OnMessage {
 	 *
 	 * @param message - the received message
 	 */
-	onMessage(message: JsonSerializable): void;
+	onMessage(message: Message): boolean | void;
 }
 
 /**
