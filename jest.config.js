@@ -6,7 +6,7 @@ module.exports = {
 			displayName: 'PropTypes',
 			globals: {
 				'ts-jest': {
-					tsconfig: 'base-configs/tsconfig.spec.json'
+					//tsconfig: 'base-configs/tsconfig.spec.json'
 				}
 			},
 			preset: 'ts-jest',
@@ -26,5 +26,22 @@ module.exports = {
 				'<rootDir>/packages/telestion-client-prop-types/src/**/*(*.)@(spec|test).[jt]s'
 			]
 		}
+		// {
+		// 	displayName: 'MockServer',
+		// 	globals: {
+		// 		"ts-jest": {
+		// 			tsconfig: 'packages/vertx-mock-server/tsconfig.json'
+		// 		}
+		// 	},
+		// 	preset: 'ts-jest',
+		// 	testEnvironment: 'node',
+		// 	collectCoverageFrom: [
+		// 		'<rootDir>/packages/vertx-mock-server/src/**'
+		// 	],
+		// 	coveragePathIgnorePatterns: [],
+		// 	testMatch: [
+		// 		'<rootDir>/packages/vertx-mock-server/src/**/*(*.)@(spec|test).[jt]s'
+		// 	]
+		// }
 	]
 };
