@@ -105,13 +105,11 @@ export class MockServer {
 	}
 
 	protected send(channel: ChannelAddress, message: JsonSerializable): void {
-		const data = encodeReceiveMessage(channel, message);
-		this.connections.forEach(conn => conn.write(data));
+		this.pushMessage(encodeReceiveMessage(channel, message));
 	}
 
 	protected sendError(channel: ChannelAddress, error: ErrorContent): void {
-		const data = encodeErrorMessage(channel, error);
-		this.connections.forEach(conn => conn.write(data));
+		this.pushMessage(encodeErrorMessage(channel, error));
 	}
 
 	protected handle(
@@ -150,6 +148,10 @@ export class MockServer {
 
 		// install handlers on http server
 		this.eventBus.installHandlers(this.httpServer, { prefix });
+	}
+
+	private pushMessage(data: string): void {
+		this.connections.forEach(conn => conn.write(data));
 	}
 
 	private handleData(conn: Connection, data: string): void {
