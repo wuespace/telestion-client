@@ -58,7 +58,8 @@ module.exports = {
 			files: ['*/**/*.spec.ts', '*/**/*.spec.js'],
 			rules: {
 				'max-lines': 0,
-				'max-lines-per-function': 0
+				'max-lines-per-function': 0,
+				'import/no-extraneous-dependencies': 0
 			}
 		}
 	]
