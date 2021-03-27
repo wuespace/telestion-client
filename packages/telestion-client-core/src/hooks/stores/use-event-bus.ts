@@ -1,6 +1,6 @@
 import create, { UseStore } from 'zustand';
 import { EventBus } from '@wuespace/vertx-event-bus';
-import { getLogger } from '../../lib/logger';
+import { getLogger } from '../../lib';
 import { EventBusState } from './use-event-bus.model';
 
 const logger = getLogger('EventBus State');
