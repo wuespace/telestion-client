@@ -12,7 +12,7 @@
 	],
 	"scripts": {
 		"build": "rollup -c",
-		"test": "ts-jest",
+		"test": "echo \"Warning: No test script specified!\"",
 		"prepublishOnly": "npm run build",
 		"clean": "rimraf build types"
 	},
