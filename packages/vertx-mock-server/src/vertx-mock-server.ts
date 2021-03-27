@@ -20,6 +20,10 @@ export class VertxMockServer {
 		this.httpServer.listen(port, hostname);
 	}
 
+	close(cb?: (err?: Error | undefined) => void): void {
+		this.httpServer.close(cb);
+	}
+
 	private setupEventBus(prefix: string): void {
 		// define handlers
 		this.eventBus.on('connection', conn => {
