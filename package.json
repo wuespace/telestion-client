@@ -68,7 +68,7 @@
 		"@adobe/react-spectrum": "^3.9.0",
 		"@babel/core": "^7.12.9",
 		"@react-spectrum/tabs": "^3.0.0-beta.0",
-		"@rollup/plugin-commonjs": "^17.0.0",
+		"@rollup/plugin-commonjs": "^18.0.0",
 		"@rollup/plugin-image": "^2.0.6",
 		"@rollup/plugin-node-resolve": "^11.0.0",
 		"@spectrum-icons/illustrations": "^3.2.1",
