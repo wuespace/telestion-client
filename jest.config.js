@@ -26,6 +26,7 @@ module.exports = {
 				'<rootDir>/packages/telestion-client-prop-types/src/**/*(*.)@(spec|test).[jt]s'
 			]
 		}
+		// TODO: Uncomment when mock server has jest unit tests
 		// {
 		// 	displayName: 'MockServer',
 		// 	globals: {
