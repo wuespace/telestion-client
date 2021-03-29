@@ -20,7 +20,7 @@ export interface OnInit {
 /**
  * Defines an event handler that gets called
  * when a new connection with a client is established
- * and all {@link MockServer.register} calls has taken place.
+ * and all {@link MockServer.register} calls have taken place.
  *
  * @see {@link MockServer}
  */
@@ -28,7 +28,7 @@ export interface OnConnection {
 	/**
 	 * An event handler which gets called
 	 * when a new connection with a client is established
-	 * and all {@link MockServer.register} calls has taken place.
+	 * and all {@link MockServer.register} calls have taken place.
 	 *
 	 * @param connection - the established connection with the client
 	 */

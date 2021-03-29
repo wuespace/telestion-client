@@ -31,7 +31,7 @@ const logger = getLogger('Vert.x Mock Server');
  */
 export class MockServer {
 	/**
-	 * Holds all active connections with the Vert.x mock server.
+	 * Holds all active connections of the Vert.x mock server.
 	 */
 	private connections: Connection[];
 
@@ -92,7 +92,7 @@ export class MockServer {
 	}
 
 	/**
-	 * Starts the Vert.x mock server and listening for incoming connections.
+	 * Starts the Vert.x mock server, listening for incoming connections.
 	 * @param port - the port on which the server listens
 	 * @param hostname - the hostname on which the server listens
 	 *
@@ -111,7 +111,7 @@ export class MockServer {
 
 	/**
 	 * Stops the server from accepting new connections
-	 * and close currently active connections.
+	 * and closes currently active connections.
 	 *
 	 * @returns a promise which resolves when the server is closed
 	 *
@@ -134,8 +134,8 @@ export class MockServer {
 
 	/**
 	 * Sends a message to the specified channel.
-	 * @param channel - the channel the message are sent to
-	 * @param message - the message that are sent over the specified channel
+	 * @param channel - the channel the message gets sent to
+	 * @param message - the message that gets sent over the specified channel
 	 *
 	 * @see {@link OnInit}
 	 * @see {@link OnClose}
@@ -175,8 +175,8 @@ export class MockServer {
 
 	/**
 	 * Sends an error message to the specified channel.
-	 * @param channel - the channel the message are sent to
-	 * @param error - the message that are sent over the specified channel
+	 * @param channel - the channel the message gets sent to
+	 * @param error - the message that gets sent over the specified channel
 	 *
 	 * @see {@link ErrorContent}
 	 * @see {@link MockServer.send}
@@ -217,7 +217,7 @@ export class MockServer {
 	 * Registers a callback to a specified channel.
 	 * The callback gets called when a new message arrives on this channel.
 	 *
-	 * @param channel - the channel the callback is registered to
+	 * @param channel - the channel the callback gets registered to
 	 * @param callback - the callback to register
 	 *
 	 * @see {@link Callback}
@@ -254,7 +254,7 @@ export class MockServer {
 	 * Unregisters/Removes a callback from a channel
 	 * with the given callback id from the {@link MockServer.register} function.
 	 *
-	 * @param id - the callback id from the {@link MockServer.register} function
+	 * @param id - the callback id returned by the {@link MockServer.register} function
 	 *
 	 * @see {@link CallbackId}
 	 * @see {@link MockServer.register}
@@ -316,7 +316,7 @@ export class MockServer {
 	}
 
 	/**
-	 * Pushes a raw/encoded message onto a active connections.
+	 * Pushes a raw/encoded message onto all active connections.
 	 * @param data - the raw/encoded message to push to all active connections
 	 *
 	 * @see {@link MockServer.send}
@@ -335,9 +335,9 @@ export class MockServer {
 
 	/**
 	 * Set up the internal event bus, register all necessary event calls
-	 * for incoming connections and attaches to the internal http server instance.
+	 * for incoming connections and attach it to the internal HTTP server instance.
 	 *
-	 * @param prefix - the prefix under which the event bus is reachable
+	 * @param prefix - the prefix under which you can reach the event bus
 	 *
 	 * @example
 	 * ```ts
@@ -368,7 +368,7 @@ export class MockServer {
 	}
 
 	/**
-	 * Handles the incoming data, decodes them sorts them
+	 * Handles the incoming data, decodes them, sorts them
 	 * and calls the registered callbacks.
 	 *
 	 * @param conn - the connection the message came from
@@ -408,10 +408,10 @@ export class MockServer {
 
 	/**
 	 * Handles the closed event on the current connection.
-	 * It removes the given connection from the connection list
-	 * and call the connection closed hook.
+	 * Removes the given connection from the connection list
+	 * and calls the connection closed hook.
 	 *
-	 * @param conn - the connection that has closed
+	 * @param conn - the closed connection
 	 *
 	 * @see {@link MockServer.setupEventBus}
 	 *
@@ -437,7 +437,7 @@ export class MockServer {
 	/**
 	 * Processes the received message, determines the type,
 	 * builds the arguments for the callbacks
-	 * and call all registered callbacks on the message channel.
+	 * and calls all registered callbacks on the message channel.
 	 *
 	 * @param conn - the connection the message came from
 	 * @param message - the decoded message
@@ -471,9 +471,9 @@ export class MockServer {
 	}
 
 	/**
-	 * Builds the respond handler for a 'send' message.
+	 * Builds the `respond` handler for a 'send' message.
 	 * @param conn - the connection the message came from
-	 * @param message - the 'send' message to build the respond handler for
+	 * @param message - the 'send' message for which the `respond` handler gets built
 	 *
 	 * @see {@link MockServer.processMessage}
 	 *
