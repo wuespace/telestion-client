@@ -17,7 +17,7 @@ interface BaseCallbackArgs {
 
 /**
  * The arguments of a send callback which gets called
- * when the Vertx. mock server receives
+ * when the Vert.x mock server receives
  * a {@link @wuespace/telestion-client-types#SendMessage}.
  */
 export interface SendCallbackArgs extends BaseCallbackArgs {
@@ -31,7 +31,7 @@ export interface SendCallbackArgs extends BaseCallbackArgs {
 
 /**
  * The arguments of a publish callback which gets called
- * when the Vertx. mock server receives
+ * when the Vert.x mock server receives
  * a {@link @wuespace/telestion-client-types#PublishMessage}.
  */
 export interface PublishCallbackArgs extends BaseCallbackArgs {
