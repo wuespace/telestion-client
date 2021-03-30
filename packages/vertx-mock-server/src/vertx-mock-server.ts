@@ -3,33 +3,36 @@ import http from 'http';
 import sockjs, { Connection } from 'sockjs';
 import {
 	ChannelAddress,
+	ErrorMessage,
 	JsonSerializable,
 	Message,
 	PublishMessage,
+	ReceiveMessage,
 	SendMessage
 } from '@wuespace/telestion-client-types';
+import { ComponentLogger } from '@fliegwerk/logsemts';
 
 import {
 	ErrorContent,
 	ListenOptions,
 	CallbackId,
 	Callback,
-	CallbackArgs
+	CallbackArgs,
+	VertxMockServerOptions
 } from './model';
-import {
-	getLogger,
-	decodeMessage,
-	encodeErrorMessage,
-	encodeReceiveMessage
-} from './lib';
 
-const logger = getLogger('Vert.x Mock Server');
+const defaultOptions = {
+	port: 9870,
+	hostname: '0.0.0.0'
+};
 
 /**
  * A mock server for a Vert.x WebSocket Event Bus bridge
  * to JavaScript clients like {@link @wuespace/vertx-event-bus#EventBus}.
  */
 export class MockServer {
+	private readonly logger?: ComponentLogger;
+
 	/**
 	 * Holds all active connections of the Vert.x mock server.
 	 */
@@ -65,47 +68,62 @@ export class MockServer {
 
 	/**
 	 * Builds a new Vert.x mock server.
-	 * @param prefix - the prefix on which the event bus will be available
+	 * @param options - options to further configure the mock server
 	 *
 	 * @see {@link MockServer.listen}
 	 * @see {@link MockServer.close}
 	 *
 	 * @example
 	 * ```ts
-	 * class MyMockServer extends MockServer {
-	 * 	constructor() {
-	 * 		super('custom-prefix');
-	 * 	}
-	 * }
+	 * const logger = new Logger({
+	 * 	loggers: [ChalkLogger(chalk)]
+	 * });
 	 *
-	 * const server = new MyMockServer();
+	 * const moduleLogger = logger.getComponentLogger('MockServer');
+	 *
+	 * const server = new MockServer({ logger: moduleLogger });
 	 * server.listen();
 	 * ```
 	 */
-	constructor(prefix = '/bridge') {
+	constructor(options?: Partial<VertxMockServerOptions>) {
+		this.logger = options?.logger;
 		this.connections = [];
 		this.callbacks = [];
 
-		this.eventBus = sockjs.createServer();
+		this.logger?.debug(`Creating sockjs instance`);
+		this.eventBus = sockjs.createServer({
+			// see https://www.npmjs.com/package/sockjs#sockjs-node-api
+			log: (severity: 'debug' | 'info' | 'error', message: string) => {
+				if (severity === 'debug') this.logger?.debug(message);
+				else if (severity === 'info') this.logger?.info(message);
+				else this.logger?.error(message);
+			}
+		});
+		this.logger?.debug('Creating http server instance');
 		this.httpServer = http.createServer();
-		this.setupEventBus(prefix);
+		this.setupEventBus(options?.prefix);
 	}
 
 	/**
 	 * Starts the Vert.x mock server, listening for incoming connections.
-	 * @param port - the port on which the server listens
-	 * @param hostname - the hostname on which the server listens
+	 * @param options - options to configure the Vert.x mock server
+	 * in the listen process
 	 *
 	 * @see {@link MockServer.close}
 	 *
 	 * @example
 	 * ```ts
 	 * const server = new MockServer();
-	 * server.listen(12345, 'localhost'); // listen on port 12345 on 'localhost'
+	 * server.listen({
+	 * 	port: 12345,
+	 * 	hostname: 'localhost'
+	 * }); // listen on port 12345 on 'localhost'
 	 * ```
 	 */
-	listen({ port = 9870, hostname = '0.0.0.0' }: ListenOptions): void {
-		this.httpServer.listen(port, hostname);
+	listen(options?: Partial<ListenOptions>): void {
+		const final: ListenOptions = { ...defaultOptions, ...options };
+		this.logger?.debug(`Server listening on ${final.hostname}:${final.port}`);
+		this.httpServer.listen(final.port, final.hostname);
 		this.onInit?.();
 	}
 
@@ -126,16 +144,20 @@ export class MockServer {
 	 * ```
 	 */
 	close(): Promise<void> {
+		this.logger?.debug('Closing server...');
 		this.onClose?.();
+
+		// request all connections to close
+		this.connections.forEach(conn => conn.end());
 		return new Promise<void>((resolve, reject) =>
 			this.httpServer.close(err => (err ? reject(err) : resolve()))
-		);
+		).then(() => this.logger?.info('Server closed'));
 	}
 
 	/**
 	 * Sends a message to the specified channel.
 	 * @param channel - the channel the message gets sent to
-	 * @param message - the message that gets sent over the specified channel
+	 * @param content - the message content that gets sent over the specified channel
 	 *
 	 * @see {@link OnInit}
 	 * @see {@link OnClose}
@@ -169,8 +191,14 @@ export class MockServer {
 	 * server.listen();
 	 * ```
 	 */
-	protected send(channel: ChannelAddress, message: JsonSerializable): void {
-		this.pushMessage(encodeReceiveMessage(channel, message));
+	protected send(channel: ChannelAddress, content: JsonSerializable): void {
+		const message: ReceiveMessage = {
+			type: 'rec',
+			address: channel,
+			body: content,
+			headers: {}
+		};
+		this.pushMessage(message);
 	}
 
 	/**
@@ -210,7 +238,13 @@ export class MockServer {
 	 * ```
 	 */
 	protected sendError(channel: ChannelAddress, error: ErrorContent): void {
-		this.pushMessage(encodeErrorMessage(channel, error));
+		const message: ErrorMessage = {
+			type: 'err',
+			address: channel,
+			...error,
+			headers: {}
+		};
+		this.pushMessage(message);
 	}
 
 	/**
@@ -247,6 +281,7 @@ export class MockServer {
 	 * ```
 	 */
 	protected register(channel: ChannelAddress, callback: Callback): CallbackId {
+		this.logger?.debug('Register callback', this.callbacks.length);
 		return this.callbacks.push([channel, callback]);
 	}
 
@@ -282,6 +317,7 @@ export class MockServer {
 	 * ```
 	 */
 	protected unregister(id: CallbackId): void {
+		this.logger?.debug('Unregister callback', id);
 		delete this.callbacks[id];
 	}
 
@@ -312,24 +348,31 @@ export class MockServer {
 	 * ```
 	 */
 	protected getConnections(): Array<Connection> {
+		// prevent exposure and change of internal reference
 		return [...this.connections];
 	}
 
 	/**
 	 * Pushes a raw/encoded message onto all active connections.
-	 * @param data - the raw/encoded message to push to all active connections
+	 * @param message - a message to push to all active connections
 	 *
 	 * @see {@link MockServer.send}
 	 * @see {@link MockServer.sendError}
 	 *
 	 * @example
 	 * ```ts
-	 * protected send(channel: ChannelAddress, message: JsonSerializable): void {
-	 * 	this.pushMessage(encodeReceiveMessage(channel, message));
-	 * }
+	 * const message: ReceiveMessage = {
+	 * 	type: 'rec',
+	 * 	address: channel,
+	 * 	body: content,
+	 * 	headers: {}
+	 * };
+	 * this.pushMessage(message);
 	 * ```
 	 */
-	private pushMessage(data: string): void {
+	private pushMessage(message: Message): void {
+		this.logMessage(message, 'outgoing');
+		const data = JSON.stringify(message);
 		this.connections.forEach(conn => conn.write(data));
 	}
 
@@ -337,23 +380,29 @@ export class MockServer {
 	 * Set up the internal event bus, register all necessary event calls
 	 * for incoming connections and attach it to the internal HTTP server instance.
 	 *
-	 * @param prefix - the prefix under which you can reach the event bus
+	 * @param prefix - the prefix under which you can reach the event bus,
+	 * defaults to `/bridge`
 	 *
 	 * @example
 	 * ```ts
-	 * constructor(prefix = '/bridge') {
+	 * constructor(options) {
 	 * 	this.connections = [];
 	 * 	this.callbacks = [];
 	 *
 	 * 	this.eventBus = sockjs.createServer();
 	 * 	this.httpServer = http.createServer();
-	 * 	this.setupEventBus(prefix);
+	 * 	this.setupEventBus(options.prefix);
 	 * }
 	 * ```
 	 */
-	private setupEventBus(prefix: string): void {
+	private setupEventBus(prefix = '/bridge'): void {
 		// define handlers
 		this.eventBus.on('connection', conn => {
+			this.logger?.info(
+				`New connection ${conn.id}`,
+				`with host ${conn.remoteAddress}:${conn.remotePort}`,
+				`using ${conn.protocol}`
+			);
 			this.connections = [...this.connections, conn];
 			// handle incoming messages
 			conn.on('data', data => this.handleData(conn, data));
@@ -364,6 +413,9 @@ export class MockServer {
 		});
 
 		// install handlers on http server
+		this.logger?.debug(
+			`Install event bus handlers on http server route ${prefix}`
+		);
 		this.eventBus.installHandlers(this.httpServer, { prefix });
 	}
 
@@ -391,7 +443,8 @@ export class MockServer {
 	 * ```
 	 */
 	private handleData(conn: Connection, data: string): void {
-		const message = decodeMessage(data);
+		const message: Message = JSON.parse(data);
+		this.logMessage(message, 'incoming');
 		if (this.onMessage?.(message)) return;
 
 		// filter for send and publish messages
@@ -399,7 +452,7 @@ export class MockServer {
 			this.processMessage(conn, message);
 		} else if (message.type === 'rec') {
 			// 'rec' messages are only valid from backend to frontend
-			logger.warn(
+			this.logger?.warn(
 				"Received 'rec' message from client. Something nasty is going on here...",
 				message
 			);
@@ -430,6 +483,7 @@ export class MockServer {
 	 * ```
 	 */
 	private handleClose(conn: Connection): void {
+		this.logger?.info(`Connection ${conn.id} closed`);
 		this.connections = this.connections.filter(current => current !== conn);
 		this.onClosedConnection?.(conn);
 	}
@@ -460,7 +514,7 @@ export class MockServer {
 		const args: CallbackArgs = {
 			message: message.body,
 			type: message.type,
-			respond: MockServer.buildRespondHandler(conn, message)
+			respond: this.buildRespondHandler(conn, message)
 		};
 
 		this.callbacks.forEach(([channel, callback]) => {
@@ -488,23 +542,65 @@ export class MockServer {
 	 * callback(args);
 	 * ```
 	 */
-	private static buildRespondHandler(
+	private buildRespondHandler(
 		conn: Connection,
 		message: SendMessage | PublishMessage
 	): (response: JsonSerializable) => void {
 		return response => {
 			if (message.replyAddress) {
-				const responseData = encodeReceiveMessage(
-					message.replyAddress,
-					response
-				);
-				conn.write(responseData);
+				const responseMessage: ReceiveMessage = {
+					type: 'rec',
+					address: message.replyAddress,
+					body: response,
+					headers: {}
+				};
+				this.logMessage(responseMessage, 'outgoing');
+				conn.write(JSON.stringify(responseMessage));
 			} else {
-				logger.warn(
-					`Reply address for 'send' message on channel ${message.address} is not available...`,
-					message
+				this.logger?.warn(
+					`Reply address for 'send' message on channel ${message.address} is not available`,
+					JSON.stringify(message)
 				);
 			}
 		};
+	}
+
+	/**
+	 * Logs the given message properly formatted
+	 * to the mock server logging facility.
+	 *
+	 * @param message - the message to format and log
+	 * @param direction - the direction the message is going or coming from
+	 *
+	 * @see {@link MockServer.send}
+	 * @see {@link MockServer.sendError}
+	 * @see {@link MockServer.handleData}
+	 * @see {@link MockServer.buildRespondHandler}
+	 *
+	 * @example
+	 * ```ts
+	 * const message: Message = JSON.parse(data);
+	 * this.logMessage(message, 'incoming');
+	 * ```
+	 */
+	private logMessage(
+		message: Message,
+		direction: 'incoming' | 'outgoing'
+	): void {
+		const map = {
+			incoming: '--->',
+			outgoing: '<---'
+		};
+
+		if (message.type === 'ping') {
+			this.logger?.debug(map[direction], '[ping]');
+		} else {
+			this.logger?.debug(
+				map[direction],
+				`[${message.type}]`,
+				message.address,
+				'body' in message ? `# ${JSON.stringify(message.body)}` : ''
+			);
+		}
 	}
 }
