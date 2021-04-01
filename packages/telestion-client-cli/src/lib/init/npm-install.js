@@ -1,7 +1,7 @@
 const exec = require('../async-exec');
 const logger = require('../logger')('npm-install');
 
-const installCommand = 'npm install';
+const installCommand = 'npm install --legacy-peer-deps';
 
 module.exports = async function npmInstall(projectPath) {
 	logger.debug('Install command:', installCommand);
