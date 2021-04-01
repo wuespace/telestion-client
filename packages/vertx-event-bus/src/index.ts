@@ -1,2 +1,2 @@
 export * from './vertx-event-bus';
-export * from './vertx-event-bus-default-options';
+export * from './default-options';

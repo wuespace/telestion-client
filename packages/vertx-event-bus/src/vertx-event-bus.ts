@@ -31,7 +31,7 @@ import {
 	SendMessage
 } from '@wuespace/telestion-client-types';
 import { getLogger } from './logger';
-import { defaultOptions } from './vertx-event-bus-default-options';
+import { defaultOptions } from './default-options';
 
 const logger = getLogger('Vert.x Eventbus');
 

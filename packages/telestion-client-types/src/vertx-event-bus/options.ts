@@ -3,34 +3,61 @@
  */
 export interface Options {
 	/**
-	 * time between ping messages sent to the backend server in milliseconds
-	 */
-	pingInterval?: number;
-	/**
-	 * number of attempts to try to reconnect to the backend server
-	 * before no more reconnects get attempted
-	 */
-	reconnectAttempts?: number;
-	/**
-	 * exponent of the power function used to determine a new reconnect delay
-	 * based on reconnect attempts
+	 * When `true`, the event bus tries to reconnect automatically
+	 * if the connection with the backend is lost.
 	 *
-	 * for implementation details, see {@link @wuespace/vertx-event-bus#EventBus.newReconnectDelay}
+	 * Defaults to `true`.
 	 */
-	reconnectExponent?: number;
+	autoReconnect: boolean;
+
 	/**
-	 * minimum time to wait between reconnect attempts in milliseconds
-	 */
-	delayMin?: number;
-	/**
-	 * maximum time to wait between reconnect attempts in milliseconds
-	 */
-	delayMax?: number;
-	/**
-	 * randomization factor for the deviation
-	 * used in the reconnect delay generator function
+	 * Time between ping messages sent to the backend server in milliseconds.
 	 *
-	 * for implementation details, see {@link @wuespace/vertx-event-bus#EventBus.newReconnectDelay}
+	 * Defaults to `5000` ms.
 	 */
-	randomizationFactor?: number;
+	pingInterval: number;
+
+	/**
+	 * Number of attempts to try to reconnect to the backend server
+	 * before no more reconnects get attempted.
+	 *
+	 * Defaults to `Infinity`.
+	 */
+	reconnectAttempts: number;
+
+	/**
+	 * Exponent of the power function used to determine a new reconnect delay
+	 * based on reconnect attempts.
+	 *
+	 * For implementation details,
+	 * see {@link @wuespace/vertx-event-bus#EventBus.newReconnectDelay}.
+	 *
+	 * Defaults to `2`.
+	 */
+	reconnectExponent: number;
+
+	/**
+	 * Minimum time to wait between reconnect attempts in milliseconds.
+	 *
+	 * Defaults to `1000` ms.
+	 */
+	delayMin: number;
+
+	/**
+	 * Maximum time to wait between reconnect attempts in milliseconds.
+	 *
+	 * Defaults to `5000` ms.
+	 */
+	delayMax: number;
+
+	/**
+	 * Randomization factor for the deviation
+	 * used in the reconnect delay generator function.
+	 *
+	 * For implementation details,
+	 * see {@link @wuespace/vertx-event-bus#EventBus.newReconnectDelay}.
+	 *
+	 * Defaults to `0.5`.
+	 */
+	randomizationFactor: number;
 }

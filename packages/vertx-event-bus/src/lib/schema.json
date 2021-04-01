@@ -1,0 +1,259 @@
+{
+	"$schema": "http://json-schema.org/draft-07/schema#",
+	"definitions": {
+		"any": {
+			"$id": "#any",
+			"description": "Anything.",
+			"oneOf": [
+				{
+					"type": ["string", "number", "null", "boolean", "array"]
+				},
+				{
+					"type": "object",
+					"additionalProperties": true
+				}
+			]
+		},
+		"headers": {
+			"$id": "#headers",
+			"description": "Headers that are sent with event bus messages",
+			"type": "object"
+		},
+		"channel-address": {
+			"$id": "#channel-address",
+			"description": "The type of a communication channel address in the event bus",
+			"type": "string",
+			"examples": [
+				"de.jvpichowski.rocketsound.messages.base.GpsData",
+				"de.jvpichowski.rocketsound.messages.base.BaroData",
+				"de.jvpichowski.rocketsound.messages.base.FlightState"
+			]
+		},
+		"base-message": {
+			"$id": "#base-message",
+			"description": "A generic message that is sent to and received by the event bus",
+			"type": "object",
+			"required": ["type"],
+			"properties": {
+				"type": {
+					"oneOf": [
+						{
+							"const": "ping"
+						},
+						{
+							"const": "register"
+						},
+						{
+							"const": "unregister"
+						},
+						{
+							"const": "publish"
+						},
+						{
+							"const": "send"
+						},
+						{
+							"const": "rec"
+						},
+						{
+							"const": "err"
+						}
+					]
+				}
+			}
+		},
+		"addressable-message": {
+			"$id": "#addressable-message",
+			"description": "A message that is addressable to a specific locations on the event bus",
+			"allOf": [
+				{
+					"$ref": "#/definitions/base-message"
+				},
+				{
+					"type": "object",
+					"required": ["address"],
+					"properties": {
+						"address": {
+							"$ref": "#/definitions/channel-address"
+						},
+						"replyAddress": {
+							"type": "string"
+						}
+					}
+				}
+			]
+		},
+		"content-message": {
+			"$id": "#content-message",
+			"description": "A message with actual content that will be transferred with the message",
+			"allOf": [
+				{
+					"$ref": "#/definitions/addressable-message"
+				},
+				{
+					"type": "object",
+					"required": ["body"],
+					"properties": {
+						"body": {
+							"$ref": "#/definitions/any"
+						}
+					}
+				}
+			]
+		},
+		"ping-message": {
+			"$id": "#ping-message",
+			"description": "A basic message that is sent to prove to the backend server that the client is still connected",
+			"allOf": [
+				{
+					"$ref": "#/definitions/base-message"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "ping"
+						}
+					}
+				}
+			]
+		},
+		"error-message": {
+			"$id": "#error-message",
+			"description": "A message that is received from the event bus if something went wrong",
+			"allOf": [
+				{
+					"$ref": "#/definitions/base-message"
+				},
+				{
+					"type": "object",
+					"required": ["failureCode", "failureType", "message"],
+					"properties": {
+						"type": {
+							"const": "err"
+						},
+						"failureCode": {
+							"type": "integer"
+						},
+						"failureType": {
+							"type": "string"
+						},
+						"message": {
+							"type": "string"
+						}
+					}
+				}
+			]
+		},
+		"register-message": {
+			"$id": "#register-message",
+			"description": "A message that is sent to the backend server to register to a specific channel to receive future messages from the event bus from this specific channel",
+			"allOf": [
+				{
+					"$ref": "#/definitions/addressable-message"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "register"
+						}
+					}
+				}
+			]
+		},
+		"unregister-message": {
+			"$id": "#unregister-message",
+			"description": "A message that is sent to the backend server to unregister or unsubscribe from a specific channel to not receive any further messages from this channel",
+			"allOf": [
+				{
+					"$ref": "#/definitions/addressable-message"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "unregister"
+						}
+					}
+				}
+			]
+		},
+		"publish-message": {
+			"$id": "#publish-message",
+			"description": "A message that gets broadcasted on a specified channel",
+			"allOf": [
+				{
+					"$ref": "#/definitions/content-message"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "publish"
+						}
+					}
+				}
+			]
+		},
+		"send-message": {
+			"$id": "#send-message",
+			"description": "A message that is sent on the specified channel containing a reply address gets sent",
+			"allOf": [
+				{
+					"$ref": "#/definitions/content-message"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "send"
+						}
+					}
+				}
+			]
+		},
+		"receive-message": {
+			"$id": "#receive-message",
+			"description": "A message that is received from the event bus containing new information",
+			"allOf": [
+				{
+					"$ref": "#/definitions/content-message"
+				},
+				{
+					"type": "object",
+					"properties": {
+						"type": {
+							"const": "rec"
+						}
+					}
+				}
+			]
+		}
+	},
+	"title": "Vert.x Event Bus Message",
+	"description": "A message sent to and received from the event bus",
+	"oneOf": [
+		{
+			"$ref": "#/definitions/ping-message"
+		},
+		{
+			"$ref": "#/definitions/error-message"
+		},
+		{
+			"$ref": "#/definitions/register-message"
+		},
+		{
+			"$ref": "#/definitions/unregister-message"
+		},
+		{
+			"$ref": "#/definitions/publish-message"
+		},
+		{
+			"$ref": "#/definitions/send-message"
+		},
+		{
+			"$ref": "#/definitions/receive-message"
+		}
+	]
+}
