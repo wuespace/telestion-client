@@ -1,9 +1,9 @@
-import { AddressableMessage } from './addressable-message';
+import { BaseMessage } from './base-message';
 
 /**
  * a message that is received from the event bus if something went wrong
  */
-export interface ErrorMessage extends AddressableMessage {
+export interface ErrorMessage extends BaseMessage {
 	type: 'err';
 	/**
 	 * the failure code of the received error
