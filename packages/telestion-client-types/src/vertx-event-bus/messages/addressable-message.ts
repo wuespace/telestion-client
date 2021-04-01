@@ -12,10 +12,12 @@ export interface AddressableMessage extends BaseMessage {
 	 * the address of a event bus location registered to the backend
 	 */
 	address: ChannelAddress;
+
 	/**
 	 * additional headers that will be sent with the message
 	 */
 	headers: Headers;
+
 	/**
 	 * optional reply address to send a message back
 	 *
@@ -23,6 +25,7 @@ export interface AddressableMessage extends BaseMessage {
 	 * where a backend node sends a message and waits for a receiving message
 	 */
 	replyAddress?: string;
+
 	/**
 	 * Sends a message back to the sender with a actual content.
 	 * @param message - the content that will be sent with the message
