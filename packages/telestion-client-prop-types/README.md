@@ -7,6 +7,7 @@ npm: [`@wuespace/telestion-client-prop-types`](https://www.npmjs.com/package/@wu
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/TelestionTeam/telestion-client/Test%20and%20Coverage?label=tests)](https://github.com/TelestionTeam/telestion-client/actions?query=workflow%3A%22Test+and+Coverage%22)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/TelestionTeam/telestion-client/CI)](https://github.com/TelestionTeam/telestion-client/actions?query=workflow%3ACI)
 [![GitHub](https://img.shields.io/github/license/TelestionTeam/telestion-client)](LICENSE)
+[![node-current (scoped)](https://img.shields.io/node/v/@wuespace/telestion-client-prop-types)](package.json)
 [![Twitter Follow](https://img.shields.io/twitter/follow/wuespace?style=social)](https://twitter.com/wuespace)
 
 Helpful PropTypes for types exported by the `@wuespace/telestion-client-types` package.

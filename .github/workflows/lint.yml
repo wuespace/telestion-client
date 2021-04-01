@@ -33,6 +33,10 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
+      # Remove, when setup-node action supports specifying the node version
+      - name: Install npm v7 ⬆
+        run: npm install --global npm@v7
+
       # Eslint and Prettier must be in `package.json`
       - name: Install development dependencies 📚
         run: npm ci

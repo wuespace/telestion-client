@@ -7,6 +7,7 @@ npm: [`@wuespace/vertx-event-bus`](https://www.npmjs.com/package/@wuespace/vertx
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/TelestionTeam/telestion-client/Test%20and%20Coverage?label=tests)](https://github.com/TelestionTeam/telestion-client/actions?query=workflow%3A%22Test+and+Coverage%22)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/TelestionTeam/telestion-client/CI)](https://github.com/TelestionTeam/telestion-client/actions?query=workflow%3ACI)
 [![GitHub](https://img.shields.io/github/license/TelestionTeam/telestion-client)](LICENSE)
+[![node-current (scoped)](https://img.shields.io/node/v/@wuespace/vertx-event-bus)](package.json)
 [![Twitter Follow](https://img.shields.io/twitter/follow/wuespace?style=social)](https://twitter.com/wuespace)
 
 The Vert.x event bus client for Telestion Client. Used by `@wuespace/telestion-client-core`.

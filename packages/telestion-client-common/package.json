@@ -10,6 +10,9 @@
 	"files": [
 		"build"
 	],
+	"engines": {
+		"node": ">=14"
+	},
 	"scripts": {
 		"build": "rollup -c",
 		"test": "echo \"Warning: No test script specified!\"",

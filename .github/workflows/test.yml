@@ -23,8 +23,12 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
+      # Remove, when setup-node action supports specifying the node version
+      - name: Install npm v7 ⬆
+        run: npm install --global npm@v7
+
       - name: Install development dependencies 📚
-        run: npm ci --ignore-scripts
+        run: npm ci
 
       - name: Build all packages 🛠️
         run: npm run build:all
@@ -41,7 +45,7 @@ jobs:
         uses: actions/setup-node@v2.1.5
         with:
           node-version: 14
-      - name: Setup git
+      - name: Setup git ⚙
         run: |
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
@@ -54,50 +58,54 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-node-
 
+      # Remove, when setup-node action supports specifying the node version
+      - name: Install npm v7 ⬆
+        run: npm install --global npm@v7
+
       - name: Install global dependencies 🐱‍
         run: npm install -g verdaccio lerna npm-cli-adduser
       - name: Install development dependencies 📚
         run: npm ci
 
-      - name: Add node_modules binaries to path
+      - name: Add node_modules binaries to path ⛓
         run: echo "${GITHUB_WORKSPACE}/node_modules/.bin" >> $GITHUB_PATH
 
-      - name: Run verdaccio
+      - name: Run verdaccio 💡
         run: |
           verdaccio &
           VERDACCIO_PID=$!
           echo "VERDACCIO_PID=$!" >> $GITHUB_ENV
           npm config set registry http://localhost:4873
 
-      - name: Replace package versions
+      - name: Replace package versions 🖋
         run: npm run meta:replace-versions -- 999.999.999
-      - name: Login and publish to verdaccio
+      - name: Login to verdaccio 🛂
         run: |
           npm-cli-adduser -u thebox -p where -e thebox@nothere.com -r http://localhost:4873
       - name: Npm get logged in user
         run: npm whoami
-      - name: Publish to verdaccio
+      - name: Publish to verdaccio 📤
         run: lerna exec 'npm publish --registry="http://localhost:4873"'
 
-      - name: Install CLI from verdaccio
+      - name: Install CLI from verdaccio 🪤
         run: npm install -g @wuespace/telestion-client-cli
       - name: Show help output of CLI
         run: tc-cli --help
-      - name: Initialize PSC Project
+      - name: Initialize PSC Project 🛒
         working-directory: '../../'
         run: tc-cli init psc
 
-      - name: Generate a new widget in the PSC
+      - name: Generate a new widget in the PSC 🛠
         working-directory: '../../psc'
         run: |
           tc-cli generate --help
           tc-cli generate widget test-widget
-      - name: Show stats of the PSC
+      - name: Show stats of the PSC 🖨
         working-directory: '../../psc'
         run: |
           tc-cli stats --help
           tc-cli stats
-      - name: Build the PSC
+      - name: Build the PSC 📦
         working-directory: '../../psc'
         run: |
           tc-cli build --help

@@ -31,7 +31,7 @@ jobs:
         # We also need to re-set the origin URL,
         # because we make use of the pushing to GitHub repositories
         # via an access token.
-      - name: Setup git
+      - name: Setup git ⚙
         run: |
           git config --local user.name "${GITHUB_ACTOR}"
           git config --local user.email "${GITHUB_ACTOR}@users.noreply.github.com"
@@ -39,18 +39,23 @@ jobs:
           echo "Git remote origin URL: $(git remote get-url origin)"
         env:
           GH_RELEASE_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
-      - name: Install lerna globally
-        run: npm i -g lerna
-      - name: Install development dependencies
+
+      # Remove, when setup-node action supports specifying the node version
+      - name: Install npm v7 ⬆
+        run: npm install --global npm@v7
+
+      - name: Install lerna globally 🛒
+        run: npm install --global lerna
+      - name: Install development dependencies 📚
         run: npm ci
-      - name: Add node_modules binaries to path
+      - name: Add node_modules binaries to path ⛓
         run: echo "${GITHUB_WORKSPACE}/node_modules/.bin" >> $GITHUB_PATH
 
         # Lerna will create the change log from the conventional commits,
         # increase to the necessary package version and push its changes.
         # Additionally it generates a github release
         # which also includes the current change log.
-      - name: Lerna version and GitHub release
+      - name: Lerna version and GitHub release 🪡
         run: lerna version --conventional-commits --create-release github --yes
         env:
           GH_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
@@ -58,14 +63,14 @@ jobs:
         # Build a .npmrc configuration file
         # that will be used from npm and lerna
         # to publish to the npm registry with the given token.
-      - name: Setup npm
+      - name: Setup npm 📀
         run: |
           touch "${GITHUB_WORKSPACE}/.npmrc"
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > "${GITHUB_WORKSPACE}/.npmrc"
           cat "${GITHUB_WORKSPACE}/.npmrc"
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Publish to npm registry
+      - name: Publish to npm registry 🗜
         # Skip access verification to circumvent lerna calling 'npm whoami'
         # because we are not logged in with npm and use the npm token method instead.
         run: lerna publish from-git --no-verify-access --yes
