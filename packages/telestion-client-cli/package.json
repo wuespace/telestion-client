@@ -1,6 +1,7 @@
 {
 	"name": "@wuespace/telestion-client-cli",
 	"description": "The command line interface for the Telestion Client development",
+	"license": "MIT",
 	"version": "0.11.2",
 	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
 	"bin": {
@@ -12,9 +13,8 @@
 		"src"
 	],
 	"engines": {
-		"node": ">=12"
+		"node": ">=14"
 	},
-	"license": "MIT",
 	"scripts": {
 		"build": "echo \"Warning: No build script specified!\"",
 		"test": "echo \"Warning: No test script specified!\""

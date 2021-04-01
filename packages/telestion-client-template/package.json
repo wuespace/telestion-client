@@ -4,6 +4,9 @@
 	"license": "MIT",
 	"version": "0.11.2",
 	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
+	"engines": {
+		"node": ">=14"
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/TelestionTeam/telestion-client.git",

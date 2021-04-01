@@ -5,6 +5,10 @@
 	"version": "0.3.0",
 	"private": true,
 	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
+	"engines": {
+		"node": ">=14",
+		"npm": ">=7"
+	},
 	"scripts": {
 		"prepare": "npm run build:all",
 		"chromatic": "chromatic --skip 'dependabot/**' --project-token=CHROMATIC_PROJECT_TOKEN",
