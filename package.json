@@ -10,7 +10,7 @@
 		"npm": ">=7"
 	},
 	"scripts": {
-		"prepare": "npm run build:all",
+		"prepare": "husky install && npm run build:all",
 		"chromatic": "chromatic --skip 'dependabot/**' --project-token=CHROMATIC_PROJECT_TOKEN",
 		"clean": "npm run clean:builds && npm run clean:docs && npm run clean:coverage && npm run clean:dep",
 		"clean:dep": "lerna clean -y",
@@ -63,11 +63,6 @@
 			"url": "https://github.com/fussel178"
 		}
 	],
-	"husky": {
-		"hooks": {
-			"pre-commit": "pretty-quick --staged"
-		}
-	},
 	"devDependencies": {
 		"@adobe/react-spectrum": "^3.9.0",
 		"@babel/core": "^7.12.9",
