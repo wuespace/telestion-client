@@ -77,6 +77,15 @@ module.exports = {
 			rules: {
 				'import/no-default-export': 'off'
 			}
+		},
+		// https://github.com/jest-community/eslint-plugin-jest/blob/main/docs/rules/unbound-method.md
+		{
+			files: ['test/**', 'src/**/*(*.)@(spec|test).[jt]s'],
+			rules: {
+				// you should turn the original rule off *only* for test files
+				'@typescript-eslint/unbound-method': 'off',
+				'jest/unbound-method': 'error'
+			}
 		}
 	]
 };

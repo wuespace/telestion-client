@@ -8,5 +8,14 @@ module.exports = {
 	},
 	extends: [
 		path.join(__dirname, '..', '..', 'base-configs', 'eslint.typescript.js')
+	],
+	overrides: [
+		{
+			files: ['**/tests/lib/**/*', '**/tests/samples/**/*'],
+			rules: {
+				'jest/no-export': 'off',
+				'import/no-extraneous-dependencies': 'off'
+			}
+		}
 	]
 };
