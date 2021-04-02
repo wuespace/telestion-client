@@ -51,7 +51,7 @@ export class BasicEventBus {
 
 	onReconnect?(): void;
 
-	constructor(url: string, options: Partial<Options>) {
+	constructor(url: string, options: Partial<Options> = {}) {
 		this.options = { ...defaultOptions, ...options };
 		this.url = url;
 		this.socket = this.newSocket();
@@ -87,10 +87,14 @@ export class BasicEventBus {
 	}
 
 	private handleOpen(): void {
-		this.pingTimer = setInterval(
-			() => this.sendRaw(rawPing),
-			this.options.pingInterval
-		);
+		this.reconnectAttempts = 0;
+		this.pingTimer = setInterval(() => {
+			try {
+				this.sendRaw(rawPing);
+			} catch (e) {
+				console.warn('Could not send ping');
+			}
+		}, this.options.pingInterval);
 		// inform upper layer
 		this.onOpen?.();
 		if (this.reconnectTimer) this.onReconnect?.();
@@ -119,6 +123,7 @@ export class BasicEventBus {
 			this.reconnectAttempts < this.options.reconnectAttempts
 		) {
 			this.reconnectTimer = setTimeout(() => {
+				this.reconnectAttempts++;
 				// after timeout, create new socket which handles the next reconnect
 				this.socket = this.newSocket();
 			}, this.newReconnectDelay());
@@ -164,7 +169,7 @@ export class BasicEventBus {
 		// and the maximum delay time is returned.
 		let ms =
 			this.options.delayMin *
-			this.options.reconnectExponent ** this.reconnectAttempts;
+			this.reconnectAttempts ** this.options.reconnectExponent;
 		if (this.options.randomizationFactor) {
 			const rand = Math.random();
 			const deviation = Math.floor(

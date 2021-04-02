@@ -25,6 +25,23 @@ module.exports = {
 			testMatch: [
 				'<rootDir>/packages/telestion-client-prop-types/src/**/*(*.)@(spec|test).[jt]s'
 			]
+		},
+		{
+			displayName: 'Vert.x Event Bus',
+			globals: {
+				"ts-jest": {
+					tsconfig: 'packages/vertx-event-bus/tsconfig.json'
+				}
+			},
+			preset: 'ts-jest',
+			testEnvironment: 'node',
+			collectCoverageFrom: [
+				'<rootDir>/packages/vertx-event-bus/src/**'
+			],
+			coveragePathIgnorePatterns: [],
+			testMatch: [
+				'<rootDir>/packages/vertx-event-bus/src/**/*(*.)@(spec|test).[jt]s'
+			]
 		}
 		// TODO: Uncomment when mock server has jest unit tests
 		// {

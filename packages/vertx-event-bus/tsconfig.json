@@ -1,5 +1,5 @@
 {
 	"extends": "../../base-configs/tsconfig.typescript.json",
-	"include": ["src", "typings.d.ts"],
+	"include": ["src", "tests", "typings.d.ts"],
 	"exclude": ["node_modules", "build", "types"]
 }
