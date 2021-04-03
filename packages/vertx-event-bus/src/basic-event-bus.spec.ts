@@ -7,6 +7,7 @@ import SockJS from 'sockjs-client';
 import { validate } from './lib/validator';
 // test subject
 import { BasicEventBus } from './basic-event-bus';
+import { ConnectionState } from './model';
 
 jest.mock('sockjs-client');
 jest.mock('./lib/validator');
@@ -72,6 +73,12 @@ describe('Basic event bus', () => {
 			// to silence jest branch detector
 			// @ts-ignore
 			instance.onmessage?.({ data: nonJsonString() });
+
+			// send valid JSON and invalid message without event handler
+			// to silence jest branch detector
+			mockedValidate.mockReturnValue(false);
+			// @ts-ignore
+			instance.onmessage?.({ data: 'null' });
 
 			// cleanup
 			eventBus.close();
@@ -177,6 +184,34 @@ describe('Basic event bus', () => {
 			eventBus.close();
 
 			expect(instance.send).toHaveBeenCalledTimes(1);
+		});
+
+		it('should return the current socket state', () => {
+			const eventBus = new BasicEventBus(DEFAULT_URL);
+			const instance = mockedSockJS.mock.instances[0];
+
+			// @ts-ignore
+			// noinspection JSConstantReassignment
+			instance.readyState = SockJS.CONNECTING;
+			expect(eventBus.state).toBe(ConnectionState.CONNECTING);
+
+			// @ts-ignore
+			// noinspection JSConstantReassignment
+			instance.readyState = SockJS.OPEN;
+			expect(eventBus.state).toBe(ConnectionState.OPEN);
+
+			// @ts-ignore
+			// noinspection JSConstantReassignment
+			instance.readyState = SockJS.CLOSING;
+			expect(eventBus.state).toBe(ConnectionState.CLOSING);
+
+			// @ts-ignore
+			// noinspection JSConstantReassignment
+			instance.readyState = SockJS.CLOSED;
+			expect(eventBus.state).toBe(ConnectionState.CLOSED);
+
+			// cleanup
+			eventBus.close();
 		});
 	});
 
@@ -583,9 +618,9 @@ describe('Basic event bus', () => {
 				instance.onmessage?.({ data: invalidData });
 				expect(messageHandler).lastCalledWith(
 					expect.objectContaining({
-						type: expect.stringMatching('err'),
-						failureCode: expect.anything(),
-						failureType: expect.stringContaining('Error'),
+						type: 'err',
+						failureCode: 1,
+						failureType: 'SyntaxError',
 						message: expect.stringContaining(invalidData)
 					})
 				);
@@ -621,7 +656,12 @@ describe('Basic event bus', () => {
 				// @ts-ignore
 				instance.onmessage?.({ data: sample[1] });
 				expect(messageHandler).lastCalledWith(
-					expect.objectContaining({ type: expect.stringMatching('err') })
+					expect.objectContaining({
+						type: 'err',
+						failureCode: 2,
+						failureType: 'SyntaxError',
+						message: expect.stringContaining(sample[1])
+					})
 				);
 			}
 			// cleanup
