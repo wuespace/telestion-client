@@ -4,6 +4,7 @@ import externals from 'rollup-plugin-node-externals';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 
+import json from '@rollup/plugin-json';
 import typescript from 'rollup-plugin-typescript2';
 import dts from 'rollup-plugin-dts';
 
@@ -44,6 +45,12 @@ export const resolvePlugin = () => resolve({ preferBuiltins: true });
  * @returns {Plugin}
  */
 export const commonJsPlugin = () => commonjs();
+
+/**
+ * A Rollup plugin which Converts .json files to ES6 modules.
+ * @returns {Plugin}
+ */
+export const jsonPlugin = () => json();
 
 /**
  * Transpiles TypeScript to valid JavaScript code
