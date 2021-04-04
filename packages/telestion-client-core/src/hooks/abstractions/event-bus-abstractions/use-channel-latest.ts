@@ -31,11 +31,7 @@ export function useChannelLatest<T extends JsonSerializable = JsonSerializable>(
 	const [latest, setLatest] = useState<T>();
 
 	// useCallback here to preserve identity of callback function
-	const handleUpdate = useCallback((data: T | null) => {
-		if (data) {
-			setLatest(data);
-		}
-	}, []);
+	const handleUpdate = useCallback((data: T) => setLatest(data), []);
 
 	useChannel<T>(address, handleUpdate);
 	return latest;

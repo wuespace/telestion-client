@@ -1,4 +1,4 @@
-/* eslint-disable max-lines */
+/* eslint-disable max-lines,@typescript-eslint/ban-ts-comment */
 /**
  * Rewritten, but heavily based on the vertx3-eventbus-client library.
  * Original copyright notice:
@@ -501,6 +501,8 @@ export class EventBus {
 	 * when the first answer is received
 	 * @param headers - optional headers sent with the event bus message
 	 *
+	 * @typeParam T - the argument type of the callback
+	 *
 	 * @see {@link EventBus.onOpen}
 	 * @see {@link EventBus.handlers}
 	 *
@@ -522,13 +524,15 @@ export class EventBus {
 	// that is sent with the message.
 	// The specified callback is registered in the reply handlers
 	// using the generated UUID.
-	send(
+	send<T extends JsonSerializable = JsonSerializable>(
 		address: ChannelAddress,
 		content: JsonSerializable,
-		callback: Callback,
+		callback: Callback<T>,
 		headers?: Headers
 	): void {
 		const replyAddress = generateUUID();
+		// TypeScript is dump (again!)
+		// @ts-ignore
 		this.handlers.push([replyAddress, callback, false]);
 		this.bus.send(sendMessage(address, replyAddress, content, headers));
 	}
@@ -545,6 +549,8 @@ export class EventBus {
 	 * when incoming messages are received on the specified address
 	 * @param headers - optional headers sent with the initial registration
 	 * message to the backend on the first register event
+	 *
+	 * @typeParam T - the argument type of the callback
 	 *
 	 * @see {@link EventBus.unregister}
 	 * @see {@link EventBus.onOpen}
@@ -576,9 +582,9 @@ export class EventBus {
 	//
 	// If the eventbus is currently closed it stores the callback
 	// and registers it after the connection is open.
-	register(
+	register<T extends JsonSerializable = JsonSerializable>(
 		address: ChannelAddress,
-		callback: Callback,
+		callback: Callback<T>,
 		headers?: Headers
 	): void {
 		// send register message if no other listens for this address yet
@@ -588,6 +594,8 @@ export class EventBus {
 		}
 
 		// register
+		// TypeScript is dump (again!)
+		// @ts-ignore
 		this.handlers.push([address, callback, true]);
 	}
 
@@ -604,6 +612,8 @@ export class EventBus {
 	 * @param address - the address the event handler unregisters from
 	 * @param callback - the callback to unregister from the address
 	 * @param headers - optional headers sent with the last unregister message
+	 *
+	 * @typeParam T - the argument type of the callback
 	 *
 	 * @see {@link EventBus.register}
 	 *
@@ -628,9 +638,9 @@ export class EventBus {
 	 * eventBus.unregister(address, handler);
 	 * ```
 	 */
-	unregister(
+	unregister<T extends JsonSerializable = JsonSerializable>(
 		address: ChannelAddress,
-		callback: Callback,
+		callback: Callback<T>,
 		headers: Headers = {}
 	): void {
 		// unregister

@@ -21,4 +21,6 @@ import { JsonSerializable } from '../../json-serializable';
  * };
  * ```
  */
-export type Callback = (content: JsonSerializable) => void;
+export type Callback<T extends JsonSerializable = JsonSerializable> = (
+	content: T
+) => void;
