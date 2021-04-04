@@ -4,5 +4,5 @@
 		"declarationDir": "types"
 	},
 	"include": ["src", "typings.d.ts"],
-	"exclude": ["node_modules", "build", "types", "src/**/*.test.ts*"]
+	"exclude": ["node_modules", "build", "types", "src/**/*.spec.ts*"]
 }
