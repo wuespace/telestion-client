@@ -203,7 +203,6 @@ export class MockServer {
 
 	/**
 	 * Sends an error message to the specified channel.
-	 * @param channel - the channel the message gets sent to
 	 * @param error - the message that gets sent over the specified channel
 	 *
 	 * @see {@link ErrorContent}
@@ -220,7 +219,7 @@ export class MockServer {
 	 *
 	 * 	onInit() {
 	 * 		this.id = this.register(CHANNEL, () => {
-	 * 			this.sendError(CHANNEL, {
+	 * 			this.sendError({
 	 * 				failureCode: 1,
 	 * 				failureType: 'Message received',
 	 * 				message: 'Message was received'
@@ -237,12 +236,10 @@ export class MockServer {
 	 * server.listen();
 	 * ```
 	 */
-	protected sendError(channel: ChannelAddress, error: ErrorContent): void {
+	protected sendError(error: ErrorContent): void {
 		const message: ErrorMessage = {
 			type: 'err',
-			address: channel,
-			...error,
-			headers: {}
+			...error
 		};
 		this.pushMessage(message);
 	}
@@ -594,6 +591,12 @@ export class MockServer {
 
 		if (message.type === 'ping') {
 			this.logger?.debug(map[direction], '[ping]');
+		} else if (message.type === 'err') {
+			this.logger?.debug(
+				map[direction],
+				'[err]',
+				`{${message.failureCode}} ${message.failureType} - ${message.message}`
+			);
 		} else {
 			this.logger?.debug(
 				map[direction],
