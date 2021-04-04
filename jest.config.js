@@ -29,15 +29,13 @@ module.exports = {
 		{
 			displayName: 'Vert.x Event Bus',
 			globals: {
-				"ts-jest": {
+				'ts-jest': {
 					tsconfig: 'packages/vertx-event-bus/tsconfig.json'
 				}
 			},
 			preset: 'ts-jest',
 			testEnvironment: 'node',
-			collectCoverageFrom: [
-				'<rootDir>/packages/vertx-event-bus/src/**'
-			],
+			collectCoverageFrom: ['<rootDir>/packages/vertx-event-bus/src/**'],
 			coveragePathIgnorePatterns: [],
 			testMatch: [
 				'<rootDir>/packages/vertx-event-bus/src/**/*(*.)@(spec|test).[jt]s'
