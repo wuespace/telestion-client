@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /**
  * Rewritten, but heavily based on the vertx3-eventbus-client library.
  * Original copyright notice:
@@ -17,26 +18,28 @@
  *   You may elect to redistribute this code under either of these licenses.
  * @packageDocumentation
  */
-import SockJS from 'sockjs-client';
-
 import {
-	Callback,
 	ChannelAddress,
 	ErrorMessage,
-	Headers,
 	JsonSerializable,
-	Message,
 	Options,
-	PublishMessage,
-	SendMessage
+	Headers,
+	Callback,
+	Message
 } from '@wuespace/telestion-client-types';
-import { getLogger } from './logger';
-import { defaultOptions } from './default-options';
 
-const logger = getLogger('Vert.x Eventbus');
+import { ConnectionState } from './model';
+import {
+	generateUUID,
+	publishMessage,
+	registerMessage,
+	sendMessage,
+	unregisterMessage
+} from './lib';
+import { BasicEventBus } from './basic-event-bus';
 
 /**
- * An eventbus connector for the vertx environment.
+ * An eventbus connector for the Vert.x environment.
  *
  * It implements the Javascript client-side of the SockJS event bus bridge
  * based on the online documentation by the Vert.x-Team
@@ -48,75 +51,62 @@ const logger = getLogger('Vert.x Eventbus');
  */
 export class EventBus {
 	/**
-	 * The state if the eventbus is currently connecting to the server.
+	 * The basic event bus instance, the event bus communicates to.
 	 *
-	 * @see {@link EventBus.state}
-	 * @see {@link EventBus.getStateName}
-	 */
-	static get CONNECTING(): typeof WebSocket.CONNECTING {
-		return WebSocket.CONNECTING;
-	}
-
-	/**
-	 * The state if the eventbus is currently open
-	 * and ready to handle incoming messages and send messages.
-	 *
-	 * @see {@link EventBus.state}
-	 * @see {@link EventBus.getStateName}
-	 */
-	static get OPEN(): typeof WebSocket.OPEN {
-		return WebSocket.OPEN;
-	}
-
-	/**
-	 * The state if the eventbus is currently closing
-	 * and no further messages are handled.
-	 *
-	 * @see {@link EventBus.state}
-	 * @see {@link EventBus.getStateName}
-	 */
-	static get CLOSING(): typeof WebSocket.CLOSING {
-		return WebSocket.CLOSING;
-	}
-
-	/**
-	 * The state if the eventbus is currently closed
-	 * and cannot send and receive anything.
-	 *
-	 * @see {@link EventBus.state}
-	 * @see {@link EventBus.getStateName}
-	 */
-	static get CLOSED(): typeof WebSocket.CLOSED {
-		return WebSocket.CLOSED;
-	}
-
-	/**
-	 * Returns a human readable state name for the given eventbus state.
-	 * @param stateId - the eventbus state to translate
-	 * @returns a human readable state name
-	 *
-	 * @see {@link EventBus.state}
+	 * @see {@link (EventBus:constructor) | EventBus Constructor}
 	 *
 	 * @example
 	 * ```ts
-	 * const eventBus = new EventBus('http://localhost:9870/bridge');
-	 * console.log('EventBus state: ', EventBus.getStateName(eventBus.state));
+	 * this.bus = new BasicEventBus(url, options);
+	 * this.bus.onOpen = () => {
+	 * 	// register all current event handlers
+	 * 	this.handlers
+	 * 		.map(handler => handler[0])
+	 * 		.filter((channel, _, channels) => !channels.includes(channel))
+	 * 		.forEach(channel => this.bus.send(registerMessage(channel), false));
+	 * 	this.onOpen?.();
+	 * };
+	 * this.bus.onClose = () => this.onOpen?.();
+	 * this.bus.onReconnect = () => this.onReconnect?.();
+	 * this.bus.onMessage = message => this.handleMessage(message);
 	 * ```
 	 */
-	static getStateName(stateId: number): string {
-		switch (stateId) {
-			case EventBus.CONNECTING:
-				return 'CONNECTING';
-			case EventBus.OPEN:
-				return 'OPEN';
-			case EventBus.CLOSING:
-				return 'CLOSING';
-			case EventBus.CLOSED:
-				return 'CLOSED';
-			default:
-				return 'INVALID_STATE';
-		}
-	}
+	private readonly bus: BasicEventBus;
+
+	/**
+	 * An array that stores all registered event handlers
+	 * registered via the
+	 * {@link EventBus.register} and {@link EventBus.send} method.
+	 *
+	 * An array elements contains:
+	 * - the channel address the callback is registered too,
+	 * - the callback itself
+	 * - a persistent flag which indicates, if the handler is temporary
+	 *   and can be removed after the first call
+	 *
+	 * @see {@link EventBus.register}
+	 * @see {@link EventBus.unregister}
+	 * @see {@link EventBus.send}
+	 * @see {@link EventBus.handleMessage}
+	 *
+	 * @example
+	 * ```ts
+	 * if (message.type === 'rec') {
+	 * 	// call registered handlers
+	 * 	this.handlers
+	 * 		.filter(handler => handler[0] === message.address)
+	 * 		.forEach(handler => handler[1](message.body));
+	 *
+	 * 	// remove temporary reply handlers (inserted via `send`)
+	 * 	this.handlers = this.handlers.filter(
+	 * 		handler => handler[2] && handler[0] === message.address
+	 * 	);
+	 * }
+	 * ```
+	 */
+	private handlers: Array<
+		readonly [channel: ChannelAddress, callback: Callback, persistent: boolean]
+	> = [];
 
 	/**
 	 * The options as readonly member for the current event bus instance.
@@ -138,230 +128,9 @@ export class EventBus {
 	 * console.log('Ping interval: ', eventBus.options.pingInterval);
 	 * ```
 	 */
-	readonly options: Required<Options>;
-
-	/**
-	 * The web socket managed by the event bus instance.
-	 *
-	 * This is the event bus where the event bus bridge packages are being sent
-	 * and received when the web socket is open.
-	 *
-	 * @see {@link EventBus.decodeMessage}
-	 * @see {@link EventBus.encodeMessage}
-	 *
-	 * @example
-	 * ```ts
-	 * // send a ping through the socket
-	 * this.socket.send(EventBus.encodeMessage({ type: 'ping' }));
-	 *
-	 * // all methods and accessors of the web socket are available
-	 * this.socket.onmessage = function (this: WebSocket, ev: EventMessage) {
-	 * 	const message = EventBus.decodeMessage(ev.data);
-	 * 	console.log('Received message:', message);
-	 * }
-	 * ```
-	 */
-	private socket: WebSocket;
-
-	/**
-	 * An object that stores all registered event handlers
-	 * registered via the registerHandler method.
-	 *
-	 * The object contains, with the channel address as key, arrays
-	 * of callbacks that are listening to the specific address.
-	 *
-	 * If no callback is listening to a specific channel,
-	 * the entire key-value pair gets deleted.
-	 *
-	 * @see {@link EventBus.registerHandler}
-	 * @see {@link EventBus.unregisterHandler}
-	 * @see {@link EventBus.setupConnection}
-	 *
-	 * @example
-	 * ```ts
-	 * // some event bus address
-	 * const address = 'CHANNEL_ADDRESS';
-	 *
-	 * // some message and error message
-	 * const successMessage = { type: 'rec', body: {} };
-	 * const errorMessage = null;
-	 *
-	 * // check if handler for address is available
-	 * if (this.handlers[address]) {
-	 * 	// iterate of all registered handlers
-	 * 	that.handlers[message.address].forEach(handler => {
-	 * 		handler(
-	 * 			successMessage as SuccessMessage,
-	 * 			errorMessage as ErrorMessage
-	 * 		);
-	 * 	});
-	 * }
-	 * ```
-	 */
-	private readonly handlers: { [key: string]: Array<Callback> };
-
-	/**
-	 * An object that stores a specific callback function for a reply message
-	 * requested using the `send` function.
-	 *
-	 * @see {@link EventBus.send}
-	 * @see {@link EventBus.setupConnection}
-	 *
-	 * @example
-	 * ```ts
-	 * // some message
-	 * const message = { type: 'rec', address: 'SOME_UUID' body: {} };
-	 *
-	 * // some message and error message
-	 * const successMessage = { type: 'rec', address: 'SOME_UUID' body: {} };
-	 * const errorMessage = null;
-	 *
-	 * // check if channel is available
-	 * if (this.replyHandlers[message.address]) {
-	 * 	this.replyHandlers[message.address](
-	 * 		successMessage as SuccessMessage,
-	 * 		errorMessage as ErrorMessage
-	 *	);
-	 * 	// call reply handler only once
-	 * 	delete that.replyHandlers[message.address];
-	 * }
-	 * ```
-	 */
-	private readonly replyHandlers: { [key: string]: Callback };
-
-	/**
-	 * Stores pending messages if the eventbus connection is currently closed.
-	 *
-	 * @see {@link EventBus.publish}
-	 * @see {@link EventBus.send}
-	 * @see {@link EventBus.setupConnection}
-	 *
-	 * @example
-	 * ```ts
-	 * // some message
-	 * const message = { type: 'rec', address: 'SOME_UUID' body: {} };
-	 *
-	 * if (this.state !== EventBus.OPEN) {
-	 * 	// eventbus closed -> store
-	 * 	this.pendingMessages.push(message);
-	 * } else {
-	 * 	// eventbus open -> send directly
-	 * 	this.sendMessage(message);
-	 * }
-	 * ```
-	 */
-	private pendingMessages: Array<Message>;
-
-	/**
-	 * The ping timer id generated by a `setInterval()`.
-	 *
-	 * If pinging is enabled, this stores the current ping timer id.
-	 * Otherwise, it is `null`.
-	 *
-	 * @see {@link NodeJS.Timeout}
-	 * @see {@link EventBus.setInterval}
-	 * @see {@link EventBus.enablePing}
-	 * @see {@link EventBus.options}
-	 *
-	 * @example
-	 * ```ts
-	 * // get ping interval from options
-	 * const { pingInterval } = this.options;
-	 *
-	 * if (this.pingTimerId) clearInterval(this.pingTimerId);
-	 * this.pingTimerId = setInterval(() => {
-	 * 	this.sendPing();
-	 * }, pingInterval);
-	 * ```
-	 */
-	private pingTimerId?: NodeJS.Timeout;
-
-	/**
-	 * The reconnect timer id generated by `setTimeout()`.
-	 *
-	 * It stores the current reconnect timer id if:
-	 *
-	 * - the web socket has closed unexpectedly **and**
-	 * - automatic reconnect is enabled **and**
-	 * - the reconnect attempts specified in the options are not reached
-	 *
-	 * otherwise, it is `null`.
-	 *
-	 * @see {@link NodeJS.Timeout}
-	 * @see {@link setTimeout}
-	 * @see {@link EventBus.setupConnection | setupConnection (here socket.onclose)}
-	 * @see {@link EventBus.reconnectEnabled}
-	 * @see {@link EventBus.reconnectAttempts}
-	 * @see {@link EventBus.newReconnectDelay}
-	 *
-	 * @example
-	 * ```ts
-	 * if (this.pingTimerId) clearInterval(this.pingTimerId);
-	 * if (
-	 * 	this.reconnectEnabled &&
-	 * 	this.reconnectAttempts < this.options.reconnectAttempts
-	 * ) {
-	 * 	this.reconnectTimerId = setTimeout(() => {
-	 * 		this.socket = this.setupConnection(url, options);
-	 * 		}, this.newReconnectDelay());
-	 *
-	 * 	this.reconnectAttempts++;
-	 * }
-	 * ```
-	 */
-	private reconnectTimerId?: NodeJS.Timeout;
-
-	/**
-	 * `true` if automatic reconnect is enabled; otherwise: `false`.
-	 *
-	 * Is set in enableReconnect and used in setupConnections,
-	 * especially in `socket.onclose`.
-	 *
-	 * If automatic reconnect is enabled,
-	 * the event bus tries to reconnect to the backend server
-	 * in increasing intervals until the connection gets re-established.
-	 *
-	 * @see {@link EventBus.enableReconnect}
-	 * @see {@link EventBus.setupConnection | setupConnection (here socket.onclose)}
-	 * @see {@link EventBus.reconnectTimerId}
-	 * @see {@link EventBus.newReconnectDelay}
-	 *
-	 * @example
-	 * ```ts
-	 * if (this.reconnectEnabled) {
-	 * 	this.reconnectTimerId = setTimeout(() => {
-	 * 		this.socket = this.setupConnection(url, options);
-	 * 	}, this.newReconnectDelay());
-	 *
-	 * 	this.reconnectAttempts++;
-	 * }
-	 * ```
-	 */
-	private reconnectEnabled: boolean;
-
-	/**
-	 * Number of reconnect attempts after loss of communication
-	 * via the web socket.
-	 *
-	 * Resets to `0` if reconnect was successful.
-	 *
-	 * @see {@link EventBus.reconnectEnabled}
-	 * @see {@link EventBus.setupConnection | setupConnection (here socket.onclose)}
-	 * @see {@link EventBus.reconnectTimerId}
-	 * @see {@link EventBus.newReconnectDelay}
-	 *
-	 * @example
-	 * ```ts
-	 * if (this.reconnectEnabled) {
-	 * 	this.reconnectTimerId = setTimeout(() => {
-	 * 		this.socket = this.setupConnection(url, options);
-	 * 	}, this.newReconnectDelay());
-	 *
-	 * 	this.reconnectAttempts++;
-	 * }
-	 * ```
-	 */
-	private reconnectAttempts: number;
+	get options(): Options {
+		return this.bus.options;
+	}
 
 	/**
 	 * The server url the event bus is connected to.
@@ -372,28 +141,120 @@ export class EventBus {
 	 * ```ts
 	 * const eb = new EventBus('http://localhost:9870/bridge');
 	 *
-	 * console.log(eb.serverUrl); // 'http://localhost:9870/bridge'
+	 * console.log(eb.url); // 'http://localhost:9870/bridge'
 	 * ```
 	 */
-	readonly serverUrl: string;
+	get url(): string {
+		return this.bus.url;
+	}
 
 	/**
-	 * The current number of received messages through the eventbus connection.
+	 * Returns the current state of the event bus.
+	 * Currently, this can be connecting, open, closing and closed.
 	 *
-	 * @see {@link EventBus.setupConnection | setupConnection (here socket.onmessage)}
+	 * @see {@link ConnectionState}
+	 *
+	 * @example
+	 * ```ts
+	 * const eb = new EventBus('http://localhost:9870/bridge');
+	 * // get current state from event bus
+	 * console.log(eb.state);
+	 * ```
+	 */
+	get state(): ConnectionState {
+		return this.bus.state;
+	}
+
+	/**
+	 * Returns the number of reconnection attempts
+	 * if the socket has unexpectedly closed
+	 * and automatic reconnection is enabled. Otherwise, it returns `0`.
+	 *
+	 * Resets to `0` if the connection is re-established.
+	 *
+	 * @see {@link EventBus.autoReconnect}
+	 * @see {@link EventBus.setAutoReconnect}
+	 *
+	 * @example
+	 * ```ts
+	 * const eventBus = new EventBus('http://localhost:9870/bridge');
+	 *
+	 * // later, the event bus closes unexpectedly and cannot reconnect
+	 * console.log(eventBus.reconnectionAttempts);
+	 * // -> number > 0
+	 * ```
+	 */
+	get reconnectAttempts(): number {
+		return this.bus.reconnectAttempts;
+	}
+
+	/**
+	 * The current number of sent messages to the server..
+	 *
+	 * @see {@link EventBus.send}
+	 * @see {@link EventBus.publish}
 	 *
 	 * @example
 	 * ```ts
 	 * const eb = new EventBus('http://localhost:9870/bridge');
 	 *
 	 * eb.onOpen = () => {
-	 * 	console.log(eb.messageCount); // 0
-	 * 	eb.send('awesome-channel', 'Hello World!');
-	 * 	console.log(eb.messageCount); // 1
+	 * 	console.log(eb.sentMessages); // 0
+	 * 	eb.publish('awesome-channel', 'Hello World!');
+	 * 	console.log(eb.sentMessages); // 1
 	 * };
 	 * ```
 	 */
-	messageCount: number;
+	get sentMessages(): number {
+		return this.bus.sentMessages;
+	}
+
+	/**
+	 * The current number of received messages from the server.
+	 *
+	 * @see {@link EventBus.handleMessage}
+	 * @see {@link EventBus.register}
+	 *
+	 * @example
+	 * ```ts
+	 * const eb = new EventBus('http://localhost:9870/bridge');
+	 *
+	 * eb.onOpen = () => {
+	 * 	console.log(eb.receivedMessages); // 0
+	 * };
+	 *
+	 * // later on a received message
+	 * eb.onMessage = message => {
+	 * 	console.log(eb.receivedMessages); // 1
+	 * };
+	 * ```
+	 */
+	get receivedMessages(): number {
+		return this.bus.receivedMessages;
+	}
+
+	/**
+	 * Returns `true` if automatic reconnect is enabled.
+	 * Otherwise, it returns `false`.
+	 *
+	 * @see {@link EventBus.setAutoReconnect}
+	 *
+	 * @example
+	 * ```ts
+	 * const eventBus = new EventBus('http://localhost:9870/bridge');
+	 *
+	 * eventBus.onOpen = () => {
+	 * 	console.log(eventBus.autoReconnect);
+	 * 	// -> 'true'
+	 * 	eventBus.setAutoReconnect(false);
+	 * 	console.log(eventBus.autoReconnect);
+	 * 	// -> 'false'
+	 * }
+	 * ```
+	 */
+	get autoReconnect(): boolean {
+		return this.bus.autoReconnect;
+	}
 
 	/**
 	 * An event listener that gets called when:
@@ -416,7 +277,7 @@ export class EventBus {
 	 * // -> 'Event bus has opened'
 	 * ```
 	 */
-	onOpen?: () => void;
+	onOpen?(): void;
 
 	/**
 	 * An event listener that gets called:
@@ -443,7 +304,7 @@ export class EventBus {
 	 * // -> 'Event bus has lost connection'
 	 * ```
 	 */
-	onClose?: () => void;
+	onClose?(): void;
 
 	/**
 	 * An event listener that gets called when:
@@ -468,7 +329,7 @@ export class EventBus {
 	 * // -> 'Event bus has reconnected after a connection loss'
 	 * ```
 	 */
-	onReconnect?: () => void;
+	onReconnect?(): void;
 
 	/**
 	 * An event listener that gets called when:
@@ -498,7 +359,31 @@ export class EventBus {
 	 * //    }
 	 * ```
 	 */
-	onError?: (err: ErrorMessage) => void;
+	onError?(message: ErrorMessage): void;
+
+	/**
+	 * An event listener that gets called when:
+	 *
+	 * - a new message is received from the server via the socket
+	 *
+	 * When returned with `true` the event bus stops
+	 * further processing this message.
+	 *
+	 * @example
+	 * ```ts
+	 * const eventBus = new EventBus('http://localhost:9870/bridge');
+	 *
+	 * eventBus.onMessage = message => {
+	 * 	if (message.type === 'rec' && message.body === 'skip') {
+	 * 	  return true;
+	 * 	}
+	 * };
+	 *
+	 * // This specific message will be skipped
+	 * // and do not reach any registered handlers!
+	 * ```
+	 */
+	onMessage?(message: Message): boolean | void;
 
 	/**
 	 * Builds a new event bus
@@ -528,159 +413,18 @@ export class EventBus {
 	 * ```
 	 */
 	constructor(url: string, options?: Partial<Options>) {
-		this.options = { ...defaultOptions, ...options };
-		this.handlers = {};
-		this.replyHandlers = {};
-		this.pendingMessages = [];
-		this.reconnectEnabled = false;
-		this.reconnectAttempts = 0;
-		this.serverUrl = url;
-		this.messageCount = 0;
-		this.onError = errorMessage => {
-			logger.error('Received error message:', errorMessage);
+		this.bus = new BasicEventBus(url, options);
+		this.bus.onOpen = () => {
+			// register all current event handlers
+			this.handlers
+				.map(handler => handler[0])
+				.filter((channel, _, channels) => !channels.includes(channel))
+				.forEach(channel => this.bus.send(registerMessage(channel), false));
+			this.onOpen?.();
 		};
-
-		this.socket = this.setupConnection(url);
-	}
-
-	/**
-	 * Returns the current state of the event bus.
-	 * Currently, this can be connecting, open, closing and closed.
-	 *
-	 * It can be compared to the event bus state accessors
-	 * and can be converted into a human readable string with getStateName.
-	 *
-	 * @see {@link EventBus.CONNECTING}
-	 * @see {@link EventBus.OPEN}
-	 * @see {@link EventBus.CLOSING}
-	 * @see {@link EventBus.CLOSED}
-	 * @see {@link EventBus.getStateName}
-	 *
-	 * @example
-	 * ```ts
-	 * const eventBus = new EventBus('http://localhost:9870/bridge');
-	 * // get current state from event bus
-	 * const state = eventBus.state;
-	 * // convert to human readable name
-	 * console.log(EventBus.getStateName(state));
-	 * ```
-	 */
-	get state(): number {
-		return this.socket.readyState;
-	}
-
-	/**
-	 * Returns `true` if ping is enabled. Otherwise, it returns `false`.
-	 *
-	 * @see {@link EventBus.enablePing}
-	 * @see {@link EventBus.pingTimerId}
-	 *
-	 * @example
-	 * ```ts
-	 * const eventBus = new EventBus('http://localhost:9870/bridge');
-	 *
-	 * eventBus.onOpen = () => {
-	 * 	console.log(eventBus.isPingEnabled);
-	 * 	// -> 'true'
-	 * }
-	 * ```
-	 */
-	get isPingEnabled(): boolean {
-		return !!this.pingTimerId;
-	}
-
-	/**
-	 * Returns `true` if automatic reconnect is enabled.
-	 * Otherwise, it returns `false`.
-	 *
-	 * @see {@link EventBus.enableReconnect}
-	 * @see {@link EventBus.reconnectEnabled}
-	 *
-	 * @example
-	 * ```ts
-	 * const eventBus = new EventBus('http://localhost:9870/bridge');
-	 *
-	 * eventBus.onOpen = () => {
-	 * 	console.log(eventBus.isReconnectEnabled);
-	 * 	// -> 'false'
-	 * 	eventBus.enableReconnect(true);
-	 * 	console.log(eventBus.isReconnectEnabled);
-	 * 	// -> 'true'
-	 * }
-	 * ```
-	 */
-	get isReconnectEnabled(): boolean {
-		return this.reconnectEnabled;
-	}
-
-	/**
-	 * Returns the number of reconnection attempts
-	 * if the socket has unexpectedly closed
-	 * and automatic reconnection is enabled. Otherwise, it returns `0`.
-	 *
-	 * Resets to `0` if the connection is re-established.
-	 *
-	 * @see {@link EventBus.reconnectAttempts}
-	 * @see {@link EventBus.enableReconnect}
-	 *
-	 * @example
-	 * ```ts
-	 * const eventBus = new EventBus('http://localhost:9870/bridge');
-	 * // enable automatic reconnect
-	 * eventBus.enableReconnect(true);
-	 *
-	 * // later, the event bus closes unexpectedly and cannot reconnect
-	 * console.log(eventBus.reconnectionAttempts);
-	 * // -> number > 0
-	 * ```
-	 */
-	get reconnectionAttempts(): number {
-		return this.reconnectAttempts;
-	}
-
-	/**
-	 * Enable or disable sending continuous ping messages on an open event bus.
-	 *
-	 * The ping interval can be defined in the options when creating the event bus.
-	 *
-	 * It is automatically enabled when the event bus is opened,
-	 * and disabled when the event bus is closed.
-	 *
-	 * **Use with caution!
-	 * The backend server closes the connection
-	 * if no ping messages are received after a specific timeout!**
-	 * @param enable - `true` to enable continuous ping message,
-	 * `false` to disable
-	 *
-	 * @see {@link EventBus.isPingEnabled}
-	 * @see {@link Options}
-	 * @see {@link EventBus.onOpen}
-	 *
-	 * @example
-	 * ```ts
-	 * const eventBus = new EventBus('http://localhost:9870/bridge');
-	 *
-	 * eventBus.onOpen = () => {
-	 * 	// disable ping message send for 1 second
-	 * 	eventBus.enablePing(false);
-	 * 	setTimeout(() => {
-	 * 		eventBus.enablePing(true);
-	 * 	}, 1000);
-	 * };
-	 * ```
-	 */
-	enablePing(enable: boolean): void {
-		const { pingInterval } = this.options;
-
-		if (enable && pingInterval) {
-			this.sendPing();
-			this.pingTimerId = setInterval(() => {
-				this.sendPing();
-			}, pingInterval);
-		} else if (this.pingTimerId) {
-			clearInterval(this.pingTimerId);
-			this.pingTimerId = undefined;
-		}
+		this.bus.onClose = () => this.onOpen?.();
+		this.bus.onReconnect = () => this.onReconnect?.();
+		this.bus.onMessage = message => this.handleMessage(message);
 	}
 
 	/**
@@ -690,164 +434,37 @@ export class EventBus {
 	 * the event bus tries to reconnect to the backend server
 	 * in increasing time steps until a connection is re-established.
 	 *
-	 * Initially disabled.
+	 * Initially enabled.
 	 *
-	 * @param enable - true to enable automatic reconnect, false to disable
+	 * @param newState - `true` to enable automatic reconnect, `false` to disable
 	 *
-	 * @see {@link EventBus.isReconnectEnabled}
+	 * @see {@link EventBus.autoReconnect}
 	 * @see {@link EventBus.onReconnect}
-	 * @see {@link EventBus.newReconnectDelay}
 	 *
 	 * @example
 	 * ```ts
 	 * const eventBus = new EventBus('http://localhost:9870/bridge');
-	 * // enable automatic reconnect
-	 * eventBus.enableReconnect(true);
 	 *
 	 * eventBus.onReconnect = () => {
 	 * 	console.log('Event bus has reconnected');
 	 * };
+	 *
+	 * // disable automatic reconnect
+	 * eventBus.setAutoReconnect(false);
 	 * ```
 	 */
-	enableReconnect(enable: boolean): void {
-		this.reconnectEnabled = enable;
-		if (!enable && this.reconnectTimerId) {
-			clearTimeout(this.reconnectTimerId);
-			this.reconnectTimerId = undefined;
-			this.reconnectAttempts = 0;
-		}
+	setAutoReconnect(newState: boolean): void {
+		this.bus.autoReconnect = newState;
 	}
 
 	/**
-	 * Register an event handler to the specified address.
+	 * Publishes a message to the specified address.
 	 *
-	 * The given callback is executed when the event bus receives a message
-	 * on the specified address.
-	 *
-	 * The specified headers are sent with the registration message
-	 * that goes to the backend on the first registered event call
-	 * for this specified address.
-	 *
-	 * If the eventbus is currently closed it stores the callback
-	 * and registers it after the connection is open.
-	 *
-	 * @param address - the address on which the event handler
-	 * that executes the callback on incoming messages gets registered
-	 * @param callback - the function that gets executed
-	 * when incoming messages are received on the specified address
-	 * @param headers - optional headers sent with the initial registration
-	 * message to the backend on the first register event
-	 *
-	 * @see {@link EventBus.unregisterHandler}
-	 * @see {@link EventBus.onOpen}
-	 *
-	 * @example
-	 * ```ts
-	 * // some vertx eventbus address to register to
-	 * const address = 'MY_CHANNEL';
-	 *
-	 * // define a handler
-	 * const handler: Callback = (message, err) => {
-	 * 	if (err) {
-	 * 		console.error(err);
-	 * 	} else {
-	 * 		console.log(message);
-	 * 	}
-	 * };
-	 *
-	 * const eventBus = new EventBus('https://localhost:9870/bridge');
-	 *
-	 * eventBus.onOpen = () => {
-	 * 	eventBus.registerHandler(address, handler);
-	 * };
-	 *
-	 * // later
-	 * // unregister handler
-	 * eventBus.unregisterHandler(address, handler);
-	 * ```
-	 */
-	registerHandler(
-		address: ChannelAddress,
-		callback: Callback,
-		headers?: Headers
-	): void {
-		if (!this.handlers[address]) {
-			this.handlers[address] = [];
-			// First handler for this address so we should register the connection
-			this.subscribeToChannel(address, headers);
-		}
-
-		this.handlers[address].push(callback);
-	}
-
-	/**
-	 * Unregister an event handler from the specified address.
-	 *
-	 * The callback argument must be the same as the one that was registered
-	 * using `registerHandler()`.
-	 *
-	 * The specified headers are sent with the unregister message
-	 * that goes to the backend
-	 * **if** no other event handlers are registered to this address anymore.
-	 *
-	 * @param address - the address the event handler unregisters from
-	 * @param callback - the callback to unregister from the address
-	 * @param headers - optional headers sent with the last unregister message
-	 *
-	 * @see {@link EventBus.registerHandler}
-	 *
-	 * @example
-	 * ```ts
-	 * // some vertx eventbus address to register to
-	 * const address = 'MY_CHANNEL';
-	 *
-	 * // define a handler
-	 * const handler: Callback = (message, err) => {
-	 * 	if (err) {
-	 * 		console.error(err);
-	 * 	} else {
-	 * 		console.log(message);
-	 * 	}
-	 * };
-	 *
-	 * const eventBus = new EventBus('https://localhost:9870/bridge');
-	 *
-	 * eventBus.onOpen = () => {
-	 * 	eventBus.registerHandler(address, handler);
-	 * };
-	 *
-	 * // later
-	 * // unregister handler
-	 * eventBus.unregisterHandler(address, handler);
-	 * ```
-	 */
-	unregisterHandler(
-		address: ChannelAddress,
-		callback: Callback,
-		headers?: Headers
-	): void {
-		const handlers = this.handlers[address];
-		if (handlers) {
-			const newHandlers = handlers.filter(handler => handler !== callback);
-
-			if (newHandlers.length > 0) {
-				this.handlers[address] = newHandlers;
-			} else {
-				delete this.handlers[address];
-				// No more local handlers so we should unregister the connection
-				this.unsubscribeFromChannel(address, headers);
-			}
-		}
-	}
-
-	/**
-	 * Broadcasts or publishes a message to the specified address.
-	 *
-	 * If the eventbus is currently closed it stores the message
+	 * If the eventbus is currently closed, it stores the message
 	 * and publishes it after the connection is open.
 	 *
-	 * @param address - address to which the message gets published
-	 * @param message - the message that will be broadcasted
+	 * @param address - address to which the content gets published
+	 * @param content - the content that will be broadcasted
 	 * to the specified address
 	 * @param headers - optional headers sent with the event bus message
 	 *
@@ -867,45 +484,25 @@ export class EventBus {
 	 */
 	publish(
 		address: ChannelAddress,
-		message: JsonSerializable,
+		content: JsonSerializable,
 		headers?: Headers
 	): void {
-		// assemble
-		const envelope: PublishMessage = {
-			type: 'publish',
-			address,
-			headers: headers || {},
-			body: message
-		};
-
-		if (this.state !== EventBus.OPEN) {
-			// connection currently closed -> store message
-			this.pendingMessages.push(envelope);
-		} else {
-			// connection open -> send immediate
-			this.sendMessage(envelope);
-		}
+		this.bus.send(publishMessage(address, content, headers));
 	}
 
 	/**
-	 * Broadcasts or publishes a message to the specified address.
+	 * Publishes a message to the specified address.
 	 * It also registers a one-time event handler
 	 * that gets called when the first answer to the message is received.
 	 *
-	 * Internally it generates a UUID as reply address
-	 * that is sent with the message.
-	 * The specified callback is registered in the reply handlers
-	 * using the generated UUID.
-	 *
-	 * @param address - address the message is sent to
-	 * @param message - the message that will sent to the specified address
-	 * @param callback - the function
-	 * that will get called when the first answer is received
+	 * @param address - address the content is sent to
+	 * @param content - the content that will sent to the specified address
+	 * @param callback - the function that gets called
+	 * when the first answer is received
 	 * @param headers - optional headers sent with the event bus message
 	 *
 	 * @see {@link EventBus.onOpen}
-	 * @see {@link EventBus.generateUUID}
-	 * @see {@link EventBus.replyHandlers}
+	 * @see {@link EventBus.handlers}
 	 *
 	 * @example
 	 * ```ts
@@ -915,35 +512,136 @@ export class EventBus {
 	 * const eventBus = new EventBus('http://localhost:9870/bridge');
 	 *
 	 * eventBus.onOpen = () => {
-	 * 	eventBus.send(address, 'Ping', (message, err) => {
+	 * 	eventBus.send(address, 'Ping', message => {
 	 * 		console.log('Pong:', message);
 	 * 	});
 	 * };
 	 * ```
 	 */
+	// Internally it generates a UUID as reply address
+	// that is sent with the message.
+	// The specified callback is registered in the reply handlers
+	// using the generated UUID.
 	send(
 		address: ChannelAddress,
-		message: JsonSerializable,
+		content: JsonSerializable,
 		callback: Callback,
 		headers?: Headers
 	): void {
-		const replyAddress = EventBus.generateUUID();
-		this.replyHandlers[replyAddress] = callback;
+		const replyAddress = generateUUID();
+		this.handlers.push([replyAddress, callback, false]);
+		this.bus.send(sendMessage(address, replyAddress, content, headers));
+	}
 
-		const envelope: SendMessage = {
-			type: 'send',
-			address,
-			headers: headers || {},
-			body: message,
-			replyAddress
-		};
+	/**
+	 * Registers an event handler to the specified address.
+	 *
+	 * The given callback is executed when the event bus receives a message
+	 * on the specified address.
+	 *
+	 * @param address - the address on which the event handler
+	 * that executes the callback on incoming messages gets registered
+	 * @param callback - the function that gets executed
+	 * when incoming messages are received on the specified address
+	 * @param headers - optional headers sent with the initial registration
+	 * message to the backend on the first register event
+	 *
+	 * @see {@link EventBus.unregister}
+	 * @see {@link EventBus.onOpen}
+	 *
+	 * @example
+	 * ```ts
+	 * // some vertx eventbus address to register to
+	 * const address = 'MY_CHANNEL';
+	 *
+	 * // define a handler
+	 * const handler: Callback = message => {
+	 * 	console.log(message);
+	 * };
+	 *
+	 * const eventBus = new EventBus('https://localhost:9870/bridge');
+	 *
+	 * eventBus.onOpen = () => {
+	 * 	eventBus.register(address, handler);
+	 * };
+	 *
+	 * // later
+	 * // unregister handler
+	 * eventBus.unregister(address, handler);
+	 * ```
+	 */
+	// The specified headers are sent with the registration message
+	// that goes to the backend on the first registered event call
+	// for this specified address.
+	//
+	// If the eventbus is currently closed it stores the callback
+	// and registers it after the connection is open.
+	register(
+		address: ChannelAddress,
+		callback: Callback,
+		headers?: Headers
+	): void {
+		// send register if no other listens for this address yet
+		// -> tell server to forward all traffic on this address
+		if (this.handlers.every(handler => handler[0] !== address)) {
+			this.bus.send(registerMessage(address, headers));
+		}
 
-		if (this.state !== EventBus.OPEN) {
-			// connection currently closed -> store message
-			this.pendingMessages.push(envelope);
-		} else {
-			// connection open -> send immediate
-			this.sendMessage(envelope);
+		// register
+		this.handlers.push([address, callback, true]);
+	}
+
+	/**
+	 * Unregisters an event handler from the specified address.
+	 *
+	 * The callback argument must be the same as the one that was registered
+	 * using `registerHandler()`.
+	 *
+	 * The specified headers are sent with the unregister message
+	 * that goes to the backend
+	 * **if** no other event handlers are registered to this address anymore.
+	 *
+	 * @param address - the address the event handler unregisters from
+	 * @param callback - the callback to unregister from the address
+	 * @param headers - optional headers sent with the last unregister message
+	 *
+	 * @see {@link EventBus.register}
+	 *
+	 * @example
+	 * ```ts
+	 * // some vertx eventbus address to register to
+	 * const address = 'MY_CHANNEL';
+	 *
+	 * // define a handler
+	 * const handler: Callback = message => {
+	 * 	console.log(message);
+	 * };
+	 *
+	 * const eventBus = new EventBus('https://localhost:9870/bridge');
+	 *
+	 * eventBus.onOpen = () => {
+	 * 	eventBus.register(address, handler);
+	 * };
+	 *
+	 * // later
+	 * // unregister handler
+	 * eventBus.unregister(address, handler);
+	 * ```
+	 */
+	unregister(
+		address: ChannelAddress,
+		callback: Callback,
+		headers: Headers = {}
+	): void {
+		// unregister
+		this.handlers = this.handlers.filter(
+			handler => !(handler[0] === address && handler[1] === callback)
+		);
+
+		// send unregister if no other listens for this address
+		// -> save socket bandwidth
+		if (this.handlers.every(handler => handler[0] !== address)) {
+			this.bus.send(unregisterMessage(address, headers));
 		}
 	}
 
@@ -952,401 +650,50 @@ export class EventBus {
 	 * The connection will not be re-established automatically,
 	 * even if automatic reconnect is enabled.
 	 *
-	 * @see {@link EventBus.enableReconnect}
+	 * @see {@link EventBus.autoReconnect}
+	 * @see {@link EventBus.setAutoReconnect}
 	 *
 	 * @example
 	 * ```ts
 	 * const eventBus = new EventBus('http://localhost:9870/bridge');
-	 * // close event bus
+	 * // cleanup
 	 * eventBus.close();
 	 * ```
 	 */
 	close(): void {
-		this.enableReconnect(false);
-		this.socket.close();
-		if (this.reconnectTimerId) clearTimeout(this.reconnectTimerId);
+		this.bus.close();
 	}
 
 	/**
-	 * Generates a unique identifier for an address used as a reply address.
-	 * @returns a unique identifier for an address
+	 * Handles incoming messages from the basic event bus.
+	 * It sorts the messages, call the event handlers (if defined),
+	 * and deletes temporary event handlers from the `send` function.
 	 *
-	 * @see {@link EventBus.send}
-	 * @see {@link Message}
-
+	 * @param message - the received message from the basic event bus
 	 *
-	 * @example
-	 * ```ts
-	 * const replyAddress = EventBus.generateUUID();
-	 *
-	 * const envelope: Message = {
-	 * 	type: 'send',
-	 * 	address,
-	 * 	headers: headers || {},
-	 * 	body: message,
-	 * 	replyAddress
-	 * };
-	 * ```
-	 */
-	private static generateUUID(): ChannelAddress {
-		let b: number;
-		// noinspection SpellCheckingInspection
-		return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, a => {
-			b = Math.random() * 16;
-			// eslint-disable-next-line no-bitwise
-			return (a === 'y' ? (b & 3) | 8 : b | 0).toString(16);
-		});
-	}
-
-	/**
-	 * Encodes a message that is sent to the vertx event bus.
-	 * @param message - a valid message that will be encoded
-	 * to be sent on the event bus
-	 * @returns the encoded message
-	 *
-	 * @see {@link EventBus.publish}
-	 * @see {@link EventBus.send}
+	 * @see {@link (EventBus:constructor) | EventBus Constructor}
 	 *
 	 * @example
 	 * ```ts
-	 * const message: Message = {
-	 * 	type: 'publish',
-	 * 	address: channel,
-	 * 	headers: headers || {},
-	 * 	body: message
-	 * };
-	 *
-	 * this.socket.send(EventBus.encodeMessage(message));
+	 * this.bus = new BasicEventBus(url, options);
+	 * this.bus.onMessage = message => this.handleMessage(message);
 	 * ```
 	 */
-	private static encodeMessage(message: Message): string {
-		return JSON.stringify(message);
-	}
+	private handleMessage(message: Message): void {
+		// first, call upper layer and skip further processing, when desired
+		if (this.onMessage?.(message)) return;
 
-	/**
-	 * Decodes the data received from the vertx event bus to a message object.
-	 * @param data - the data received from the vertx event bus
-	 * @returns the decoded message object
-	 *
-	 * @see {@link EventBus.setupConnection | setupConnection (here socket.onmessage)}
-	 *
-	 * @example
-	 * ```ts
-	 * // data received from the socket
-	 * const data = 'some_data';
-	 *
-	 * const message = EventBus.decodeMessage(data);
-	 * ```
-	 */
-	private static decodeMessage(data: string): Message {
-		return JSON.parse(data) as Message;
-	}
+		if (message.type === 'err') this.onError?.(message);
+		else if (message.type === 'rec') {
+			// call registered handlers
+			this.handlers
+				.filter(handler => handler[0] === message.address)
+				.forEach(handler => handler[1](message.body));
 
-	/**
-	 * Creates a new web socket using SockJS with the specified options
-	 * and registers all needed event handlers to the web socket.
-	 *
-	 * It automatically tries to connect to the specified URL.
-	 *
-	 * Events:
-	 *
-	 * - {@link EventBus.onOpen} - if the web socket is opened
-	 * - {@link EventBus.onClose} - if the web socket is closed
-	 * - {@link EventBus.onReconnect} - if the web socket has reconnected
-	 *
-	 * @param url - url the SockJS socket tries to connect to
-	 * @param options - optional options for the SockJS socket
-	 * @returns the web socket from SockJS
-	 *
-	 * @example
-	 * ```ts
-	 * constructor(url: string) {
-	 * 	this.socket = this.setupConnection(url);
-	 * }
-	 * ```
-	 */
-	private setupConnection(url: string, options?: Partial<Options>): WebSocket {
-		const socket: any = new SockJS(url, null, options);
-
-		// The socket onopen event handler enables continuous ping,
-		// registers to subscribed events,
-		// send pending messages and triggers the onReconnect event handler
-		// if a reconnect has happened.
-		socket.onopen = () => {
-			this.enablePing(true);
-			// subscribe to registered channels
-			Object.keys(this.handlers).forEach(channel => {
-				this.subscribeToChannel(channel);
-			});
-			// send pending messages
-			this.pendingMessages.forEach(message => {
-				this.sendMessage(message);
-			});
-			// inform subscribers
-			if (this.onOpen) {
-				this.onOpen();
-			}
-			if (this.reconnectTimerId) {
-				this.reconnectAttempts = 0;
-				if (this.onReconnect) {
-					this.onReconnect();
-				}
-			}
-		};
-
-		// The socket onclose event handler disables continuous ping,
-		// triggers the onClose event handler
-		// and set the reconnect timeout that creates a new SockJS web socket
-		// if automatic reconnect is enabled.
-		socket.onclose = () => {
-			// clear up ping
-			this.enablePing(false);
-			if (this.pingTimerId) clearInterval(this.pingTimerId);
-			// inform subscriber
-			if (this.onClose) {
-				this.onClose();
-			}
-			// set up automatic reconnection
-			if (
-				this.reconnectEnabled &&
-				this.reconnectAttempts < this.options.reconnectAttempts
-			) {
-				this.reconnectTimerId = setTimeout(() => {
-					this.socket = this.setupConnection(url, options);
-				}, this.newReconnectDelay());
-
-				this.reconnectAttempts++;
-			}
-		};
-
-		const that = this;
-		// The socket onmessage decodes the received message,
-		// add a reply function to the message object if the message is a reply,
-		// check if the message is an error message
-		// and search for event handlers that are registered to the message address.
-		// If handlers are available, call them,
-		// otherwise search for reply handlers
-		// that are registered in the send method before.
-		// If also no reply handlers were found, log an error or output a warning.
-		// Here the backend server sends the client unhandled messages
-		// which indicates a missing unsubscribe from the message channel.
-		socket.onmessage = function handleMessage(
-			this: WebSocket,
-			ev: MessageEvent
-		) {
-			const message = EventBus.decodeMessage(ev.data);
-			that.messageCount++;
-
-			if (message.type === 'rec' || message.type === 'err') {
-				// define a reply function on the message itself
-				if (message.replyAddress) {
-					Object.defineProperty(message, 'reply', {
-						value(replyMessage: any, callback: Callback, headers?: Headers) {
-							return that.send(
-								replyMessage.replyAddress,
-								replyMessage,
-								callback,
-								headers
-							);
-						}
-					});
-				}
-
-				const successMessage = message.type === 'err' ? null : message;
-				const errorMessage = message.type === 'err' ? message : null;
-
-				if (that.handlers[message.address]) {
-					// iterate of all registered handlers
-					that.handlers[message.address].forEach(handler => {
-						handler(successMessage, errorMessage);
-					});
-				} else if (that.replyHandlers[message.address]) {
-					that.replyHandlers[message.address](successMessage, errorMessage);
-					// call reply handler only once
-					delete that.replyHandlers[message.address];
-				} else {
-					if (errorMessage) {
-						if (that.onError) {
-							that.onError(errorMessage);
-						}
-					}
-					logger.warn('No handler found for message: ', successMessage);
-				}
-			} else {
-				logger.warn('Unknown message type received:', message);
-			}
-		};
-
-		return socket;
-	}
-
-	/**
-	 * Send a ping message to the backend server
-	 * if the connection is open
-	 * to prove to the backend server that the client is still connected.
-	 *
-	 * @see {@link WebSocket}
-	 * @see {@link Message}
-	 *
-	 * @example
-	 * ```ts
-	 * if (enable && pingInterval > 0) {
-	 * 	this.sendPing();
-	 * 	this.pingTimerId = setInterval(() => {
-	 * 		this.sendPing();
-	 * 	}, pingInterval);
-	 * }
-	 * ```
-	 */
-	private sendPing(): void {
-		if (this.state === EventBus.OPEN) {
-			this.socket.send(EventBus.encodeMessage({ type: 'ping' }));
-		}
-	}
-
-	/**
-	 * Send a registration message to the backend server
-	 * to receive all messages of that address from the vertx event bus.
-	 *
-	 * @param address - the channel address to register or subscribe to
-	 * @param headers - optional headers sent in the event bus message
-	 *
-	 * @see {@link WebSocket}
-	 * @see {@link Message}
-	 *
-	 * @example
-	 * ```ts
-	 * if (!this.handlers[address]) {
-	 * 	this.handlers[address] = [];
-	 * 	// First handler for this address so we should register the connection
-	 * 	this.subscribeToChannel(address, headers);
-	 * }
-	 * ```
-	 */
-	private subscribeToChannel(address: ChannelAddress, headers?: Headers): void {
-		if (this.state === EventBus.OPEN) {
-			this.socket.send(
-				EventBus.encodeMessage({
-					type: 'register',
-					address,
-					headers: headers || {}
-				})
+			// remove temporary reply handlers (inserted via `send`)
+			this.handlers = this.handlers.filter(
+				handler => handler[2] && handler[0] === message.address
 			);
 		}
-	}
-
-	/**
-	 * Send a unregister message to the backend server
-	 * to cancel the subscription
-	 * to all future messages from the specified address.
-	 *
-	 * @param address - the channel address to unregister or unsubscribe from
-	 * @param headers - optional headers sent in the event bus message
-	 *
-	 * @see {@link WebSocket}
-	 * @see {@link Message}
-	 *
-	 * @example
-	 * ```ts
-	 * if (newHandlers.length === 0) {
-	 * 	delete this.handlers[address];
-	 * 	// No more local handlers so we should unregister the connection
-	 * 	this.unsubscribeFromChannel(address, headers);
-	 * }
-	 * ```
-	 */
-	private unsubscribeFromChannel(
-		address: ChannelAddress,
-		headers?: Headers
-	): void {
-		if (this.state === EventBus.OPEN) {
-			this.socket.send(
-				EventBus.encodeMessage({
-					type: 'unregister',
-					address,
-					headers: headers || {}
-				})
-			);
-		}
-	}
-
-	/**
-	 * Send the given message to the backend server.
-	 * @param message - the message that will be sent
-	 *
-	 * @see {@link WebSocket}
-	 * @see {@link Message}
-	 *
-	 * @example
-	 * ```ts
-	 * const envelope: PublishMessage = {
-	 * 	type: 'publish',
-	 * 	address: channel,
-	 * 	headers: headers || {},
-	 * 	body: message
-	 * };
-	 *
-	 * this.sendMessage(envelope);
-	 * ```
-	 */
-	private sendMessage(message: Message): void {
-		if (this.state === EventBus.OPEN) {
-			this.socket.send(EventBus.encodeMessage(message));
-		}
-	}
-
-	/**
-	 * Calculate a new reconnect delay
-	 * after the event bus tries to reconnect to the backend server
-	 * if automatic reconnect is enabled.
-	 *
-	 * @returns a new reconnect delay in milliseconds
-	 * which is in the range of minimum delay
-	 * and maximum delay and increases
-	 * with increasing reconnect attempts based on a power function.
-	 *
-	 * @see {@link Options}
-	 * @see {@link EventBus.reconnectAttempts}
-	 * @see {@link EventBus.setupConnection | setupConnection (here socket.onclose)}
-	 *
-	 * @example
-	 * ```ts
-	 * if (
-	 * 	this.reconnectEnabled &&
-	 * 	this.reconnectAttempts < this.options.reconnectAttempts
-	 * ) {
-	 * 	this.reconnectTimerId = setTimeout(() => {
-	 * 		this.socket = this.setupConnection(url, options);
-	 * 	}, this.newReconnectDelay());
-	 *
-	 * 	this.reconnectAttempts++;
-	 * }
-	 * ```
-	 */
-	private newReconnectDelay(): number {
-		// It multiplies the minimal delay with a power function
-		// that has as base the current reconnect attempts
-		// and as exponent the in the options defined exponent
-		// to determine a new delay time.
-		// Then a random number between 0 and 1 is generated
-		// which is multiplied to the randomization factor
-		// that describes the deviation from calculated delay time.
-		// Now the deviation is added or subtracted to calculated delay time
-		// based on the random factor.
-		// Finally the minimum of the delay time
-		// and the maximum delay time is returned.
-		let ms =
-			this.options.delayMin *
-			this.options.reconnectExponent ** this.reconnectAttempts;
-		if (this.options.randomizationFactor) {
-			const rand = Math.random();
-			const deviation = Math.floor(
-				rand * this.options.randomizationFactor * ms
-			);
-			// eslint-disable-next-line no-bitwise
-			ms = (Math.floor(rand * 10) & 1) === 0 ? ms - deviation : ms + deviation;
-		}
-		// eslint-disable-next-line no-bitwise
-		return Math.min(ms, this.options.delayMax) | 0;
 	}
 }

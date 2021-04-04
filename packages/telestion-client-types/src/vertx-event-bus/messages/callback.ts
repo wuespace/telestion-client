@@ -1,5 +1,4 @@
-import { ReceiveMessage } from './receive-message';
-import { ErrorMessage } from './error-message';
+import { JsonSerializable } from '../../json-serializable';
 
 /**
  * a function that is used as event handlers
@@ -16,17 +15,10 @@ import { ErrorMessage } from './error-message';
  * const eventBus = new EventBus('http://localhost:8081/');
  *
  * eventBus.onopen = () => {
- * 	eventBus.registerHandler(channel, (message, error) => {
- * 		if (message) {
- * 			console.log('Received message:', message);
- * 		} else {
- * 			console.error('Received error:', error);
- * 		}
+ * 	eventBus.registerHandler(channel, message => {
+ * 		console.log('Received message:', message);
  * 	});
  * };
  * ```
  */
-export type Callback = (
-	message: ReceiveMessage | null,
-	error: ErrorMessage | null
-) => void;
+export type Callback = (content: JsonSerializable) => void;

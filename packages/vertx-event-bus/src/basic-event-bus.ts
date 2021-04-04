@@ -19,19 +19,13 @@
  * @packageDocumentation
  */
 import SockJS from 'sockjs-client';
-import {
-	Message,
-	Options,
-	PingMessage
-} from '@wuespace/telestion-client-types';
+import { Message, Options } from '@wuespace/telestion-client-types';
 
-import { defaultOptions } from './default-options';
-import { validate } from './lib/validator';
-import { ConnectionState } from './model';
+import { ConnectionState, defaultOptions } from './model';
+import { validate, errorMessage, pingMessage } from './lib';
 
 // performance improvement
-const pingMessage: PingMessage = { type: 'ping' };
-const rawPing = JSON.stringify(pingMessage);
+const rawPing = JSON.stringify(pingMessage());
 
 /**
  * A basic Vert.x Event Bus connector.
@@ -113,7 +107,7 @@ export class BasicEventBus {
 	 *
 	 * eb.onOpen = () => {
 	 * 	console.log(eb.sentMessages); // 0
-	 * 	eb.send('awesome-channel', 'Hello World!');
+	 * 	eb.send(publishMessage('awesome-channel', 'Hello World!'));
 	 * 	console.log(eb.sentMessages); // 1
 	 * };
 	 * ```
@@ -174,9 +168,6 @@ export class BasicEventBus {
 	/**
 	 * Returns the current state of the basic event bus.
 	 * Currently, this can be connecting, open, closing and closed.
-	 *
-	 * It can be compared to the event bus state accessors
-	 * and can be converted into a human readable string with getStateName.
 	 *
 	 * @see {@link ConnectionState}
 	 *
@@ -406,7 +397,7 @@ export class BasicEventBus {
 	 * // set an event listener when the the event bus is open
 	 * eventBus.onOpen = () => {
 	 * 	// publish a simple message to the event bus
-	 * 	eventBus.send({ type: 'register', address: 'some-channel' , headers: {} });
+	 * 	eventBus.send(registerMessage('some-channel'));
 	 * };
 	 * ```
 	 */
@@ -432,19 +423,10 @@ export class BasicEventBus {
 	 * ```ts
 	 * const eb = new BasicEventBus('https://localhost:9870/bridge');
 	 * // send a sample message (that should be stored on closed connection)
-	 * eb.send({
-	 * 	type: "publish",
-	 * 	address: 'some-address',
-	 * 	body: 'Boing!',
-	 * 	headers: {}
-	 * });
+	 * eb.send(publishMessage('some-channel', 'Boing!'));
 	 *
 	 * // send a register message (that should NOT be stored)
-	 * eb.send({
-	 * 	type: 'register',
-	 * 	address: 'some-address',
-	 * 	headers: {}
-	 * });
+	 * eb.send(registerMessage('some-channel'), false);
 	 * ```
 	 */
 	send(message: Message, store = true): void {
@@ -597,20 +579,18 @@ export class BasicEventBus {
 			if (validate(message)) {
 				this.onMessage?.(message);
 			} else {
-				this.onMessage?.({
-					type: 'err',
-					failureCode: 2,
-					failureType: 'SyntaxError',
-					message: `Invalid message received: ${event.data}`
-				});
+				this.onMessage?.(
+					errorMessage(
+						2,
+						'SyntaxError',
+						`Invalid message received: ${event.data}`
+					)
+				);
 			}
 		} catch (err) {
-			this.onMessage?.({
-				type: 'err',
-				failureCode: 1,
-				failureType: 'SyntaxError',
-				message: `Cannot decode message: '${event.data}'`
-			});
+			this.onMessage?.(
+				errorMessage(1, 'SyntaxError', `Cannot decode message: '${event.data}'`)
+			);
 		}
 	}
 
