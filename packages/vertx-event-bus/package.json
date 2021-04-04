@@ -55,7 +55,6 @@
 		}
 	],
 	"dependencies": {
-		"@fliegwerk/logsemts": "^0.4.0-0",
 		"@wuespace/telestion-client-types": "file:../telestion-client-types",
 		"ajv": "^8.0.2",
 		"sockjs-client": "^1.5.0"
