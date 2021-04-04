@@ -422,7 +422,7 @@ export class EventBus {
 				.forEach(channel => this.bus.send(registerMessage(channel), false));
 			this.onOpen?.();
 		};
-		this.bus.onClose = () => this.onOpen?.();
+		this.bus.onClose = () => this.onClose?.();
 		this.bus.onReconnect = () => this.onReconnect?.();
 		this.bus.onMessage = message => this.handleMessage(message);
 	}
@@ -581,10 +581,10 @@ export class EventBus {
 		callback: Callback,
 		headers?: Headers
 	): void {
-		// send register if no other listens for this address yet
+		// send register message if no other listens for this address yet
 		// -> tell server to forward all traffic on this address
 		if (this.handlers.every(handler => handler[0] !== address)) {
-			this.bus.send(registerMessage(address, headers));
+			this.bus.send(registerMessage(address, headers), false);
 		}
 
 		// register
@@ -638,10 +638,10 @@ export class EventBus {
 			handler => !(handler[0] === address && handler[1] === callback)
 		);
 
-		// send unregister if no other listens for this address
+		// send unregister message if no other listens for this address
 		// -> save socket bandwidth
 		if (this.handlers.every(handler => handler[0] !== address)) {
-			this.bus.send(unregisterMessage(address, headers));
+			this.bus.send(unregisterMessage(address, headers), false);
 		}
 	}
 

@@ -4,7 +4,7 @@ import { sampleMessages } from '../tests/constants';
 import { randInt, nonJsonString } from '../tests/lib';
 // mocks
 import SockJS from 'sockjs-client';
-import { validate } from './lib/validator';
+import { validate } from './lib';
 // test subject
 import { BasicEventBus } from './basic-event-bus';
 import { ConnectionState } from './model';
