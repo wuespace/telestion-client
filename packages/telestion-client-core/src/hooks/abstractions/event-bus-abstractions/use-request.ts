@@ -1,7 +1,6 @@
 import { useCallback } from 'react';
 import { StateSelector } from 'zustand';
 import {
-	Callback,
 	ChannelAddress,
 	JsonSerializable
 } from '@wuespace/telestion-client-types';
@@ -35,8 +34,8 @@ const eventBusSelector: StateSelector<
  * const send = useRequest('address:send-my-anything');
  *
  * const handleClick = () => {
- *   send('Ping', (message: JSONSerializable) => {
- *     if (message) setAnswer(message);
+ *   send('Ping', message => {
+ *     setAnswer(message);
  *   });
  * };
  *
@@ -61,12 +60,7 @@ export function useRequest<T extends JsonSerializable = JsonSerializable>(
 	}
 
 	return useCallback(
-		(sendMessage, callback) => {
-			const cb: Callback = (recMessage, error) => {
-				callback(recMessage ? (recMessage.body as T) : null, error);
-			};
-			eventBus.send(address, sendMessage, cb);
-		},
+		(sendMessage, callback) => eventBus.send<T>(address, sendMessage, callback),
 		[eventBus, address]
 	);
 }

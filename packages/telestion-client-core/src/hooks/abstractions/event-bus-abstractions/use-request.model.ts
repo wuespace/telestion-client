@@ -1,7 +1,4 @@
-import {
-	ErrorMessage,
-	JsonSerializable
-} from '@wuespace/telestion-client-types';
+import { JsonSerializable } from '@wuespace/telestion-client-types';
 
 /**
  * Sends a message to the event bus and get the first reply via a callback.
@@ -15,7 +12,4 @@ export type SendFunction<T extends JsonSerializable> =
 	 * @param callback - the function that will be called
 	 * when the reply returned from the eventbus
 	 */
-	(
-		message: JsonSerializable,
-		callback: (message: T | null, error: ErrorMessage | null) => void
-	) => void;
+	(message: JsonSerializable, callback: (message: T) => void) => void;

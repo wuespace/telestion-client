@@ -1,9 +1,8 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useEffect } from 'react';
 import { StateSelector } from 'zustand';
 import {
-	Callback,
 	ChannelAddress,
-	ErrorMessage,
 	JsonSerializable
 } from '@wuespace/telestion-client-types';
 
@@ -56,9 +55,8 @@ export function useChannel<T extends JsonSerializable = JsonSerializable>(
 	address: ChannelAddress,
 	onUpdate: /**
 	 * @param data - new data from the eventbus
-	 * @param error - error if something went wrong or `null`
 	 */
-	(data: T | null, error: ErrorMessage | null) => void
+	(data: T) => void
 ): void {
 	const eventBus = useEventBus(eventBusSelector);
 
@@ -70,12 +68,8 @@ export function useChannel<T extends JsonSerializable = JsonSerializable>(
 	}
 
 	useEffect(() => {
-		const cb: Callback = (message, error) => {
-			onUpdate(message ? (message.body as T) : null, error);
-		};
-
-		eventBus.registerHandler(address, cb);
+		eventBus.register<T>(address, onUpdate);
 		// clean up callback
-		return () => eventBus.unregisterHandler(address, cb);
+		return () => eventBus.unregister<T>(address, onUpdate);
 	}, [eventBus, address, onUpdate]);
 }
