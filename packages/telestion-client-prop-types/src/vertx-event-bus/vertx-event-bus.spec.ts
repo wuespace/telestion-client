@@ -13,10 +13,12 @@ import {
 
 describe('Tests for vert.x event bus', () => {
 	describe('Tests for EventBus', () => {
+		const eventBus = new EventBus('http://255.255.255.255/');
+
 		testPropType(
 			'EventBus',
 			eventBusPropType,
-			[['an event bus instance', new EventBus('http://255.255.255.255/')]],
+			[['an event bus instance', eventBus]],
 			[
 				undefinedCase,
 				nullCase,
@@ -27,5 +29,8 @@ describe('Tests for vert.x event bus', () => {
 				arrayCase
 			]
 		);
+
+		// cleanup
+		eventBus.close();
 	});
 });
