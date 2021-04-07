@@ -63,37 +63,37 @@ jobs:
         run: npm run build:all
 
       - name: Upload vertx-event-bus build artifact 📤
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         with:
           name: vertx-event-bus_build-${{ github.run_number }}
           path: packages/vertx-event-bus/build/
           retention-days: 7
       - name: Upload vertx-mock-server build artifact 📤
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         with:
           name: vertx-mock-server_build-${{ github.run_number }}
           path: packages/vertx-mock-server/build/
           retention-days: 7
       - name: Upload telestion-client-types build artifact 📤
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         with:
           name: telestion-client-types_build-${{ github.run_number }}
           path: packages/telestion-client-types/types/
           retention-days: 7
       - name: Upload telestion-client-prop-types build artifact 📤
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         with:
           name: telestion-client-prop-types_build-${{ github.run_number }}
           path: packages/telestion-client-prop-types/build/
           retention-days: 7
       - name: Upload telestion-client-core build artifact 📤
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         with:
           name: telestion-client-core_build-${{ github.run_number }}
           path: packages/telestion-client-core/build/
           retention-days: 7
       - name: Upload telestion-client-common build artifact 📤
-        uses: actions/upload-artifact@v2.2.2
+        uses: actions/upload-artifact@v2.2.3
         with:
           name: telestion-client-common_build-${{ github.run_number }}
           path: packages/telestion-client-common/build/
