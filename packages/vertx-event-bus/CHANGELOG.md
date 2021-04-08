@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.0](https://github.com/TelestionTeam/telestion-client/compare/v0.11.2...v0.12.0) (2021-04-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **event-bus:** Numerous changes, please see https://github.com/TelestionTeam/telestion-client/wiki/v0.12-Migration-Guide
+* The minimum required node version for all packages is now Node v14!
+
+### Features
+
+* **event-bus:** Implement basic event bus as first part of the refactoring process ([d8ccc73](https://github.com/TelestionTeam/telestion-client/commit/d8ccc73801459a2994ed4195a99f39547598d708))
+* **event-bus:** Rewrite Vert.x Event Bus ([8d83dec](https://github.com/TelestionTeam/telestion-client/commit/8d83decff975cbeb0f1bc4c85c88211642ea015e))
+* Specify minimum node version in all packages and update workflows to use npm v7 as default ([b727223](https://github.com/TelestionTeam/telestion-client/commit/b72722326ce8b88f42ad2c16ddbd60991e2c8b72))
+
+
+### Bug Fixes
+
+* **core:** Fix breaking changes ([b6551c3](https://github.com/TelestionTeam/telestion-client/commit/b6551c3c388db5bf78da385a1a52d8f526f04970))
+
+
+### Documentation Changes
+
+* **event-bus:** Document basic event bus ([395e677](https://github.com/TelestionTeam/telestion-client/commit/395e6778af0ed6ab9f4b5ba121135fd0099d3f39))
+
+
+
 ### [0.11.2](https://github.com/TelestionTeam/telestion-client/compare/v0.11.1...v0.11.2) (2021-03-09)
 
 **Note:** Version bump only for package @wuespace/vertx-event-bus

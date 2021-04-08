@@ -3,6 +3,73 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.0](https://github.com/TelestionTeam/telestion-client/compare/v0.11.2...v0.12.0) (2021-04-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **event-bus:** Numerous changes, please see https://github.com/TelestionTeam/telestion-client/wiki/v0.12-Migration-Guide
+* **types:** The error message is no longer addressable.
+* The minimum required node version for all packages is now Node v14!
+* **mock-server:** The listen function now requires an object as argument which contains the port and hostname as properties.
+* **mock-server:** The event bus and http server instance properties are now marked private. Please use the provided abstractions and hooks instead. (see onInit, send, handle, register, etc.)
+* **common:** The loading indicator gives the children function the current dependencies which are always defined:
+```tsx
+const [position, setPosition] = useState<Position>();
+const [height, setHeight] = useState<number>();
+
+return (
+  <LoadingIndicator dependencies={[position, height]}>
+    {(currentPos, currentHeight) => (
+      <p>{currentPos} - {currentHeight}</p>
+    )}
+  </LoadingIndicator>
+);
+```
+* **common:** The useDependencyTimeout now returns `true` if all dependencies are defined and `false` if not all dependencies are defined yet. Before the return value was inverted.
+The type guard makes the hook useful as a condition in if-statements, for example:
+```tsx
+const [position, setPosition] = useState<Position>();
+
+// throws if no position received after 5 seconds
+if (useDependencyTimeout(5000, [position])) {
+  // type guarded - "position" is always defined
+  return <p>Latest position: {position}</p>;
+}
+
+return <p>Waiting for incoming data</p>;
+```
+* **deps:** Moving forward, testing is done with React Spectrum v3.9. Consider all previous versions unsupported.
+* **deps:** `<ActionButton>`s for header actions now require a `isQuiet={true}` attribute to work properly with React Spectrum 3.9
+
+### Features
+
+* **common:** Enhance loading indicator component ([#350](https://github.com/TelestionTeam/telestion-client/issues/350)) ([82d07f1](https://github.com/TelestionTeam/telestion-client/commit/82d07f14a28e802d301f78e516f619a6bb339a6a))
+* **event-bus:** Implement basic event bus as first part of the refactoring process ([d8ccc73](https://github.com/TelestionTeam/telestion-client/commit/d8ccc73801459a2994ed4195a99f39547598d708))
+* **event-bus:** Rewrite Vert.x Event Bus ([8d83dec](https://github.com/TelestionTeam/telestion-client/commit/8d83decff975cbeb0f1bc4c85c88211642ea015e))
+* **mock-server:** Add close function ([3e0b5a8](https://github.com/TelestionTeam/telestion-client/commit/3e0b5a8c704e45911e7c17cd762cc082dbb7900f))
+* **mock-server:** Add logger option to constructor and clean up some internals ([cefceae](https://github.com/TelestionTeam/telestion-client/commit/cefceaeb1c76cc0fc8a5c72b4d92c1911b47da63))
+* **mock-server:** First full implementation ([7461df5](https://github.com/TelestionTeam/telestion-client/commit/7461df52eccaad3740b80a5c0fcc871704b72d42))
+* **types:** The error message now extends from base message ([a8f17dd](https://github.com/TelestionTeam/telestion-client/commit/a8f17dd4d468f9ae250b4e105d7175a56aa63f1b))
+* Specify minimum node version in all packages and update workflows to use npm v7 as default ([b727223](https://github.com/TelestionTeam/telestion-client/commit/b72722326ce8b88f42ad2c16ddbd60991e2c8b72))
+* **mock-server:** Add protected method to get all connections ([cf9e267](https://github.com/TelestionTeam/telestion-client/commit/cf9e2677baa92fe7822a5f5cbc37ec29b7130da5))
+
+
+### Bug Fixes
+
+* **cli:** Init: npm install command to be compatible with npm v7 ([c81b35e](https://github.com/TelestionTeam/telestion-client/commit/c81b35e27fe9bbdcdc82498701a3fd3cb59bba18))
+* **core:** Fix breaking changes ([b6551c3](https://github.com/TelestionTeam/telestion-client/commit/b6551c3c388db5bf78da385a1a52d8f526f04970))
+* **deps:** Fix issues with react-spectrum v3.9 ([14bcfe4](https://github.com/TelestionTeam/telestion-client/commit/14bcfe444504fc744f6c8f38b4bf6a5c474da847))
+* **mock-server:** Fix breaking changes ([eab07d3](https://github.com/TelestionTeam/telestion-client/commit/eab07d33567cb8c2bd759083dd2e5c2db6a4d9b6))
+
+
+### Documentation Changes
+
+* **event-bus:** Document basic event bus ([395e677](https://github.com/TelestionTeam/telestion-client/commit/395e6778af0ed6ab9f4b5ba121135fd0099d3f39))
+* **mock-server:** Document all methods ([e0127e5](https://github.com/TelestionTeam/telestion-client/commit/e0127e5b2e393d8d321e474b1eb47362cd24e98d))
+
+
+
 ### [0.11.2](https://github.com/TelestionTeam/telestion-client/compare/v0.11.1...v0.11.2) (2021-03-09)
 
 

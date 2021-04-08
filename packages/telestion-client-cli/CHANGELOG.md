@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.0](https://github.com/TelestionTeam/telestion-client/compare/v0.11.2...v0.12.0) (2021-04-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* The minimum required node version for all packages is now Node v14!
+
+### Features
+
+* Specify minimum node version in all packages and update workflows to use npm v7 as default ([b727223](https://github.com/TelestionTeam/telestion-client/commit/b72722326ce8b88f42ad2c16ddbd60991e2c8b72))
+
+
+### Bug Fixes
+
+* **cli:** Init: npm install command to be compatible with npm v7 ([c81b35e](https://github.com/TelestionTeam/telestion-client/commit/c81b35e27fe9bbdcdc82498701a3fd3cb59bba18))
+
+
+
 ### [0.11.2](https://github.com/TelestionTeam/telestion-client/compare/v0.11.1...v0.11.2) (2021-03-09)
 
 **Note:** Version bump only for package @wuespace/telestion-client-cli

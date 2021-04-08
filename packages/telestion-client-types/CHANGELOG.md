@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.0](https://github.com/TelestionTeam/telestion-client/compare/v0.11.2...v0.12.0) (2021-04-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* **event-bus:** Numerous changes, please see https://github.com/TelestionTeam/telestion-client/wiki/v0.12-Migration-Guide
+* **types:** The error message is no longer addressable.
+
+### Features
+
+* **event-bus:** Implement basic event bus as first part of the refactoring process ([d8ccc73](https://github.com/TelestionTeam/telestion-client/commit/d8ccc73801459a2994ed4195a99f39547598d708))
+* **event-bus:** Rewrite Vert.x Event Bus ([8d83dec](https://github.com/TelestionTeam/telestion-client/commit/8d83decff975cbeb0f1bc4c85c88211642ea015e))
+* **types:** The error message now extends from base message ([a8f17dd](https://github.com/TelestionTeam/telestion-client/commit/a8f17dd4d468f9ae250b4e105d7175a56aa63f1b))
+
+
+### Bug Fixes
+
+* **core:** Fix breaking changes ([b6551c3](https://github.com/TelestionTeam/telestion-client/commit/b6551c3c388db5bf78da385a1a52d8f526f04970))
+
+
+
 ### [0.11.2](https://github.com/TelestionTeam/telestion-client/compare/v0.11.1...v0.11.2) (2021-03-09)
 
 

@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.0](https://github.com/TelestionTeam/telestion-client/compare/v0.11.2...v0.12.0) (2021-04-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* The minimum required node version for all packages is now Node v14!
+* **common:** The loading indicator gives the children function the current dependencies which are always defined:
+```tsx
+const [position, setPosition] = useState<Position>();
+const [height, setHeight] = useState<number>();
+
+return (
+  <LoadingIndicator dependencies={[position, height]}>
+    {(currentPos, currentHeight) => (
+      <p>{currentPos} - {currentHeight}</p>
+    )}
+  </LoadingIndicator>
+);
+```
+* **common:** The useDependencyTimeout now returns `true` if all dependencies are defined and `false` if not all dependencies are defined yet. Before the return value was inverted.
+The type guard makes the hook useful as a condition in if-statements, for example:
+```tsx
+const [position, setPosition] = useState<Position>();
+
+// throws if no position received after 5 seconds
+if (useDependencyTimeout(5000, [position])) {
+  // type guarded - "position" is always defined
+  return <p>Latest position: {position}</p>;
+}
+
+return <p>Waiting for incoming data</p>;
+```
+* **deps:** Moving forward, testing is done with React Spectrum v3.9. Consider all previous versions unsupported.
+* **deps:** `<ActionButton>`s for header actions now require a `isQuiet={true}` attribute to work properly with React Spectrum 3.9
+
+### Features
+
+* Specify minimum node version in all packages and update workflows to use npm v7 as default ([b727223](https://github.com/TelestionTeam/telestion-client/commit/b72722326ce8b88f42ad2c16ddbd60991e2c8b72))
+* **common:** Enhance loading indicator component ([#350](https://github.com/TelestionTeam/telestion-client/issues/350)) ([82d07f1](https://github.com/TelestionTeam/telestion-client/commit/82d07f14a28e802d301f78e516f619a6bb339a6a))
+
+
+### Bug Fixes
+
+* **deps:** Fix issues with react-spectrum v3.9 ([14bcfe4](https://github.com/TelestionTeam/telestion-client/commit/14bcfe444504fc744f6c8f38b4bf6a5c474da847))
+
+
+
 ### [0.11.2](https://github.com/TelestionTeam/telestion-client/compare/v0.11.1...v0.11.2) (2021-03-09)
 
 **Note:** Version bump only for package @wuespace/telestion-client-common

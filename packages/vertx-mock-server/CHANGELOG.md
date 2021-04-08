@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.0](https://github.com/TelestionTeam/telestion-client/compare/v0.11.2...v0.12.0) (2021-04-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* The minimum required node version for all packages is now Node v14!
+* **mock-server:** The listen function now requires an object as argument which contains the port and hostname as properties.
+* **mock-server:** The event bus and http server instance properties are now marked private. Please use the provided abstractions and hooks instead. (see onInit, send, handle, register, etc.)
+
+### Features
+
+* Specify minimum node version in all packages and update workflows to use npm v7 as default ([b727223](https://github.com/TelestionTeam/telestion-client/commit/b72722326ce8b88f42ad2c16ddbd60991e2c8b72))
+* **mock-server:** Add close function ([3e0b5a8](https://github.com/TelestionTeam/telestion-client/commit/3e0b5a8c704e45911e7c17cd762cc082dbb7900f))
+* **mock-server:** Add logger option to constructor and clean up some internals ([cefceae](https://github.com/TelestionTeam/telestion-client/commit/cefceaeb1c76cc0fc8a5c72b4d92c1911b47da63))
+* **mock-server:** Add protected method to get all connections ([cf9e267](https://github.com/TelestionTeam/telestion-client/commit/cf9e2677baa92fe7822a5f5cbc37ec29b7130da5))
+* **mock-server:** First full implementation ([7461df5](https://github.com/TelestionTeam/telestion-client/commit/7461df52eccaad3740b80a5c0fcc871704b72d42))
+
+
+### Bug Fixes
+
+* **mock-server:** Fix breaking changes ([eab07d3](https://github.com/TelestionTeam/telestion-client/commit/eab07d33567cb8c2bd759083dd2e5c2db6a4d9b6))
+
+
+### Documentation Changes
+
+* **mock-server:** Document all methods ([e0127e5](https://github.com/TelestionTeam/telestion-client/commit/e0127e5b2e393d8d321e474b1eb47362cd24e98d))
+
+
+
 ## [0.11.0](https://github.com/TelestionTeam/telestion-client/compare/v0.10.1...v0.11.0) (2021-02-28)
 
 **Note:** Version bump only for package @wuespace/vertx-mock-server
