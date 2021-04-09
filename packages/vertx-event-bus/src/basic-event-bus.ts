@@ -430,6 +430,7 @@ export class BasicEventBus {
 	 * ```
 	 */
 	send(message: Message, store = true): void {
+		this.options.logger?.debug('Send message to socket...');
 		// encode message
 		const data = JSON.stringify(message);
 
@@ -482,6 +483,7 @@ export class BasicEventBus {
 	 * ```
 	 */
 	private newSocket(): SockJS {
+		this.options.logger?.debug(`Open new socket to ${this.url}...`);
 		const socket = new SockJS(this.url);
 
 		socket.onopen = () => this.handleOpen();
@@ -509,7 +511,10 @@ export class BasicEventBus {
 	 * ```
 	 */
 	private handleOpen(): void {
+		this.options.logger?.success('Socket opened!');
 		this.reconnectAttempts = 0;
+
+		this.options.logger?.debug('Setup ping interval...');
 		this.pingTimer = setInterval(
 			() => this.sendRaw(rawPing),
 			this.options.pingInterval
@@ -519,6 +524,7 @@ export class BasicEventBus {
 		if (this.reconnectTimer) this.onReconnect?.();
 
 		// send pending messages
+		this.options.logger?.debug('Send pending messages...');
 		this.pending = this.pending.filter(data => !this.sendRaw(data));
 	}
 
@@ -539,6 +545,9 @@ export class BasicEventBus {
 	 * ```
 	 */
 	private handleClose(): void {
+		this.options.logger?.warn('Socket closed!');
+
+		this.options.logger?.debug('Clear ping interval...');
 		clearInterval(this.pingTimer);
 		// inform upper layer
 		this.onClose?.();
@@ -548,11 +557,18 @@ export class BasicEventBus {
 			this.options.autoReconnect &&
 			this.reconnectAttempts < this.options.reconnectAttempts
 		) {
+			const reconnectDelay = this.newReconnectDelay();
+			this.options.logger?.debug(
+				`Setup automatic reconnect in ${reconnectDelay}ms...`
+			);
 			this.reconnectTimer = setTimeout(() => {
 				this.reconnectAttempts++;
+				this.options.logger?.debug(
+					`Try reconnect No. ${this.reconnectAttempts}...`
+				);
 				// after timeout, create new socket which handles the next reconnect
 				this.socket = this.newSocket();
-			}, this.newReconnectDelay());
+			}, reconnectDelay);
 		}
 	}
 
@@ -573,12 +589,15 @@ export class BasicEventBus {
 	 */
 	private handleMessage(event: MessageEvent): void {
 		this.receivedMessages++;
+		this.options.logger?.debug(`Message No. ${this.receivedMessages} received`);
 		try {
 			// decode message
 			const message: Message = JSON.parse(event.data);
 			if (validate(message)) {
+				this.options.logger?.debug('Message is valid. Return to handler...');
 				this.onMessage?.(message);
 			} else {
+				this.options.logger?.error('Message is invalid but JSON parsable');
 				this.onMessage?.(
 					errorMessage(
 						2,
@@ -588,6 +607,7 @@ export class BasicEventBus {
 				);
 			}
 		} catch (err) {
+			this.options.logger?.error('Message is not JSON parsable');
 			this.onMessage?.(
 				errorMessage(1, 'SyntaxError', `Cannot decode message: '${event.data}'`)
 			);
@@ -617,8 +637,10 @@ export class BasicEventBus {
 		try {
 			this.socket.send(data);
 			this.sentMessages++;
+			this.options.logger?.debug(`Sent message No. ${this.sentMessages}`);
 			return true;
 		} catch (err) {
+			this.options.logger?.debug('Socket not open. Cannot send message');
 			return false;
 		}
 	}

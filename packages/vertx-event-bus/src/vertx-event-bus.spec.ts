@@ -2,6 +2,7 @@
 import { mocked } from 'ts-jest/utils';
 import {
 	ChannelAddress,
+	JsonSerializable,
 	Message,
 	Options,
 	ReceiveMessage
@@ -28,6 +29,9 @@ const DEFAULT_URL = 'http://localhost:9870/bridge';
 describe('Vert.x Event Bus', () => {
 	beforeEach(() => {
 		mockedBus.mockClear();
+		// @ts-ignore
+		// noinspection JSConstantReassignment
+		mockedBus.prototype.options = {};
 	});
 
 	describe('Bus Management', () => {
@@ -362,7 +366,8 @@ describe('Vert.x Event Bus', () => {
 		});
 
 		it('should call all registered event handlers on an incoming message', () => {
-			const count = randInt(2, 10);
+			const registerCount = randInt(2, 10);
+			const messageCount = randInt(3, 10);
 			const handlers: Array<() => any> = [];
 			const channel: ChannelAddress = randomString(10);
 
@@ -370,7 +375,7 @@ describe('Vert.x Event Bus', () => {
 			const instance = mockedBus.mock.instances[0];
 
 			// register event handlers
-			for (let i = 0; i < count; i++) {
+			for (let i = 0; i < registerCount; i++) {
 				handlers[i] = jest.fn();
 				eventBus.register(channel, handlers[i]);
 			}
@@ -382,14 +387,54 @@ describe('Vert.x Event Bus', () => {
 				body: content,
 				headers: {}
 			};
-			// send a message
-			instance.onMessage?.(message);
+			// send messageCount messages
+			for (let i = 0; i < messageCount; i++) {
+				instance.onMessage?.(message);
+			}
 
 			// cleanup
 			eventBus.close();
 
-			for (let i = 0; i < count; i++) {
+			for (let i = 0; i < registerCount; i++) {
+				expect(handlers[i]).toBeCalledTimes(messageCount);
 				expect(handlers[i]).lastCalledWith(content);
+			}
+		});
+
+		it('should call all registered event handlers on different channels', () => {
+			const registerCount = randInt(2, 10);
+			const handlers: Array<() => any> = [];
+			const channels: Array<ChannelAddress> = [];
+			const contents: Array<JsonSerializable> = [];
+
+			const eventBus = new EventBus(DEFAULT_URL);
+			const instance = mockedBus.mock.instances[0];
+
+			// register event handlers
+			for (let i = 0; i < registerCount; i++) {
+				handlers[i] = jest.fn();
+				channels[i] = randomString(10);
+				eventBus.register(channels[i], handlers[i]);
+			}
+
+			for (let i = 0; i < registerCount; i++) {
+				contents[i] = randomString(30);
+				const message: ReceiveMessage = {
+					type: 'rec',
+					address: channels[i],
+					body: contents[i],
+					headers: {}
+				};
+				// send message on specific channel
+				instance.onMessage?.(message);
+			}
+
+			// cleanup
+			eventBus.close();
+
+			for (let i = 0; i < registerCount; i++) {
+				expect(handlers[i]).toBeCalledTimes(1);
+				expect(handlers[i]).lastCalledWith(contents[i]);
 			}
 		});
 

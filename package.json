@@ -66,6 +66,7 @@
 	"devDependencies": {
 		"@adobe/react-spectrum": "^3.9.0",
 		"@babel/core": "^7.12.9",
+		"@fliegwerk/logsemts": "^0.4.0-0",
 		"@react-spectrum/tabs": "^3.0.0-beta.0",
 		"@rollup/plugin-commonjs": "^18.0.0",
 		"@rollup/plugin-image": "^2.0.6",

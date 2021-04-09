@@ -14,7 +14,7 @@ import { Options } from '@wuespace/telestion-client-types';
  * }
  * ```
  */
-export const defaultOptions: Required<Options> = {
+export const defaultOptions: Options = {
 	autoReconnect: true,
 	pingInterval: 5000 /* ms */,
 	reconnectAttempts: Infinity,
