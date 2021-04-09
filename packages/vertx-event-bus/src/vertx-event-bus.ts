@@ -603,7 +603,7 @@ export class EventBus {
 	): void {
 		// send register message if no other listens for this address yet
 		// -> tell server to forward all traffic on this address
-		if (this.handlers.every(handler => handler[0] !== address)) {
+		if (this.isChannelAbandoned(address)) {
 			this.options.logger?.debug(
 				`Send register message for channel ${address}...`
 			);
@@ -669,7 +669,7 @@ export class EventBus {
 
 		// send unregister message if no other listens for this address
 		// -> save socket bandwidth
-		if (this.handlers.every(handler => handler[0] !== address)) {
+		if (this.isChannelAbandoned(address)) {
 			this.options.logger?.debug(
 				`Send unregister message for channel ${address}...`
 			);
@@ -735,5 +735,27 @@ export class EventBus {
 				handler => handler[2] || handler[0] !== message.address
 			);
 		}
+	}
+
+	/**
+	 * Checks if the given channel is abandoned
+	 * and no more handlers are registered to it.
+	 *
+	 * @param address - the channel address to check
+	 *
+	 * @example
+	 * ```ts
+	 * // send register message if no other listens for this address yet
+	 * // -> tell server to forward all traffic on this address
+	 * if (this.isChannelAbandoned(address)) {
+	 * 	this.options.logger?.debug(
+	 * 		`Send register message for channel ${address}...`
+	 * 	);
+	 * 	this.bus.send(registerMessage(address, headers), false);
+	 * }
+	 * ```
+	 */
+	private isChannelAbandoned(address: string): boolean {
+		return this.handlers.every(handler => handler[0] !== address);
 	}
 }
