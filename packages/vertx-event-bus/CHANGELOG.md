@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.12.1](https://github.com/TelestionTeam/telestion-client/compare/v0.12.0...v0.12.1) (2021-04-09)
+
+
+### Bug Fixes
+
+* **event-bus:** Fix message and callback handling and add additional logging options ([84bb838](https://github.com/TelestionTeam/telestion-client/commit/84bb838f82bc6310f6a20f77d308fdc1acc2cb65))
+
+
+
 ## [0.12.0](https://github.com/TelestionTeam/telestion-client/compare/v0.11.2...v0.12.0) (2021-04-08)
 
 
