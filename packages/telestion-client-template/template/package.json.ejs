@@ -14,7 +14,10 @@
 		"build": "tc-cli build",
 		"stats": "tc-cli stats",
 		"style": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.sass,.yaml,.yml,.md}'",
-		"style:ci": "prettier --list-different package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.sass,.yaml,.yml,.md}'"
+		"style:ci": "prettier --list-different package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.sass,.yaml,.yml,.md}'",
+		"lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-pattern node_modules/ --no-error-on-unmatched-pattern src",
+		"ts": "tsc",
+		"clean": "rimraf build dist"
 	},
 	"husky": {
 		"hooks": {
