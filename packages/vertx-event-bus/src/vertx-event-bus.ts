@@ -30,6 +30,7 @@ import {
 
 import { ConnectionState } from './model';
 import {
+	filterDuplicates,
 	generateUUID,
 	publishMessage,
 	registerMessage,
@@ -415,15 +416,22 @@ export class EventBus {
 	constructor(url: string, options?: Partial<Options>) {
 		this.bus = new BasicEventBus(url, options);
 		this.bus.onOpen = () => {
+			this.options.logger?.success('Event bus is open!');
 			// register all current event handlers
-			this.handlers
-				.map(handler => handler[0])
-				.filter((channel, _, channels) => !channels.includes(channel))
-				.forEach(channel => this.bus.send(registerMessage(channel), false));
+			this.options.logger?.debug('Send register messages...');
+			filterDuplicates(
+				this.handlers.map(handler => handler[0])
+			).forEach(channel => this.bus.send(registerMessage(channel), false));
 			this.onOpen?.();
 		};
-		this.bus.onClose = () => this.onClose?.();
-		this.bus.onReconnect = () => this.onReconnect?.();
+		this.bus.onClose = () => {
+			this.options.logger?.warn('Event bus closed!');
+			this.onClose?.();
+		};
+		this.bus.onReconnect = () => {
+			this.options.logger?.success('Event bus reconnected!');
+			this.onReconnect?.();
+		};
 		this.bus.onMessage = message => this.handleMessage(message);
 	}
 
@@ -454,6 +462,9 @@ export class EventBus {
 	 * ```
 	 */
 	setAutoReconnect(newState: boolean): void {
+		this.options.logger?.info(
+			newState ? 'Enable auto reconnect' : 'Disable auto reconnect'
+		);
 		this.bus.autoReconnect = newState;
 	}
 
@@ -487,6 +498,7 @@ export class EventBus {
 		content: JsonSerializable,
 		headers?: Headers
 	): void {
+		this.options.logger?.debug(`Publish message on channel ${address}...`);
 		this.bus.send(publishMessage(address, content, headers));
 	}
 
@@ -530,8 +542,10 @@ export class EventBus {
 		callback: Callback<T>,
 		headers?: Headers
 	): void {
+		this.options.logger?.debug(`Send message on channel ${address}...`);
 		const replyAddress = generateUUID();
 		// TypeScript is dump (again!)
+		this.options.logger?.debug('Register one-time handler...');
 		// @ts-ignore
 		this.handlers.push([replyAddress, callback, false]);
 		this.bus.send(sendMessage(address, replyAddress, content, headers));
@@ -590,9 +604,13 @@ export class EventBus {
 		// send register message if no other listens for this address yet
 		// -> tell server to forward all traffic on this address
 		if (this.handlers.every(handler => handler[0] !== address)) {
+			this.options.logger?.debug(
+				`Send register message for channel ${address}...`
+			);
 			this.bus.send(registerMessage(address, headers), false);
 		}
 
+		this.options.logger?.debug('Register handler...');
 		// register
 		// TypeScript is dump (again!)
 		// @ts-ignore
@@ -643,6 +661,7 @@ export class EventBus {
 		callback: Callback<T>,
 		headers: Headers = {}
 	): void {
+		this.options.logger?.debug('Unregister handler...');
 		// unregister
 		this.handlers = this.handlers.filter(
 			handler => !(handler[0] === address && handler[1] === callback)
@@ -651,6 +670,9 @@ export class EventBus {
 		// send unregister message if no other listens for this address
 		// -> save socket bandwidth
 		if (this.handlers.every(handler => handler[0] !== address)) {
+			this.options.logger?.debug(
+				`Send unregister message for channel ${address}...`
+			);
 			this.bus.send(unregisterMessage(address, headers), false);
 		}
 	}
@@ -671,6 +693,7 @@ export class EventBus {
 	 * ```
 	 */
 	close(): void {
+		this.options.logger?.debug('Close Event Bus...');
 		this.bus.close();
 	}
 
@@ -690,19 +713,26 @@ export class EventBus {
 	 * ```
 	 */
 	private handleMessage(message: Message): void {
+		this.options.logger?.debug(`Message with type ${message.type} received`);
 		// first, call upper layer and skip further processing, when desired
 		if (this.onMessage?.(message)) return;
 
 		if (message.type === 'err') this.onError?.(message);
 		else if (message.type === 'rec') {
+			this.options.logger?.debug(
+				`Check and call registered handlers for channel ${message.address}...`
+			);
 			// call registered handlers
 			this.handlers
 				.filter(handler => handler[0] === message.address)
 				.forEach(handler => handler[1](message.body));
 
+			this.options.logger?.debug(
+				`Remove temporary reply handlers for channel ${message.address}...`
+			);
 			// remove temporary reply handlers (inserted via `send`)
 			this.handlers = this.handlers.filter(
-				handler => handler[2] && handler[0] === message.address
+				handler => handler[2] || handler[0] !== message.address
 			);
 		}
 	}

@@ -1,3 +1,5 @@
+import { ComponentLogger } from '@fliegwerk/logsemts';
+
 /**
  * the default options for the event bus
  */
@@ -60,4 +62,12 @@ export interface Options {
 	 * Defaults to `0.5`.
 	 */
 	randomizationFactor: number;
+
+	/**
+	 * Optional component logger where the event bus logs internal information
+	 * and debug messages.
+	 *
+	 * Defaults to `undefined`.
+	 */
+	logger?: ComponentLogger;
 }
