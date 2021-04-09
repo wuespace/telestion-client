@@ -349,6 +349,9 @@ describe('Vert.x Event Bus', () => {
 				eventBus.register(channels[i], () => {});
 			}
 
+			expect(instance.send).toBeCalledTimes(count);
+			instance.send = jest.fn();
+
 			// open event bus
 			instance.onOpen?.();
 
