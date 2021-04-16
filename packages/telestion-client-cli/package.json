@@ -73,7 +73,7 @@
 		"shelljs": "^0.8.4",
 		"ts-loader": "^8.0.15",
 		"validate-npm-package-name": "^3.0.0",
-		"webpack": "^4.46.0",
+		"webpack": "^5.33.2",
 		"yargs": "^16.2.0"
 	},
 	"publishConfig": {
