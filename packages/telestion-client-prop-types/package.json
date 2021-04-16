@@ -3,7 +3,7 @@
 	"description": "PropTypes for Telestion Client types",
 	"license": "MIT",
 	"version": "0.12.1",
-	"homepage": "https://github.com/wuespace/telestion-client#readme",
+	"homepage": "https://telestion.wuespace.de/",
 	"main": "build/index.js",
 	"module": "build/index.es.js",
 	"types": "build/index.d.ts",

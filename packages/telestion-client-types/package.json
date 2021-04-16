@@ -3,7 +3,7 @@
 	"description": "Types for Telestion Client and their projects",
 	"license": "MIT",
 	"version": "0.12.1",
-	"homepage": "https://github.com/wuespace/telestion-client#readme",
+	"homepage": "https://telestion.wuespace.de/",
 	"types": "types/index.d.ts",
 	"files": [
 		"types"

@@ -4,7 +4,7 @@
 	"license": "MIT",
 	"version": "0.3.0",
 	"private": true,
-	"homepage": "https://github.com/wuespace/telestion-client#readme",
+	"homepage": "https://telestion.wuespace.de/",
 	"engines": {
 		"node": ">=14",
 		"npm": ">=7"
