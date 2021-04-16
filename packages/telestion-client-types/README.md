@@ -2,11 +2,11 @@
 
 npm: [`@wuespace/telestion-client-types`](https://www.npmjs.com/package/@wuespace/telestion-client-types)
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/97fadf70f54a759cfaa4/maintainability)](https://codeclimate.com/github/TelestionTeam/telestion-client/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/97fadf70f54a759cfaa4/test_coverage)](https://codeclimate.com/github/TelestionTeam/telestion-client/test_coverage)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/TelestionTeam/telestion-client/Test%20and%20Coverage?label=tests)](https://github.com/TelestionTeam/telestion-client/actions?query=workflow%3A%22Test+and+Coverage%22)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/TelestionTeam/telestion-client/CI)](https://github.com/TelestionTeam/telestion-client/actions?query=workflow%3ACI)
-[![GitHub](https://img.shields.io/github/license/TelestionTeam/telestion-client)](LICENSE)
+[![Maintainability](https://api.codeclimate.com/v1/badges/5fb6ccd02dd3152ef03f/maintainability)](https://codeclimate.com/github/wuespace/telestion-client/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/5fb6ccd02dd3152ef03f/test_coverage)](https://codeclimate.com/github/wuespace/telestion-client/test_coverage)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/wuespace/telestion-client/Test%20and%20Coverage?label=tests)](https://github.com/wuespace/telestion-client/actions?query=workflow%3A%22Test+and+Coverage%22)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/wuespace/telestion-client/CI)](https://github.com/wuespace/telestion-client/actions?query=workflow%3ACI)
+[![GitHub](https://img.shields.io/github/license/wuespace/telestion-client)](LICENSE)
 [![Twitter Follow](https://img.shields.io/twitter/follow/wuespace?style=social)](https://twitter.com/wuespace)
 
 Common, useful TypeScript definitions for use in projects in Telestion Client projects.
@@ -39,10 +39,10 @@ const myDashboard: Dashboard = {
 Every exported type from this package also has an appropriate PropType member exported in `@wuespace/telestion-client-prop-types`.
 
 For all full list of types used in Telestion Client, check out the reference:
-https://telestionteam.github.io/telestion-client/@wuespace/telestion-client-types/
+https://wuespace.github.io/telestion-client/@wuespace/telestion-client-types/
 
 For the equivalent PropTypes, check out the reference here:
-https://telestionteam.github.io/telestion-client/@wuespace/telestion-client-prop-types/
+https://wuespace.github.io/telestion-client/@wuespace/telestion-client-prop-types/
 
 ## Package structure
 
@@ -67,13 +67,13 @@ https://telestionteam.github.io/telestion-client/@wuespace/telestion-client-prop
 
 ## Contributing
 
-If you want to contribute to this package, please take a look at the [Telestion Client monorepo](https://github.com/TelestionTeam/telestion-client/) that manages this package, among other Telestion Client packages.
+If you want to contribute to this package, please take a look at the [Telestion Client monorepo](https://github.com/wuespace/telestion-client/) that manages this package, among other Telestion Client packages.
 
 ## Contributors
 
 Thank you to all contributors of this repository:
 
-[![Contributors](https://contrib.rocks/image?repo=TelestionTeam/telestion-client)](https://github.com/TelestionTeam/telestion-client/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=wuespace/telestion-client)](https://github.com/wuespace/telestion-client/graphs/contributors)
 
 Made with [contributors-img](https://contrib.rocks).
 

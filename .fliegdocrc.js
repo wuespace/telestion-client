@@ -36,7 +36,7 @@ module.exports = {
 	],
 	title: 'Telestion Client Monorepo',
 	externalLinks: {
-		GitHub: 'https://github.com/TelestionTeam/telestion-client/',
+		GitHub: 'https://github.com/wuespace/telestion-client/',
 		Homepage: 'https://telestion.wuespace.de/',
 		'React Spectrum Libraries': 'https://react-spectrum.adobe.com/',
 		'Legal Notice': 'https://www.wuespace.de/legal-notice/'

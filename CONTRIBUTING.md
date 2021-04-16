@@ -8,7 +8,7 @@ While we appreciate if you can follow our conventional commit structure, ensure 
 
 > **⚠ NOTE:** While the most important principles for contributing to the `telestion-client` repository are described below, the _Telestion Client Git Conventions_ contain a lot more information. This is especially mandatory for maintainers.
 >
-> You can find the latest release of this (as PDF) in the [`telestion-docs` releases](https://github.com/TelestionTeam/telestion-docs/releases/latest)
+> You can find the latest release of this (as PDF) in the [`telestion-docs` releases](https://github.com/wuespace/telestion-docs/releases/latest)
 
 ### Installation
 

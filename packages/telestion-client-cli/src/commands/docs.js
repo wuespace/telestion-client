@@ -13,7 +13,7 @@ async function handler(argv) {
 	// gathering information
 	logger.debug('Arguments:', argv);
 	logger.info('Opening the documentation in the system browser');
-	openUrl('https://telestionteam.github.io/telestion-client/');
+	openUrl('https://wuespace.github.io/telestion-client/');
 	logger.success('Document opened successfully');
 }
 

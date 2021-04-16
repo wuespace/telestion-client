@@ -1,10 +1,10 @@
 # Telestion Client
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/97fadf70f54a759cfaa4/maintainability)](https://codeclimate.com/github/TelestionTeam/telestion-client/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/97fadf70f54a759cfaa4/test_coverage)](https://codeclimate.com/github/TelestionTeam/telestion-client/test_coverage)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/TelestionTeam/telestion-client/Test%20and%20Coverage?label=tests)](https://github.com/TelestionTeam/telestion-client/actions?query=workflow%3A%22Test+and+Coverage%22)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/TelestionTeam/telestion-client/CI)](https://github.com/TelestionTeam/telestion-client/actions?query=workflow%3ACI)
-[![GitHub](https://img.shields.io/github/license/TelestionTeam/telestion-client)](LICENSE)
+[![Maintainability](https://api.codeclimate.com/v1/badges/5fb6ccd02dd3152ef03f/maintainability)](https://codeclimate.com/github/wuespace/telestion-client/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/5fb6ccd02dd3152ef03f/test_coverage)](https://codeclimate.com/github/wuespace/telestion-client/test_coverage)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/wuespace/telestion-client/Test%20and%20Coverage?label=tests)](https://github.com/wuespace/telestion-client/actions?query=workflow%3A%22Test+and+Coverage%22)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/wuespace/telestion-client/CI)](https://github.com/wuespace/telestion-client/actions?query=workflow%3ACI)
+[![GitHub](https://img.shields.io/github/license/wuespace/telestion-client)](LICENSE)
 [![Node current](https://img.shields.io/badge/node-%3E%3D14-brightgreen)](package.json)
 [![NPM current](https://img.shields.io/badge/npm-%3E%3D7-blue)](package.json)
 [![Twitter Follow](https://img.shields.io/twitter/follow/wuespace?style=social)](https://twitter.com/wuespace)
@@ -26,7 +26,7 @@ Before you begin, please make sure that you have the following tools installed o
 - [NodeJS](https://nodejs.org/en/) ([Download](https://nodejs.org/en/download/))
 - [npm](https://www.npmjs.com/) ([Installation instructions](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm))
 
-With both installed, we're ready to take of 🚀:
+With both installed, we're ready to take off 🚀:
 
 ### Installing the CLI
 
@@ -64,13 +64,13 @@ Houston, Tranquility Base here, the Eagle has landed! You should, now, see a fla
 
 This might all seem a bit overwhelming, at first, but don't worry: We've got you covered and try to provide all the documentation and help you need to get going.
 
-To learn about how to develop the PSC, please take a look at the _PSC Developer Manual_, which contains guides, explanations of concepts, and reference for everything surrounding the topic. You can find the latest version as PDF in the [Documentation Releases](https://github.com/TelestionTeam/telestion-docs/releases/latest). We are also working on providing this documentation on our website.
+To learn about how to develop the PSC, please take a look at the _PSC Developer Manual_, which contains guides, explanations of concepts, and reference for everything surrounding the topic. You can find the latest version as PDF in the [Documentation Releases](https://github.com/wuespace/telestion-docs/releases/latest). We are also working on providing this documentation on our website.
 
-For the always-up-to-date API reference for all the npm packages of this repository, please have a look at our [Online API Reference](https://telestionteam.github.io/telestion-client/), powered by [fliegdoc](https://github.com/fliegwerk/fliegdoc). As Telestion is meant to be extensible, documentation is a high priority. Therefore, we have a high standard for the API Reference, as well, with every exposed API being fully documented with Doc Comments, including an example for every function, and so on.
+For the always-up-to-date API reference for all the npm packages of this repository, please have a look at our [Online API Reference](https://wuespace.github.io/telestion-client/), powered by [fliegdoc](https://github.com/fliegwerk/fliegdoc). As Telestion is meant to be extensible, documentation is a high priority. Therefore, we have a high standard for the API Reference, as well, with every exposed API being fully documented with Doc Comments, including an example for every function, and so on.
 
 Last, but not least, you should also consider taking a look at some of our already existing PSCs:
 
-- [Project Rocketsound PSC](https://github.com/TelestionTeam/telestion-rocketsound-psc)
+- [Project Rocketsound PSC](https://github.com/wuespace/telestion-rocketsound-psc)
 
 ## This Repository
 
@@ -128,7 +128,7 @@ For the documentation on contributing to this repository, please take a look at 
 
 Thank you to all contributors of this repository:
 
-[![Contributors](https://contrib.rocks/image?repo=TelestionTeam/telestion-client)](https://github.com/TelestionTeam/telestion-client/graphs/contributors)
+[![Contributors](https://contrib.rocks/image?repo=wuespace/telestion-client)](https://github.com/wuespace/telestion-client/graphs/contributors)
 
 Made with [contributors-img](https://contrib.rocks).
 

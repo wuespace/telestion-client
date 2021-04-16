@@ -3,17 +3,17 @@
 	"description": "The template for a Telestion Client project",
 	"license": "MIT",
 	"version": "0.12.1",
-	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
+	"homepage": "https://telestion.wuespace.de/",
 	"engines": {
 		"node": ">=14"
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/TelestionTeam/telestion-client.git",
+		"url": "git+https://github.com/wuespace/telestion-client.git",
 		"directory": "packages/telestion-client-template"
 	},
 	"bugs": {
-		"url": "https://github.com/TelestionTeam/telestion-client/issues"
+		"url": "https://github.com/wuespace/telestion-client/issues"
 	},
 	"templateDir": "template",
 	"author": {
