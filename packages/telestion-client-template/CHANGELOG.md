@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.0](https://github.com/wuespace/telestion-client/compare/v0.12.1...v0.13.0) (2021-04-16)
+
+
+### ⚠ BREAKING CHANGES
+
+* If you referenced the npm packages via GitHub, please update your paths accordingly.
+
+### Features
+
+* Move GitHub Repository from TelestionTeam Organization to wuespace Organization ([da19ea3](https://github.com/wuespace/telestion-client/commit/da19ea34cfcff0ea5b2f950844550ae7f8dfb6c5))
+* **template:** Add more npm scripts ([4421905](https://github.com/wuespace/telestion-client/commit/4421905cd2d13f0c857baa9c1e2024f76721ac66))
+
+
+
 ### [0.12.1](https://github.com/wuespace/telestion-client/compare/v0.12.0...v0.12.1) (2021-04-09)
 
 **Note:** Version bump only for package @wuespace/telestion-client-template
