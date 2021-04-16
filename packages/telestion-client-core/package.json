@@ -3,7 +3,7 @@
 	"description": "The core components of the Telestion Client",
 	"license": "MIT",
 	"version": "0.12.1",
-	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
+	"homepage": "https://github.com/wuespace/telestion-client#readme",
 	"main": "build/index.js",
 	"module": "build/index.es.js",
 	"types": "build/index.d.ts",
@@ -20,11 +20,11 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/TelestionTeam/telestion-client.git",
+		"url": "git+https://github.com/wuespace/telestion-client.git",
 		"directory": "packages/telestion-client-core"
 	},
 	"bugs": {
-		"url": "https://github.com/TelestionTeam/telestion-client/issues"
+		"url": "https://github.com/wuespace/telestion-client/issues"
 	},
 	"author": {
 		"name": "wuespace",

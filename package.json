@@ -4,7 +4,7 @@
 	"license": "MIT",
 	"version": "0.3.0",
 	"private": true,
-	"homepage": "https://github.com/TelestionTeam/telestion-client#readme",
+	"homepage": "https://github.com/wuespace/telestion-client#readme",
 	"engines": {
 		"node": ">=14",
 		"npm": ">=7"
@@ -36,10 +36,10 @@
 	},
 	"repository": {
 		"type": "git",
-		"url": "git+https://github.com/TelestionTeam/telestion-client.git"
+		"url": "git+https://github.com/wuespace/telestion-client.git"
 	},
 	"bugs": {
-		"url": "https://github.com/TelestionTeam/telestion-client/issues"
+		"url": "https://github.com/wuespace/telestion-client/issues"
 	},
 	"author": {
 		"name": "wuespace",
