@@ -11,6 +11,8 @@ const initEpilogue = require('../lib/init/init-epilogue');
 const getPackageJSONReplacers = require('../lib/init/package-json-replacers');
 const askProjectName = require('../lib/init/ask-project-name');
 const getTemplateDirTree = require('../lib/init/template-parser');
+const findTemplateBasedRoot = require('../lib/find-template-based-project-root');
+const exec = require('../lib/async-exec');
 
 const spinner = new Spinner('', ['⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷']);
 
@@ -53,15 +55,49 @@ function builder(yargs) {
 async function handler(argv) {
 	logger.debug('Arguments:', argv);
 	try {
+		if (!argv['name']) {
+			try {
+				argv['name'] = await askProjectName();
+			} catch (error) {
+				if (error['isTtyError']) {
+					logger.error(
+						'Prompt could not be rendered in the current environment'
+					);
+					process.exit(1);
+				}
+			}
+		}
+
+		const projectName = argv['name'];
+		const templateModuleName = argv['template'];
+
+		const templateRoot = findTemplateBasedRoot();
+
+		logger.info('Template Project Root', templateRoot);
+
 		let {
-			projectName,
 			moduleName,
 			projectPath,
 			templatePath,
 			templateModulePath
-		} = await preprocessArgv(argv);
+		} = templateRoot
+			? normalizeAndExtractNames(projectName, templateModuleName)
+			: await preprocessArgv(projectName, templateModuleName);
 
-		const { skipInstall, skipGit, commit } = argv;
+		let { skipInstall, skipGit, commit } = argv;
+
+		if (templateRoot) {
+			logger.success(
+				`Detected telestion-project-template based project in ${templateRoot}.`
+			);
+			logger.info(
+				`Generating client boilerplate into project's ./client folder.`
+			);
+
+			skipGit = true;
+			projectPath = path.resolve(templateRoot, 'client');
+			moduleName = 'client';
+		}
 
 		spinner.message('Parse template project ...');
 		spinner.start();
@@ -84,6 +120,18 @@ async function handler(argv) {
 		await processTemplateTree(tree, projectPath, replacers);
 		await installDependencies(skipInstall, projectPath);
 		await initializeGitRepo(skipGit, projectPath, commit);
+
+		if (templatePath) {
+			logger.info('Committing changes');
+			await exec(`git add client`, {
+				cwd: templatePath
+			});
+
+			await exec(
+				`git commit -m "feat(client): Initialize client using tc-cli"`,
+				{ cwd: templatePath }
+			);
+		}
 
 		logger.success('Project initialized');
 		console.log(initEpilogue(projectPath));
@@ -125,21 +173,7 @@ function normalizeAndExtractNames(projectName, templateModuleName) {
 	}
 }
 
-async function preprocessArgv(argv) {
-	if (!argv['name']) {
-		try {
-			argv['name'] = await askProjectName();
-		} catch (error) {
-			if (error['isTtyError']) {
-				logger.error('Prompt could not be rendered in the current environment');
-			}
-			throw error;
-		}
-	}
-
-	const projectName = argv['name'];
-	const templateModuleName = argv['template'];
-
+async function preprocessArgv(projectName, templateModuleName) {
 	let {
 		moduleName,
 		projectPath,
