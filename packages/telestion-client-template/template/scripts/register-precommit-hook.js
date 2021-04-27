@@ -18,8 +18,7 @@ async function run() {
 		if (!fs.existsSync(preCommitPath)) {
 			fs.writeFileSync(
 				preCommitPath,
-				`#!/bin/sh
-				../../client/node_modules/.bin/pretty-quick --staged --pattern "client/**/*"`
+				`#!/bin/sh\n./client/node_modules/.bin/pretty-quick --staged --pattern "client/**/*"`
 			);
 		}
 	} catch (e) {
