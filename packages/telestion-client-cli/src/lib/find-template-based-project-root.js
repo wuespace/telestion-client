@@ -16,17 +16,17 @@ DO NOT EDIT, MOVE, RENAME, OR REMOVE this file, or our development automation to
 function findTemplateBasedProjectRoot(startPath = process.cwd()) {
 	if (path.resolve(startPath, '..') === path.resolve(startPath)) {
 		return false; // reached root dir
+	}
+
+	const searchPath = path.resolve(startPath, projectIdentifierFileName);
+	if (
+		fs.existsSync(searchPath) &&
+		fs.readFileSync(searchPath).toString().trim() ===
+			projectIdentifierFileContent.trim()
+	) {
+		return path.dirname(searchPath);
 	} else {
-		const searchPath = path.resolve(startPath, projectIdentifierFileName);
-		if (
-			fs.existsSync(searchPath) &&
-			fs.readFileSync(searchPath).toString().trim() ===
-				projectIdentifierFileContent.trim()
-		) {
-			return path.dirname(searchPath);
-		} else {
-			return findTemplateBasedProjectRoot(path.resolve(startPath, '..'));
-		}
+		return findTemplateBasedProjectRoot(path.resolve(startPath, '..'));
 	}
 }
 
