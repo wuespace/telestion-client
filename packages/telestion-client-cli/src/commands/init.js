@@ -54,11 +54,12 @@ function builder(yargs) {
 }
 
 async function handler(argv) {
-	logger.debug('Arguments:', argv);
+	logger.debug('argv:', argv);
 
 	try {
 		await fillArgvBlanks(argv);
 		const options = await getOptions(argv);
+		logger.debug('options', options);
 		verifyTargetPathUninitialized(
 			options.telestionProjectTemplateProjectRoot,
 			options.projectPath
@@ -80,20 +81,9 @@ async function handler(argv) {
 		logger.debug('Process and copy template directory to new project');
 		await processTemplateTree(tree, options.projectPath, replacers);
 
-		logger.debug('options', options);
 		if (!options.skipInstall) await installDependencies(options.projectPath);
 
-		let isTemplateProjectRootAGitRepository =
-			options.telestionProjectTemplateProjectRoot &&
-			fs.existsSync(
-				path.join(options.telestionProjectTemplateProjectRoot, '.git')
-			);
-
-		if (!options.skipGit && !options.telestionProjectTemplateProjectRoot) {
-			await initializeGitRepo(options.projectPath, options.commit);
-		} else if (!options.skipGit && isTemplateProjectRootAGitRepository) {
-			await commitClientInTemplateBasedProject(options);
-		}
+		await processGitInteractions(options);
 
 		logger.success('Project initialized');
 		console.log(initEpilogue(options.projectPath));
@@ -101,6 +91,20 @@ async function handler(argv) {
 		spinner.stop();
 		logger.error(err);
 		process.exit(1);
+	}
+}
+
+async function processGitInteractions(options) {
+	let isTemplateProjectRootAGitRepository =
+		options.telestionProjectTemplateProjectRoot &&
+		fs.existsSync(
+			path.join(options.telestionProjectTemplateProjectRoot, '.git')
+		);
+
+	if (!options.skipGit && !options.telestionProjectTemplateProjectRoot) {
+		await initializeGitRepo(options.projectPath, options.commit);
+	} else if (!options.skipGit && isTemplateProjectRootAGitRepository) {
+		await commitClientInTemplateBasedProject(options);
 	}
 }
 
@@ -193,7 +197,7 @@ async function commitClientInTemplateBasedProject(options) {
 		cwd: options.telestionProjectTemplateProjectRoot
 	});
 
-	logger.success('Changes commited successfully.');
+	logger.success('Changes committed successfully.');
 }
 
 module.exports = {
