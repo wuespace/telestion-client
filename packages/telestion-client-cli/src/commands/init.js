@@ -105,15 +105,15 @@ async function handler(argv) {
 }
 
 async function fillArgvBlanks(argv) {
-	// Project Name
-	if (!argv['name']) {
-		try {
+	try {
+		// Project Name
+		if (!argv['name']) {
 			argv['name'] = await askProjectName();
-		} catch (error) {
-			if (error['isTtyError']) {
-				logger.error('Prompt could not be rendered in the current environment');
-				process.exit(1);
-			}
+		}
+	} catch (error) {
+		if (error['isTtyError']) {
+			logger.error('Prompt could not be rendered in the current environment');
+			process.exit(1);
 		}
 	}
 }
