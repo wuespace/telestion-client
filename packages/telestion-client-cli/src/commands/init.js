@@ -59,7 +59,6 @@ async function handler(argv) {
 	try {
 		await fillArgvBlanks(argv);
 		const options = await getOptions(argv);
-
 		verifyTargetPathUninitialized(
 			options.telestionProjectTemplateProjectRoot,
 			options.projectPath
@@ -81,6 +80,7 @@ async function handler(argv) {
 		logger.debug('Process and copy template directory to new project');
 		await processTemplateTree(tree, options.projectPath, replacers);
 
+		logger.debug('options', options);
 		if (!options.skipInstall) await installDependencies(options.projectPath);
 
 		let isTemplateProjectRootAGitRepository =
@@ -131,10 +131,7 @@ async function getOptions(argv) {
 	const telestionProjectTemplateProjectRoot = findTemplateBasedRoot();
 	let argvOptions = { ...argv };
 
-	let namesAndPaths = getNamesAndPaths(
-		argvOptions.projectName,
-		argvOptions.templateModuleName
-	);
+	let namesAndPaths = getNamesAndPaths(argvOptions.name, argvOptions.template);
 
 	if (telestionProjectTemplateProjectRoot) {
 		logger.success(
@@ -169,7 +166,7 @@ async function getOptions(argv) {
 	};
 }
 
-async function installDependencies(skipInstall, projectPath) {
+async function installDependencies(projectPath) {
 	spinner.message('Installing dependencies ...');
 	spinner.start();
 	await npmInstall(projectPath);
