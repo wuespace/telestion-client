@@ -152,7 +152,6 @@ async function getOptions(argv) {
 			telestionProjectTemplateProjectRoot,
 			'client'
 		);
-		namesAndPaths.moduleName = 'client';
 	}
 
 	logger.debug('Template path:', namesAndPaths.templatePath);
