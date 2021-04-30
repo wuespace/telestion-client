@@ -31,18 +31,4 @@ async function makeInitialCommit(projectPath) {
 	}
 }
 
-/**
- * Initializes a git repository.
- *
- * After running `git init`, the function creates an initial commit if `commit` is true
- * @param {string} projectPath
- * @param {boolean} commit
- * @return {Promise<void>}
- */
-module.exports = async function initializeGitRepository(projectPath, commit) {
-	const isGitRepo = await runGitInit(projectPath);
-
-	if (isGitRepo && commit) {
-		await makeInitialCommit(projectPath);
-	}
-};
+module.exports = { runGitInit, makeInitialCommit };
