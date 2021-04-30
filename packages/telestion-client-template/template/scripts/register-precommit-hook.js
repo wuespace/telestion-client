@@ -14,11 +14,18 @@ async function run() {
 			fs.mkdirSync(hooksFolder);
 		}
 
+		const relativePath = path
+			.relative(gitRoot, path.join(__dirname, '..'))
+			.split('\\')
+			.join('/');
+
 		const preCommitPath = path.join(hooksFolder, 'pre-commit');
 		if (!fs.existsSync(preCommitPath)) {
 			fs.writeFileSync(
 				preCommitPath,
-				`#!/bin/sh\n./client/node_modules/.bin/pretty-quick --staged --pattern "client/**/*"`
+				`#!/bin/sh\nnpx pretty-quick --staged --pattern "${
+					relativePath ? relativePath + '/' : ''
+				}**/*"`
 			);
 		}
 	} catch (e) {
