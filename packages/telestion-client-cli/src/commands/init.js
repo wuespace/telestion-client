@@ -5,7 +5,6 @@ const logger = require('../lib/logger')('init');
 
 const processTemplateTree = require('../lib/init/process-template-tree');
 const npmInstall = require('../lib/init/npm-install');
-const initializeGitRepository = require('../lib/init/git-init');
 const initEpilogue = require('../lib/init/init-epilogue');
 const getPackageJSONReplacers = require('../lib/init/package-json-replacers');
 const askProjectName = require('../lib/init/ask-project-name');
@@ -14,6 +13,7 @@ const verifyTargetPathUninitialized = require('../lib/init/verify-target-path-un
 const getNamesAndPaths = require('../lib/init/get-names-and-paths');
 const findTemplateBasedRoot = require('../lib/find-template-based-project-root');
 const exec = require('../lib/async-exec');
+const { makeInitialCommit, runGitInit } = require('../lib/init/git-init');
 
 const spinner = new Spinner('', ['⣾', '⣽', '⣻', '⢿', '⡿', '⣟', '⣯', '⣷']);
 
@@ -81,9 +81,12 @@ async function handler(argv) {
 		logger.debug('Process and copy template directory to new project');
 		await processTemplateTree(tree, options.projectPath, replacers);
 
+		if (!options.telestionProjectTemplateProjectRoot && !options.skipGit)
+			await runGitInit(options.projectPath);
+
 		if (!options.skipInstall) await installDependencies(options.projectPath);
 
-		await processGitInteractions(options);
+		await gitCommit(options);
 
 		logger.success('Project initialized');
 		console.log(initEpilogue(options.projectPath));
@@ -94,7 +97,7 @@ async function handler(argv) {
 	}
 }
 
-async function processGitInteractions(options) {
+async function gitCommit(options) {
 	let isTemplateProjectRootAGitRepository =
 		options.telestionProjectTemplateProjectRoot &&
 		fs.existsSync(
@@ -102,10 +105,16 @@ async function processGitInteractions(options) {
 		);
 
 	if (!options.skipGit && !options.telestionProjectTemplateProjectRoot) {
-		await initializeGitRepo(options.projectPath, options.commit);
+		spinner.message('Commiting "Initial Commit"');
+		spinner.start();
+		if (options.commit) await makeInitialCommit(options.projectPath);
 	} else if (!options.skipGit && isTemplateProjectRootAGitRepository) {
+		spinner.message('Commiting new client folder');
+		spinner.start();
 		await commitClientInTemplateBasedProject(options);
 	}
+	spinner.stop();
+	logger.success('Commit successfully');
 }
 
 async function fillArgvBlanks(argv) {
@@ -177,17 +186,7 @@ async function installDependencies(projectPath) {
 	logger.success('Successfully installed dependencies');
 }
 
-async function initializeGitRepo(projectPath, commit) {
-	spinner.message('Initializing git repository ...');
-	spinner.start();
-	await initializeGitRepository(projectPath, commit);
-	spinner.stop();
-	logger.success('Successfully initialized git repository');
-}
-
 async function commitClientInTemplateBasedProject(options) {
-	logger.info('Committing changes');
-
 	await exec(`git add client`, {
 		cwd: options.telestionProjectTemplateProjectRoot
 	});
@@ -195,8 +194,6 @@ async function commitClientInTemplateBasedProject(options) {
 	await exec(`git commit -m "feat(client): Initialize client using tc-cli"`, {
 		cwd: options.telestionProjectTemplateProjectRoot
 	});
-
-	logger.success('Changes committed successfully.');
 }
 
 module.exports = {
