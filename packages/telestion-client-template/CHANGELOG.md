@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.0](https://github.com/wuespace/telestion-client/compare/v0.13.0...v0.14.0) (2021-05-01)
+
+
+### Features
+
+* **template:** Replace `husky` with more adaptive solution ([4b27835](https://github.com/wuespace/telestion-client/commit/4b27835ab2578db3ce67e31e803dc7dd554f5701))
+
+
+### Bug Fixes
+
+* **template:** Fix pre-commit hook path ([df87baa](https://github.com/wuespace/telestion-client/commit/df87baa0b244903792e4c0044cea3d6f696862a6))
+* **template:** Use npx for the pre-commit hook ([ffb62cd](https://github.com/wuespace/telestion-client/commit/ffb62cd53ff3868447947eab1d2da5281ed3826b))
+
+
+
 ## [0.13.0](https://github.com/wuespace/telestion-client/compare/v0.12.1...v0.13.0) (2021-04-16)
 
 

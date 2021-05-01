@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.0](https://github.com/wuespace/telestion-client/compare/v0.13.0...v0.14.0) (2021-05-01)
+
+
+### Features
+
+* **cli:** Add `skipGit` option to the `tc-cli init` command for telestion-project-template based projects ([fce07a8](https://github.com/wuespace/telestion-client/commit/fce07a8204ade2321af0dbd82fc1b66c95a97f35))
+* **cli:** Add support for projects based on the new telestion-project-template structure (the CLI will auto-detect the structure and follow the directory structure accordingly) ([759748b](https://github.com/wuespace/telestion-client/commit/759748ba0136cfa2e4ebb986594d4fb3982039c8))
+* **cli:** Reword `init-epilogue` ([5e98003](https://github.com/wuespace/telestion-client/commit/5e980033fc1ef0a0f24444fc2534ffff35a902aa))
+
+
+### Bug Fixes
+
+* **cli:** Fix install command to work with new telestion-project-template structure ([a2956c5](https://github.com/wuespace/telestion-client/commit/a2956c5587da5fde709ef605eb0ae533264dca56))
+* **cli:** Fix problem where `pretty-quick` hook was not generated when initializing a new repository ([b1c8ce0](https://github.com/wuespace/telestion-client/commit/b1c8ce00a87f7d6c8ec6e9b88af011412e330183))
+
+
+
 ## [0.13.0](https://github.com/wuespace/telestion-client/compare/v0.12.1...v0.13.0) (2021-04-16)
 
 

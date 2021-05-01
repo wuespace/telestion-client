@@ -2,7 +2,7 @@
 	"name": "@wuespace/telestion-client-core",
 	"description": "The core components of the Telestion Client",
 	"license": "MIT",
-	"version": "0.13.0",
+	"version": "0.14.0",
 	"homepage": "https://telestion.wuespace.de/",
 	"main": "build/index.js",
 	"module": "build/index.es.js",
