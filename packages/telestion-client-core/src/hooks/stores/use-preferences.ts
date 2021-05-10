@@ -152,7 +152,7 @@ function setPrefValue(
 	preference: PrefSelector,
 	key: 'value' | 'renderer',
 	value: any
-): Partial<PreferencesState> {
+): Pick<PreferencesState, 'preferences'> {
 	logger.debug(`Update ${group}.${preference}.${key}`);
 	const currentStore = currentState.preferences;
 	const currentGroup = currentStore[group];
