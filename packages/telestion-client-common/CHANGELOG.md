@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.14.1](https://github.com/wuespace/telestion-client/compare/v0.14.0...v0.14.1) (2021-05-10)
+
+
+### Bug Fixes
+
+* **common:** Tabs in navigation bar now use react-spectrum tabs v3 rc0 ([c437928](https://github.com/wuespace/telestion-client/commit/c437928ed6d3707985cef445ce4436eef5fc1f20))
+
+
+
 ## [0.14.0](https://github.com/wuespace/telestion-client/compare/v0.13.0...v0.14.0) (2021-05-01)
 
 **Note:** Version bump only for package @wuespace/telestion-client-common

@@ -2,7 +2,7 @@
 	"name": "@wuespace/telestion-client-cli",
 	"description": "The command line interface for the Telestion Client development",
 	"license": "MIT",
-	"version": "0.14.0",
+	"version": "0.14.1",
 	"homepage": "https://telestion.wuespace.de/",
 	"bin": {
 		"tc-cli": "./bin/cli.js"

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.14.1](https://github.com/wuespace/telestion-client/compare/v0.14.0...v0.14.1) (2021-05-10)
+
+
+### Bug Fixes
+
+* **core:** Sign in function in auth state not testing for same username ([df92f61](https://github.com/wuespace/telestion-client/commit/df92f6122b0a6f128a70c0b69341f4657086dd7e))
+* **core:** Specify return type of set preference value function more precisely ([18a565c](https://github.com/wuespace/telestion-client/commit/18a565c536abd0b257f0127298c48ce0c3ea07fc))
+
+
+
 ## [0.14.0](https://github.com/wuespace/telestion-client/compare/v0.13.0...v0.14.0) (2021-05-01)
 
 **Note:** Version bump only for package @wuespace/telestion-client-core
