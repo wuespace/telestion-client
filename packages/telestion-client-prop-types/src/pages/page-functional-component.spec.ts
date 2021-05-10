@@ -305,34 +305,33 @@ describe('Tests for page functional component', () => {
 		)
 	];
 
-	const validTestsForUnAuthRouting: Array<
-		TestCase<typeof fullUnAuthRouting>
-	> = [
-		...buildTestsWithValidObjects(fullUnAuthRouting, [
-			'path',
-			'redirectPath',
-			'type'
-		]),
-		...buildTestsWithValidObjectKeyValues(fullUnAuthRouting, 'path', [
-			'/route'
-		]),
-		...buildTestsWithValidObjectKeyValues(fullUnAuthRouting, 'exact', [
-			undefined,
-			null,
-			true
-		]),
-		...buildTestsWithValidObjectKeyValues(fullUnAuthRouting, 'redirectPath', [
-			'/another-route'
-		]),
-		...buildTestsWithValidObjectKeyValues(fullUnAuthRouting, 'type', [
-			'unAuth'
-		]),
-		...buildTestsWithValidObjectKeyValues(
-			fullUnAuthRouting,
-			'additionalRedirects',
-			[undefined, null, []]
-		)
-	];
+	const validTestsForUnAuthRouting: Array<TestCase<typeof fullUnAuthRouting>> =
+		[
+			...buildTestsWithValidObjects(fullUnAuthRouting, [
+				'path',
+				'redirectPath',
+				'type'
+			]),
+			...buildTestsWithValidObjectKeyValues(fullUnAuthRouting, 'path', [
+				'/route'
+			]),
+			...buildTestsWithValidObjectKeyValues(fullUnAuthRouting, 'exact', [
+				undefined,
+				null,
+				true
+			]),
+			...buildTestsWithValidObjectKeyValues(fullUnAuthRouting, 'redirectPath', [
+				'/another-route'
+			]),
+			...buildTestsWithValidObjectKeyValues(fullUnAuthRouting, 'type', [
+				'unAuth'
+			]),
+			...buildTestsWithValidObjectKeyValues(
+				fullUnAuthRouting,
+				'additionalRedirects',
+				[undefined, null, []]
+			)
+		];
 
 	const invalidTestsForAnyAuthRouting: Array<
 		TestCase<typeof fullUnAuthRouting | typeof fullAuthRouting>

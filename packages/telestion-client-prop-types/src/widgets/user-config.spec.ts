@@ -30,16 +30,16 @@ describe('Tests for user config', () => {
 			'widgetName',
 			'title'
 		]),
-		...buildTestsWithValidObjectKeyValues(fullWidgetDefinition, 'width', [
-			12,
-			42,
-			13
-		]),
-		...buildTestsWithValidObjectKeyValues(fullWidgetDefinition, 'height', [
-			13,
-			45,
-			21
-		]),
+		...buildTestsWithValidObjectKeyValues(
+			fullWidgetDefinition,
+			'width',
+			[12, 42, 13]
+		),
+		...buildTestsWithValidObjectKeyValues(
+			fullWidgetDefinition,
+			'height',
+			[13, 45, 21]
+		),
 		...buildTestsWithValidObjectKeyValues(fullWidgetDefinition, 'widgetName', [
 			'RandomWidget'
 		]),
@@ -106,11 +106,11 @@ describe('Tests for user config', () => {
 		...buildTestsWithValidObjectKeyValues(fullDashboard, 'title', [
 			'Random Dashboard'
 		]),
-		...buildTestsWithValidObjectKeyValues(fullDashboard, 'columns', [
-			13,
-			26,
-			40
-		]),
+		...buildTestsWithValidObjectKeyValues(
+			fullDashboard,
+			'columns',
+			[13, 26, 40]
+		),
 		...buildTestsWithValidObjectKeyValues(fullDashboard, 'rows', [14, 26, 42]),
 		...buildTestsWithValidObjectKeyValues(fullDashboard, 'widgets', [
 			[],

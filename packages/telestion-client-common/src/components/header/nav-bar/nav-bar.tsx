@@ -69,9 +69,8 @@ export interface NavBarProps {
  */
 export function NavBar({ links }: NavBarProps) {
 	const title = useTitle();
-	const { items, selected, onSelectionChange, isHidden } = useNavBarState(
-		links
-	);
+	const { items, selected, onSelectionChange, isHidden } =
+		useNavBarState(links);
 
 	if (isHidden) {
 		return <Heading level={4}>{title}</Heading>;

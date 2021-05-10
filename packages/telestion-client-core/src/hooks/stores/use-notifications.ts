@@ -78,8 +78,8 @@ const logger = getLogger('Notifications');
  * }
  * ```
  */
-export const useNotifications: UseStore<NotificationState> = create<NotificationState>(
-	(set, get) => ({
+export const useNotifications: UseStore<NotificationState> =
+	create<NotificationState>((set, get) => ({
 		notifications: [],
 		isMuted: false,
 		add: notifications => {
@@ -133,5 +133,4 @@ export const useNotifications: UseStore<NotificationState> = create<Notification
 			logger.debug('Toggle mute state to', !get().isMuted);
 			set({ isMuted: !get().isMuted });
 		}
-	})
-);
+	}));

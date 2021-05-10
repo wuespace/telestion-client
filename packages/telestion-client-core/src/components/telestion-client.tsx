@@ -5,10 +5,8 @@ import { StateSelector } from 'zustand';
 import { PreferencesState, usePreferences } from '../hooks';
 
 // preferences selector
-const selector: StateSelector<
-	PreferencesState,
-	PreferencesState['setValue']
-> = state => state.setValue;
+const selector: StateSelector<PreferencesState, PreferencesState['setValue']> =
+	state => state.setValue;
 
 /**
  * React Props of {@link TelestionClient}

@@ -71,10 +71,10 @@ export function ColorSchemeAction() {
 	const { colorScheme, set } = useColorScheme(selector, shallow);
 	const Icon = colorSchemeIcon[colorScheme];
 
-	const handleChange = useCallback(() => set(nextColorScheme[colorScheme]), [
-		colorScheme,
-		set
-	]);
+	const handleChange = useCallback(
+		() => set(nextColorScheme[colorScheme]),
+		[colorScheme, set]
+	);
 
 	return (
 		<TooltipTrigger>

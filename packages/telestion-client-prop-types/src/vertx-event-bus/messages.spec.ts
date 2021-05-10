@@ -721,11 +721,11 @@ describe('Tests for event bus messages', () => {
 			null,
 			() => {}
 		]),
-		...buildTestsWithValidObjectKeyValues(fullErrorMessage, 'failureCode', [
-			13,
-			25,
-			78
-		]),
+		...buildTestsWithValidObjectKeyValues(
+			fullErrorMessage,
+			'failureCode',
+			[13, 25, 78]
+		),
 		...buildTestsWithValidObjectKeyValues(fullErrorMessage, 'failureType', [
 			'Error',
 			'TypeError',
@@ -737,42 +737,45 @@ describe('Tests for event bus messages', () => {
 		])
 	];
 
-	const invalidTestsForErrorMessage: Array<
-		TestCase<typeof fullErrorMessage>
-	> = [
-		...buildTestsWithObjectsMissingRequiredKeys(fullErrorMessage, [
-			'type',
-			'headers',
-			'failureCode',
-			'failureType',
-			'message'
-		]),
-		...buildTestsWithInvalidObjectKeyAtomics(fullErrorMessage, 'type', [
-			'string'
-		]),
-		...buildTestsWithInvalidObjectKeyAtomics(fullErrorMessage, 'headers', [
-			'object'
-		]),
-		...buildTestsWithInvalidObjectKeyAtomics(fullErrorMessage, 'replyAddress', [
-			'undefined',
-			'null',
-			'string'
-		]),
-		...buildTestsWithInvalidObjectKeyAtomics(fullErrorMessage, 'reply', [
-			'undefined',
-			'null',
-			'function'
-		]),
-		...buildTestsWithInvalidObjectKeyAtomics(fullErrorMessage, 'failureCode', [
-			'number'
-		]),
-		...buildTestsWithInvalidObjectKeyAtomics(fullErrorMessage, 'failureType', [
-			'string'
-		]),
-		...buildTestsWithInvalidObjectKeyAtomics(fullErrorMessage, 'message', [
-			'string'
-		])
-	];
+	const invalidTestsForErrorMessage: Array<TestCase<typeof fullErrorMessage>> =
+		[
+			...buildTestsWithObjectsMissingRequiredKeys(fullErrorMessage, [
+				'type',
+				'headers',
+				'failureCode',
+				'failureType',
+				'message'
+			]),
+			...buildTestsWithInvalidObjectKeyAtomics(fullErrorMessage, 'type', [
+				'string'
+			]),
+			...buildTestsWithInvalidObjectKeyAtomics(fullErrorMessage, 'headers', [
+				'object'
+			]),
+			...buildTestsWithInvalidObjectKeyAtomics(
+				fullErrorMessage,
+				'replyAddress',
+				['undefined', 'null', 'string']
+			),
+			...buildTestsWithInvalidObjectKeyAtomics(fullErrorMessage, 'reply', [
+				'undefined',
+				'null',
+				'function'
+			]),
+			...buildTestsWithInvalidObjectKeyAtomics(
+				fullErrorMessage,
+				'failureCode',
+				['number']
+			),
+			...buildTestsWithInvalidObjectKeyAtomics(
+				fullErrorMessage,
+				'failureType',
+				['string']
+			),
+			...buildTestsWithInvalidObjectKeyAtomics(fullErrorMessage, 'message', [
+				'string'
+			])
+		];
 
 	describe('Tests for ErrorMessage', () => {
 		testPropType(
