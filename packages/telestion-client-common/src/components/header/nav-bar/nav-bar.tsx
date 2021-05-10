@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { Heading } from '@adobe/react-spectrum';
-import { Item, Tabs } from '@react-spectrum/tabs';
+import { Item, Tabs, TabList } from '@react-spectrum/tabs';
 import { useTitle } from '@wuespace/telestion-client-core';
 import { Link, useNavBarState } from './use-nav-bar-state';
 
@@ -84,11 +84,13 @@ export function NavBar({ links }: NavBarProps) {
 			selectedKey={selected}
 			onSelectionChange={onSelectionChange}
 		>
-			{item => (
-				<Item title={item.title} key={item.path}>
-					<></>
-				</Item>
-			)}
+			<TabList>
+				{(item: Link) => (
+					<Item title={item.title} key={item.path}>
+						<></>
+					</Item>
+				)}
+			</TabList>
 		</Tabs>
 	);
 }
