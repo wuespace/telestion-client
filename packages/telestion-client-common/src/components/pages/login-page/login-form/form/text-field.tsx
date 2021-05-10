@@ -86,10 +86,10 @@ export function TextField({
 	const [value, setValue] = useState(initialValue);
 	const [isValid, setIsValid] = useState<ValidationState>();
 
-	useEffect(() => setIsValid(validator ? validator(value) : 'valid'), [
-		value,
-		validator
-	]);
+	useEffect(
+		() => setIsValid(validator ? validator(value) : 'valid'),
+		[value, validator]
+	);
 
 	useEffect(() => {
 		if (onChange) {

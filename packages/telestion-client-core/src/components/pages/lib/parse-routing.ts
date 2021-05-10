@@ -63,7 +63,7 @@ export function parseRouting(componentName: string, obj: unknown): Routing {
 	}
 
 	// TypeScript is dumb
-	return (obj as unknown) as Routing;
+	return obj as unknown as Routing;
 }
 
 /**

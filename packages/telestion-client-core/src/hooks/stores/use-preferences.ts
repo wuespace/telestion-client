@@ -90,8 +90,8 @@ const logger = getLogger('Preferences');
  * }
  * ```
  */
-export const usePreferences: UseStore<PreferencesState> = create<PreferencesState>(
-	(set, get) => ({
+export const usePreferences: UseStore<PreferencesState> =
+	create<PreferencesState>((set, get) => ({
 		preferences: {},
 		setValue: (group, preference, newValue) =>
 			set(state => setPrefValue(state, group, preference, 'value', newValue)),
@@ -123,8 +123,7 @@ export const usePreferences: UseStore<PreferencesState> = create<PreferencesStat
 			set({ preferences: newStore });
 			logger.info('Preference store replaced');
 		}
-	})
-);
+	}));
 
 /**
  * Returns a {@link PreferencesState}, based on the `currentState`, with `[key]` set to `value` on the preference

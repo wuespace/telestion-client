@@ -30,13 +30,8 @@ import { useDashboardState } from './use-dashboard-state';
  */
 export function DashboardPicker() {
 	const [dashboards] = useCurrentDashboards();
-	const {
-		items,
-		selected,
-		onSelectionChange,
-		isDisabled,
-		isHidden
-	} = useDashboardState(dashboards);
+	const { items, selected, onSelectionChange, isDisabled, isHidden } =
+		useDashboardState(dashboards);
 
 	if (isHidden) {
 		return null;

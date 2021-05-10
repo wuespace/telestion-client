@@ -57,9 +57,10 @@ export function useDashboards(
 	const update = useUserConfig(updateSelector);
 	// updates only on changed dashboards and changed username
 	const dashboards = useUserConfig(
-		useCallback(state => (state.userConfig[username] || {}).dashboards, [
-			username
-		])
+		useCallback(
+			state => (state.userConfig[username] || {}).dashboards,
+			[username]
+		)
 	);
 
 	// updates only on username change -> almost stable function

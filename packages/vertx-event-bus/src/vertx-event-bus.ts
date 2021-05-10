@@ -419,9 +419,9 @@ export class EventBus {
 			this.options.logger?.success('Event bus is open!');
 			// register all current event handlers
 			this.options.logger?.debug('Send register messages...');
-			filterDuplicates(
-				this.handlers.map(handler => handler[0])
-			).forEach(channel => this.bus.send(registerMessage(channel), false));
+			filterDuplicates(this.handlers.map(handler => handler[0])).forEach(
+				channel => this.bus.send(registerMessage(channel), false)
+			);
 			this.onOpen?.();
 		};
 		this.bus.onClose = () => {

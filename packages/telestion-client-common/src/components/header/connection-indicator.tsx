@@ -24,10 +24,8 @@ const label: { [key in ConnectionState]: string } = {
 };
 
 // event bus selector
-const selector: StateSelector<
-	EventBusState,
-	EventBusState['connectionState']
-> = state => state.connectionState;
+const selector: StateSelector<EventBusState, EventBusState['connectionState']> =
+	state => state.connectionState;
 
 /**
  * Part of the Telestion Client Common header.
