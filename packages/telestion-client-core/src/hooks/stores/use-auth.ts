@@ -6,7 +6,7 @@ import {
 } from '@wuespace/telestion-client-types';
 
 import { FakeAuth } from '../../lib/auth';
-import { getLogger } from '../../lib/logger';
+import { getLogger } from '../../lib';
 import { AuthState } from './use-auth.model';
 
 const logger = getLogger('Auth State');
@@ -111,7 +111,10 @@ export const useAuth: UseStore<AuthState> = create<AuthState>((set, get) => ({
 				}
 
 				cleanupCb = authenticator.onAuthStateChanged(changeRes => {
-					if (changeRes.type === 'signOut' || changeRes.user !== get().user) {
+					if (
+						changeRes.type === 'signOut' ||
+						changeRes.user !== get().auth?.username
+					) {
 						logger.warn('Signed out externally');
 						set({ auth: null });
 					}
