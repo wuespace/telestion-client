@@ -22,9 +22,17 @@ export interface OverflowFixProps extends ViewProps {
 /**
  * Prevents the children of this component from overflowing
  * and breaking the application's layout.
+ * The children of this component are wrapped inside a container
+ * with a defined size. If the children needs more space
+ * than the parent container has, it overflows
+ * and the parent container renders vertical and horizontal scrollbars
+ * if necessary.
+ * The user can now scroll through the bigger children via the scrollbars
+ * and no component inside the overflow fix breaks the outside layout.
  *
  * In the background, it uses the {@link @adobe/react-spectrum#View} component.
- * All props of this component get passed to the outer {@link @adobe/react-spectrum#View} container.
+ * All props of this component get passed to the outer
+ * {@link @adobe/react-spectrum#View} container.
  *
  * @see {@link OverflowFixProps}
  * @see {@link @adobe/react-spectrum#View}
