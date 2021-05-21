@@ -231,3 +231,17 @@ let vertxEventBusUnregisterMessage;
  * @type {TelestionClientTypes.VertxEventBus.ChannelAddress}
  */
 let vertxEventBusChannelAddress;
+
+//
+// spectrum-color
+//
+
+/**
+ * @type {TelestionClientTypes.SpectrumColor.StaticSpectrumColor}
+ */
+let staticSpectrumColor;
+
+/**
+ * @type {TelestionClientTypes.SpectrumColor.SpectrumColor}
+ */
+let spectrumColor;
