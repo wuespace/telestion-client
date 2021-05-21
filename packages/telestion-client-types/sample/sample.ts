@@ -87,4 +87,10 @@ namespace AnotherPlace {
 	let vertxEventBusSendMessage: TelestionClientTypes.VertxEventBus.SendMessage;
 	let vertxEventBusUnregisterMessage: TelestionClientTypes.VertxEventBus.UnregisterMessage;
 	let vertxEventBusChannelAddress: TelestionClientTypes.VertxEventBus.ChannelAddress;
+
+	//
+	// spectrum-color
+	//
+	let staticSpectrumColor: TelestionClientTypes.SpectrumColor.StaticSpectrumColor;
+	let spectrumColor: TelestionClientTypes.SpectrumColor.SpectrumColor;
 }
