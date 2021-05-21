@@ -2,7 +2,7 @@ import { useMemo } from 'react';
 import { Grid, View } from '@adobe/react-spectrum';
 import { Dashboard as DashboardType } from '@wuespace/telestion-client-types';
 
-import { OverflowFix } from './overflow-fix';
+import { OverflowFix } from '../../../widget-helper';
 import { WidgetRenderer } from './widget-renderer/widget-renderer';
 
 /**
