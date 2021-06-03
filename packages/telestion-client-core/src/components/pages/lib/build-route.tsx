@@ -23,24 +23,27 @@ import { logger } from './logger';
  * ```
  */
 export function buildRoute(
-	routing: Routing & { redirectPath: string },
+	routing: Routing,
 	page: ReactNode,
 	isAuthenticated: boolean
 ): ReactNode {
-	const key = `comp:${routing.path}:${routing.redirectPath}`;
+	const { path, exact, type } = routing;
+
+	const redirectPath = 'redirectPath' in routing ? routing.redirectPath : '';
+	const key = `comp:${path}:${redirectPath}`;
 	const shouldRender =
-		(routing.type === 'auth' && isAuthenticated) ||
-		(routing.type === 'unAuth' && !isAuthenticated);
+		(type === 'auth' && isAuthenticated) ||
+		(type === 'unAuth' && !isAuthenticated);
 
 	logger.debug(
-		`Route with${routing.exact ? ' exact' : ''} path "${routing.path}" should ${
-			shouldRender ? 'render' : `redirect to "${routing.redirectPath}"`
+		`Route with${exact ? ' exact' : ''} path "${path}" should ${
+			shouldRender ? 'render' : `redirect to "${redirectPath}"`
 		}`
 	);
 
 	return (
-		<Route key={key} path={routing.path} exact={routing.exact}>
-			{shouldRender ? page : <Redirect to={routing.redirectPath} />}
+		<Route key={key} path={path} exact={exact}>
+			{shouldRender ? page : <Redirect to={redirectPath} />}
 		</Route>
 	);
 }
