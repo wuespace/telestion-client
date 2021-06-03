@@ -1,11 +1,8 @@
 import { ReactText, useCallback, useEffect, useMemo, useState } from 'react';
 import { StateSelector } from 'zustand';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import { Dashboard } from '@wuespace/telestion-client-types';
 import { AuthState, useAuth } from '@wuespace/telestion-client-core';
-
-// auth selector
-const selector: StateSelector<AuthState, boolean> = ({ auth }) => !auth;
 
 /**
  * The key of a picker element which represents a dashboard in the picker.
@@ -76,6 +73,27 @@ export interface PickerState {
 export const DP_EMPTY_KEY: DashboardPickerKey = '-1';
 
 /**
+ * Extracts the dashboard id from the current location pathname.
+ * @param pathname - the current location pathname
+ * @returns the dashboard id when on a dashboard page route
+ * otherwise {@link DP_EMPTY_KEY} when not on dashboard page route
+ *
+ * @example
+ * ```ts
+ * useEffect(() => {
+ * 	setSelected(extractId(history.location.pathname));
+ * }, [history.location]);
+ * ```
+ */
+function extractId(pathname: string): string {
+	const id = parseInt(pathname.split('/').pop() || '', 10);
+	return Number.isNaN(id) ? DP_EMPTY_KEY : `${id}`;
+}
+
+// auth selector
+const selector: StateSelector<AuthState, boolean> = ({ auth }) => !auth;
+
+/**
  * Controls the behaviour of the entire dashboard picker.
  * It handles the items, the current selection, the visibility
  * and hears on events.
@@ -123,19 +141,17 @@ export function useDashboardState(
 ): PickerState {
 	// change app path
 	const history = useHistory();
-	// get current dashboard id
-	const { id } = useParams<{ id: DashboardPickerKey | undefined }>();
 	// check authentication state
 	const isLoggedOut = useAuth(selector);
 	// store selected key
-	const [selected, setSelected] = useState<DashboardPickerKey>(
-		id || DP_EMPTY_KEY
-	);
+	const [selected, setSelected] = useState<DashboardPickerKey>(DP_EMPTY_KEY);
 
 	// sync selection with current route
 	useEffect(() => {
-		setSelected(id || DP_EMPTY_KEY);
-	}, [id]);
+		// We cannot use useParams here,
+		// because the Header component is not in a react-router route!
+		setSelected(extractId(history.location.pathname));
+	}, [history.location]);
 
 	const onSelectionChange = useCallback(
 		(key: ReactText) => {
