@@ -34,8 +34,8 @@ type R50900 = 50 | 75 | 100 | R200800 | 900;
  * @see https://spectrum.adobe.com/page/color/#Color-themes-and-modes
  */
 export type StaticSpectrumColor =
-	| 'black'
-	| 'white'
+	| 'static-black'
+	| 'static-white'
 	| `static-${'gray'}-${R50900}`
 	| `static-${'red' | 'orange' | 'green' | 'fuchsia'}-${R400700}`
 	| `static-${'chartreuse'}-${R300700}`
