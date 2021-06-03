@@ -1,22 +1,10 @@
 import { Children, ReactNode } from 'react';
 import PropTypes from 'prop-types';
-import {
-	HashRouter as Router,
-	Switch,
-	Route as DefaultRoute,
-	Redirect
-} from 'react-router-dom';
-import { AbstractRedirect } from '@wuespace/telestion-client-types';
+import { StateSelector } from 'zustand';
+import { HashRouter as Router, Switch } from 'react-router-dom';
 
-import { UnAuthRoute, AuthRoute } from './routes';
-import { isValidChild, parseRouting } from './lib';
-
-// components used for routing based on authentication state
-const routeComponents = {
-	auth: AuthRoute,
-	unAuth: UnAuthRoute,
-	default: DefaultRoute
-};
+import { AuthState, useAuth } from '../../hooks';
+import { buildRedirect, buildRoute, isValidChild, parseRouting } from './lib';
 
 // the default state of a routing object on a page component
 // will be merged with the existing part
@@ -26,27 +14,7 @@ const defaultRouting = {
 	additionalRedirects: []
 };
 
-/**
- * Builds a redirect for a given path the application route can take.
- * @param redirect -  the redirect information
- * @returns a redirect on a specific route
- *
- * @example
- * ```ts
- * const routes: ReactNode[] = [];
- * routes.push(buildRedirect(redirect));
- *
- * return <div>{routes}</div>;
- * ```
- */
-function buildRedirect(redirect: AbstractRedirect) {
-	const key = `red:${redirect.path}:${redirect.redirectPath}`;
-	return (
-		<DefaultRoute key={key} path={redirect.path} exact={redirect.exact}>
-			<Redirect to={redirect.redirectPath} />
-		</DefaultRoute>
-	);
-}
+const selector: StateSelector<AuthState, boolean> = state => !!state.auth;
 
 /**
  * React Props of {@link Pages}
@@ -105,29 +73,21 @@ export interface PagesProps {
  * ```
  */
 export function Pages({ preNodes, postNodes, children }: PagesProps) {
+	const isAuthenticated = useAuth(selector);
+
 	const routes: ReactNode[] = [];
 	const lastRoutes: ReactNode[] = [];
 
 	Children.forEach(children, (child, index) => {
 		if (isValidChild(child)) {
+			// build valid routing object
 			const routing = {
 				...defaultRouting,
 				...parseRouting(child.type.name, child.type.routing)
 			};
-			const Route = routeComponents[routing.type];
-			const key = `comp:${routing.path}:${routing.redirectPath}`;
 
-			routes.push(
-				<Route
-					key={key}
-					path={routing.path}
-					redirectPath={routing.redirectPath}
-					exact={routing.exact}
-				>
-					{child}
-				</Route>
-			);
-
+			// add required routes
+			routes.push(buildRoute(routing, child, isAuthenticated));
 			routing.additionalRedirects.forEach(redirect =>
 				redirect.last
 					? lastRoutes.push(buildRedirect(redirect))
