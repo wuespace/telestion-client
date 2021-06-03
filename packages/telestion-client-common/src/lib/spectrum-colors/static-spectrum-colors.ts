@@ -6,8 +6,8 @@ import { StaticColorMap } from './model';
  * @see https://spectrum.adobe.com/page/color/#Color-themes-and-modes
  */
 export const staticColors: StaticColorMap = {
-	black: '#000',
-	white: '#fff',
+	'static-black': '#000',
+	'static-white': '#fff',
 
 	'static-gray-50': '#fff',
 	'static-gray-75': '#fff',
