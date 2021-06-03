@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.0](https://github.com/wuespace/telestion-client/compare/v0.14.1...v0.15.0) (2021-06-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **core:** The `AuthRoute` and `UnAuthRoute` components do no longer exist. Please use the attached routing object on the Page Component instead. _Mostly likely this won't affect you, if you don't immediately understand, what this means. Otherwise feel free to ignore it._ :wink:
+
+### Features
+
+* **common:** Add a spectrum color hook which maps the spectrum color definition to a color value based on the current color scheme state ([ae458d5](https://github.com/wuespace/telestion-client/commit/ae458d587ace9613c36e6929d049cf4ddaeacc72))
+* **common:** Make overflow fix accessible for projects ([ae361ad](https://github.com/wuespace/telestion-client/commit/ae361adbcc0a2361b5ebabeece30385f5c9e494f))
+* **types:** Add spectrum color type definitions ([fa548da](https://github.com/wuespace/telestion-client/commit/fa548da21cbd1687e6c3c3a81e93f7dccc30d00f))
+
+
+### Bug Fixes
+
+* **common:** Fix dashboard picker does not display the current dashboard title on initial load ([4d5578b](https://github.com/wuespace/telestion-client/commit/4d5578b3b652079d3f62458807499ee8c63e358f)), closes [#363](https://github.com/wuespace/telestion-client/issues/363)
+* **core:** Clean up the page renderer so that routes are direct child components of the switch. ([05875a2](https://github.com/wuespace/telestion-client/commit/05875a2169690ccd8fcc36e99891297341b66ab9))
+
+
+### Documentation Changes
+
+* **common:** Improve documentation for the overflow fix component ([8bbc593](https://github.com/wuespace/telestion-client/commit/8bbc593376585d23ddc88f41d7348970159410fa))
+
+
+
 ### [0.14.1](https://github.com/wuespace/telestion-client/compare/v0.14.0...v0.14.1) (2021-05-10)
 
 

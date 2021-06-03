@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.0](https://github.com/wuespace/telestion-client/compare/v0.14.1...v0.15.0) (2021-06-03)
+
+
+### ⚠ BREAKING CHANGES
+
+* **core:** The `AuthRoute` and `UnAuthRoute` components do no longer exist. Please use the attached routing object on the Page Component instead. _Mostly likely this won't affect you, if you don't immediately understand, what this means. Otherwise feel free to ignore it._ :wink:
+
+### Bug Fixes
+
+* **core:** Clean up the page renderer so that routes are direct child components of the switch. ([05875a2](https://github.com/wuespace/telestion-client/commit/05875a2169690ccd8fcc36e99891297341b66ab9))
+
+
+
 ### [0.14.1](https://github.com/wuespace/telestion-client/compare/v0.14.0...v0.14.1) (2021-05-10)
 
 
