@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.15.1](https://github.com/wuespace/telestion-client/compare/v0.15.0...v0.15.1) (2021-06-03)
+
+
+### Bug Fixes
+
+* Correct wrong static color names (`static-black` and `static-white`) in `StaticSpectrumColor` type ([0acdf91](https://github.com/wuespace/telestion-client/commit/0acdf91877dcb4736b34e08f2445677511b16a82))
+
+
+
 ## [0.15.0](https://github.com/wuespace/telestion-client/compare/v0.14.1...v0.15.0) (2021-06-03)
 
 
