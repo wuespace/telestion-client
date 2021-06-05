@@ -51,7 +51,7 @@ export function EventbusDetails() {
 				<Unavailable />
 				<Heading>No EventBus instance</Heading>
 				<Content>
-					There is currently no eventbus instance. Do you forget to create an
+					There is currently no eventbus instance. Did you forget to create an
 					eventbus connection?
 				</Content>
 			</IllustratedMessage>
