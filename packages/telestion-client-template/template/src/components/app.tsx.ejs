@@ -5,7 +5,8 @@ import {
 	CommonWrapper,
 	DashboardPage,
 	NotFoundPage,
-	useUserConfig
+	useUserConfig,
+	commonWidgets
 } from "@wuespace/telestion-client-common";
 
 import { userConfig } from "../model/sample-user-config";
@@ -14,7 +15,7 @@ import { projectWidgets } from "../widgets";
 import { Header } from "./header";
 import { LoginPage } from "./login-page";
 
-const widgets: Array<Widget> = [...projectWidgets];
+const widgets: Array<Widget> = [...commonWidgets, ...projectWidgets];
 
 export function App() {
 	useEventBusManager();
