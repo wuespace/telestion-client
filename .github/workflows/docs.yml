@@ -37,7 +37,7 @@ jobs:
         run: touch docs/.nojekyll
 
       - name: Deploy documentation 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.3
+        uses: JamesIves/github-pages-deploy-action@4.1.4
         with:
           branch: gh-pages
           folder: docs
