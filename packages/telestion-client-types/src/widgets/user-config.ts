@@ -26,6 +26,11 @@ import { GenericProps } from './widget';
  */
 export interface WidgetDefinition {
 	/**
+	 * A unique identifier which represents this specific widget.
+	 */
+	id: number;
+
+	/**
 	 * the width of the widget in columns
 	 *
 	 * This is done via the CSS Grid system.
