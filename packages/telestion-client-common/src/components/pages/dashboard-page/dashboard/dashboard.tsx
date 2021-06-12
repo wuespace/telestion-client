@@ -84,7 +84,7 @@ export function Dashboard({ dashboard }: DashboardProps) {
 			>
 				{dashboard.widgets.map(widget => (
 					<OverflowFix
-						key={`${widget.title}-w${widget.width}-h${widget.height}`}
+						key={widget.id}
 						gridRowEnd={`span ${widget.height}`}
 						gridColumnEnd={`span ${widget.width}`}
 						backgroundColor="gray-100"
