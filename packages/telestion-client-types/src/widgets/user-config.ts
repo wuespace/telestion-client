@@ -17,7 +17,6 @@ import { GenericProps } from './widget';
  * 	width: 2,
  * 	height: 4,
  * 	widgetName: 'myWidget',
- * 	title: 'My awesome Widget',
  * 	initialProps: {
  * 		value: 'The Box'
  * 	}
@@ -28,7 +27,7 @@ export interface WidgetDefinition {
 	/**
 	 * A unique identifier which represents this specific widget.
 	 */
-	id: number;
+	id: string;
 
 	/**
 	 * the width of the widget in columns
@@ -58,14 +57,6 @@ export interface WidgetDefinition {
 	 * @see {@link Widget.name}
 	 */
 	widgetName: string;
-
-	/**
-	 * the title of the widget position in the dashboard
-	 *
-	 * is available to the widget via component props
-	 * @see {@link GlobalRendererProps}
-	 */
-	title: string;
 
 	/**
 	 * the initial props for the Widget component
@@ -99,8 +90,7 @@ export interface WidgetDefinition {
  * 		{
  * 			width: 2,
  * 			height: 2,
- * 			widgetName: 'myWidget',
- * 			title: 'My awesome widget'
+ * 			widgetName: 'myWidget'
  * 		}
  * 	]
  * };
@@ -197,8 +187,7 @@ export interface UserInformation {
  * 					{
  * 						width: 2,
  * 						height: 2,
- * 						widgetName: 'myWidget',
- * 						title: 'My awesome widget',
+ * 						widgetName: 'myWidget'
  * 						initialProps: {
  * 							value: 'TheBox'
  * 						}

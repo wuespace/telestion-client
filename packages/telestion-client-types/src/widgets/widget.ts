@@ -73,37 +73,6 @@ export type GenericComponent<
 > = (props: P) => ReactNode;
 
 /**
- * Defines the props that are always available to Widget component
- * and are not changeable via the ConfigControls component.
- *
- * @see {@link BaseRendererProps}
- * @see {@link Widget}
- */
-export interface GlobalRendererProps extends GenericProps {
-	/**
-	 * the title of the Widget instance on the dashboard
-	 *
-	 * @see {@link WidgetDefinition.title}
-	 *
-	 * @example
-	 * A very simple widget
-	 * ```ts
-	 * import { ReactNode } from 'react';
-	 *
-	 * function Widget({ title, type }: BaseRendererProps): ReactNode {
-	 *   return <p>Title: {title}</p>;
-	 * }
-	 *
-	 * export const verySimpleWidget: Widget<WidgetProps> = {
-	 *   name: 'Very simple Widget',
-	 *   Widget: Widget
-	 * };
-	 * ```
-	 */
-	title: string;
-}
-
-/**
  * These are the most basic renderer props
  * that a Widget renderer component can have.
  * It is extensible via a generic type
@@ -141,10 +110,9 @@ export interface GlobalRendererProps extends GenericProps {
  *
  * interface RendererProps extends BaseRendererProps<WidgetProps> {}
  *
- * function Widget({ title, type }: RendererProps): ReactNode {
+ * function Widget({ type }: RendererProps): ReactNode {
  * 	return (
  * 		<div>
- * 			<p>Title: {title}</p>
  * 			<p>Type: {type}</p>
  * 		</div>
  * 	);
@@ -156,8 +124,7 @@ export interface GlobalRendererProps extends GenericProps {
  * };
  * ```
  */
-export type BaseRendererProps<P extends GenericProps = GenericProps> = P &
-	GlobalRendererProps;
+export type BaseRendererProps<P extends GenericProps = GenericProps> = P;
 
 /**
  * These are props for the ConfigControls widget.
@@ -254,10 +221,27 @@ export interface Widget<P extends GenericProps = GenericProps> {
 	/**
 	 * the name of the widget
 	 *
-	 * It is a selector to reference the widget
-	 * and will be shown in the application.
+	 * It is a selector to reference the widget.
 	 */
 	name: string;
+
+	/**
+	 * The full title of the widget which are displayed in the settings page
+	 * and in the widget selector.
+	 *
+	 * If the {@link title} is not defined,
+	 * the {@link name} is used as a fallback.
+	 */
+	title?: string;
+
+	/**
+	 * The version of the widget.
+	 * Different values resulting in different stored properties
+	 * in the widget renderer.
+	 * Useful, when you have a breaking change in your widget props.
+	 */
+	version: string;
+
 	/**
 	 * the Widget component implementation as React Component
 	 *
