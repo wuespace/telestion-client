@@ -47,10 +47,6 @@ let widgetGenericProps;
  */
 let widgetGenericComponent;
 /**
- * @type {TelestionClientTypes.Widget.GlobalRendererProps}
- */
-let widgetGlobalRendererProps;
-/**
  * @type {TelestionClientTypes.Widget.BaseRendererProps}
  */
 let widgetBaseRendererProps;

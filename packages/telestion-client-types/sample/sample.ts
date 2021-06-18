@@ -16,7 +16,6 @@ namespace AnotherPlace {
 	let widgetBasePropType: TelestionClientTypes.Widget.BasePropType;
 	let widgetGenericProps: TelestionClientTypes.Widget.GenericProps;
 	let widgetGenericComponent: TelestionClientTypes.Widget.GenericComponent;
-	let widgetGlobalRendererProps: TelestionClientTypes.Widget.GlobalRendererProps;
 	let widgetBaseRendererProps: TelestionClientTypes.Widget.BaseRendererProps;
 	let widgetConfigControlsProps: TelestionClientTypes.Widget.BaseConfigControlsProps;
 	let widgetWidget: TelestionClientTypes.Widget.Widget;
