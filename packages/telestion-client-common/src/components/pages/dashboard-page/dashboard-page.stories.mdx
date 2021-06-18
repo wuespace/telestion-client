@@ -143,8 +143,8 @@ When rendering to matching `DashboardPage`, it looks like this:
 	>
 		{args => {
 			useAuth.setState({ auth: { username: 'alice' } });
-			const { eventBus, openEventBus } = useEventBus.getState();
-			if (!eventBus) openEventBus('http://localhost:54321/nirwana');
+			const { eventBus } = useEventBus.getState();
+			if (!eventBus) useEventBus.setState({ eventBus: {} });
 			useUserConfig.setState({
 				userConfig: {
 					alice: {
@@ -230,8 +230,8 @@ message in place of the widget:
 	>
 		{args => {
 			useAuth.setState({ auth: { username: 'alice' } });
-			const { eventBus, openEventBus } = useEventBus.getState();
-			if (!eventBus) openEventBus('http://localhost:54321/nirwana');
+			const { eventBus } = useEventBus.getState();
+			if (!eventBus) useEventBus.setState({ eventBus: {} });
 			useUserConfig.setState({
 				userConfig: {
 					alice: {
@@ -286,8 +286,8 @@ This prevents widgets from crashing:
 	>
 		{args => {
 			useAuth.setState({ auth: { username: 'alice' } });
-			const { eventBus, closeEventBus } = useEventBus.getState();
-			if (eventBus) closeEventBus();
+			const { eventBus } = useEventBus.getState();
+			if (eventBus) useEventBus.setState({ eventBus: null });
 			useUserConfig.setState({
 				userConfig: {
 					alice: {
