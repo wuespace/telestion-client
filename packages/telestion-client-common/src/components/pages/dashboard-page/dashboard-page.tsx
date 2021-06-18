@@ -1,10 +1,17 @@
 import { useMemo } from 'react';
+import { StateSelector } from 'zustand';
 import { useParams } from 'react-router-dom';
+import { EventBusState, useEventBus } from '@wuespace/telestion-client-core';
 import { Routing } from '@wuespace/telestion-client-types';
 
+import { useCurrentDashboards } from '../../../hooks';
 import { Dashboard } from './dashboard/dashboard';
 import { NoDashboardsMessage } from './no-dashboards-message';
-import { useCurrentDashboards } from '../../../hooks';
+import { MissingEventBus } from './missing-event-bus';
+
+// eventbus selector
+const selector: StateSelector<EventBusState, EventBusState['eventBus']> =
+	state => state.eventBus;
 
 /**
  * A Telestion Client page that renders a dashboard page.
@@ -47,9 +54,14 @@ import { useCurrentDashboards } from '../../../hooks';
  */
 export function DashboardPage() {
 	const { id } = useParams<{ id: string }>();
+	const eventBus = useEventBus(selector);
 	const [dashboards] = useCurrentDashboards();
 
 	const idAsNumber = useMemo(() => Number.parseInt(id, 10), [id]);
+
+	if (!eventBus) {
+		return <MissingEventBus />;
+	}
 
 	if (!dashboards) {
 		return <NoDashboardsMessage />;
