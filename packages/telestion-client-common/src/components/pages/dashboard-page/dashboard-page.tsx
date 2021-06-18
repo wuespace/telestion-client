@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { StateSelector } from 'zustand';
 import { useParams } from 'react-router-dom';
 import { EventBusState, useEventBus } from '@wuespace/telestion-client-core';
@@ -8,10 +8,12 @@ import { useCurrentDashboards } from '../../../hooks';
 import { Dashboard } from './dashboard/dashboard';
 import { NoDashboardsMessage } from './no-dashboards-message';
 import { MissingEventBus } from './missing-event-bus';
+import { ClipboardContent, ClipboardContext } from './props-clipboard';
 
 // eventbus selector
 const selector: StateSelector<EventBusState, EventBusState['eventBus']> =
 	state => state.eventBus;
+
 
 /**
  * A Telestion Client page that renders a dashboard page.
@@ -53,6 +55,8 @@ const selector: StateSelector<EventBusState, EventBusState['eventBus']> =
  * ```
  */
 export function DashboardPage() {
+	const clipState = useState<ClipboardContent>();
+
 	const { id } = useParams<{ id: string }>();
 	const eventBus = useEventBus(selector);
 	const [dashboards] = useCurrentDashboards();
@@ -67,7 +71,11 @@ export function DashboardPage() {
 		return <NoDashboardsMessage />;
 	}
 
-	return <Dashboard dashboard={dashboards[idAsNumber]} />;
+	return (
+		<ClipboardContext.Provider value={clipState}>
+			<Dashboard dashboard={dashboards[idAsNumber]} />
+		</ClipboardContext.Provider>
+	);
 }
 
 /**
