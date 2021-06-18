@@ -3,7 +3,7 @@ import { Grid, View } from '@adobe/react-spectrum';
 import { Dashboard as DashboardType } from '@wuespace/telestion-client-types';
 
 import { OverflowFix } from '../../../widget-helper';
-import { WidgetRenderer } from './widget-renderer/widget-renderer';
+import { WidgetSelector } from './widget-renderer/widget-selector';
 
 /**
  * React Props of {@link OverflowFix}
@@ -90,7 +90,7 @@ export function Dashboard({ dashboard }: DashboardProps) {
 						backgroundColor="gray-100"
 						borderRadius="regular"
 					>
-						<WidgetRenderer widgetDefinition={widget} />
+						<WidgetSelector definition={widget} />
 					</OverflowFix>
 				))}
 			</Grid>

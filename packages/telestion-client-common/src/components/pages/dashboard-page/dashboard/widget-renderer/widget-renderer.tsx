@@ -1,54 +1,10 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import { useMemo } from 'react';
-import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
-import { WidgetDefinition } from '@wuespace/telestion-client-types';
+/* eslint-disable @typescript-eslint/ban-ts-comment,react/jsx-props-no-spreading */
+import { ErrorBoundary } from 'react-error-boundary';
+import { Widget, WidgetDefinition } from '@wuespace/telestion-client-types';
 
-import NotFound from '@spectrum-icons/illustrations/NotFound';
-
-import { WidgetErrorMessage } from './widget-error-message';
-import { useWidgets } from '../../../../contexts/widgets-context';
-
-/**
- * Special component that renders when an error occurs inside a widget.
- * The component generates a widget error message and allows the user to reload the widget.
- *
- * It has a predefined structure based on the react-error-boundary package.
- *
- * @see {@link WidgetErrorMessage}
- * @see {@link react-error-boundary#ErrorBoundary}
- *
- * @example
- * ```ts
- * function MyErrorBoundary() {
- * 	return (
- * 		<ErrorBoundary FallbackComponent={ErrorFallback}>
- * 			<ICanFail />
- * 		</ErrorBoundary>
- * 	);
- * }
- * ```
- */
-function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
-	return (
-		<WidgetErrorMessage
-			image={<NotFound />}
-			message="Internal widget error"
-			actions={[
-				{
-					label: 'Reload widget',
-					variant: 'primary',
-					action: resetErrorBoundary
-				}
-			]}
-		>
-			<p>
-				Please try to reload the widget. If the problem persists, contact the
-				developers. Error details:
-			</p>
-			<p>{error.message}</p>
-		</WidgetErrorMessage>
-	);
-}
+import { useBooleanState, useStoredState } from './hooks';
+import { ErrorFallback } from './error-fallback';
+import { ConfigRenderer } from './config-renderer';
 
 /**
  * React Props of {@link WidgetRenderer}
@@ -61,63 +17,65 @@ function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
  */
 export interface WidgetRendererProps {
 	/**
-	 * The {@link @wuespace/telestion-client-types#WidgetDefinition} rendered by the {@link WidgetRenderer}.
+	 * The {@link @wuespace/telestion-client-types#WidgetDefinition}
+	 * rendered by the {@link WidgetSelector}.
 	 */
-	widgetDefinition: WidgetDefinition;
+	definition: WidgetDefinition;
+
+	/**
+	 * The actual widget which contains the components and settings.
+	 */
+	widget: Widget;
 }
 
 /**
- * The main widget renderer component.
- * It searches for the widget in the registered application widgets
- * and renders it.
- * If the component can't find the widget, it shows a widget error message that tells the user
- * that the widget with this specified name does not exist in the widget database.
+ * Renders the given widget with the help of the widget definition.
  *
- * If the widget exists, the widget renderer displays it and surrounds it
- * with an error boundary to catch potential bugs and errors in the widgets.
+ * The component surrounds the widget with an error boundary
+ * to catch potential bugs and errors in the widgets.
  * Therefore, errors within the widget don't break the entire application,
  * but only the widget renderer itself.
  * If an error occurs, the fallback widget gets rendered
  * with an option to reload the widget and "try again".
  *
- * You can register new widgets in the {@link CommonWrapper} component.
- *
  * @see {@link WidgetRendererProps}
- * @see {@link ErrorFallback}
- * @see {@link WidgetErrorMessage}
- * @see {@link CommonWrapper}
+ * @see {@link WidgetSelector}
  *
  * @example
- * ```ts
- * function MyWidgetRenderer() {
- * 	const widget: WidgetDefinition = {...};
- * 	return <WidgetRenderer widgetDefinition={widget} />;
+ * ```tsx
+ * function WidgetSelector() {
+ * 	const widgets = useWidgets();
+ * 	const widget = widgets.filter(advancedFilter)[0];
+ *
+ * 	if (widget) {
+ * 		return <WidgetRenderer definition={definition} widget={widget} />;
+ * 	}
+ *
+ * 	return <WidgetErrorMessage />;
  * }
  * ```
  */
-export function WidgetRenderer({ widgetDefinition }: WidgetRendererProps) {
-	const { widgetName, title, initialProps } = widgetDefinition;
-	const widgets = useWidgets();
-
-	const Widget = useMemo(() => {
-		const available = widgets.filter(({ name }) => name === widgetName);
-		return available[0] ? available[0].Widget : null;
-	}, [widgetName, widgets]);
-
-	if (Widget) {
-		return (
-			<ErrorBoundary FallbackComponent={ErrorFallback}>
-				{/* eslint-disable-next-line @typescript-eslint/ban-ts-comment */}
-				{/* @ts-ignore */}
-				<Widget title={title} {...initialProps} />
-			</ErrorBoundary>
-		);
-	}
+export function WidgetRenderer({ definition, widget }: WidgetRendererProps) {
+	// extract important information
+	const { id, initialProps } = definition;
+	const { version, Widget: Content } = widget;
+	// build up state
+	const [inConfig, open, close] = useBooleanState();
+	const propsState = useStoredState(`${id}-${version}`, initialProps || {});
 
 	return (
-		<WidgetErrorMessage image={<NotFound />} message="Widget not found">
-			<p>Please register {widgetName} in the widget database at:</p>
-			<code>src/widgets/index.ts</code>
-		</WidgetErrorMessage>
+		<ErrorBoundary FallbackComponent={ErrorFallback} onReset={close}>
+			{inConfig ? (
+				<ConfigRenderer
+					widget={widget}
+					id={id}
+					propsState={propsState}
+					onClose={close}
+				/>
+			) : (
+				// @ts-ignore
+				<Content {...propsState[0]} />
+			)}
+		</ErrorBoundary>
 	);
 }
