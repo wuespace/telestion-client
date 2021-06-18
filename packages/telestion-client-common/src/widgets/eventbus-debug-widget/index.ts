@@ -7,5 +7,7 @@ import { Widget as WidgetRenderer } from './widget';
  */
 export const widget: Widget = {
 	name: 'eventbusDebugWidget',
+	title: 'Eventbus Debug Widget',
+	version: '0.1.0',
 	Widget: WidgetRenderer
 };
