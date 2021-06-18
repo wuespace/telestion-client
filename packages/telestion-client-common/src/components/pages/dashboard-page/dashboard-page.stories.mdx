@@ -8,7 +8,8 @@ import {
 import {
 	Pages,
 	TelestionClient,
-	useAuth
+	useAuth,
+	useEventBus
 } from '@wuespace/telestion-client-core';
 import { MemoryRouter, Route } from 'react-router';
 import { useUserConfig } from '../../../hooks';
@@ -142,6 +143,8 @@ When rendering to matching `DashboardPage`, it looks like this:
 	>
 		{args => {
 			useAuth.setState({ auth: { username: 'alice' } });
+			const { eventBus, openEventBus } = useEventBus.getState();
+			if (!eventBus) openEventBus('http://localhost:54321/nirwana');
 			useUserConfig.setState({
 				userConfig: {
 					alice: {
@@ -227,6 +230,64 @@ message in place of the widget:
 	>
 		{args => {
 			useAuth.setState({ auth: { username: 'alice' } });
+			const { eventBus, openEventBus } = useEventBus.getState();
+			if (!eventBus) openEventBus('http://localhost:54321/nirwana');
+			useUserConfig.setState({
+				userConfig: {
+					alice: {
+						dashboards: [args.dashboard]
+					}
+				}
+			});
+			return <DashboardPage />;
+		}}
+	</Story>
+</Canvas>
+
+### No event bus instance
+
+The dashboard page also checks, if there is an event bus instance where the widgets can subscribe to.
+
+The page waits, if the event bus currently does not exist.
+This prevents widgets from crashing:
+
+<Canvas>
+	<Story
+		name="No event bus instance"
+		inline={false}
+		height={'512px'}
+		args={{
+			dashboard: {
+				rows: 4,
+				columns: 4,
+				title: 'ABC',
+				widgets: [
+					{
+						width: 2,
+						height: 2,
+						title: 'Hello world',
+						widgetName: 'widget-1'
+					},
+					{
+						width: 2,
+						height: 2,
+						title: 'Hello world 2',
+						widgetName: 'widget-2'
+					},
+					{
+						width: 4,
+						height: 2,
+						title: 'Hello world 3',
+						widgetName: 'widget-3'
+					}
+				]
+			}
+		}}
+	>
+		{args => {
+			useAuth.setState({ auth: { username: 'alice' } });
+			const { eventBus, closeEventBus } = useEventBus.getState();
+			if (eventBus) closeEventBus();
 			useUserConfig.setState({
 				userConfig: {
 					alice: {
