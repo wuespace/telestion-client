@@ -5,6 +5,7 @@ import { Menu, Section, Item, Text } from '@adobe/react-spectrum';
 import { AuthState, useAuth } from '@wuespace/telestion-client-core';
 
 import InfoOutline from '@spectrum-icons/workflow/InfoOutline';
+import PagesExclude from '@spectrum-icons/workflow/PagesExclude';
 import Login from '@spectrum-icons/workflow/Login';
 import LogOut from '@spectrum-icons/workflow/LogOut';
 
@@ -65,6 +66,10 @@ export function AvatarMenu({ onStatusClick }: AvatarMenuProps) {
 		(key: ReactText) => {
 			if (key === 'status') {
 				onStatusClick();
+			} else if (key === 'reset') {
+				localStorage.clear();
+				// eslint-disable-next-line no-restricted-globals
+				location.reload();
 			} else if (key === 'logout') {
 				void signOut();
 			} else if (key === 'login' && history.location.pathname !== '/login') {
@@ -80,6 +85,10 @@ export function AvatarMenu({ onStatusClick }: AvatarMenuProps) {
 				<Item key="status">
 					<InfoOutline size="S" />
 					<Text>Status</Text>
+				</Item>
+				<Item key="reset">
+					<PagesExclude size="S" />
+					<Text>Reset configuration</Text>
 				</Item>
 				{!auth ? (
 					<Item key="login">
