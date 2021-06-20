@@ -1,3 +1,4 @@
+export * from './context-menu';
 export * from './contexts';
 export * from './header';
 export * from './pages';

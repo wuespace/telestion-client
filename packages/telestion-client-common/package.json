@@ -54,6 +54,9 @@
 		}
 	],
 	"dependencies": {
+		"@react-aria/focus": "^3.4.0",
+		"@react-aria/overlays": "^3.7.0",
+		"@react-spectrum/overlays": "^3.4.2",
 		"@wuespace/telestion-client-core": "file:../telestion-client-core",
 		"@wuespace/telestion-client-prop-types": "file:../telestion-client-prop-types",
 		"@wuespace/telestion-client-types": "file:../telestion-client-types",
