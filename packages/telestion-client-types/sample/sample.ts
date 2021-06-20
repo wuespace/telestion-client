@@ -46,6 +46,13 @@ namespace AnotherPlace {
 	let authAuth: TelestionClientTypes.Auth.Auth;
 
 	//
+	// context-menu
+	//
+	let position: TelestionClientTypes.ContextMenu.Position;
+	let menuItem: TelestionClientTypes.ContextMenu.MenuItem;
+	let section: TelestionClientTypes.ContextMenu.Section;
+
+	//
 	// json serializable
 	//
 	let jsonSerializable: TelestionClientTypes.JsonSerializable;
