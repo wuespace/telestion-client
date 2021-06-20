@@ -1,8 +1,14 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment,react/jsx-props-no-spreading */
+import { useMemo } from 'react';
 import { ErrorBoundary } from 'react-error-boundary';
-import { Widget, WidgetDefinition } from '@wuespace/telestion-client-types';
+import {
+	MenuItem,
+	Widget,
+	WidgetDefinition
+} from '@wuespace/telestion-client-types';
 
 import { useBooleanState, useStoredState } from '../../../../../hooks';
+import { ContextMenuWrapper } from '../../../../context-menu';
 import { ErrorFallback } from './error-fallback';
 import { ConfigRenderer } from './config-renderer';
 
@@ -63,19 +69,26 @@ export function WidgetRenderer({ definition, widget }: WidgetRendererProps) {
 	const [inConfig, open, close] = useBooleanState();
 	const propsState = useStoredState(`${id}-${version}`, initialProps || {});
 
+	const items = useMemo<MenuItem[]>(
+		() => [{ title: 'Configure', action: open }],
+		[open]
+	);
+
 	return (
 		<ErrorBoundary FallbackComponent={ErrorFallback} onReset={close}>
-			{inConfig ? (
-				<ConfigRenderer
-					widget={widget}
-					id={id}
-					propsState={propsState}
-					onClose={close}
-				/>
-			) : (
-				// @ts-ignore
-				<Content {...propsState[0]} />
-			)}
+			<ContextMenuWrapper menuItems={items}>
+				{inConfig ? (
+					<ConfigRenderer
+						widget={widget}
+						id={id}
+						propsState={propsState}
+						onClose={close}
+					/>
+				) : (
+					// @ts-ignore
+					<Content {...propsState[0]} />
+				)}
+			</ContextMenuWrapper>
 		</ErrorBoundary>
 	);
 }
