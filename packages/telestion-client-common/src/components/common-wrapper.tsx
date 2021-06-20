@@ -3,14 +3,34 @@ import { StateSelector } from 'zustand';
 import { defaultTheme, Provider, Flex } from '@adobe/react-spectrum';
 import { Widget } from '@wuespace/telestion-client-types';
 
+import { ColorScheme, ColorSchemeState, useColorScheme } from '../hooks';
+import {
+	ContextMenu,
+	ContextMenuProvider,
+	ContextMenuProviderProps
+} from './context-menu';
 import { AppLogoContext } from './contexts/app-logo-context';
 import { WidgetsContext } from './contexts/widgets-context';
-import { ColorScheme, ColorSchemeState, useColorScheme } from '../hooks';
 
 // color scheme selector
 const selector: StateSelector<ColorSchemeState, ColorScheme> = ({
 	colorScheme
 }) => colorScheme;
+
+// context menu renderer
+const menu: ContextMenuProviderProps['menu'] = (
+	sections,
+	style,
+	isOpen,
+	close
+) => (
+	<ContextMenu
+		sections={sections}
+		style={style}
+		isOpen={isOpen}
+		onClose={close}
+	/>
+);
 
 /**
  * React Props of {@link CommonWrapper}
@@ -81,18 +101,20 @@ export function CommonWrapper({
 			theme={defaultTheme}
 			colorScheme={colorScheme !== 'system' ? colorScheme : undefined}
 		>
-			<AppLogoContext appLogo={appLogo}>
-				<WidgetsContext widgets={widgets}>
-					<Flex
-						direction="column"
-						height="100vh"
-						justifyContent="start"
-						alignItems="center"
-					>
-						{children}
-					</Flex>
-				</WidgetsContext>
-			</AppLogoContext>
+			<ContextMenuProvider menu={menu}>
+				<AppLogoContext appLogo={appLogo}>
+					<WidgetsContext widgets={widgets}>
+						<Flex
+							direction="column"
+							height="100vh"
+							justifyContent="start"
+							alignItems="center"
+						>
+							{children}
+						</Flex>
+					</WidgetsContext>
+				</AppLogoContext>
+			</ContextMenuProvider>
 		</Provider>
 	);
 }
