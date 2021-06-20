@@ -2,7 +2,7 @@
 import { ErrorBoundary } from 'react-error-boundary';
 import { Widget, WidgetDefinition } from '@wuespace/telestion-client-types';
 
-import { useBooleanState, useStoredState } from './hooks';
+import { useBooleanState, useStoredState } from '../../../../../hooks';
 import { ErrorFallback } from './error-fallback';
 import { ConfigRenderer } from './config-renderer';
 
