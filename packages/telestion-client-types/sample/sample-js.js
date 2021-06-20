@@ -109,6 +109,22 @@ let authAuthResult;
 let authAuth;
 
 //
+// context-menu
+//
+/**
+ * @type {TelestionClientTypes.ContextMenu.Position}
+ */
+let position;
+/**
+ * @type {TelestionClientTypes.ContextMenu.MenuItem}
+ */
+let menuItem;
+/**
+ * @type {TelestionClientTypes.ContextMenu.Section}
+ */
+let section;
+
+//
 // json serializable
 //
 /**
