@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Dispatch, SetStateAction, useCallback, useState } from 'react';
+import { Text } from '@adobe/react-spectrum';
 import { GenericProps, Widget } from '@wuespace/telestion-client-types';
 
 import { OverflowFix } from '../../../../widget-helper';
@@ -56,8 +57,6 @@ export interface ConfigRendererProps {
  * @see {@link WidgetRenderer}
  * @see {@link Widget}
  *
- * @throws Error - if the ConfigControls are not defined
- *
  * @example
  * ```tsx
  * // build up state
@@ -107,8 +106,6 @@ export function ConfigRenderer({
 		setLocal(prevState => ({ ...prevState, ...newProps }));
 	}, []);
 
-	if (!ConfigControls) throw new Error('Config Controls are not defined');
-
 	return (
 		<ConfigContainer>
 			<ConfigHeader title={title || name} id={id}>
@@ -119,8 +116,14 @@ export function ConfigRenderer({
 				/>
 			</ConfigHeader>
 			<OverflowFix flexShrink={1} flexGrow={1}>
-				{/* @ts-ignore */}
-				<ConfigControls currentProps={local} onUpdate={update} />
+				{ConfigControls ? (
+					// @ts-ignore
+					<ConfigControls currentProps={local} onUpdate={update} />
+				) : (
+					<Text>
+						Sorry, the widget does not provide any configuration options.
+					</Text>
+				)}
 			</OverflowFix>
 			<ConfigFooter onAbort={abort} onConfirm={confirm} />
 		</ConfigContainer>
