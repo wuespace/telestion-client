@@ -1,4 +1,4 @@
-import { View, ButtonGroup, Button } from '@adobe/react-spectrum';
+import { View, ButtonGroup, Button, Divider } from '@adobe/react-spectrum';
 
 /**
  * React Props of {@link ConfigFooter}
@@ -47,15 +47,18 @@ export interface ConfigFooterProps {
  */
 export function ConfigFooter({ onAbort, onConfirm }: ConfigFooterProps) {
 	return (
-		<View flexShrink={0} width="100%" paddingX="size-200" paddingY="size-100">
-			<ButtonGroup align="end">
-				<Button variant="secondary" onPress={onAbort}>
-					Cancel
-				</Button>
-				<Button variant="cta" onPress={onConfirm} autoFocus>
-					Confirm
-				</Button>
-			</ButtonGroup>
-		</View>
+		<>
+			<Divider size="S" />
+			<View flexShrink={0} width="100%" padding="size-200">
+				<ButtonGroup align="end" width="100%">
+					<Button variant="secondary" onPress={onAbort}>
+						Cancel
+					</Button>
+					<Button variant="cta" onPress={onConfirm} autoFocus>
+						Confirm
+					</Button>
+				</ButtonGroup>
+			</View>
+		</>
 	);
 }

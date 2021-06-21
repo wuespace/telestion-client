@@ -1,4 +1,5 @@
 import { View, Divider, Flex, Heading } from '@adobe/react-spectrum';
+import { useSpectrumColor } from '../../../../../../hooks';
 
 /**
  * React Props of {@link ConfigHeader}
@@ -55,6 +56,8 @@ export interface ConfigHeaderProps {
  * ```
  */
 export function ConfigHeader({ title, id, children }: ConfigHeaderProps) {
+	const [idColor] = useSpectrumColor(['gray-400']);
+
 	return (
 		<>
 			<View flexShrink={0} width="100%" paddingX="size-200" paddingY="size-100">
@@ -64,16 +67,11 @@ export function ConfigHeader({ title, id, children }: ConfigHeaderProps) {
 					justifyContent="space-between"
 					alignItems="center"
 				>
-					<Flex direction="row">
-						<Heading
-							flexGrow={0}
-							level={3}
-							margin="size-200"
-							marginBottom="size-100"
-						>
+					<Flex direction="row" alignItems="baseline" gap="size-100">
+						<Heading flexGrow={0} margin={0} level={3}>
 							{title}
 						</Heading>
-						<div>{id}</div>
+						<em style={{ color: idColor }}>ID: {id}</em>
 					</Flex>
 
 					{children}

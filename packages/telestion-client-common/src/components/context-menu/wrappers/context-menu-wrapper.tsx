@@ -5,6 +5,7 @@ import {
 	ContextMenuContext,
 	ContextMenuContextState
 } from './context-menu-context';
+import './context-menu-wrapper.css';
 
 /**
  * React Props of {@link ContextMenuWrapper}
@@ -115,7 +116,9 @@ export function ContextMenuWrapper({
 
 	return (
 		<ContextMenuContext.Provider value={newState}>
-			<div ref={ref}>{children}</div>
+			<div className="context-menu-wrapper" ref={ref}>
+				{children}
+			</div>
 		</ContextMenuContext.Provider>
 	);
 }

@@ -70,7 +70,7 @@ export function Menu({ sections, onClose }: MenuProps) {
 	};
 
 	return (
-		<RSMenu items={final} onAction={handle}>
+		<RSMenu aria-label="Context menu" items={final} onAction={handle}>
 			{section => (
 				<RSSection
 					key={section.key}
