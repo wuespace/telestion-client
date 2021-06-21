@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Dispatch, SetStateAction, useCallback, useState } from 'react';
-import { Text } from '@adobe/react-spectrum';
+import { Flex, View } from '@adobe/react-spectrum';
+import { getLogger } from '@wuespace/telestion-client-core';
 import { GenericProps, Widget } from '@wuespace/telestion-client-types';
 
-import { OverflowFix } from '../../../../widget-helper';
 import { usePropsClipboard } from '../../props-clipboard';
 import {
 	ConfigContainer,
@@ -11,6 +11,8 @@ import {
 	ConfigFooter,
 	CopyPasteActions
 } from './config';
+
+const logger = getLogger('Props Clipboard');
 
 /**
  * Return type of the {@link useState} hook
@@ -86,11 +88,17 @@ export function ConfigRenderer({
 	const [clipboard, setClipboard] = usePropsClipboard(name);
 	const [local, setLocal] = useState(global);
 
-	const copy = () => setClipboard(local);
+	const copy = () => {
+		logger.info(`Copy to clipboard from widget ${id}`);
+		setClipboard(local);
+	};
 
 	const paste = useCallback(() => {
-		if (clipboard) setLocal(clipboard);
-	}, [clipboard]);
+		if (clipboard) {
+			logger.info(`Paste clipboard content to widget ${id}`);
+			setLocal(clipboard);
+		}
+	}, [clipboard, id]);
 
 	const abort = useCallback(() => {
 		setLocal(global);
@@ -110,21 +118,25 @@ export function ConfigRenderer({
 		<ConfigContainer>
 			<ConfigHeader title={title || name} id={id}>
 				<CopyPasteActions
-					isPasteDisabled={!!clipboard}
+					isPasteDisabled={!clipboard}
 					onCopy={copy}
 					onPaste={paste}
 				/>
 			</ConfigHeader>
-			<OverflowFix flexShrink={1} flexGrow={1}>
-				{ConfigControls ? (
-					// @ts-ignore
-					<ConfigControls currentProps={local} onUpdate={update} />
-				) : (
-					<Text>
-						Sorry, the widget does not provide any configuration options.
-					</Text>
-				)}
-			</OverflowFix>
+			<Flex flex={1} minHeight={0} direction="column">
+				<View flex={1} overflow="auto">
+					{ConfigControls ? (
+						// @ts-ignore
+						<ConfigControls currentProps={local} onUpdate={update} />
+					) : (
+						<View padding="size-200">
+							<em>
+								Sorry, the widget does not provide any configuration options.
+							</em>
+						</View>
+					)}
+				</View>
+			</Flex>
 			<ConfigFooter onAbort={abort} onConfirm={confirm} />
 		</ConfigContainer>
 	);

@@ -33,8 +33,17 @@ export interface ConfigContainerProps {
  */
 export function ConfigContainer({ children }: ConfigContainerProps) {
 	return (
-		<View width="100%" height="100%">
-			<Flex direction="column" width="100%" height="100%">
+		<View width="100%" height="100%" position="relative">
+			<Flex
+				position="absolute"
+				top={0}
+				left={0}
+				right={0}
+				bottom={0}
+				direction="column"
+				width="100%"
+				height="100%"
+			>
 				{children}
 			</Flex>
 		</View>

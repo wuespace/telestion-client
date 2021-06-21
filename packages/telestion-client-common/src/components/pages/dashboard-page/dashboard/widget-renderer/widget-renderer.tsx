@@ -76,19 +76,19 @@ export function WidgetRenderer({ definition, widget }: WidgetRendererProps) {
 
 	return (
 		<ErrorBoundary FallbackComponent={ErrorFallback} onReset={close}>
-			<ContextMenuWrapper menuItems={items}>
-				{inConfig ? (
-					<ConfigRenderer
-						widget={widget}
-						id={id}
-						propsState={propsState}
-						onClose={close}
-					/>
-				) : (
-					// @ts-ignore
+			{inConfig ? (
+				<ConfigRenderer
+					widget={widget}
+					id={id}
+					propsState={propsState}
+					onClose={close}
+				/>
+			) : (
+				<ContextMenuWrapper menuItems={items}>
+					{/* @ts-ignore */}
 					<Content {...propsState[0]} />
-				)}
-			</ContextMenuWrapper>
+				</ContextMenuWrapper>
+			)}
 		</ErrorBoundary>
 	);
 }
