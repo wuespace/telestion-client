@@ -18,7 +18,7 @@ export interface ReturnButtonProps {
 }
 
 /**
- * Renders the return button in the upper left corner.
+ * Renders the return button in the lower left corner.
  *
  * @see {@link ReturnButtonProps}
  * @see {@link RocketPage}
