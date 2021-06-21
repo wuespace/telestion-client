@@ -10,6 +10,7 @@ import dts from 'rollup-plugin-dts';
 
 import image from '@rollup/plugin-image';
 import postcss from 'rollup-plugin-postcss';
+import url from 'postcss-url';
 
 import license from 'rollup-plugin-license';
 import { terser } from 'rollup-plugin-terser';
@@ -78,7 +79,14 @@ export const imagePlugin = () => image();
  * Allows the usage of PostCSS in CSS imports.
  * @returns {Plugin}
  */
-export const postCssPlugin = () => postcss();
+export const postCssPlugin = () =>
+	postcss({
+		plugins: [
+			url({
+				url: 'inline'
+			})
+		]
+	});
 
 /**
  * Attaches the project license to every built file.
