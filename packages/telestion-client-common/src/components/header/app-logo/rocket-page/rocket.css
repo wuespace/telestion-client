@@ -1,13 +1,11 @@
 .rocket {
-	width: 140px;
-	height: 140px;
-	/* optimization */
-	will-change: transform;
-	/* style */
 	background: url('../../../../media/rocket.png') no-repeat;
 	background-size: contain;
 	cursor: grab;
+	height: 140px;
 	user-select: none;
+	width: 140px;
+	will-change: transform;
 }
 
 .rocket:active {
