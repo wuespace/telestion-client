@@ -23,7 +23,7 @@ function generateWidget(argv) {
 	const folderName = paramCase(argv['name']);
 	const widgetFolder = path.join(widgetsFolder, folderName);
 	fs.mkdirSync(widgetFolder);
-	createWidgetIndexTS(widgetFolder, nameAsCamelCase);
+	createWidgetIndexTS(widgetFolder, nameAsCamelCase, argv['name']);
 	createWidgetTSX(widgetFolder, nameAsCamelCase);
 
 	let allWidgetsIndexFile = path.join(widgetsFolder, 'index.ts');
