@@ -1,5 +1,7 @@
 import { View, Image } from '@adobe/react-spectrum';
-import { useLogo } from '../contexts';
+import { useLogo } from '../../contexts';
+import { useAppLogoState } from './use-app-logo-state';
+import { FixedOverlay } from './fixed-overlay';
 
 /**
  * Part of the Telestion Client Common header.
@@ -23,10 +25,13 @@ import { useLogo } from '../contexts';
  * ```
  */
 export function AppLogo() {
+	const { ref, isOpen, close } = useAppLogoState();
 	const appLogo = useLogo();
+
 	return (
-		<View width="size-400" height="size-400">
+		<View width="size-400" height="size-400" ref={ref}>
 			<Image src={appLogo} alt="Application Logo" objectFit="contain" />
+			<FixedOverlay isOpen={isOpen} onClose={close} />
 		</View>
 	);
 }
