@@ -14,7 +14,6 @@ import { ClipboardContent, ClipboardContext } from './props-clipboard';
 const selector: StateSelector<EventBusState, EventBusState['eventBus']> =
 	state => state.eventBus;
 
-
 /**
  * A Telestion Client page that renders a dashboard page.
  * It displays the currently active dashboard of an authenticated user.
