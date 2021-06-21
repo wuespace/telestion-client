@@ -1,5 +1,10 @@
 import { Key, useCallback } from 'react';
-import { ActionGroup, Item } from '@adobe/react-spectrum';
+import {
+	ActionGroup,
+	Item,
+	TooltipTrigger,
+	Tooltip
+} from '@adobe/react-spectrum';
 import Copy from '@spectrum-icons/workflow/Copy';
 import Paste from '@spectrum-icons/workflow/Paste';
 
@@ -77,12 +82,18 @@ export function CopyPasteActions({
 			onAction={handle}
 			disabledKeys={isPasteDisabled ? ['paste'] : []}
 		>
-			<Item key="copy" aria-label="Copy properties to clipboard">
-				<Copy />
-			</Item>
-			<Item key="paste" aria-label="Paste properties from clipboard">
-				<Paste />
-			</Item>
+			<TooltipTrigger>
+				<Item key="copy" aria-label="Copy properties to clipboard">
+					<Copy />
+				</Item>
+				<Tooltip>Copy</Tooltip>
+			</TooltipTrigger>
+			<TooltipTrigger>
+				<Item key="paste" aria-label="Paste properties from clipboard">
+					<Paste />
+				</Item>
+				<Tooltip>Paste</Tooltip>
+			</TooltipTrigger>
 		</ActionGroup>
 	);
 }
