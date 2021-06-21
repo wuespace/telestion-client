@@ -114,6 +114,7 @@
 		"lerna": "^4.0.0",
 		"lodash": "^4.17.20",
 		"node-sass": "^6.0.0",
+		"postcss": "^8.3.5",
 		"prettier": "2.3.1",
 		"pretty-quick": "^3.1.0",
 		"prop-types": "^15.7.2",

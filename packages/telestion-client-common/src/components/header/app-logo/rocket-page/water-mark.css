@@ -1,0 +1,23 @@
+.water-mark {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	padding: 16px;
+	pointer-events: none;
+
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	/* Text styling */
+	color: #a8a8a8;
+	font-family: sans-serif;
+	font-size: 10px;
+	font-weight: 300;
+}
+
+.water-mark > div > img {
+	width: 64px;
+	height: 64px;
+}
