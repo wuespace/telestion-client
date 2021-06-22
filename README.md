@@ -5,6 +5,7 @@
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/wuespace/telestion-client/Test%20and%20Coverage?label=tests)](https://github.com/wuespace/telestion-client/actions?query=workflow%3A%22Test+and+Coverage%22)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/wuespace/telestion-client/CI)](https://github.com/wuespace/telestion-client/actions?query=workflow%3ACI)
 [![GitHub](https://img.shields.io/github/license/wuespace/telestion-client)](LICENSE)
+[![lerna](https://img.shields.io/badge/maintained%20with-lerna-cc00ff.svg)](https://lerna.js.org/)
 [![Node current](https://img.shields.io/badge/node-%3E%3D14-brightgreen)](package.json)
 [![NPM current](https://img.shields.io/badge/npm-%3E%3D7-blue)](package.json)
 [![Twitter Follow](https://img.shields.io/twitter/follow/wuespace?style=social)](https://twitter.com/wuespace)
