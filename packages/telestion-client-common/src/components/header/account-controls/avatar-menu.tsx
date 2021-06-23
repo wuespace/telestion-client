@@ -70,9 +70,9 @@ export function AvatarMenu({ onStatusClick }: AvatarMenuProps) {
 				// eslint-disable-next-line no-alert
 				if (window.confirm('Do you really want to reset your configuration?')) {
 					localStorage.clear();
+					// eslint-disable-next-line no-restricted-globals
+					location.reload();
 				}
-				// eslint-disable-next-line no-restricted-globals
-				location.reload();
 			} else if (key === 'logout') {
 				void signOut();
 			} else if (key === 'login' && history.location.pathname !== '/login') {
