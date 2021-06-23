@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.16.1](https://github.com/wuespace/telestion-client/compare/v0.16.0...v0.16.1) (2021-06-23)
+
+
+### Bug Fixes
+
+* **common:** Fix rendering error in `ConfigRenderer` component ([337c47b](https://github.com/wuespace/telestion-client/commit/337c47b4cd96e62ba0ce56ceac2a628c60ebf42c))
+* **common:** Fix reset configuration entry reloads application on cancel ([841d1df](https://github.com/wuespace/telestion-client/commit/841d1dfe111e399116fef2385463e2a1a2b466e9))
+
+
+
 ## [0.16.0](https://github.com/wuespace/telestion-client/compare/v0.15.1...v0.16.0) (2021-06-23)
 
 
