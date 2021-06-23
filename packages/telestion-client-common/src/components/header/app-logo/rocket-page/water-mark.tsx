@@ -23,6 +23,16 @@ export function WaterMark() {
 			<div>
 				<p>Part of Telestion</p>
 				<p>A project by WüSpace e. V.</p>
+				<p>
+					Rocket image CC licensed by
+					<a
+						target="_blank"
+						rel="noopener noreferrer"
+						href="https://therealjerrylow.com/"
+					>
+						Jerry Low
+					</a>
+				</p>
 			</div>
 			<div>
 				<img src={Logo} alt="WüSpace e. V. Logo" />
