@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.0](https://github.com/wuespace/telestion-client/compare/v0.15.1...v0.16.0) (2021-06-23)
+
+
+### ⚠ BREAKING CHANGES
+
+* **types:** The `GlobalRendererProps` type is removed. An exported widget now requires a `version` property. The `title` property is removed from the `WidgetDefinition` type.
+* **types:** A widget definition for a dashboard configuration now requires a unique identifier.
+
+### Features
+
+* **types:** Add a unique identifier to a widget definition ([1c3d8c4](https://github.com/wuespace/telestion-client/commit/1c3d8c44f59dc6835c04de7469e33c88a9d0fdac))
+* **types:** Add context menu types (`MenuItem` and `Section`) ([ca7e489](https://github.com/wuespace/telestion-client/commit/ca7e48922c18d260ff748447b2983abc9d111a9a))
+* **types:** Remove title as required widget configuration and therefore the `GlobalRendererProps` because it is no longer needed. A widget must now export a version. ([1288054](https://github.com/wuespace/telestion-client/commit/1288054ea90c37f168e0dce701fec1de00201b43))
+
+
+
 ### [0.15.1](https://github.com/wuespace/telestion-client/compare/v0.15.0...v0.15.1) (2021-06-03)
 
 

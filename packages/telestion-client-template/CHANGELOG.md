@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.0](https://github.com/wuespace/telestion-client/compare/v0.15.1...v0.16.0) (2021-06-23)
+
+
+### Features
+
+* **common:** Remove padding left override for input svg elements (react-spectrum text field fix) ([601ff4f](https://github.com/wuespace/telestion-client/commit/601ff4f4e97c24b31dd8d4701767853db6e4bb8b))
+* **template:** Add @react-spectrum/table as normal dependency ([05c3cce](https://github.com/wuespace/telestion-client/commit/05c3cceb2c65e013186916a569fe669111f6c1d1))
+* **template:** Import common widgets into application by default ([c336b9a](https://github.com/wuespace/telestion-client/commit/c336b9a3d6aa3bfc553075094de8381073ee9e24))
+* **template:** Update sample widget and user configuration due to breaking changes ([4f619e4](https://github.com/wuespace/telestion-client/commit/4f619e436fb093195c3c57e2b021b2fbcad61d9f))
+
+
+
 ### [0.15.1](https://github.com/wuespace/telestion-client/compare/v0.15.0...v0.15.1) (2021-06-03)
 
 **Note:** Version bump only for package @wuespace/telestion-client-template

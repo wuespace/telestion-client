@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.0](https://github.com/wuespace/telestion-client/compare/v0.15.1...v0.16.0) (2021-06-23)
+
+
+### Features
+
+* **common:** Add a reset configuration menu entry to the avatar menu ([6d8d42e](https://github.com/wuespace/telestion-client/commit/6d8d42e699ea594b132c1053159ba90d2ac9ad22))
+* **common:** Add the eventbus debug widget. To use it, simply add the `commonWidgets` to the widgets list of the `CommonWrapper` component. ([5b82612](https://github.com/wuespace/telestion-client/commit/5b82612c4b8e96ed7700ea1acce821f7c4e1044e))
+* **common:** Add tooltips to copy and paste actions in widget configuration ([c552ac1](https://github.com/wuespace/telestion-client/commit/c552ac143b0f9f599493b134c90636c6ca0f6f5d))
+* **common:** Compress media files ([3b19494](https://github.com/wuespace/telestion-client/commit/3b19494f3c25a5792bd068ebd9b4d88ca5b6ad76))
+* **common:** Implement `ContextMenu` component which renders the registered menu items on a context event ([72dacf0](https://github.com/wuespace/telestion-client/commit/72dacf098ae50de1f56926c9b30c566e99046246))
+* **common:** Implement `ContextMenuProvider` and `ContextMenuWrapper` that allows the usage of custom context menu in the application (see documentation for more information) ([b980299](https://github.com/wuespace/telestion-client/commit/b98029970f36276a7061d560ac86d42cb6094811))
+* **common:** Implement the copy and paste feature which allows the transfer of configurations between widgets. ([28bc167](https://github.com/wuespace/telestion-client/commit/28bc16758a781bbd66eb95e7e8e2c3c7897c4fce))
+* **common:** Implement the widget configuration mode which renders the exported `ConfigControls` for every widget. ([5a71a35](https://github.com/wuespace/telestion-client/commit/5a71a35bfcaeec14342cc3fd26563d6c60d66d9b)), closes [#562](https://github.com/wuespace/telestion-client/issues/562)
+* **common:** Insert the `ContextMenuProvider` into the `CommonWrapper` component to provide context menu support by default for projects using the `CommonWrapper` component ([a33acbe](https://github.com/wuespace/telestion-client/commit/a33acbe4d58c98d72fbcdb748e498264dfe5b1c4))
+* **common:** Register a context menu item to configure the widget on a context event ([fcee39c](https://github.com/wuespace/telestion-client/commit/fcee39c61775be129b6c690a19140b9e2fb076a8))
+* **common:** The dashboard page now displays a loading indicator if the event bus is not initialized yet. ([80ce8a1](https://github.com/wuespace/telestion-client/commit/80ce8a140cafc3a3a3ff6310bcf269f519d08816))
+* **common:** The widget renderer now uses the `widget.id` to identify the currently rendered widgets ([c7ff348](https://github.com/wuespace/telestion-client/commit/c7ff3482efcae14bd9be4d5d11b6fe2d5d273f9c))
+* **common:** Update eventbus debug widget to be compatible with the `Widget` definition. ([41ee77d](https://github.com/wuespace/telestion-client/commit/41ee77d6f7f9245d24fb4c92fd8fcd0729d3546a))
+
+
+### Bug Fixes
+
+* **common:** Fix some styling issues related to widget configuration and context menu ([dc0f290](https://github.com/wuespace/telestion-client/commit/dc0f290ac05e3d4d1beaeab0ffd36c20a44b95b7))
+* **common:** Fix spelling in illustrated message in eventbus details ([33c260e](https://github.com/wuespace/telestion-client/commit/33c260eb0ce3824b1f4186f5c947991c87ba2bbd))
+
+
+### Documentation Changes
+
+* **common:** Add no event bus story to dashboard page ([ef58bfa](https://github.com/wuespace/telestion-client/commit/ef58bfad7f1e2abf4d78b38f2851e0c9e3d58eb8))
+
+
+
 ### [0.15.1](https://github.com/wuespace/telestion-client/compare/v0.15.0...v0.15.1) (2021-06-03)
 
 
