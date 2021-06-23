@@ -9,7 +9,7 @@ export type Position = readonly [pageX: number, pageY: number];
 /**
  * A definition for a menu item in a context menu.
  * Each item should have a title and a corresponding action
- * that are triggered if the user presses the context menu entry.
+ * that is triggered if the user presses the context menu entry.
  *
  * @see {@link MenuItem.title}
  * @see {@link MenuItem.action}
@@ -40,11 +40,12 @@ export interface MenuItem {
 	/**
 	 * An optional icon that are rendered within the menu entry
 	 * beside the {@link MenuItem.title}.
+	 * No icon gets displayed if the `icon` property is `undefined`.
 	 */
 	icon?: ReactNode;
 
 	/**
-	 * The action that are triggered if the users presses the menu entry.
+	 * The action that is triggered if the users presses the menu entry.
 	 */
 	action: () => void;
 }
