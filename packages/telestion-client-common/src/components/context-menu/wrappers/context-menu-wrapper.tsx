@@ -28,7 +28,7 @@ export interface ContextMenuWrapperProps {
 	menuItems: MenuItem[];
 
 	/**
-	 * An optional title the section in the context menu.
+	 * An optional title of the section in the context menu.
 	 */
 	title?: string;
 

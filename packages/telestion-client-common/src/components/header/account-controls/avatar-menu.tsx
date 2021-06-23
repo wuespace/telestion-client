@@ -67,7 +67,10 @@ export function AvatarMenu({ onStatusClick }: AvatarMenuProps) {
 			if (key === 'status') {
 				onStatusClick();
 			} else if (key === 'reset') {
-				localStorage.clear();
+				// eslint-disable-next-line no-alert
+				if (window.confirm('Do you really want to reset your configuration?')) {
+					localStorage.clear();
+				}
 				// eslint-disable-next-line no-restricted-globals
 				location.reload();
 			} else if (key === 'logout') {
