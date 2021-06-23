@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
-import { Heading } from '@adobe/react-spectrum';
-import { Item, Tabs, TabList } from '@react-spectrum/tabs';
+import { Heading, Item, Tabs, TabList } from '@adobe/react-spectrum';
 import { useTitle } from '@wuespace/telestion-client-core';
 import { Link, useNavBarState } from './use-nav-bar-state';
 
