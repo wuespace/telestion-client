@@ -53,7 +53,7 @@ export interface ConfigRendererProps {
 
 /**
  * Renders the widget configuration and wrapper with header and footer.
- * It implements the copy and paste for widget properties.
+ * It implements the copy and paste functionality for widget properties.
  *
  * @see {@link ConfigRendererProps}
  * @see {@link WidgetRenderer}
