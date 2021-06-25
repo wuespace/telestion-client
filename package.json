@@ -67,7 +67,7 @@
 		"@adobe/react-spectrum": "^3.9.0",
 		"@babel/core": "^7.12.9",
 		"@fliegwerk/logsemts": "^0.4.0-0",
-		"@react-spectrum/table": "3.0.0-alpha.12",
+		"@react-spectrum/table": "^3.0.0-beta.1",
 		"@react-spectrum/tabs": "^3.0.1",
 		"@rollup/plugin-commonjs": "^19.0.0",
 		"@rollup/plugin-image": "^2.0.6",
