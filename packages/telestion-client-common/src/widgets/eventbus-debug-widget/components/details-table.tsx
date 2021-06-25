@@ -2,7 +2,7 @@ import {
 	Cell,
 	Column,
 	Row,
-	Table as RSTable,
+	TableView,
 	TableBody,
 	TableHeader
 } from '@react-spectrum/table';
@@ -14,14 +14,14 @@ import { buildDetails } from './build-details';
 // so we don't have to worry about that.
 // eslint-disable-next-line @typescript-eslint/no-unused-vars,no-unused-vars
 const cssLoader = (
-	<RSTable aria-label="none">
+	<TableView aria-label="none">
 		<TableHeader columns={[]}>
 			{column => <Column>{column}</Column>}
 		</TableHeader>
 		<TableBody items={[]}>
 			{item => <Row key={item}>{key => <Cell>{item[key]}</Cell>}</Row>}
 		</TableBody>
-	</RSTable>
+	</TableView>
 );
 
 /**
