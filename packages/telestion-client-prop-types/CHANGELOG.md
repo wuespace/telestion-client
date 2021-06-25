@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.0](https://github.com/wuespace/telestion-client/compare/v0.16.1...v0.17.0) (2021-06-25)
+
+**Note:** Version bump only for package @wuespace/telestion-client-prop-types
+
+
+
+
+
 ## [0.16.0](https://github.com/wuespace/telestion-client/compare/v0.15.1...v0.16.0) (2021-06-23)
 
 **Note:** Version bump only for package @wuespace/telestion-client-prop-types

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.0](https://github.com/wuespace/telestion-client/compare/v0.16.1...v0.17.0) (2021-06-25)
+
+
+### Bug Fixes
+
+* **common:** Update eventbus debug widget due to breaking changes in `@react-spectrum/table` ([81b3517](https://github.com/wuespace/telestion-client/commit/81b351729bb0cbfb766d1c15ce2a48e462cc8f11))
+
+
+
 ### [0.16.1](https://github.com/wuespace/telestion-client/compare/v0.16.0...v0.16.1) (2021-06-23)
 
 
