@@ -12,8 +12,8 @@ updates:
     versioning-strategy: increase-if-necessary
     open-pull-requests-limit: 10
     labels:
-      - 'dependencies :link:'
-      - 'javascript :scroll:'
+      - ':link: dependencies'
+      - ':scroll: javascript'
     commit-message:
       prefix: 'chore'
       include: 'scope'
@@ -24,8 +24,8 @@ updates:
       interval: 'daily'
     open-pull-requests-limit: 10
     labels:
-      - 'dependencies :link:'
-      - 'github_actions :runner:'
+      - ':link: dependencies'
+      - ':runner: github_actions'
     commit-message:
       prefix: 'chore'
       include: 'scope'
