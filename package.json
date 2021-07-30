@@ -69,7 +69,7 @@
 		"@babel/core": "^7.12.9",
 		"@fliegwerk/logsemts": "^0.4.0-0",
 		"@react-spectrum/table": "3.0.0-beta.1",
-		"@rollup/plugin-commonjs": "^19.0.0",
+		"@rollup/plugin-commonjs": "^20.0.0",
 		"@rollup/plugin-image": "^2.0.6",
 		"@rollup/plugin-json": "^4.1.0",
 		"@rollup/plugin-node-resolve": "^13.0.0",
