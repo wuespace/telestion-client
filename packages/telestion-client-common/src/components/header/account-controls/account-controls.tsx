@@ -1,8 +1,10 @@
 import { useCallback, useState } from 'react';
 import { MenuTrigger, DialogContainer } from '@adobe/react-spectrum';
+
 import { AvatarButton } from './avatar-button';
 import { AvatarMenu } from './avatar-menu';
 import { StatusDialog } from './status-dialog';
+import { ResetDialog } from './reset-dialog';
 
 /**
  * Part of the Telestion Client Common header.
@@ -32,20 +34,36 @@ import { StatusDialog } from './status-dialog';
  */
 export function AccountControls() {
 	// dialog open state
-	const [isOpen, setOpen] = useState(false);
+	const [isStatusOpen, setStatusOpen] = useState(false);
+	const [isResetOpen, setResetOpen] = useState(false);
 
-	const openDialog = useCallback(() => setOpen(true), []);
-	const closeDialog = useCallback(() => setOpen(false), []);
+	const openStatus = useCallback(() => setStatusOpen(true), []);
+	const closeStatus = useCallback(() => setStatusOpen(false), []);
+
+	const openReset = useCallback(() => setResetOpen(true), []);
+	const abortReset = useCallback(() => setResetOpen(false), []);
+	const continueReset = useCallback(() => {
+		setResetOpen(false);
+		localStorage.clear();
+		// eslint-disable-next-line no-restricted-globals
+		location.reload();
+	}, []);
 
 	return (
 		<>
 			<MenuTrigger>
 				<AvatarButton />
-				<AvatarMenu onStatusClick={openDialog} />
+				<AvatarMenu onStatusPress={openStatus} onResetPress={openReset} />
 			</MenuTrigger>
 
-			<DialogContainer type="modal" isDismissable onDismiss={closeDialog}>
-				{isOpen && <StatusDialog />}
+			<DialogContainer type="modal" isDismissable onDismiss={closeStatus}>
+				{isStatusOpen && <StatusDialog />}
+			</DialogContainer>
+
+			<DialogContainer type="modal" onDismiss={abortReset}>
+				{isResetOpen && (
+					<ResetDialog onConfirm={continueReset} onCancel={abortReset} />
+				)}
 			</DialogContainer>
 		</>
 	);
