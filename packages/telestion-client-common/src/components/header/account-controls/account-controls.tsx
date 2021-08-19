@@ -1,6 +1,7 @@
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { MenuTrigger, DialogContainer } from '@adobe/react-spectrum';
 
+import { useBooleanState } from '../../../hooks';
 import { AvatarButton } from './avatar-button';
 import { AvatarMenu } from './avatar-menu';
 import { StatusDialog } from './status-dialog';
@@ -33,21 +34,15 @@ import { ResetDialog } from './reset-dialog';
  * ```
  */
 export function AccountControls() {
-	// dialog open state
-	const [isStatusOpen, setStatusOpen] = useState(false);
-	const [isResetOpen, setResetOpen] = useState(false);
+	const [isStatusOpen, openStatus, closeStatus] = useBooleanState();
+	const [isResetOpen, openReset, closeReset] = useBooleanState();
 
-	const openStatus = useCallback(() => setStatusOpen(true), []);
-	const closeStatus = useCallback(() => setStatusOpen(false), []);
-
-	const openReset = useCallback(() => setResetOpen(true), []);
-	const abortReset = useCallback(() => setResetOpen(false), []);
-	const continueReset = useCallback(() => {
-		setResetOpen(false);
+	const resetConfig = useCallback(() => {
+		closeReset();
 		localStorage.clear();
 		// eslint-disable-next-line no-restricted-globals
 		location.reload();
-	}, []);
+	}, [closeReset]);
 
 	return (
 		<>
@@ -60,9 +55,9 @@ export function AccountControls() {
 				{isStatusOpen && <StatusDialog />}
 			</DialogContainer>
 
-			<DialogContainer type="modal" onDismiss={abortReset}>
+			<DialogContainer type="modal" onDismiss={closeReset}>
 				{isResetOpen && (
-					<ResetDialog onConfirm={continueReset} onCancel={abortReset} />
+					<ResetDialog onConfirm={resetConfig} onCancel={closeReset} />
 				)}
 			</DialogContainer>
 		</>
