@@ -30,7 +30,13 @@ export interface AvatarMenuProps {
 	/**
 	 * An event that triggers when the user presses the status menu entry.
 	 */
-	onStatusClick: () => void;
+	onStatusPress: () => void;
+
+	/**
+	 * An event that triggers when the user presses
+	 * the reset configuration menu entry.
+	 */
+	onResetPress: () => void;
 }
 
 /**
@@ -58,28 +64,23 @@ export interface AvatarMenuProps {
  * }
  * ```
  */
-export function AvatarMenu({ onStatusClick }: AvatarMenuProps) {
+export function AvatarMenu({ onStatusPress, onResetPress }: AvatarMenuProps) {
 	const history = useHistory();
 	const { auth, signOut } = useAuth(selector);
 
 	const handleAction = useCallback(
 		(key: ReactText) => {
 			if (key === 'status') {
-				onStatusClick();
+				onStatusPress();
 			} else if (key === 'reset') {
-				// eslint-disable-next-line no-alert
-				if (window.confirm('Do you really want to reset your configuration?')) {
-					localStorage.clear();
-					// eslint-disable-next-line no-restricted-globals
-					location.reload();
-				}
+				onResetPress();
 			} else if (key === 'logout') {
 				void signOut();
 			} else if (key === 'login' && history.location.pathname !== '/login') {
 				history.push('/login');
 			}
 		},
-		[history, onStatusClick, signOut]
+		[history, onResetPress, onStatusPress, signOut]
 	);
 
 	return (
