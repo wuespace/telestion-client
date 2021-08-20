@@ -37,13 +37,13 @@ import { Dialog, DialogConfig, DialogState } from './use-dialog.model';
  * function MyComponent() {
  * 	const show = useUserConfig(selector);
  *
- * 	const handle = () => {
+ * 	const openDialog = () => {
  * 		show('my-dialog', { title: 'My Dialog', content: 'Hello World' })
  * 			.then(() => alert("Confirmed"))
  * 			.catch(() => alert("Canceled"));
  * 	};
  *
- * 	return <button onClick={show}>Show Dialog</button>;
+ * 	return <button onClick={openDialog}>Show Dialog</button>;
  * }
  * ```
  */
@@ -92,13 +92,13 @@ export const useDialog: UseStore<DialogState> = create<DialogState>(
  * import { showDialog } from '@wuespace/telestion-client-common';
  *
  * function MyComponent() {
- * 	const handle = () => {
+ * 	const openDialog = () => {
  * 		showDialog('my-dialog', { title: 'My Dialog', content: 'Hello World' })
  * 			.then(() => alert("Confirmed"))
  * 			.catch(() => alert("Canceled"));
  * 	};
  *
- * 	return <button onClick={show}>Show Dialog</button>;
+ * 	return <button onClick={openDialog}>Show Dialog</button>;
  * }
  * ```
  */
