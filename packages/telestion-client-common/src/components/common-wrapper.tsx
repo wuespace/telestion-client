@@ -11,6 +11,7 @@ import {
 } from './context-menu';
 import { AppLogoContext } from './contexts/app-logo-context';
 import { WidgetsContext } from './contexts/widgets-context';
+import { ModalContext } from './contexts/modal-context';
 
 // color scheme selector
 const selector: StateSelector<ColorSchemeState, ColorScheme> = ({
@@ -104,14 +105,16 @@ export function CommonWrapper({
 			<ContextMenuProvider menu={menu}>
 				<AppLogoContext appLogo={appLogo}>
 					<WidgetsContext widgets={widgets}>
-						<Flex
-							direction="column"
-							height="100vh"
-							justifyContent="start"
-							alignItems="center"
-						>
-							{children}
-						</Flex>
+						<ModalContext>
+							<Flex
+								direction="column"
+								height="100vh"
+								justifyContent="start"
+								alignItems="center"
+							>
+								{children}
+							</Flex>
+						</ModalContext>
 					</WidgetsContext>
 				</AppLogoContext>
 			</ContextMenuProvider>
