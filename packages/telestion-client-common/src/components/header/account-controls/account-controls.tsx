@@ -5,7 +5,7 @@ import { useBooleanState } from '../../../hooks';
 import { AvatarButton } from './avatar-button';
 import { AvatarMenu } from './avatar-menu';
 import { StatusDialog } from './status-dialog';
-import { ResetDialog } from './reset-dialog';
+import { showDialog } from '../../../hooks/stores/use-dialog';
 
 /**
  * Part of the Telestion Client Common header.
@@ -35,30 +35,27 @@ import { ResetDialog } from './reset-dialog';
  */
 export function AccountControls() {
 	const [isStatusOpen, openStatus, closeStatus] = useBooleanState();
-	const [isResetOpen, openReset, closeReset] = useBooleanState();
 
-	const resetConfig = useCallback(() => {
-		closeReset();
-		localStorage.clear();
-		// eslint-disable-next-line no-restricted-globals
-		location.reload();
-	}, [closeReset]);
+	const handleReset = useCallback(() => {
+		void showDialog('telestion-client-common@reset-modal', {
+			title: 'Reset configuration',
+			content: 'Would you really like to reset your configuration?'
+		}).then(() => {
+			localStorage.clear();
+			// eslint-disable-next-line no-restricted-globals
+			location.reload();
+		});
+	}, []);
 
 	return (
 		<>
 			<MenuTrigger>
 				<AvatarButton />
-				<AvatarMenu onStatusPress={openStatus} onResetPress={openReset} />
+				<AvatarMenu onStatusPress={openStatus} onResetPress={handleReset} />
 			</MenuTrigger>
 
 			<DialogContainer type="modal" isDismissable onDismiss={closeStatus}>
 				{isStatusOpen && <StatusDialog />}
-			</DialogContainer>
-
-			<DialogContainer type="modal" onDismiss={closeReset}>
-				{isResetOpen && (
-					<ResetDialog onConfirm={resetConfig} onCancel={closeReset} />
-				)}
 			</DialogContainer>
 		</>
 	);
