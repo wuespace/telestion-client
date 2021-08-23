@@ -50,10 +50,10 @@ import { Dialog, DialogConfig, DialogState } from './use-dialog.model';
 export const useDialog: UseStore<DialogState> = create<DialogState>(
 	(set, get) => ({
 		dialogs: [],
-		show: (id, config) => {
+		show<T>(id: string, config: DialogConfig<T>) {
 			const dialogs = get().dialogs.filter(dialog => dialog.id !== id);
 
-			return new Promise((resolve, reject) => {
+			return new Promise<T>((resolve, reject) => {
 				const close: () => void = () =>
 					set({
 						dialogs: get().dialogs.map(dialog =>
@@ -61,13 +61,13 @@ export const useDialog: UseStore<DialogState> = create<DialogState>(
 						)
 					});
 
-				const newDialog: Dialog = {
+				const newDialog: Dialog<T> = {
 					id,
 					config,
 					isOpen: true,
-					onConfirm: () => {
+					onConfirm: final => {
 						close();
-						resolve();
+						resolve(final);
 					},
 					onCancel: () => {
 						close();
@@ -87,6 +87,8 @@ export const useDialog: UseStore<DialogState> = create<DialogState>(
  * @returns a Promise which resolves, when the user confirmed
  * and rejects, when the user canceled the dialog
  *
+ * @typeParam T - The type of state to provide to the different components
+ *
  * @example
  * ```ts
  * import { showDialog } from '@wuespace/telestion-client-common';
@@ -102,6 +104,9 @@ export const useDialog: UseStore<DialogState> = create<DialogState>(
  * }
  * ```
  */
-export function showDialog(id: string, config: DialogConfig): Promise<void> {
+export function showDialog<T = undefined>(
+	id: string,
+	config: DialogConfig<T>
+): Promise<T> {
 	return useDialog.getState().show(id, config);
 }
