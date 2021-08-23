@@ -1,11 +1,10 @@
 import { useCallback } from 'react';
 import { MenuTrigger, DialogContainer } from '@adobe/react-spectrum';
 
-import { useBooleanState } from '../../../hooks';
+import { useBooleanState, showDialog } from '../../../hooks';
 import { AvatarButton } from './avatar-button';
 import { AvatarMenu } from './avatar-menu';
 import { StatusDialog } from './status-dialog';
-import { showDialog } from '../../../hooks/stores/use-dialog';
 
 /**
  * Part of the Telestion Client Common header.
@@ -39,7 +38,8 @@ export function AccountControls() {
 	const handleReset = useCallback(() => {
 		void showDialog('telestion-client-common@reset-modal', {
 			title: 'Reset configuration',
-			content: 'Would you really like to reset your configuration?'
+			content: 'Would you really like to reset your configuration?',
+			initialState: undefined
 		}).then(() => {
 			localStorage.clear();
 			// eslint-disable-next-line no-restricted-globals
