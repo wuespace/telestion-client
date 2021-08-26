@@ -38,6 +38,17 @@ jobs:
       - name: Run unit tests and generate coverage 🛃
         run: npm run test
 
+      - name: Create annotations 📑
+        if: ${{ github.actor != 'dependabot[bot]' }}
+        uses: wearerequired/lint-action@v1.10.0
+        with:
+          # Enable linters
+          eslint: true
+          eslint_extensions: 'js,jsx,ts,tsx'
+          eslint_args: '--ignore-pattern node_modules/ --no-error-on-unmatched-pattern'
+          prettier: true
+          prettier_extensions: 'ts,tsx,js,jsx,json,html,css,scss,sass,yaml,yml,md'
+
       - name: Upload vertx-event-bus build artifact 📤
         uses: actions/upload-artifact@v2.2.4
         with:
