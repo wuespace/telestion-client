@@ -3,7 +3,8 @@ name: Docs
 # Events that trigger this workflow
 on:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   build-and-deploy:

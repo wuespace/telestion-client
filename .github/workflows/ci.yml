@@ -1,11 +1,13 @@
 name: CI
 
 # Events that trigger this workflow
-on: [push, pull_request]
+on:
+  push:
+  pull_request:
 
 jobs:
-  lint:
-    name: Lint source code
+  build-lint-test:
+    name: Build, lint and test source code
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 📥
@@ -33,34 +35,8 @@ jobs:
         run: npm run style:ci
       - name: Run Linter 📑
         run: npm run lint
-
-  build:
-    name: Build all packages
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout 📥
-        uses: actions/checkout@v2.3.4
-      - name: Setup Node 💿
-        uses: actions/setup-node@v2.4.0
-        with:
-          node-version: 14
-
-      - name: Restore npm cache ♻️
-        uses: actions/cache@v2.1.6
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      # Remove, when setup-node action supports specifying the node version
-      - name: Install npm v7 ⬆
-        run: npm install --global npm@v7
-
-      - name: Install development dependencies 📚
-        run: npm ci
-      - name: Build all packages 🛠️
-        run: npm run build:all
+      - name: Run unit tests and generate coverage 🛃
+        run: npm run test
 
       - name: Upload vertx-event-bus build artifact 📤
         uses: actions/upload-artifact@v2.2.4
