@@ -3,9 +3,11 @@ name: Code Climate
 # Events that trigger this workflow
 on:
   push:
-    branches: [main]
+    branches:
+      - main
   pull_request:
-    branches: [main]
+    branches:
+      - main
   workflow_dispatch:
 
 jobs:
@@ -13,6 +15,9 @@ jobs:
     name: Report code coverage to code climate
     runs-on: ubuntu-latest
     steps:
+      - name: Fail fast on bots
+        run: '[[ $GITHUB_ACTOR != *"[bot]" ]]'
+
       - name: Checkout 📥
         uses: actions/checkout@v2.3.4
       - name: Setup Node 💿

@@ -1,40 +1,16 @@
-name: Test and Coverage
+name: End-to-end tests
 
 # Events that trigger this workflow
-on: [push, pull_request]
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
-  jest-unit-tests:
-    name: Running unit tests using Jest
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout 📥
-        uses: actions/checkout@v2.3.4
-      - name: Setup Node 💿
-        uses: actions/setup-node@v2.4.0
-        with:
-          node-version: 14
-
-      - name: Restore npm cache ♻️
-        uses: actions/cache@v2.1.6
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      # Remove, when setup-node action supports specifying the node version
-      - name: Install npm v7 ⬆
-        run: npm install --global npm@v7
-
-      - name: Install development dependencies 📚
-        run: npm ci
-
-      - name: Build all packages 🛠️
-        run: npm run build:all
-      - name: Run unit tests and generate coverage 🛃
-        run: npm run test
-
   cli-e2e-test:
     name: CLI E2E Test
     runs-on: ubuntu-latest
