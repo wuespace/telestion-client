@@ -46,7 +46,6 @@ export function useDependencyTimeout<T extends readonly any[]>(
 
 	useEffect(
 		() => setDefined(dependencies.every(isDefinedValue)),
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 		[...dependencies]
 	);
 

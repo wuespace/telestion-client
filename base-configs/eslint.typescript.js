@@ -9,7 +9,8 @@ module.exports = {
 	},
 	plugins: ['@typescript-eslint', 'tsdoc', 'jsdoc'],
 	extends: [
-		'airbnb-typescript',
+		'airbnb-base',
+		'airbnb-typescript/base',
 		'plugin:@typescript-eslint/recommended',
 		'plugin:@typescript-eslint/recommended-requiring-type-checking',
 		path.join(__dirname, 'eslint.base.js')
@@ -44,6 +45,9 @@ module.exports = {
 		// https://basarat.gitbooks.io/typescript/docs/tips/defaultIsBad.html
 		'import/prefer-default-export': 'off',
 		'import/no-default-export': 'error',
+		// disable some fancy airbnb import checks
+		'import/extensions': 'off',
+		'import/export': 'off',
 		// documentation via fliegdoc
 		'tsdoc/syntax': 'error',
 		'@typescript-eslint/no-inferrable-types': 0,
