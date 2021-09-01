@@ -12,7 +12,8 @@ module.exports = {
 		JSX: 'readonly'
 	},
 	extends: [
-		'airbnb/hooks',
+		'airbnb',
+		'airbnb-typescript',
 		'plugin:react/recommended',
 		path.join(__dirname, 'eslint.typescript.js')
 	],
