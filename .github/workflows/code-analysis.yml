@@ -53,7 +53,7 @@ jobs:
           # queries: ./path/to/local/query, your-org/your-repo/queries@main
 
       - name: Setup Node 💿
-        uses: actions/setup-node@v2.4.0
+        uses: actions/setup-node@v2.4.1
         with:
           node-version: 14
 
@@ -95,7 +95,7 @@ jobs:
         # 3. Invoke Scan with the github token. Leave the workspace empty to use relative url
 
       - name: Setup Node 💿
-        uses: actions/setup-node@v2.4.0
+        uses: actions/setup-node@v2.4.1
         with:
           node-version: 14
 
