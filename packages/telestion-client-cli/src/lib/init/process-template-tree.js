@@ -25,10 +25,10 @@ async function processDirectory(node, targetPath, replacers) {
 
 async function processFile(node, targetPath, replacers) {
 	debug('Processing file', node.path, 'for target', targetPath);
-	if (node.extension === '.ejs') {
+	if (node.name.endsWith('.ejs')) {
 		let targetPathWithoutEJSExtension = targetPath.substr(
 			0,
-			targetPath.length - node.extension.length
+			targetPath.length - 4
 		);
 		fs.writeFileSync(
 			targetPathWithoutEJSExtension,
@@ -49,9 +49,9 @@ async function processFile(node, targetPath, replacers) {
  * @return {Promise<void>}
  */
 async function processTemplateTree(node, targetPath, replacers) {
-	if (node.type === 'directory') {
+	if (node.children) {
 		await processDirectory(node, targetPath, replacers);
-	} else if (node.type === 'file') {
+	} else {
 		await processFile(node, targetPath, replacers);
 	}
 }
