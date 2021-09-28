@@ -63,7 +63,7 @@
 		"clui": "^0.3.6",
 		"cosmiconfig": "^7.0.0",
 		"debug": "^4.3.1",
-		"directory-tree": "^2.2.5",
+		"directory-tree": "^3.0.0",
 		"ejs": "^3.1.5",
 		"electron": "^15.0.0",
 		"electron-builder": "^22.9.1",
