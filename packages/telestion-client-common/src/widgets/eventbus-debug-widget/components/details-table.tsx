@@ -5,7 +5,7 @@ import {
 	TableView,
 	TableBody,
 	TableHeader
-} from '@react-spectrum/table';
+} from '@adobe/react-spectrum';
 import { EventBus } from '@wuespace/vertx-event-bus';
 import { buildDetails } from './build-details';
 
