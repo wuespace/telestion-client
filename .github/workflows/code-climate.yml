@@ -41,7 +41,7 @@ jobs:
         run: npm ci
 
       - name: Generate and publish code coverage to code climate 📠
-        uses: paambaati/codeclimate-action@v2.7.5
+        uses: paambaati/codeclimate-action@v3.0.0
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_REPORTER_ID }}
         with:
