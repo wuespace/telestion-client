@@ -19,7 +19,7 @@ jobs:
         run: '[[ $GITHUB_ACTOR != *"[bot]" ]]'
 
       - name: Checkout 📥
-        uses: actions/checkout@v2.3.4
+        uses: actions/checkout@v2.3.5
         with:
           fetch-depth: 0 # Required to retrieve git history
       - name: Setup Node 💿
