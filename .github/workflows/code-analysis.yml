@@ -1,5 +1,8 @@
 name: Code Analysis
 
+permissions:
+  security-events: write
+
 # Events that trigger this workflow
 on:
   push:
@@ -9,36 +12,15 @@ on:
     # The branches below must be a subset of the branches above
     branches:
       - main
+  workflow_dispatch:
   schedule:
     - cron: '26 9 * * 4'
 
 jobs:
   codeql-analysis:
-    # For most projects, this workflow file will not need changing; you simply need
-    # to commit it to your repository.
-    #
-    # You may wish to alter this file to override the set of languages analyzed,
-    # or to provide custom queries or build logic.
-    #
-    # ******** NOTE ********
-    # We have attempted to detect the languages in your repository. Please check
-    # the `language` matrix defined below to confirm you have the correct set of
-    # supported CodeQL languages.
-    #
-    name: Analyze with CodeQL
+    name: CodeQL
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
-      matrix:
-        language: ['javascript']
-        # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python' ]
-        # Learn more:
-        # https://docs.github.com/en/free-pro-team@latest/github/finding-security-vulnerabilities-and-errors-in-your-code/configuring-code-scanning#changing-the-languages-that-are-analyzed
-
     steps:
-      - name: Fail fast on bots
-        run: '[[ $GITHUB_ACTOR != *"[bot]" ]]'
-
       - name: Checkout 📥
         uses: actions/checkout@v2.3.5
 
@@ -46,7 +28,7 @@ jobs:
       - name: Initialize CodeQL 📀
         uses: github/codeql-action/init@v1
         with:
-          languages: ${{ matrix.language }}
+          languages: javascript
           # If you wish to specify custom queries, you can do so here or in a config file.
           # By default, queries listed here will override any specified in a config file.
           # Prefix the list here with "+" to use these queries and those in the config file.
@@ -67,11 +49,12 @@ jobs:
 
       # Remove, when setup-node action supports specifying the node version
       - name: Install npm v7 ⬆
-        run: npm install --global npm@v7
+        run: npm install --prefer-offline --no-audit --global npm@v7
 
       - name: Install development dependencies 📚
-        run: npm ci
-
+        run: npm ci --prefer-offline --no-audit --ignore-scripts
+      - name: Build packages 📦
+        run: npm run build:all
       - name: Perform CodeQL Analysis 🔬
         uses: github/codeql-action/analyze@v1
 
@@ -79,21 +62,11 @@ jobs:
     # This workflow integrates Scan with GitHub's code scanning feature
     # Scan is a free open-source security tool for modern DevOps teams from ShiftLeft
     # Visit https://slscan.io/en/latest/integrations/code-scan for help
-    name: Analyze with Shift Left
+    name: Shift Left
     runs-on: ubuntu-latest
     steps:
-      - name: Fail fast on bots
-        run: '[[ $GITHUB_ACTOR != *"[bot]" ]]'
-
       - name: Checkout 📥
         uses: actions/checkout@v2.3.5
-
-        # Instructions
-        # 1. Setup JDK, Node.js, Python etc depending on your project type
-        # 2. Compile or build the project before invoking scan
-        #    Example: mvn compile, or npm install or pip install goes here
-        # 3. Invoke Scan with the github token. Leave the workspace empty to use relative url
-
       - name: Setup Node 💿
         uses: actions/setup-node@v2.4.1
         with:
@@ -109,10 +82,12 @@ jobs:
 
       # Remove, when setup-node action supports specifying the node version
       - name: Install npm v7 ⬆
-        run: npm install --global npm@v7
+        run: npm install --prefer-offline --no-audit --global npm@v7
 
       - name: Install development dependencies 📚
-        run: npm ci
+        run: npm ci --prefer-offline --no-audit --ignore-scripts
+      - name: Build packages 📦
+        run: npm run build:all
 
       - name: Perform Scan 👁️
         uses: ShiftLeftSecurity/scan-action@master
