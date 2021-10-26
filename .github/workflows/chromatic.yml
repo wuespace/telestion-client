@@ -12,12 +12,10 @@ on:
 
 jobs:
   chromatic-deployment:
-    name: Chromatic Deployment
+    name: Deployment
     runs-on: ubuntu-latest
+    if: ${{ github.actor != 'dependabot[bot]' }}
     steps:
-      - name: Fail fast on bots
-        run: '[[ $GITHUB_ACTOR != *"[bot]" ]]'
-
       - name: Checkout 📥
         uses: actions/checkout@v2.3.5
         with:
@@ -37,13 +35,14 @@ jobs:
 
       # Remove, when setup-node action supports specifying the node version
       - name: Install npm v7 ⬆
-        run: npm install --global npm@v7
+        run: npm install --prefer-offline --no-audit --global npm@v7
 
       - name: Install development dependencies 📚
-        run: npm ci
+        run: npm ci --prefer-offline --no-audit --ignore-scripts
+      - name: Build packages 📦
+        run: npm run build:all
       - name: Publish to Chromatic 📡
         uses: chromaui/action@v1
-        # Options required to the GitHub Chromatic Action
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
           # 👇 Chromatic projectToken, refer to the manage page to obtain it.

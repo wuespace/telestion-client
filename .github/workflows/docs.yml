@@ -1,6 +1,4 @@
 name: Docs
-
-# Events that trigger this workflow
 on:
   push:
     branches:
@@ -8,7 +6,7 @@ on:
 
 jobs:
   build-and-deploy:
-    name: Build and deploy documentation
+    name: Deploy
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 📥
@@ -28,10 +26,12 @@ jobs:
 
       # Remove, when setup-node action supports specifying the node version
       - name: Install npm v7 ⬆
-        run: npm install --global npm@v7
+        run: npm install --prefer-offline --no-audit --global npm@v7
 
       - name: Install development dependencies 📚
-        run: npm ci
+        run: npm ci --prefer-offline --no-audit --ignore-scripts
+      - name: Build packages 📦
+        run: npm run build:all
       - name: Build documentation 🛠️
         run: npm run docs:ci
       - name: Finalize build 🪄

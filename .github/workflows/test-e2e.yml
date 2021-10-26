@@ -1,6 +1,4 @@
-name: End-to-end tests
-
-# Events that trigger this workflow
+name: Test
 on:
   push:
     branches:
@@ -12,7 +10,7 @@ on:
 
 jobs:
   cli-e2e-test:
-    name: CLI E2E Test
+    name: E2E CLI
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 📥
@@ -36,12 +34,12 @@ jobs:
 
       # Remove, when setup-node action supports specifying the node version
       - name: Install npm v7 ⬆
-        run: npm install --global npm@v7
+        run: npm install --prefer-offline --no-audit --global npm@v7
 
       - name: Install global dependencies 🐱‍
         run: npm install -g verdaccio lerna npm-cli-adduser
       - name: Install development dependencies 📚
-        run: npm ci
+        run: npm ci --prefer-offline --no-audit
 
       - name: Add node_modules binaries to path ⛓
         run: echo "${GITHUB_WORKSPACE}/node_modules/.bin" >> $GITHUB_PATH
