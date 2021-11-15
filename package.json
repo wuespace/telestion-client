@@ -97,7 +97,7 @@
 		"chromatic": "^6.0.4",
 		"conventional-changelog-conventionalcommits": "^4.5.0",
 		"eslint": "^7.17.0",
-		"eslint-config-airbnb": "^18.2.1",
+		"eslint-config-airbnb": "^19.0.0",
 		"eslint-config-airbnb-typescript": "^14.0.0",
 		"eslint-config-prettier": "^8.1.0",
 		"eslint-plugin-import": "^2.23.2",
