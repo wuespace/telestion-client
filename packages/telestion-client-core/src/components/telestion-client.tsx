@@ -75,6 +75,8 @@ export function TelestionClient({
 		update('null', 'title', title);
 	}, [title, update]);
 
+	// Fix Typescript bad types for JSX by wrapping components in Fragments to hide dumb types
+	// eslint-disable-next-line react/jsx-no-useless-fragment
 	return <>{wrapper ? wrapper(children) : children}</>;
 }
 

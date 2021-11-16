@@ -50,6 +50,8 @@ export interface PreferencesProps {
  * ```
  */
 export function Preferences({ children }: PreferencesProps) {
+	// Fix Typescript bad types for JSX by wrapping components in Fragments to hide dumb types
+	// eslint-disable-next-line react/jsx-no-useless-fragment
 	return <>{children}</>;
 }
 
