@@ -85,6 +85,7 @@ export function Header({ left, center, right }: HeaderProps) {
 						justifyContent="start"
 						gap="size-200"
 					>
+						{/* eslint-disable-next-line react/jsx-no-useless-fragment */}
 						{left ?? <></>}
 					</Flex>
 
@@ -98,6 +99,7 @@ export function Header({ left, center, right }: HeaderProps) {
 						justifyContent="center"
 						gap="size-200"
 					>
+						{/* eslint-disable-next-line react/jsx-no-useless-fragment */}
 						{center ?? <></>}
 					</Flex>
 
@@ -111,6 +113,7 @@ export function Header({ left, center, right }: HeaderProps) {
 						justifyContent="end"
 						gap="size-200"
 					>
+						{/* eslint-disable-next-line react/jsx-no-useless-fragment */}
 						{right ?? <></>}
 					</Flex>
 				</Flex>

@@ -64,6 +64,8 @@ export function LoginDescription({
 	description,
 	children
 }: LoginDescriptionProps) {
+	// Fix Typescript bad types for JSX by wrapping components in Fragments to hide dumb types
+	// eslint-disable-next-line react/jsx-no-useless-fragment
 	if (children) return <>{children}</>;
 
 	return (

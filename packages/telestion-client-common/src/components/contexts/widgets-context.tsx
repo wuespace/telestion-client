@@ -6,6 +6,8 @@ import { widgetPropType } from '@wuespace/telestion-client-prop-types';
 // React context for the registered widgets in the application
 const widgetsContext = createContext<Array<Widget> | null>(null);
 
+const noWidgets: Widget[] = [];
+
 /**
  * React Props of {@link WidgetsContext}
  *
@@ -55,7 +57,7 @@ export interface WidgetsContextProps {
  */
 export function WidgetsContext({ widgets, children }: WidgetsContextProps) {
 	return (
-		<widgetsContext.Provider value={widgets ?? []}>
+		<widgetsContext.Provider value={widgets ?? noWidgets}>
 			{children}
 		</widgetsContext.Provider>
 	);

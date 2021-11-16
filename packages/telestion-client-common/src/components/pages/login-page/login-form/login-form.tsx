@@ -82,6 +82,7 @@ export function LoginForm({
 
 	return (
 		<>
+			{/* eslint-disable-next-line react/jsx-no-useless-fragment */}
 			{error ? <Well>{error.message}</Well> : <></>}
 			<Form
 				isLoading={isLoading}

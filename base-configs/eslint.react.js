@@ -42,6 +42,13 @@ module.exports = {
 			{
 				forbid: ['any']
 			}
+		],
+		'react/function-component-definition': [
+			'error',
+			{
+				namedComponents: 'function-declaration',
+				unnamedComponents: 'arrow-function'
+			}
 		]
 	},
 	overrides: [

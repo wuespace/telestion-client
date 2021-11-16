@@ -86,6 +86,8 @@ export function NavBar({ links }: NavBarProps) {
 			<TabList>
 				{(item: Link) => (
 					<Item title={item.title} key={item.path}>
+						{/* Render tab list without content */}
+						{/* eslint-disable-next-line react/jsx-no-useless-fragment */}
 						<></>
 					</Item>
 				)}
