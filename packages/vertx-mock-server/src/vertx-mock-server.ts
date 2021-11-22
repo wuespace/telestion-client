@@ -149,9 +149,9 @@ export class MockServer {
 
 		// request all connections to close
 		this.connections.forEach(conn => conn.end());
-		return new Promise<void>((resolve, reject) =>
-			this.httpServer.close(err => (err ? reject(err) : resolve()))
-		).then(() => this.logger?.info('Server closed'));
+		return new Promise<void>((resolve, reject) => {
+			this.httpServer.close(err => (err ? reject(err) : resolve()));
+		}).then(() => this.logger?.info('Server closed'));
 	}
 
 	/**
