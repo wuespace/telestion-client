@@ -11,8 +11,10 @@ import { MissingEventBus } from './missing-event-bus';
 import { ClipboardContent, ClipboardContext } from './props-clipboard';
 
 // eventbus selector
-const selector: StateSelector<EventBusState, EventBusState['eventBus']> =
-	state => state.eventBus;
+const selector: StateSelector<
+	EventBusState,
+	EventBusState['eventBus']
+> = state => state.eventBus;
 
 /**
  * A Telestion Client page that renders a dashboard page.
