@@ -27,7 +27,7 @@ import { isDefinedValue, Undefinable } from '../lib';
  * ```
  */
 export function useDependencyTimeout<T extends readonly any[]>(
-	// eslint-disable-next-line default-param-last
+	// eslint-disable-next-line default-param-last,@typescript-eslint/default-param-last
 	timeout = 0,
 	dependencies: [...Undefinable<T>]
 ): dependencies is [...T] {
