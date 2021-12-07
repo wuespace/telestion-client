@@ -122,7 +122,7 @@
 		"react": "^17.0.1",
 		"react-dom": "^17.0.1",
 		"react-router": "5.2.1",
-		"react-router-dom": "5.3.0",
+		"react-router-dom": "6.0.2",
 		"react-test-renderer": "^17.0.1",
 		"rimraf": "^3.0.2",
 		"rollup": "^2.36.1",
