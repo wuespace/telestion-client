@@ -1,3 +1,4 @@
+import { requireGood } from './helpers.mjs';
 import {
 	commonJsPlugin,
 	dtsPlugin,
@@ -10,7 +11,7 @@ import {
 	filesizePlugin,
 	terserPlugin,
 	typeScriptPlugin
-} from './rollup.plugins';
+} from './rollup.plugins.mjs';
 
 /**
  * @typedef BuildPaths
@@ -41,7 +42,7 @@ export const monorepoPackages = [
  * @param {BuildPaths} paths - the required paths to build prerequisites
  */
 export function buildTSLibrary(paths) {
-	const packageJson = require(paths.packageJsonPath);
+	const packageJson = requireGood(paths.packageJsonPath);
 
 	return {
 		input: paths.inputPath,
@@ -76,7 +77,7 @@ export function buildTSLibrary(paths) {
  * @param {BuildPaths} paths - the required paths to build prerequisites
  */
 export function buildReactLibrary(paths) {
-	const packageJson = require(paths.packageJsonPath);
+	const packageJson = requireGood(paths.packageJsonPath);
 
 	return {
 		input: paths.inputPath,
@@ -112,7 +113,7 @@ export function buildReactLibrary(paths) {
  * @param {BuildPaths} paths - the required paths to build prerequisites
  */
 export function buildTSDeclarations(paths) {
-	const packageJson = require(paths.packageJsonPath);
+	const packageJson = requireGood(paths.packageJsonPath);
 
 	return {
 		input: paths.typesRootPath,

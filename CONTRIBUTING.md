@@ -69,6 +69,13 @@ Lerna inserts at publishing the most recent version of the linked monorepo packa
 }
 ```
 
+### Build-Stack
+
+We use Rollup with some plugins and custom configurations as our build stack for the library parts of this project.
+If you need access to the CommonJS `require` function to import JSON files,
+please import the `requireGood` function from `./base-configs/helpers.mjs`.
+ESM currently doesn't support importing of JSON files, so please use this function as a (readable) workaround.
+
 ### Publishing
 
 The publishing process, in this project, is fully automated. Please refer to the relevant sections of the _Telestion Client Git Conventions_ for further instructions on publishing.

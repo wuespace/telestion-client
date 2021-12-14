@@ -99,7 +99,7 @@ export const licensePlugin = () =>
 		banner: {
 			commentStyle: 'ignored',
 			content: {
-				file: join(__dirname, 'LICENSE'),
+				file: join(process.cwd(), 'LICENSE'),
 				encoding: 'utf-8'
 			}
 		}
