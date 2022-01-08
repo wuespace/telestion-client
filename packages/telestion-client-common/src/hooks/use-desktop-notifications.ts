@@ -1,5 +1,24 @@
-import { useLogger, useNotifications } from '@wuespace/telestion-client-core';
+import {
+	NotificationState,
+	useLogger,
+	useNotifications
+} from '@wuespace/telestion-client-core';
 import { useEffect } from 'react';
+import { StateSelector } from 'zustand';
+
+// static selector
+const notificationSelector: StateSelector<
+	NotificationState,
+	[
+		NotificationState['notifications'],
+		NotificationState['isMuted'],
+		NotificationState['dismiss']
+	]
+> = notificationStore => [
+	notificationStore.notifications,
+	notificationStore.isMuted,
+	notificationStore.dismiss
+];
 
 /**
  * Enables and handles the usage of native desktop notifications for implementing the
@@ -29,13 +48,8 @@ import { useEffect } from 'react';
 export function useDesktopNotifications(): void {
 	const logger = useLogger('Desktop Notifications');
 
-	const [notifications, isMuted, dismiss] = useNotifications(
-		notificationStore => [
-			notificationStore.notifications,
-			notificationStore.isMuted,
-			notificationStore.dismiss
-		]
-	);
+	const [notifications, isMuted, dismiss] =
+		useNotifications(notificationSelector);
 
 	// Request permission on launch
 	useEffect(() => {
