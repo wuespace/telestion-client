@@ -4,3 +4,4 @@ export * from './utils';
 
 export * from './use-dependency-timeout';
 export * from './use-spectrum-color';
+export * from './use-desktop-notifications';
