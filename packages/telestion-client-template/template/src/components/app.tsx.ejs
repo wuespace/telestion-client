@@ -6,6 +6,7 @@ import {
 	DashboardPage,
 	NotFoundPage,
 	useUserConfig,
+    useDesktopNotifications,
 	commonWidgets
 } from "@wuespace/telestion-client-common";
 
@@ -26,6 +27,10 @@ export function App() {
 		// apply user config once
 		set(userConfig);
 	}, [set]);
+
+	// Enable native Desktop notifications. Comment this line out
+    // to disable them.
+	useDesktopNotifications();
 
 	return (
 		<TelestionClient
