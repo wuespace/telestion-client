@@ -26,7 +26,7 @@ async function compileReactApp() {
 				/Compiled .*\./.test(message[0]) // 'Compiled successfully.' or 'Compiled with warnings.'
 			) {
 				// Set a timeout to allow for final messages to get printed before continuing
-				// while 'Compiled successfully.' / 'Compiled with warnings.' is the string that easiest to 
+				// while 'Compiled successfully.' / 'Compiled with warnings.' is the string that easiest to
 				// detect, a few lines follow it in the log.
 				setTimeout(resolve, 250);
 			}
