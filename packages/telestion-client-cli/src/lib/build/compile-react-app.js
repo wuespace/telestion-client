@@ -23,11 +23,11 @@ async function compileReactApp() {
 			if (
 				message[0] &&
 				message[0].includes &&
-				message[0].includes('Compiled successfully.')
+				/Compiled .*\./.test(message[0]) // 'Compiled successfully.' or 'Compiled with warnings.'
 			) {
 				// Set a timeout to allow for final messages to get printed before continuing
-				// while 'Compiled successfully.' is the string that easiest to detect, a
-				// few lines follow it in the log.
+				// while 'Compiled successfully.' / 'Compiled with warnings.' is the string that easiest to 
+				// detect, a few lines follow it in the log.
 				setTimeout(resolve, 250);
 			}
 		};
