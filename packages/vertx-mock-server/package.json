@@ -54,7 +54,7 @@
 		}
 	],
 	"dependencies": {
-		"@fliegwerk/logsemts": "^0.4.0-0",
+		"@fliegwerk/logsemts": "^0.4.3",
 		"@types/sockjs": "^0.3.32",
 		"sockjs": "^0.3.21"
 	},

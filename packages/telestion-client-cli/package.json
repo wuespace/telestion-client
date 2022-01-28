@@ -56,7 +56,7 @@
 	],
 	"dependencies": {
 		"@craco/craco": "^6.0.0",
-		"@fliegwerk/logsemts": "^0.4.0-0",
+		"@fliegwerk/logsemts": "^0.4.3",
 		"@wuespace/telestion-client-template": "file:../telestion-client-template",
 		"chalk": "^4.1.0",
 		"change-case": "^4.1.2",

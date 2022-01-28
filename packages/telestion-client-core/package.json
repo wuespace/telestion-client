@@ -54,7 +54,7 @@
 		}
 	],
 	"dependencies": {
-		"@fliegwerk/logsemts": "^0.4.0-0",
+		"@fliegwerk/logsemts": "^0.4.3",
 		"@wuespace/telestion-client-prop-types": "file:../telestion-client-prop-types",
 		"@wuespace/telestion-client-types": "file:../telestion-client-types",
 		"@wuespace/vertx-event-bus": "file:../vertx-event-bus",
