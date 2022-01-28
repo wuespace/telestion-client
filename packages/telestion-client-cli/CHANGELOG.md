@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.0](https://github.com/wuespace/telestion-client/compare/v0.17.0...v0.18.0) (2022-01-28)
+
+
+### Bug Fixes
+
+* **cli:** Fix native builds not running when there are linter warnings while compiling the React app ([b482795](https://github.com/wuespace/telestion-client/commit/b4827959fbb4f70860ec71c16848c1c6f13a0862)), closes [#970](https://github.com/wuespace/telestion-client/issues/970)
+* Fix incompatibilities with `directory-tree` v3.0.0 ([7f0aac1](https://github.com/wuespace/telestion-client/commit/7f0aac19b24438a990bfc34577673f7107594d7a))
+
+
+
 ## [0.17.0](https://github.com/wuespace/telestion-client/compare/v0.16.1...v0.17.0) (2021-06-25)
 
 **Note:** Version bump only for package @wuespace/telestion-client-cli

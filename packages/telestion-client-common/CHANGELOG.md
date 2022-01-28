@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.0](https://github.com/wuespace/telestion-client/compare/v0.17.0...v0.18.0) (2022-01-28)
+
+
+### Features
+
+* **common:** Add `useDesktopNotifications` hook to handle the `@wuespace/telestion-client-core` `useNotifications` API notifications by sending desktop notifications. Call `useDesktopNotifications()` in your client project's `src/components/app.tsx` to use it. ([16d2033](https://github.com/wuespace/telestion-client/commit/16d2033f7e811a61740af095fa1d05f3ff190979)), closes [#1171](https://github.com/wuespace/telestion-client/issues/1171)
+* **common:** Add a `showDialog` function which creates a new configured dialog. Every dialog is stored in the Telestion Common dialog state which is accessible through the `useDialog` hook. These dialogs are rendered with the `ModalContext` component. ([fec24d8](https://github.com/wuespace/telestion-client/commit/fec24d81f670e03242aea0c319fb0553b1fdf2bb))
+* **common:** Add state support for the dialog and their entries in the `showDialog` function. Every component in the dialog configuration now receives the current state and a function to update it. The resolved promise then returns the final state of the dialog. ([f78523f](https://github.com/wuespace/telestion-client/commit/f78523f905c9e4f6e79e5a256b011019b2d998fd))
+* **common:** Use spectrum dialog instead of native dialog window to confirm user configuration reset ([eb4e0b1](https://github.com/wuespace/telestion-client/commit/eb4e0b11d6645bb802d953e4abea43e55ec3793c)), closes [#854](https://github.com/wuespace/telestion-client/issues/854)
+
+
+
 ## [0.17.0](https://github.com/wuespace/telestion-client/compare/v0.16.1...v0.17.0) (2021-06-25)
 
 

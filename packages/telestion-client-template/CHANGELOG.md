@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.0](https://github.com/wuespace/telestion-client/compare/v0.17.0...v0.18.0) (2022-01-28)
+
+
+### Features
+
+* **template:** Enable desktop notifications by default using the common's `useDesktopNotifications` hook ([f00325a](https://github.com/wuespace/telestion-client/commit/f00325a1192c663ec399675f545cf23c929f608e)), closes [#1171](https://github.com/wuespace/telestion-client/issues/1171)
+* **template:** Remove duplicate dependency `@react-spectrum/table` ([0327129](https://github.com/wuespace/telestion-client/commit/032712993d4fa3e4725d7d8511be934ef304e03b))
+
+
+### Bug Fixes
+
+* **telestion-client-template:** Disable `<StrictMode />` in default template to improve compatibility with React Spectrum ([984a805](https://github.com/wuespace/telestion-client/commit/984a80588c3aad081e41400b366c71d638973bcd))
+
+
+
 ## [0.17.0](https://github.com/wuespace/telestion-client/compare/v0.16.1...v0.17.0) (2021-06-25)
 
 
