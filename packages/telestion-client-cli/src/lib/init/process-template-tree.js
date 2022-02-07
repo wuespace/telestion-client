@@ -14,18 +14,14 @@ async function processDirectory(node, targetPath, replacers) {
 	await Promise.all(
 		node.children.map(
 			async child =>
-				await processTemplateTree(
-					child,
-					path.join(targetPath, child.name),
-					replacers
-				) // process the child node
+				processTemplateTree(child, path.join(targetPath, child.name), replacers) // process the child node
 		)
 	);
 }
 
 async function processFile(node, targetPath, replacers) {
 	debug('Processing file', node.path, 'for target', targetPath);
-	if (node.name.endsWith('.ejs')) {
+	if (node.ext === '.ejs') {
 		let targetPathWithoutEJSExtension = targetPath.substr(
 			0,
 			targetPath.length - 4
@@ -49,7 +45,7 @@ async function processFile(node, targetPath, replacers) {
  * @return {Promise<void>}
  */
 async function processTemplateTree(node, targetPath, replacers) {
-	if (node.children) {
+	if (node.type === 'directory') {
 		await processDirectory(node, targetPath, replacers);
 	} else {
 		await processFile(node, targetPath, replacers);
