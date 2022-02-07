@@ -56,6 +56,7 @@
 	],
 	"dependencies": {
 		"@craco/craco": "^6.0.0",
+		"@fliegwerk/dir-tree": "^0.2.1",
 		"@fliegwerk/logsemts": "^0.4.3",
 		"@wuespace/telestion-client-template": "file:../telestion-client-template",
 		"chalk": "^4.1.0",
@@ -63,7 +64,6 @@
 		"clui": "^0.3.6",
 		"cosmiconfig": "^7.0.0",
 		"debug": "^4.3.1",
-		"directory-tree": "^3.0.0",
 		"ejs": "^3.1.5",
 		"electron": "^17.0.0",
 		"electron-builder": "^22.9.1",
