@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+### [0.18.1](https://github.com/wuespace/telestion-client/compare/v0.18.0...v0.18.1) (2022-02-10)
+
+
+### Bug Fixes
+
+* **cli:** Fix template directory parsing issues ([06fea8c](https://github.com/wuespace/telestion-client/commit/06fea8cfc31eaeb7841301ff2fbf76efd369aa58))
+
+
+
 ## [0.18.0](https://github.com/wuespace/telestion-client/compare/v0.17.0...v0.18.0) (2022-01-28)
 
 
