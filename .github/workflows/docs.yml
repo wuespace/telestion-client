@@ -34,13 +34,9 @@ jobs:
         run: npm run build:all
       - name: Build documentation 🛠️
         run: npm run docs:ci
-      - name: Finalize build 🪄
-        run: touch docs/.nojekyll
 
       - name: Deploy documentation 🚀
-        uses: JamesIves/github-pages-deploy-action@v4.2.3
+        uses: JamesIves/github-pages-deploy-action@v4.2.5
         with:
           branch: gh-pages
           folder: docs
-          clean: true
-          token: ${{ secrets.ADMIN_REPO_TOKEN }}
