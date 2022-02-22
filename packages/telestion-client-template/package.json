@@ -54,7 +54,7 @@
 		"electron": "^17.0.0",
 		"react": "^17.0.1",
 		"react-dom": "^17.0.1",
-		"react-router-dom": "^5.2.0",
+		"react-router-dom": "^6.2.1",
 		"zustand": "^3.2.0"
 	},
 	"devDependencies": {
