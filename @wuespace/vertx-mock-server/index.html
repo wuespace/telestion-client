@@ -1,0 +1,1904 @@
+<html lang="en">
+<head>
+    <meta charset='UTF-8'>
+    <title>Telestion Client Monorepo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+    <style>
+        h5 {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        code {
+            line-height: inherit;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+        }
+
+        .spacer {
+            flex-grow: 1;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<header>
+    <a href="/telestion-client/" class="logo">Telestion Client Monorepo</a>
+            <a class="button" href="https://github.com/wuespace/telestion-client/" target="_blank">GitHub</a>
+            <a class="button" href="https://telestion.wuespace.de/" target="_blank">Homepage</a>
+            <a class="button" href="https://react-spectrum.adobe.com/" target="_blank">React Spectrum Libraries</a>
+            <a class="button" href="https://www.wuespace.de/legal-notice/" target="_blank">Legal Notice</a>
+        <div class="spacer"></div>
+    <button onclick="openSearch()"><span class="icon-search"></span> Search: <kbd>Ctrl</kbd>+<kbd>K</kbd></button>
+</header>
+<div class="container">
+    <div class="row">
+        <aside class="col-sm-12 col-md-4 col-lg-3">
+            <nav class="fixed">
+                <a href="/telestion-client/">Project README</a>
+                <span>Modules</span>
+                                    <a href="/telestion-client/@wuespace/vertx-event-bus">
+                        <code>
+                            @wuespace/vertx-event-bus                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/vertx-mock-server">
+                        <code>
+                            @wuespace/vertx-mock-server                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-types">
+                        <code>
+                            @wuespace/telestion-client-types                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-prop-types">
+                        <code>
+                            @wuespace/telestion-client-prop-types                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-core">
+                        <code>
+                            @wuespace/telestion-client-core                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-common">
+                        <code>
+                            @wuespace/telestion-client-common                        </code>
+                    </a>
+                            </nav>
+        </aside>
+        <div class="col-sm-12 col-md-8 col-lg-6">
+<h1><code>@wuespace/vertx-mock-server</code></h1>
+
+<p>
+    Install using
+</p>
+<pre><code>npm install @wuespace/vertx-mock-server</code></pre>
+
+<h2>Exported Members</h2>
+<p>You can access these members by importing the module:</p>
+<pre><code>import { <i>member</i> } from '@wuespace/vertx-mock-server';</code></pre>
+
+<!-- Members -->
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="MockServer" href="#MockServer">
+            <h3><code>MockServer</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            class
+            <!-- Name -->
+            MockServer
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>A mock server for a Vert.x WebSocket Event Bus bridge
+to JavaScript clients like <a href="#@wuespace/vertx-event-bus#EventBus"><code>@wuespace/vertx-event-bus#EventBus</code></a>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+        <h4>Constructors</h4>
+            <a id="MockServer.constructor" href="#MockServer.constructor">
+            <h5><code>constructor</code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function 
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                options
+                ?
+                <!-- type -->
+                :
+                Partial&lt;VertxMockServerOptions&gt;
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            any        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Builds a new Vert.x mock server.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>options - options to further configure the mock server</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MockServer.listen"><code>MockServer.listen</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MockServer.close"><code>MockServer.close</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">const logger = new Logger({
+	loggers: [ChalkLogger(chalk)]
+});
+
+const moduleLogger = logger.getComponentLogger('MockServer');
+
+const server = new MockServer({ logger: moduleLogger });
+server.listen();
+</code></pre>
+</div>
+            </div>
+    
+<!-- Properties -->
+<h4>Properties</h4>
+
+<!-- Methods -->
+    <h4>Methods</h4>
+            <a id="MockServer.listen" href="#MockServer.listen">
+            <h5><code>
+                                                                                                    listen                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function listen
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                options
+                ?
+                <!-- type -->
+                :
+                Partial&lt;ListenOptions&gt;
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Starts the Vert.x mock server, listening for incoming connections.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>options - options to configure the Vert.x mock server
+in the listen process</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MockServer.close"><code>MockServer.close</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">const server = new MockServer();
+server.listen({
+	port: 12345,
+	hostname: 'localhost'
+}); // listen on port 12345 on 'localhost'
+</code></pre>
+</div>
+            </div>
+            <a id="MockServer.close" href="#MockServer.close">
+            <h5><code>
+                                                                                                    close                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function close
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                                    )
+
+            <!-- Return type -->
+            :
+            Promise&lt;void&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Stops the server from accepting new connections
+and closes currently active connections.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@returns:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>a promise which resolves when the server is closed</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MockServer.listen"><code>MockServer.listen</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">const server = new MockServer();
+server.listen();
+// some code later
+server.close().then(() =&gt; console.log('Closed'));
+</code></pre>
+</div>
+            </div>
+            <a id="MockServer.send" href="#MockServer.send">
+            <h5><code>
+                    protected                                                                                send                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function send
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                channel
+                
+                <!-- type -->
+                :
+                ChannelAddress
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                content
+                
+                <!-- type -->
+                :
+                JsonSerializable
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Sends a message to the specified channel.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>channel - the channel the message gets sent to</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>content - the message content that gets sent over the specified channel</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#OnInit"><code>OnInit</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#OnClose"><code>OnClose</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MockServer.sendError"><code>MockServer.sendError</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">const CHANNEL = 'my-channel';
+
+class MyMockServer extends MockServer implements OnInit, OnClose {
+	private iteration: number = 0;
+	private intervalId: any = undefined;
+
+	onInit() {
+		// send and increment
+		this.intervalId = setInterval(() =&gt; {
+			this.send(CHANNEL, this.iteration);
+		  this.iteration = this.iteration + 1;
+		}, 1000);
+	}
+
+	onClose() {
+		if (this.intervalId) {
+			clearInterval(this.intervalId);
+			this.intervalId = undefined;
+		}
+	}
+}
+
+const server = new MyMockServer();
+server.listen();
+</code></pre>
+</div>
+            </div>
+            <a id="MockServer.sendError" href="#MockServer.sendError">
+            <h5><code>
+                    protected                                                                                sendError                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function sendError
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                error
+                
+                <!-- type -->
+                :
+                ErrorContent
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Sends an error message to the specified channel.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>error - the message that gets sent over the specified channel</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#ErrorContent"><code>ErrorContent</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MockServer.send"><code>MockServer.send</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MockServer.register"><code>MockServer.register</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MockServer.unregister"><code>MockServer.unregister</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">const CHANNEL = 'my-channel';
+
+class MyMockServer extends MockServer implements OnInit, OnClose {
+	private id: CallbackId = 0;
+
+	onInit() {
+		this.id = this.register(CHANNEL, () =&gt; {
+			this.sendError({
+				failureCode: 1,
+				failureType: 'Message received',
+				message: 'Message was received'
+			});
+		});
+	}
+
+	onClose() {
+		this.unregister(this.id);
+	}
+}
+
+const server = new MyMockServer();
+server.listen();
+</code></pre>
+</div>
+            </div>
+            <a id="MockServer.register" href="#MockServer.register">
+            <h5><code>
+                    protected                                                                                register                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function register
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                channel
+                
+                <!-- type -->
+                :
+                ChannelAddress
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                callback
+                
+                <!-- type -->
+                :
+                Callback
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            CallbackId        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Registers a callback to a specified channel.
+The callback gets called when a new message arrives on this channel.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>channel - the channel the callback gets registered to</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>callback - the callback to register</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Callback"><code>Callback</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#CallbackId"><code>CallbackId</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MockServer.unregister"><code>MockServer.unregister</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">const CHANNEL = 'my-channel';
+
+class MyMockServer extends MockServer implements OnInit, OnClose {
+	private id: CallbackId = 0;
+
+	onInit() {
+		this.id = this.register(CHANNEL, () =&gt; {
+			this.send(CHANNEL, 'pong');
+		});
+	}
+
+	onClose() {
+		this.unregister(this.id);
+	}
+}
+
+const server = new MyMockServer();
+server.listen();
+</code></pre>
+</div>
+            </div>
+            <a id="MockServer.unregister" href="#MockServer.unregister">
+            <h5><code>
+                    protected                                                                                unregister                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function unregister
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                id
+                
+                <!-- type -->
+                :
+                CallbackId
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Unregisters/Removes a callback from a channel
+with the given callback id from the <a href="#MockServer.register"><code>MockServer.register</code></a> function.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>id - the callback id returned by the <a href="#MockServer.register"><code>MockServer.register</code></a> function</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#CallbackId"><code>CallbackId</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MockServer.register"><code>MockServer.register</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">const CHANNEL = 'my-channel';
+
+class MyMockServer extends MockServer implements OnInit, OnClose {
+	private id: CallbackId = 0;
+
+	onInit() {
+		this.id = this.register(CHANNEL, () =&gt; {
+			this.send(CHANNEL, 'pong');
+		});
+	}
+
+	onClose() {
+		this.unregister(this.id);
+	}
+}
+
+const server = new MyMockServer();
+server.listen();
+</code></pre>
+</div>
+            </div>
+            <a id="MockServer.getConnections" href="#MockServer.getConnections">
+            <h5><code>
+                    protected                                                                                getConnections                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function getConnections
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                                    )
+
+            <!-- Return type -->
+            :
+            Array&lt;Connection&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Get all currently active SockJS connections to the Vert.x mock server.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@returns:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>all current SockJS connections</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">const CHANNEL = 'my-channel';
+
+class MyMockServer extends MockServer implements OnInit, OnClose {
+	private id: CallbackId = 0;
+
+	onInit() {
+		this.id = this.register(CHANNEL, args =&gt; {
+			if (args.type === 'send') args.respond(this.getConnections().length);
+		});
+	}
+
+	onClose() {
+		this.unregister(this.id);
+	}
+}
+
+const server = new MyMockServer();
+server.listen();
+</code></pre>
+</div>
+            </div>
+                            </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="ErrorContent" href="#ErrorContent">
+            <h3><code>ErrorContent</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type ErrorContent
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            Pick&lt;
+	ErrorMessage,
+	&#39;failureCode&#39; | &#39;failureType&#39; | &#39;message&#39;
+&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The contents of an error message.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="OnInit" href="#OnInit">
+            <h3><code>OnInit</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            OnInit
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Defines an event handler that gets called
+when the Vert.x mock server is set up
+and ready to handle incoming connections.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MockServer"><code>MockServer</code></a></p>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+
+<!-- Methods -->
+    <h4>Methods</h4>
+            <a id="OnInit.onInit" href="#OnInit.onInit">
+            <h5><code>
+                                                                                                    onInit                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function onInit
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                                    )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>An event handler which gets called
+when a the Vert.x mock server is set up
+and ready to handle incoming connections.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                            </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="OnConnection" href="#OnConnection">
+            <h3><code>OnConnection</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            OnConnection
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Defines an event handler that gets called
+when a new connection with a client is established
+and all <a href="#MockServer.register"><code>MockServer.register</code></a> calls have taken place.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MockServer"><code>MockServer</code></a></p>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+
+<!-- Methods -->
+    <h4>Methods</h4>
+            <a id="OnConnection.onConnection" href="#OnConnection.onConnection">
+            <h5><code>
+                                                                                                    onConnection                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function onConnection
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                connection
+                
+                <!-- type -->
+                :
+                Connection
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>An event handler which gets called
+when a new connection with a client is established
+and all <a href="#MockServer.register"><code>MockServer.register</code></a> calls have taken place.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>connection - the established connection with the client</p>
+</div>
+            </div>
+                            </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="OnMessage" href="#OnMessage">
+            <h3><code>OnMessage</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            OnMessage
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Defines an event handler that gets called when a messages arrives
+at the Vert.x mock server from any connected client.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MockServer"><code>MockServer</code></a></p>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+
+<!-- Methods -->
+    <h4>Methods</h4>
+            <a id="OnMessage.onMessage" href="#OnMessage.onMessage">
+            <h5><code>
+                                                                                                    onMessage                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function onMessage
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                message
+                
+                <!-- type -->
+                :
+                Message
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            boolean | void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>An event handler which gets called
+when a new message arrives at the event bus.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>message - the received message</p>
+</div>
+            </div>
+                            </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="OnClosedConnection" href="#OnClosedConnection">
+            <h3><code>OnClosedConnection</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            OnClosedConnection
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Defines an event handler that gets called
+when a connection to a client has closed.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MockServer"><code>MockServer</code></a></p>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+
+<!-- Methods -->
+    <h4>Methods</h4>
+            <a id="OnClosedConnection.onClosedConnection" href="#OnClosedConnection.onClosedConnection">
+            <h5><code>
+                                                                                                    onClosedConnection                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function onClosedConnection
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                connection
+                
+                <!-- type -->
+                :
+                Connection
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>An event handler which gets called
+when a connection to a client has closed.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>connection - the closed connection with the client</p>
+</div>
+            </div>
+                            </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="OnClose" href="#OnClose">
+            <h3><code>OnClose</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            OnClose
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Defines an event handler that gets called
+when the Vert.x mock server closed all still active connections
+and will shutdown now.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MockServer"><code>MockServer</code></a></p>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+
+<!-- Methods -->
+    <h4>Methods</h4>
+            <a id="OnClose.onClose" href="#OnClose.onClose">
+            <h5><code>
+                                                                                                    onClose                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function onClose
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                                    )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>An event handler which gets called
+when the Vert.x mock server closed all still active connections
+and will shutdown now.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                            </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="SendCallbackArgs" href="#SendCallbackArgs">
+            <h3><code>SendCallbackArgs</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            SendCallbackArgs
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends BaseCallbackArgs                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The arguments of a send callback which gets called
+when the Vert.x mock server receives
+a <a href="#@wuespace/telestion-client-types#SendMessage"><code>@wuespace/telestion-client-types#SendMessage</code></a>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="SendCallbackArgs.type" href="#SendCallbackArgs.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;send&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+    <a id="SendCallbackArgs.respond" href="#SendCallbackArgs.respond">
+        <h5><code>
+                                                                                respond                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            (response: JsonSerializable) =&gt; void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>A callback to respond to the sent message.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>response - the response message to send back</p>
+</div>
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="PublishCallbackArgs" href="#PublishCallbackArgs">
+            <h3><code>PublishCallbackArgs</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            PublishCallbackArgs
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends BaseCallbackArgs                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The arguments of a publish callback which gets called
+when the Vert.x mock server receives
+a <a href="#@wuespace/telestion-client-types#PublishMessage"><code>@wuespace/telestion-client-types#PublishMessage</code></a>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="PublishCallbackArgs.type" href="#PublishCallbackArgs.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;publish&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="CallbackArgs" href="#CallbackArgs">
+            <h3><code>CallbackArgs</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type CallbackArgs
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            SendCallbackArgs | PublishCallbackArgs        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The arguments of a callback which gets called
+when the Vert.x mock server receives
+a <a href="#@wuespace/telestion-client-types#SendMessage"><code>@wuespace/telestion-client-types#SendMessage</code></a>
+or a <a href="#@wuespace/telestion-client-types#PublishMessage"><code>@wuespace/telestion-client-types#PublishMessage</code></a>
+from a client.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Callback" href="#Callback">
+            <h3><code>Callback</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type Callback
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            (args: CallbackArgs) =&gt; void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The callback which gets called
+when the Vert.x mock server receives
+a <a href="#@wuespace/telestion-client-types#SendMessage"><code>@wuespace/telestion-client-types#SendMessage</code></a>
+or a <a href="#@wuespace/telestion-client-types#PublishMessage"><code>@wuespace/telestion-client-types#PublishMessage</code></a>
+from a client.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="CallbackId" href="#CallbackId">
+            <h3><code>CallbackId</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type CallbackId
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            number        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The id of a registered callback.</p>
+<p>It can be registered with <a href="#MockServer.register"><code>MockServer.register</code></a>
+and unregistered with this value in <a href="#MockServer.unregister"><code>MockServer.unregister</code></a>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="ListenOptions" href="#ListenOptions">
+            <h3><code>ListenOptions</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            ListenOptions
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Options to configure the Vert.x mock server in the listen process.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="ListenOptions.port" href="#ListenOptions.port">
+        <h5><code>
+                                                                                port                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            number        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The port on which the server listens.</p>
+<p>Defaults to <code>9870</code>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="ListenOptions.hostname" href="#ListenOptions.hostname">
+        <h5><code>
+                                                                                hostname                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The hostname on which the server listens.</p>
+<p>Defaults to <code>'0.0.0.0'</code>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="VertxMockServerOptions" href="#VertxMockServerOptions">
+            <h3><code>VertxMockServerOptions</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            VertxMockServerOptions
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Options to configure the Vert.x mock server on creation.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="VertxMockServerOptions.prefix" href="#VertxMockServerOptions.prefix">
+        <h5><code>
+                                                                                prefix                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The prefix on which the event bus will be available.</p>
+<p>Defaults tp <code>'/bridge'</code>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="VertxMockServerOptions.logger" href="#VertxMockServerOptions.logger">
+        <h5><code>
+                                                                                logger                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            ComponentLogger        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The logging instance the mock server uses
+to print out connection and debug information.</p>
+<p><strong>Notice:</strong>
+By default, the mock server does not print anything to console.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Methods -->
+                        </div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/flexsearch@0.6.32/dist/flexsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fliegwerk/search-popup@2.0.0/dist/bundle.js"></script>
+<script>
+    const searchIndex = new FlexSearch({
+        encode: q => (q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase() + ' ' + q.toLowerCase(),
+        // encode: q => (q.replace(/(.*)[\W.](.*)/g, "$1$2")).toLowerCase(),
+        tokenize: "full",
+        threshold: 0,
+        resolution: 9,
+        depth: 3,
+        doc: {
+            id: 'url',
+            field: ['name', 'text']
+        }
+    });
+
+    function search(q) {
+        q = q || '';
+        return searchIndex.search((q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase(), 5)
+    }
+
+    fetch('/telestion-client/search-index.json').then(r => r.json()).then(index => {
+        searchIndex.add(index)
+        const searchPopup = document.createElement('search-popup');
+        searchPopup.setAttribute('search', 'search')
+        document.body.appendChild(searchPopup);
+    });
+</script>
+</body>
+</html>

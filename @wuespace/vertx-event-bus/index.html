@@ -1,0 +1,1194 @@
+<html lang="en">
+<head>
+    <meta charset='UTF-8'>
+    <title>Telestion Client Monorepo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+    <style>
+        h5 {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        code {
+            line-height: inherit;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+        }
+
+        .spacer {
+            flex-grow: 1;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<header>
+    <a href="/telestion-client/" class="logo">Telestion Client Monorepo</a>
+            <a class="button" href="https://github.com/wuespace/telestion-client/" target="_blank">GitHub</a>
+            <a class="button" href="https://telestion.wuespace.de/" target="_blank">Homepage</a>
+            <a class="button" href="https://react-spectrum.adobe.com/" target="_blank">React Spectrum Libraries</a>
+            <a class="button" href="https://www.wuespace.de/legal-notice/" target="_blank">Legal Notice</a>
+        <div class="spacer"></div>
+    <button onclick="openSearch()"><span class="icon-search"></span> Search: <kbd>Ctrl</kbd>+<kbd>K</kbd></button>
+</header>
+<div class="container">
+    <div class="row">
+        <aside class="col-sm-12 col-md-4 col-lg-3">
+            <nav class="fixed">
+                <a href="/telestion-client/">Project README</a>
+                <span>Modules</span>
+                                    <a href="/telestion-client/@wuespace/vertx-event-bus">
+                        <code>
+                            @wuespace/vertx-event-bus                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/vertx-mock-server">
+                        <code>
+                            @wuespace/vertx-mock-server                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-types">
+                        <code>
+                            @wuespace/telestion-client-types                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-prop-types">
+                        <code>
+                            @wuespace/telestion-client-prop-types                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-core">
+                        <code>
+                            @wuespace/telestion-client-core                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-common">
+                        <code>
+                            @wuespace/telestion-client-common                        </code>
+                    </a>
+                            </nav>
+        </aside>
+        <div class="col-sm-12 col-md-8 col-lg-6">
+<h1><code>@wuespace/vertx-event-bus</code></h1>
+
+<p>
+    Install using
+</p>
+<pre><code>npm install @wuespace/vertx-event-bus</code></pre>
+
+<h2>Exported Members</h2>
+<p>You can access these members by importing the module:</p>
+<pre><code>import { <i>member</i> } from '@wuespace/vertx-event-bus';</code></pre>
+
+<!-- Members -->
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="EventBus" href="#EventBus">
+            <h3><code>EventBus</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            class
+            <!-- Name -->
+            EventBus
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>An eventbus connector for the Vert.x environment.</p>
+<p>It implements the Javascript client-side of the SockJS event bus bridge
+based on the online documentation by the Vert.x-Team
+and their implementation:</p>
+<ul>
+<li><a href="https://vertx.io/docs/vertx-web/java/#_sockjs_event_bus_bridge">https://vertx.io/docs/vertx-web/java/#_sockjs_event_bus_bridge</a></li>
+<li><a href="https://github.com/vert-x3/vertx-web/blob/master/vertx-web/src/client/vertx-eventbus.js">https://github.com/vert-x3/vertx-web/blob/master/vertx-web/src/client/vertx-eventbus.js</a></li>
+</ul>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="https://vertx.io/">https://vertx.io/</a></p>
+</div>
+            </div>
+
+<!-- Constructors -->
+        <h4>Constructors</h4>
+            <a id="EventBus.constructor" href="#EventBus.constructor">
+            <h5><code>constructor</code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function 
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                url
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                options
+                ?
+                <!-- type -->
+                :
+                Partial&lt;Options&gt;
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            any        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Builds a new event bus
+that automatically tries to connect to the given server url.</p>
+<p>It uses the given options to configure the event bus instance
+and falls back on default options if some of the given options are not set.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>url - the server url</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>options - event bus configuration options</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#EventBus.onOpen"><code>EventBus.onOpen</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#EventBus.publish"><code>EventBus.publish</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">// some vertx event bus channel
+const channel = 'EVENTBUS_CHANNEL';
+
+// build a new event bus instance
+const eventBus = new EventBus('http://localhost:9870/bridge');
+// set an event listener when the the event bus is open
+eventBus.onOpen = () =&gt; {
+	// publish a simple message to the event bus
+	eventBus.publish(channel, 'Hello World');
+};
+</code></pre>
+</div>
+            </div>
+    
+<!-- Properties -->
+<h4>Properties</h4>
+
+<!-- Methods -->
+    <h4>Methods</h4>
+            <a id="EventBus.setAutoReconnect" href="#EventBus.setAutoReconnect">
+            <h5><code>
+                                                                                                    setAutoReconnect                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function setAutoReconnect
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                newState
+                
+                <!-- type -->
+                :
+                boolean
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Enable or disable automatic reconnect on unexpected connection loss.</p>
+<p>If automatic reconnect is enabled,
+the event bus tries to reconnect to the backend server
+in increasing time steps until a connection is re-established.</p>
+<p>Initially enabled.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>newState - <code>true</code> to enable automatic reconnect, <code>false</code> to disable</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#EventBus.autoReconnect"><code>EventBus.autoReconnect</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#EventBus.onReconnect"><code>EventBus.onReconnect</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">const eventBus = new EventBus('http://localhost:9870/bridge');
+
+eventBus.onReconnect = () =&gt; {
+	console.log('Event bus has reconnected');
+};
+
+// disable automatic reconnect
+eventBus.setAutoReconnect(false);
+</code></pre>
+</div>
+            </div>
+            <a id="EventBus.publish" href="#EventBus.publish">
+            <h5><code>
+                                                                                                    publish                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function publish
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                address
+                
+                <!-- type -->
+                :
+                ChannelAddress
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                content
+                
+                <!-- type -->
+                :
+                JsonSerializable
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                headers
+                ?
+                <!-- type -->
+                :
+                Headers
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Publishes a message to the specified address.</p>
+<p>If the eventbus is currently closed, it stores the message
+and publishes it after the connection is open.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>address - address to which the content gets published</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>content - the content that will be broadcasted
+to the specified address</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>headers - optional headers sent with the event bus message</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#EventBus.onOpen"><code>EventBus.onOpen</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">// some vertx eventbus address to publish to
+const address = 'MY_CHANNEL';
+
+const eventBus = new EventBus('http://localhost:9870/bridge');
+
+eventBus.onOpen = () =&gt; {
+	eventBus.publish(address, 'Hey there!');
+}
+</code></pre>
+</div>
+            </div>
+            <a id="EventBus.send" href="#EventBus.send">
+            <h5><code>
+                                                                                                    send                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function send
+            <!-- Type Parameters -->
+                <!-- opening angle bracket -->
+    &lt;
+
+            
+        <!-- Name -->
+        T
+        <!-- Constraints -->
+                    : JsonSerializable        
+        <!-- Default -->
+                    = JsonSerializable        
+        <!-- Comma if not last -->
+            
+    <!-- Closing angle bracket -->
+    &gt;
+
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                address
+                
+                <!-- type -->
+                :
+                ChannelAddress
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                content
+                
+                <!-- type -->
+                :
+                JsonSerializable
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                callback
+                
+                <!-- type -->
+                :
+                Callback&lt;T&gt;
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                headers
+                ?
+                <!-- type -->
+                :
+                Headers
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Publishes a message to the specified address.
+It also registers a one-time event handler
+that gets called when the first answer to the message is received.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>address - address the content is sent to</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>content - the content that will sent to the specified address</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>callback - the function that gets called
+when the first answer is received</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>headers - optional headers sent with the event bus message</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@typeParam:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>T - the argument type of the callback</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#EventBus.onOpen"><code>EventBus.onOpen</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#EventBus.handlers"><code>EventBus.handlers</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">// some vertx eventbus address to send to
+const address = 'MY_CHANNEL';
+
+const eventBus = new EventBus('http://localhost:9870/bridge');
+
+eventBus.onOpen = () =&gt; {
+	eventBus.send(address, 'Ping', message =&gt; {
+		console.log('Pong:', message);
+	});
+};
+</code></pre>
+</div>
+            </div>
+            <a id="EventBus.register" href="#EventBus.register">
+            <h5><code>
+                                                                                                    register                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function register
+            <!-- Type Parameters -->
+                <!-- opening angle bracket -->
+    &lt;
+
+            
+        <!-- Name -->
+        T
+        <!-- Constraints -->
+                    : JsonSerializable        
+        <!-- Default -->
+                    = JsonSerializable        
+        <!-- Comma if not last -->
+            
+    <!-- Closing angle bracket -->
+    &gt;
+
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                address
+                
+                <!-- type -->
+                :
+                ChannelAddress
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                callback
+                
+                <!-- type -->
+                :
+                Callback&lt;T&gt;
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                headers
+                ?
+                <!-- type -->
+                :
+                Headers
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Registers an event handler to the specified address.</p>
+<p>The given callback is executed when the event bus receives a message
+on the specified address.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>address - the address on which the event handler
+that executes the callback on incoming messages gets registered</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>callback - the function that gets executed
+when incoming messages are received on the specified address</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>headers - optional headers sent with the initial registration
+message to the backend on the first register event</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@typeParam:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>T - the argument type of the callback</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#EventBus.unregister"><code>EventBus.unregister</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#EventBus.onOpen"><code>EventBus.onOpen</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">// some vertx eventbus address to register to
+const address = 'MY_CHANNEL';
+
+// define a handler
+const handler: Callback = message =&gt; {
+	console.log(message);
+};
+
+const eventBus = new EventBus('https://localhost:9870/bridge');
+
+eventBus.onOpen = () =&gt; {
+	eventBus.register(address, handler);
+};
+
+// later
+// unregister handler
+eventBus.unregister(address, handler);
+</code></pre>
+</div>
+            </div>
+            <a id="EventBus.unregister" href="#EventBus.unregister">
+            <h5><code>
+                                                                                                    unregister                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function unregister
+            <!-- Type Parameters -->
+                <!-- opening angle bracket -->
+    &lt;
+
+            
+        <!-- Name -->
+        T
+        <!-- Constraints -->
+                    : JsonSerializable        
+        <!-- Default -->
+                    = JsonSerializable        
+        <!-- Comma if not last -->
+            
+    <!-- Closing angle bracket -->
+    &gt;
+
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                address
+                
+                <!-- type -->
+                :
+                ChannelAddress
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                callback
+                
+                <!-- type -->
+                :
+                Callback&lt;T&gt;
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                headers
+                
+                <!-- type -->
+                :
+                Headers
+                <!-- Default value -->
+                                = {}                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Unregisters an event handler from the specified address.</p>
+<p>The callback argument must be the same as the one that was registered
+using <code>registerHandler()</code>.</p>
+<p>The specified headers are sent with the unregister message
+that goes to the backend
+<strong>if</strong> no other event handlers are registered to this address anymore.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>address - the address the event handler unregisters from</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>callback - the callback to unregister from the address</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>headers - optional headers sent with the last unregister message</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@typeParam:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>T - the argument type of the callback</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#EventBus.register"><code>EventBus.register</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">// some vertx eventbus address to register to
+const address = 'MY_CHANNEL';
+
+// define a handler
+const handler: Callback = message =&gt; {
+	console.log(message);
+};
+
+const eventBus = new EventBus('https://localhost:9870/bridge');
+
+eventBus.onOpen = () =&gt; {
+	eventBus.register(address, handler);
+};
+
+// later
+// unregister handler
+eventBus.unregister(address, handler);
+</code></pre>
+</div>
+            </div>
+            <a id="EventBus.close" href="#EventBus.close">
+            <h5><code>
+                                                                                                    close                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function close
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                                    )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Close the event bus and stop receiving any further event bus messages.
+The connection will not be re-established automatically,
+even if automatic reconnect is enabled.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#EventBus.autoReconnect"><code>EventBus.autoReconnect</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#EventBus.setAutoReconnect"><code>EventBus.setAutoReconnect</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">const eventBus = new EventBus('http://localhost:9870/bridge');
+// cleanup
+eventBus.close();
+</code></pre>
+</div>
+            </div>
+                            </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="ConnectionState" href="#ConnectionState">
+            <h3><code>ConnectionState</code></h3></a>
+
+        <!-- Description, based on type -->
+                                <!-- UNRESOLVED TYPE: unknown::EnumDeclaration with {"type":"unknown::EnumDeclaration","declarations":[],"name":"ConnectionState"}-->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="defaultOptions" href="#defaultOptions">
+            <h3><code>defaultOptions</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Declaration Kind: const, let, or var -->
+            const
+            :
+
+            <!-- Variable type or any -->
+            Options        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the default options for the event bus
+that are merged with the custom options in the constructor</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>[<code>(EventBus:constructor) | EventBus Constructor</code>](#(EventBus:constructor) | EventBus Constructor)</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">constructor(url: string, options?: Partial&lt;Options&gt;) {
+	this.options = { ...defaultOptions, ...options };
+	...
+}
+</code></pre>
+</div>
+            </div>
+                        </div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/flexsearch@0.6.32/dist/flexsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fliegwerk/search-popup@2.0.0/dist/bundle.js"></script>
+<script>
+    const searchIndex = new FlexSearch({
+        encode: q => (q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase() + ' ' + q.toLowerCase(),
+        // encode: q => (q.replace(/(.*)[\W.](.*)/g, "$1$2")).toLowerCase(),
+        tokenize: "full",
+        threshold: 0,
+        resolution: 9,
+        depth: 3,
+        doc: {
+            id: 'url',
+            field: ['name', 'text']
+        }
+    });
+
+    function search(q) {
+        q = q || '';
+        return searchIndex.search((q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase(), 5)
+    }
+
+    fetch('/telestion-client/search-index.json').then(r => r.json()).then(index => {
+        searchIndex.add(index)
+        const searchPopup = document.createElement('search-popup');
+        searchPopup.setAttribute('search', 'search')
+        document.body.appendChild(searchPopup);
+    });
+</script>
+</body>
+</html>

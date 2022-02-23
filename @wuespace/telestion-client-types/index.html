@@ -1,0 +1,5343 @@
+<html lang="en">
+<head>
+    <meta charset='UTF-8'>
+    <title>Telestion Client Monorepo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+    <style>
+        h5 {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        code {
+            line-height: inherit;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+        }
+
+        .spacer {
+            flex-grow: 1;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<header>
+    <a href="/telestion-client/" class="logo">Telestion Client Monorepo</a>
+            <a class="button" href="https://github.com/wuespace/telestion-client/" target="_blank">GitHub</a>
+            <a class="button" href="https://telestion.wuespace.de/" target="_blank">Homepage</a>
+            <a class="button" href="https://react-spectrum.adobe.com/" target="_blank">React Spectrum Libraries</a>
+            <a class="button" href="https://www.wuespace.de/legal-notice/" target="_blank">Legal Notice</a>
+        <div class="spacer"></div>
+    <button onclick="openSearch()"><span class="icon-search"></span> Search: <kbd>Ctrl</kbd>+<kbd>K</kbd></button>
+</header>
+<div class="container">
+    <div class="row">
+        <aside class="col-sm-12 col-md-4 col-lg-3">
+            <nav class="fixed">
+                <a href="/telestion-client/">Project README</a>
+                <span>Modules</span>
+                                    <a href="/telestion-client/@wuespace/vertx-event-bus">
+                        <code>
+                            @wuespace/vertx-event-bus                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/vertx-mock-server">
+                        <code>
+                            @wuespace/vertx-mock-server                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-types">
+                        <code>
+                            @wuespace/telestion-client-types                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-prop-types">
+                        <code>
+                            @wuespace/telestion-client-prop-types                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-core">
+                        <code>
+                            @wuespace/telestion-client-core                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-common">
+                        <code>
+                            @wuespace/telestion-client-common                        </code>
+                    </a>
+                            </nav>
+        </aside>
+        <div class="col-sm-12 col-md-8 col-lg-6">
+<h1><code>@wuespace/telestion-client-types</code></h1>
+
+<p>
+    Install using
+</p>
+<pre><code>npm install @wuespace/telestion-client-types</code></pre>
+
+<h2>Exported Members</h2>
+<p>You can access these members by importing the module:</p>
+<pre><code>import { <i>member</i> } from '@wuespace/telestion-client-types';</code></pre>
+
+<!-- Members -->
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="JsonSerializable" href="#JsonSerializable">
+            <h3><code>JsonSerializable</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type JsonSerializable
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            | null
+	| number
+	| string
+	| boolean
+	| { [key: string]: JsonSerializable | undefined }
+	| Array&lt;JsonSerializable&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>a type that only allows JSON serializable data</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#JSON.parse"><code>JSON.parse</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#JSON.stringify"><code>JSON.stringify</code></a></p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="AbstractRouting" href="#AbstractRouting">
+            <h3><code>AbstractRouting</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            AbstractRouting
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Defines a generic routing interface for a Page component.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="AbstractRouting.path" href="#AbstractRouting.path">
+        <h5><code>
+                                                                                path                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Describes the path of the Page component.</p>
+<p>The Page will be rendered
+if the application path resolves to the specified path.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#https://reactrouter.com/web/api/Route"><code>https://reactrouter.com/web/api/Route</code></a></p>
+</div>
+            </div>
+    <a id="AbstractRouting.exact" href="#AbstractRouting.exact">
+        <h5><code>
+                                                                                exact                ?            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            boolean        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>When it is <code>true</code> the Path will only match
+if the application route is exactly the same as the specified path above.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#path"><code>path</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#https://reactrouter.com/web/api/Route/exact-bool"><code>https://reactrouter.com/web/api/Route/exact-bool</code></a></p>
+</div>
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="AbstractRedirect" href="#AbstractRedirect">
+            <h3><code>AbstractRedirect</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            AbstractRedirect
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends AbstractRouting                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Defines a generic routing interface
+with an additional redirect specifier for a Page component.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#AbstractRouting"><code>AbstractRouting</code></a></p>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="AbstractRedirect.redirectPath" href="#AbstractRedirect.redirectPath">
+        <h5><code>
+                                                                                redirectPath                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Describes the path the application will be redirected
+if the routing type does not match current application state.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#UnAuthRouting"><code>UnAuthRouting</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#AuthRouting"><code>AuthRouting</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#https://reactrouter.com/web/api/Redirect"><code>https://reactrouter.com/web/api/Redirect</code></a></p>
+</div>
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="AdditionalRedirect" href="#AdditionalRedirect">
+            <h3><code>AdditionalRedirect</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            AdditionalRedirect
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends AbstractRedirect                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Specifies an additional redirect which will add a route to the application
+when the application path matches the application are redirected
+to the specified path.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#AbstractRouting"><code>AbstractRouting</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#AbstractRedirect"><code>AbstractRedirect</code></a></p>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="AdditionalRedirect.last" href="#AdditionalRedirect.last">
+        <h5><code>
+                                                                                last                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            boolean        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>If it is <code>true</code> the additional redirect will be inserted
+after all registered routes in the
+[<code>@wuespace/telestion-client-core#Pages | Pages renderer component</code>](#@wuespace/telestion-client-core#Pages | Pages renderer component)
+otherwise it will be directly attached
+after the routing definition of the component.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#@wuespace/telestion-client-core#Pages"><code>@wuespace/telestion-client-core#Pages</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#AbstractRedirect"><code>AbstractRedirect</code></a></p>
+</div>
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="DefaultRouting" href="#DefaultRouting">
+            <h3><code>DefaultRouting</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            DefaultRouting
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends BaseRouting                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Specifies the default type of routing for a Page component.</p>
+<p>It not depends on the application state
+and will always be reachable under the given
+[<code>AbstractRouting.path | path</code>](#AbstractRouting.path | path).</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#AbstractRouting"><code>AbstractRouting</code></a></p>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="DefaultRouting.type" href="#DefaultRouting.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;default&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="UnAuthRouting" href="#UnAuthRouting">
+            <h3><code>UnAuthRouting</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            UnAuthRouting
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends BaseRouting,AbstractRedirect                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Specifies an unauthorized type of routing for a Page component.</p>
+<p>The Page will only be rendered
+if the user is unauthorized (or logged out) in the application
+otherwise the app will be redirected to the given
+<a href="#AbstractRedirect.redirectPath"><code>AbstractRedirect.redirectPath</code></a>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#BaseRouting"><code>BaseRouting</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#AbstractRedirect"><code>AbstractRedirect</code></a></p>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="UnAuthRouting.type" href="#UnAuthRouting.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;unAuth&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="AuthRouting" href="#AuthRouting">
+            <h3><code>AuthRouting</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            AuthRouting
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends BaseRouting,AbstractRedirect                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Specifies an authorized type of routing for a Page component.</p>
+<p>The Page will only be rendered
+if the user is authorized (or logged in) in the application
+otherwise the app will be redirected to the given
+<a href="#AbstractRedirect.redirectPath"><code>AbstractRedirect.redirectPath</code></a>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#BaseRouting"><code>BaseRouting</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#AbstractRedirect"><code>AbstractRedirect</code></a></p>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="AuthRouting.type" href="#AuthRouting.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;auth&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Routing" href="#Routing">
+            <h3><code>Routing</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type Routing
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            DefaultRouting | UnAuthRouting | AuthRouting        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Defines an object type for routing information of a Page in Telestion Client.
+It can be based on the application route and state and is important for Pages
+used in the
+[<code>@wuespace/telestion-client-core#Pages | Pages renderer component</code>](#@wuespace/telestion-client-core#Pages | Pages renderer component).</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#DefaultRouting"><code>DefaultRouting</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#UnAuthRouting"><code>UnAuthRouting</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#AuthRouting"><code>AuthRouting</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#@wuespace/telestion-client-core#Pages"><code>@wuespace/telestion-client-core#Pages</code></a></p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="BasePropType" href="#BasePropType">
+            <h3><code>BasePropType</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type BasePropType
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            JsonSerializable        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Defines the basic prop-type of Widget component.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#JsonSerializable"><code>JsonSerializable</code></a></p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="GenericProps" href="#GenericProps">
+            <h3><code>GenericProps</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            GenericProps
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Specifies the most generic properties that a Widget component can have.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#BasePropType"><code>BasePropType</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#BaseRendererProps"><code>BaseRendererProps</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>Initialization of basic, advanced and invalid properties</p>
+<pre><code class="language-ts">const myProps: GenericProps = {
+	basic: 'Where is the box?',
+	advanced: {
+		part1: 'Test it!',
+		part2: false,
+		part3: 3.14
+	},
+	invalid: () =&gt; console.log('Ohh...') // not allowed
+};
+</code></pre>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="GenericComponent" href="#GenericComponent">
+            <h3><code>GenericComponent</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type GenericComponent
+            <!-- Type Parameters -->
+                <!-- opening angle bracket -->
+    &lt;
+
+            
+        <!-- Name -->
+        P
+        <!-- Constraints -->
+                    : Record&lt;string, unknown&gt;        
+        <!-- Default -->
+                    = Record&lt;string, unknown&gt;        
+        <!-- Comma if not last -->
+            
+    <!-- Closing angle bracket -->
+    &gt;
+        </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            (props: P) =&gt; ReactNode        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Specifies the most generic type
+a Widget component and a ConfigControls component can have.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@typeParam:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>P - additional props for the Widget renderer component
+(see example below)</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#ReactNode"><code>ReactNode</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Widget"><code>Widget</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>Common usage</p>
+<pre><code class="language-ts">import { ReactNode } from 'react';
+
+interface WidgetProps extends GenericProps {
+	type: 'basic' | 'advanced';
+}
+
+interface RendererProps extends BaseRendererProps&lt;WidgetProps&gt; {}
+
+function Widget({ title, type }: RendererProps): ReactNode {
+	return (
+		&lt;div&gt;
+			&lt;p&gt;Title: {title}&lt;/p&gt;
+			&lt;p&gt;Type: {type}&lt;/p&gt;
+		&lt;/div&gt;
+	);
+}
+
+export const myWidget: Widget&lt;WidgetProps&gt; = {
+	name: 'My Widget',
+	Widget: Widget
+};
+</code></pre>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="BaseRendererProps" href="#BaseRendererProps">
+            <h3><code>BaseRendererProps</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type BaseRendererProps
+            <!-- Type Parameters -->
+                <!-- opening angle bracket -->
+    &lt;
+
+            
+        <!-- Name -->
+        P
+        <!-- Constraints -->
+                    : GenericProps        
+        <!-- Default -->
+                    = GenericProps        
+        <!-- Comma if not last -->
+            
+    <!-- Closing angle bracket -->
+    &gt;
+        </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            P        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>These are the most basic renderer props
+that a Widget renderer component can have.
+It is extensible via a generic type
+to add more props to the Widget renderer component.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@typeParam:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>P - additional props for the Widget renderer component</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#GenericProps"><code>GenericProps</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#GlobalRendererProps"><code>GlobalRendererProps</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Widget"><code>Widget</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>A very simple widget</p>
+<pre><code class="language-ts">import { ReactNode } from 'react';
+
+function Widget({ title, type }: BaseRendererProps): ReactNode {
+	return &lt;p&gt;Title: {title}&lt;/p&gt;;
+}
+
+export const verySimpleWidget: Widget&lt;WidgetProps&gt; = {
+	name: 'Very simple Widget',
+	Widget: Widget
+};
+</code></pre>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>Extended widget</p>
+<pre><code class="language-ts">import { ReactNode } from 'react';
+
+interface WidgetProps extends GenericProps {
+	type: 'basic' | 'advanced';
+}
+
+interface RendererProps extends BaseRendererProps&lt;WidgetProps&gt; {}
+
+function Widget({ type }: RendererProps): ReactNode {
+	return (
+		&lt;div&gt;
+			&lt;p&gt;Type: {type}&lt;/p&gt;
+		&lt;/div&gt;
+	);
+}
+
+export const myWidget: Widget&lt;WidgetProps&gt; = {
+	name: 'My Widget',
+	Widget: Widget
+};
+</code></pre>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="BaseConfigControlsProps" href="#BaseConfigControlsProps">
+            <h3><code>BaseConfigControlsProps</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            BaseConfigControlsProps
+            <!-- Type Parameters -->
+                <!-- opening angle bracket -->
+    &lt;
+
+            
+        <!-- Name -->
+        P
+        <!-- Constraints -->
+                    : GenericProps        
+        <!-- Default -->
+                    = GenericProps        
+        <!-- Comma if not last -->
+            
+    <!-- Closing angle bracket -->
+    &gt;
+
+            <!-- Extends -->
+                            extends Record&lt;string, unknown&gt;                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>These are props for the ConfigControls widget.
+that a Widget renderer component can have.
+It is extensible via a generic type
+to add more props that are also used at the Widget renderer component.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@typeParam:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>P - additional props for the Widget renderer component</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#GenericProps"><code>GenericProps</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#BaseRendererProps"><code>BaseRendererProps</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Widget"><code>Widget</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>Very simple ConfigControls</p>
+<pre><code class="language-ts">import { ReactNode } from 'react';
+
+interface WidgetProps extends GenericProps {
+	value: string;
+}
+
+interface RendererProps extends BaseRendererProps&lt;WidgetProps&gt; {}
+
+interface ConfigControlsProps extends BaseConfigControlsProps&lt;WidgetProps&gt; {}
+
+function Widget({ value }: RendererProps): ReactNode {
+	return &lt;p&gt;Value: {value}&lt;/p&gt;;
+}
+
+function ConfigControls({  }
+</code></pre>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="BaseConfigControlsProps.currentProps" href="#BaseConfigControlsProps.currentProps">
+        <h5><code>
+                                                                                currentProps                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            P        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the current props values of the widget
+which can be changed with
+[<code>BaseConfigControlsProps.onUpdate | onUpdate</code>](#BaseConfigControlsProps.onUpdate | onUpdate)</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="BaseConfigControlsProps.onUpdate" href="#BaseConfigControlsProps.onUpdate">
+        <h5><code>
+                                                                                onUpdate                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            (newProps: Partial&lt;P&gt;) =&gt; void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Updates the values of the props of the widget.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>newProps - new props that are merged or replaced
+with the current props to build the new props for the widget to use</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>Update the props in a ConfigControls component</p>
+<pre><code class="language-ts">function ConfigControls({
+  currentProps, onUpdate
+}: ConfigControlsProps): ReactNode {
+  // local state to not &quot;flood&quot; global store with changes (performance)
+  const [value, setValue] = useState(currentProps.value);
+
+  return (
+    &lt;div&gt;
+      &lt;input type=&quot;text&quot; value={value} onChange={event =&gt; setValue(event.target.value)} /&gt;
+      &lt;button onClick={() =&gt; onUpdate({ value })} /&gt;
+    &lt;/div&gt;
+  );
+}
+</code></pre>
+</div>
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Widget" href="#Widget">
+            <h3><code>Widget</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            Widget
+            <!-- Type Parameters -->
+                <!-- opening angle bracket -->
+    &lt;
+
+            
+        <!-- Name -->
+        P
+        <!-- Constraints -->
+                    : GenericProps        
+        <!-- Default -->
+                    = GenericProps        
+        <!-- Comma if not last -->
+            
+    <!-- Closing angle bracket -->
+    &gt;
+
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>An &quot;entire&quot; widget definition ready to export and use.
+It contains a name for reference, a Widget component that will be rendered
+and an optional ConfigControls component to change Widget component props.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@typeParam:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>P - additional props for the Widget renderer component</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Widget.name"><code>Widget.name</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Widget.Widget"><code>Widget.Widget</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Widget.ConfigControls"><code>Widget.ConfigControls</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>A very simple widget</p>
+<pre><code class="language-ts">import { Widget } from './widget';
+import { ConfigControls } from './config-controls';
+
+export const myWidget: Widget = {
+	name: 'My Awesome Widget',
+	Widget: Widget,
+	ConfigControls: ConfigControls
+}
+</code></pre>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="Widget.name" href="#Widget.name">
+        <h5><code>
+                                                                                name                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the name of the widget</p>
+<p>It is a selector to reference the widget.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="Widget.title" href="#Widget.title">
+        <h5><code>
+                                                                                title                ?            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The full title of the widget which are displayed in the settings page
+and in the widget selector.</p>
+<p>If the <a href="#title"><code>title</code></a> is not defined,
+the <a href="#name"><code>name</code></a> is used as a fallback.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="Widget.version" href="#Widget.version">
+        <h5><code>
+                                                                                version                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The version of the widget.
+Different values resulting in different stored properties
+in the widget renderer.
+Useful, when you have a breaking change in your widget props.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="Widget.Widget" href="#Widget.Widget">
+        <h5><code>
+                                                                                Widget                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            GenericComponent&lt;BaseRendererProps&lt;P&gt;&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the Widget component implementation as React Component</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#BaseRendererProps"><code>BaseRendererProps</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#GlobalRendererProps"><code>GlobalRendererProps</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#GenericComponent"><code>GenericComponent</code></a></p>
+</div>
+            </div>
+    <a id="Widget.ConfigControls" href="#Widget.ConfigControls">
+        <h5><code>
+                                                                                ConfigControls                ?            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            GenericComponent&lt;BaseConfigControlsProps&lt;P&gt;&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the ConfigControls component implementation as React Component</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#BaseConfigControlsProps"><code>BaseConfigControlsProps</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#GenericComponent"><code>GenericComponent</code></a></p>
+</div>
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="WidgetDefinition" href="#WidgetDefinition">
+            <h3><code>WidgetDefinition</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            WidgetDefinition
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Defines a widget placeholder in a dashboard container.</p>
+<p>This is done via the
+[<code>https://css-tricks.com/snippets/css/complete-guide-grid/ | CSS Grid system</code>](#<a href="https://css-tricks.com/snippets/css/complete-guide-grid/">https://css-tricks.com/snippets/css/complete-guide-grid/</a> | CSS Grid system).</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Widget"><code>Widget</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Dashboard"><code>Dashboard</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#https://css-tricks.com/snippets/css/complete-guide-grid/"><code>https://css-tricks.com/snippets/css/complete-guide-grid/</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>A very simple widget definition for a dashboard</p>
+<pre><code class="language-ts">const myWidgetDef: WidgetDefinition = {
+	width: 2,
+	height: 4,
+	widgetName: 'myWidget',
+	initialProps: {
+		value: 'The Box'
+	}
+}
+</code></pre>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="WidgetDefinition.id" href="#WidgetDefinition.id">
+        <h5><code>
+                                                                                id                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>A unique identifier which represents this specific widget.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="WidgetDefinition.width" href="#WidgetDefinition.width">
+        <h5><code>
+                                                                                width                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            number        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the width of the widget in columns</p>
+<p>This is done via the CSS Grid system.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#WidgetDefinition.height"><code>WidgetDefinition.height</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Dashboard.columns"><code>Dashboard.columns</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#https://css-tricks.com/snippets/css/complete-guide-grid/"><code>https://css-tricks.com/snippets/css/complete-guide-grid/</code></a></p>
+</div>
+            </div>
+    <a id="WidgetDefinition.height" href="#WidgetDefinition.height">
+        <h5><code>
+                                                                                height                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            number        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the number of columns the widget has space in the container</p>
+<p>This is done via the CSS Grid system.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#WidgetDefinition.width"><code>WidgetDefinition.width</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Dashboard.rows"><code>Dashboard.rows</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#https://css-tricks.com/snippets/css/complete-guide-grid/"><code>https://css-tricks.com/snippets/css/complete-guide-grid/</code></a></p>
+</div>
+            </div>
+    <a id="WidgetDefinition.widgetName" href="#WidgetDefinition.widgetName">
+        <h5><code>
+                                                                                widgetName                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the number of row the widget has space in the container</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Widget.name"><code>Widget.name</code></a></p>
+</div>
+            </div>
+    <a id="WidgetDefinition.initialProps" href="#WidgetDefinition.initialProps">
+        <h5><code>
+                                                                                initialProps                ?            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            GenericProps        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the initial props for the Widget component</p>
+<p>if the initial props are not defined they are <code>undefined</code></p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#BaseRendererProps"><code>BaseRendererProps</code></a></p>
+</div>
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Dashboard" href="#Dashboard">
+            <h3><code>Dashboard</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            Dashboard
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Defines a dashboard which renders given widgets in defined positions.</p>
+<p>The dashboard is a structural container
+which sets the boundaries for the widgets to fit into.
+This is done via the
+[<code>https://css-tricks.com/snippets/css/complete-guide-grid/ | CSS Grid system</code>](#<a href="https://css-tricks.com/snippets/css/complete-guide-grid/">https://css-tricks.com/snippets/css/complete-guide-grid/</a> | CSS Grid system).</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#WidgetDefinition"><code>WidgetDefinition</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#https://css-tricks.com/snippets/css/complete-guide-grid/"><code>https://css-tricks.com/snippets/css/complete-guide-grid/</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>A very simple dashboard</p>
+<pre><code class="language-ts">const myDashboard: Dashboard = {
+	title: 'My Dashboard',
+	columns: 4,
+	rows: 4,
+	widgets: [
+		{
+			width: 2,
+			height: 2,
+			widgetName: 'myWidget'
+		}
+	]
+};
+</code></pre>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="Dashboard.title" href="#Dashboard.title">
+        <h5><code>
+                                                                                title                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the title of the dashboard</p>
+<p>It will be visible in the application and selectable by the user.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="Dashboard.columns" href="#Dashboard.columns">
+        <h5><code>
+                                                                                columns                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            number        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the number of columns in the dashboard container</p>
+<p>It is important for the spacing of the widget in the dashboard container.
+See [<code>https://css-tricks.com/snippets/css/complete-guide-grid/ | CSS Grid system</code>](#<a href="https://css-tricks.com/snippets/css/complete-guide-grid/">https://css-tricks.com/snippets/css/complete-guide-grid/</a> | CSS Grid system)
+for more information.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#WidgetDefinition"><code>WidgetDefinition</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#https://css-tricks.com/snippets/css/complete-guide-grid/"><code>https://css-tricks.com/snippets/css/complete-guide-grid/</code></a></p>
+</div>
+            </div>
+    <a id="Dashboard.rows" href="#Dashboard.rows">
+        <h5><code>
+                                                                                rows                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            number        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the number of rows in the dashboard container</p>
+<p>It is important for the spacing of the widget in the dashboard container.
+See [<code>https://css-tricks.com/snippets/css/complete-guide-grid/ | CSS Grid system</code>](#<a href="https://css-tricks.com/snippets/css/complete-guide-grid/">https://css-tricks.com/snippets/css/complete-guide-grid/</a> | CSS Grid system)
+for more information.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#WidgetDefinition"><code>WidgetDefinition</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#https://css-tricks.com/snippets/css/complete-guide-grid/"><code>https://css-tricks.com/snippets/css/complete-guide-grid/</code></a></p>
+</div>
+            </div>
+    <a id="Dashboard.widgets" href="#Dashboard.widgets">
+        <h5><code>
+                                                                                widgets                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            WidgetDefinition[]        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>widgets associated to the dashboard container</p>
+<p>These widgets will be arranged in the container
+based on the columns and rows of the dashboard
+and the width and height of the widgets.
+See [<code>https://css-tricks.com/snippets/css/complete-guide-grid/ | CSS Grid system</code>](#<a href="https://css-tricks.com/snippets/css/complete-guide-grid/">https://css-tricks.com/snippets/css/complete-guide-grid/</a> | CSS Grid system)
+for more information.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#WidgetDefinition"><code>WidgetDefinition</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#https://css-tricks.com/snippets/css/complete-guide-grid/"><code>https://css-tricks.com/snippets/css/complete-guide-grid/</code></a></p>
+</div>
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Username" href="#Username">
+            <h3><code>Username</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type Username
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>A type definition for a username in a user configuration.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#UserConfig"><code>UserConfig</code></a></p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="UserInformation" href="#UserInformation">
+            <h3><code>UserInformation</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            UserInformation
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>User information mapped to a username and stored in a user configuration.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#UserConfig"><code>UserConfig</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Username"><code>Username</code></a></p>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="UserInformation.dashboards" href="#UserInformation.dashboards">
+        <h5><code>
+                                                                                dashboards                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            Array&lt;Dashboard&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The dashboards associated to the user.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Dashboard"><code>Dashboard</code></a></p>
+</div>
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="UserConfig" href="#UserConfig">
+            <h3><code>UserConfig</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type UserConfig
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            Record&lt;Username, UserInformation&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Describes an entire user configuration.
+It is a map between the username and its stored information.
+When the user is logged in, typically the dashboard page will render
+these definitions for the logged in username.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Dashboard"><code>Dashboard</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>A very simple user dashboard association</p>
+<pre><code class="language-ts">const userConfig: UserConfig = {
+	'Alice': {
+		dashboards: [
+			{
+				title: 'My awesome dashboard',
+				columns: 4,
+				rows: 4,
+				widgets: [
+					{
+						width: 2,
+						height: 2,
+						widgetName: 'myWidget'
+						initialProps: {
+							value: 'TheBox'
+						}
+					}
+				]
+			}
+		]
+	}
+}
+</code></pre>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="SignInResult" href="#SignInResult">
+            <h3><code>SignInResult</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            SignInResult
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends BaseResult                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Result of a sign in process
+commonly returned from a sign in function of an authenticator.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Auth"><code>Auth</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#BaseResult"><code>BaseResult</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>Analyze sign in result</p>
+<pre><code class="language-ts">const authenticator: Auth = new SomeAuth(); // implements Auth
+
+authenticator.signIn('http://localhost:9870/bridge', 'alice', '12345')
+	.then(signInRes =&gt; {
+		console.log(`User ${signInRes} signed in`);
+		if (signInRes.reason) {
+			console.log(`Because ${signInRes.reason}`);
+		}
+	}
+</code></pre>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="SignInResult.type" href="#SignInResult.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;signIn&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+    <a id="SignInResult.user" href="#SignInResult.user">
+        <h5><code>
+                                                                                user                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the name of the user who is authenticated</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Auth.signIn"><code>Auth.signIn</code></a></p>
+</div>
+            </div>
+    <a id="SignInResult.eventBusUrl" href="#SignInResult.eventBusUrl">
+        <h5><code>
+                                                                                eventBusUrl                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the url of the eventbus server to connect to after authentication</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Auth.signIn"><code>Auth.signIn</code></a></p>
+</div>
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="SignOutResult" href="#SignOutResult">
+            <h3><code>SignOutResult</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            SignOutResult
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends BaseResult                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Result of a sign out process
+commonly returned from a sign out function of an authenticator.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Auth"><code>Auth</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#BaseResult"><code>BaseResult</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>Analyze sign in result</p>
+<pre><code class="language-ts">const authenticator: Auth = new SomeAuth(); // implements Auth
+
+// maybe some sign in before
+
+authenticator.signOut()
+	.then(signOutRes =&gt; {
+		console.log(`Signed out`);
+		if (signOutRes.reason) {
+			console.log(`Because ${signOutRes.reason}`);
+		}
+	}
+</code></pre>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="SignOutResult.type" href="#SignOutResult.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;signOut&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="AuthResult" href="#AuthResult">
+            <h3><code>AuthResult</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type AuthResult
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            SignInResult | SignOutResult        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>an authentication result
+commonly returned from an authenticator sign in or sign out function.</p>
+<p>It can be a sign in result or a sign out result
+based on the current authentication state.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Auth"><code>Auth</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#SignInResult"><code>SignInResult</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#SignOutResult"><code>SignOutResult</code></a></p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Auth" href="#Auth">
+            <h3><code>Auth</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            Auth
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>A definition for an authenticator.</p>
+<p>It may be used in the <a href="#@wuespace/telestion-client-core#useAuth"><code>@wuespace/telestion-client-core#useAuth</code></a>
+hook to authenticate users via given credentials.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Auth.signIn"><code>Auth.signIn</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Auth.signOut"><code>Auth.signOut</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>Very simple login process</p>
+<pre><code class="language-ts">const authenticator: Auth = new SomeAuth(); // implements Auth
+
+export function signIn(
+	serverUrl: string,
+	username: string,
+	password: string
+): Promise&lt;string&gt; {
+	return authenticator
+		.signIn(serverUrl, username, password)
+		.then(signInRes =&gt; {
+			set({ user: signInRes.user, serverUrl });
+			return signInRes.user;
+		});
+};
+</code></pre>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+
+<!-- Methods -->
+    <h4>Methods</h4>
+            <a id="Auth.signIn" href="#Auth.signIn">
+            <h5><code>
+                                                                                                    signIn                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function signIn
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                authServerUrl
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                username
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                password
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;SignInResult&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Tries to sign in to the server with the specified url
+using the given user credentials
+and resolves if the authentication was successful
+and otherwise rejects if the authentication was not successful.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>authServerUrl - the url of the authentication server</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>username - the users name</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>password - the users password</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#SignInResult"><code>SignInResult</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Auth.signOut"><code>Auth.signOut</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>Very simple login process</p>
+<pre><code class="language-ts">const authenticator: Auth = new SomeAuth(); // implements Auth
+
+export function signIn(
+	authServerUrl: string,
+	username: string,
+	password: string
+): Promise&lt;string&gt; {
+	return authenticator
+		.signIn(authServerUrl, username, password)
+		.then(signInRes =&gt; {
+			set({ user: signInRes.user, authServerUrl });
+			return signInRes.user;
+		});
+};
+</code></pre>
+</div>
+            </div>
+            <a id="Auth.signOut" href="#Auth.signOut">
+            <h5><code>
+                                                                                                    signOut                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function signOut
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                                    )
+
+            <!-- Return type -->
+            :
+            Promise&lt;SignOutResult&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Tries to sign out from the server and close all connections.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#SignOutResult"><code>SignOutResult</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Auth.signIn"><code>Auth.signIn</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>A very simple logout process</p>
+<pre><code class="language-ts">const authenticator: Auth = new SomeAuth(); // implements Auth
+
+export function signOut(): Promise&lt;void&gt; {
+	return authenticator.signOut().then(res =&gt; {
+		set({ user: null, serverUrl: null });
+		if (res.reason) {
+			logger.warn('User signed out because:', res.reason);
+		}
+	});
+}
+</code></pre>
+</div>
+            </div>
+            <a id="Auth.onAuthStateChanged" href="#Auth.onAuthStateChanged">
+            <h5><code>
+                                                                                                    onAuthStateChanged                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function onAuthStateChanged
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                cb
+                
+                <!-- type -->
+                :
+                (res: AuthResult) =&gt; void
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            () =&gt; void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Registers an event handler that gets called
+if an external auth state change happens.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>cb - the handler that will be called</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#AuthResult"><code>AuthResult</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Auth.signIn"><code>Auth.signIn</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Auth.signOut"><code>Auth.signOut</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>Registers on login and clean up on logout</p>
+<pre><code class="language-ts">const authenticator: Auth = new SomeAuth(); // implements Auth
+
+// stores the cleanup for registered callback on authenticator
+let cleanupCb: (() =&gt; void) | null = null;
+
+export function signIn(
+	serverUrl: string,
+	username: string,
+	password: string
+): Promise&lt;string&gt; {
+	// clean up callback
+	if (cleanupCb) {
+		cleanupCb();
+		cleanupCb = null;
+	}
+
+	return authenticator
+		.signIn(serverUrl, username, password)
+		.then(signInRes =&gt; {
+			cleanupCb = authenticator.onAuthStateChanged(changeRes =&gt; {
+				if (changeRes.type === 'signOut' || changeRes.user !== get().user) {
+					set({ user: null, serverUrl: null });
+				}
+			});
+			set({ user: signInRes.user, serverUrl });
+			return signInRes.user;
+		});
+};
+
+export function signOut(): Promise&lt;void&gt; {
+	// clean up callback
+	if (cleanupCb) {
+		cleanupCb();
+		cleanupCb = null;
+	}
+
+	return authenticator.signOut().then(res =&gt; {
+		set({ user: null, serverUrl: null });
+	});
+}
+</code></pre>
+</div>
+            </div>
+                            </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Position" href="#Position">
+            <h3><code>Position</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type Position
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            readonly [pageX: number, pageY: number]        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>A position description which specifies
+where the context menu should be rendered.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="MenuItem" href="#MenuItem">
+            <h3><code>MenuItem</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            MenuItem
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>A definition for a menu item in a context menu.
+Each item should have a title and a corresponding action
+that is triggered if the user presses the context menu entry.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MenuItem.title"><code>MenuItem.title</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MenuItem.action"><code>MenuItem.action</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-tsx">import Alert from '@spectrum-icons/workflow/Alert';
+
+const items: MenuItem[] = [
+	{
+		title: 'First entry',
+		action: () =&gt; alert('You clicked first entry')
+	},
+	{
+		title: 'Second entry',
+		icon: &lt;Alert /&gt;,
+		action: () =&gt; alert('You clicked second entry')
+	}
+];
+</code></pre>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="MenuItem.title" href="#MenuItem.title">
+        <h5><code>
+                                                                                title                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The title or label the menu entry should have.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="MenuItem.icon" href="#MenuItem.icon">
+        <h5><code>
+                                                                                icon                ?            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            ReactNode        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>An optional icon that are rendered within the menu entry
+beside the <a href="#MenuItem.title"><code>MenuItem.title</code></a>.
+No icon gets displayed if the <code>icon</code> property is <code>undefined</code>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="MenuItem.action" href="#MenuItem.action">
+        <h5><code>
+                                                                                action                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            () =&gt; void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The action that is triggered if the users presses the menu entry.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Section" href="#Section">
+            <h3><code>Section</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            Section
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>A section contains multiple menu items and an optional title.
+Different sections in a context menu should be separated
+with a horizontal line for better visibility.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Section.items"><code>Section.items</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Section.title"><code>Section.title</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">const section: Section = {
+	title: 'Section',
+	items: [
+		{
+			title: 'Entry 1',
+			action: () =&gt; alert('Entry clicked')
+		}
+	]
+};
+
+const sections = [section, section2, section3];
+</code></pre>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="Section.title" href="#Section.title">
+        <h5><code>
+                                                                                title                ?            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>An optional title for the section that are rendered
+beside the section or the section separator.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="Section.items" href="#Section.items">
+        <h5><code>
+                                                                                items                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            MenuItem[]        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The menu items that are in this section.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#MenuItem"><code>MenuItem</code></a></p>
+</div>
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="PrefValue" href="#PrefValue">
+            <h3><code>PrefValue</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type PrefValue
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            JsonSerializable        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the default type of a preference value</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="PrefRenderer" href="#PrefRenderer">
+            <h3><code>PrefRenderer</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type PrefRenderer
+            <!-- Type Parameters -->
+                <!-- opening angle bracket -->
+    &lt;
+
+            
+        <!-- Name -->
+        T
+        <!-- Constraints -->
+                    : PrefValue        
+        <!-- Default -->
+                    = PrefValue        
+        <!-- Comma if not last -->
+            
+    <!-- Closing angle bracket -->
+    &gt;
+        </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            (value: T, setValue: (newValue: T) =&gt; void) =&gt; ReactNode        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Renders a React node that displays and changes the given preference
+in a proper way.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@typeParam:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>T - the type of the preference
+(defaults to <a href="#JsonSerializable"><code>JsonSerializable</code></a>)</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#JsonSerializable"><code>JsonSerializable</code></a></p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Selector" href="#Selector">
+            <h3><code>Selector</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type Selector
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the &quot;name&quot; of a group or preference</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#PrefSelector"><code>PrefSelector</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#GroupSelector"><code>GroupSelector</code></a></p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="PrefSelector" href="#PrefSelector">
+            <h3><code>PrefSelector</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type PrefSelector
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            Selector        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the type of a selector to select a preference out of a preference group</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Preference"><code>Preference</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#PreferencesGroup"><code>PreferencesGroup</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Selector"><code>Selector</code></a></p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="GroupSelector" href="#GroupSelector">
+            <h3><code>GroupSelector</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type GroupSelector
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            Selector | &#39;null&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the type of a selector to select a group out of a preference store</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#PreferencesGroup"><code>PreferencesGroup</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#PreferencesStore"><code>PreferencesStore</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Selector"><code>Selector</code></a></p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Preference" href="#Preference">
+            <h3><code>Preference</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            Preference
+            <!-- Type Parameters -->
+                <!-- opening angle bracket -->
+    &lt;
+
+            
+        <!-- Name -->
+        T
+        <!-- Constraints -->
+                    : PrefValue        
+        <!-- Default -->
+                    = PrefValue        
+        <!-- Comma if not last -->
+            
+    <!-- Closing angle bracket -->
+    &gt;
+
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>a preference with a value and renderer</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@typeParam:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>T - the type of the preference
+(defaults to <a href="#PrefValue"><code>PrefValue</code></a>)</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#PrefRenderer"><code>PrefRenderer</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#PreferencesStore"><code>PreferencesStore</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#PrefValue"><code>PrefValue</code></a></p>
+</div>
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="Preference.value" href="#Preference.value">
+        <h5><code>
+                                                                                value                ?            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            T        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the current value of the preference</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="Preference.renderer" href="#Preference.renderer">
+        <h5><code>
+                                                                                renderer                ?            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            PrefRenderer&lt;T&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>an update component which displays and changes the preference value
+in a proper way</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="PreferencesGroup" href="#PreferencesGroup">
+            <h3><code>PreferencesGroup</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type PreferencesGroup
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            Record&lt;PrefSelector, Preference&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>a group of preferences where every preference is accessible via a selector</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#PrefSelector"><code>PrefSelector</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#GroupSelector"><code>GroupSelector</code></a></p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="PreferencesStore" href="#PreferencesStore">
+            <h3><code>PreferencesStore</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type PreferencesStore
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            Record&lt;GroupSelector, PreferencesGroup&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the entire store of grouped preferences also accessible via a selector</p>
+<p>The group <code>null</code> has a special meaning.
+It is the group for global preferences
+which do not have a group they belong to.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#PreferencesGroup"><code>PreferencesGroup</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#GroupSelector"><code>GroupSelector</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#PrefSelector"><code>PrefSelector</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#Preference"><code>Preference</code></a></p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="NotificationType" href="#NotificationType">
+            <h3><code>NotificationType</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type NotificationType
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            &#39;INFO&#39; | &#39;SUCCESS&#39; | &#39;WARNING&#39; | &#39;ERROR&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The type of a notification.
+A notification of this type will show in the app in a specific way.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Notification" href="#Notification">
+            <h3><code>Notification</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            Notification
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>A generic notification that can be showed and stored.
+It has a [<code>NotificationType | notification type</code>](#NotificationType | notification type)
+and a dismissed flag to show the dismiss state.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="Notification.type" href="#Notification.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            NotificationType        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The type of the notification.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="Notification.message" href="#Notification.message">
+        <h5><code>
+                                                                                message                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The message of the notification.
+Usually it is a short abstract of the description
+and should not be multi-line.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="Notification.description" href="#Notification.description">
+        <h5><code>
+                                                                                description                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The description of the notification.
+Usually contains more detailed information and can be multi-line.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="Notification.isDismissed" href="#Notification.isDismissed">
+        <h5><code>
+                                                                                isDismissed                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            boolean        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Is <code>true</code> if the notification is dismissed.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="AddressableMessage" href="#AddressableMessage">
+            <h3><code>AddressableMessage</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            AddressableMessage
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends BaseMessage                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>a message that is addressable to a specific locations on the event bus</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="AddressableMessage.address" href="#AddressableMessage.address">
+        <h5><code>
+                                                                                address                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            ChannelAddress        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the address of a event bus location registered to the backend</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="AddressableMessage.headers" href="#AddressableMessage.headers">
+        <h5><code>
+                                                                                headers                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            Headers        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>additional headers that will be sent with the message</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="AddressableMessage.replyAddress" href="#AddressableMessage.replyAddress">
+        <h5><code>
+                                                                                replyAddress                ?            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>optional reply address to send a message back</p>
+<p>very useful for a send-receive pattern
+where a backend node sends a message and waits for a receiving message</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="AddressableMessage.reply" href="#AddressableMessage.reply">
+        <h5><code>
+                                                                                reply                ?            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            (message: any, callback: Callback, headers?: Headers) =&gt; void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Sends a message back to the sender with a actual content.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>message - the content that will be sent with the message</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>callback - a callback function that will be invoked
+if the sender reply again.</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>headers - additional headers to send with the message</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">eb.registerHandler('awesome-channel', message =&gt; {
+	if (message.replyAddress) {
+		console.log(message.body); // ping
+		message.reply('pong', () =&gt; {});
+	}
+});
+</code></pre>
+</div>
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="BaseMessage" href="#BaseMessage">
+            <h3><code>BaseMessage</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            BaseMessage
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>a generic message that is sent to and received by the event bus</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="BaseMessage.type" href="#BaseMessage.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;ping&#39; | &#39;register&#39; | &#39;unregister&#39; | &#39;publish&#39; | &#39;send&#39; | &#39;rec&#39; | &#39;err&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>every message must have a type
+so backend and frontend can differentiate
+between received and sent messages</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Callback" href="#Callback">
+            <h3><code>Callback</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type Callback
+            <!-- Type Parameters -->
+                <!-- opening angle bracket -->
+    &lt;
+
+            
+        <!-- Name -->
+        T
+        <!-- Constraints -->
+                    : JsonSerializable        
+        <!-- Default -->
+                    = JsonSerializable        
+        <!-- Comma if not last -->
+            
+    <!-- Closing angle bracket -->
+    &gt;
+        </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            (
+	content: T
+) =&gt; void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>a function that is used as event handlers
+in the event bus when receiving messages</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="#EventBus"><code>EventBus</code></a></p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>[<code>EventBus.setupConnection | setupConnection (here socket.onmessage)</code>](#EventBus.setupConnection | setupConnection (here socket.onmessage))</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@example:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><pre><code class="language-ts">// some vertx channel
+const channel = 'VERTX_CHANNEL';
+
+const eventBus = new EventBus('http://localhost:8081/');
+
+eventBus.onopen = () =&gt; {
+	eventBus.registerHandler(channel, message =&gt; {
+		console.log('Received message:', message);
+	});
+};
+</code></pre>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="ContentMessage" href="#ContentMessage">
+            <h3><code>ContentMessage</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            ContentMessage
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends AddressableMessage                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>a message with actual content that will be transferred with the message</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="ContentMessage.body" href="#ContentMessage.body">
+        <h5><code>
+                                                                                body                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            JsonSerializable        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the content that will be transferred with the message</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="ErrorMessage" href="#ErrorMessage">
+            <h3><code>ErrorMessage</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            ErrorMessage
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends BaseMessage                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>a message that is received from the event bus if something went wrong</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="ErrorMessage.type" href="#ErrorMessage.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;err&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+    <a id="ErrorMessage.failureCode" href="#ErrorMessage.failureCode">
+        <h5><code>
+                                                                                failureCode                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            number        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the failure code of the received error</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="ErrorMessage.failureType" href="#ErrorMessage.failureType">
+        <h5><code>
+                                                                                failureType                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>additional error type of the received message</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="ErrorMessage.message" href="#ErrorMessage.message">
+        <h5><code>
+                                                                                message                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>additional information about the received error</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Headers" href="#Headers">
+            <h3><code>Headers</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            Headers
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>headers that are sent with event bus messages</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Message" href="#Message">
+            <h3><code>Message</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type Message
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            | PingMessage
+	| RegisterMessage
+	| UnregisterMessage
+	| PublishMessage
+	| SendMessage
+	| ReceiveMessage
+	| ErrorMessage        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>a message sent to and received from the event bus</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="PingMessage" href="#PingMessage">
+            <h3><code>PingMessage</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            PingMessage
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends BaseMessage                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>a basic message that is sent
+to prove to the backend server that the client is still connected</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="PingMessage.type" href="#PingMessage.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;ping&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="PublishMessage" href="#PublishMessage">
+            <h3><code>PublishMessage</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            PublishMessage
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends ContentMessage                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>a message that gets broadcasted on a specified channel</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="PublishMessage.type" href="#PublishMessage.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;publish&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="ReceiveMessage" href="#ReceiveMessage">
+            <h3><code>ReceiveMessage</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            ReceiveMessage
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends ContentMessage                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>a message that is received from the event bus containing new information</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="ReceiveMessage.type" href="#ReceiveMessage.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;rec&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="RegisterMessage" href="#RegisterMessage">
+            <h3><code>RegisterMessage</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            RegisterMessage
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends AddressableMessage                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>a message that is sent to the backend server
+to register to a specific channel
+to receive future messages from the event bus from this specific channel</p>
+<p>to unregister or unsubscribe from the channel,
+use <a href="#UnregisterMessage"><code>UnregisterMessage</code></a></p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="RegisterMessage.type" href="#RegisterMessage.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;register&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="SendMessage" href="#SendMessage">
+            <h3><code>SendMessage</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            SendMessage
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends ContentMessage                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>a message that is sent on the specified channel
+containing a reply address gets sent</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="SendMessage.type" href="#SendMessage.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;send&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="UnregisterMessage" href="#UnregisterMessage">
+            <h3><code>UnregisterMessage</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            UnregisterMessage
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends AddressableMessage                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>a message that is sent to the backend server
+to unregister or unsubscribe from a specific channel
+to not receive any further messages from this channel</p>
+<p>to register to a channel, use <a href="#RegisterMessage"><code>RegisterMessage</code></a></p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="UnregisterMessage.type" href="#UnregisterMessage.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;unregister&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="Options" href="#Options">
+            <h3><code>Options</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            Options
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>the default options for the event bus</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="Options.autoReconnect" href="#Options.autoReconnect">
+        <h5><code>
+                                                                                autoReconnect                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            boolean        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>When <code>true</code>, the event bus tries to reconnect automatically
+if the connection with the backend is lost.</p>
+<p>Defaults to <code>true</code>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="Options.pingInterval" href="#Options.pingInterval">
+        <h5><code>
+                                                                                pingInterval                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            number        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Time between ping messages sent to the backend server in milliseconds.</p>
+<p>Defaults to <code>5000</code> ms.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="Options.reconnectAttempts" href="#Options.reconnectAttempts">
+        <h5><code>
+                                                                                reconnectAttempts                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            number        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Number of attempts to try to reconnect to the backend server
+before no more reconnects get attempted.</p>
+<p>Defaults to <code>Infinity</code>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="Options.reconnectExponent" href="#Options.reconnectExponent">
+        <h5><code>
+                                                                                reconnectExponent                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            number        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Exponent of the power function used to determine a new reconnect delay
+based on reconnect attempts.</p>
+<p>For implementation details,
+see <a href="#@wuespace/vertx-event-bus#EventBus.newReconnectDelay"><code>@wuespace/vertx-event-bus#EventBus.newReconnectDelay</code></a>.</p>
+<p>Defaults to <code>2</code>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="Options.delayMin" href="#Options.delayMin">
+        <h5><code>
+                                                                                delayMin                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            number        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Minimum time to wait between reconnect attempts in milliseconds.</p>
+<p>Defaults to <code>1000</code> ms.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="Options.delayMax" href="#Options.delayMax">
+        <h5><code>
+                                                                                delayMax                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            number        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Maximum time to wait between reconnect attempts in milliseconds.</p>
+<p>Defaults to <code>5000</code> ms.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="Options.randomizationFactor" href="#Options.randomizationFactor">
+        <h5><code>
+                                                                                randomizationFactor                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            number        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Randomization factor for the deviation
+used in the reconnect delay generator function.</p>
+<p>For implementation details,
+see <a href="#@wuespace/vertx-event-bus#EventBus.newReconnectDelay"><code>@wuespace/vertx-event-bus#EventBus.newReconnectDelay</code></a>.</p>
+<p>Defaults to <code>0.5</code>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="Options.logger" href="#Options.logger">
+        <h5><code>
+                                                                                logger                ?            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            ComponentLogger        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Optional component logger where the event bus logs internal information
+and debug messages.</p>
+<p>Defaults to <code>undefined</code>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="ChannelAddress" href="#ChannelAddress">
+            <h3><code>ChannelAddress</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type ChannelAddress
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The type of a communication channel address in the event bus.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="StaticSpectrumColor" href="#StaticSpectrumColor">
+            <h3><code>StaticSpectrumColor</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type StaticSpectrumColor
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            | &#39;static-black&#39;
+	| &#39;static-white&#39;
+	| `static-${&#39;gray&#39;}-${R50900}`
+	| `static-${&#39;red&#39; | &#39;orange&#39; | &#39;green&#39; | &#39;fuchsia&#39;}-${R400700}`
+	| `static-${&#39;chartreuse&#39;}-${R300700}`
+	| `static-${&#39;purple&#39;}-${R400800}`
+	| `static-${
+			| &#39;celery&#39;
+			| &#39;yellow&#39;
+			| &#39;magenta&#39;
+			| &#39;indigo&#39;
+			| &#39;seafoam&#39;}-${R200700}`
+	| `static-${&#39;blue&#39;}-${R200800}`        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>A static spectrum color definition which is persistent across all themes.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="https://spectrum.adobe.com/page/color/#Color-themes-and-modes">https://spectrum.adobe.com/page/color/#Color-themes-and-modes</a></p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+        <!-- Name with anchor link -->
+        <a id="SpectrumColor" href="#SpectrumColor">
+            <h3><code>SpectrumColor</code></h3></a>
+
+        <!-- Description, based on type -->
+                                    <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type SpectrumColor
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            | StaticSpectrumColor
+	| `${
+			| &#39;celery&#39;
+			| &#39;chartreuse&#39;
+			| &#39;yellow&#39;
+			| &#39;magenta&#39;
+			| &#39;fuchsia&#39;
+			| &#39;purple&#39;
+			| &#39;indigo&#39;
+			| &#39;seafoam&#39;
+			| &#39;red&#39;
+			| &#39;orange&#39;
+			| &#39;green&#39;
+			| &#39;blue&#39;}-${R400700}`
+	| `${&#39;gray&#39;}-${R50900}`        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>A spectrum color definition which adapts to the current spectrum theme.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p><a href="https://spectrum.adobe.com/page/color/#Color-themes-and-modes">https://spectrum.adobe.com/page/color/#Color-themes-and-modes</a></p>
+</div>
+            </div>
+                        </div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/flexsearch@0.6.32/dist/flexsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fliegwerk/search-popup@2.0.0/dist/bundle.js"></script>
+<script>
+    const searchIndex = new FlexSearch({
+        encode: q => (q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase() + ' ' + q.toLowerCase(),
+        // encode: q => (q.replace(/(.*)[\W.](.*)/g, "$1$2")).toLowerCase(),
+        tokenize: "full",
+        threshold: 0,
+        resolution: 9,
+        depth: 3,
+        doc: {
+            id: 'url',
+            field: ['name', 'text']
+        }
+    });
+
+    function search(q) {
+        q = q || '';
+        return searchIndex.search((q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase(), 5)
+    }
+
+    fetch('/telestion-client/search-index.json').then(r => r.json()).then(index => {
+        searchIndex.add(index)
+        const searchPopup = document.createElement('search-popup');
+        searchPopup.setAttribute('search', 'search')
+        document.body.appendChild(searchPopup);
+    });
+</script>
+</body>
+</html>
