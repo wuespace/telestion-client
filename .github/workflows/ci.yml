@@ -9,7 +9,7 @@ jobs:
       - name: Checkout 📥
         uses: actions/checkout@v3.0.0
       - name: Setup Node 💿
-        uses: actions/setup-node@v2.5.1
+        uses: actions/setup-node@v3.0.0
         with:
           node-version: 14
 
@@ -37,7 +37,7 @@ jobs:
       - name: Checkout 📥
         uses: actions/checkout@v3.0.0
       - name: Setup Node 💿
-        uses: actions/setup-node@v2.5.1
+        uses: actions/setup-node@v3.0.0
         with:
           node-version: 14
 
@@ -65,7 +65,7 @@ jobs:
       - name: Checkout 📥
         uses: actions/checkout@v3.0.0
       - name: Setup Node 💿
-        uses: actions/setup-node@v2.5.1
+        uses: actions/setup-node@v3.0.0
         with:
           node-version: 14
 
@@ -130,7 +130,7 @@ jobs:
       - name: Checkout 📥
         uses: actions/checkout@v3.0.0
       - name: Setup Node 💿
-        uses: actions/setup-node@v2.5.1
+        uses: actions/setup-node@v3.0.0
         with:
           node-version: 14
 
