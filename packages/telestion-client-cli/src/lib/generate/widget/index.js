@@ -36,7 +36,7 @@ function generateWidget(argv) {
 		{
 			needle: '// ARRAY_FIRST_ELEMENT_INSERT_MARK',
 			position: INSERT_BELOW,
-			text: nameAsCamelCase + ','
+			text: nameAsCamelCase + ' as Widget,'
 		}
 	]);
 
