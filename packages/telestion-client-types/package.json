@@ -49,11 +49,11 @@
 		}
 	],
 	"dependencies": {
-		"@types/react": "^17.0.0"
+		"@types/react": "^17.0.0",
+		"@fliegwerk/logsemts": "^0.4.3"
 	},
 	"peerDependencies": {
-		"@fliegwerk/logsemts": "^0.4.3",
-		"react": "^17.0.1"
+		"react": "^17"
 	},
 	"publishConfig": {
 		"access": "public"
