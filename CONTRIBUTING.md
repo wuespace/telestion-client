@@ -12,24 +12,24 @@ While we appreciate if you can follow our conventional commit structure, ensure 
 
 ### Installation
 
-This project uses [Lerna](https://lerna.js.org/) as a monorepo package management tool.
+This project uses [pnpm](https://pnpm.io/) as package manager.
 
-First, install `lerna` globally for better repository maintenance:
+To install it, run:
 
 ```shell
-npm i -g lerna
+npm install --global pnpm@next-7
 ```
 
 To install all dependencies the right way, run:
 
 ```shell
-npm ci
+pnpm install
 ```
 
 To clear all installed dependencies, execute:
 
 ```shell
-npm run clean
+pnpm exec clean
 rm -rf node_modules
 ```
 

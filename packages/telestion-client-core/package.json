@@ -55,16 +55,14 @@
 	],
 	"dependencies": {
 		"@fliegwerk/logsemts": "^0.4.3",
-		"@wuespace/telestion-client-prop-types": "file:../telestion-client-prop-types",
-		"@wuespace/telestion-client-types": "file:../telestion-client-types",
-		"@wuespace/vertx-event-bus": "file:../vertx-event-bus",
-		"prop-types": "^15.7.2",
-		"zustand": "^3.2.0"
-	},
-	"peerDependencies": {
 		"@types/react": "^17.0.0",
+		"@wuespace/telestion-client-prop-types": "workspace:^",
+		"@wuespace/telestion-client-types": "workspace:^",
+		"@wuespace/vertx-event-bus": "workspace:^",
+		"prop-types": "^15.7.2",
 		"react": "^17.0.1",
-		"react-router-dom": "^5.2.0"
+		"react-router-dom": "5.3.0",
+		"zustand": "^3.2.0"
 	},
 	"publishConfig": {
 		"access": "public"

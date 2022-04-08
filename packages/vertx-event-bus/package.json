@@ -54,7 +54,7 @@
 		}
 	],
 	"dependencies": {
-		"@wuespace/telestion-client-types": "file:../telestion-client-types",
+		"@wuespace/telestion-client-types": "workspace:^",
 		"ajv": "^8.0.2",
 		"sockjs-client": "^1.5.0"
 	},
