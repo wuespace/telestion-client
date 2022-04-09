@@ -1,5 +1,5 @@
 import { View, ActionButton } from '@adobe/react-spectrum';
-import defaultAvatar from '../../../media/default-avatar.png';
+import defaultAvatar from 'data-url:../../../media/default-avatar.png';
 
 /**
  * Renders an action button with a placeholder avatar image inside.

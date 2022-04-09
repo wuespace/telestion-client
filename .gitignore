@@ -24,7 +24,7 @@ composer.lock
 
 # dependencies
 /node_modules
-packages/*/node_modules
+/packages/**/node_modules
 /.pnp
 .pnp.js
 
@@ -38,13 +38,14 @@ packages/*/node_modules
 
 # cache
 .eslintcache
+.parcel-cache
 
-# build files
-packages/*/build
-packages/*/types
+# build output
+/packages/**/dist
+/packages/**/types
 /docs
 /storybook-static
 
 # coverage reports
-coverage
+/coverage
 jest.results.json
