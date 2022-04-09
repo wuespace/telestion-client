@@ -375,10 +375,12 @@ importers:
     specifiers:
       '@fliegwerk/logsemts': ^0.4.3
       '@types/sockjs': ^0.3.32
+      '@wuespace/telestion-client-types': workspace:^
       sockjs: ^0.3.21
     dependencies:
       '@fliegwerk/logsemts': 0.4.3
       '@types/sockjs': 0.3.33
+      '@wuespace/telestion-client-types': link:../telestion-client-types
       sockjs: 0.3.24
 
 packages:
