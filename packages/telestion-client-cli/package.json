@@ -15,10 +15,6 @@
 	"engines": {
 		"node": ">=14"
 	},
-	"scripts": {
-		"build": "echo \"Warning: No build script specified!\"",
-		"test": "echo \"Warning: No test script specified!\""
-	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/wuespace/telestion-client.git",

@@ -75,7 +75,7 @@ module.exports = {
 		// to inform the user and not slap him
 		'prettier/prettier': 'warn'
 	},
-	ignorePatterns: ['build', 'types'],
+	ignorePatterns: ['dist', 'types'],
 	overrides: [
 		{
 			files: ['typings.d.ts'],

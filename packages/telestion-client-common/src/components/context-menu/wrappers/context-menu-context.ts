@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { Context, createContext } from 'react';
 import { Position, Section } from '@wuespace/telestion-client-types';
 
 /**
@@ -59,7 +59,8 @@ export interface ContextMenuContextState {
  * );
  * ```
  */
-export const ContextMenuContext = createContext<ContextMenuContextState>({
-	sections: [],
-	call: () => {}
-});
+export const ContextMenuContext: Context<ContextMenuContextState> =
+	createContext<ContextMenuContextState>({
+		sections: [],
+		call: () => {}
+	});

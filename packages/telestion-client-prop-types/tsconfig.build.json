@@ -1,8 +1,0 @@
-{
-	"extends": "../../base-configs/tsconfig.typescript.build.json",
-	"compilerOptions": {
-		"declarationDir": "types"
-	},
-	"include": ["src"],
-	"exclude": ["node_modules", "build", "types", "src/**/*.spec.ts"]
-}

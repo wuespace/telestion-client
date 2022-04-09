@@ -1,5 +1,26 @@
 {
-	"extends": "../../base-configs/tsconfig.react.json",
+	"extends": "../../tsconfig.json",
+	"compilerOptions": {
+		/* Support JSX */
+		"jsx": "react-jsx",
+		"isolatedModules": true,
+		"target": "ES5",
+		"module": "esnext",
+		"lib": ["ES6", "DOM", "ES2016", "ES2017"],
+		"declaration": true,
+		"sourceMap": true,
+		/* Strict Type-Checking Options */
+		"strict": true,
+		/* Module Resolution Options */
+		"moduleResolution": "node",
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		/* Advanced Options */
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
+		/* reset paths because typescript threat workspace dependencies as normal dependencies */
+		"paths": {}
+	},
 	"include": ["src", "typings.d.ts"],
-	"exclude": ["node_modules", "build", "types"]
+	"exclude": ["node_modules", "dist"]
 }

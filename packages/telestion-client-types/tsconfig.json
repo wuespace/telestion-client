@@ -9,7 +9,9 @@
 		"checkJs": true,
 		"skipLibCheck": true,
 		"allowSyntheticDefaultImports": true,
-		"emitDeclarationOnly": true
+		"emitDeclarationOnly": true,
+		/* reset paths because typescript threat workspace dependencies as normal dependencies */
+		"paths": {}
 	},
 	"include": ["src"],
 	"exclude": ["node_modules", "types"]
