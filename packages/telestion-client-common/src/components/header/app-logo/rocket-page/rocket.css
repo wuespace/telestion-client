@@ -1,5 +1,5 @@
 .rocket {
-	background: url('../../../../media/rocket.png') no-repeat;
+	background: url('data-url:../../../../media/rocket.png') no-repeat;
 	background-size: contain;
 	cursor: grab;
 	height: 140px;

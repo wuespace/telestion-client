@@ -88,7 +88,7 @@ export const useEventBus: UseStore<EventBusState> = create<EventBusState>(
 		lastErrorMessage: null,
 		openEventBus: (serverUrl, options) => {
 			logger.debug('Create and open event bus');
-			let errorTimerId: NodeJS.Timeout;
+			let errorTimerId: any;
 
 			if (get().eventBus) {
 				logger.error('Event bus already exists');
