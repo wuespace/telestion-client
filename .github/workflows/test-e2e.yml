@@ -10,59 +10,45 @@ on:
 
 jobs:
   cli-e2e-test:
-    name: E2E CLI
+    name: E2E CLI on Node v${{ matrix.node }}
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: ['14', '16']
     steps:
       - name: Checkout 📥
         uses: actions/checkout@v3.0.0
+      - name: Setup PNPM 💿
+        uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 7.0.0-rc.2
       - name: Setup Node 💿
         uses: actions/setup-node@v3.0.0
         with:
-          node-version: 14
+          node-version: ${{ matrix.node }}
+          cache: 'pnpm'
       - name: Setup git ⚙
         run: |
           git config --global user.name "${GITHUB_ACTOR}"
           git config --global user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 
-      - name: Restore npm cache ♻️
-        uses: actions/cache@v2.1.7
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      # Remove, when setup-node action supports specifying the node version
-      - name: Install npm v7 ⬆
-        run: npm install --prefer-offline --no-audit --global npm@v7
-
-      - name: Install global dependencies 🐱‍
-        run: npm install -g verdaccio lerna npm-cli-adduser
-      - name: Install development dependencies 📚
-        run: npm ci --prefer-offline --no-audit
-
-      - name: Add node_modules binaries to path ⛓
-        run: echo "${GITHUB_WORKSPACE}/node_modules/.bin" >> $GITHUB_PATH
+      - name: Install dependencies 📚
+        run: pnpm install
 
       - name: Run verdaccio 💡
         run: |
-          verdaccio &
-          VERDACCIO_PID=$!
-          echo "VERDACCIO_PID=$!" >> $GITHUB_ENV
-          npm config set registry http://localhost:4873
+          pnpm dlx verdaccio &
+          pnpm config set registry http://localhost:4873
 
-      - name: Replace package versions 🖋
-        run: npm run meta:replace-versions -- 999.999.999
       - name: Login to verdaccio 🛂
-        run: |
-          npm-cli-adduser -u thebox -p where -e thebox@nothere.com -r http://localhost:4873
+        run: pnpm dlx npm-cli-adduser -u thebox -p where -e thebox@nothere.com -r http://localhost:4873
       - name: Npm get logged in user
-        run: npm whoami
+        run: pnpm whoami
       - name: Publish to verdaccio 📤
-        run: lerna exec 'npm publish --registry="http://localhost:4873"'
+        run: pnpm publish --force
 
       - name: Install CLI from verdaccio 🪤
-        run: npm install -g @wuespace/telestion-client-cli
+        run: pnpm add --global @wuespace/telestion-client-cli
       - name: Show help output of CLI
         run: tc-cli --help
       - name: Initialize PSC Project 🛒
@@ -84,6 +70,3 @@ jobs:
         run: |
           tc-cli build --help
           tc-cli build
-
-      - name: Stop verdaccio 🛑
-        run: kill -SIGHUP "$VERDACCIO_PID"
