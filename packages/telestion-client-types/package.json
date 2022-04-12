@@ -9,9 +9,9 @@
 		"types"
 	],
 	"scripts": {
-		"build": "tsc -p .",
+		"build": "tsc --project .",
 		"check": "pnpm run build",
-		"test": "tsc -p sample",
+		"test": "tsc --project sample",
 		"clean": "rimraf types"
 	},
 	"repository": {
