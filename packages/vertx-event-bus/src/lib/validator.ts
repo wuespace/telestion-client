@@ -1,8 +1,8 @@
-import Ajv from 'ajv';
+import Ajv, { ValidateFunction } from 'ajv';
 import schema from './schema.json';
 
 const ajv = new Ajv({
 	allowUnionTypes: true
 });
 
-export const validate = ajv.compile(schema);
+export const validate: ValidateFunction = ajv.compile(schema);
