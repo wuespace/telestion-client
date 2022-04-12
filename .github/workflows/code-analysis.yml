@@ -16,6 +16,11 @@ on:
   schedule:
     - cron: '26 9 * * 4'
 
+# Defines which tool versions should be used in all workflow jobs
+env:
+  node: '16'
+  pnpm: '7.0.0-rc.3'
+
 jobs:
   codeql-analysis:
     name: CodeQL
@@ -26,7 +31,7 @@ jobs:
       - name: Setup PNPM 💿
         uses: pnpm/action-setup@v2.2.1
         with:
-          version: 7.0.0-rc.2
+          version: ${{ env.pnpm }}
 
       # Initializes the CodeQL tools for scanning.
       - name: Initialize CodeQL 📀
@@ -41,7 +46,7 @@ jobs:
       - name: Setup Node 💿
         uses: actions/setup-node@v3.0.0
         with:
-          node-version: 14
+          node-version: ${{ env.node }}
           cache: 'pnpm'
 
       - name: Install dependencies 📚
@@ -63,11 +68,11 @@ jobs:
       - name: Setup PNPM 💿
         uses: pnpm/action-setup@v2.2.1
         with:
-          version: 7.0.0-rc.2
+          version: ${{ env.pnpm }}
       - name: Setup Node 💿
         uses: actions/setup-node@v3.0.0
         with:
-          node-version: 14
+          node-version: ${{ env.node }}
           cache: 'pnpm'
 
       - name: Install dependencies 📚

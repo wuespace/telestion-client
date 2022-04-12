@@ -60,7 +60,7 @@ pnpm add --filter "telestion-client-core" typescript@4.4.4
 If you need a dependency in the root package, call pnpm with the root-workspace selector:
 
 ```shell
-pnpm add --ignore-workspace-root-check fliegdoc@latest
+pnpm add --workspace-root fliegdoc@latest
 ```
 
 To add a dependency to a monorepo package,
