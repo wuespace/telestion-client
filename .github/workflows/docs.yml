@@ -1,8 +1,15 @@
 name: Docs
+
+# Events that trigger this workflow
 on:
   push:
     branches:
       - main
+
+# Defines which tool versions should be used in all workflow jobs
+env:
+  node: '16'
+  pnpm: '7.0.0-rc.3'
 
 jobs:
   build-and-deploy:
@@ -14,11 +21,11 @@ jobs:
       - name: Setup PNPM 💿
         uses: pnpm/action-setup@v2.2.1
         with:
-          version: 7.0.0-rc.2
+          version: ${{ env.pnpm }}
       - name: Setup Node 💿
         uses: actions/setup-node@v3.0.0
         with:
-          node-version: 14
+          node-version: ${{ env.node }}
           cache: 'pnpm'
 
       - name: Install dependencies 📚

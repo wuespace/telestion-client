@@ -10,6 +10,11 @@ on:
       - main
   workflow_dispatch:
 
+# Defines which tool versions should be used in all workflow jobs
+env:
+  node: '16'
+  pnpm: '7.0.0-rc.3'
+
 jobs:
   code-climate-report:
     name: Report
@@ -21,11 +26,11 @@ jobs:
       - name: Setup PNPM 💿
         uses: pnpm/action-setup@v2.2.1
         with:
-          version: 7.0.0-rc.2
+          version: ${{ env.pnpm }}
       - name: Setup Node 💿
         uses: actions/setup-node@v3.0.0
         with:
-          node-version: 14
+          node-version: ${{ env.node }}
           cache: 'pnpm'
 
       - name: Install dependencies 📚
@@ -38,4 +43,4 @@ jobs:
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CODE_CLIMATE_REPORTER_ID }}
         with:
-          coverageCommand: pnpm exec test:unit
+          coverageCommand: pnpm test:unit
