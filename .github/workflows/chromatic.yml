@@ -19,32 +19,22 @@ jobs:
       - name: Checkout 📥
         uses: actions/checkout@v3.0.0
         with:
-          fetch-depth: 0 # Required to retrieve git history
+          fetch-depth: 0
+      - name: Setup PNPM 💿
+        uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 7.0.0-rc.2
       - name: Setup Node 💿
         uses: actions/setup-node@v3.0.0
         with:
           node-version: 14
+          cache: 'pnpm'
 
-      - name: Restore npm cache ♻️
-        uses: actions/cache@v2.1.7
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      # Remove, when setup-node action supports specifying the node version
-      - name: Install npm v7 ⬆
-        run: npm install --prefer-offline --no-audit --global npm@v7
-
-      - name: Install development dependencies 📚
-        run: npm ci --prefer-offline --no-audit --ignore-scripts
+      - name: Install dependencies 📚
+        run: pnpm install
       - name: Build packages 📦
-        run: npm run build:all
-      - name: Publish to Chromatic 📡
-        uses: chromaui/action@v1
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          # 👇 Chromatic projectToken, refer to the manage page to obtain it.
-          projectToken: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
-          exitZeroOnChanges: true
+        run: pnpm build
+      - name: Publish to Chromatic
+        run: pnpm chromatic
+        env:
+          CHROMATIC_PROJECT_TOKEN: ${{ secrets.CHROMATIC_PROJECT_TOKEN }}
