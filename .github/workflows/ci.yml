@@ -8,27 +8,20 @@ jobs:
     steps:
       - name: Checkout 📥
         uses: actions/checkout@v3.0.0
+      - name: Setup PNPM 💿
+        uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 7.0.0-rc.2
       - name: Setup Node 💿
         uses: actions/setup-node@v3.0.0
         with:
           node-version: 14
+          cache: 'pnpm'
 
-      - name: Restore npm cache ♻️
-        uses: actions/cache@v2.1.7
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      # Remove, when setup-node action supports specifying the node version
-      - name: Install npm v7 ⬆
-        run: npm install --prefer-offline --no-audit --global npm@v7
-
-      - name: Install development dependencies 📚
-        run: npm ci --prefer-offline --no-audit --ignore-scripts
+      - name: Install dependencies 📚
+        run: pnpm install
       - name: Check code style 🧽
-        run: npm run style:ci
+        run: pnpm style:ci
 
   lint:
     name: Lint
@@ -36,27 +29,41 @@ jobs:
     steps:
       - name: Checkout 📥
         uses: actions/checkout@v3.0.0
+      - name: Setup PNPM 💿
+        uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 7.0.0-rc.2
       - name: Setup Node 💿
         uses: actions/setup-node@v3.0.0
         with:
           node-version: 14
+          cache: 'pnpm'
 
-      - name: Restore npm cache ♻️
-        uses: actions/cache@v2.1.7
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      # Remove, when setup-node action supports specifying the node version
-      - name: Install npm v7 ⬆
-        run: npm install --prefer-offline --no-audit --global npm@v7
-
-      - name: Install development dependencies 📚
-        run: npm ci --prefer-offline --no-audit --ignore-scripts
+      - name: Install dependencies 📚
+        run: pnpm install
       - name: Run Linter 📑
-        run: npm run lint
+        run: pnpm lint
+
+  check:
+    name: Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 📥
+        uses: actions/checkout@v3.0.0
+      - name: Setup PNPM 💿
+        uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 7.0.0-rc.2
+      - name: Setup Node 💿
+        uses: actions/setup-node@v3.0.0
+        with:
+          node-version: 14
+          cache: 'pnpm'
+
+      - name: Install dependencies 📚
+        run: pnpm install
+      - name: Run Linter 📑
+        run: pnpm check
 
   build:
     name: Build
@@ -64,63 +71,56 @@ jobs:
     steps:
       - name: Checkout 📥
         uses: actions/checkout@v3.0.0
+      - name: Setup PNPM 💿
+        uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 7.0.0-rc.2
       - name: Setup Node 💿
         uses: actions/setup-node@v3.0.0
         with:
           node-version: 14
+          cache: 'pnpm'
 
-      - name: Restore npm cache ♻️
-        uses: actions/cache@v2.1.7
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      # Remove, when setup-node action supports specifying the node version
-      - name: Install npm v7 ⬆
-        run: npm install --prefer-offline --no-audit --global npm@v7
-
-      - name: Install development dependencies 📚
-        run: npm ci --prefer-offline --no-audit --ignore-scripts
+      - name: Install dependencies 📚
+        run: pnpm install
       - name: Build packages 📦
-        run: npm run build:all
+        run: pnpm build
 
       - name: Upload vertx-event-bus build artifact 📤
         uses: actions/upload-artifact@v3.0.0
         with:
-          name: vertx-event-bus_build-${{ github.run_number }}
-          path: packages/vertx-event-bus/build/
+          name: packages_vertx-event-bus_dist-${{ github.run_number }}
+          path: packages/vertx-event-bus/dist/
           retention-days: 7
       - name: Upload vertx-mock-server build artifact 📤
         uses: actions/upload-artifact@v3.0.0
         with:
-          name: vertx-mock-server_build-${{ github.run_number }}
-          path: packages/vertx-mock-server/build/
+          name: packages_vertx-mock-server_dist-${{ github.run_number }}
+          path: packages/vertx-mock-server/dist/
           retention-days: 7
       - name: Upload telestion-client-types build artifact 📤
         uses: actions/upload-artifact@v3.0.0
         with:
-          name: telestion-client-types_build-${{ github.run_number }}
+          name: packages_telestion-client-types_types-${{ github.run_number }}
           path: packages/telestion-client-types/types/
           retention-days: 7
       - name: Upload telestion-client-prop-types build artifact 📤
         uses: actions/upload-artifact@v3.0.0
         with:
-          name: telestion-client-prop-types_build-${{ github.run_number }}
-          path: packages/telestion-client-prop-types/build/
+          name: packages_telestion-client-prop-types_dist-${{ github.run_number }}
+          path: packages/telestion-client-prop-types/dist/
           retention-days: 7
       - name: Upload telestion-client-core build artifact 📤
         uses: actions/upload-artifact@v3.0.0
         with:
-          name: telestion-client-core_build-${{ github.run_number }}
-          path: packages/telestion-client-core/build/
+          name: packages_telestion-client-core_dist-${{ github.run_number }}
+          path: packages/telestion-client-core/dist/
           retention-days: 7
       - name: Upload telestion-client-common build artifact 📤
         uses: actions/upload-artifact@v3.0.0
         with:
-          name: telestion-client-common_build-${{ github.run_number }}
-          path: packages/telestion-client-common/build/
+          name: packages_telestion-client-common_dist-${{ github.run_number }}
+          path: packages/telestion-client-common/dist/
           retention-days: 7
 
   test:
@@ -129,26 +129,19 @@ jobs:
     steps:
       - name: Checkout 📥
         uses: actions/checkout@v3.0.0
+      - name: Setup PNPM 💿
+        uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 7.0.0-rc.2
       - name: Setup Node 💿
         uses: actions/setup-node@v3.0.0
         with:
           node-version: 14
+          cache: 'pnpm'
 
-      - name: Restore npm cache ♻️
-        uses: actions/cache@v2.1.7
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      # Remove, when setup-node action supports specifying the node version
-      - name: Install npm v7 ⬆
-        run: npm install --prefer-offline --no-audit --global npm@v7
-
-      - name: Install development dependencies 📚
-        run: npm ci --prefer-offline --no-audit --ignore-scripts
+      - name: Install dependencies 📚
+        run: pnpm install
       - name: Build packages 📦
-        run: npm run build:all
+        run: pnpm build
       - name: Run unit tests and generate coverage 🛃
-        run: npm run test
+        run: pnpm test

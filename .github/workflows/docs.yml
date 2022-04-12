@@ -11,29 +11,22 @@ jobs:
     steps:
       - name: Checkout 📥
         uses: actions/checkout@v3.0.0
+      - name: Setup PNPM 💿
+        uses: pnpm/action-setup@v2.2.1
+        with:
+          version: 7.0.0-rc.2
       - name: Setup Node 💿
         uses: actions/setup-node@v3.0.0
         with:
           node-version: 14
+          cache: 'pnpm'
 
-      - name: Restore npm cache ♻️
-        uses: actions/cache@v2.1.7
-        with:
-          path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
-
-      # Remove, when setup-node action supports specifying the node version
-      - name: Install npm v7 ⬆
-        run: npm install --prefer-offline --no-audit --global npm@v7
-
-      - name: Install development dependencies 📚
-        run: npm ci --prefer-offline --no-audit --ignore-scripts
+      - name: Install dependencies 📚
+        run: pnpm install
       - name: Build packages 📦
-        run: npm run build:all
+        run: pnpm build
       - name: Build documentation 🛠️
-        run: npm run docs:ci
+        run: pnpm docs:build
 
       - name: Deploy documentation 🚀
         uses: JamesIves/github-pages-deploy-action@v4.2.5
