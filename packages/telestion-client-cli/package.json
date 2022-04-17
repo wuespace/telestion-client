@@ -2,16 +2,28 @@
 	"name": "@wuespace/telestion-client-cli",
 	"description": "The command line interface for the Telestion Client development",
 	"license": "MIT",
-	"version": "0.18.1",
+	"version": "0.18.0",
 	"homepage": "https://telestion.wuespace.de/",
-	"bin": {
-		"tc-cli": "./bin/cli.js"
+	"type": "module",
+	"exports": {
+		".": {
+			"import": "./build/api.mjs"
+		}
 	},
-	"main": "src/api.js",
+	"bin": {
+		"tc-cli": "./dist/cli.mjs"
+	},
 	"files": [
-		"bin",
-		"src"
+		"dist"
 	],
+	"scripts": {
+		"watch": "tsc --watch",
+		"build": "tsc",
+		"cli": "node build/cli.mjs",
+		"lint": "eslint",
+		"check": "tsc --noEmit",
+		"clean": "rimraf build"
+	},
 	"engines": {
 		"node": ">=14"
 	},
@@ -51,39 +63,23 @@
 		}
 	],
 	"dependencies": {
-		"@craco/craco": "^6.0.0",
 		"@fliegwerk/dir-tree": "^1.0.0",
 		"@fliegwerk/logsemts": "^0.4.3",
 		"@wuespace/telestion-client-template": "workspace:^",
-		"chalk": "^4.1.0",
-		"change-case": "^4.1.2",
-		"clui": "^0.3.6",
-		"cosmiconfig": "^7.0.0",
-		"debug": "^4.3.1",
-		"ejs": "^3.1.5",
-		"electron": "^17.0.0",
-		"electron-builder": "^22.9.1",
-		"electroner": "^4.0.9",
-		"inquirer": "^8.0.0",
-		"loader-utils": "^2.0.0",
-		"shelljs": "^0.8.5",
-		"ts-loader": "^8.0.15",
-		"validate-npm-package-name": "^3.0.0",
-		"webpack": "^4.46.0",
-		"yargs": "^17.0.1"
+		"chalk": "^5.0.1",
+		"commander": "^9.1.0",
+		"ejs": "^3.1.6",
+		"inquirer": "^8.2.2",
+		"ora": "^6.1.0",
+		"validate-npm-package-name": "^4.0.0"
 	},
 	"devDependencies": {
-		"@babel/core": "^7.17.9",
-		"@types/node": "^17.0.23",
-		"react": "^17.0.2",
-		"react-scripts": "^4.0.3",
-		"typescript": "^4.6.3"
+		"@types/ejs": "^3.1.0",
+		"@types/inquirer": "^8.2.1",
+		"@types/validate-npm-package-name": "^3.0.3",
+		"typescript": "4.7.0-beta"
 	},
 	"publishConfig": {
 		"access": "public"
-	},
-	"peerDependencies": {
-		"react-scripts": "^4",
-		"typescript": "~4.5"
 	}
 }

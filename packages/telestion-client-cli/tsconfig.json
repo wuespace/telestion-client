@@ -1,5 +1,16 @@
 {
 	"compilerOptions": {
-		"noImplicitAny": false
-	}
+		"module": "nodenext",
+		"moduleResolution": "node12",
+		"target": "es2022",
+		"allowSyntheticDefaultImports": true,
+		"skipLibCheck": true,
+		"esModuleInterop": true,
+		"forceConsistentCasingInFileNames": true,
+		"strict": true,
+		"noImplicitAny": true,
+		"outDir": "dist"
+	},
+	"include": ["src"],
+	"exclude": ["node_modules"]
 }
