@@ -1,4 +1,4 @@
-## Contributing
+# Contributing
 
 **First things first:** Thank you for considering contributing to this repository.
 If anything's unclear, don't be afraid to ask.
@@ -16,7 +16,7 @@ every automated test written, etc., you contribution won't be rejected because o
 > You can find it in a subsection of the official Telestion documentation:
 > https://docs.telestion.wuespace.de/internal/
 
-### Installation
+## Installation
 
 This project uses [pnpm](https://pnpm.io/) as package manager.
 
@@ -46,9 +46,11 @@ To clear all build files, execute:
 pnpm clean
 ```
 
-### Developing and Testing
+## Developing and Testing
 
 Most of the time, you can use a package in the `packages` folder like a normal pnpm project.
+
+### Managing dependencies
 
 Differences come up, if you want to add a dependency.
 Here you need to use pnpm with the filter option:
@@ -78,13 +80,61 @@ During publishing pnpm inserts the most recent version number of the linked mono
 
 Please check the [main `package.json`](./package.json) for more scripts.
 
-### Build-Stack
+### Developing and Testing on a live project
+
+When you develop and change things, it's useful to immediately test your changes inside a Telestion Project.
+With the help of the Telestion Client CLI it's now possible to create a new project that uses this monorepo sources.
+
+First, let's generate up-to-date build files:
+
+```shell
+# telestion-client root
+pnpm build
+```
+
+Now, make the `telestion-client-cli` package globally available:
+
+```shell
+# telestion-client root
+cd packages/telestion-client-cli
+pnpm link --global
+```
+
+Next, go into a directory outside this project and create a new project with the globally linked `tc-cli`:
+
+```shell
+cd ~/tmp
+tc-cli init test-project
+```
+
+The initialize command detects the workspace protocol in the `package.json` of the `telestion-client-template` package
+and create symbolic links to the associated monorepo packages.
+
+Now, run the watch script in the Telestion Client root:
+
+```shell
+# telestion-client root
+pnpm watch
+```
+
+This script starts processes that watch on source code changes and re-compile them if you change them.
+
+Finally, start the created project:
+
+```shell
+# test-project root
+pnpm start
+```
+
+Happy developing!
+
+## Build-Stack
 
 We use [Parcel](https://parceljs.org/) as our build tool for most of the monorepo packages.
 Parcel has a configuration file named `.parcelrc`. Due to the nature of parcel as a zero-configuration build tool,
 you don't need to change it very often.
 
-### Publishing
+## Publishing
 
 The publishing process, in this project, is fully automated.
 Please refer to the relevant sections in the
