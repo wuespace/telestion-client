@@ -1,36 +1,26 @@
 {
 	"name": "<%- moduleName %>",
-	"description": "<%- moduleName %>, a Telestion PSC generated using the telestion-client-cli",
+	"description": "<%- projectName %>, a Telestion PSC generated using the telestion-client-cli",
 	"version": "0.0.0",
 	"homepage": ".",
 	"engines": {
-		"node": ">=14"
+		"node": ">=14",
+		"pnpm": ">=7"
 	},
 	"scripts": {
-		"prepare": "node scripts/register-precommit-hook.js",
+		"prepare": "husky install",
 		"start": "npm run start:electron",
 		"start:electron": "tc-cli start --electron",
 		"start:browser": "tc-cli start --browser",
 		"build": "tc-cli build",
 		"stats": "tc-cli stats",
-		"style": "prettier --write package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.sass,.yaml,.yml,.md}'",
-		"style:ci": "prettier --list-different package.json '**/*{.ts,.tsx,.js,.jsx,.json,.html,.css,.scss,.sass,.yaml,.yml,.md}'",
+		"style": "prettier --write .",
+		"style:ci": "prettier --list-different .",
 		"lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-pattern node_modules/ --no-error-on-unmatched-pattern src",
-		"ts": "tsc",
-		"clean": "rimraf build dist"
-	},
-	"husky": {
-		"hooks": {
-			"pre-commit": "pretty-quick --staged"
-		}
+		"check": "tsc",
+		"clean": "rimraf dist release"
 	},
 	"private": true,
-	"eslintConfig": {
-		"extends": [
-			"react-app",
-			"react-app/jest"
-		]
-	},
 	"browserslist": {
 		"production": [
 			">0.2%",
