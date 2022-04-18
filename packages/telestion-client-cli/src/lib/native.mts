@@ -180,15 +180,17 @@ export async function readDir(dirPath: string): Promise<string[]> {
  * Creates a symlink at the specified path that points to another path.
  * @param pointsTo - the path to which the link should point
  * @param symlinkPath - the path on which the link should be generated
+ * @param type - the type of soft link to use (only support in Windows)
  */
 export async function symlink(
 	pointsTo: string,
-	symlinkPath: string
+	symlinkPath: string,
+	type: 'dir' | 'file' | 'junction' = 'file'
 ): Promise<void> {
 	logger.debug(
-		`Create symbolic link at '${symlinkPath}' which points to '${pointsTo}'`
+		`Create symbolic link at '${symlinkPath}' which points to '${pointsTo}' (type: ${type})`
 	);
-	return nodeSymlink(pointsTo, symlinkPath);
+	return nodeSymlink(pointsTo, symlinkPath, type);
 }
 
 /**
