@@ -19,6 +19,7 @@ export {
 	openUrl
 } from './native.mjs';
 export {
+	getName,
 	getVersion,
 	getBinaries,
 	getDependencies,
