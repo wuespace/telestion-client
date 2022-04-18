@@ -178,7 +178,11 @@ export async function pnpmLinkFromGlobal(
 		logger.debug('Project dependency link:', projectDependencyLink);
 		const relativeDependencyPath = relative(projectDepScopeDir, dependencyPath);
 		logger.debug('Relative dependency path:', relativeDependencyPath);
-		await symlink(relativeDependencyPath, projectDependencyLink);
+		await symlink(
+			os.type() === 'Windows_NT' ? dependencyPath : relativeDependencyPath,
+			projectDependencyLink,
+			os.type() === 'Windows_NT' ? 'junction' : 'file'
+		);
 		logger.info('Package linked');
 
 		logger.debug('On platform:', os.type());
