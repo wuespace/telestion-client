@@ -15,7 +15,8 @@ export {
 	readDir,
 	symlink,
 	realPath,
-	chmod
+	chmod,
+	openUrl
 } from './native.mjs';
 export {
 	getVersion,
