@@ -230,7 +230,7 @@ export async function pnpmLinkFromGlobal(
 				logger.debug('Project binary path:', projectBinaryPath);
 
 				const content = `#!/bin/sh
-exec "${globalBinaryPath}"
+exec "${globalBinaryPath}" "$@"
 `;
 				logger.debug('Binary file content:', content);
 
