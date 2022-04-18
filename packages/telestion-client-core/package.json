@@ -58,7 +58,7 @@
 	],
 	"dependencies": {
 		"@fliegwerk/logsemts": "^0.4.3",
-		"@types/react": "^17.0.0",
+		"@types/react": "^17.0.44",
 		"@wuespace/telestion-client-prop-types": "workspace:^",
 		"@wuespace/telestion-client-types": "workspace:^",
 		"@wuespace/vertx-event-bus": "workspace:^",
@@ -69,5 +69,9 @@
 	},
 	"publishConfig": {
 		"access": "public"
+	},
+	"devDependencies": {
+		"@types/prop-types": "^15.7.5",
+		"@types/react-router-dom": "^5.3.3"
 	}
 }

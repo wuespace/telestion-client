@@ -65,5 +65,8 @@
 	},
 	"publishConfig": {
 		"access": "public"
+	},
+	"devDependencies": {
+		"@types/prop-types": "^15.7.5"
 	}
 }
