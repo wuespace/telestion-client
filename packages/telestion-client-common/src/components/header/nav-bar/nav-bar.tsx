@@ -72,7 +72,11 @@ export function NavBar({ links }: NavBarProps) {
 		useNavBarState(links);
 
 	if (isHidden) {
-		return <Heading level={4}>{title}</Heading>;
+		return (
+			<Heading level={4}>
+				{typeof title === 'string' ? title : 'Invalid type'}
+			</Heading>
+		);
 	}
 
 	// render tab list with empty contents

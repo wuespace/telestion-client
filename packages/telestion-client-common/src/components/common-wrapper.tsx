@@ -1,4 +1,4 @@
-import { ReactElement } from 'react';
+import { ReactNode } from 'react';
 import { StateSelector } from 'zustand';
 import { defaultTheme, Provider, Flex } from '@adobe/react-spectrum';
 import { Widget } from '@wuespace/telestion-client-types';
@@ -56,7 +56,7 @@ export interface CommonWrapperProps {
 	 * The children received from the wrapper function of the "root" component
 	 * {@link @wuespace/telestion-client-core#TelestionClient}.
 	 */
-	children: ReactElement | ReactElement[];
+	children: ReactNode;
 }
 
 /**
