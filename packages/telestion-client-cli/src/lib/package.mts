@@ -1,6 +1,28 @@
 import validate from 'validate-npm-package-name';
 
 /**
+ * Scrapes an object that represents a valid `package.json` for their name.
+ * @param packageJson - the object that represents a valid `package.json`
+ */
+export async function getName(
+	packageJson: Record<string, unknown>
+): Promise<string> {
+	if (!packageJson.hasOwnProperty('name')) {
+		throw new Error('The provided package.json has no name');
+	}
+
+	if (typeof packageJson['name'] !== 'string') {
+		throw new Error(
+			`The provided package.json has an invalid name type: Expected: string, Got: ${typeof packageJson[
+				'name'
+			]}`
+		);
+	}
+
+	return packageJson['name'];
+}
+
+/**
  * Scrapes an object that represents a valid `package.json` for their version.
  * @param packageJson - the object that represents a valid `package.json`
  */
