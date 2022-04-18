@@ -1,3 +1,4 @@
+import os from 'os';
 import { promisify } from 'util';
 import { constants, Stats } from 'fs';
 import {
@@ -13,7 +14,7 @@ import {
 	realpath as nodeRealPath,
 	chmod as nodeChmod
 } from 'fs/promises';
-import { execFile as nodeExecFile } from 'child_process';
+import { execFile as nodeExecFile, spawn } from 'child_process';
 import { getLogger } from './logger/index.mjs';
 
 const execFile = promisify(nodeExecFile);
@@ -213,4 +214,33 @@ export async function chmod(
 ): Promise<void> {
 	logger.debug(`Set access bits on file '${filePath}':`, mode);
 	await nodeChmod(filePath, mode);
+}
+
+/**
+ * Opens the URL in the system's native browser.
+ * @param url the URL to open
+ */
+export async function openUrl(url: string): Promise<void> {
+	let command: string;
+
+	switch (os.type()) {
+		case 'Darwin':
+			command = 'open';
+			break;
+		case 'Windows_NT':
+			command = 'explorer.exe';
+			break;
+		case 'Linux':
+			command = 'xdg-open';
+			break;
+		default:
+			throw new Error(
+				`Cannot open url '${url}'. Unsupported platform: ${os.type()}`
+			);
+	}
+
+	logger.debug(
+		`Open URL '${url}' on platform '${os.type()}' with command '${command}'`
+	);
+	spawn(command, [url]);
 }
