@@ -1,0 +1,66 @@
+{
+	"name": "@wuespace/parcel-reporter-tc-cli",
+	"description": "Parcel Reporter Plugin that provides parsable output for the tc-cli",
+	"license": "MIT",
+	"version": "0.18.0",
+	"homepage": "https://telestion.wuespace.de/",
+	"source": "src/reporter.ts",
+	"main": "dist/reporter.js",
+	"files": [
+		"dist"
+	],
+	"engines": {
+		"parcel": "2.x"
+	},
+	"scripts": {
+		"watch": "parcel watch",
+		"build": "parcel build",
+		"lint": "eslint",
+		"check": "tsc --noEmit",
+		"clean": "rimraf dist"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/wuespace/telestion-client.git",
+		"directory": "packages/parcel-reporter-tc-cli"
+	},
+	"author": {
+		"name": "wuespace",
+		"email": "kontakt@wuespace.de",
+		"url": "https://www.wuespace.de/"
+	},
+	"contributors": [
+		{
+			"name": "Liam Franssen",
+			"email": "liam.franssen@stud-mail.uni-wuerzburg.de",
+			"url": "https://github.com/leecemin"
+		},
+		{
+			"name": "Pablo Klaschka",
+			"email": "contact@pabloklaschka.de",
+			"url": "https://github.com/pklaschka"
+		},
+		{
+			"name": "Jan Tischhöfer",
+			"email": "jan.tischhoefer@gmail.com",
+			"url": "https://github.com/jantischhoefer"
+		},
+		{
+			"name": "Ludwig Richter",
+			"email": "richter@fliegwerk.com",
+			"url": "https://github.com/fussel178"
+		}
+	],
+	"dependencies": {
+		"@parcel/plugin": "^2.5.0"
+	},
+	"devDependencies": {
+		"@parcel/types": "^2.5.0",
+		"@parcel/core": "^2.5.0",
+		"@types/node": "^17.0.31",
+		"@wuespace/telestion-client-types": "workspace:^"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
