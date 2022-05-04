@@ -14,7 +14,11 @@ import {
 	realpath as nodeRealPath,
 	chmod as nodeChmod
 } from 'fs/promises';
-import { execFile as nodeExecFile, spawn } from 'child_process';
+import {
+	ChildProcess,
+	execFile as nodeExecFile,
+	spawn as nodeSpawn
+} from 'child_process';
 import { getLogger } from './logger/index.mjs';
 
 const execFile = promisify(nodeExecFile);
@@ -34,10 +38,27 @@ export async function exec(
 	argumentList: string[] = [],
 	workingDir?: string
 ): Promise<{ stdout: string; stderr: string }> {
-	logger.debug(`Execute '${command}' with:`, argumentList, ' in: ', workingDir);
+	logger.debug(`Execute '${command}' with:`, argumentList, 'in:', workingDir);
 	const result = await execFile(command, argumentList, { cwd: workingDir });
 	logger.debug('Result:', result);
 	return result;
+}
+
+export async function spawn(
+	command: string,
+	argumentList: string[] = [],
+	workingDir?: string,
+	stdio: 'pipe' | 'ignore' | 'inherit' = 'ignore'
+): Promise<ChildProcess> {
+	logger.debug(
+		`Spawn new process '${command}' with:`,
+		argumentList,
+		'in:',
+		workingDir
+	);
+	const process = nodeSpawn(command, argumentList, { cwd: workingDir, stdio });
+	logger.debug('Process instance:', process);
+	return process;
 }
 
 /**
@@ -220,7 +241,7 @@ export async function chmod(
  * Opens the URL in the system's native browser.
  * @param url the URL to open
  */
-export async function openUrl(url: string): Promise<void> {
+export async function openUrl(url: URL): Promise<void> {
 	let command: string;
 
 	switch (os.type()) {
@@ -235,12 +256,14 @@ export async function openUrl(url: string): Promise<void> {
 			break;
 		default:
 			throw new Error(
-				`Cannot open url '${url}'. Unsupported platform: ${os.type()}`
+				`Cannot open url '${url.href}'. Unsupported platform: ${os.type()}`
 			);
 	}
 
 	logger.debug(
-		`Open URL '${url}' on platform '${os.type()}' with command '${command}'`
+		`Open URL '${
+			url.href
+		}' on platform '${os.type()}' with command '${command}'`
 	);
-	spawn(command, [url]);
+	await spawn(command, [url.href]);
 }
