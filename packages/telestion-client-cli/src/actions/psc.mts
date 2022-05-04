@@ -36,6 +36,11 @@ export async function getPSCRoot(workingDir: string): Promise<string | null> {
 	return getPSCRoot(nextSearchDir);
 }
 
+/**
+ * Returns `true` if the widget is installed in the PSC.
+ * @param projectDir - path to the root directory of the PSC
+ * @param widgetName - the widget name to test
+ */
 export async function isWidget(
 	projectDir: string,
 	widgetName: string
