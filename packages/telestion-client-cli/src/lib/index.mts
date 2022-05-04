@@ -3,6 +3,7 @@ export { getLogger, getLogLevel, setLogLevel } from './logger/index.mjs';
 export { CompositeError } from './composite-error.mjs';
 export {
 	exec,
+	spawn,
 	copyFile,
 	rm,
 	stat,
