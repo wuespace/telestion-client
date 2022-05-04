@@ -1,14 +1,16 @@
-import { join, dirname } from 'path';
+import { join, resolve } from 'path';
 import { fileURLToPath } from 'url';
 import { readFile } from './native.mjs';
 
-// we need to go up two steps: 1x from lib to build, 1x from build to project root
-const packageJsonPath = join(
-	dirname(fileURLToPath(import.meta.url)),
+// we need to go up 3 steps: 1 from file to lib, 1 from lib to dist, 1 from dist to project root
+export const packageRootPath = resolve(
+	fileURLToPath(import.meta.url),
 	'..',
 	'..',
-	'package.json'
+	'..'
 );
+
+const packageJsonPath = join(packageRootPath, 'package.json');
 const packageJson = JSON.parse(await readFile(packageJsonPath));
 
 /**

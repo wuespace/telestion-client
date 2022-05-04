@@ -27,6 +27,6 @@ export {
 	getDevDependencies,
 	normalizeProjectName
 } from './package.mjs';
-export { getPackageVersion } from './package-info.mjs';
+export { packageRootPath, getPackageVersion } from './package-info.mjs';
 export { lastAtLeast } from './promise.mjs';
 export { getPackagePath } from './resolve.mjs';
