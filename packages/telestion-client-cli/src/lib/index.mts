@@ -4,10 +4,12 @@ export * from './native/index.mjs';
 export { CompositeError } from './composite-error.mjs';
 export {
 	getName,
+	getDescription,
 	getVersion,
 	getBinaries,
 	getDependencies,
 	getDevDependencies,
+	getElectronDependencies,
 	normalizeProjectName
 } from './package.mjs';
 export { packageRootPath, getPackageVersion } from './package-info.mjs';
