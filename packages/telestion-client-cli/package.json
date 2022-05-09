@@ -10,6 +10,7 @@
 			"import": "./dist/api.mjs"
 		}
 	},
+	"types": "./dist/api.d.mts",
 	"bin": {
 		"tc-cli": "./dist/cli.mjs"
 	},
