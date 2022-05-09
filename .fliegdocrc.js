@@ -33,6 +33,12 @@ module.exports = {
 			tsconfig: './packages/telestion-client-common/tsconfig.json',
 			mainFile: 'index.ts'
 		}
+		// TODO: Comment in once ts-morph in fliegdoc supports TS 4.7
+		// {
+		// 	package: './packages/telestion-client-cli/package.json',
+		// 	tsconfig: './packages/telestion-client-cli/tsconfig.json',
+		// 	mainFile: 'api.mts'
+		// }
 	],
 	title: 'Telestion Client Monorepo',
 	externalLinks: {
