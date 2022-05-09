@@ -13,6 +13,7 @@ import {
 
 import { StatsOptions } from './model.mjs';
 import { getPSCRoot, getWidgets } from '../../actions/psc.mjs';
+import { hasWorkspaceTag } from '../../actions/workspace.mjs';
 
 const logger = getLogger('Stats');
 
@@ -24,14 +25,14 @@ export async function run(options: StatsOptions): Promise<unknown[]> {
 	const errors: unknown[] = [];
 	logger.debug('Received options:', options);
 
-	const pscRootPath = await getPSCRoot(options.workingDir);
-	logger.debug('Found PSC Root:', pscRootPath);
-	if (!pscRootPath) {
+	const projectDir = await getPSCRoot(options.workingDir);
+	logger.debug('Found PSC Root:', projectDir);
+	if (!projectDir) {
 		throw new Error('You are not in a Telestion Frontend Project');
 	}
 
 	const packageJson = JSON.parse(
-		await readFile(join(pscRootPath, 'package.json'))
+		await readFile(join(projectDir, 'package.json'))
 	) as Record<string, unknown>;
 	logger.debug('PSC package.json:', packageJson);
 
@@ -40,19 +41,30 @@ export async function run(options: StatsOptions): Promise<unknown[]> {
 	const pscDependencies = await getDependencies(packageJson);
 	logger.debug('Scraped infos:', { pscName, pscVersion, pscDependencies });
 
-	const widgets = await getWidgets(pscRootPath);
+	const widgets = await getWidgets(projectDir);
 	logger.debug('Installed widgets:', widgets);
+
+	const hasWorkspaceDependencies = await hasWorkspaceTag(projectDir);
+	logger.debug('Has Workspace tag:', hasWorkspaceDependencies);
 
 	if (options.json) {
 		const packed = {
 			name: pscName,
 			version: pscVersion,
 			dependencies: Object.keys(pscDependencies),
-			widgets
+			widgets,
+			hasWorkspaceDependencies
 		};
 
 		console.log(JSON.stringify(packed, null, 2));
 	} else {
+		const workspaceDependenciesOutput = hasWorkspaceDependencies
+			? `
+${chalk.yellow(
+	'Attention: Your project contains linked workspace dependencies.'
+)}`
+			: '';
+
 		console.log(`
 Statistics for the Telestion PSC ${chalk.green(
 			pscName ?? 'Anonymous'
@@ -66,8 +78,9 @@ ${Object.keys(pscDependencies)
 Widgets (${chalk.yellow(widgets.length)}):
 ${widgets.map(widget => `  - ${chalk.cyan(widget)}`).join('\n')}
 
-Project path: ${chalk.yellow(pscRootPath)}
-Widget path:  ${chalk.yellow(join(pscRootPath, 'src', 'widgets'))}
+Project path: ${chalk.yellow(projectDir)}
+Widget path:  ${chalk.yellow(join(projectDir, 'src', 'widgets'))}
+${workspaceDependenciesOutput}
 `);
 	}
 
