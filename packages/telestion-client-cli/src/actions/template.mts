@@ -10,12 +10,14 @@ import {
 	copyFile,
 	getDependencies,
 	getDevDependencies,
+	getElectronDependencies,
 	getLogger,
 	getPackagePath,
 	mkdir,
 	readFile,
 	writeFile
 } from '../lib/index.mjs';
+import { extractWorkspaceDependencies } from './workspace.mjs';
 
 const logger = getLogger('Template Action');
 
@@ -32,6 +34,11 @@ export interface TemplateInformation {
 	 * An absolute path to the template package directory.
 	 */
 	templatePackagePath: string;
+
+	/**
+	 * A list of production dependencies that Electron needs in the main process.
+	 */
+	electronDependencies: string[];
 
 	/**
 	 * A list of production dependencies that the template specifies.
@@ -64,6 +71,11 @@ export interface TemplateReplacers {
 	projectName: string;
 
 	/**
+	 * The stringified Electron dependencies for the new Frontend Project.
+	 */
+	electronDependencies: string;
+
+	/**
 	 * The stringified production dependencies for the new Frontend Project.
 	 */
 	dependencies: string;
@@ -79,33 +91,6 @@ export interface TemplateReplacers {
  * that contains the template files.
  */
 export const templateDirProperty = 'templateDir';
-
-/**
- * Extracts dependencies specified with the 'workspace' protocol.
- * @param allDependencies - the dependency object that contains both real and workspace dependencies
- */
-function extractWorkspaceDependencies(
-	allDependencies: Record<string, string>
-): [
-	realDependencies: Record<string, string>,
-	workspaceDependencies: Array<string>
-] {
-	const workspaceDependencies: string[] = [];
-
-	const realDependencies = Object.keys(allDependencies).reduce((obj, key) => {
-		const value = allDependencies[key];
-		if (value.toLowerCase().includes('workspace')) {
-			// remove workspace dependency and put it in separate list
-			workspaceDependencies.push(key);
-		} else {
-			// keep current semver spec
-			obj[key] = value;
-		}
-		return obj;
-	}, {} as Record<string, string>);
-
-	return [realDependencies, workspaceDependencies];
-}
 
 /**
  * Searches a template with the provided template name and returns the scraped {@link TemplateInformation}.
@@ -149,8 +134,10 @@ export async function getTemplateInformation(
 
 	const allDependencies = await getDependencies(packageJson);
 	const allDevDependencies = await getDevDependencies(packageJson);
+	const electronDependencies = await getElectronDependencies(packageJson);
 	logger.debug('All production dependencies:', allDependencies);
 	logger.debug('All development dependencies:', allDevDependencies);
+	logger.debug('Electron dependencies:', electronDependencies);
 
 	// handle the pnpm workspace protocol
 	// extracts workspace dependencies and links them in the pnpm install stage
@@ -169,6 +156,7 @@ export async function getTemplateInformation(
 			packageJson[templateDirProperty]
 		),
 		templatePackagePath,
+		electronDependencies,
 		dependencies,
 		devDependencies,
 		workspaceDependencies
@@ -195,12 +183,14 @@ export async function getTemplateDirTree(
  * @param moduleName - the npm-package guidelines compatible project name (e.g. `"test-project"`)
  * @param dependencies - an object that contains all production dependencies for the new project
  * @param devDependencies - an object that contains all development dependencies for the new project
+ * @param electronDependencies - an array that contains the Electron dependencies for the new project
  */
 export async function getTemplateReplacers(
 	prettyName: string,
 	moduleName: string,
 	dependencies: Record<string, string>,
-	devDependencies: Record<string, string>
+	devDependencies: Record<string, string>,
+	electronDependencies: string[]
 ): Promise<TemplateReplacers> {
 	const addIndentation = (stringified: string) =>
 		stringified
@@ -212,7 +202,12 @@ export async function getTemplateReplacers(
 		moduleName,
 		projectName: prettyName,
 		dependencies: addIndentation(JSON.stringify(dependencies, null, '\t')),
-		devDependencies: addIndentation(JSON.stringify(devDependencies, null, '\t'))
+		devDependencies: addIndentation(
+			JSON.stringify(devDependencies, null, '\t')
+		),
+		electronDependencies: addIndentation(
+			JSON.stringify(electronDependencies, null, '\t')
+		)
 	};
 }
 
