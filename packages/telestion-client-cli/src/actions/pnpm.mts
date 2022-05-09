@@ -18,8 +18,7 @@ import {
 
 const logger = getLogger('PNPM Action');
 
-// TODO: Change to 'latest' once pnpm v7 is stable
-const pnpmVersion = 'next-7';
+const pnpmVersion = 'latest';
 
 // TODO: Remove custom global linking once global linking is stable and mostly bug-free
 const useCustomGlobalLinking = true;
@@ -129,7 +128,7 @@ export async function pnpmLinkFromGlobal(
 		// check global packages path
 		const globalPackagesPath = join(
 			pnpmHomePath,
-			'global-packages',
+			'global',
 			'5',
 			'node_modules'
 		);
