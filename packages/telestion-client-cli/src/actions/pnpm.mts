@@ -69,7 +69,7 @@ export async function pnpmInstall(projectDir: string): Promise<void> {
 	logger.debug('Project directory:', projectDir);
 
 	try {
-		await exec('pnpm', ['install'], projectDir);
+		await exec('pnpm', ['install'], { cwd: projectDir });
 	} catch (err) {
 		throw new CompositeError('Cannot install dependencies', err);
 	}
@@ -84,7 +84,7 @@ export async function pnpmLinkToGlobal(projectDir: string): Promise<void> {
 	logger.debug('Project directory:', projectDir);
 
 	try {
-		await exec('pnpm', ['link', '--global'], projectDir);
+		await exec('pnpm', ['link', '--global'], { cwd: projectDir });
 	} catch (err) {
 		throw new CompositeError(
 			`Cannot link project '${projectDir}' to global store`,
@@ -248,7 +248,9 @@ exec "${globalBinaryPath}" "$@"
 		logger.debug('Use default global linking method');
 
 		try {
-			await exec('pnpm', ['link', '--global', dependencyName], projectDir);
+			await exec('pnpm', ['link', '--global', dependencyName], {
+				cwd: projectDir
+			});
 		} catch (err) {
 			throw new CompositeError(
 				`Cannot link global dependency '${dependencyName}' into project '${projectDir}'`,
