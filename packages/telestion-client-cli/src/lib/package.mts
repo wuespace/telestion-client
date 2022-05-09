@@ -1,8 +1,8 @@
 import validate from 'validate-npm-package-name';
 
 /**
- * Scrapes an object that represents a valid `package.json` for their name.
- * @param packageJson - the object that represents a valid `package.json`
+ * Searches for the package name in a parsed `package.json` JSON object.
+ * @param packageJson - the parsed `package.json` JSON object
  */
 export async function getName(
 	packageJson: Record<string, unknown>
@@ -23,8 +23,8 @@ export async function getName(
 }
 
 /**
- * Scraped an object that represents a valid `package.json` for their description.
- * @param packageJson - the object that represents a valid `package.json`
+ * Searches for the package description in a parsed `package.json` JSON object.
+ * @param packageJson - the parsed `package.json` JSON object
  */
 export async function getDescription(
 	packageJson: Record<string, unknown>
@@ -45,8 +45,8 @@ export async function getDescription(
 }
 
 /**
- * Scrapes an object that represents a valid `package.json` for their version.
- * @param packageJson - the object that represents a valid `package.json`
+ * Searches for the package version in a parsed `package.json` JSON object.
+ * @param packageJson - the parsed `package.json` JSON object
  */
 export async function getVersion(
 	packageJson: Record<string, unknown>
@@ -67,15 +67,16 @@ export async function getVersion(
 }
 
 /**
- * Scrapes an object that represents a valid 'package.json' for the binary field.
- * @param packageJson - the object that represents a valid `package.json`
+ * Searches for exported binaries in a parsed `package.json` JSON object
+ * and returns an empty object if the `package.json` doesn't contain
+ * any exported binaries.
+ *
+ * @param packageJson - the parsed `package.json` JSON object
  */
 export async function getBinaries(
 	packageJson: Record<string, unknown>
 ): Promise<Record<string, string>> {
-	if (!packageJson.hasOwnProperty('bin')) {
-		return {}; // empty object and everyone is happy :)
-	}
+	if (!packageJson.hasOwnProperty('bin')) return {};
 
 	if (
 		typeof packageJson['bin'] !== 'object' ||
@@ -104,13 +105,15 @@ export async function getBinaries(
 }
 
 /**
- * Scrapes an object that represents a valid `package.json` for production dependencies.
- * @param packageJson - the object that represents a valid `package.json`
+ * Searches for production dependencies in a parsed `package.json` JSON object
+ * and returns an empty object if the `package.json` doesn't contain
+ * any production dependencies.
+ *
+ * @param packageJson - the parsed `package.json` JSON object
  */
 export async function getDependencies(
 	packageJson: Record<string, unknown>
 ): Promise<Record<string, string>> {
-	// package.json has no production dependencies
 	if (!packageJson.hasOwnProperty('dependencies')) return {};
 
 	if (
@@ -124,8 +127,7 @@ export async function getDependencies(
 		);
 	}
 
-	const dependencies =
-		(packageJson['dependencies'] as Record<string, unknown>) || {};
+	const dependencies = packageJson['dependencies'] as Record<string, unknown>;
 
 	Object.keys(dependencies).forEach(key => {
 		if (typeof dependencies[key] !== 'string') {
@@ -141,13 +143,15 @@ export async function getDependencies(
 }
 
 /**
- * Scrapes an object that represents a valid `package.json` for development dependencies.
- * @param packageJson - the object that represents a valid `package.json`
+ * Searches for development dependencies in a parsed `package.json` JSON object
+ * and returns an empty object if the `package.json` doesn't contain
+ * any development dependencies.
+ *
+ * @param packageJson - the parsed `package.json` JSON object
  */
 export async function getDevDependencies(
 	packageJson: Record<string, unknown>
 ): Promise<Record<string, string>> {
-	// package.json has no production dependencies
 	if (!packageJson.hasOwnProperty('devDependencies')) return {};
 
 	if (
@@ -161,8 +165,10 @@ export async function getDevDependencies(
 		);
 	}
 
-	const devDependencies =
-		(packageJson['devDependencies'] as Record<string, unknown>) || {};
+	const devDependencies = packageJson['devDependencies'] as Record<
+		string,
+		unknown
+	>;
 
 	Object.keys(devDependencies).forEach(key => {
 		if (typeof devDependencies[key] !== 'string') {
@@ -178,19 +184,18 @@ export async function getDevDependencies(
 }
 
 /**
- * Scrapes an object that represents a valid `package.json` for production dependencies.
- * @param packageJson - the object that represents a valid `package.json`
+ * Searches for Electron dependencies in a parsed `package.json` JSON object
+ * and returns an empty array if the `package.json` doesn't contain
+ * any Electron dependencies.
+ *
+ * @param packageJson - the parsed `package.json` JSON object
  */
 export async function getElectronDependencies(
 	packageJson: Record<string, unknown>
-): Promise<Record<string, string>> {
-	// package.json has no Electron dependencies
-	if (!packageJson.hasOwnProperty('electronDependencies')) return {};
+): Promise<string[]> {
+	if (!packageJson.hasOwnProperty('electronDependencies')) return [];
 
-	if (
-		typeof packageJson['electronDependencies'] !== 'object' ||
-		Array.isArray(packageJson['electronDependencies'])
-	) {
+	if (!Array.isArray(packageJson['electronDependencies'])) {
 		throw new Error(
 			`The provided package.json has invalid Electron dependencies: Expected: object, Got: ${typeof packageJson[
 				'electronDependencies'
@@ -198,24 +203,45 @@ export async function getElectronDependencies(
 		);
 	}
 
-	const dependencies =
-		(packageJson['electronDependencies'] as Record<string, unknown>) || {};
+	const electronDependencies = packageJson['electronDependencies'] as unknown[];
 
-	Object.keys(dependencies).forEach(key => {
-		if (typeof dependencies[key] !== 'string') {
+	for (const dependency of electronDependencies) {
+		if (typeof dependency !== 'string') {
 			throw new Error(
-				`The dependency ${key} has an invalid version specifier: Expected: string, Got: ${typeof dependencies[
-					key
-				]}`
+				`The dependency has an invalid type: Expected: string, Got: ${typeof dependency}`
 			);
 		}
-	});
+	}
 
-	return dependencies as Record<string, string>;
+	return electronDependencies as string[];
 }
 
 /**
- * Takes a pretty project name (e.g. from user input) and returns a valid npm project name.
+ * Searches for production and Electron dependencies.
+ * The production dependencies are filtered through the Electron dependency list
+ * resulting in the final production dependencies
+ * that Electron needs in the main process.
+ *
+ * @param packageJson - the parsed `package.json` JSON object
+ */
+export async function resolveElectronDependencies(
+	packageJson: Record<string, unknown>
+): Promise<Record<string, string>> {
+	const electronDependencies = await getElectronDependencies(packageJson);
+	const dependencies = await getDependencies(packageJson);
+
+	return Object.keys(dependencies).reduce((acc, specifier) => {
+		if (electronDependencies.includes(specifier)) {
+			acc[specifier] = dependencies[specifier];
+		}
+		return acc;
+	}, {} as Record<string, string>);
+}
+
+/**
+ * Takes a pretty project name (e.g. from user input)
+ * and returns a valid npm project name.
+ *
  * @param prettyName - the pretty project name to transform
  */
 export async function normalizeProjectName(
