@@ -2,7 +2,7 @@
 	"name": "@wuespace/telestion-client-prop-types",
 	"description": "PropTypes for Telestion Client types",
 	"license": "MIT",
-	"version": "0.18.0",
+	"version": "0.18.1",
 	"homepage": "https://telestion.wuespace.de/",
 	"source": "src/index.ts",
 	"main": "dist/main.js",
@@ -56,20 +56,21 @@
 			"url": "https://github.com/fussel178"
 		}
 	],
-	"peerDependencies": {
-		"react": "^17"
-	},
 	"dependencies": {
-		"@wuespace/vertx-event-bus": "workspace:^",
-		"prop-types": "^15.7.2"
-	},
-	"publishConfig": {
-		"access": "public"
+		"@wuespace/vertx-event-bus": "workspace:^"
 	},
 	"devDependencies": {
 		"@types/lodash": "^4.14.181",
 		"@types/prop-types": "^15.7.5",
 		"@types/react": "^17.0.0",
-		"lodash": "^4.17.21"
+		"lodash": "^4.17.21",
+		"prop-types": "^15.7.2"
+	},
+	"peerDependencies": {
+		"react": ">=16.8",
+		"prop-types": ">=15.7"
+	},
+	"publishConfig": {
+		"access": "public"
 	}
 }
