@@ -2,7 +2,7 @@
 	"name": "@wuespace/telestion-client-types",
 	"description": "Types for Telestion Client and their projects",
 	"license": "MIT",
-	"version": "0.18.0",
+	"version": "0.18.1",
 	"homepage": "https://telestion.wuespace.de/",
 	"types": "types/index.d.ts",
 	"files": [
@@ -54,7 +54,7 @@
 		"@fliegwerk/logsemts": "^0.4.3"
 	},
 	"peerDependencies": {
-		"react": "^17"
+		"react": ">=16.8"
 	},
 	"publishConfig": {
 		"access": "public"
