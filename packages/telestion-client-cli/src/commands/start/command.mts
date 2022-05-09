@@ -6,6 +6,7 @@ import { BaseWithPartial } from '../../model/index.mjs';
 import { exit, getLogger, openUrl, readFile } from '../../lib/index.mjs';
 import { getPSCRoot } from '../../actions/psc.mjs';
 import {
+	clearNativeDependencies,
 	generateDistPackageJson,
 	installNativeDependencies,
 	start as startElectron
@@ -41,65 +42,76 @@ export async function start(options: StartOptions): Promise<unknown[]> {
 
 	// 1. Start Parcel in "serve" mode for frontend target
 	let serveFrontendBuilt = false;
-	await parcelServeFrontendStage(projectDir, options, async stop1 => {
-		// multiple call prevention
-		if (serveFrontendBuilt) return;
-		serveFrontendBuilt = true;
+	try {
+		await parcelServeFrontendStage(projectDir, options, async stop1 => {
+			// multiple call prevention
+			if (serveFrontendBuilt) return;
+			serveFrontendBuilt = true;
 
-		// open external browser if requested
-		if (options.target === 'browser') {
-			if (options.open) openUrl(new URL(`http://localhost:${options.port}/`));
-			return;
-		}
+			// open external browser if requested
+			if (options.target === 'browser') {
+				if (options.open) openUrl(new URL(`http://localhost:${options.port}/`));
+				return;
+			}
 
-		// 2. Start Parcel in "watch" mode for electron target
-		try {
-			// preparation of needed content (must not be re-created every build success event)
-			let dispatching = false;
-			let electronProcess: ChildProcess;
-			let oldStop2: () => void;
+			// 2. Start Parcel in "watch" mode for electron target
+			try {
+				// preparation of needed content (must not be re-created every build success event)
+				let dispatching = false;
+				let electronProcess: ChildProcess;
+				let oldStop2: () => void;
 
-			await parcelWatchElectronStage(projectDir, options, async stop2 => {
-				// prevent too fast calls
-				if (dispatching) {
-					logger.debug(
-						'Already dispatching Electron restart. Please be patient'
-					);
-					return;
-				}
+				await clearNativeDependencies(projectDir);
 
-				dispatching = true; /// +++ GUARD START +++
-
-				// no multiple call prevention here because we want to kill
-				// and restart Electron on main process changes
-				try {
-					if (electronProcess) {
-						electronProcess.off('exit', oldStop2);
-						electronProcess.kill('SIGHUP');
+				await parcelWatchElectronStage(projectDir, options, async stop2 => {
+					// prevent too fast calls
+					if (dispatching) {
+						logger.debug(
+							'Already dispatching Electron restart. Please be patient'
+						);
+						return;
 					}
-					// store stop command to unregister it later from old electron process in case of reload
-					oldStop2 = stop2;
 
-					await generateDistPackageJson(projectDir, packageJson);
-					await installNativeDependencies(projectDir);
-					electronProcess = await startElectron(projectDir, options.port);
-					electronProcess.on('exit', stop2);
-				} catch (err) {
-					// capture fatal errors
-					errors.push(err);
-					stop2();
-				}
+					dispatching = true; /// +++ GUARD START +++
 
-				dispatching = false; /// +++ GUARD END +++
-			});
-		} catch (err) {
-			// capture fatal errors
-			errors.push(err);
-		} finally {
-			// stop 1. layer once 2. layer finishes
-			stop1();
-		}
-	});
+					// no multiple call prevention here because we want to kill
+					// and restart Electron on main process changes
+					try {
+						if (electronProcess) {
+							electronProcess.off('exit', oldStop2);
+							electronProcess.kill('SIGHUP');
+						}
+						// store stop command to unregister it later from old electron process in case of reload
+						oldStop2 = stop2;
+
+						const nativeDependencies = await generateDistPackageJson(
+							projectDir,
+							packageJson
+						);
+						await installNativeDependencies(projectDir, nativeDependencies);
+						electronProcess = await startElectron(projectDir, options.port);
+						electronProcess.on('exit', stop2);
+					} catch (err) {
+						logger.error(err);
+						// capture fatal errors
+						errors.push(err);
+						stop2();
+					}
+
+					dispatching = false; /// +++ GUARD END +++
+				});
+			} catch (err) {
+				logger.error(err);
+				// capture fatal errors
+				errors.push(err);
+			} finally {
+				// stop 1. layer once 2. layer finishes
+				stop1();
+			}
+		});
+	} catch (err) {
+		errors.push(err);
+	}
 
 	return errors;
 }
