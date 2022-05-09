@@ -31,6 +31,7 @@ import {
 } from '../../actions/git.mjs';
 
 import { InitOptions } from './model.mjs';
+import { createWorkspaceTag } from '../../actions/workspace.mjs';
 
 const logger = getLogger('Init Stage');
 
@@ -129,7 +130,8 @@ export async function templateStage(
 		options.name,
 		infos.projectName,
 		templateInfos.dependencies,
-		templateInfos.devDependencies
+		templateInfos.devDependencies,
+		templateInfos.electronDependencies
 	);
 	logger.debug('Generated replacers:', replacers);
 
@@ -143,6 +145,11 @@ export async function templateStage(
 	} catch (err) {
 		spinner.fail('Cannot create new project from template');
 		throw err;
+	}
+
+	if (templateInfos.workspaceDependencies.length > 0) {
+		logger.debug('Workspace dependencies found. Create workspace tag');
+		await createWorkspaceTag(infos.projectPath);
 	}
 
 	spinner.succeed('Created Frontend Project');
