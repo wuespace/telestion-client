@@ -1,65 +1,24 @@
-import os from 'os';
-import { promisify } from 'util';
-import { constants, Stats } from 'fs';
 import {
+	chmod as nodeChmod,
 	copyFile as nodeCopyFile,
+	mkdir as nodeMkDir,
+	readdir as nodeReadDir,
+	readFile as nodeReadFile,
+	realpath as nodeRealPath,
+	rename as nodeRename,
 	rm as nodeRm,
 	stat as nodeStat,
-	mkdir as nodeMkDir,
-	readFile as nodeReadFile,
-	writeFile as nodeWriteFile,
-	readdir as nodeReadDir,
 	symlink as nodeSymlink,
-	rename as nodeRename,
-	realpath as nodeRealPath,
-	chmod as nodeChmod
+	writeFile as nodeWriteFile
 } from 'fs/promises';
-import {
-	ChildProcess,
-	execFile as nodeExecFile,
-	spawn as nodeSpawn
-} from 'child_process';
-import { getLogger } from './logger/index.mjs';
-
-const execFile = promisify(nodeExecFile);
+import { constants, existsSync as nodeExistsSync, Stats } from 'fs';
+import { getLogger } from '../logger/index.mjs';
 
 const logger = getLogger('Native');
 
-/**
- * Executes a command with an optional argument list.
- * No shell interpretation is happening, so it is safe to pass shell meta characters.
- *
- * @param command - the absolute path to the command you want to execute (e.g. /usr/bin/grep)
- * @param argumentList - the optional argument list that is directly passed to the command
- * @param workingDir - optional working directory
- */
-export async function exec(
-	command: string,
-	argumentList: string[] = [],
-	workingDir?: string
-): Promise<{ stdout: string; stderr: string }> {
-	logger.debug(`Execute '${command}' with:`, argumentList, 'in:', workingDir);
-	const result = await execFile(command, argumentList, { cwd: workingDir });
-	logger.debug('Result:', result);
-	return result;
-}
-
-export async function spawn(
-	command: string,
-	argumentList: string[] = [],
-	workingDir?: string,
-	stdio: 'pipe' | 'ignore' | 'inherit' = 'ignore'
-): Promise<ChildProcess> {
-	logger.debug(
-		`Spawn new process '${command}' with:`,
-		argumentList,
-		'in:',
-		workingDir
-	);
-	const process = nodeSpawn(command, argumentList, { cwd: workingDir, stdio });
-	logger.debug('Process instance:', process);
-	return process;
-}
+///
+/// File reference manipulation
+///
 
 /**
  * Copies a file from the source path to the destination path.
@@ -121,6 +80,15 @@ export async function exists(path: string): Promise<boolean> {
 }
 
 /**
+ * Returns `true` if the path exists. (synchronous version)
+ * @param path - the path to check for existence
+ */
+export function existsSync(path: string): boolean {
+	logger.debug(`Check '${path}' for existence (synchronously)`);
+	return nodeExistsSync(path);
+}
+
+/**
  * Moves a file from the old path to the new path.
  * @param oldPath - the path to the file you want to move
  * @param newPath - the destination path the file should have once the function returns
@@ -166,39 +134,6 @@ export async function mkdir(
 }
 
 /**
- * Reads the contents of a file and returns them as a string.
- * @param filePath - the path to the file
- */
-export async function readFile(filePath: string): Promise<string> {
-	logger.debug(`Read from file '${filePath}'`);
-	return nodeReadFile(filePath, { encoding: 'utf-8' });
-}
-
-/**
- * Writes the given contents to a file.
- * @param filePath - the path to the file
- * @param content - the new content
- * @param append - when {@code true} the new content is appended to the existing one
- */
-export async function writeFile(
-	filePath: string,
-	content: string,
-	append = false
-): Promise<void> {
-	logger.debug(`Write to file '${filePath}'${append ? ' (append)' : ''}`);
-	return nodeWriteFile(filePath, content, { flag: append ? 'a' : 'w' });
-}
-
-/**
- * Reads the contents of a directory and returns the names of all elements.
- * @param dirPath - the path to the directory
- */
-export async function readDir(dirPath: string): Promise<string[]> {
-	logger.debug(`Read element names from directory '${dirPath}'`);
-	return nodeReadDir(dirPath);
-}
-
-/**
  * Creates a symlink at the specified path that points to another path.
  * @param pointsTo - the path to which the link should point
  * @param symlinkPath - the path on which the link should be generated
@@ -237,33 +172,39 @@ export async function chmod(
 	await nodeChmod(filePath, mode);
 }
 
+///
+/// File content manipulation
+///
+
 /**
- * Opens the URL in the system's native browser.
- * @param url the URL to open
+ * Reads the contents of a file and returns them as a string.
+ * @param filePath - the path to the file
  */
-export async function openUrl(url: URL): Promise<void> {
-	let command: string;
+export async function readFile(filePath: string): Promise<string> {
+	logger.debug(`Read from file '${filePath}'`);
+	return nodeReadFile(filePath, { encoding: 'utf-8' });
+}
 
-	switch (os.type()) {
-		case 'Darwin':
-			command = 'open';
-			break;
-		case 'Windows_NT':
-			command = 'explorer.exe';
-			break;
-		case 'Linux':
-			command = 'xdg-open';
-			break;
-		default:
-			throw new Error(
-				`Cannot open url '${url.href}'. Unsupported platform: ${os.type()}`
-			);
-	}
+/**
+ * Writes the given contents to a file.
+ * @param filePath - the path to the file
+ * @param content - the new content
+ * @param append - when {@code true} the new content is appended to the existing one
+ */
+export async function writeFile(
+	filePath: string,
+	content: string,
+	append = false
+): Promise<void> {
+	logger.debug(`Write to file '${filePath}'${append ? ' (append)' : ''}`);
+	return nodeWriteFile(filePath, content, { flag: append ? 'a' : 'w' });
+}
 
-	logger.debug(
-		`Open URL '${
-			url.href
-		}' on platform '${os.type()}' with command '${command}'`
-	);
-	await spawn(command, [url.href]);
+/**
+ * Reads the contents of a directory and returns the names of all elements.
+ * @param dirPath - the path to the directory
+ */
+export async function readDir(dirPath: string): Promise<string[]> {
+	logger.debug(`Read element names from directory '${dirPath}'`);
+	return nodeReadDir(dirPath);
 }
