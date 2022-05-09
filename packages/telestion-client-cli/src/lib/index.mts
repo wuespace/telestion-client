@@ -10,6 +10,7 @@ export {
 	getDependencies,
 	getDevDependencies,
 	getElectronDependencies,
+	resolveElectronDependencies,
 	normalizeProjectName
 } from './package.mjs';
 export { packageRootPath, getPackageVersion } from './package-info.mjs';
