@@ -63,7 +63,6 @@ importers:
       react-test-renderer: ^17.0.2
       rimraf: ^3.0.2
       ts-jest: ~27.1.4
-      tslib: ~2.4.0
       typescript: 4.7.0-beta
       webpack: ^4.46.0
     dependencies:
@@ -121,7 +120,6 @@ importers:
       react-test-renderer: 17.0.2_react@17.0.2
       rimraf: 3.0.2
       ts-jest: 27.1.4_mj2ewvy2j35cgq3zpfsto5ve5e
-      tslib: 2.4.0
       typescript: 4.7.0-beta
       webpack: 4.46.0
 
