@@ -34,7 +34,9 @@ export async function getConfigProp(
 	property: string
 ): Promise<string | undefined> {
 	try {
-		return (await exec('git', ['config', property], workingDir)).stdout;
+		return (
+			await exec('git', ['config', property], { cwd: workingDir })
+		).stdout.toString();
 	} catch (err) {
 		logger.info(`Property ${property} is not set`);
 		return undefined;
@@ -60,7 +62,7 @@ export async function setConfigProp(
 	value: string
 ): Promise<void> {
 	try {
-		await exec('git', ['config', property, value], workingDir);
+		await exec('git', ['config', property, value], { cwd: workingDir });
 	} catch (err) {
 		logger.error(
 			`Cannot set '${value}' on '${property}' in git repository '${workingDir}'`
@@ -136,8 +138,10 @@ export async function gitSetup(
 export async function getGitRoot(workingDir: string): Promise<string> {
 	try {
 		logger.debug('Search for git repository in:', workingDir);
-		const result = await exec('git', ['rev-parse', '--git-dir'], workingDir);
-		return resolve(result.stdout, '..');
+		const result = await exec('git', ['rev-parse', '--git-dir'], {
+			cwd: workingDir
+		});
+		return resolve(result.stdout.toString(), '..');
 	} catch (err) {
 		throw new Error(
 			`Your working directory '${workingDir}' doesn't reside in a git repository.` +
@@ -165,7 +169,7 @@ export async function isGitRepo(workingDir: string): Promise<boolean> {
  */
 export async function gitInit(gitRoot: string): Promise<void> {
 	try {
-		await exec('git', ['init'], gitRoot);
+		await exec('git', ['init'], { cwd: gitRoot });
 	} catch (err) {
 		throw new CompositeError(
 			`Cannot create a new git repository in: ${gitRoot}`,
@@ -184,7 +188,7 @@ export async function gitAdd(
 	files: string[]
 ): Promise<void> {
 	try {
-		await exec('git', ['add', ...files], workingDir);
+		await exec('git', ['add', ...files], { cwd: workingDir });
 	} catch (err) {
 		throw new CompositeError(
 			`Cannot add ${files
@@ -207,7 +211,7 @@ export async function gitCommit(
 	try {
 		const messageArgs = messages.flatMap(message => ['-m', message]);
 		logger.debug('Commit message arguments:', messageArgs);
-		await exec('git', ['commit', ...messageArgs], workingDir);
+		await exec('git', ['commit', ...messageArgs], { cwd: workingDir });
 	} catch (err) {
 		throw new CompositeError(
 			`Cannot commit the staged files in: ${workingDir}`,

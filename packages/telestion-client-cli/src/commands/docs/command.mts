@@ -6,7 +6,7 @@ import { openUrl } from '../../lib/index.mjs';
 export async function docs(): Promise<unknown[]> {
 	const errors: unknown[] = [];
 
-	await openUrl('https://docs.telestion.wuespace.de/');
+	await openUrl(new URL('https://docs.telestion.wuespace.de/'));
 
 	return errors;
 }
