@@ -23,6 +23,28 @@ export async function getName(
 }
 
 /**
+ * Scraped an object that represents a valid `package.json` for their description.
+ * @param packageJson - the object that represents a valid `package.json`
+ */
+export async function getDescription(
+	packageJson: Record<string, unknown>
+): Promise<string> {
+	if (!packageJson.hasOwnProperty('description')) {
+		throw new Error('The provided package.json has no name');
+	}
+
+	if (typeof packageJson['description'] !== 'string') {
+		throw new Error(
+			`The provided package.json has an invalid description type: Expected: string, Got: ${typeof packageJson[
+				'description'
+			]}`
+		);
+	}
+
+	return packageJson['description'];
+}
+
+/**
  * Scrapes an object that represents a valid `package.json` for their version.
  * @param packageJson - the object that represents a valid `package.json`
  */
@@ -153,6 +175,43 @@ export async function getDevDependencies(
 	});
 
 	return devDependencies as Record<string, string>;
+}
+
+/**
+ * Scrapes an object that represents a valid `package.json` for production dependencies.
+ * @param packageJson - the object that represents a valid `package.json`
+ */
+export async function getElectronDependencies(
+	packageJson: Record<string, unknown>
+): Promise<Record<string, string>> {
+	// package.json has no Electron dependencies
+	if (!packageJson.hasOwnProperty('electronDependencies')) return {};
+
+	if (
+		typeof packageJson['electronDependencies'] !== 'object' ||
+		Array.isArray(packageJson['electronDependencies'])
+	) {
+		throw new Error(
+			`The provided package.json has invalid Electron dependencies: Expected: object, Got: ${typeof packageJson[
+				'electronDependencies'
+			]}`
+		);
+	}
+
+	const dependencies =
+		(packageJson['electronDependencies'] as Record<string, unknown>) || {};
+
+	Object.keys(dependencies).forEach(key => {
+		if (typeof dependencies[key] !== 'string') {
+			throw new Error(
+				`The dependency ${key} has an invalid version specifier: Expected: string, Got: ${typeof dependencies[
+					key
+				]}`
+			);
+		}
+	});
+
+	return dependencies as Record<string, string>;
 }
 
 /**
