@@ -1,16 +1,26 @@
 {
+	"extends": "../../tsconfig.json",
 	"compilerOptions": {
-		"module": "nodenext",
-		"moduleResolution": "node12",
+		"noEmit": false,
 		"target": "es2022",
-		"allowSyntheticDefaultImports": true,
-		"skipLibCheck": true,
-		"esModuleInterop": true,
-		"forceConsistentCasingInFileNames": true,
+		/* We use ModuleJS in our CLI */
+		"module": "nodenext",
+		"declaration": true,
+		"sourceMap": true,
+		"outDir": "dist",
+		/* Strict Type-Checking Options */
 		"strict": true,
+		/* Module Resolution Options */
+		"moduleResolution": "node12",
+		"allowSyntheticDefaultImports": true,
+		"esModuleInterop": true,
+		/* Advanced Options */
+		"skipLibCheck": true,
+		"forceConsistentCasingInFileNames": true,
 		"noImplicitAny": true,
-		"outDir": "dist"
+		/* reset paths because typescript threat workspace dependencies as normal dependencies */
+		"paths": {}
 	},
 	"include": ["src"],
-	"exclude": ["node_modules"]
+	"exclude": ["node_modules", "dist"]
 }
