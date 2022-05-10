@@ -8,11 +8,14 @@
 # testing
 /coverage
 
+# caches
+.parcel-cache
+
 # production
-/build
+/dist
 
 # electron builds
-/dist
+/release
 
 # misc
 .DS_Store

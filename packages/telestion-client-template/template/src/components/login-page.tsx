@@ -4,7 +4,7 @@ import {
 	LoginLogo,
 	LoginDescription,
 	LoginForm
-} from "@wuespace/telestion-client-common";
+} from '@wuespace/telestion-client-common';
 
 export function LoginPage() {
 	return (

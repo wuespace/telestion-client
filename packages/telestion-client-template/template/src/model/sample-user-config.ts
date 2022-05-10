@@ -1,7 +1,7 @@
-import { UserConfig } from "@wuespace/telestion-client-types";
+import { UserConfig } from '@wuespace/telestion-client-types';
 
 export const userConfig: UserConfig = {
-	'admin': {
+	admin: {
 		dashboards: [
 			{
 				title: 'Overview',
@@ -43,7 +43,7 @@ export const userConfig: UserConfig = {
 						widgetName: 'Widget6',
 						width: 1,
 						height: 3
-					},
+					}
 				]
 			}
 		]

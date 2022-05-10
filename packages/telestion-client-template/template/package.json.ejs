@@ -9,9 +9,9 @@
 	},
 	"scripts": {
 		"prepare": "husky install",
-		"start": "npm run start:electron",
-		"start:electron": "tc-cli start --electron",
-		"start:browser": "tc-cli start --browser",
+		"start": "tc-cli start",
+		"start:electron": "tc-cli start electron",
+		"start:browser": "tc-cli start browser",
 		"build": "tc-cli build",
 		"stats": "tc-cli stats",
 		"style": "prettier --write .",
@@ -20,19 +20,24 @@
 		"check": "tsc",
 		"clean": "rimraf dist release"
 	},
-	"private": true,
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
+	"targets": {
+		"electron": {
+			"source": "src/electron.ts",
+			"context": "electron-main",
+			"distDir": "dist"
+		},
+		"frontend": {
+			"source": "src/index.html",
+			"context": "browser",
+			"distDir": "dist",
+			"engines": {
+				"browsers": "last 2 Chrome versions"
+			},
+			"publicUrl": "./"
+		}
 	},
+	"private": true,
+	"electronDependencies": <%- electronDependencies %>,
 	"dependencies": <%- dependencies %>,
 	"devDependencies": <%- devDependencies %>
 }
