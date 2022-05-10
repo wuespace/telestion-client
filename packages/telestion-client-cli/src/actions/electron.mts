@@ -3,11 +3,11 @@ import { join, relative } from 'path';
 import { ChildProcess } from 'child_process';
 
 import {
+	exists,
 	getDescription,
 	getElectronDependencies,
 	getLogger,
 	getName,
-	getPackagePath,
 	getVersion,
 	mkdir,
 	readFile,
@@ -191,7 +191,13 @@ export async function start(
 	logger.debug('Project directory:', projectDir);
 	logger.debug('Development server port:', devServerPort);
 
-	const electronPackagePath = await getPackagePath('electron');
+	const electronPackagePath = join(projectDir, 'node_modules', 'electron');
+	if (!(await exists(electronPackagePath))) {
+		throw new Error(
+			'Electron binary not found. Is Electron installed in your project?'
+		);
+	}
+
 	const electronBinaryName = await readFile(
 		join(electronPackagePath, 'path.txt')
 	);
