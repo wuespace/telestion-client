@@ -1,0 +1,11 @@
+{
+	"extends": "@parcel/config-default",
+	"transformers": {
+		"*.svg": ["@parcel/transformer-svg-react"]
+	},
+	"optimizers": {
+		// disable terser because it resolves badly
+		"*.{js,mjs,cjs}": []
+	},
+	"reporters": ["...", "@wuespace/parcel-reporter-tc-cli"]
+}

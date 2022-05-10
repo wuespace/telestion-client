@@ -16,20 +16,20 @@ export function Header() {
 		<TCHeader
 			left={
 				<>
-					<AppLogo/>
-					<NavBar/>
+					<AppLogo />
+					<NavBar />
 				</>
 			}
-			center={<DashboardPicker/>}
+			center={<DashboardPicker />}
 			right={
 				<>
-					<ConnectionIndicator/>
+					<ConnectionIndicator />
 					<Actions>
-						<NotificationAction/>
-						<ColorSchemeAction/>
-						<FullscreenAction/>
+						<NotificationAction />
+						<ColorSchemeAction />
+						<FullscreenAction />
 					</Actions>
-					<AccountControls/>
+					<AccountControls />
 				</>
 			}
 		/>
