@@ -23,7 +23,7 @@ This project uses [pnpm](https://pnpm.io/) as package manager.
 To install it, run:
 
 ```shell
-npm install --global pnpm@next-7
+npm install --global pnpm@latest
 ```
 
 To install production and development dependencies, run:
