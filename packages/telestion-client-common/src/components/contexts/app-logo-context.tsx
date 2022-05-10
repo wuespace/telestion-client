@@ -1,6 +1,6 @@
 import { createContext, ReactElement, useContext } from 'react';
 import PropTypes from 'prop-types';
-import defaultAppLogo from '../../media/default-app-logo.svg';
+import defaultAppLogo from 'data-url:../../media/default-app-logo.png';
 
 // React context for the path to the application logo
 const appLogoContext = createContext<string | null>(null);
