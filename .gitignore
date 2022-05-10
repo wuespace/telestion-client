@@ -45,6 +45,8 @@ composer.lock
 /packages/**/types
 /docs
 /storybook-static
+*.tgz
+*.tar.gz
 
 # coverage reports
 /coverage
