@@ -11,7 +11,12 @@ import {
 	symlink as nodeSymlink,
 	writeFile as nodeWriteFile
 } from 'fs/promises';
-import { constants, existsSync as nodeExistsSync, Stats } from 'fs';
+import {
+	constants,
+	existsSync as nodeExistsSync,
+	readFileSync as nodeReadFileSync,
+	Stats
+} from 'fs';
 import { getLogger } from '../logger/index.mjs';
 
 const logger = getLogger('Native');
@@ -183,6 +188,17 @@ export async function chmod(
 export async function readFile(filePath: string): Promise<string> {
 	logger.debug(`Read from file '${filePath}'`);
 	return nodeReadFile(filePath, { encoding: 'utf-8' });
+}
+
+/**
+ * Reads the contents of a file and returns them as a string.
+ * (synchronous version)
+ *
+ * @param filePath - the path to the file
+ */
+export function readFileSync(filePath: string): string {
+	logger.debug(`Read from file '${filePath}' (synchronously)`);
+	return nodeReadFileSync(filePath, { encoding: 'utf-8' });
 }
 
 /**
