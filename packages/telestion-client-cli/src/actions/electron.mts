@@ -225,7 +225,8 @@ export async function installNativeDependencies(
 			return new Promise<void>((resolve, reject) => {
 				logger.debug('Install native dependencies');
 				const npmProcess = spawn('npm', ['install', '--no-package-lock'], {
-					cwd: distDir
+					cwd: distDir,
+					shell: os.type() === 'Windows_NT'
 				});
 
 				// pass through process output
@@ -288,7 +289,11 @@ export function startElectron(
 	const electronBinaryName = readFileSync(
 		join(electronPackagePath, 'path.txt')
 	);
-	const electronBinaryPath = join(electronPackagePath, 'dist', electronBinaryName);
+	const electronBinaryPath = join(
+		electronPackagePath,
+		'dist',
+		electronBinaryName
+	);
 	logger.debug('Electron binary name:', electronBinaryName);
 	logger.debug('Electron package path:', electronPackagePath);
 	logger.debug('Electron binary path:', electronBinaryPath);
