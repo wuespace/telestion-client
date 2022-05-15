@@ -11,7 +11,6 @@ import {
 
 import { getLogger } from '../logger/index.mjs';
 import { addChildProcess } from './process-management.mjs';
-import os from 'os';
 
 const nodeExecFile = promisify(nodeExecFileCallback);
 const logger = getLogger('Child Process');
@@ -33,14 +32,7 @@ export async function exec(
 
 	logger.debug('Execute executable');
 
-	const result = await nodeExecFile(executablePath, args, {
-		...options
-		// enable .bat and .sh file support on Windows
-		// Note: This opens up a security risk on Windows machines by passing unsanitized user input into this function.
-		// Use with care.
-		// TODO: Find better solution
-		//shell: os.type() === 'Windows_NT'
-	});
+	const result = await nodeExecFile(executablePath, args, options);
 	logger.debug(`Exec Result for ${executablePath}:`, result);
 	return result;
 }
@@ -53,15 +45,15 @@ export async function exec(
  */
 export function spawn(
 	executablePath: string,
-	args?: string[],
-	options?: SpawnOptions
+	args: readonly string[] = [],
+	options: SpawnOptions = {}
 ): ChildProcess {
 	logger.debug('Executable path:', executablePath);
 	logger.debug('Arguments:', args);
 	logger.debug('Spawn options:', options);
 
 	logger.debug('Spawn process now');
-	const childProcess = nodeSpawn(executablePath, args ?? [], options ?? {});
+	const childProcess = nodeSpawn(executablePath, args, options);
 	logger.debug('Spawn process instance:', childProcess);
 	addChildProcess(childProcess);
 	return childProcess;
