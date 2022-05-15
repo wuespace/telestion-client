@@ -30,6 +30,7 @@ export {
 	chmod,
 	// file content management
 	readFile,
+	readFileSync,
 	writeFile,
 	readDir
 } from './filesystem.mjs';
