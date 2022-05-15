@@ -8,7 +8,7 @@ const logger = getLogger('Native');
  * Opens the URL in the system's native browser.
  * @param url the URL to open
  */
-export function openUrl(url: URL): void {
+export async function openUrl(url: URL): Promise<void> {
 	let command: string;
 
 	switch (os.type()) {
@@ -32,5 +32,5 @@ export function openUrl(url: URL): void {
 			url.href
 		}' on platform '${os.type()}' with command '${command}'`
 	);
-	spawn(command, [url.href]);
+	await spawn(command, [url.href]);
 }
