@@ -14,5 +14,5 @@ export {
 	normalizeProjectName
 } from './package.mjs';
 export { packageRootPath, getPackageVersion } from './package-info.mjs';
-export { lastAtLeast } from './promise.mjs';
+export { wait, lastAtLeast } from './promise.mjs';
 export { getPackagePath } from './resolve.mjs';
