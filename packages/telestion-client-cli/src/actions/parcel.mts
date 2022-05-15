@@ -1,12 +1,16 @@
 import { ChildProcess } from 'child_process';
 import { join } from 'path';
 
-import { existsSync, fork, getLogger } from '../lib/index.mjs';
+import { CompositeError, existsSync, fork, getLogger } from '../lib/index.mjs';
 import { BuildEvent } from '../model/parcel-events.mjs';
 
 const logger = getLogger('Parcel Action');
 
-export type BuildEventHandler = (event: BuildEvent, stop: () => void) => void;
+export type BuildEventHandler = (
+	event: BuildEvent,
+	stop: () => void,
+	parcelProcess: ChildProcess
+) => Promise<void>;
 
 interface BaseOptions {
 	/**
@@ -59,10 +63,10 @@ export const defaultParcelArgs: string[] = ['--no-autoinstall', '--no-cache'];
  * @param onEvent gets called when a build event has happened
  * @return a promise that fulfills once the Parcel process stops
  */
-export function serve(
+export async function serve(
 	projectDir: string,
-	options: Partial<ServeOptions> = {},
-	onEvent: BuildEventHandler = () => {}
+	options?: Partial<ServeOptions>,
+	onEvent?: BuildEventHandler
 ): Promise<void> {
 	const finalOptions = { ...defaultServeOptions, ...options };
 	logger.debug('Project directory:', projectDir);
@@ -80,11 +84,34 @@ export function serve(
 			`${finalOptions.port}`,
 			...targetArgs
 		]);
-		const stop = () => parcelProcess.kill('SIGHUP');
+
+		const stop = () => {
+			parcelProcess.kill('SIGTERM');
+		};
 
 		// register event handlers
-		parcelProcess.on('message', (event: BuildEvent) => onEvent(event, stop));
-		parcelProcess.on('exit', code => (code === 0 ? resolve() : reject(code)));
+		parcelProcess.on('message', (event: BuildEvent) => {
+			onEvent?.(event, stop, parcelProcess).catch(err => {
+				logger.debug('Error in serve event handler. Stop parcel serve');
+				stop();
+				reject(
+					new CompositeError(
+						`Build event in Parcel serve with options ${options} failed.`,
+						err
+					)
+				);
+			});
+		});
+
+		parcelProcess.on('exit', (code, signal) =>
+			code === 0 || !!signal
+				? resolve()
+				: reject(
+						new Error(
+							`Parcel serve with options ${options} failed with exit code ${code} and signal ${signal}`
+						)
+				  )
+		);
 	});
 }
 
@@ -96,10 +123,10 @@ export function serve(
  * @param onEvent gets called when a build event has happened
  * @return a promise that fulfills once the Parcel process stops
  */
-export function watch(
+export async function watch(
 	projectDir: string,
-	options: Partial<WatchOptions> = {},
-	onEvent: BuildEventHandler = () => {}
+	options?: Partial<WatchOptions>,
+	onEvent?: BuildEventHandler
 ): Promise<void> {
 	const finalOptions = { ...defaultWatchOptions, ...options };
 	logger.debug('Project directory:', projectDir);
@@ -117,11 +144,34 @@ export function watch(
 			`${finalOptions.port}`,
 			...targetArgs
 		]);
-		const stop = () => parcelProcess.kill('SIGINT');
+
+		const stop = () => {
+			parcelProcess.kill('SIGTERM');
+		};
 
 		// register event handlers
-		parcelProcess.on('message', (event: BuildEvent) => onEvent(event, stop));
-		parcelProcess.on('exit', code => (code === 0 ? resolve() : reject(code)));
+		parcelProcess.on('message', (event: BuildEvent) => {
+			onEvent?.(event, stop, parcelProcess).catch(err => {
+				logger.debug('Error in serve event handler. Stop parcel serve');
+				stop();
+				reject(
+					new CompositeError(
+						`Build event in Parcel watch with options ${options} failed.`,
+						err
+					)
+				);
+			});
+		});
+
+		parcelProcess.on('exit', (code, signal) =>
+			code === 0 || !!signal
+				? resolve()
+				: reject(
+						new Error(
+							`Parcel watch with options ${options} failed with exit code ${code} and signal ${signal}`
+						)
+				  )
+		);
 	});
 }
 
@@ -149,7 +199,16 @@ export async function build(
 			...defaultParcelArgs,
 			...targetArgs
 		]);
-		parcelProcess.on('exit', code => (code === 0 ? resolve() : reject()));
+
+		parcelProcess.on('exit', (code, signal) =>
+			code === 0 || !!signal
+				? resolve()
+				: reject(
+						new Error(
+							`Parcel build with options ${options} failed with exit code ${code} and signal ${signal}`
+						)
+				  )
+		);
 	});
 }
 
