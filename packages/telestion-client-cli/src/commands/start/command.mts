@@ -3,17 +3,14 @@ import inquirer from 'inquirer';
 import { ChildProcess } from 'child_process';
 
 import { BaseWithPartial } from '../../model/index.mjs';
-import { exit, getLogger, openUrl, readFile } from '../../lib/index.mjs';
+import { getLogger, readFile } from '../../lib/index.mjs';
 import { getPSCRoot } from '../../actions/psc.mjs';
-import {
-	clearNativeDependencies,
-	generateDistPackageJson,
-	installNativeDependencies,
-	start as startElectron
-} from '../../actions/electron.mjs';
+import { clearNativeDependencies } from '../../actions/electron.mjs';
 
 import { defaultOptions, StartOptions } from './model.mjs';
 import {
+	launchBrowser,
+	launchElectron,
 	parcelServeFrontendStage,
 	parcelWatchElectronStage
 } from './stages.mjs';
@@ -40,78 +37,32 @@ export async function start(options: StartOptions): Promise<unknown[]> {
 	) as Record<string, unknown>;
 	logger.debug('PSC package.json:', packageJson);
 
-	// 1. Start Parcel in "serve" mode for frontend target
-	let serveFrontendBuilt = false;
-	try {
-		await parcelServeFrontendStage(projectDir, options, async stop1 => {
-			// multiple call prevention
-			if (serveFrontendBuilt) return;
-			serveFrontendBuilt = true;
-
-			// open external browser if requested
-			if (options.target === 'browser') {
-				if (options.open) openUrl(new URL(`http://localhost:${options.port}/`));
-				return;
+	// 1 - Start Parcel in "serve" mode for frontend target
+	await parcelServeFrontendStage(projectDir, options, async () => {
+		switch (options.target) {
+			case 'browser': {
+				// 2a - launcher external browser
+				return launchBrowser(projectDir, options);
 			}
-
-			// 2. Start Parcel in "watch" mode for electron target
-			try {
-				// preparation of needed content (must not be re-created every build success event)
-				let dispatching = false;
-				let electronProcess: ChildProcess;
-				let oldStop2: () => void;
-
+			case 'electron': {
+				let previousProcess: ChildProcess;
+				// 2b - Start Parcel electron target and launch Electron
 				await clearNativeDependencies(projectDir);
-
-				await parcelWatchElectronStage(projectDir, options, async stop2 => {
-					// prevent too fast calls
-					if (dispatching) {
-						logger.debug(
-							'Already dispatching Electron restart. Please be patient'
-						);
-						return;
-					}
-
-					dispatching = true; /// +++ GUARD START +++
-
-					// no multiple call prevention here because we want to kill
-					// and restart Electron on main process changes
-					try {
-						if (electronProcess) {
-							electronProcess.off('exit', oldStop2);
-							electronProcess.kill('SIGHUP');
-						}
-						// store stop command to unregister it later from old electron process in case of reload
-						oldStop2 = stop2;
-
-						const nativeDependencies = await generateDistPackageJson(
-							projectDir,
-							packageJson
-						);
-						await installNativeDependencies(projectDir, nativeDependencies);
-						electronProcess = await startElectron(projectDir, options.port);
-						electronProcess.on('exit', stop2);
-					} catch (err) {
-						logger.error(err);
-						// capture fatal errors
-						errors.push(err);
-						stop2();
-					}
-
-					dispatching = false; /// +++ GUARD END +++
+				await parcelWatchElectronStage(projectDir, options, async stop => {
+					previousProcess = await launchElectron(
+						projectDir,
+						options,
+						packageJson,
+						previousProcess,
+						stop
+					);
 				});
-			} catch (err) {
-				logger.error(err);
-				// capture fatal errors
-				errors.push(err);
-			} finally {
-				// stop 1. layer once 2. layer finishes
-				stop1();
+				break;
 			}
-		});
-	} catch (err) {
-		errors.push(err);
-	}
+			default:
+				throw new Error(`Unknown target: ${options.target}`);
+		}
+	});
 
 	return errors;
 }
