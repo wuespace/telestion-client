@@ -6,7 +6,8 @@ import {
 	getLogger,
 	lastAtLeast,
 	normalizeProjectName,
-	readDir
+	readDir,
+	wait
 } from '../../lib/index.mjs';
 import { getProjectPath } from '../../actions/telestion-project.mjs';
 import {
@@ -111,15 +112,10 @@ export async function templateStage(
 	let tree: TreeElement;
 	try {
 		spinner.text = 'Parse template source tree';
-		const result = await lastAtLeast(
+		tree = await lastAtLeast(
 			1000,
 			getTemplateDirTree(templateInfos.templatePath)
 		);
-		const templateResult = result[0];
-		if (templateResult.status === 'rejected') {
-			throw templateResult.reason;
-		}
-		tree = templateResult.value as TreeElement;
 		logger.info('Parsed template tree:', tree);
 	} catch (err) {
 		spinner.fail('Cannot parse template source tree');
@@ -315,23 +311,22 @@ export async function depInstallStage(
 
 	if (workspaceDependencies.length > 0) {
 		spinner.text = 'Link workspace dependencies';
-		const results = await lastAtLeast(
-			2000,
-			...workspaceDependencies.map(dependency =>
-				pnpmLinkFromGlobal(infos.projectPath, dependency)
-			)
-		);
+		await wait(500);
 
-		// scrape failed results
-		const linkErrors = results
-			.filter(result => result.status === 'rejected')
-			.map(result => (result as PromiseRejectedResult).reason) as unknown[];
+		let failed = false;
+		for (const dependency of workspaceDependencies) {
+			try {
+				await pnpmLinkFromGlobal(infos.projectPath, dependency);
+			} catch (err) {
+				failed = true;
+				errors.push(err);
+			}
+		}
 
-		if (linkErrors.length > 0) {
+		if (failed) {
 			spinner.warn(
 				'Cannot link workspace dependencies (PNPM link global failed)'
 			);
-			errors.push(...linkErrors);
 			return false;
 		}
 	}

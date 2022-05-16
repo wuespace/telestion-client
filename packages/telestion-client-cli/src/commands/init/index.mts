@@ -4,12 +4,12 @@ import { Command } from 'commander';
 import { BaseWithPartial, CommandBuilder } from '../../model/index.mjs';
 import { getLogger } from '../../lib/index.mjs';
 
-import { defaultOptions, InitOptions } from './model.mjs';
-import { init, hydrate } from './command.mjs';
+import { defaultInitOptions, InitOptions } from './model.mjs';
+import { runInitCommand, hydrateInitOptions } from './command.mjs';
 
 const logger = getLogger('Init Command');
 
-export const build: CommandBuilder = command => {
+export const initCommandBuilder: CommandBuilder = command => {
 	command
 		.command('init')
 		.alias('i')
@@ -18,7 +18,7 @@ export const build: CommandBuilder = command => {
 		.option(
 			'-t, --template <name>',
 			'Package name of the template module',
-			defaultOptions.template
+			defaultInitOptions.template
 		)
 		.option(
 			'-g, --no-init-git',
@@ -48,12 +48,12 @@ export const build: CommandBuilder = command => {
 			) => {
 				let errors: unknown[] = [];
 				try {
-					const hydrated = await hydrate({
+					const hydrated = await hydrateInitOptions({
 						...options,
 						...actionCommand.optsWithGlobals(),
 						name
 					});
-					errors = await init(hydrated);
+					errors = await runInitCommand(hydrated);
 				} catch (err) {
 					errors.push(err);
 				}
@@ -66,3 +66,7 @@ export const build: CommandBuilder = command => {
 			}
 		);
 };
+
+export * from './model.mjs';
+export * from './command.mjs';
+export * as initStages from './stages.mjs';

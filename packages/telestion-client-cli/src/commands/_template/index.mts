@@ -4,12 +4,12 @@ import { Command } from 'commander';
 import { BaseWithPartial, CommandBuilder } from '../../model/index.mjs';
 import { getLogger } from '../../lib/index.mjs';
 
-import { CommandOptions, defaultOptions } from './model.mjs';
-import { hydrate, run } from './command.mjs';
+import { TemplateOptions, defaultTemplateOptions } from './model.mjs';
+import { hydrateTemplateOptions, runTemplateCommand } from './command.mjs';
 
 const logger = getLogger('Template Command');
 
-export const build: CommandBuilder = command => {
+export const templateCommandBuilder: CommandBuilder = command => {
 	command
 		.command('template')
 		.alias('t')
@@ -19,24 +19,27 @@ export const build: CommandBuilder = command => {
 		.option(
 			'-t, --template-option <str>',
 			'Description for this specific option',
-			defaultOptions.someProp // default value
+			defaultTemplateOptions.someProp // default value
 		)
 		.action(
 			async (
 				required: string,
 				optional: string,
-				options: Omit<BaseWithPartial<CommandOptions>, 'required' | 'optional'>,
+				options: Omit<
+					BaseWithPartial<TemplateOptions>,
+					'required' | 'optional'
+				>,
 				actionCommand: Command
 			) => {
 				let errors: unknown[] = [];
 				try {
-					const hydrated = await hydrate({
+					const hydrated = await hydrateTemplateOptions({
 						...options,
 						...actionCommand.optsWithGlobals(),
 						required,
 						optional
 					});
-					errors = await run(hydrated);
+					errors = await runTemplateCommand(hydrated);
 				} catch (err) {
 					errors.push(err);
 				}
@@ -49,3 +52,7 @@ export const build: CommandBuilder = command => {
 			}
 		);
 };
+
+export * from './model.mjs';
+export * from './command.mjs';
+export * as templateStages from './stages.mjs';

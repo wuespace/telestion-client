@@ -1,18 +1,18 @@
 import { CommandBuilder } from '../../model/index.mjs';
 import { getLogger } from '../../lib/index.mjs';
 
-import { docs } from './command.mjs';
+import { runDocsCommand } from './command.mjs';
 
 const logger = getLogger('Docs Command');
 
-export const build: CommandBuilder = command => {
+export const docsCommandBuilder: CommandBuilder = command => {
 	command
 		.command('docs')
 		.description('Opens the Telestion Docs')
 		.action(async () => {
 			let errors: unknown[] = [];
 			try {
-				errors = await docs();
+				errors = await runDocsCommand();
 			} catch (err) {
 				errors.push(err);
 			}
@@ -24,3 +24,5 @@ export const build: CommandBuilder = command => {
 			process.exit(0);
 		});
 };
+
+export * from './command.mjs';
