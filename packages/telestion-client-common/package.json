@@ -19,6 +19,7 @@
 		"build": "parcel build",
 		"lint": "eslint",
 		"check": "tsc --noEmit",
+		"style": "pnpm -w style",
 		"clean": "rimraf dist"
 	},
 	"repository": {

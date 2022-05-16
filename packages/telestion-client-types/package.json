@@ -12,6 +12,7 @@
 		"build": "tsc --project .",
 		"check": "pnpm run build",
 		"test": "tsc --project sample",
+		"style": "pnpm -w style",
 		"clean": "rimraf types"
 	},
 	"repository": {
