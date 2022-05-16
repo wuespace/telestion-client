@@ -1,13 +1,12 @@
-import { join } from 'path';
 import inquirer from 'inquirer';
 import { ChildProcess } from 'child_process';
 
 import { BaseWithPartial } from '../../model/index.mjs';
-import { getLogger, readFile } from '../../lib/index.mjs';
-import { getPSCRoot } from '../../actions/psc.mjs';
+import { getLogger } from '../../lib/index.mjs';
+import { getPackageJson, getPSCRoot } from '../../actions/psc.mjs';
 import { clearNativeDependencies } from '../../actions/electron.mjs';
 
-import { defaultOptions, StartOptions } from './model.mjs';
+import { defaultStartOptions, StartOptions } from './model.mjs';
 import {
 	launchBrowser,
 	launchElectron,
@@ -21,21 +20,14 @@ const logger = getLogger('Start');
  * The actual command.
  * @param options - the complete options set
  */
-export async function start(options: StartOptions): Promise<unknown[]> {
+export async function runStartCommand(
+	options: StartOptions
+): Promise<unknown[]> {
 	const errors: unknown[] = [];
 	logger.debug('Received options:', options);
 
 	const projectDir = await getPSCRoot(options.workingDir);
-	logger.debug('Resolved PSC root:', projectDir);
-
-	if (!projectDir) {
-		throw new Error('Not in a Telestion Frontend Project');
-	}
-
-	const packageJson = JSON.parse(
-		await readFile(join(projectDir, 'package.json'))
-	) as Record<string, unknown>;
-	logger.debug('PSC package.json:', packageJson);
+	const packageJson = await getPackageJson(projectDir);
 
 	// 1 - Start Parcel in "serve" mode for frontend target
 	await parcelServeFrontendStage(projectDir, options, async () => {
@@ -71,7 +63,7 @@ export async function start(options: StartOptions): Promise<unknown[]> {
  * Asks the user some questions on some missing parts in the current options set.
  * @param options - the current options set (does not have to be complete)
  */
-export async function hydrate(
+export async function hydrateStartOptions(
 	options: BaseWithPartial<StartOptions>
 ): Promise<StartOptions> {
 	return inquirer.prompt<StartOptions>(
@@ -81,19 +73,19 @@ export async function hydrate(
 				name: 'target',
 				message: 'Select the output target:',
 				choices: ['electron', 'browser'],
-				default: defaultOptions.target
+				default: defaultStartOptions.target
 			},
 			{
 				type: 'number',
 				name: 'port',
 				message: 'Port number on which the dev server should hear on:',
-				default: defaultOptions.port
+				default: defaultStartOptions.port
 			},
 			{
 				type: 'confirm',
 				name: 'open',
 				message: 'Open the browser after the dev server has started?',
-				default: defaultOptions.open
+				default: defaultStartOptions.open
 			}
 		],
 		options

@@ -1,4 +1,4 @@
-import { CommandOptions } from './model.mjs';
+import { TemplateOptions } from './model.mjs';
 import * as process from 'process';
 import { getLogger } from '../../lib/index.mjs';
 
@@ -9,13 +9,13 @@ export interface Information {
 }
 
 export async function informationStage(
-	options: CommandOptions
+	options: TemplateOptions
 ): Promise<Information> {
 	return { someDynamicInformation: process.cwd() };
 }
 
 export async function processStage(
-	options: CommandOptions,
+	options: TemplateOptions,
 	infos: Information
 ): Promise<boolean> {
 	logger.debug('Run process stage');

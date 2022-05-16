@@ -46,7 +46,7 @@ export interface InitOptions extends BaseOptions {
 /**
  * The default options for the init command.
  */
-export const defaultOptions: Partial<InitOptions> = {
+export const defaultInitOptions: Partial<InitOptions> = {
 	template: '@wuespace/telestion-client-template',
 	initGit: true,
 	install: true,

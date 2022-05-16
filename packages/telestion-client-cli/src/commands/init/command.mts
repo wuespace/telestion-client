@@ -5,7 +5,7 @@ import { basename } from 'path';
 import { BaseWithPartial } from '../../model/index.mjs';
 import { getLogger } from '../../lib/index.mjs';
 
-import { InitOptions, defaultOptions } from './model.mjs';
+import { InitOptions, defaultInitOptions } from './model.mjs';
 import {
 	depInstallStage,
 	gitCommitStage,
@@ -25,7 +25,7 @@ const logger = getLogger('Init');
  *
  * @param options - the options to set up the initialization workflow
  */
-export async function init(options: InitOptions): Promise<unknown[]> {
+export async function runInitCommand(options: InitOptions): Promise<unknown[]> {
 	const errors: unknown[] = [];
 	logger.debug('Received options:', options);
 
@@ -94,7 +94,7 @@ ${errors.length > 0 ? errorNotice : ''}`);
  * Asks the user some questions on some missing parts in the current options set.
  * @param options - the current options set (does not have to be complete)
  */
-export async function hydrate(
+export async function hydrateInitOptions(
 	options: BaseWithPartial<InitOptions>
 ): Promise<InitOptions> {
 	return inquirer.prompt<InitOptions>(
@@ -108,25 +108,25 @@ export async function hydrate(
 				type: 'input',
 				name: 'template',
 				message: 'Which template should be used? (package name)',
-				default: defaultOptions.template
+				default: defaultInitOptions.template
 			},
 			{
 				type: 'confirm',
 				name: 'initGit',
 				message: 'Should this command create a new git repository?',
-				default: defaultOptions.initGit
+				default: defaultInitOptions.initGit
 			},
 			{
 				type: 'confirm',
 				name: 'install',
 				message: 'Should this command install dependencies with PNPM?',
-				default: defaultOptions.install
+				default: defaultInitOptions.install
 			},
 			{
 				type: 'confirm',
 				name: 'commit',
 				message: 'Should this command commit the made changes afterwards?',
-				default: defaultOptions.commit
+				default: defaultInitOptions.commit
 			}
 		],
 		options

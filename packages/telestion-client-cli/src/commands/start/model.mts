@@ -22,7 +22,7 @@ export interface StartOptions extends BaseOptions {
 /**
  * Default options for template command.
  */
-export const defaultOptions: Partial<StartOptions> = {
+export const defaultStartOptions: Partial<StartOptions> = {
 	target: 'electron',
 	port: defaultServeOptions.port,
 	open: true

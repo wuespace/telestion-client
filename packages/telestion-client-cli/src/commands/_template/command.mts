@@ -3,7 +3,7 @@ import inquirer from 'inquirer';
 import { BaseWithPartial } from '../../model/index.mjs';
 import { getLogger } from '../../lib/index.mjs';
 
-import { CommandOptions } from './model.mjs';
+import { TemplateOptions } from './model.mjs';
 import { informationStage, processStage } from './stages.mjs';
 
 const logger = getLogger('Command');
@@ -12,7 +12,9 @@ const logger = getLogger('Command');
  * The actual command.
  * @param options - the complete options set
  */
-export async function run(options: CommandOptions): Promise<unknown[]> {
+export async function runTemplateCommand(
+	options: TemplateOptions
+): Promise<unknown[]> {
 	const errors: unknown[] = [];
 	logger.debug('Received options:', options);
 
@@ -31,10 +33,10 @@ export async function run(options: CommandOptions): Promise<unknown[]> {
  * Asks the user some questions on some missing parts in the current options set.
  * @param options - the current options set (does not have to be complete)
  */
-export async function hydrate(
-	options: BaseWithPartial<CommandOptions>
-): Promise<CommandOptions> {
-	return inquirer.prompt<CommandOptions>(
+export async function hydrateTemplateOptions(
+	options: BaseWithPartial<TemplateOptions>
+): Promise<TemplateOptions> {
+	return inquirer.prompt<TemplateOptions>(
 		[
 			{
 				type: 'input',
