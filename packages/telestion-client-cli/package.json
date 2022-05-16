@@ -23,6 +23,7 @@
 		"cli": "node dist/cli.mjs",
 		"lint": "eslint",
 		"check": "tsc --noEmit",
+		"style": "pnpm -w style",
 		"clean": "rimraf dist"
 	},
 	"engines": {
