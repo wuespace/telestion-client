@@ -21,6 +21,6 @@
 		/* reset paths because typescript threat workspace dependencies as normal dependencies */
 		"paths": {}
 	},
-	"include": ["src"],
+	"include": ["src", "types.d.ts"],
 	"exclude": ["node_modules", "dist"]
 }
