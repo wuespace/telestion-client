@@ -95,7 +95,17 @@ export async function launchElectron(
 		logger.debug('Stop previous Electron process');
 		previousProcess.removeAllListeners('exit');
 		previousProcess.kill('SIGTERM');
-		await previousProcess;
+		await new Promise<void>((resolve, reject) => {
+			previousProcess.on('exit', (code, signal) =>
+				code === 0 || !signal
+					? resolve()
+					: reject(
+							new Error(
+								`Previous Electron process failed with exit code '${code}' and signal '${signal}'`
+							)
+					  )
+			);
+		});
 	}
 
 	const nativeDependencies = await generateDistPackageJson(
@@ -106,7 +116,12 @@ export async function launchElectron(
 
 	logger.debug('Start new Electron process');
 	const newProcess = startElectron(projectDir, options.port);
-	newProcess.addListener('exit', () => stop());
+	newProcess.addListener('exit', (code, signal) => {
+		logger.debug(
+			`Current Electron process exited with code ${code} and signal ${signal}`
+		);
+		stop();
+	});
 
 	dispatching = false; /// +++ GUARD END +++
 
