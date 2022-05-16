@@ -1,7 +1,7 @@
 import { relative, sep } from 'path';
 import chalk from 'chalk';
 import ora from 'ora';
-import { treeify } from 'object-treeify';
+import objectTreeify from 'object-treeify';
 
 import { getLogger, lastAtLeast, wait } from '../../lib/index.mjs';
 import { build } from '../../actions/parcel.mjs';
@@ -14,6 +14,8 @@ import {
 	packageElectron,
 	PackageOptions
 } from '../../actions/electron-packager.mjs';
+
+const { treeify } = objectTreeify;
 
 const logger = getLogger('Build Stage');
 
