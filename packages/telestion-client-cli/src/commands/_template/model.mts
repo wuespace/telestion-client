@@ -1,6 +1,6 @@
 import { BaseOptions } from '../../model/index.mjs';
 
-export interface CommandOptions extends BaseOptions {
+export interface TemplateOptions extends BaseOptions {
 	/**
 	 * Required argument that is inherently set through the CLI.
 	 */
@@ -21,6 +21,6 @@ export interface CommandOptions extends BaseOptions {
 /**
  * Default options for template command.
  */
-export const defaultOptions: Partial<CommandOptions> = {
+export const defaultTemplateOptions: Partial<TemplateOptions> = {
 	someProp: 'defaultValue'
 };

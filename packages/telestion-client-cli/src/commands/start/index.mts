@@ -4,12 +4,12 @@ import { Command, Argument } from 'commander';
 import { BaseWithPartial, CommandBuilder } from '../../model/index.mjs';
 import { getLogger } from '../../lib/index.mjs';
 
-import { StartOptions, defaultOptions } from './model.mjs';
-import { hydrate, start } from './command.mjs';
+import { StartOptions, defaultStartOptions } from './model.mjs';
+import { hydrateStartOptions, runStartCommand } from './command.mjs';
 
 const logger = getLogger('Start Command');
 
-export const build: CommandBuilder = command => {
+export const startCommandBuilder: CommandBuilder = command => {
 	command
 		.command('start')
 		.alias('s')
@@ -22,13 +22,13 @@ export const build: CommandBuilder = command => {
 				'The output target the development server should use'
 			)
 				.choices(['electron', 'browser'])
-				.default(defaultOptions.target)
+				.default(defaultStartOptions.target)
 				.argOptional()
 		)
 		.option(
 			'-p, --port <port>',
 			'Port of the development server to listen on',
-			defaultOptions.port
+			defaultStartOptions.port
 		)
 		.option(
 			'--no-open',
@@ -44,12 +44,12 @@ export const build: CommandBuilder = command => {
 			) => {
 				let errors: unknown[] = [];
 				try {
-					const hydrated = await hydrate({
+					const hydrated = await hydrateStartOptions({
 						...options,
 						...actionCommand.optsWithGlobals(),
 						target
 					});
-					errors = await start(hydrated);
+					errors = await runStartCommand(hydrated);
 				} catch (err) {
 					errors.push(err);
 				}
@@ -62,3 +62,7 @@ export const build: CommandBuilder = command => {
 			}
 		);
 };
+
+export * from './model.mjs';
+export * from './command.mjs';
+export * as startStages from './stages.mjs';

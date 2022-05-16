@@ -6,7 +6,7 @@ import {
 	registerEventHandlers,
 	setLogLevel
 } from './lib/index.mjs';
-import { builders } from './commands/index.mjs';
+import { commandBuilders } from './commands/index.mjs';
 
 const program = new Command();
 const version = getPackageVersion();
@@ -36,7 +36,7 @@ program
 	);
 
 // register sub-commands
-builders.forEach(builder => builder(program));
+commandBuilders.forEach(builder => builder(program));
 
 // set log level as first step
 program.hook('preAction', (thisCommand: any) => {
