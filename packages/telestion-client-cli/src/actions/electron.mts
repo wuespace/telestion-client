@@ -305,8 +305,7 @@ export function startElectron(
 	const electronProcess = spawn(electronBinaryPath, [distFolderPath], {
 		cwd: projectDir,
 		env: {
-			DISPLAY: process.env['DISPLAY'],
-			WAYLAND_DISPLAY: process.env['WAYLAND_DISPLAY'],
+			...process.env,
 			DEV_SERVER_PORT: `${devServerPort}`
 		}
 	});
