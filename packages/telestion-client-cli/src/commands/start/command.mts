@@ -30,25 +30,38 @@ export async function runStartCommand(
 	const packageJson = await getPackageJson(projectDir);
 
 	// 1 - Start Parcel in "serve" mode for frontend target
-	await parcelServeFrontendStage(projectDir, options, async () => {
+	await parcelServeFrontendStage(projectDir, options, async stopServe => {
 		switch (options.target) {
 			case 'browser': {
+				logger.debug('Running browser target');
 				// 2a - launcher external browser
 				return launchBrowser(projectDir, options);
 			}
 			case 'electron': {
-				let previousProcess: ChildProcess;
-				// 2b - Start Parcel electron target and launch Electron
-				await clearNativeDependencies(projectDir);
-				await parcelWatchElectronStage(projectDir, options, async stop => {
-					previousProcess = await launchElectron(
+				logger.debug('Running Electron target');
+
+				try {
+					let previousProcess: ChildProcess;
+					// 2b - Start Parcel electron target and launch Electron
+					await clearNativeDependencies(projectDir);
+					await parcelWatchElectronStage(
 						projectDir,
 						options,
-						packageJson,
-						previousProcess,
-						stop
+						async stopWatch => {
+							previousProcess = await launchElectron(
+								projectDir,
+								options,
+								packageJson,
+								previousProcess,
+								stopWatch
+							);
+						}
 					);
-				});
+					stopServe();
+				} catch (err) {
+					stopServe();
+					throw err;
+				}
 				break;
 			}
 			default:
