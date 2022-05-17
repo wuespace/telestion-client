@@ -39,9 +39,17 @@ export async function packageElectron(
 
 	await mkdir(outFolderPath, true);
 
+	const platform = options.platform.flatMap(current =>
+		current === 'all' ? ['darwin', 'linux', 'mas', 'win32'] : [current]
+	);
+	const arch = options.arch.flatMap(current =>
+		current === 'all' ? ['ia32', 'x64', 'armv7l', 'arm64'] : [current]
+	);
+
 	logger.debug('Run packager with:', options);
 	const paths = await packager({
-		...options,
+		platform,
+		arch,
 		dir: distFolderPath,
 		out: outFolderPath,
 		asar: true,
