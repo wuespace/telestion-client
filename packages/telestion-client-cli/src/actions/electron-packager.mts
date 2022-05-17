@@ -1,7 +1,7 @@
 import packager from 'electron-packager';
 import { rebuild } from 'electron-rebuild';
 
-import { getLogger, mkdir } from '../lib/index.mjs';
+import { exists, getLogger, mkdir, rm } from '../lib/index.mjs';
 import { join } from 'path';
 
 const logger = getLogger('Electron Packager');
@@ -32,10 +32,15 @@ export async function packageElectron(
 	logger.debug('Distribution folder path:', distFolderPath);
 	logger.debug('Output folder path:', outFolderPath);
 
+	if (await exists(outFolderPath)) {
+		logger.debug('Output folder exists. Deleting it to continue...');
+		await rm(outFolderPath, true);
+	}
+
 	await mkdir(outFolderPath, true);
 
 	logger.debug('Run packager with:', options);
-	return packager({
+	const paths = await packager({
 		...options,
 		dir: distFolderPath,
 		out: outFolderPath,
@@ -47,4 +52,7 @@ export async function packageElectron(
 			}
 		]
 	});
+
+	// electron-packager lied to us, so we have to filter ourselves
+	return paths.filter(path => typeof path === 'string');
 }
