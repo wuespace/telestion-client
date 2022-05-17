@@ -140,6 +140,19 @@ importers:
       '@types/node': 17.0.33
       '@wuespace/telestion-client-types': link:../telestion-client-types
 
+  packages/parcel-resolver-react:
+    specifiers:
+      '@parcel/core': ^2.5.0
+      '@parcel/plugin': ^2.5.0
+      '@parcel/types': ^2.5.0
+      '@types/node': ^17.0.0
+    dependencies:
+      '@parcel/plugin': 2.5.0_@parcel+core@2.5.0
+    devDependencies:
+      '@parcel/core': 2.5.0
+      '@parcel/types': 2.5.0_@parcel+core@2.5.0
+      '@types/node': 17.0.33
+
   packages/telestion-client-cli:
     specifiers:
       '@fliegwerk/dir-tree': ^1.0.0
