@@ -1,4 +1,4 @@
-import { join, relative } from 'path';
+import { join } from 'path';
 import os from 'os';
 import {
 	chmod,
@@ -187,16 +187,11 @@ export async function pnpmLinkFromGlobal(
 		// create symlink
 		const projectDependencyLink = join(
 			projectDepScopeDir,
+			// only use package name
 			slices.at(-1) as string
-		); // only use package name
-		logger.debug('Project dependency link:', projectDependencyLink);
-		const relativeDependencyPath = relative(projectDepScopeDir, dependencyPath);
-		logger.debug('Relative dependency path:', relativeDependencyPath);
-		await symlink(
-			os.type() === 'Windows_NT' ? dependencyPath : relativeDependencyPath,
-			projectDependencyLink,
-			os.type() === 'Windows_NT' ? 'junction' : 'file'
 		);
+		logger.debug('Project dependency link:', projectDependencyLink);
+		await symlink(dependencyPath, projectDependencyLink);
 		logger.info('Package linked');
 
 		logger.debug('On platform:', os.type());

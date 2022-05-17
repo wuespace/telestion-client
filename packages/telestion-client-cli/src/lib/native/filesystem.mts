@@ -1,3 +1,5 @@
+import os from 'os';
+import { dirname, relative } from 'path';
 import {
 	chmod as nodeChmod,
 	copyFile as nodeCopyFile,
@@ -17,6 +19,7 @@ import {
 	readFileSync as nodeReadFileSync,
 	Stats
 } from 'fs';
+
 import { getLogger } from '../logger/index.mjs';
 
 const logger = getLogger('Native');
@@ -138,21 +141,63 @@ export async function mkdir(
 	return nodeMkDir(dirPath, { recursive });
 }
 
+export interface SymlinkOptions {
+	/**
+	 * The type of the symbolic link to create.
+	 * Only used on Windows systems.
+	 */
+	type: 'dir' | 'file' | 'junction';
+
+	/**
+	 * Requires the path to the destination file (where the link points)
+	 * to be absolute. By default, the file linker resolves the destination file
+	 * against the link directory.
+	 *
+	 * > Note: On Windows systems this option is ignored.
+	 */
+	requireAbsolute: boolean;
+}
+
+export const defaultSymlinkOptions: SymlinkOptions = {
+	type: 'junction',
+	requireAbsolute: false
+};
+
 /**
  * Creates a symlink at the specified path that points to another path.
  * @param pointsTo - the path to which the link should point
  * @param symlinkPath - the path on which the link should be generated
- * @param type - the type of soft link to use (only support in Windows)
+ * @param options - additional options to configure the symlink process further
  */
 export async function symlink(
 	pointsTo: string,
 	symlinkPath: string,
-	type: 'dir' | 'file' | 'junction' = 'file'
+	options: Partial<SymlinkOptions> = {}
 ): Promise<void> {
+	const finalOptions = { ...defaultSymlinkOptions, ...options };
+	logger.debug('Symlink options:', finalOptions);
+	logger.debug('Symlink path (where the symlink resides):', symlinkPath);
+	logger.debug('Destination path (where the symlinks points):', pointsTo);
+
 	logger.debug(
-		`Create symbolic link at '${symlinkPath}' which points to '${pointsTo}' (type: ${type})`
+		`Create symbolic link at '${symlinkPath}' which points to '${pointsTo}' (${os.type()})`
 	);
-	return nodeSymlink(pointsTo, symlinkPath, type);
+	if (os.type() === 'Windows_NT') {
+		return nodeSymlink(pointsTo, symlinkPath, finalOptions.type);
+	} else {
+		const symlinkDir = dirname(symlinkPath);
+		const relativePointsTo = relative(symlinkDir, pointsTo);
+		logger.debug('Symlink directory:', symlinkDir);
+		logger.debug(
+			'Relative destination path (where the symlinks points):',
+			relativePointsTo
+		);
+
+		return nodeSymlink(
+			finalOptions.requireAbsolute ? pointsTo : relativePointsTo,
+			symlinkPath
+		);
+	}
 }
 
 /**
