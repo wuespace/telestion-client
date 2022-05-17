@@ -34,9 +34,9 @@ export async function getConfigProp(
 	property: string
 ): Promise<string | undefined> {
 	try {
-		return (
-			await exec('git', ['config', property], { cwd: workingDir })
-		).stdout.toString();
+		return (await exec('git', ['config', property], { cwd: workingDir })).stdout
+			.toString()
+			.trim();
 	} catch (err) {
 		logger.info(`Property ${property} is not set`);
 		return undefined;
@@ -85,12 +85,19 @@ export async function gitSetup(
 	// user overrides win
 	const initialValues = {
 		username: username || (await getConfigProp(workingDir, 'user.name')),
-		email: email || (await getConfigProp(workingDir, 'user.email'))
+		email: email || (await getConfigProp(workingDir, 'user.email')),
+		signingKey: ''
 	};
+	const gpgSign =
+		(await getConfigProp(workingDir, 'commit.gpgsign')) === 'true';
 
-	let userValues: { username: string; email: string };
+	let userValues: { username: string; email: string; signingKey: string };
 	try {
-		userValues = await inquirer.prompt<{ username: string; email: string }>(
+		userValues = await inquirer.prompt<{
+			username: string;
+			email: string;
+			signingKey: string;
+		}>(
 			[
 				{
 					type: 'input',
@@ -113,6 +120,22 @@ export async function gitSetup(
 			],
 			initialValues
 		);
+
+		if (gpgSign) {
+			const { signingKey } = await inquirer.prompt<{
+				signingKey: string;
+			}>([
+				{
+					type: 'input',
+					name: 'signingKey',
+					message:
+						"We have detected that you're require signed commits.\nPlease enter your GPG signing key (empty input disables signing for this repo):",
+					default: ''
+				}
+			]);
+
+			userValues.signingKey = signingKey;
+		}
 	} catch (err) {
 		logger.error('Cannot gather required information to set up git');
 		throw err;
@@ -123,6 +146,11 @@ export async function gitSetup(
 	try {
 		await setConfigProp(workingDir, 'user.name', userValues.username);
 		await setConfigProp(workingDir, 'user.email', userValues.email);
+		if (userValues.signingKey.length === 0) {
+			await setConfigProp(workingDir, 'commit.gpgsign', 'false');
+		} else {
+			await setConfigProp(workingDir, 'user.signingkey', userValues.signingKey);
+		}
 	} catch (err) {
 		throw new CompositeError(
 			'Cannot set gathered information in git set up',
