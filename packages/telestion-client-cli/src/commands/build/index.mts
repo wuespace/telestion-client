@@ -21,7 +21,7 @@ export const buildCommandBuilder: CommandBuilder = command => {
 		.description('Builds a Telestion Frontend Project for different platforms')
 		.addOption(
 			new Option(
-				'--platform <platform...>',
+				'--platform <platform...>, -p',
 				'A list of platform to build the PSC for'
 			)
 				.choices(possiblePlatforms)
@@ -29,7 +29,7 @@ export const buildCommandBuilder: CommandBuilder = command => {
 		)
 		.addOption(
 			new Option(
-				'--arch <arch...>',
+				'--arch <arch...>. -a',
 				'A list of architectures to build the PSC for'
 			)
 				.choices(possibleArchitectures)
