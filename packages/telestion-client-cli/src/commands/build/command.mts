@@ -50,7 +50,10 @@ export async function runBuildCommand(
 	const packageJson = await getPackageJson(projectDir);
 
 	if (await hasWorkspaceTag(projectDir)) {
-		throw new Error('Sorry, projects with workspace links cannot be packaged.');
+		throw new Error(
+			'Sorry, projects with workspace links cannot be packaged ' +
+				'due to limitations in the Electron packaging process.'
+		);
 	}
 
 	await buildStage(projectDir);
