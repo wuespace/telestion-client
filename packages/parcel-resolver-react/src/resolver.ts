@@ -9,7 +9,7 @@ export default new Resolver({
 		}
 
 		const workspaceTagPath = join(options.projectRoot, 'workspace.txt');
-		logger.log({
+		logger.verbose({
 			message: `Workspace tag path: ${workspaceTagPath}`
 		});
 
@@ -26,7 +26,7 @@ export default new Resolver({
 			'react',
 			'index.js'
 		);
-		logger.log({
+		logger.verbose({
 			message: `React index.js path: ${reactIndexPath}`
 		});
 
