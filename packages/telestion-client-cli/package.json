@@ -74,7 +74,6 @@
 		"electron-packager": "^15.5.1",
 		"electron-rebuild": "^3.2.7",
 		"inquirer": "^8.2.0",
-		"object-treeify": "^2.0.1",
 		"ora": "^6.1.0",
 		"validate-npm-package-name": "^4.0.0"
 	},

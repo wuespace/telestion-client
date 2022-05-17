@@ -1,7 +1,6 @@
-import { relative, sep } from 'path';
+import { relative } from 'path';
 import chalk from 'chalk';
 import ora from 'ora';
-import objectTreeify from 'object-treeify';
 
 import { getLogger, lastAtLeast, wait } from '../../lib/index.mjs';
 import { build } from '../../actions/parcel.mjs';
@@ -15,15 +14,17 @@ import {
 	PackageOptions
 } from '../../actions/electron-packager.mjs';
 
-const { treeify } = objectTreeify;
-
 const logger = getLogger('Build Stage');
 
 export async function buildStage(projectDir: string): Promise<void> {
 	const spinner = ora('Build project');
 
 	try {
+		spinner.start();
+		await wait(1500);
+		spinner.stop();
 		await build(projectDir);
+		console.log(); // separate console output
 		spinner.succeed('Project successfully built');
 	} catch (err) {
 		spinner.fail('Cannot build project');
@@ -59,42 +60,23 @@ export async function electronInstallStage(
 
 	try {
 		spinner.text = 'Install native dependencies';
-		await wait(500);
+		await wait(1500);
 		spinner.stop();
-		await lastAtLeast(
-			500,
-			installNativeDependencies(projectDir, nativeDependencies)
-		);
+		await installNativeDependencies(projectDir, nativeDependencies);
+		console.log(); // separate console output
 		spinner.succeed('Native dependencies installed');
 	} catch (err) {
 		spinner.fail('Cannot install native dependencies');
+		throw err;
 	}
 }
 
-function insertIntoObj(
-	obj: Record<string, unknown>,
-	pointer: string[],
-	value: string | null,
-	depth: number = 0
-): Record<string, unknown> {
-	// empty edge case
-	if (pointer.length === 0) {
-		return obj;
+function printPackagePaths(projectDir: string, paths: string[]): void {
+	for (const path of paths) {
+		const relativePath = relative(projectDir, path);
+		const prefix = paths.indexOf(path) === paths.length - 1 ? '└─' : '├─';
+		console.log(chalk.magenta(`${prefix} ${relativePath}`));
 	}
-
-	const depthKey = pointer[depth];
-
-	// exit condition
-	if (depth === pointer.length - 1) {
-		obj[depthKey] = value;
-		return obj;
-	}
-
-	if (typeof obj[depthKey] !== 'object') {
-		obj[depthKey] = {};
-	}
-
-	return insertIntoObj(obj, pointer, value, depth + 1);
 }
 
 export async function electronPackageStage(
@@ -105,15 +87,14 @@ export async function electronPackageStage(
 
 	try {
 		spinner.start();
+		await wait(1500);
+		spinner.stop();
 		const paths = await packageElectron(projectDir, options);
-		spinner.succeed('Electron packages generated');
+		console.log(); // separate console output
 		logger.debug('Package paths:', paths);
+		spinner.succeed('Electron packages generated');
 
-		const treeObject = paths.reduce((acc, path) => {
-			const pointer = relative(projectDir, path).split(sep);
-			return insertIntoObj(acc, pointer, null);
-		}, {} as Record<string, unknown>);
-		console.log(`${chalk.magenta(treeify(treeObject))}`);
+		printPackagePaths(projectDir, paths);
 	} catch (err) {
 		spinner.fail('Cannot generate Electron packages');
 		throw err;
