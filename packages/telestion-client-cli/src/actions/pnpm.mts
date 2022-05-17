@@ -36,6 +36,13 @@ export async function isPnpmInstalled(): Promise<boolean> {
 }
 
 /**
+ * Returns `true` if PNPM is set up.
+ */
+export async function isPnpmSetUp(): Promise<boolean> {
+	return !!process.env['PNPM_HOME'];
+}
+
+/**
  * Installs PNPM globally via NPM.
  */
 export async function installPnpm(): Promise<void> {
@@ -49,13 +56,21 @@ export async function installPnpm(): Promise<void> {
 		} catch (err) {
 			throw new CompositeError('Cannot install PNPM', err);
 		}
+	} else {
+		logger.debug('PNPM is already installed');
 	}
 
-	try {
-		logger.debug('Set up PNPM');
-		await exec('pnpm', ['setup']);
-	} catch (err) {
-		throw new CompositeError('Cannot set up PNPM', err);
+	const setUp = await isPnpmSetUp();
+
+	if (!setUp) {
+		try {
+			logger.debug('Set up PNPM');
+			await exec('pnpm', ['setup']);
+		} catch (err) {
+			throw new CompositeError('Cannot set up PNPM', err);
+		}
+	} else {
+		logger.debug('PNPM is already set up');
 	}
 }
 
