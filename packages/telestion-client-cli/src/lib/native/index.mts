@@ -2,6 +2,7 @@
 /// process and child process management
 ///
 
+export { sanitizeArgument, getCmdShellString } from './cmd-sanitizer.mjs';
 export {
 	addChildProcess,
 	removeChildProcess,

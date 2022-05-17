@@ -1,6 +1,8 @@
+import os from 'os';
 import { promisify } from 'util';
 import {
 	ChildProcess,
+	exec as nodeExecCallback,
 	execFile as nodeExecFileCallback,
 	spawn as nodeSpawn,
 	fork as nodeFork,
@@ -11,7 +13,9 @@ import {
 
 import { getLogger } from '../logger/index.mjs';
 import { addChildProcess } from './process-management.mjs';
+import { getCmdShellString, sanitizeArgument } from './cmd-sanitizer.mjs';
 
+const nodeExec = promisify(nodeExecCallback);
 const nodeExecFile = promisify(nodeExecFileCallback);
 const logger = getLogger('Child Process');
 
@@ -23,16 +27,30 @@ const logger = getLogger('Child Process');
  */
 export async function exec(
 	executablePath: string,
-	args?: string[],
-	options?: ExecOptions
+	args: string[] = [],
+	options: ExecOptions & { disableSanitizer?: boolean } = {}
 ): Promise<{ stdout: string | Buffer; stderr: string | Buffer }> {
 	logger.debug('Executable path:', executablePath);
 	logger.debug('Arguments:', args);
 	logger.debug('Exec options:', options);
 
-	logger.debug('Execute executable');
+	let result: { stdout: string | Buffer; stderr: string | Buffer };
+	logger.debug(`Execute ${executablePath} (${os.type()})`);
+	if (os.type() === 'Windows_NT') {
+		const disableSanitizer = options['disableSanitizer'] ?? false;
+		const cmdShellString = getCmdShellString(
+			executablePath,
+			args,
+			disableSanitizer
+		);
+		logger.debug('CMD shell string:', cmdShellString);
+		logger.debug('Disable sanitizer?', disableSanitizer);
 
-	const result = await nodeExecFile(executablePath, args, options);
+		result = await nodeExec(cmdShellString, options);
+	} else {
+		result = await nodeExecFile(executablePath, args, options);
+	}
+
 	logger.debug(`Exec Result for ${executablePath}:`, result);
 	return result;
 }
@@ -52,8 +70,27 @@ export function spawn(
 	logger.debug('Arguments:', args);
 	logger.debug('Spawn options:', options);
 
-	logger.debug('Spawn process now');
-	const childProcess = nodeSpawn(executablePath, args, options);
+	let childProcess: ChildProcess;
+	logger.debug(`Spawn ${executablePath} (${os.type()})`);
+	if (os.type() === 'Windows_NT') {
+		const sanitizedArgs = args.map(sanitizeArgument);
+		const disableSanitizer = options['shell'] ?? false;
+		logger.debug('CMD sanitized args:', sanitizedArgs);
+		logger.debug('Disable sanitizer?', disableSanitizer);
+
+		childProcess = nodeSpawn(
+			executablePath,
+			// user explicitly enabled shell mode -> don't sanitize anything
+			disableSanitizer ? args : sanitizedArgs,
+			{
+				shell: true,
+				...options
+			}
+		);
+	} else {
+		childProcess = nodeSpawn(executablePath, args, options);
+	}
+
 	logger.debug('Spawn process instance:', childProcess);
 	addChildProcess(childProcess);
 	return childProcess;
