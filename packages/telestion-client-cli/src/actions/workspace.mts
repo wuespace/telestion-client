@@ -6,6 +6,7 @@ const logger = getLogger('Workspace Action');
 const tagFileName = 'workspace.txt';
 
 const tagFileContent =
+	"!!! DON'T EDIT OR REMOVE !!!\n\n" +
 	'This project contains workspace dependencies.\n' +
 	"Some features like native dependencies aren't available.\n" +
 	'If you want to use the full feature set, install @wuespace/telestion-client-cli ' +
