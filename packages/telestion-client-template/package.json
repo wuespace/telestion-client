@@ -86,6 +86,7 @@
 		"@types/react": "^17.0.45",
 		"@types/react-dom": "^17.0.16",
 		"@wuespace/parcel-reporter-tc-cli": "workspace:^",
+		"@wuespace/parcel-resolver-react": "workspace:^",
 		"@wuespace/telestion-client-cli": "workspace:^",
 		"@wuespace/telestion-client-types": "workspace:^",
 		"husky": "^7.0.4",
