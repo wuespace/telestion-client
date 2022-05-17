@@ -129,8 +129,7 @@ export async function gitSetup(
 					type: 'input',
 					name: 'signingKey',
 					message:
-						"We have detected that you're require signed commits.\nPlease enter your GPG signing key (empty input disables signing for this repo):",
-					default: ''
+						"We have detected that you're require signed commits.\nPlease enter your GPG signing key (empty input disables signing for this repo):"
 				}
 			]);
 
