@@ -44,6 +44,7 @@ export async function packageElectron(
 		...options,
 		dir: distFolderPath,
 		out: outFolderPath,
+		asar: true,
 		afterCopy: [
 			(buildPath, electronVersion, platform, arch, callback) => {
 				rebuild({ buildPath, electronVersion, arch })
