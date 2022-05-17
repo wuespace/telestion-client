@@ -1,5 +1,4 @@
-import os from 'os';
-import { join, relative, basename } from 'path';
+import { join, basename } from 'path';
 import { ChildProcess } from 'child_process';
 
 import {
@@ -146,22 +145,13 @@ export async function linkNativeDependency(
 	const sourcePath = join(modulesDir, ...scope, packageName);
 	const destDir = join(distModulesDir, ...scope);
 	const destPath = join(destDir, packageName);
-	const relSourcePath = relative(destDir, sourcePath);
 	logger.debug('Source path:', sourcePath);
 	logger.debug('Destination directory:', destDir);
 	logger.debug('Destination path:', destPath);
-	logger.debug(
-		'Relative source path (relative to destination dir):',
-		relSourcePath
-	);
 
 	await mkdir(destDir, true);
 	await rmIfExists(destPath, true);
-	await symlink(
-		os.type() === 'Windows_NT' ? sourcePath : relSourcePath,
-		destPath,
-		os.type() === 'Windows_NT' ? 'junction' : 'file'
-	);
+	await symlink(sourcePath, destPath);
 }
 
 /**
@@ -225,8 +215,7 @@ export async function installNativeDependencies(
 			return new Promise<void>((resolve, reject) => {
 				logger.debug('Install native dependencies');
 				const npmProcess = spawn('npm', ['install', '--no-package-lock'], {
-					cwd: distDir,
-					shell: os.type() === 'Windows_NT'
+					cwd: distDir
 				});
 
 				// pass through process output
