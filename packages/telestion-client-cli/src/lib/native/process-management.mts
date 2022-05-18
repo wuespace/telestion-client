@@ -1,5 +1,5 @@
-import { createInterface } from 'readline';
-import { ChildProcess } from 'child_process';
+import { createInterface } from 'node:readline';
+import { ChildProcess } from 'node:child_process';
 import { getLogger } from '../logger/index.mjs';
 
 const logger = getLogger('Process Management');

@@ -1,6 +1,6 @@
 // @ts-ignore
 import { Command } from 'commander';
-import { LogLevel } from '../lib/logger/index.mjs';
+import { LogLevel } from '../lib/index.mjs';
 
 export interface BaseOptions {
 	loglevel: LogLevel;

@@ -1,4 +1,4 @@
-import { dirname, join } from 'path';
+import { dirname, join } from 'node:path';
 import ora from 'ora';
 import { TreeElement } from '@fliegwerk/dir-tree';
 

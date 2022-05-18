@@ -1,4 +1,4 @@
-import { ChildProcess } from 'child_process';
+import { ChildProcess } from 'node:child_process';
 
 import { getLogger, openUrl } from '../../lib/index.mjs';
 import { serve, watch } from '../../actions/parcel.mjs';

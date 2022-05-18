@@ -1,5 +1,5 @@
-import os from 'os';
-import { dirname, relative } from 'path';
+import os from 'node:os';
+import { dirname, relative } from 'node:path';
 import {
 	chmod as nodeChmod,
 	copyFile as nodeCopyFile,
@@ -12,13 +12,13 @@ import {
 	stat as nodeStat,
 	symlink as nodeSymlink,
 	writeFile as nodeWriteFile
-} from 'fs/promises';
+} from 'node:fs/promises';
 import {
 	constants,
 	existsSync as nodeExistsSync,
 	readFileSync as nodeReadFileSync,
 	Stats
-} from 'fs';
+} from 'node:fs';
 
 import { getLogger } from '../logger/index.mjs';
 
