@@ -1,5 +1,5 @@
-import os from 'os';
-import { promisify } from 'util';
+import os from 'node:os';
+import { promisify } from 'node:util';
 import {
 	ChildProcess,
 	exec as nodeExecCallback,
@@ -9,7 +9,7 @@ import {
 	ExecOptions,
 	ForkOptions,
 	SpawnOptions
-} from 'child_process';
+} from 'node:child_process';
 
 import { getLogger } from '../logger/index.mjs';
 import { addChildProcess } from './process-management.mjs';

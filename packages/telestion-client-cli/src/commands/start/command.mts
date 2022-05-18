@@ -1,5 +1,5 @@
+import { ChildProcess } from 'node:child_process';
 import inquirer from 'inquirer';
-import { ChildProcess } from 'child_process';
 
 import { BaseWithPartial } from '../../model/index.mjs';
 import { getLogger } from '../../lib/index.mjs';

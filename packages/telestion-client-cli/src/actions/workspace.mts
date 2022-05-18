@@ -1,4 +1,4 @@
-import { join } from 'path';
+import { join } from 'node:path';
 import { exists, getLogger, rmIfExists, writeFile } from '../lib/index.mjs';
 
 const logger = getLogger('Workspace Action');

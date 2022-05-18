@@ -1,4 +1,4 @@
-import { resolve, join, parse } from 'path';
+import { resolve, join, parse } from 'node:path';
 import dirTree, {
 	DirectoryElement,
 	FileElement,

@@ -1,5 +1,5 @@
-import { join, resolve } from 'path';
-import { fileURLToPath } from 'url';
+import { join, resolve } from 'node:path';
+import { fileURLToPath } from 'node:url';
 import { readFile } from './index.mjs';
 
 // we need to go up 3 steps: 1 from file to lib, 1 from lib to dist, 1 from dist to project root

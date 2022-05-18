@@ -1,4 +1,4 @@
-import { resolve } from 'path';
+import { resolve } from 'node:path';
 import inquirer from 'inquirer';
 
 import { CompositeError, exec, getLogger } from '../lib/index.mjs';

@@ -1,5 +1,5 @@
-import { join } from 'path';
-import os from 'os';
+import { join } from 'node:path';
+import os from 'node:os';
 import {
 	chmod,
 	CompositeError,
