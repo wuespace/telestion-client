@@ -1,4 +1,4 @@
-import os from 'os';
+import os from 'node:os';
 import { BaseOptions } from '../../model/index.mjs';
 import {
 	ArchOption,

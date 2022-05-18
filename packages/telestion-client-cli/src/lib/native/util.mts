@@ -1,4 +1,4 @@
-import os from 'os';
+import os from 'node:os';
 import { getLogger } from '../logger/index.mjs';
 import { spawn } from './child-process.mjs';
 

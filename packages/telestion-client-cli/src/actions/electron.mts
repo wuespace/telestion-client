@@ -1,5 +1,5 @@
-import { join, basename } from 'path';
-import { ChildProcess } from 'child_process';
+import { join, basename } from 'node:path';
+import { ChildProcess } from 'node:child_process';
 
 import {
 	exec,

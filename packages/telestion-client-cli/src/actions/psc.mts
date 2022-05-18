@@ -1,4 +1,4 @@
-import { join, resolve } from 'path';
+import { join, resolve } from 'node:path';
 import { exists, getLogger, readDir, readFile, stat } from '../lib/index.mjs';
 
 const logger = getLogger('PSC Action');

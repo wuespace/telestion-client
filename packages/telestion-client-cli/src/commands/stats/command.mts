@@ -1,4 +1,4 @@
-import { join } from 'path';
+import { join } from 'node:path';
 import chalk from 'chalk';
 import inquirer from 'inquirer';
 

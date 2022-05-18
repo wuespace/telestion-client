@@ -1,6 +1,6 @@
+import { basename } from 'node:path';
 import chalk from 'chalk';
 import inquirer from 'inquirer';
-import { basename } from 'path';
 
 import { BaseWithPartial } from '../../model/index.mjs';
 import { getLogger } from '../../lib/index.mjs';

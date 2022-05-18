@@ -1,4 +1,4 @@
-import { relative } from 'path';
+import { relative } from 'node:path';
 import chalk from 'chalk';
 import ora from 'ora';
 

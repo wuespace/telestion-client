@@ -1,5 +1,5 @@
-import { ChildProcess } from 'child_process';
-import { join } from 'path';
+import { ChildProcess } from 'node:child_process';
+import { join } from 'node:path';
 
 import { CompositeError, existsSync, fork, getLogger } from '../lib/index.mjs';
 import { BuildEvent } from '../model/parcel-events.mjs';
