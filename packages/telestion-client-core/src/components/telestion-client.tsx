@@ -1,8 +1,8 @@
-import { ReactElement, ReactNode, useEffect, useRef, useState } from 'react';
+import { ReactElement, ReactNode, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { StateSelector } from 'zustand';
 
-import { PreferencesState, usePreferences } from '../hooks';
+import { PreferencesState, usePreferences, useSize } from '../hooks';
 import { SizeContext } from './contexts/size-context';
 
 // preferences selector
@@ -73,14 +73,14 @@ export function TelestionClient({
 	children
 }: TelestionClientProps) {
 	const update = usePreferences(selector);
-	const wrapperRef = useRef<HTMLDivElement>(null);
+	const [target, targetSize] = useSize<HTMLDivElement>();
 	const [size, setSize] = useState<DOMRect>();
 
 	useEffect(() => {
-		if (wrapperRef.current) {
-			setSize(wrapperRef.current.getBoundingClientRect());
+		if (targetSize) {
+			setSize(targetSize);
 		}
-	}, []);
+	}, [targetSize]);
 
 	useEffect(() => {
 		update('null', 'title', title);
@@ -89,7 +89,7 @@ export function TelestionClient({
 	// Fix Typescript bad types for JSX by wrapping components in Fragments to hide dumb types
 	// eslint-disable-next-line react/jsx-no-useless-fragment
 	return (
-		<div ref={wrapperRef}>
+		<div ref={target}>
 			<SizeContext size={size}>
 				{wrapper ? wrapper(children) : children}
 			</SizeContext>
