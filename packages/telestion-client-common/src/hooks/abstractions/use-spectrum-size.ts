@@ -1,9 +1,9 @@
-import { useWindowSize } from '@wuespace/telestion-client-core/src/components/contexts/size-context';
+import { useWindowSize } from '@wuespace/telestion-client-core';
 
 /**
  * Type for the pre-defined React Spectrum screen sizes.
  *
- * @see
+ * @see {@link https://react-spectrum.adobe.com/react-spectrum/Provider.html}
  */
 export type SpectrumSize = 'base' | 'S' | 'M' | 'L' | 'XL' | 'XXL';
 
