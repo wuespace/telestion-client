@@ -1,0 +1,39 @@
+# config for corfu-generated application
+---
+id: 0xC0
+name: adcs
+
+threads:
+  atc_thread:
+    firstTime: 1800_ms
+    period: 50_ms
+    priority: 200
+
+subscribe:
+  myFirstTopic:
+    fifo: 8
+
+telecommands:
+  Nop:
+    id: 1
+  GenerateAnomaly:
+    id: 2
+  IncrementCounter:
+    id: 3
+    fields:
+      incrementStep: uint8_t
+  TwoParameters:
+    id: 4
+    fields:
+      firstParameter: uint8_t
+      secondParameter: float
+extended_telemetry:
+  MyTelemetry:
+    id: 1
+    fields:
+      myIntField: uint32_t
+      myFloatField: float
+standard_telemetry:
+  counter: uint8_t
+anomalies:
+  - MyAnomaly

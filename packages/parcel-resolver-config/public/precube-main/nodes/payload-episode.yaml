@@ -1,0 +1,12 @@
+# Node definition for the episode payload node
+---
+id: 0xA0 # 4 leading bits subsystem id , 4 bits node id
+name: episode
+apps:
+  # globale apps (for all nodes)
+  housekeeper: default
+  boot-manager: default
+  data-upload: default
+  watchdog: default
+  # node specific apps
+  ## episode: default

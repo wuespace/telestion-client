@@ -1,0 +1,25 @@
+# config for application DistributedBackup
+---
+id: 0xB3
+name: distributed-backup
+
+thread:
+  dibThread:
+    firstTime: 1400_ms
+    period: 1_s
+    priority: 300
+
+subscribe:
+  distributedBackupStore:
+    fifo: 8
+  distributedBackupRequest:
+    fifo: 8
+
+publish:
+  - corfu::anomalyTopic
+  - corfu::appIsAliveTopic
+  - distributedBackupAnswer
+
+telecommands:
+  NOP:
+    id: 1

@@ -1,0 +1,7 @@
+# sun sensor node definition file
+---
+id: 0x80 # 4 leading bits subsystem id , 4 bits node id
+name: sunsensor
+
+apps:
+  #sunsensor: default

@@ -1,0 +1,62 @@
+---
+id: 0xBA
+# watchdog
+threads:
+  watcher:
+    firstTime: 1900_ms
+    period: 1_s
+    priority: 900
+# app parameters
+configurable_parameters:
+  maxApps:
+    type: uint8_t
+    default_value: 12
+
+subscribe:
+  corfu::appIsAliveTopic: direct
+  timeAndModeTopic: direct # @todo: timesync mit in wat einbauen
+  corfu::anomalyTopic: direct #@todo: auf crit. anomaly checken & ggf neu starten
+
+anomalies:
+  - AppTimeout
+
+publish:
+  - corfu::extendedTelemetryTopic
+  - nodeIsAlive
+
+telecommands:
+  NOP:
+    id: 1
+  AllowAutomaticReset:
+    id: 2
+  ForbidAutomaticReset:
+    id: 3
+  ResetNode:
+    id: 4
+  SendThreadDeadlines:
+    id: 5
+  SetNodeUTC: # falls time and mode  manager nicht läuft
+    id: 6
+    fields:
+      timeUTC: int64_t
+
+standard_telemetry:
+  criticalThreads: uint8_t
+  watchedThreads: uint8_t
+  deadThreads: uint8_t
+  isResetEnabled: bool
+
+# structs in tm
+structs:
+  ThreadDeadLine:
+    threadId: uint32_t # statt app-id, # kann dann aus doku / db ausgelesen werden
+    deadLine: int64_t
+
+extended_telemetry:
+  ThreadDeadLines:
+    id: 5
+    fields:
+      entries:
+        array:
+          length: 12
+          type: ThreadDeadLine

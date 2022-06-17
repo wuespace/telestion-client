@@ -1,0 +1,18 @@
+---
+id: 0x10
+name: test
+apps:
+  # anomaly-reporter: default
+  commander: default
+  data-upload: default
+  downlink-manager: default
+  # example-app: default
+  file-system: default
+  housekeeper: default
+  # time-manager: default
+  # master-time-manager: default
+  # test-app: default
+  timed-commander: default
+  transceiver: default
+  # master-watchdog: default
+  # watchdog: default

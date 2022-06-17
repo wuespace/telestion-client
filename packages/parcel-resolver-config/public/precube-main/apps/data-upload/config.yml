@@ -1,0 +1,73 @@
+---
+id: 0x82
+name: data-upload
+
+threads:
+  dupThread:
+    firstTime: 1700_ms
+    period: 1_s
+    priority: 200
+
+configurable_parameters:
+  expected_chunk_size:
+    type: uint16_t
+    default_value: 100 # @todo: REALISTISCHE GROESSEN EINSEZTEN
+  max_file_size_in_bytes:
+    type: uint32_t
+    default_value: 512000 # @todo: weglassen ??
+
+subscribe:
+  fileTransferTopic:
+    fifo: 10
+
+publish:
+  - corfu::appIsAliveTopic
+  - corfu::extendedTelemetryTopic
+
+anomalies:
+  - FlashErrorOnWrite
+  - PageInBadBlock
+
+telecommands:
+  NOP:
+    id: 1
+  ExpectFile:
+    id: 2
+    fields:
+      fileID: uint16_t
+      numberOfSegments: uint16_t
+      sizeOfImage: uint32_t
+      flashPageOffset: uint32_t
+  SendBitmap:
+    id: 3
+  ComputeCRC:
+    id: 4
+    fields:
+      blockID: uint16_t
+      length: uint16_t
+  CheckUploadComplete:
+    id: 5
+    fields:
+      imageID: uint64_t
+  DeleteBlock:
+    id: 6
+    fields:
+      blockID: uint16_t
+
+standard_telemetry:
+  isUploadInProgress: bool
+  uploadImageID: uint8_t
+  segmentsExpected: uint16_t
+  segmentsReceived: uint16_t
+  failedCRCChecks: uint16_t
+
+extended_telemetry:
+  ReceiveStatus:
+    id: 3
+    fields:
+      uploadId: uint64_t
+      bitmapLength: uint16_t
+      bitmap:
+        bit_array:
+          length: 2560 # 320 bytes
+

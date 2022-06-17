@@ -1,0 +1,13 @@
+# Node definition for adcs node
+---
+id: 0x40 # 4 leading bits subsystem id , 4 bits node id
+name: adcs
+apps:
+  # global apps (for all nodes)
+  housekeeper: default
+  boot-manager: default
+  data-upload: default
+  watchdog: default
+  # node specific apps
+  adcs: default
+  ## navigation: default

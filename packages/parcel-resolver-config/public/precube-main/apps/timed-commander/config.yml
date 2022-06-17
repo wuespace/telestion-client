@@ -1,0 +1,79 @@
+---
+id: 0xA2
+name: timed-commander
+threads:
+  tcmThread:
+    firstTime: 1250_ms
+    period: 1_s
+    priority: 750
+configurable_parameters:
+  maxListEntries:
+    type: uint8_t
+    default_value: 100
+  maxEntriesInTM:
+    type: uint8_t
+    default_value: 10 # maximum number of entries sent in one extended telemetry message # @todo:
+
+subscribe:
+  timedTelecommandTopic: direct
+  timeAndModeTopic: direct
+
+publish:
+  - corfu::appIsAliveTopic
+  - corfu::extendedTelemetryTopic
+  - corfu::telecommandTopic
+
+telecommands:
+  NOP:
+    id: 1
+  ClearActiveList:
+    id: 2
+  DeleteStagingList:
+    id: 3
+  SendActiveList:
+    id: 4
+  SendStagingList:
+    id: 5
+  ActivateStagingList:
+    id: 6
+  OverrideSafeModeList: # noch nicht implementiert
+    id: 7
+  ClearAllLists: # @todo: implementieren
+    id: 8
+
+structs:
+  TimedCommandHeader:
+    sortVal: int64_t # time to execute!
+    cmdIndex: int16_t
+    checksum: int16_t
+    nodeID: uint8_t
+    serviceID: uint8_t
+    subserviceID: uint8_t
+
+standard_telemetry:
+  nextCommandTime: int64_t
+  sentCommands: uint32_t
+  stagedCommands: uint16_t
+  activeCommands: uint16_t
+
+  iteration: uint16_t # debug output
+
+extended_telemetry:
+  ActiveList:
+    id: 4
+    fields:
+      part: uint8_t
+      of: uint8_t
+      activeListEntries:
+        array:
+          length: 10
+          type: TimedCommandHeader
+  StagingList:
+    id: 5
+    fields:
+      part: uint8_t
+      of: uint8_t
+      stagedListEntries:
+        array:
+          length: 10
+          type: TimedCommandHeader

@@ -1,0 +1,22 @@
+---
+id: 0xA9
+name: telemetry-history
+
+subscribe:
+  corfu::standardTelemetryTopic:
+    fifo: 12
+  corfu::extendedTelemetryTopic:
+    fifo: 12
+  historicTelemetryTopic:
+    fifo: 12
+
+publish:
+  - historicTelemetryTopic
+
+telecommands:
+  NOP:
+    id: 1
+  SendHistoricTM:
+    id: 2
+  StopSending:
+    id: 3
