@@ -48,11 +48,10 @@ const selector: StateSelector<
  */
 export function NotificationAction() {
 	const { isMuted, toggle } = useNotifications(selector, shallow);
-
 	return (
 		<TooltipTrigger>
 			<ActionButton onPress={toggle} isQuiet>
-				{isMuted ? <RemoveCircle /> : <Bell />}
+				{isMuted ? <RemoveCircle width="100%" /> : <Bell width="100%" />}
 			</ActionButton>
 			<Tooltip>
 				{isMuted ? 'Allow notifications' : 'Block notifications'}
