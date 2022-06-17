@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 import PropTypes from 'prop-types';
 import { Provider, View, Flex } from '@adobe/react-spectrum';
+import { useBreakpoints } from '../../hooks/abstractions/use-breakpoints';
 
 /**
  * React Props of {@link Header}
@@ -71,15 +72,17 @@ export interface HeaderProps {
  * ```
  */
 export function Header({ left, center, right }: HeaderProps) {
+	const { isBase, isSm } = useBreakpoints();
+
 	return (
 		<Provider flex={0} width="100%" colorScheme="dark" isQuiet>
 			<View width="100%" height="size-600" backgroundColor="gray-200">
 				<Flex direction="row" width="100%" height="100%" alignItems="center">
 					<Flex
-						flex={1}
+						flex={`${isBase || isSm ? '0 1' : 1}`}
 						height="100%"
-						marginStart="size-200"
-						marginEnd="size-200"
+						marginStart={`${isBase || isSm ? 'size-100' : 'size-200'}`}
+						marginEnd={`${isBase || isSm ? 'size-100' : 'size-200'}`}
 						direction="row"
 						alignItems="center"
 						justifyContent="start"
@@ -92,12 +95,12 @@ export function Header({ left, center, right }: HeaderProps) {
 					<Flex
 						flex={1}
 						height="100%"
-						marginStart="size-200"
-						marginEnd="size-200"
+						marginStart={`${isBase || isSm ? 'size-100' : 'size-200'}`}
+						marginEnd={`${isBase || isSm ? 'size-100' : 'size-200'}`}
 						direction="row"
 						alignItems="center"
-						justifyContent="center"
-						gap="size-200"
+						justifyContent={`${isBase || isSm ? 'start' : 'center'}`}
+						gap={`${isBase || isSm ? 'size-50' : 'size-200'}`}
 					>
 						{/* eslint-disable-next-line react/jsx-no-useless-fragment */}
 						{center ?? <></>}
@@ -106,12 +109,12 @@ export function Header({ left, center, right }: HeaderProps) {
 					<Flex
 						flex={1}
 						height="100%"
-						marginStart="size-200"
-						marginEnd="size-200"
+						marginStart={`${isBase || isSm ? 'size-100' : 'size-200'}`}
+						marginEnd={`${isBase || isSm ? 'size-100' : 'size-200'}`}
 						direction="row"
 						alignItems="center"
 						justifyContent="end"
-						gap="size-200"
+						gap={`${isBase || isSm ? 'size-50' : 'size-200'}`}
 					>
 						{/* eslint-disable-next-line react/jsx-no-useless-fragment */}
 						{right ?? <></>}
