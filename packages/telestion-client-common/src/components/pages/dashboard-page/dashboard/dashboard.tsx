@@ -1,10 +1,15 @@
-import { useMemo } from 'react';
+import { useState, useEffect } from 'react';
 import { Grid, View } from '@adobe/react-spectrum';
 import { Dashboard as DashboardType } from '@wuespace/telestion-client-types';
+import { useWindowSize } from '@wuespace/telestion-client-core';
 
 import { OverflowFix } from '../../../widget-helper';
 import { WidgetSelector } from './widget-renderer/widget-selector';
-
+import {
+	useBreakpoints,
+	useSpectrumSize,
+	useOrientation
+} from '../../../../hooks/abstractions';
 /**
  * React Props of {@link OverflowFix}
  *
@@ -49,7 +54,90 @@ export interface DashboardProps {
  * ```
  */
 export function Dashboard({ dashboard }: DashboardProps) {
-	const areas = useMemo(
+	const windowSize = useWindowSize();
+	const spectrumSize = useSpectrumSize();
+	const { isBase, isSm, isLg, isXl, isXXl } = useBreakpoints();
+	const orientation = useOrientation();
+
+	const [columns, setColumns] = useState(['minmax(0, 1fr)']);
+	const [rowSize, setRowSize] = useState('50%');
+
+	const calculateColumns = () => {
+		if (orientation === 'landscape') {
+			if (isXXl)
+				return [
+					'minmax(0, 1fr)',
+					'minmax(0, 1fr)',
+					'minmax(0, 1fr)',
+					'minmax(0, 1fr)'
+				];
+			if (isLg || isXl)
+				return ['minmax(0, 1fr)', 'minmax(0, 1fr)', 'minmax(0, 1fr)'];
+			return ['minmax(0, 1fr)', 'minmax(0, 1fr)'];
+		}
+		if (isBase || isSm) return ['minmax(0, 1fr)'];
+		return ['minmax(0, 1fr)', 'minmax(0, 1fr)'];
+	};
+
+	const calculateRowSize = () => {
+		if (orientation === 'landscape') {
+			if (windowSize) {
+				if (windowSize.height < 400) {
+					return '100%';
+				}
+			}
+		}
+		if (isXXl) return 'minmax(calc(99% / 3), 34%)';
+		return '50%';
+	};
+
+	useEffect(() => {
+		setColumns(calculateColumns);
+	}, [orientation, spectrumSize]);
+
+	useEffect(() => {
+		setRowSize(calculateRowSize);
+	}, [windowSize]);
+
+	return (
+		<View
+			flexGrow={1}
+			width="100%"
+			maxHeight="100%"
+			padding="size-100"
+			backgroundColor="gray-50"
+		>
+			<View width="100%" height="100%" overflow="auto">
+				<Grid
+					width="100%"
+					height="100%"
+					autoFlow="row dense"
+					autoRows={rowSize}
+					columns={columns}
+					gap="size-50"
+				>
+					{dashboard.widgets.map(widget => (
+						<OverflowFix
+							key={widget.id}
+							gridRowEnd={`span ${widget.height}`}
+							gridColumnEnd={`span ${
+								isBase || isSm ? dashboard.columns : widget.width
+							}`}
+							backgroundColor="gray-100"
+							borderRadius="regular"
+						>
+							<WidgetSelector definition={widget} />
+						</OverflowFix>
+					))}
+				</Grid>
+			</View>
+		</View>
+	);
+}
+
+/*
+BACKUP
+const areas = useMemo(
 		() =>
 			Array.from({ length: dashboard.rows }, () =>
 				Array.from({ length: dashboard.columns }, () => '.').join(' ')
@@ -66,34 +154,4 @@ export function Dashboard({ dashboard }: DashboardProps) {
 		() => Array.from({ length: dashboard.columns }, () => 'minmax(0, 1fr)'),
 		[dashboard]
 	);
-
-	return (
-		<View
-			flexGrow={1}
-			width="100%"
-			padding="size-100"
-			backgroundColor="gray-50"
-		>
-			<Grid
-				width="100%"
-				height="100%"
-				areas={areas}
-				rows={rows}
-				columns={columns}
-				gap="size-100"
-			>
-				{dashboard.widgets.map(widget => (
-					<OverflowFix
-						key={widget.id}
-						gridRowEnd={`span ${widget.height}`}
-						gridColumnEnd={`span ${widget.width}`}
-						backgroundColor="gray-100"
-						borderRadius="regular"
-					>
-						<WidgetSelector definition={widget} />
-					</OverflowFix>
-				))}
-			</Grid>
-		</View>
-	);
-}
+ */
