@@ -1,5 +1,16 @@
-import { TooltipTrigger, Tooltip, Picker, Item } from '@adobe/react-spectrum';
+import {
+	TooltipTrigger,
+	Tooltip,
+	Picker,
+	Item,
+	MenuTrigger,
+	Menu,
+	ActionButton
+} from '@adobe/react-spectrum';
+import { useEffect, useState } from 'react';
+import CollectionEdit from '@spectrum-icons/workflow/CollectionEdit';
 import { useCurrentDashboards } from '../../../hooks';
+import { useBreakpoints } from '../../../hooks/abstractions/use-breakpoints';
 import { useDashboardState } from './use-dashboard-state';
 
 /**
@@ -32,12 +43,32 @@ export function DashboardPicker() {
 	const [dashboards] = useCurrentDashboards();
 	const { items, selected, onSelectionChange, isDisabled, isHidden } =
 		useDashboardState(dashboards);
+	const { isBase, isSm } = useBreakpoints();
+	const [menuSelection, setMenuSelection] = useState(new Set([selected]));
+
+	useEffect(() => {
+		setMenuSelection(new Set([selected]));
+	}, [selected]);
 
 	if (isHidden) {
 		return null;
 	}
 
-	return (
+	return isBase || isSm ? (
+		<MenuTrigger>
+			<ActionButton>
+				<CollectionEdit />
+			</ActionButton>
+			<Menu
+				items={items}
+				selectionMode="single"
+				selectedKeys={menuSelection}
+				onSelectionChange={() => setMenuSelection}
+			>
+				{item => <Item key={item.key}>{item.title}</Item>}
+			</Menu>
+		</MenuTrigger>
+	) : (
 		<TooltipTrigger>
 			<Picker
 				aria-label="Select a dashboard to view"
