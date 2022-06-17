@@ -1,5 +1,6 @@
 import { Image } from '@adobe/react-spectrum';
 import { useLogo } from '../../contexts';
+import { useBreakpoints } from '../../../hooks/abstractions/use-breakpoints';
 
 /**
  * The login logo component that renders the current application logo
@@ -27,14 +28,15 @@ import { useLogo } from '../../contexts';
  */
 export function LoginLogo() {
 	const appLogo = useLogo();
+	const { isBase, isSm } = useBreakpoints();
 
 	return (
 		<Image
 			src={appLogo}
 			alignSelf="center"
 			alt="Application logo"
-			width="size-1200"
-			height="size-1200"
+			width={`${isBase || isSm ? 'size-200' : 'size-1200'}`}
+			height={`${isBase || isSm ? 'size-200' : 'size-1200'}`}
 		/>
 	);
 }
