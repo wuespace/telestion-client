@@ -6,6 +6,7 @@ import {
 	EventBusState,
 	useEventBus
 } from '@wuespace/telestion-client-core';
+import { useSpectrumSize } from '../../hooks';
 
 const variant: {
 	[key in ConnectionState]: SpectrumStatusLightProps['variant'];
@@ -58,8 +59,13 @@ export function ConnectionIndicator({
 	const ebState = useEventBus(selector);
 	const state = overrideState ?? ebState;
 	// TODO: Clean up the override and props
+	const size = useSpectrumSize();
 
-	return (
+	return size === 'base' ? (
+		<View paddingTop="size-50">
+			<StatusLight variant={variant[state]} />
+		</View>
+	) : (
 		<View
 			borderWidth="thin"
 			borderColor="dark"
@@ -67,6 +73,7 @@ export function ConnectionIndicator({
 			paddingStart="size-100"
 			paddingEnd="size-200"
 			paddingTop="size-50"
+			width="size-1600"
 		>
 			<StatusLight variant={variant[state]}>{label[state]}</StatusLight>
 		</View>
