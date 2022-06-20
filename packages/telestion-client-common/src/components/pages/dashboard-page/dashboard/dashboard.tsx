@@ -88,7 +88,7 @@ export function Dashboard({ dashboard }: DashboardProps) {
 			}
 		}
 		if (isXXl) return 'minmax(calc(99% / 3), 34%)';
-		return '50%';
+		return 'minmax(49%, 50%)';
 	};
 
 	useEffect(() => {

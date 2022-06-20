@@ -2,7 +2,7 @@
 	"name": "@wuespace/telestion-client-common",
 	"description": "The common components of the Telestion Client",
 	"license": "MIT",
-	"version": "0.18.1",
+	"version": "0.20.10",
 	"homepage": "https://telestion.wuespace.de/",
 	"source": "src/index.ts",
 	"main": "dist/main.js",

@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
 import PropTypes from 'prop-types';
-import { Flex } from '@adobe/react-spectrum';
+import { ResponsiveGroup } from '../responsive-group/responsive-group';
+import { useBreakpoints } from '../../../hooks/abstractions/use-breakpoints';
 
 /**
  * React Props of {@link Actions}
@@ -60,10 +61,9 @@ export interface ActionsProps {
  * ```
  */
 export function Actions({ children }: ActionsProps) {
+	const { isBase, isSm } = useBreakpoints();
 	return (
-		<Flex direction="row" gap="size-50">
-			{children}
-		</Flex>
+		<ResponsiveGroup condition={isBase || isSm}>{children}</ResponsiveGroup>
 	);
 }
 

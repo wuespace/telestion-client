@@ -1,6 +1,7 @@
 import { ReactElement } from 'react';
-import { Flex } from '@adobe/react-spectrum';
+import { Flex, View } from '@adobe/react-spectrum';
 import { Routing } from '@wuespace/telestion-client-types';
+import { useBreakpoints } from '../../../hooks';
 
 /**
  * React Props of {@link LoginPageProps}
@@ -71,6 +72,8 @@ export interface LoginPageProps {
  * ```
  */
 export function LoginPage({ children }: LoginPageProps) {
+	// const { isBase, isSm } = useBreakpoints();
+
 	return (
 		<Flex
 			width="100%"
@@ -79,9 +82,11 @@ export function LoginPage({ children }: LoginPageProps) {
 			justifyContent="center"
 			alignItems="center"
 		>
-			<Flex direction="column" maxWidth="size-4600">
-				{children}
-			</Flex>
+			<View overflow="auto" padding="size-100">
+				<Flex direction="column" maxWidth="size-4600">
+					{children}
+				</Flex>
+			</View>
 		</Flex>
 	);
 }
