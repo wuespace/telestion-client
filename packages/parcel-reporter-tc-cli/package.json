@@ -2,7 +2,7 @@
 	"name": "@wuespace/parcel-reporter-tc-cli",
 	"description": "Parcel Reporter Plugin that configures Parcel to interact with tc-cli",
 	"license": "MIT",
-	"version": "0.18.1",
+	"version": "0.20.0",
 	"homepage": "https://telestion.wuespace.de/",
 	"source": "src/reporter.ts",
 	"main": "dist/reporter.js",

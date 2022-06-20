@@ -2,7 +2,7 @@
 	"name": "@wuespace/telestion-client-core",
 	"description": "The core components of the Telestion Client",
 	"license": "MIT",
-	"version": "0.18.1",
+	"version": "0.20.1",
 	"homepage": "https://telestion.wuespace.de/",
 	"source": "src/index.ts",
 	"main": "dist/main.js",
@@ -59,6 +59,7 @@
 	],
 	"dependencies": {
 		"@fliegwerk/logsemts": "^0.4.3",
+		"@react-hook/resize-observer": "^1.2.5",
 		"@types/react": "^17.0.0",
 		"@wuespace/telestion-client-prop-types": "workspace:^",
 		"@wuespace/telestion-client-types": "workspace:^",

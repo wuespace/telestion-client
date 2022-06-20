@@ -2,7 +2,7 @@
 	"name": "@wuespace/vertx-mock-server",
 	"description": "The Vert.x event bus mock server for Telestion Client",
 	"license": "MIT",
-	"version": "0.18.1",
+	"version": "0.20.0",
 	"homepage": "https://telestion.wuespace.de/",
 	"source": "src/index.ts",
 	"main": "dist/main.js",

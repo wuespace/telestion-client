@@ -2,7 +2,7 @@
 	"name": "@wuespace/parcel-resolver-react",
 	"description": "Parcel Resolver Plugin that resolves React from the Project root",
 	"license": "MIT",
-	"version": "0.18.1",
+	"version": "0.20.0",
 	"homepage": "https://telestion.wuespace.de/",
 	"source": "src/resolver.ts",
 	"main": "dist/resolver.js",

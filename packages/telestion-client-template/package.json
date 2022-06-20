@@ -2,7 +2,7 @@
 	"name": "@wuespace/telestion-client-template",
 	"description": "The template for a Telestion Client project",
 	"license": "MIT",
-	"version": "0.18.1",
+	"version": "0.20.0",
 	"homepage": "https://telestion.wuespace.de/",
 	"engines": {
 		"node": ">=14"

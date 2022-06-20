@@ -2,7 +2,7 @@
 	"name": "@wuespace/vertx-event-bus",
 	"description": "The Vert.x event bus client for Telestion Client",
 	"license": "MIT",
-	"version": "0.18.1",
+	"version": "0.20.0",
 	"homepage": "https://telestion.wuespace.de/",
 	"source": "src/index.ts",
 	"main": "dist/main.js",
