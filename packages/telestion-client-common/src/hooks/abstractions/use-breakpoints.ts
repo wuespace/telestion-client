@@ -42,8 +42,8 @@ export function useBreakpoints(): Breakpoints {
 		isLg: size === 'L',
 		isXl: size === 'XL',
 		isXXl: size === 'XXL',
-		isMobile: size ? size === 'S' || size === 'M' || size === 'base' : false,
-		isDesktop: size ? size === 'L' || size === 'XL' || size === 'XXL' : false,
+		isMobile: size === 'S' || size === 'M' || size === 'base',
+		isDesktop: size === 'L' || size === 'XL' || size === 'XXL',
 		active: size
 	};
 }
