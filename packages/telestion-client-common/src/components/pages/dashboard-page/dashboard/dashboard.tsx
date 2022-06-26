@@ -105,7 +105,7 @@ export function Dashboard({ dashboard }: DashboardProps) {
 			width="100%"
 			maxHeight="100%"
 			padding="size-100"
-			backgroundColor="gray-50"
+			backgroundColor="gray-300"
 		>
 			<View width="100%" height="100%" overflow="auto">
 				<Grid
