@@ -51,7 +51,7 @@
 		"@wuespace/telestion-client-common": "file:../telestion-client-common",
 		"@wuespace/telestion-client-core": "file:../telestion-client-core",
 		"@wuespace/telestion-client-prop-types": "file:../telestion-client-prop-types",
-		"electron": "^17.0.0",
+		"electron": "^19.0.6",
 		"react": "^17.0.1",
 		"react-dom": "^17.0.1",
 		"react-router-dom": "^5.2.0",
