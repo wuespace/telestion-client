@@ -33,7 +33,22 @@ export interface SizeContextProps {
  *
  * @example
  * ```ts
+ *	export function RootComponent() {
+ *     const [target, targetSize] = useSize<HTMLDivElement>();
+ *     const [size, setSize] = useState<DOMRect>();
  *
+ *     useEffect(() => {
+ *         if (targetSize) setSize(targetSize);
+ *     }, [targetSize]);
+ *
+ *     return (
+ *         <div ref={target}>
+ *             <SizeContext size={size}>
+ *                 <div>Childs components now have access to the window size.</div>
+ *             </SizeContext>
+ *         </div>
+ *     );
+ * }
  * ```
  */
 export function SizeContext({ size, children }: SizeContextProps) {
@@ -47,9 +62,9 @@ export function SizeContext({ size, children }: SizeContextProps) {
  *
  * @example
  * ```ts
- * function WindowSize() {
+ * function ResponsiveElement() {
  *     const windowSize = useWindowSize();
- *     return windowSize < 1024px ? <Flex direction='row' /> : <Flex direction='column'>;
+ *     return (windowSize < 1024px) ? <Flex direction='row' /> : <Flex direction='column'>;
  * }
  * ```
  */

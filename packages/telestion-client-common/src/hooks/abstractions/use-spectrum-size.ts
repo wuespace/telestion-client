@@ -12,10 +12,6 @@ export type SpectrumSize = 'base' | 'S' | 'M' | 'L' | 'XL' | 'XXL';
  *
  * @param width - width of the application window
  *
- * @example
- * ```ts
- *
- * ```
  */
 function spectrumSize(width: number): SpectrumSize {
 	if (width >= 1536) {
@@ -41,7 +37,11 @@ function spectrumSize(width: number): SpectrumSize {
  *
  * @example
  * ```ts
+ *	export function Container() {
+ *	   const spectrumSize = useSpectrumSize();
  *
+ *	   if (spectrumSize === 'S') { ... }
+ *	}
  * ```
  */
 export function useSpectrumSize(): SpectrumSize | undefined {

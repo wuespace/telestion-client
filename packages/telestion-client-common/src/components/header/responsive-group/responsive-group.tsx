@@ -23,6 +23,15 @@ export interface ResponsiveGroupProps {
  * @param children - components to be displayed
  * @param condition - condition that can be passed to decide, when the group is collapsing
  *
+ * @example
+ * ```ts
+ *	export function Actions({ children }: ActionsProps) {
+ * 		const { isBase, isSm } = useBreakpoints();
+ * 		return (
+ * 			<ResponsiveGroup condition={isBase || isSm}>{children}</ResponsiveGroup>
+ * 		);
+ * }
+ * ```
  */
 export function ResponsiveGroup({ children, condition }: ResponsiveGroupProps) {
 	return condition ? (

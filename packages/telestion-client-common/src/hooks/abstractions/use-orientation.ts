@@ -15,11 +15,6 @@ export type Orientation = 'landscape' | 'portrait';
  *
  * @param width - the window width
  * @param height - the window height
- *
- * @example
- * ```ts
- *
- * ```
  */
 function getOrientation(width: number, height: number): Orientation {
 	return height >= width ? 'portrait' : 'landscape';
@@ -30,7 +25,15 @@ function getOrientation(width: number, height: number): Orientation {
  *
  * @example
  * ```ts
+ * export function Container() {
+ * 	   const orientation = useOrientation();
  *
+ * 	   if (orientation === 'landscape') {
+ * 	       return <div style="width: 100%;"></div>;
+ * 	   } else {
+ * 	       return <div style="height: 100%;"></div>;
+ * 	   }
+ * 	}
  * ```
  */
 export function useOrientation(): Orientation | undefined {
