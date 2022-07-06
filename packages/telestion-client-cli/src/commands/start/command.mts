@@ -1,14 +1,17 @@
-import { ChildProcess } from 'node:child_process';
 import inquirer from 'inquirer';
 
 import { BaseWithPartial } from '../../model/index.mjs';
-import { getLogger, openUrl } from '../../lib/index.mjs';
+import {
+	ChildProcess,
+	EventEmitter,
+	getLogger,
+	openUrl
+} from '../../lib/index.mjs';
 import { getPackageJson, getPSCRoot } from '../../actions/psc.mjs';
 import {
 	clearNativeDependencies,
 	startElectron
 } from '../../actions/electron.mjs';
-
 import { defaultStartOptions, StartOptions } from './model.mjs';
 import {
 	parcelServeFrontendStage,
@@ -22,16 +25,20 @@ const logger = getLogger('Start');
  * The actual command.
  * @param options - the complete options set
  */
-export async function runStartCommand(options: StartOptions): Promise<void> {
+export async function runStartCommand(
+	options: StartOptions
+): Promise<EventEmitter> {
 	logger.debug('Received options:', options);
 
 	const projectDir = await getPSCRoot(options.workingDir);
 	const packageJson = await getPackageJson(projectDir);
+	const eventEmitter = new EventEmitter();
 
 	const parcelFrontedProcess = parcelServeFrontendStage(
 		projectDir,
 		options,
-		parcelFrontedProcess => {
+		() => {
+			// this gets called only on the first successful build
 			switch (options.target) {
 				case 'browser': {
 					logger.debug('Running browser target');
@@ -45,36 +52,25 @@ export async function runStartCommand(options: StartOptions): Promise<void> {
 					logger.debug('Running Electron target');
 
 					clearNativeDependencies(projectDir).then(() => {
-						let electronProcess: ChildProcess | undefined;
+						let disconnect: (() => ChildProcess) | undefined;
 						const parcelElectronProcess = parcelWatchElectronStage(
 							projectDir,
 							options,
-							parcelElectronProcess => {
-								// cleanup old Electron process
-								electronProcess?.removeAllListeners('exit');
-								electronProcess?.kill();
+							() => {
+								// gets called on every successful build
 
-								// start new Electron process
+								disconnect?.().stop();
 								prepareElectronEnvironment(projectDir, packageJson).then(() => {
-									electronProcess = startElectron(projectDir, options.port);
-									// kill parcel electron process once Electron process exits
-									electronProcess.on('exit', () => {
-										logger.debug(
-											'Electron process dead. Kill Parcel Electron process'
-										);
-										parcelElectronProcess.kill();
-									});
+									const electronProcess = startElectron(
+										projectDir,
+										options.port
+									);
+									disconnect = eventEmitter.connect(electronProcess);
 								});
 							}
 						);
 
-						// kill parcel frontend process when parcel electron exits
-						parcelElectronProcess.on('exit', () => {
-							logger.debug(
-								'Parcel Electron process dead. Kill Parcel Frontend process'
-							);
-							parcelFrontedProcess.kill();
-						});
+						eventEmitter.connect(parcelElectronProcess);
 					});
 
 					break;
@@ -85,9 +81,23 @@ export async function runStartCommand(options: StartOptions): Promise<void> {
 		}
 	);
 
-	parcelFrontedProcess.on('exit', () => {
-		logger.debug('Parcel Frontend process dead');
+	eventEmitter.connect(parcelFrontedProcess);
+
+	// register interrupt handlers
+	process.on('SIGINT', () => {
+		logger.debug("Main process received 'SIGINT'. Emit stop event");
+		eventEmitter.stop('SIGINT');
 	});
+	process.on('SIGTERM', () => {
+		logger.debug("Main process received 'SIGTERM'. Emit stop event");
+		eventEmitter.stop('SIGTERM');
+	});
+	process.on('SIGHUP', () => {
+		logger.debug("Main process received 'SIGHUP'. Emit stop event");
+		eventEmitter.stop('SIGHUP');
+	});
+
+	return eventEmitter;
 }
 
 /**

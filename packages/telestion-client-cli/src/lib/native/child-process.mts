@@ -1,10 +1,11 @@
 import os from 'node:os';
 import { promisify } from 'node:util';
 import {
-	ChildProcess,
+	ChildProcess as NodeChildProcess,
 	exec as nodeExecCallback,
 	execFile as nodeExecFileCallback,
 	spawn as nodeSpawn,
+	spawnSync as nodeSpawnSync,
 	fork as nodeFork,
 	ExecOptions,
 	ForkOptions,
@@ -17,6 +18,40 @@ import { getCmdShellString, sanitizeArgument } from './cmd-sanitizer.mjs';
 const nodeExec = promisify(nodeExecCallback);
 const nodeExecFile = promisify(nodeExecFileCallback);
 const logger = getLogger('Child Process');
+
+export interface ChildProcess extends NodeChildProcess {
+	/**
+	 * Stops the child process platform independently.
+	 */
+	stop(signal?: NodeJS.Signals): void;
+}
+
+/**
+ * Adds missing functionality to the child process instance.
+ * @param childProcess the node child process
+ */
+function extend(childProcess: NodeChildProcess): ChildProcess {
+	const extended = childProcess as ChildProcess;
+	extended.stop = function (signal) {
+		logger.debug('Stop child process', this.spawnargs.join(' '));
+		if (this.exitCode !== null) {
+			logger.debug('Child process already dead');
+			return;
+		}
+
+		if (os.type() === 'Windows_NT') {
+			logger.debug(
+				'Detected Windows_NT operating system. Using taskkill to kill child process'
+			);
+			nodeSpawnSync('taskkill', ['/pid', `${this.pid}`, '/f', '/t']);
+		} else {
+			logger.debug('Using standard signal method');
+			this.kill(signal);
+		}
+	};
+
+	return extended;
+}
 
 /**
  * Execute an executable from the parent process.
@@ -71,7 +106,7 @@ export function spawn(
 	logger.debug('Arguments:', args);
 	logger.debug('Spawn options:', options);
 
-	let childProcess: ChildProcess;
+	let childProcess: NodeChildProcess;
 	logger.debug(`Spawn ${executablePath} (${os.type()})`);
 	if (os.type() === 'Windows_NT') {
 		const sanitizedArgs = args.map(sanitizeArgument);
@@ -93,7 +128,7 @@ export function spawn(
 	}
 
 	logger.debug('Spawn process instance:', childProcess);
-	return childProcess;
+	return extend(childProcess);
 }
 
 /**
@@ -118,5 +153,5 @@ export function fork(
 	const childProcess = nodeFork(modulePath, args, options);
 
 	logger.debug('Fork process instance:', childProcess);
-	return childProcess;
+	return extend(childProcess);
 }

@@ -1,7 +1,7 @@
 import { join, basename } from 'node:path';
-import { ChildProcess } from 'node:child_process';
 
 import {
+	ChildProcess,
 	exec,
 	existsSync,
 	getDescription,
