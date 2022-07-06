@@ -1,16 +1,15 @@
-import { ChildProcess } from 'node:child_process';
 import { join } from 'node:path';
+import { ChildProcess } from 'node:child_process';
 
-import { CompositeError, existsSync, fork, getLogger } from '../lib/index.mjs';
+import { existsSync, fork, getLogger } from '../lib/index.mjs';
 import { BuildEvent } from '../model/parcel-events.mjs';
 
 const logger = getLogger('Parcel Action');
 
 export type BuildEventHandler = (
 	event: BuildEvent,
-	stop: () => void,
-	parcelProcess: ChildProcess
-) => Promise<void>;
+	process: ChildProcess
+) => void;
 
 interface BaseOptions {
 	/**
@@ -56,18 +55,18 @@ export const defaultBuildOptions: BuildOptions = {
 export const defaultParcelArgs: string[] = ['--no-autoinstall', '--no-cache'];
 
 /**
- * Starts Parcel in serve mode and compiles the project based on the Parcel configuration
- * and the metadata in the `package.json`.
+ * Starts Parcel in serve mode and compiles the project based
+ * on the Parcel configuration and the metadata in the `package.json`.
  * @param projectDir path to the project directory
  * @param options additional build and serve options
  * @param onEvent gets called when a build event has happened
  * @return a promise that fulfills once the Parcel process stops
  */
-export async function serve(
+export function serve(
 	projectDir: string,
 	options?: Partial<ServeOptions>,
 	onEvent?: BuildEventHandler
-): Promise<void> {
+): ChildProcess {
 	const finalOptions = { ...defaultServeOptions, ...options };
 	logger.debug('Project directory:', projectDir);
 	logger.debug('Frontend serve options:', finalOptions);
@@ -76,43 +75,20 @@ export async function serve(
 		? ['--target', `${finalOptions.targets.join(',')}`]
 		: [];
 
-	return new Promise<void>((resolve, reject) => {
-		const parcelProcess = forkParcel(projectDir, [
-			'serve',
-			...defaultParcelArgs,
-			'--port',
-			`${finalOptions.port}`,
-			...targetArgs
-		]);
+	const parcelProcess = forkParcel(projectDir, [
+		'serve',
+		...defaultParcelArgs,
+		'--port',
+		`${finalOptions.port}`,
+		...targetArgs
+	]);
 
-		const stop = () => {
-			parcelProcess.kill('SIGTERM');
-		};
+	// register event handlers
+	parcelProcess.on('message', (event: BuildEvent) =>
+		onEvent?.(event, parcelProcess)
+	);
 
-		// register event handlers
-		parcelProcess.on('message', (event: BuildEvent) => {
-			onEvent?.(event, stop, parcelProcess).catch(err => {
-				logger.debug('Error in serve event handler. Stop parcel serve');
-				stop();
-				reject(
-					new CompositeError(
-						`Build event in Parcel serve with options ${options} failed.`,
-						err
-					)
-				);
-			});
-		});
-
-		parcelProcess.on('exit', (code, signal) =>
-			code === 0 || !!signal
-				? resolve()
-				: reject(
-						new Error(
-							`Parcel serve with options ${options} failed with exit code ${code} and signal ${signal}`
-						)
-				  )
-		);
-	});
+	return parcelProcess;
 }
 
 /**
@@ -123,11 +99,11 @@ export async function serve(
  * @param onEvent gets called when a build event has happened
  * @return a promise that fulfills once the Parcel process stops
  */
-export async function watch(
+export function watch(
 	projectDir: string,
 	options?: Partial<WatchOptions>,
 	onEvent?: BuildEventHandler
-): Promise<void> {
+): ChildProcess {
 	const finalOptions = { ...defaultWatchOptions, ...options };
 	logger.debug('Project directory:', projectDir);
 	logger.debug('Electron watch options:', finalOptions);
@@ -136,43 +112,20 @@ export async function watch(
 		? ['--target', `${finalOptions.targets.join(',')}`]
 		: [];
 
-	return new Promise<void>((resolve, reject) => {
-		const parcelProcess = forkParcel(projectDir, [
-			'watch',
-			...defaultParcelArgs,
-			'--port',
-			`${finalOptions.port}`,
-			...targetArgs
-		]);
+	const parcelProcess = forkParcel(projectDir, [
+		'watch',
+		...defaultParcelArgs,
+		'--port',
+		`${finalOptions.port}`,
+		...targetArgs
+	]);
 
-		const stop = () => {
-			parcelProcess.kill('SIGTERM');
-		};
+	// register event handlers
+	parcelProcess.on('message', (event: BuildEvent) =>
+		onEvent?.(event, parcelProcess)
+	);
 
-		// register event handlers
-		parcelProcess.on('message', (event: BuildEvent) => {
-			onEvent?.(event, stop, parcelProcess).catch(err => {
-				logger.debug('Error in serve event handler. Stop parcel serve');
-				stop();
-				reject(
-					new CompositeError(
-						`Build event in Parcel watch with options ${options} failed.`,
-						err
-					)
-				);
-			});
-		});
-
-		parcelProcess.on('exit', (code, signal) =>
-			code === 0 || !!signal
-				? resolve()
-				: reject(
-						new Error(
-							`Parcel watch with options ${options} failed with exit code ${code} and signal ${signal}`
-						)
-				  )
-		);
-	});
+	return parcelProcess;
 }
 
 /**
@@ -201,11 +154,11 @@ export async function build(
 		]);
 
 		parcelProcess.on('exit', (code, signal) =>
-			code === 0 || !!signal
+			code === 0
 				? resolve()
 				: reject(
 						new Error(
-							`Parcel build with options ${options} failed with exit code ${code} and signal ${signal}`
+							`Cannot build with parcel. Exit code: ${code}, signal: ${signal}, build options: ${options}`
 						)
 				  )
 		);
