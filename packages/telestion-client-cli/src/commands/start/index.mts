@@ -49,7 +49,7 @@ export const startCommandBuilder: CommandBuilder = command => {
 						...actionCommand.optsWithGlobals(),
 						target
 					});
-					errors = await runStartCommand(hydrated);
+					await runStartCommand(hydrated);
 				} catch (err) {
 					errors.push(err);
 				}
@@ -58,7 +58,6 @@ export const startCommandBuilder: CommandBuilder = command => {
 					errors.forEach(error => logger.error(error));
 					process.exit(1);
 				}
-				process.exit(0);
 			}
 		);
 };

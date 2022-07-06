@@ -3,13 +3,6 @@
 ///
 
 export { sanitizeArgument, getCmdShellString } from './cmd-sanitizer.mjs';
-export {
-	addChildProcess,
-	removeChildProcess,
-	getChildProcesses,
-	exit,
-	registerEventHandlers
-} from './process-management.mjs';
 export { exec, spawn, fork } from './child-process.mjs';
 
 ///
