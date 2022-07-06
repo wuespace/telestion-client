@@ -1,6 +1,4 @@
-import { ChildProcess } from 'node:child_process';
-
-import { getLogger } from '../../lib/index.mjs';
+import { ChildProcess, getLogger } from '../../lib/index.mjs';
 import { serve, watch } from '../../actions/parcel.mjs';
 import {
 	generateDistPackageJson,

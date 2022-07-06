@@ -1,2 +1,2 @@
-export { getLogLevel, setLogLevel, LogLevel } from './level-logger.mjs';
-export { getLogger } from './logger.mjs';
+export * from './level-logger.mjs';
+export * from './logger.mjs';
