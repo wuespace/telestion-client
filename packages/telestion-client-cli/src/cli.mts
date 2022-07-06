@@ -1,18 +1,11 @@
 #!/usr/bin/env node
 // @ts-ignore
 import { Command, Option } from 'commander';
-import {
-	getPackageVersion,
-	registerEventHandlers,
-	setLogLevel
-} from './lib/index.mjs';
+import { getPackageVersion, setLogLevel } from './lib/index.mjs';
 import { commandBuilders } from './commands/index.mjs';
 
 const program = new Command();
 const version = getPackageVersion();
-
-// exit cleanly on process signal events
-registerEventHandlers();
 
 program
 	.name('tc-cli')

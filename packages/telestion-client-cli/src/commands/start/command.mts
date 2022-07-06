@@ -2,16 +2,18 @@ import { ChildProcess } from 'node:child_process';
 import inquirer from 'inquirer';
 
 import { BaseWithPartial } from '../../model/index.mjs';
-import { getLogger } from '../../lib/index.mjs';
+import { getLogger, openUrl } from '../../lib/index.mjs';
 import { getPackageJson, getPSCRoot } from '../../actions/psc.mjs';
-import { clearNativeDependencies } from '../../actions/electron.mjs';
+import {
+	clearNativeDependencies,
+	startElectron
+} from '../../actions/electron.mjs';
 
 import { defaultStartOptions, StartOptions } from './model.mjs';
 import {
-	launchBrowser,
-	launchElectron,
 	parcelServeFrontendStage,
-	parcelWatchElectronStage
+	parcelWatchElectronStage,
+	prepareElectronEnvironment
 } from './stages.mjs';
 
 const logger = getLogger('Start');
@@ -20,56 +22,72 @@ const logger = getLogger('Start');
  * The actual command.
  * @param options - the complete options set
  */
-export async function runStartCommand(
-	options: StartOptions
-): Promise<unknown[]> {
-	const errors: unknown[] = [];
+export async function runStartCommand(options: StartOptions): Promise<void> {
 	logger.debug('Received options:', options);
 
 	const projectDir = await getPSCRoot(options.workingDir);
 	const packageJson = await getPackageJson(projectDir);
 
-	// 1 - Start Parcel in "serve" mode for frontend target
-	await parcelServeFrontendStage(projectDir, options, async stopServe => {
-		switch (options.target) {
-			case 'browser': {
-				logger.debug('Running browser target');
-				// 2a - launcher external browser
-				return launchBrowser(projectDir, options);
-			}
-			case 'electron': {
-				logger.debug('Running Electron target');
-
-				try {
-					let previousProcess: ChildProcess;
-					// 2b - Start Parcel electron target and launch Electron
-					await clearNativeDependencies(projectDir);
-					await parcelWatchElectronStage(
-						projectDir,
-						options,
-						async stopWatch => {
-							previousProcess = await launchElectron(
-								projectDir,
-								options,
-								packageJson,
-								previousProcess,
-								stopWatch
-							);
-						}
-					);
-					stopServe();
-				} catch (err) {
-					stopServe();
-					throw err;
+	const parcelFrontedProcess = parcelServeFrontendStage(
+		projectDir,
+		options,
+		parcelFrontedProcess => {
+			switch (options.target) {
+				case 'browser': {
+					logger.debug('Running browser target');
+					// 2a - launcher external browser
+					if (options.open) {
+						openUrl(new URL(`http://localhost:${options.port}/`));
+					}
+					break;
 				}
-				break;
-			}
-			default:
-				throw new Error(`Unknown target: ${options.target}`);
-		}
-	});
+				case 'electron': {
+					logger.debug('Running Electron target');
 
-	return errors;
+					clearNativeDependencies(projectDir).then(() => {
+						let electronProcess: ChildProcess | undefined;
+						const parcelElectronProcess = parcelWatchElectronStage(
+							projectDir,
+							options,
+							parcelElectronProcess => {
+								// cleanup old Electron process
+								electronProcess?.removeAllListeners('exit');
+								electronProcess?.kill();
+
+								// start new Electron process
+								prepareElectronEnvironment(projectDir, packageJson).then(() => {
+									electronProcess = startElectron(projectDir, options.port);
+									// kill parcel electron process once Electron process exits
+									electronProcess.on('exit', () => {
+										logger.debug(
+											'Electron process dead. Kill Parcel Electron process'
+										);
+										parcelElectronProcess.kill();
+									});
+								});
+							}
+						);
+
+						// kill parcel frontend process when parcel electron exits
+						parcelElectronProcess.on('exit', () => {
+							logger.debug(
+								'Parcel Electron process dead. Kill Parcel Frontend process'
+							);
+							parcelFrontedProcess.kill();
+						});
+					});
+
+					break;
+				}
+				default:
+					throw new Error(`Unknown target: ${options.target}`);
+			}
+		}
+	);
+
+	parcelFrontedProcess.on('exit', () => {
+		logger.debug('Parcel Frontend process dead');
+	});
 }
 
 /**
