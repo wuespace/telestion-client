@@ -34,9 +34,8 @@ export async function getConfigProp(
 	property: string
 ): Promise<string | undefined> {
 	try {
-		return (await exec('git', ['config', property], { cwd: workingDir })).stdout
-			.toString()
-			.trim();
+		const result = await exec('git', ['config', property], { cwd: workingDir });
+		return result.stdout.toString().trim();
 	} catch (err) {
 		logger.info(`Property ${property} is not set`);
 		return undefined;
