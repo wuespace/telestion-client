@@ -192,6 +192,7 @@ export async function getTemplateReplacers(
 	devDependencies: Record<string, string>,
 	electronDependencies: string[]
 ): Promise<TemplateReplacers> {
+	// idents all lines with a tab except the first line
 	const addIndentation = (stringified: string) =>
 		stringified
 			.split('\n')
