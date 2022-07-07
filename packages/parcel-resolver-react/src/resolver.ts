@@ -1,6 +1,14 @@
 import { Resolver } from '@parcel/plugin';
 import { join } from 'path';
 
+/**
+ * This Parcel Resolver overrides any imports of [React.js](https://reactjs.org/)
+ * to include React only once and in one version only.
+ * This prevents React from failing with
+ * the [Invalid Hook Call Warning](https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react).
+ *
+ * Note: This plugin is only active if you're using a workspace linked project.
+ */
 export default new Resolver({
 	async resolve({ specifier, options, logger }) {
 		// skip any other dependency
