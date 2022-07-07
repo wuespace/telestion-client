@@ -8,10 +8,12 @@ const logger = getLogger('PSC Action');
  * @param projectDir - path to a possible PSC root
  */
 export async function isPSCRoot(projectDir: string): Promise<boolean> {
-	return (
-		(await exists(join(projectDir, 'package.json'))) &&
-		(await exists(join(projectDir, 'src', 'widgets')))
-	);
+	const [packageExists, widgetsExists] = await Promise.all([
+		exists(join(projectDir, 'package.json')),
+		exists(join(projectDir, 'src', 'widgets'))
+	]);
+
+	return packageExists && widgetsExists;
 }
 
 /**
