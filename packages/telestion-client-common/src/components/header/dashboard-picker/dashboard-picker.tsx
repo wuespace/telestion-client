@@ -5,7 +5,9 @@ import {
 	Item,
 	MenuTrigger,
 	Menu,
-	ActionButton
+	ActionButton,
+	Flex,
+	Text
 } from '@adobe/react-spectrum';
 import { useEffect, useState } from 'react';
 import CollectionEdit from '@spectrum-icons/workflow/CollectionEdit';
@@ -43,34 +45,17 @@ export function DashboardPicker() {
 	const [dashboards] = useCurrentDashboards();
 	const { items, selected, onSelectionChange, isDisabled, isHidden } =
 		useDashboardState(dashboards);
-	const { isBase, isSm } = useBreakpoints();
-	const [menuSelection, setMenuSelection] = useState(new Set([selected]));
 
-	useEffect(() => {
-		setMenuSelection(new Set([selected]));
-	}, [selected]);
+	// use MenuTrigger in the future for smaller screens
 
 	if (isHidden) {
 		return null;
 	}
 
-	return isBase || isSm ? (
-		<MenuTrigger>
-			<ActionButton>
-				<CollectionEdit />
-			</ActionButton>
-			<Menu
-				items={items}
-				selectionMode="single"
-				selectedKeys={menuSelection}
-				onSelectionChange={() => setMenuSelection}
-			>
-				{item => <Item key={item.key}>{item.title}</Item>}
-			</Menu>
-		</MenuTrigger>
-	) : (
+	return (
 		<TooltipTrigger>
 			<Picker
+				minWidth="size-600"
 				aria-label="Select a dashboard to view"
 				placeholder="No dashboards"
 				isDisabled={isDisabled}
