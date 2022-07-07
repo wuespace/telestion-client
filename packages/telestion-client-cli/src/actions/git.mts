@@ -72,6 +72,15 @@ export async function setConfigProp(
 
 /**
  * Runs the minimal setup steps required to successfully use git.
+ *
+ * It sets the git username and email if the current git repository does not contain
+ * these settings.
+ * If the user enabled `commit.gpgsign` and no signing key is set, the function
+ * asks the user for their signing key.
+ *
+ * More information on how to set up git:
+ * https://git-scm.com/book/en/v2/Getting-Started-First-Time-Git-Setup
+ *
  * @param workingDir - path inside a git repository
  * @param username - external username that should be used instead of asking the user interactively
  * @param email - external email address that should be used instead of asking the user interactively
