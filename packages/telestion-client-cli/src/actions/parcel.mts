@@ -1,6 +1,6 @@
 import { join } from 'node:path';
 import { ChildProcess, existsSync, fork, getLogger } from '../lib/index.mjs';
-import { BuildEvent } from '../model/parcel-events.mjs';
+import { BuildEvent } from '../model/index.mjs';
 
 const logger = getLogger('Parcel Action');
 

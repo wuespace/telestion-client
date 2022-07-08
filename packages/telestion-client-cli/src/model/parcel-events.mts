@@ -20,6 +20,9 @@ export interface BuildFailureEvent {
 	diagnostics: Array<Diagnostic>;
 }
 
+/**
+ * Build events received by the `@wuespace/parcel-reporter-tc-cli`.
+ */
 export type BuildEvent =
 	| BuildStartEvent
 	| BuildProgressEvent
