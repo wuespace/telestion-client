@@ -1,5 +1,12 @@
 import { join, resolve } from 'node:path';
-import { exists, getLogger, readDir, readFile, stat } from '../lib/index.mjs';
+import {
+	exists,
+	getLogger,
+	readDir,
+	readFile,
+	stat,
+	writeFile
+} from '../lib/index.mjs';
 
 const logger = getLogger('PSC Action');
 
@@ -18,7 +25,7 @@ export async function isPSCRoot(projectDir: string): Promise<boolean> {
 
 /**
  * Searches the PSC root up from the working directory.
- * If no PSC is found, it returns `null`.
+ * If no PSC is found, it throws.
  * @param workingDir - the current working directory to check
  */
 export async function getPSCRoot(workingDir: string): Promise<string> {
@@ -128,4 +135,21 @@ export async function getPackageJson(
 	) as Record<string, unknown>;
 	logger.debug('PSC package.json:', packageJson);
 	return packageJson;
+}
+
+/**
+ * Stringifies and overwrites the `package.json` of the specified project.
+ * @param projectDir - path to the project root
+ * @param packageJson - the new content of the `package.json`
+ */
+export async function setPackageJson(
+	projectDir: string,
+	packageJson: Record<string, unknown>
+): Promise<void> {
+	logger.debug('Write package.json for project:', projectDir);
+
+	await writeFile(
+		join(projectDir, 'package.json'),
+		JSON.stringify(packageJson, null, '\t')
+	);
 }
