@@ -6,6 +6,7 @@ import {
 	exec,
 	exists,
 	getBinaries,
+	getElectronDependencies,
 	getLogger,
 	mkdir,
 	readDir,
@@ -15,6 +16,7 @@ import {
 	symlink,
 	writeFile
 } from '../lib/index.mjs';
+import { getPackageJson, setPackageJson } from './psc.mjs';
 
 const logger = getLogger('PNPM Action');
 
@@ -86,6 +88,55 @@ export async function pnpmInstall(projectDir: string): Promise<void> {
 		await exec('pnpm', ['install'], { cwd: projectDir });
 	} catch (err) {
 		throw new CompositeError('Cannot install dependencies', err);
+	}
+}
+
+/**
+ * Adds a dependency to the specified project.
+ * @param projectDir - the path to the project containing a valid `package.json`
+ * @param dependencies - the package names of the dependencies
+ * @param scope - the usage scope of the dependency
+ */
+export async function pnpmAdd(
+	projectDir: string,
+	dependencies: string[],
+	scope: 'prod' | 'dev' | 'electron'
+): Promise<void> {
+	const dependenciesPrint = dependencies
+		.map(dependency => `'${dependency}'`)
+		.join(' ');
+	logger.debug('Add dependencies', dependenciesPrint, 'as', scope);
+	logger.debug('Project directory:', projectDir);
+
+	const args =
+		scope === 'dev'
+			? ['add', '--save-dev', ...dependencies]
+			: ['add', '--save-prod', ...dependencies];
+
+	try {
+		await exec('pnpm', args, { cwd: projectDir });
+	} catch (err) {
+		throw new CompositeError(
+			`Cannot add dependencies ${dependenciesPrint} to project: ${projectDir}`,
+			err
+		);
+	}
+	logger.info('Dependencies installed');
+
+	if (scope === 'electron') {
+		logger.debug(`Electron scope detected. Update project 'package.json'`);
+
+		const packageJson = await getPackageJson(projectDir);
+		const electronDependencies = await getElectronDependencies(packageJson);
+		// filter out duplicates
+		const newElectronDependencies = [
+			...new Set([...electronDependencies, ...dependencies])
+		];
+		logger.debug('New electron dependencies:', newElectronDependencies);
+
+		packageJson['electronDependencies'] = newElectronDependencies;
+		await setPackageJson(projectDir, packageJson);
+		logger.info('Added dependencies to electron dependencies');
 	}
 }
 
