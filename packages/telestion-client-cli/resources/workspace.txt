@@ -1,0 +1,26 @@
+!!! DON'T EDIT OR REMOVE !!!
+
+This project contains workspace dependencies.
+Some features like native dependencies aren't available.
+
+If you want to use the full feature set, you need to remove the workspace links in your 'node_modules':
+
+1. Delete the 'node_modules' folder in your project.
+2. Edit your 'package.json' and add the following production dependencies:
+
+- '@wuespace/telestion-client-common'
+- '@wuespace/telestion-client-core'
+- '@wuespace/telestion-client-prop-types'
+
+and the following development dependencies:
+
+- '@wuespace/parcel-reporter-tc-cli'
+- '@wuespace/parcel-resolver-react'
+- '@wuespace/telestion-client-cli'
+- '@wuespace/telestion-client-types'
+
+3. Install all dependencies:
+
+$ pnpm install
+
+4. Remove this file.
