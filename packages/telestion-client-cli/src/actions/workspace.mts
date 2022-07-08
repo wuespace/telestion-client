@@ -1,16 +1,16 @@
 import { join } from 'node:path';
-import { exists, getLogger, rmIfExists, writeFile } from '../lib/index.mjs';
+import {
+	copyFile,
+	exists,
+	getLogger,
+	resourcesPath,
+	rmIfExists
+} from '../lib/index.mjs';
 
 const logger = getLogger('Workspace Action');
 
 const tagFileName = 'workspace.txt';
-
-const tagFileContent =
-	"!!! DON'T EDIT OR REMOVE !!!\n\n" +
-	'This project contains workspace dependencies.\n' +
-	"Some features like native dependencies aren't available.\n" +
-	'If you want to use the full feature set, install @wuespace/telestion-client-cli ' +
-	'from the NPM registry and initialize a new project.\n';
+const tagFileSourcePath = join(resourcesPath, tagFileName);
 
 /**
  * Extracts dependencies specified with the 'workspace' protocol.
@@ -44,10 +44,11 @@ export function extractWorkspaceDependencies(
  * @param projectDir - path to the project directory
  */
 export async function createWorkspaceTag(projectDir: string): Promise<void> {
-	const tagFilePath = join(projectDir, tagFileName);
-	logger.debug('Tag-file path:', tagFilePath);
+	const tagFileDestPath = join(projectDir, tagFileName);
+	logger.debug('Tag-file source path:', tagFileSourcePath);
+	logger.debug('Tag-file destination path:', tagFileDestPath);
 	logger.debug('Create workspace tag-file');
-	await writeFile(tagFilePath, tagFileContent);
+	await copyFile(tagFileSourcePath, tagFileDestPath);
 }
 
 /**

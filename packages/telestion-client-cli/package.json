@@ -15,7 +15,8 @@
 		"tc-cli": "./dist/cli.mjs"
 	},
 	"files": [
-		"dist"
+		"dist",
+		"resources"
 	],
 	"scripts": {
 		"watch": "tsc --watch",

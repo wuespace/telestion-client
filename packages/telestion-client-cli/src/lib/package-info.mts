@@ -13,7 +13,8 @@ export const packageRootPath = resolve(
 	'..'
 );
 
-const packageJsonPath = join(packageRootPath, 'package.json');
+export const packageJsonPath = join(packageRootPath, 'package.json');
+export const resourcesPath = join(packageRootPath, 'resources');
 const packageJson = JSON.parse(await readFile(packageJsonPath));
 
 /**
