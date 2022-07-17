@@ -2,7 +2,7 @@
 	"name": "@wuespace/telestion-client-prop-types",
 	"description": "PropTypes for Telestion Client types",
 	"license": "MIT",
-	"version": "0.20.0",
+	"version": "0.18.1",
 	"homepage": "https://telestion.wuespace.de/",
 	"source": "src/index.ts",
 	"main": "dist/main.js",
