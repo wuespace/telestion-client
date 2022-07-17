@@ -10,60 +10,60 @@ importers:
 
   .:
     specifiers:
-      '@babel/core': ^7.18.6
-      '@parcel/config-default': ^2.6.2
-      '@parcel/core': ^2.6.2
-      '@parcel/optimizer-data-url': ^2.6.2
-      '@parcel/packager-ts': ^2.6.2
-      '@parcel/source-map': ^2.0.5
-      '@parcel/transformer-inline-string': ^2.6.2
-      '@parcel/transformer-svg-react': ^2.6.2
-      '@parcel/transformer-typescript-types': ^2.6.2
-      '@storybook/addon-docs': ^6.5.9
-      '@storybook/addon-essentials': ^6.5.9
-      '@storybook/addon-links': ^6.5.9
+      '@babel/core': ^7.12.9
+      '@parcel/config-default': ^2.5.0
+      '@parcel/core': ^2.5.0
+      '@parcel/optimizer-data-url': ^2.5.0
+      '@parcel/packager-ts': ^2.5.0
+      '@parcel/source-map': ^2.0.2
+      '@parcel/transformer-inline-string': ^2.5.0
+      '@parcel/transformer-svg-react': ^2.5.0
+      '@parcel/transformer-typescript-types': ^2.5.0
+      '@storybook/addon-docs': ^6.4.22
+      '@storybook/addon-essentials': ^6.4.22
+      '@storybook/addon-links': ^6.4.22
       '@storybook/addon-postcss': ^2.0.0
-      '@storybook/react': ^6.5.9
+      '@storybook/react': ^6.4.22
       '@testing-library/react-hooks': ^7.0.2
-      '@types/jest': ^27.5.2
-      '@types/node': ^17.0.45
-      '@typescript-eslint/eslint-plugin': ^5.30.0
-      '@typescript-eslint/parser': ^5.30.0
-      '@wuespace/telestion-client-cli': workspace:^0.18.1
-      '@wuespace/telestion-client-common': workspace:^0.20.13
-      '@wuespace/telestion-client-core': workspace:^0.20.1
-      '@wuespace/telestion-client-prop-types': workspace:^0.20.0
-      '@wuespace/telestion-client-template': workspace:^0.20.0
-      '@wuespace/telestion-client-types': workspace:^0.20.0
-      '@wuespace/vertx-event-bus': workspace:^0.20.0
-      '@wuespace/vertx-mock-server': workspace:^0.20.0
+      '@types/jest': ^27.5.0
+      '@types/node': ^17.0.33
+      '@typescript-eslint/eslint-plugin': ^5.22.0
+      '@typescript-eslint/parser': ^5.22.0
+      '@wuespace/telestion-client-cli': workspace:^
+      '@wuespace/telestion-client-common': workspace:^
+      '@wuespace/telestion-client-core': workspace:^
+      '@wuespace/telestion-client-prop-types': workspace:^
+      '@wuespace/telestion-client-template': workspace:^
+      '@wuespace/telestion-client-types': workspace:^
+      '@wuespace/vertx-event-bus': workspace:^
+      '@wuespace/vertx-mock-server': workspace:^
       babel-loader: ^8.2.5
-      chromatic: ^6.6.4
-      concurrently: ^7.2.2
-      eslint: ^8.18.0
+      chromatic: ^6.5.4
+      concurrently: ^7.1.0
+      eslint: ^8.15.0
       eslint-config-airbnb: ^19.0.4
       eslint-config-airbnb-base: ^15.0.0
       eslint-config-airbnb-typescript: ^16.2.0
       eslint-config-prettier: ^8.5.0
       eslint-plugin-import: ^2.26.0
-      eslint-plugin-jest: ^26.5.3
+      eslint-plugin-jest: ^26.1.5
       eslint-plugin-jsdoc: ^38.1.6
-      eslint-plugin-jsx-a11y: ^6.6.0
-      eslint-plugin-prettier: ^4.1.0
-      eslint-plugin-react: ^7.30.1
-      eslint-plugin-react-hooks: ^4.6.0
+      eslint-plugin-jsx-a11y: ^6.5.1
+      eslint-plugin-prettier: ^4.0.0
+      eslint-plugin-react: ^7.29.4
+      eslint-plugin-react-hooks: ^4.5.0
       eslint-plugin-tsdoc: ^0.2.16
-      fliegdoc: ^0.5.2
+      fliegdoc: ^0.5.1
       husky: ^7.0.4
       jest: ~27.5.1
-      parcel: ^2.6.2
+      parcel: ^2.5.0
       prettier: 2.6.2
       pretty-quick: ^3.1.3
       react: 17.0.2
       react-dom: 17.0.2
       react-test-renderer: ^17.0.2
       rimraf: ^3.0.2
-      ts-jest: ~27.1.5
+      ts-jest: ~27.1.4
       typescript: 4.7.1-rc
       webpack: ^4.46.0
     dependencies:
@@ -1025,7 +1025,7 @@ packages:
       '@babel/core': ^7.0.0-0
     dependencies:
       '@babel/core': 7.12.9
-      '@babel/helper-plugin-utils': 7.10.4
+      '@babel/helper-plugin-utils': 7.18.6
       '@babel/plugin-syntax-object-rest-spread': 7.8.3_@babel+core@7.12.9
       '@babel/plugin-transform-parameters': 7.18.6_@babel+core@7.12.9
     dev: true
@@ -12007,7 +12007,7 @@ packages:
     dev: true
 
   /find-up/1.1.2:
-    resolution: {integrity: sha1-ay6YIrGizgpgq2TWEOzK1TyyTQ8=}
+    resolution: {integrity: sha512-jvElSjyuo4EMQGoTwo1uJU5pQMwTW5lS1x05zzfJuTIyLR3zwO27LYrxNg+dlvKpGOuGy/MzBdXh80g0ve5+HA==}
     engines: {node: '>=0.10.0'}
     dependencies:
       path-exists: 2.1.0
@@ -13056,7 +13056,7 @@ packages:
     engines: {node: '>=0.8.19'}
 
   /indent-string/2.1.0:
-    resolution: {integrity: sha1-ji1INIdCEhtKghi3oTfppSBJ3IA=}
+    resolution: {integrity: sha512-aqwDFWSgSgfRaEwao5lg5KEcVd/2a+D1rvoG7NdilmYz0NwRk6StWpWdz/Hpk34MKPpx7s8XxUqimfcQK6gGlg==}
     engines: {node: '>=0.10.0'}
     dependencies:
       repeating: 2.0.1
@@ -13446,7 +13446,7 @@ packages:
     dev: true
 
   /is-stream/1.1.0:
-    resolution: {integrity: sha1-EtSj3U5o4Lec6428hBc66A2RykQ=}
+    resolution: {integrity: sha512-uQPm8kcs47jx38atAcWTVxyltQYoPT68y9aWYdV6yWXSyW8mzSat0TL6CiWdZeCdF3KrAvpVtnHbTv4RN+rqdQ==}
     engines: {node: '>=0.10.0'}
     dev: true
 
@@ -14240,7 +14240,7 @@ packages:
     dev: true
 
   /jsesc/0.5.0:
-    resolution: {integrity: sha1-597mbjXW/Bb3EP6R1c9p9w8IkR0=}
+    resolution: {integrity: sha512-uZz5UnB7u4T9LvwmFqXii7pZSouaRPorGs5who1Ip7VO0wxanFvBL7GkM6dTHlgX+jhBApRetaWpnDabOeTcnA==}
     hasBin: true
     dev: true
 
@@ -14463,7 +14463,7 @@ packages:
     dev: true
 
   /load-json-file/1.1.0:
-    resolution: {integrity: sha1-lWkFcI1YtLq0wiYbBPWfMcmTdMA=}
+    resolution: {integrity: sha512-cy7ZdNRXdablkXYNI049pthVeXFurRyb9+hA/dZzerZ0pGTx42z+y+ssxBaVV2l70t1muq5IdKhn4UtcoGUY9A==}
     engines: {node: '>=0.10.0'}
     dependencies:
       graceful-fs: 4.2.10
@@ -15206,6 +15206,7 @@ packages:
 
   /nan/2.16.0:
     resolution: {integrity: sha512-UdAqHyFngu7TfQKsCBgAA6pWDkT8MAO7d0jyOecVhN5354xbLqdn8mV9Tat9gepAupm0bt2DbeaSC8vS52MuFA==}
+    requiresBuild: true
     dev: true
     optional: true
 
@@ -15431,7 +15432,7 @@ packages:
     optional: true
 
   /npm-run-path/2.0.2:
-    resolution: {integrity: sha1-NakjLfo11wZ7TLLd8jV7GHFTbF8=}
+    resolution: {integrity: sha512-lJxZYlT4DW/bRUtFh1MQIWqmLwQfAxnqWG4HhEdjMlkrJYnJn0Jrr2u3mgxqaWsdiBc76TYkTG/mhrnYTuzfHw==}
     engines: {node: '>=4'}
     dependencies:
       path-key: 2.0.1
@@ -15979,7 +15980,7 @@ packages:
     dev: true
 
   /path-exists/2.1.0:
-    resolution: {integrity: sha1-D+tsZPD8UY2adU3V77YscCJ2H0s=}
+    resolution: {integrity: sha512-yTltuKuhtNeFJKa1PiRzfLAU5182q1y4Eb4XCJ3PBqyzEDkAZRzBrKKBct682ls9reBVHf9udYLN5Nd+K1B9BQ==}
     engines: {node: '>=0.10.0'}
     dependencies:
       pinkie-promise: 2.0.1
@@ -16000,7 +16001,7 @@ packages:
     engines: {node: '>=0.10.0'}
 
   /path-key/2.0.1:
-    resolution: {integrity: sha1-QRyttXTFoUDTpLGRDUDYDMn0C0A=}
+    resolution: {integrity: sha512-fEHGKCSmUSDPv4uoj8AlD+joPlq3peND+HRYyxFz4KPw4z926S/b8rIuFs2FYJg3BwsxJf6A9/3eIdLaYC+9Dw==}
     engines: {node: '>=4'}
     dev: true
 
@@ -16012,7 +16013,7 @@ packages:
     resolution: {integrity: sha512-LDJzPVEEEPR+y48z93A0Ed0yXb8pAByGWo/k5YYdYgpY2/2EsOsksJrq7lOHxryrVOn1ejG6oAp8ahvOIQD8sw==}
 
   /path-to-regexp/0.1.7:
-    resolution: {integrity: sha1-32BBeABfUi8V60SQ5yR6G/qmf4w=}
+    resolution: {integrity: sha512-5DFkuoqlv1uYQKxy8omFBeJPQcdoE07Kv2sferDCrAq1ohOU+MSDswDIbnx3YAM60qIOnYa53wBhXW0EbMonrQ==}
     dev: true
 
   /path-to-regexp/1.8.0:
@@ -16022,7 +16023,7 @@ packages:
     dev: false
 
   /path-type/1.1.0:
-    resolution: {integrity: sha1-WcRPfuSR2nBNpBXaWkBwuk+P5EE=}
+    resolution: {integrity: sha512-S4eENJz1pkiQn9Znv33Q+deTOKmbl+jj1Fl+qiP/vYezj+S8x+J3Uo0ISrx/QoEvIlOaDWJhPaRd1flJ9HXZqg==}
     engines: {node: '>=0.10.0'}
     dependencies:
       graceful-fs: 4.2.10
@@ -16786,7 +16787,7 @@ packages:
       object-assign: 4.1.1
 
   /read-pkg-up/1.0.1:
-    resolution: {integrity: sha1-nWPBMnbAZZGNV/ACpX9AobZD+wI=}
+    resolution: {integrity: sha512-WD9MTlNtI55IwYUS27iHh9tK3YoIVhxis8yKhLpTqWtml739uXc9NWTpxoHkfZf3+DkCCsXox94/VWZniuZm6A==}
     engines: {node: '>=0.10.0'}
     dependencies:
       find-up: 1.1.2
@@ -16812,7 +16813,7 @@ packages:
     dev: true
 
   /read-pkg/1.1.0:
-    resolution: {integrity: sha1-9f+qXs0pyzHAR0vKfXVra7KePyg=}
+    resolution: {integrity: sha512-7BGwRHqt4s/uVbuyoeejRn4YmFnYZiFl4AuaeXHlgZf3sONF0SOGlxs2Pw8g6hCKupo08RafIO5YXFNOKTfwsQ==}
     engines: {node: '>=0.10.0'}
     dependencies:
       load-json-file: 1.1.0
@@ -16879,7 +16880,7 @@ packages:
     dev: true
 
   /redent/1.0.0:
-    resolution: {integrity: sha1-z5Fqsf1fHxbfsggi3W7H9zDCr94=}
+    resolution: {integrity: sha512-qtW5hKzGQZqKoh6JNSD+4lfitfPKGz42e6QwiRmPM5mmKtR0N41AbJRYu0xJi7nhOJ4WDgRkKvAk6tw4WIwR4g==}
     engines: {node: '>=0.10.0'}
     dependencies:
       indent-string: 2.1.0
@@ -17476,7 +17477,7 @@ packages:
     dev: true
 
   /shebang-command/1.2.0:
-    resolution: {integrity: sha1-RKrGW2lbAzmJaMOfNj/uXer98eo=}
+    resolution: {integrity: sha512-EV3L1+UQWGor21OmnvojK36mhg+TyIKDh3iFBKBohr5xeXIhNBcx8oWdgkTEEQ+BEFFYdLRuqMfd5L84N1V5Vg==}
     engines: {node: '>=0.10.0'}
     dependencies:
       shebang-regex: 1.0.0
@@ -17489,7 +17490,7 @@ packages:
       shebang-regex: 3.0.0
 
   /shebang-regex/1.0.0:
-    resolution: {integrity: sha1-2kL0l0DAtC2yypcoVxyxkMmO/qM=}
+    resolution: {integrity: sha512-wpoSFAxys6b2a2wHZ1XpDSgD7N9iVjg29Ph9uV/uaP9Ex/KXlkTZTeddxDPSYQpgvzKLGJke2UU0AzoGCjNIvQ==}
     engines: {node: '>=0.10.0'}
     dev: true
 
@@ -17665,7 +17666,7 @@ packages:
     dev: true
 
   /spawn-command/0.0.2-1:
-    resolution: {integrity: sha1-YvXpRmmBwbeW3Fkpk34RycaSG9A=}
+    resolution: {integrity: sha512-n98l9E2RMSJ9ON1AKisHzz7V42VDiBQGY6PB1BwRglz99wpVsSuGzQ+jOi6lFXBGVTCrRpltvjm+/XA+tpeJrg==}
     dev: true
 
   /spdx-correct/3.1.1:
@@ -17852,7 +17853,7 @@ packages:
       safe-buffer: 5.2.1
 
   /strip-ansi/3.0.1:
-    resolution: {integrity: sha1-ajhfuIU9lS1f8F0Oiq+UJ43GPc8=}
+    resolution: {integrity: sha512-VhumSSbBqDTP8p2ZLKj40UjBCV4+v8bUSEpUb4KjRgWk9pbqGF4REFj6KEagidb2f/M6AzC0EmFyDNGaw9OCzg==}
     engines: {node: '>=0.10.0'}
     dependencies:
       ansi-regex: 2.1.1
@@ -17872,7 +17873,7 @@ packages:
     dev: false
 
   /strip-bom/2.0.0:
-    resolution: {integrity: sha1-YhmoVhZSBJHzV4i9vxRHqZx+aw4=}
+    resolution: {integrity: sha512-kwrX1y7czp1E69n2ajbG65mIo9dqvJ+8aBQXOGVxqwvNbsXdFM6Lq37dLAY3mknUwru8CfcCbfOLL/gMo+fi3g==}
     engines: {node: '>=0.10.0'}
     dependencies:
       is-utf8: 0.2.1
@@ -17899,7 +17900,7 @@ packages:
     dev: true
 
   /strip-indent/1.0.1:
-    resolution: {integrity: sha1-DHlipq3vp7vUrDZkYKY4VSrhoKI=}
+    resolution: {integrity: sha512-I5iQq6aFMM62fBEAIB/hXzwJD6EEZ0xEGCX2t7oXqaKPIRgt4WruAQ285BISgdkP+HLGWyeGmNJcpIwFeRYRUA==}
     engines: {node: '>=0.10.0'}
     hasBin: true
     dependencies:
