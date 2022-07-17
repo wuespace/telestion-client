@@ -7,20 +7,6 @@ import { useWindowSize } from '@wuespace/telestion-client-core';
 export type Orientation = 'landscape' | 'portrait';
 
 /**
- * Small helper function to calculate the orientation given a window width and height.
- * If the window height is greater or equal to window width,
- * the orientation is set to 'portrait', otherwise it is set to 'landscape'.
- *
- * @see {@link https://developer.mozilla.org/en-US/docs/Web/CSS/@media/orientation}
- *
- * @param width - the window width
- * @param height - the window height
- */
-function getOrientation(width: number, height: number): Orientation {
-	return height >= width ? 'portrait' : 'landscape';
-}
-
-/**
  * Hook to get the current window orientation.
  *
  * @example
@@ -38,7 +24,6 @@ function getOrientation(width: number, height: number): Orientation {
  */
 export function useOrientation(): Orientation | undefined {
 	const windowSize = useWindowSize();
-	return windowSize
-		? getOrientation(windowSize.width, windowSize.height)
-		: undefined;
+	if (!windowSize) return undefined;
+	return windowSize.height >= windowSize.width ? 'portrait' : 'landscape';
 }

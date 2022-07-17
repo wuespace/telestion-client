@@ -1,7 +1,6 @@
 import { ReactElement } from 'react';
 import { Flex, View } from '@adobe/react-spectrum';
 import { Routing } from '@wuespace/telestion-client-types';
-import { useBreakpoints } from '../../../hooks';
 
 /**
  * React Props of {@link LoginPageProps}

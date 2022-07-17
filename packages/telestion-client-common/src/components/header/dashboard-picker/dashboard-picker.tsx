@@ -1,18 +1,5 @@
-import {
-	TooltipTrigger,
-	Tooltip,
-	Picker,
-	Item,
-	MenuTrigger,
-	Menu,
-	ActionButton,
-	Flex,
-	Text
-} from '@adobe/react-spectrum';
-import { useEffect, useState } from 'react';
-import CollectionEdit from '@spectrum-icons/workflow/CollectionEdit';
+import { TooltipTrigger, Tooltip, Picker, Item } from '@adobe/react-spectrum';
 import { useCurrentDashboards } from '../../../hooks';
-import { useBreakpoints } from '../../../hooks/abstractions/use-breakpoints';
 import { useDashboardState } from './use-dashboard-state';
 
 /**

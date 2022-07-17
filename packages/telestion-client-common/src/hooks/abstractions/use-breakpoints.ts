@@ -1,4 +1,4 @@
-import { SpectrumSize, useSpectrumSize } from './use-spectrum-size';
+import { useSpectrumSize } from './use-spectrum-size';
 
 /**
  * The breakpoint checks defined by the active {@link SpectrumSize}.
@@ -6,7 +6,7 @@ import { SpectrumSize, useSpectrumSize } from './use-spectrum-size';
  * isMobile is a grouping for base, S and M, while
  * isDesktop is a grouping for L, XL and XXL
  */
-export type Breakpoints = {
+export interface Breakpoints {
 	isBase: boolean;
 	isSm: boolean;
 	isMd: boolean;
@@ -15,8 +15,7 @@ export type Breakpoints = {
 	isXXl: boolean;
 	isMobile: boolean;
 	isDesktop: boolean;
-	active: SpectrumSize | undefined;
-};
+}
 
 /**
  * React Hook to simplify the process of checking breakpoints.
@@ -43,7 +42,6 @@ export function useBreakpoints(): Breakpoints {
 		isXl: size === 'XL',
 		isXXl: size === 'XXL',
 		isMobile: size === 'S' || size === 'M' || size === 'base',
-		isDesktop: size === 'L' || size === 'XL' || size === 'XXL',
-		active: size
+		isDesktop: size === 'L' || size === 'XL' || size === 'XXL'
 	};
 }
