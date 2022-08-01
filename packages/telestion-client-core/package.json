@@ -59,7 +59,7 @@
 		"@wuespace/telestion-client-types": "file:../telestion-client-types",
 		"@wuespace/vertx-event-bus": "file:../vertx-event-bus",
 		"prop-types": "^15.7.2",
-		"zustand": "^3.2.0"
+		"zustand": "^4.0.0"
 	},
 	"peerDependencies": {
 		"@types/react": "^17.0.0",
