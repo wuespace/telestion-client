@@ -55,7 +55,7 @@
 		"react": "^17.0.1",
 		"react-dom": "^17.0.1",
 		"react-router-dom": "^5.2.0",
-		"zustand": "^3.2.0"
+		"zustand": "^4.1.4"
 	},
 	"devDependencies": {
 		"@testing-library/jest-dom": "^5.11.9",
