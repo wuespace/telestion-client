@@ -14,7 +14,7 @@ export const startCommandBuilder: CommandBuilder = command => {
 		.command('start')
 		.alias('s')
 		.description(
-			'Start the development server for a Telestion Frontend Project, compiles the Electron main process and launches Electron'
+			'Starts the development server for a Telestion Frontend Project, compiles the Electron main process and launches Electron'
 		)
 		.addArgument(
 			new Argument(
