@@ -1,9 +1,9 @@
 import {
 	app,
-	shell,
 	BrowserWindow,
 	Menu,
-	MenuItemConstructorOptions
+	MenuItemConstructorOptions,
+	shell
 } from 'electron';
 
 import IpcManager from './ipc-manager';

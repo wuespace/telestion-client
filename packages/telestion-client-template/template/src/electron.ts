@@ -3,115 +3,127 @@ import { app, BrowserWindow, shell } from 'electron';
 
 import IpcManager from './electron/ipc-manager';
 import MenuBuilder from './electron/menu-builder';
+import { plugins } from './electron/plugins';
+import { PluginManager } from './electron/plugin-manager';
+import { OnReadyHook } from './electron/lifecycle-hooks/on-ready-hook';
 
-function installExtensions() {
-	const installer = require('electron-devtools-installer');
-	const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
-	const extensions = ['REACT_DEVELOPER_TOOLS'];
+const pluginManager = new PluginManager(plugins);
 
-	installer
-		.default(
-			extensions.map(name => installer[name]),
-			forceDownload
-		)
-		.then((name: string) => console.log(`Added extension: ${name}`))
-		.catch((err: any) => console.log('An error occurred:', err));
-}
+(async () => {
+	function installExtensions() {
+		const installer = require('electron-devtools-installer');
+		const forceDownload = !!process.env.UPGRADE_EXTENSIONS;
+		const extensions = ['REACT_DEVELOPER_TOOLS'];
 
-let mainWindow: BrowserWindow | null = null;
-
-// noinspection JSIgnoredPromiseFromCall
-function createWindow() {
-	mainWindow = new BrowserWindow({
-		width: 1024,
-		height: 768,
-		backgroundColor: '#ffffff',
-		webPreferences: {
-			nodeIntegration: false,
-			nodeIntegrationInWorker: false,
-			nodeIntegrationInSubFrames: false,
-			contextIsolation: true,
-			// disable devtools in packaged apps
-			devTools: !app.isPackaged,
-			spellcheck: false,
-			// load built preload.js next to built electron.js
-			preload: fileURLToPath(new URL('electron/preload.ts', import.meta.url))
-		}
-	});
-
-	if (app.isPackaged) {
-		// when packaged, the `electron.js` resides directly beside the compiled `index.html`
-		// noinspection JSIgnoredPromiseFromCall
-		mainWindow.loadFile('index.html');
-	} else {
-		// when run directly, parcel provides a development server at the specified port
-		// noinspection JSIgnoredPromiseFromCall
-		mainWindow.loadURL(`http://localhost:${process.env.DEV_SERVER_PORT}`);
+		installer
+			.default(
+				extensions.map(name => installer[name]),
+				forceDownload
+			)
+			.then((name: string) => console.log(`Added extension: ${name}`))
+			.catch((err: any) => console.log('An error occurred:', err));
 	}
 
-	// Open the DevTools.
-	if (!app.isPackaged) mainWindow.webContents.openDevTools();
+	let mainWindow: BrowserWindow | null = null;
 
-	// generate additional components
-	const ipcManager = new IpcManager(mainWindow);
-	const menuBuilder = new MenuBuilder(mainWindow, ipcManager);
+	// noinspection JSIgnoredPromiseFromCall
+	async function createWindow() {
+		mainWindow = new BrowserWindow({
+			width: 1024,
+			height: 768,
+			backgroundColor: '#ffffff',
+			webPreferences: {
+				nodeIntegration: false,
+				nodeIntegrationInWorker: false,
+				nodeIntegrationInSubFrames: false,
+				contextIsolation: true,
+				// disable devtools in packaged apps
+				devTools: !app.isPackaged,
+				spellcheck: false,
+				// load built preload.js next to build electron.js
+				preload: fileURLToPath(new URL('electron/preload.ts', import.meta.url))
+			}
+		});
 
-	// and add them to the window
-	ipcManager.register();
-	menuBuilder.buildMenu();
+		if (app.isPackaged) {
+			// when packaged, the `electron.js` resides directly beside the compiled `index.html`
+			// noinspection JSIgnoredPromiseFromCall
+			await mainWindow.loadFile('index.html');
+		} else {
+			// when run directly, parcel provides a development server at the specified port
+			// noinspection JSIgnoredPromiseFromCall
+			await mainWindow.loadURL(
+				`http://localhost:${process.env.DEV_SERVER_PORT}`
+			);
+		}
 
-	// remove menu from window
-	// to activate, also comment out the buildMenu() method above
-	//mainWindow.removeMenu();
+		// Open the DevTools.
+		if (!app.isPackaged) mainWindow.webContents.openDevTools();
+
+		// generate additional components
+		const ipcManager = new IpcManager(mainWindow);
+		const menuBuilder = new MenuBuilder(mainWindow, ipcManager);
+
+		// and add them to the window
+		ipcManager.register();
+		menuBuilder.buildMenu();
+
+		// remove the menu from window
+		// to activate, also comment out the buildMenu() method above
+		//mainWindow.removeMenu();
+
+		//
+		// event handlers for this specific window
+		//
+
+		// Open urls in the user's browser
+		mainWindow.webContents.setWindowOpenHandler(details => {
+			// noinspection JSIgnoredPromiseFromCall
+			shell.openExternal(details.url);
+			return { action: 'deny' };
+		});
+
+		mainWindow.on('closed', () => {
+			// remove all IPC handlers
+			ipcManager.unregister();
+		});
+	}
 
 	//
-	// event handlers for this specific window
+	// app global events
 	//
 
-	// Open urls in the user's browser
-	mainWindow.webContents.setWindowOpenHandler(details => {
-		// noinspection JSIgnoredPromiseFromCall
-		shell.openExternal(details.url);
-		return { action: 'deny' };
-	});
+	// This method will be called when Electron has finished
+	// initialization and is ready to create browser windows.
+	// Some APIs can only be used after this event occurs.
+	await app.whenReady();
 
-	mainWindow.on('closed', () => {
-		// remove all IPC handlers
-		ipcManager.unregister();
-	});
-}
+	await pluginManager.callHook(new OnReadyHook());
 
-//
-// app global events
-//
-
-// This method will be called when Electron has finished
-// initialization and is ready to create browser windows.
-// Some APIs can only be used after this event occurs.
-app.whenReady().then(() => {
 	// install additional devtools if in development mode
 	if (!app.isPackaged) installExtensions();
 
 	// create one window
-	createWindow();
+	await createWindow();
 
-	app.on('activate', () => {
-		// On macOS, it's common to re-create a window in the app when the
-		// dock icon is clicked and there are no other windows open.
+	app.on('activate', async () => {
+		// On macOS, it's common to re-create a window in the
+		// app when the dock icon is clicked and there are no
+		// other windows open.
 		if (BrowserWindow.getAllWindows().length === 0) {
-			createWindow();
+			await createWindow();
 		}
 	});
-});
 
-// Quit when all windows are closed, except on macOS. There, it's common
-// for applications and their menu bar to stay active until the user quits
-// explicitly with Cmd + Q.
-app.on('window-all-closed', () => {
-	if (process.platform !== 'darwin') {
-		app.quit();
-	}
-});
+	// Quit when all windows are closed, except on macOS.
+	// There, it's common for applications and their menu bar to
+	// stay active until the user quits explicitly with Cmd + Q.
+	app.on('window-all-closed', () => {
+		if (process.platform !== 'darwin') {
+			app.quit();
+		}
+	});
 
-// In this file you can include the rest of your app's specific main process
-// code. You can also put them in separate files and require them here.
+	// In this file, you can include the rest of your app's specific main process code.
+	// You can also put them in separate files and require them here.
+})();
