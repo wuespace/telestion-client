@@ -44,7 +44,6 @@ composer.lock
 /packages/**/dist
 /packages/**/types
 /docs
-/storybook-static
 *.tgz
 *.tar.gz
 
