@@ -544,21 +544,22 @@ export class MockServer {
 		message: SendMessage | PublishMessage
 	): (response: JsonSerializable) => void {
 		return response => {
-			if (message.replyAddress) {
-				const responseMessage: ReceiveMessage = {
-					type: 'rec',
-					address: message.replyAddress,
-					body: response,
-					headers: {}
-				};
-				this.logMessage(responseMessage, 'outgoing');
-				conn.write(JSON.stringify(responseMessage));
-			} else {
+			if (!message.replyAddress) {
 				this.logger?.warn(
 					`Reply address for 'send' message on channel ${message.address} is not available`,
 					JSON.stringify(message)
 				);
+				return;
 			}
+
+			const responseMessage: ReceiveMessage = {
+				type: 'rec',
+				address: message.replyAddress,
+				body: response,
+				headers: {}
+			};
+			this.logMessage(responseMessage, 'outgoing');
+			conn.write(JSON.stringify(responseMessage));
 		};
 	}
 
@@ -591,19 +592,23 @@ export class MockServer {
 
 		if (message.type === 'ping') {
 			this.logger?.debug(map[direction], '[ping]');
-		} else if (message.type === 'err') {
+			return;
+		}
+
+		if (message.type === 'err') {
 			this.logger?.debug(
 				map[direction],
 				'[err]',
 				`{${message.failureCode}} ${message.failureType} - ${message.message}`
 			);
-		} else {
-			this.logger?.debug(
-				map[direction],
-				`[${message.type}]`,
-				message.address,
-				'body' in message ? `# ${JSON.stringify(message.body)}` : ''
-			);
+			return;
 		}
+
+		this.logger?.debug(
+			map[direction],
+			`[${message.type}]`,
+			message.address,
+			'body' in message ? `# ${JSON.stringify(message.body)}` : ''
+		);
 	}
 }
