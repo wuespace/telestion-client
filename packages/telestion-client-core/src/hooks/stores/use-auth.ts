@@ -1,4 +1,4 @@
-import create, { UseStore } from 'zustand';
+import create, { UseBoundStore } from 'zustand';
 import {
 	Auth,
 	SignInResult,
@@ -35,7 +35,7 @@ let cleanupCb: (() => void) | null = null;
  *
  * @see {@link AuthState}
  * @see {@link https://github.com/pmndrs/zustand}
- * @see {@link UseStore}
+ * @see {@link UseBoundStore}
  * @see {@link zustand#shallow}
  *
  * @example
@@ -90,60 +90,62 @@ let cleanupCb: (() => void) | null = null;
  * }
  * ```
  */
-export const useAuth: UseStore<AuthState> = create<AuthState>((set, get) => ({
-	auth: null,
-	signIn(
-		authServerUrl: string,
-		username: string,
-		password: string
-	): Promise<SignInResult> {
-		logger.debug(
-			`SignIn called - Auth server: ${authServerUrl}, username: ${username}`
-		);
-		return authenticator
-			.signIn(authServerUrl, username, password)
-			.then(signInRes => {
-				logger.success('Signed in!');
-				// clean up callback
-				if (cleanupCb) {
-					cleanupCb();
-					cleanupCb = null;
-				}
-
-				cleanupCb = authenticator.onAuthStateChanged(changeRes => {
-					if (
-						changeRes.type === 'signOut' ||
-						changeRes.user !== get().auth?.username
-					) {
-						logger.warn('Signed out externally');
-						set({ auth: null });
+export const useAuth: UseBoundStore<AuthState> = create<AuthState>(
+	(set, get) => ({
+		auth: null,
+		signIn(
+			authServerUrl: string,
+			username: string,
+			password: string
+		): Promise<SignInResult> {
+			logger.debug(
+				`SignIn called - Auth server: ${authServerUrl}, username: ${username}`
+			);
+			return authenticator
+				.signIn(authServerUrl, username, password)
+				.then(signInRes => {
+					logger.success('Signed in!');
+					// clean up callback
+					if (cleanupCb) {
+						cleanupCb();
+						cleanupCb = null;
 					}
-				});
-				set({
-					auth: {
-						username: signInRes.user,
-						authServerUrl,
-						eventBusUrl: signInRes.eventBusUrl
-					}
-				});
-				return signInRes;
-			});
-	},
-	signOut(): Promise<SignOutResult> {
-		logger.debug('SignOut called');
-		// clean up callback
-		if (cleanupCb) {
-			cleanupCb();
-			cleanupCb = null;
-		}
 
-		return authenticator.signOut().then(signOutRes => {
-			logger.success('Signed out!');
-			set({ auth: null });
-			if (signOutRes.reason) {
-				logger.warn('User signed out because:', signOutRes.reason);
+					cleanupCb = authenticator.onAuthStateChanged(changeRes => {
+						if (
+							changeRes.type === 'signOut' ||
+							changeRes.user !== get().auth?.username
+						) {
+							logger.warn('Signed out externally');
+							set({ auth: null });
+						}
+					});
+					set({
+						auth: {
+							username: signInRes.user,
+							authServerUrl,
+							eventBusUrl: signInRes.eventBusUrl
+						}
+					});
+					return signInRes;
+				});
+		},
+		signOut(): Promise<SignOutResult> {
+			logger.debug('SignOut called');
+			// clean up callback
+			if (cleanupCb) {
+				cleanupCb();
+				cleanupCb = null;
 			}
-			return signOutRes;
-		});
-	}
-}));
+
+			return authenticator.signOut().then(signOutRes => {
+				logger.success('Signed out!');
+				set({ auth: null });
+				if (signOutRes.reason) {
+					logger.warn('User signed out because:', signOutRes.reason);
+				}
+				return signOutRes;
+			});
+		}
+	})
+);

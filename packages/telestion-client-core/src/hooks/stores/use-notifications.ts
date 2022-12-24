@@ -1,4 +1,4 @@
-import create, { UseStore } from 'zustand';
+import create, { UseBoundStore } from 'zustand';
 import { NotificationState } from './use-notification.model';
 import { getLogger } from '../../lib';
 
@@ -21,7 +21,7 @@ const logger = getLogger('Notifications');
  *
  * @see {@link NotificationState}
  * @see {@link https://github.com/pmndrs/zustand}
- * @see {@link UseStore}
+ * @see {@link UseBoundStore}
  * @see {@link zustand#shallow}
  *
  * @example
@@ -78,7 +78,7 @@ const logger = getLogger('Notifications');
  * }
  * ```
  */
-export const useNotifications: UseStore<NotificationState> =
+export const useNotifications: UseBoundStore<NotificationState> =
 	create<NotificationState>((set, get) => ({
 		notifications: [],
 		isMuted: false,

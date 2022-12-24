@@ -1,4 +1,4 @@
-import create, { UseStore } from 'zustand';
+import create, { UseBoundStore } from 'zustand';
 import { EventBus } from '@wuespace/vertx-event-bus';
 import { getLogger } from '../../lib';
 import { EventBusState } from './use-event-bus.model';
@@ -22,7 +22,7 @@ const logger = getLogger('EventBus State');
  *
  * @see {@link EventBusState}
  * @see {@link https://github.com/pmndrs/zustand}
- * @see {@link UseStore}
+ * @see {@link UseBoundStore}
  * @see {@link zustand#shallow}
  *
  * @example
@@ -79,7 +79,7 @@ const logger = getLogger('EventBus State');
  * }
  * ```
  */
-export const useEventBus: UseStore<EventBusState> = create<EventBusState>(
+export const useEventBus: UseBoundStore<EventBusState> = create<EventBusState>(
 	// eslint-disable-next-line max-lines-per-function
 	(set, get) => ({
 		eventBus: null,
