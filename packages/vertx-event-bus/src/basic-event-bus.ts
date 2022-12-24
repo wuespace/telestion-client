@@ -566,7 +566,7 @@ export class BasicEventBus {
 				this.options.logger?.debug(
 					`Try reconnect No. ${this.reconnectAttempts}...`
 				);
-				// after timeout, create new socket which handles the next reconnect
+				// after timeout, create a new socket which handles the next reconnect
 				this.socket = this.newSocket();
 			}, reconnectDelay);
 		}
@@ -593,10 +593,7 @@ export class BasicEventBus {
 		try {
 			// decode message
 			const message: Message = JSON.parse(event.data);
-			if (validate(message)) {
-				this.options.logger?.debug('Message is valid. Return to handler...');
-				this.onMessage?.(message);
-			} else {
+			if (!validate(message)) {
 				this.options.logger?.error('Message is invalid but JSON parsable');
 				this.onMessage?.(
 					errorMessage(
@@ -605,7 +602,10 @@ export class BasicEventBus {
 						`Invalid message received: ${event.data}`
 					)
 				);
+				return;
 			}
+			this.options.logger?.debug('Message is valid. Return to handler...');
+			this.onMessage?.(message);
 		} catch (err) {
 			this.options.logger?.error('Message is not JSON parsable');
 			this.onMessage?.(
