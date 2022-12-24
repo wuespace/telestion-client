@@ -4,7 +4,7 @@ import { WidgetDefinition } from '@wuespace/telestion-client-types';
 
 import NotFound from '@spectrum-icons/illustrations/NotFound';
 
-import { useWidgets } from '../../../../contexts/widgets-context';
+import { useWidgets } from '../../../../contexts';
 import { WidgetErrorMessage } from './widget-error-message';
 import { WidgetRenderer } from './widget-renderer';
 
