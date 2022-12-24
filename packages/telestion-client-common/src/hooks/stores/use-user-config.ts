@@ -1,4 +1,4 @@
-import create, { UseStore } from 'zustand';
+import create, { UseBoundStore } from 'zustand';
 import { UserConfig, UserInformation } from '@wuespace/telestion-client-types';
 import { UserConfigState } from './use-user-config.model';
 
@@ -21,7 +21,7 @@ const initialUserConfig: UserConfig = {};
  *
  * @see {@link UserConfigState}
  * @see {@link https://github.com/pmndrs/zustand}
- * @see {@link UseStore}
+ * @see {@link UseBoundStore}
  * @see {@link zustand#shallow}
  *
  * @example
@@ -79,8 +79,8 @@ const initialUserConfig: UserConfig = {};
  * }
  * ```
  */
-export const useUserConfig: UseStore<UserConfigState> = create<UserConfigState>(
-	(set, get) => ({
+export const useUserConfig: UseBoundStore<UserConfigState> =
+	create<UserConfigState>((set, get) => ({
 		userConfig: initialUserConfig,
 		addUser: (username, information) => {
 			if (!username) {
@@ -129,5 +129,4 @@ export const useUserConfig: UseStore<UserConfigState> = create<UserConfigState>(
 		},
 		set: userConfig => set({ userConfig }),
 		clear: () => set({ userConfig: initialUserConfig })
-	})
-);
+	}));

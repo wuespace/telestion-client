@@ -1,4 +1,4 @@
-import create, { UseStore } from 'zustand';
+import create, { UseBoundStore } from 'zustand';
 import { Dialog, DialogConfig, DialogState } from './use-dialog.model';
 
 /**
@@ -18,7 +18,7 @@ import { Dialog, DialogConfig, DialogState } from './use-dialog.model';
  *
  * @see {@link DialogState}
  * @see {@link https://github.com/pmndrs/zustand}
- * @see {@link UseStore}
+ * @see {@link UseBoundStore}
  * @see {@link zustand#shallow}
  *
  * @example
@@ -47,7 +47,7 @@ import { Dialog, DialogConfig, DialogState } from './use-dialog.model';
  * }
  * ```
  */
-export const useDialog: UseStore<DialogState> = create<DialogState>(
+export const useDialog: UseBoundStore<DialogState> = create<DialogState>(
 	(set, get) => ({
 		dialogs: [],
 		show<T>(id: string, config: DialogConfig<T>) {

@@ -3,7 +3,7 @@ import { State } from 'zustand';
 
 /**
  * A function that provides the current state and a function to change it.
- * It returns a valid react node.
+ * It returns a valid React node.
  *
  * @param state - the current state
  * @param setState - a function to partially update the state
@@ -24,7 +24,7 @@ export type CallableComponent<T> = (
  */
 export interface DialogConfig<T> {
 	/**
-	 * The title of the dialog displayed in the upper left corner.
+	 * The title of the dialog displayed in the upper-left corner.
 	 * @see {@link https://react-spectrum.adobe.com/react-spectrum/Dialog.html#content}
 	 */
 	title: ReactNode | CallableComponent<T>;
@@ -81,7 +81,7 @@ export interface Dialog<T> {
 
 	/**
 	 * A handler to confirm the opened dialog.
-	 * @param final - the final state which the resolved promise return
+	 * @param final - the final state which the resolved promise returns
 	 */
 	onConfirm: (final: T) => void;
 

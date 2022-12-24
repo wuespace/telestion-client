@@ -1,4 +1,4 @@
-import create, { UseStore } from 'zustand';
+import create, { UseBoundStore } from 'zustand';
 import { ColorSchemeState } from './use-color-scheme.model';
 
 /**
@@ -18,11 +18,11 @@ import { ColorSchemeState } from './use-color-scheme.model';
  *
  * @see {@link ColorSchemeState}
  * @see {@link https://github.com/pmndrs/zustand}
- * @see {@link UseStore}
+ * @see {@link UseBoundStore}
  * @see {@link zustand#shallow}
  *
  * @example
- * Get and set color scheme:
+ * Get and set the color scheme:
  * ```ts
  * function ColorSchemeChanger() {
  * 	const { colorScheme, set } = useColorScheme(
@@ -42,7 +42,7 @@ import { ColorSchemeState } from './use-color-scheme.model';
  * }
  * ```
  */
-export const useColorScheme: UseStore<ColorSchemeState> =
+export const useColorScheme: UseBoundStore<ColorSchemeState> =
 	create<ColorSchemeState>(set => ({
 		colorScheme: 'system',
 		set: colorScheme => {
