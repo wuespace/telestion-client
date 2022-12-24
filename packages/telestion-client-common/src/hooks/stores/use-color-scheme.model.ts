@@ -1,7 +1,7 @@
 import { State } from 'zustand';
 
 /**
- * Type of a valid color scheme:
+ * Type of valid color scheme:
  * - `light` - use always the light theme
  * - `dark` - use always the dark theme
  * - `system` - use the system defined colorscheme
