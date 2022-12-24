@@ -104,8 +104,6 @@ The overall file structure of this monorepo looks like this:
 ├── .github
 │   ├── workflows (CI configuration)
 │   └── dependabot.yml (Dependabot config)
-├── .storybook
-│   └── main.js (Storybook configuration)
 ├── base-configs (configurations around the repo)
 │   ├── eslint.base.js
 │   └── [...]

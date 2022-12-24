@@ -44,7 +44,6 @@ https://wuespace.github.io/telestion-client/@wuespace/telestion-client-core/
 ├── build (built in build script)
 ├── src
 │   ├── components (components provided or used by the library)
-│   │   ├── storybook (Storybook-specific components)
 │   │   ├── index.ts
 │   │   └── [...]
 │   ├── hooks
