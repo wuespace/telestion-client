@@ -16,7 +16,8 @@ import { JsonSerializable } from '@wuespace/telestion-client-types';
  */
 export default new Reporter({
 	report({ event, logger }) {
-		let message: JsonSerializable;
+		let message: JsonSerializable | undefined;
+
 		if (event.type === 'buildStart') {
 			message = { type: 'buildStart' };
 		} else if (event.type === 'buildProgress') {
@@ -35,18 +36,18 @@ export default new Reporter({
 				type: 'buildFailure',
 				diagnostics: event.diagnostics
 			};
-		} else {
-			// unknown event type -> ignore it
-			return;
 		}
 
-		if (process.send) {
-			process.send(message);
-		} else {
+		if (!message) return; // unknown event type -> ignore it
+
+		if (!process.send) {
 			logger.warn({
 				message:
 					"IPC to parent process is not open. Did you run Parcel through Node's fork process?"
 			});
+			return;
 		}
+
+		process.send(message);
 	}
 });
