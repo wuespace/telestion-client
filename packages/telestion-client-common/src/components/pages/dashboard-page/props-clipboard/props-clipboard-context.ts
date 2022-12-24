@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import { Context, createContext } from 'react';
 import { GenericProps } from '@wuespace/telestion-client-types';
 
 /**
@@ -31,7 +31,5 @@ export type ClipboardContextType = [
  * );
  * ```
  */
-export const ClipboardContext = createContext<ClipboardContextType>([
-	undefined,
-	() => {}
-]);
+export const ClipboardContext: Context<ClipboardContextType> =
+	createContext<ClipboardContextType>([undefined, () => {}]);
