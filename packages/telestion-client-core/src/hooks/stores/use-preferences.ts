@@ -1,4 +1,4 @@
-import create, { UseStore } from 'zustand';
+import create, { UseBoundStore } from 'zustand';
 import {
 	GroupSelector,
 	Preference,
@@ -30,7 +30,7 @@ const logger = getLogger('Preferences');
  *
  * @see {@link PreferencesState}
  * @see {@link https://github.com/pmndrs/zustand}
- * @see {@link UseStore}
+ * @see {@link UseBoundStore}
  * @see {@link zustand#shallow}
  *
  * @example
@@ -90,7 +90,7 @@ const logger = getLogger('Preferences');
  * }
  * ```
  */
-export const usePreferences: UseStore<PreferencesState> =
+export const usePreferences: UseBoundStore<PreferencesState> =
 	create<PreferencesState>((set, get) => ({
 		preferences: {},
 		setValue: (group, preference, newValue) =>
