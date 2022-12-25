@@ -248,7 +248,7 @@ export async function normalizeProjectName(
 	prettyName: string
 ): Promise<string> {
 	// replace whitespaces with minus symbols
-	const normalized = prettyName.toLowerCase().replaceAll(/\s/gm, '-');
+	const normalized = prettyName.toLowerCase().split(/\s/gm).join('-');
 	const results = validate(normalized);
 	if (!results.validForNewPackages) {
 		const errors = [...(results.errors || []), ...(results.warnings || [])];
