@@ -53,10 +53,14 @@ jobs:
       - name: Npm get logged in user
         run: pnpm whoami
       - name: Publish to verdaccio 📤
-        run: pnpm publish -r
-
+        run: pnpm publish -r --no-git-checks
+      - name: Reset pnpm store to test install from verdaccio 🚛
+        run: |
+          pnpm store prune
+          rm -rf ~/.pnpm-store ~/.local/share/pnpm/store
       - name: Install CLI from verdaccio 🪤
         run: pnpm add --global @wuespace/telestion-client-cli
+        continue-on-error: true
       - name: Show help output of CLI
         run: tc-cli --help
       - name: Initialize PSC Project 🛒
