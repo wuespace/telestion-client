@@ -45,6 +45,7 @@ jobs:
       - name: Run verdaccio 💡
         run: |
           pnpm dlx verdaccio &
+          sleep 10
           pnpm config set registry http://localhost:4873
 
       - name: Login to verdaccio 🛂
@@ -52,7 +53,7 @@ jobs:
       - name: Npm get logged in user
         run: pnpm whoami
       - name: Publish to verdaccio 📤
-        run: pnpm publish --force
+        run: pnpm publish -r
 
       - name: Install CLI from verdaccio 🪤
         run: pnpm add --global @wuespace/telestion-client-cli
