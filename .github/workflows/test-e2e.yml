@@ -57,7 +57,7 @@ jobs:
       - name: Reset pnpm store to test install from verdaccio 🚛
         run: |
           pnpm store prune
-          rm -rf ~/.pnpm-store ~/.local/share/pnpm/store
+          rm -rf ~/.pnpm-store ~/.local/share/pnpm/global-packages ~/.local/share/pnpm/store
       - name: Install CLI from verdaccio 🪤
         run: pnpm add --global @wuespace/telestion-client-cli
         continue-on-error: true
