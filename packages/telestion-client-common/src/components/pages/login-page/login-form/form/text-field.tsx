@@ -1,8 +1,9 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import { useEffect, useState } from 'react';
-import { TextField as SpectrumTextField } from '@adobe/react-spectrum';
-import { SpectrumTextFieldProps } from '@react-types/textfield';
-
+import {
+	TextField as SpectrumTextField,
+	SpectrumTextFieldProps
+} from '@adobe/react-spectrum';
 import { ValidationState } from './validate-inputs';
 
 /**

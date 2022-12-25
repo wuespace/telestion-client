@@ -1,5 +1,4 @@
 import { useMemo } from 'react';
-import { StateSelector } from 'zustand';
 import {
 	AuthState,
 	ConnectionState,
@@ -8,10 +7,9 @@ import {
 	useEventBus
 } from '@wuespace/telestion-client-core';
 
-const authSelector: StateSelector<AuthState, AuthState['auth']> = ({ auth }) =>
-	auth;
+const authSelector: (s: AuthState) => AuthState['auth'] = ({ auth }) => auth;
 
-const eventBusSelector: StateSelector<EventBusState, ConnectionState> = ({
+const eventBusSelector: (s: EventBusState) => ConnectionState = ({
 	connectionState
 }) => connectionState;
 

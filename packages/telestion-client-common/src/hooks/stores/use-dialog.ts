@@ -1,4 +1,4 @@
-import create, { UseBoundStore } from 'zustand';
+import create from 'zustand';
 import { Dialog, DialogConfig, DialogState } from './use-dialog.model';
 
 /**
@@ -47,38 +47,36 @@ import { Dialog, DialogConfig, DialogState } from './use-dialog.model';
  * }
  * ```
  */
-export const useDialog: UseBoundStore<DialogState> = create<DialogState>(
-	(set, get) => ({
-		dialogs: [],
-		show<T>(id: string, config: DialogConfig<T>) {
-			const dialogs = get().dialogs.filter(dialog => dialog.id !== id);
+export const useDialog = create<DialogState>((set, get) => ({
+	dialogs: [],
+	show<T>(id: string, config: DialogConfig<T>) {
+		const dialogs = get().dialogs.filter(dialog => dialog.id !== id);
 
-			return new Promise<T>((resolve, reject) => {
-				const close: () => void = () =>
-					set({
-						dialogs: get().dialogs.map(dialog =>
-							dialog.id === id ? { ...dialog, isOpen: false } : dialog
-						)
-					});
+		return new Promise<T>((resolve, reject) => {
+			const close: () => void = () =>
+				set({
+					dialogs: get().dialogs.map(dialog =>
+						dialog.id === id ? { ...dialog, isOpen: false } : dialog
+					)
+				});
 
-				const newDialog: Dialog<T> = {
-					id,
-					config,
-					isOpen: true,
-					onConfirm: final => {
-						close();
-						resolve(final);
-					},
-					onCancel: () => {
-						close();
-						reject();
-					}
-				};
-				set({ dialogs: [...dialogs, newDialog] });
-			});
-		}
-	})
-);
+			const newDialog: Dialog<T> = {
+				id,
+				config,
+				isOpen: true,
+				onConfirm: final => {
+					close();
+					resolve(final);
+				},
+				onCancel: () => {
+					close();
+					reject();
+				}
+			};
+			set({ dialogs: [...dialogs, newDialog] });
+		});
+	}
+}));
 
 /**
  * Shows a new dialog configured with the specified options.

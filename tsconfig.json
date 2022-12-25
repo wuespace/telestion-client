@@ -59,6 +59,7 @@
 		{ "path": "./packages/telestion-client-types" },
 		{ "path": "./packages/telestion-client-prop-types" },
 		{ "path": "./packages/telestion-client-core" },
-		{ "path": "./packages/telestion-client-common" }
+		{ "path": "./packages/telestion-client-common" },
+		{ "path": "./packages/component-playground" }
 	]
 }

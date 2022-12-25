@@ -1,4 +1,3 @@
-import { State } from 'zustand';
 import {
 	UserConfig,
 	UserInformation,
@@ -15,7 +14,7 @@ import { SetPartialStateAction } from '../../lib';
  * @see {@link UserConfigState.updateUserInfo}
  * @see {@link @wuespace/telestion-client-types#UserConfig}
  */
-export interface UserConfigState extends State {
+export interface UserConfigState {
 	/**
 	 * The current user config for the application.
 	 * It stores the user information associated to the username.

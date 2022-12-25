@@ -1,4 +1,4 @@
-import { TooltipTrigger, Tooltip, Picker, Item } from '@adobe/react-spectrum';
+import { Item, Picker, Tooltip, TooltipTrigger } from '@adobe/react-spectrum';
 import { useCurrentDashboards } from '../../../hooks';
 import { useDashboardState } from './use-dashboard-state';
 
@@ -46,6 +46,7 @@ export function DashboardPicker() {
 				items={items}
 				selectedKey={selected}
 				onSelectionChange={onSelectionChange}
+				width="auto"
 			>
 				{item => <Item key={item.key}>{item.title}</Item>}
 			</Picker>

@@ -4,9 +4,9 @@ import {
 	IllustratedMessage,
 	Heading,
 	Content,
-	Button
+	Button,
+	SpectrumButtonProps
 } from '@adobe/react-spectrum';
-import { SpectrumButtonProps } from '@react-types/button';
 
 /**
  * An action that a user can take in a {@link WidgetErrorMessage}.
@@ -120,7 +120,6 @@ export function WidgetErrorMessage({
 						{actions.map(action => (
 							<Button
 								key={`${action.label}-${action.variant}`}
-								isQuiet
 								variant={action.variant}
 								onPress={action.action}
 							>

@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-import { State } from 'zustand';
 
 /**
  * A function that provides the current state and a function to change it.
@@ -98,7 +97,7 @@ export interface Dialog<T> {
  *
  * @see {@link DialogState.show}
  */
-export interface DialogState extends State {
+export interface DialogState {
 	/**
 	 * Stores the currently registered dialogs.
 	 * @see {@link Modal}
