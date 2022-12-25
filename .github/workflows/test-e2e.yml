@@ -52,12 +52,11 @@ jobs:
         run: pnpm dlx npm-cli-adduser -u thebox -p where -e thebox@nothere.com -r http://localhost:4873
       - name: Npm get logged in user
         run: pnpm whoami
+      - name: Bump version numbers to defeat caching
+        run: |
+          sed -i 's/"version": ".*"/"version": "999.999.999"/g' package.json packages/*/package.json
       - name: Publish to verdaccio 📤
         run: pnpm publish -r --no-git-checks
-      - name: Reset pnpm store to test install from verdaccio 🚛
-        run: |
-          pnpm store prune
-          rm -rf ~/.pnpm-store ~/.local/share/pnpm/global-packages ~/.local/share/pnpm/store
       - name: Install CLI from verdaccio 🪤
         run: pnpm add --global @wuespace/telestion-client-cli
         continue-on-error: true
