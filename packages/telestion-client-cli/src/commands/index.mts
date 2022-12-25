@@ -5,6 +5,7 @@ import { statsCommandBuilder } from './stats/index.mjs';
 import { startCommandBuilder } from './start/index.mjs';
 import { buildCommandBuilder } from './build/index.mjs';
 import { installCommandBuilder } from './install/index.mjs';
+import { generateCommandBuilder } from './generate/index.mjs';
 
 export const commandBuilders: CommandBuilder[] = [
 	initCommandBuilder,
@@ -12,7 +13,8 @@ export const commandBuilders: CommandBuilder[] = [
 	statsCommandBuilder,
 	startCommandBuilder,
 	buildCommandBuilder,
-	installCommandBuilder
+	installCommandBuilder,
+	generateCommandBuilder
 ];
 
 export * from './init/index.mjs';
@@ -21,3 +23,4 @@ export * from './stats/index.mjs';
 export * from './start/index.mjs';
 export * from './build/index.mjs';
 export * from './install/index.mjs';
+export * from './generate/index.mjs';
