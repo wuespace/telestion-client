@@ -28,7 +28,7 @@
 		"clean": "rimraf dist"
 	},
 	"engines": {
-		"node": ">=14"
+		"node": ">=16"
 	},
 	"repository": {
 		"type": "git",
