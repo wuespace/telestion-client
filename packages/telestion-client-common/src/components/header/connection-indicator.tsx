@@ -1,6 +1,8 @@
-import { StateSelector } from 'zustand';
-import { View, StatusLight } from '@adobe/react-spectrum';
-import { SpectrumStatusLightProps } from '@react-types/statuslight';
+import {
+	StatusLight,
+	SpectrumStatusLightProps,
+	View
+} from '@adobe/react-spectrum';
 import {
 	ConnectionState,
 	EventBusState,
@@ -24,10 +26,9 @@ const label: { [key in ConnectionState]: string } = {
 };
 
 // event bus selector
-const selector: StateSelector<
-	EventBusState,
-	EventBusState['connectionState']
-> = state => state.connectionState;
+const selector: (
+	s: EventBusState
+) => EventBusState['connectionState'] = state => state.connectionState;
 
 /**
  * Part of the Telestion Client Common header.

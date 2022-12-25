@@ -1,4 +1,4 @@
-import create, { UseBoundStore } from 'zustand';
+import create from 'zustand';
 import { UserConfig, UserInformation } from '@wuespace/telestion-client-types';
 import { UserConfigState } from './use-user-config.model';
 
@@ -79,54 +79,53 @@ const initialUserConfig: UserConfig = {};
  * }
  * ```
  */
-export const useUserConfig: UseBoundStore<UserConfigState> =
-	create<UserConfigState>((set, get) => ({
-		userConfig: initialUserConfig,
-		addUser: (username, information) => {
-			if (!username) {
-				throw new TypeError("The string '' is not a valid username.");
+export const useUserConfig = create<UserConfigState>((set, get) => ({
+	userConfig: initialUserConfig,
+	addUser: (username, information) => {
+		if (!username) {
+			throw new TypeError("The string '' is not a valid username.");
+		}
+		const { userConfig } = get();
+		if (userConfig[username]) {
+			throw new TypeError(
+				`The username '${username}' already exists in the user config store. ` +
+					'Please edit the user information ' +
+					'or delete the user from the store to create a one.'
+			);
+		}
+		set({ userConfig: { ...userConfig, [username]: information } });
+	},
+	removeUser: username => {
+		const { userConfig } = get();
+		if (!userConfig[username]) {
+			throw new TypeError(
+				`The username '${username}' does not exist in the user config store.`
+			);
+		}
+		const newUserConfig = { ...userConfig };
+		delete newUserConfig[username];
+		set({ userConfig: newUserConfig });
+	},
+	updateUserInfo: (username, newState) => {
+		const { userConfig } = get();
+		if (!userConfig[username]) {
+			throw new TypeError(
+				`The username '${username}' does not exist in the user config store.`
+			);
+		}
+		let newUserInfo: Partial<UserInformation>;
+		if (typeof newState === 'function') {
+			newUserInfo = newState(userConfig[username]);
+		} else {
+			newUserInfo = newState;
+		}
+		set({
+			userConfig: {
+				...userConfig,
+				[username]: { ...userConfig[username], ...newUserInfo }
 			}
-			const { userConfig } = get();
-			if (userConfig[username]) {
-				throw new TypeError(
-					`The username '${username}' already exists in the user config store. ` +
-						'Please edit the user information ' +
-						'or delete the user from the store to create a one.'
-				);
-			}
-			set({ userConfig: { ...userConfig, [username]: information } });
-		},
-		removeUser: username => {
-			const { userConfig } = get();
-			if (!userConfig[username]) {
-				throw new TypeError(
-					`The username '${username}' does not exist in the user config store.`
-				);
-			}
-			const newUserConfig = { ...userConfig };
-			delete newUserConfig[username];
-			set({ userConfig: newUserConfig });
-		},
-		updateUserInfo: (username, newState) => {
-			const { userConfig } = get();
-			if (!userConfig[username]) {
-				throw new TypeError(
-					`The username '${username}' does not exist in the user config store.`
-				);
-			}
-			let newUserInfo: Partial<UserInformation>;
-			if (typeof newState === 'function') {
-				newUserInfo = newState(userConfig[username]);
-			} else {
-				newUserInfo = newState;
-			}
-			set({
-				userConfig: {
-					...userConfig,
-					[username]: { ...userConfig[username], ...newUserInfo }
-				}
-			});
-		},
-		set: userConfig => set({ userConfig }),
-		clear: () => set({ userConfig: initialUserConfig })
-	}));
+		});
+	},
+	set: userConfig => set({ userConfig }),
+	clear: () => set({ userConfig: initialUserConfig })
+}));

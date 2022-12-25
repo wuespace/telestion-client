@@ -1,20 +1,12 @@
 {
-	"name": "@wuespace/telestion-client-core",
-	"description": "The core components of the Telestion Client",
+	"name": "@wuespace/component-playground",
+	"description": "A playground for testing components of the telestion-client modules",
+	"private": true,
 	"license": "MIT",
 	"version": "0.18.1",
 	"homepage": "https://telestion.wuespace.de/",
-	"source": "src/index.ts",
-	"main": "dist/main.js",
-	"module": "dist/module.js",
-	"types": "dist/types.d.ts",
-	"files": [
-		"dist"
-	],
-	"engines": {
-		"node": ">=14"
-	},
 	"scripts": {
+		"start": "parcel src/index.html",
 		"watch": "parcel watch",
 		"build": "parcel build",
 		"lint": "eslint",
@@ -22,10 +14,13 @@
 		"style": "pnpm -w style",
 		"clean": "rimraf dist"
 	},
+	"alias": {
+		"process": false
+	},
 	"repository": {
 		"type": "git",
 		"url": "git+https://github.com/wuespace/telestion-client.git",
-		"directory": "packages/telestion-client-core"
+		"directory": "packages/telestion-client-common"
 	},
 	"bugs": {
 		"url": "https://github.com/wuespace/telestion-client/issues"
@@ -58,22 +53,21 @@
 		}
 	],
 	"dependencies": {
-		"@fliegwerk/logsemts": "^0.4.3",
-		"@types/react": "^17.0.0",
-		"@wuespace/telestion-client-prop-types": "workspace:^",
+		"@wuespace/telestion-client-core": "workspace:^",
 		"@wuespace/telestion-client-types": "workspace:^",
-		"@wuespace/vertx-event-bus": "workspace:^",
-		"prop-types": "^15.7.2",
-		"react-router-dom": "^5.2.0",
-		"zustand": "^4.1.5"
+		"@wuespace/telestion-client-common": "workspace:^",
+		"react-dom": "^17.0.2",
+		"react": "^17.0.2"
 	},
 	"devDependencies": {
-		"@types/prop-types": "^15.7.5",
-		"@types/react-router-dom": "^5.3.3",
-		"react": "^17.0.1"
-	},
-	"peerDependencies": {
-		"react": ">=16.8"
+		"@types/react": "^17.0.3",
+		"@types/react-dom": "^17.0.3",
+		"eslint": "^7.26.0",
+		"eslint-config-prettier": "^8.3.0",
+		"eslint-plugin-prettier": "^3.4.0",
+		"prettier": "^2.3.0",
+		"rimraf": "^3.0.2",
+		"typescript": "^4.3.2"
 	},
 	"publishConfig": {
 		"access": "public"

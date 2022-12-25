@@ -66,11 +66,15 @@
 			"url": "https://github.com/fussel178"
 		}
 	],
+	"alias": {
+		"process": false
+	},
 	"devDependencies": {
 		"@parcel/config-default": "^2.8.2",
 		"@parcel/core": "^2.8.2",
 		"@parcel/optimizer-data-url": "^2.8.2",
 		"@parcel/packager-ts": "^2.8.2",
+		"@parcel/resolver-default": "^2.8.2",
 		"@parcel/source-map": "^2.1.1",
 		"@parcel/transformer-inline-string": "^2.8.2",
 		"@parcel/transformer-svg-react": "^2.8.2",

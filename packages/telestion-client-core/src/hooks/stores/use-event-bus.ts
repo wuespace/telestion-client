@@ -1,4 +1,4 @@
-import create, { UseBoundStore } from 'zustand';
+import create from 'zustand';
 import { EventBus } from '@wuespace/vertx-event-bus';
 import { getLogger } from '../../lib';
 import { EventBusState } from './use-event-bus.model';
@@ -79,7 +79,7 @@ const logger = getLogger('EventBus State');
  * }
  * ```
  */
-export const useEventBus: UseBoundStore<EventBusState> = create<EventBusState>(
+export const useEventBus = create<EventBusState>(
 	// eslint-disable-next-line max-lines-per-function
 	(set, get) => ({
 		eventBus: null,

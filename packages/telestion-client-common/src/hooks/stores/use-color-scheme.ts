@@ -1,4 +1,4 @@
-import create, { UseBoundStore } from 'zustand';
+import create from 'zustand';
 import { ColorSchemeState } from './use-color-scheme.model';
 
 /**
@@ -42,10 +42,9 @@ import { ColorSchemeState } from './use-color-scheme.model';
  * }
  * ```
  */
-export const useColorScheme: UseBoundStore<ColorSchemeState> =
-	create<ColorSchemeState>(set => ({
-		colorScheme: 'system',
-		set: colorScheme => {
-			set({ colorScheme });
-		}
-	}));
+export const useColorScheme = create<ColorSchemeState>(set => ({
+	colorScheme: 'system',
+	set: colorScheme => {
+		set({ colorScheme });
+	}
+}));

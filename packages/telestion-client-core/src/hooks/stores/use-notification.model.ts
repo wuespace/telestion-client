@@ -1,4 +1,3 @@
-import { State } from 'zustand';
 import { Notification } from '@wuespace/telestion-client-types';
 
 /**
@@ -10,7 +9,7 @@ import { Notification } from '@wuespace/telestion-client-types';
  * @see {@link NotificationState.add}
  * @see {@link NotificationState.toggle}
  */
-export interface NotificationState extends State {
+export interface NotificationState {
 	/**
 	 * Stores all notifications.
 	 * Every notification has a `isDismissed` flag which indicates

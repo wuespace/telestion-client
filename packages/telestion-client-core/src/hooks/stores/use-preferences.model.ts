@@ -1,4 +1,3 @@
-import { State } from 'zustand';
 import {
 	GroupSelector,
 	PreferencesStore,
@@ -15,7 +14,7 @@ import {
  * @see {@link PreferencesState.preferences}
  * @see {@link PreferencesState.setValue}
  */
-export interface PreferencesState extends State {
+export interface PreferencesState {
 	/**
 	 * Stores the registered preferences as groups of selector-value pair.
 	 *

@@ -1,7 +1,5 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import { ReactNode } from 'react';
-import { View } from '@adobe/react-spectrum';
-import { ViewProps } from '@react-types/view';
+import { View, ViewProps } from '@adobe/react-spectrum';
 
 /**
  * React Props of {@link OverflowFix}
@@ -12,7 +10,7 @@ import { ViewProps } from '@react-types/view';
  * @see {@link OverflowFix}
  * @see {@link https://reactjs.org/docs/components-and-props.html}
  */
-export interface OverflowFixProps extends ViewProps {
+export interface OverflowFixProps extends ViewProps<any> {
 	/**
 	 * The components which are possibly overflowing.
 	 */
@@ -50,6 +48,7 @@ export interface OverflowFixProps extends ViewProps {
  */
 export function OverflowFix({ children, ...viewProps }: OverflowFixProps) {
 	return (
+		// eslint-disable-next-line react/jsx-props-no-spreading
 		<View width="100%" height="100%" position="relative" {...viewProps}>
 			<View
 				position="absolute"

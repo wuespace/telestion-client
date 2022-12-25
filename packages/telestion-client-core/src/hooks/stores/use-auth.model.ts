@@ -1,4 +1,3 @@
-import { State } from 'zustand';
 import { SignInResult, SignOutResult } from '@wuespace/telestion-client-types';
 
 /**
@@ -34,7 +33,7 @@ export interface Authentication {
  * @see {@link AuthState.signIn}
  * @see {@link AuthState.signOut}
  */
-export interface AuthState extends State {
+export interface AuthState {
 	/**
 	 * Stores the current authentication state of the application.
 	 * Contains the username, the authentication and the event bus URL.

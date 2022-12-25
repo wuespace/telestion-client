@@ -1,4 +1,3 @@
-import { State } from 'zustand';
 import { EventBus } from '@wuespace/vertx-event-bus';
 import { ErrorMessage, Options } from '@wuespace/telestion-client-types';
 
@@ -31,7 +30,7 @@ export type ConnectionState =
  * @see {@link EventBusState.openEventBus}
  * @see {@link EventBusState.closeEventBus}
  */
-export interface EventBusState extends State {
+export interface EventBusState {
 	/**
 	 * the current eventbus instance if an event bus was opened
 	 * otherwise it is `null`

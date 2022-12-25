@@ -1,5 +1,3 @@
-import { State } from 'zustand';
-
 /**
  * Type of valid color scheme:
  * - `light` - use always the light theme
@@ -16,7 +14,7 @@ export type ColorScheme = 'light' | 'dark' | 'system';
  * @see {@link ColorSchemeState.colorScheme}
  * @see {@link ColorSchemeState.set}
  */
-export interface ColorSchemeState extends State {
+export interface ColorSchemeState {
 	/**
 	 * The current color scheme of the application.
 	 * @see {@link ColorScheme}
