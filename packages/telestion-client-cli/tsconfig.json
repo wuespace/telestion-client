@@ -1,6 +1,7 @@
 {
 	"extends": "../../tsconfig.json",
 	"compilerOptions": {
+		"baseUrl": ".",
 		"noEmit": false,
 		"target": "es2022",
 		/* We use ModuleJS in our CLI */
