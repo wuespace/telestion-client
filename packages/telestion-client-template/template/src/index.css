@@ -1,16 +1,10 @@
-* {
+:not([class*='spectrum-']) {
 	box-sizing: border-box;
 }
 
 body,
 html {
 	margin: 0;
-}
-
-input + svg,
-button svg {
-	padding-right: 0 !important;
-	padding-left: 0 !important;
 }
 
 /**
