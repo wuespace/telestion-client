@@ -55,6 +55,8 @@ jobs:
       - name: Bump version numbers to defeat caching
         run: |
           sed -i 's/"version": ".*"/"version": "999.999.999"/g' package.json packages/*/package.json
+      - name: Build 🏗
+        run: pnpm build
       - name: Publish to verdaccio 📤
         run: pnpm publish -r --no-git-checks
       - name: Install CLI from verdaccio 🪤
