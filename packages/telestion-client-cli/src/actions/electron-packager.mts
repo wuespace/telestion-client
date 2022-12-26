@@ -3,6 +3,7 @@ import { rebuild } from 'electron-rebuild';
 
 import { exists, getLogger, mkdir, rm } from '../lib/index.mjs';
 import { join } from 'path';
+import { getPSCConfig } from '../lib/config.mjs';
 
 const logger = getLogger('Electron Packager');
 
@@ -27,8 +28,9 @@ export async function packageElectron(
 	projectDir: string,
 	options: PackageOptions
 ): Promise<string[]> {
+	const config = await getPSCConfig();
 	const distFolderPath = join(projectDir, distFolderName);
-	const outFolderPath = join(projectDir, outFolderName);
+	const outFolderPath = join(projectDir, config.out ?? outFolderName);
 	logger.debug('Distribution folder path:', distFolderPath);
 	logger.debug('Output folder path:', outFolderPath);
 
@@ -53,12 +55,14 @@ export async function packageElectron(
 		dir: distFolderPath,
 		out: outFolderPath,
 		asar: true,
+		...config,
 		afterCopy: [
 			(buildPath, electronVersion, platform, arch, callback) => {
 				rebuild({ buildPath, electronVersion, arch })
 					.then(() => callback())
 					.catch(error => callback(error));
-			}
+			},
+			...(config.afterCopy ?? [])
 		]
 	});
 
