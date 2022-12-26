@@ -46,7 +46,7 @@ jobs:
           pnpm dlx verdaccio &
           sleep 10
           printf 'Set pnpm registry...\n'
-          echo 'registry=http://localhost:4873/' >> "../../.npmrc"
+          npm config set registry "http://localhost:4873/"
           printf 'pnpm registry (global): %s\n' "$(pnpm config --global get registry)"
           printf 'pnpm registry (local):  %s\n' "$(pnpm config get registry)"
 
