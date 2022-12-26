@@ -185,6 +185,7 @@ importers:
       electron-packager: ^15.5.1
       electron-rebuild: ^3.2.7
       inquirer: ^8.2.0
+      lilconfig: ^2.0.6
       ora: ^6.1.0
       validate-npm-package-name: ^4.0.0
     dependencies:
@@ -198,6 +199,7 @@ importers:
       electron-packager: 15.5.1
       electron-rebuild: 3.2.7
       inquirer: 8.2.2
+      lilconfig: 2.0.6
       ora: 6.1.0
       validate-npm-package-name: 4.0.0
     devDependencies:
@@ -9390,6 +9392,11 @@ packages:
       lightningcss-linux-x64-musl: 1.17.1
       lightningcss-win32-x64-msvc: 1.17.1
     dev: true
+
+  /lilconfig/2.0.6:
+    resolution: {integrity: sha512-9JROoBW7pobfsx+Sq2JsASvCo6Pfo6WWoUW79HuB1BCoBXD4PLWJPqDF6fNj67pqBYTbAHkE57M1kS/+L1neOg==}
+    engines: {node: '>=10'}
+    dev: false
 
   /lines-and-columns/1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}

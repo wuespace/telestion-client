@@ -6,3 +6,4 @@ export * from './package.mjs';
 export * from './package-info.mjs';
 export * from './promise.mjs';
 export * from './resolve.mjs';
+export * from './config.mjs';
