@@ -3,7 +3,7 @@ module.exports = {
 	coverageReporters: ['json', 'text', 'text-summary', 'lcov'],
 	projects: [
 		{
-			displayName: 'PropTypes',
+			displayName: 'Telestion Client PropTypes',
 			globals: {
 				'ts-jest': {
 					//tsconfig: 'base-configs/tsconfig.spec.json'
@@ -17,10 +17,10 @@ module.exports = {
 			coveragePathIgnorePatterns: [
 				'<rootDir>/node_modules/',
 				'<rootDir>/packages/telestion-client-prop-types/node_modules/',
-				'<rootDir>/packages/telestion-client-prop-types/build/',
+				'<rootDir>/packages/telestion-client-prop-types/dist/',
 				'<rootDir>/packages/telestion-client-prop-types/tests/',
-				'<rootDir>/packages/vertx-event-bus/build/',
-				'<rootDir>/packages/telestion-client-prop-types/node_modules/@wuespace/vertx-event-bus/build/index.js'
+				'<rootDir>/packages/vertx-event-bus/dist/',
+				'<rootDir>/packages/telestion-client-prop-types/node_modules/@wuespace/vertx-event-bus/dist/index.js'
 			],
 			testMatch: [
 				'<rootDir>/packages/telestion-client-prop-types/src/**/*(*.)@(spec|test).[jt]s'
@@ -36,7 +36,7 @@ module.exports = {
 			preset: 'ts-jest',
 			testEnvironment: 'node',
 			collectCoverageFrom: ['<rootDir>/packages/vertx-event-bus/src/**'],
-			coveragePathIgnorePatterns: [],
+			coveragePathIgnorePatterns: ['<rootdir>/packages/vertx-event-bus/dist'],
 			testMatch: [
 				'<rootDir>/packages/vertx-event-bus/src/**/*(*.)@(spec|test).[jt]s'
 			]
@@ -54,7 +54,7 @@ module.exports = {
 		// 	collectCoverageFrom: [
 		// 		'<rootDir>/packages/vertx-mock-server/src/**'
 		// 	],
-		// 	coveragePathIgnorePatterns: [],
+		// 	coveragePathIgnorePatterns: ['<rootDir>/packages/vertx-mock-server/dist'],
 		// 	testMatch: [
 		// 		'<rootDir>/packages/vertx-mock-server/src/**/*(*.)@(spec|test).[jt]s'
 		// 	]
