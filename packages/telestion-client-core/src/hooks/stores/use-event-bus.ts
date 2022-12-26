@@ -1,4 +1,4 @@
-import create from 'zustand';
+import create, { StoreApi, UseBoundStore } from 'zustand';
 import { EventBus } from '@wuespace/vertx-event-bus';
 import { getLogger } from '../../lib';
 import { EventBusState } from './use-event-bus.model';
@@ -79,64 +79,65 @@ const logger = getLogger('EventBus State');
  * }
  * ```
  */
-export const useEventBus = create<EventBusState>(
-	// eslint-disable-next-line max-lines-per-function
-	(set, get) => ({
-		eventBus: null,
-		connectionState: 'noEventBus',
-		error: null,
-		lastErrorMessage: null,
-		openEventBus: (serverUrl, options) => {
-			logger.debug('Create and open event bus');
-			let errorTimerId: any;
+export const useEventBus: UseBoundStore<StoreApi<EventBusState>> =
+	create<EventBusState>(
+		// eslint-disable-next-line max-lines-per-function
+		(set, get) => ({
+			eventBus: null,
+			connectionState: 'noEventBus',
+			error: null,
+			lastErrorMessage: null,
+			openEventBus: (serverUrl, options) => {
+				logger.debug('Create and open event bus');
+				let errorTimerId: any;
 
-			if (get().eventBus) {
-				logger.error('Event bus already exists');
-				throw new TypeError(
-					'Eventbus is already created. No need to create another one.'
-				);
-			}
-
-			const eb = new EventBus(serverUrl, options);
-
-			eb.onOpen = () => {
-				logger.success('Event bus opened!');
-				set({ connectionState: 'connected' });
-			};
-
-			eb.onClose = () => {
-				if (errorTimerId) clearTimeout(errorTimerId);
-				// disconnect only on automatic reconnect enabled
-				if (eb.autoReconnect) {
-					logger.warn('Could not connect to backend');
-					set({ connectionState: 'disconnected' });
-				} else {
-					logger.warn('Event bus closed');
+				if (get().eventBus) {
+					logger.error('Event bus already exists');
+					throw new TypeError(
+						'Eventbus is already created. No need to create another one.'
+					);
 				}
-			};
 
-			eb.onError = message => {
-				errorTimerId = setTimeout(() => {
+				const eb = new EventBus(serverUrl, options);
+
+				eb.onOpen = () => {
+					logger.success('Event bus opened!');
 					set({ connectionState: 'connected' });
-				}, 2000);
-				set({ connectionState: 'error', lastErrorMessage: message });
-				logger.warn('Received error message:', message);
-			};
+				};
 
-			set({ eventBus: eb, connectionState: 'disconnected' });
-		},
-		closeEventBus: () => {
-			logger.debug('Close event bus');
-			if (!get().eventBus) {
-				logger.error('Event bus already closed and removed');
-				throw new TypeError(
-					'Eventbus is already closed. Possible memory leak detected.'
-				);
+				eb.onClose = () => {
+					if (errorTimerId) clearTimeout(errorTimerId);
+					// disconnect only on automatic reconnect enabled
+					if (eb.autoReconnect) {
+						logger.warn('Could not connect to backend');
+						set({ connectionState: 'disconnected' });
+					} else {
+						logger.warn('Event bus closed');
+					}
+				};
+
+				eb.onError = message => {
+					errorTimerId = setTimeout(() => {
+						set({ connectionState: 'connected' });
+					}, 2000);
+					set({ connectionState: 'error', lastErrorMessage: message });
+					logger.warn('Received error message:', message);
+				};
+
+				set({ eventBus: eb, connectionState: 'disconnected' });
+			},
+			closeEventBus: () => {
+				logger.debug('Close event bus');
+				if (!get().eventBus) {
+					logger.error('Event bus already closed and removed');
+					throw new TypeError(
+						'Eventbus is already closed. Possible memory leak detected.'
+					);
+				}
+
+				// close and delete
+				get().eventBus?.close();
+				set({ eventBus: null, connectionState: 'noEventBus' });
 			}
-
-			// close and delete
-			get().eventBus?.close();
-			set({ eventBus: null, connectionState: 'noEventBus' });
-		}
-	})
-);
+		})
+	);

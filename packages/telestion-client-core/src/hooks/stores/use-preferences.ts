@@ -1,4 +1,4 @@
-import create from 'zustand';
+import create, { StoreApi, UseBoundStore } from 'zustand';
 import {
 	GroupSelector,
 	Preference,
@@ -90,39 +90,40 @@ const logger = getLogger('Preferences');
  * }
  * ```
  */
-export const usePreferences = create<PreferencesState>((set, get) => ({
-	preferences: {},
-	setValue: (group, preference, newValue) =>
-		set(state => setPrefValue(state, group, preference, 'value', newValue)),
-	setRenderer: (group, preference, newRenderer) =>
-		set(state =>
-			setPrefValue(state, group, preference, 'renderer', newRenderer)
-		),
-	removePreference: (group, preference) => {
-		const currentStore = get().preferences;
-		// group is empty -> no preference to delete, return
-		if (isEmpty(currentStore[group] || {})) return;
+export const usePreferences: UseBoundStore<StoreApi<PreferencesState>> =
+	create<PreferencesState>((set, get) => ({
+		preferences: {},
+		setValue: (group, preference, newValue) =>
+			set(state => setPrefValue(state, group, preference, 'value', newValue)),
+		setRenderer: (group, preference, newRenderer) =>
+			set(state =>
+				setPrefValue(state, group, preference, 'renderer', newRenderer)
+			),
+		removePreference: (group, preference) => {
+			const currentStore = get().preferences;
+			// group is empty -> no preference to delete, return
+			if (isEmpty(currentStore[group] || {})) return;
 
-		const newGroup: PreferencesGroup = { ...currentStore[group] };
-		delete newGroup[preference];
+			const newGroup: PreferencesGroup = { ...currentStore[group] };
+			delete newGroup[preference];
 
-		const newStore: PreferencesStore = { ...currentStore, [group]: newGroup };
-		if (isEmpty(newGroup)) delete newStore[group];
+			const newStore: PreferencesStore = { ...currentStore, [group]: newGroup };
+			if (isEmpty(newGroup)) delete newStore[group];
 
-		set({ preferences: newStore });
-		logger.info(`Preference ${preference} removed from group ${group}`);
-	},
-	removeGroup: group => {
-		const newStore = { ...get().preferences };
-		delete newStore[group];
-		set({ preferences: newStore });
-		logger.info(`Group ${group} removed`);
-	},
-	setStore: newStore => {
-		set({ preferences: newStore });
-		logger.info('Preference store replaced');
-	}
-}));
+			set({ preferences: newStore });
+			logger.info(`Preference ${preference} removed from group ${group}`);
+		},
+		removeGroup: group => {
+			const newStore = { ...get().preferences };
+			delete newStore[group];
+			set({ preferences: newStore });
+			logger.info(`Group ${group} removed`);
+		},
+		setStore: newStore => {
+			set({ preferences: newStore });
+			logger.info('Preference store replaced');
+		}
+	}));
 
 /**
  * Returns a {@link PreferencesState}, based on the `currentState`, with `[key]` set to `value` on the preference

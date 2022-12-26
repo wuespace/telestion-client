@@ -1,4 +1,4 @@
-import create from 'zustand';
+import create, { StoreApi, UseBoundStore } from 'zustand';
 import { NotificationState } from './use-notification.model';
 import { getLogger } from '../../lib';
 
@@ -78,58 +78,59 @@ const logger = getLogger('Notifications');
  * }
  * ```
  */
-export const useNotifications = create<NotificationState>((set, get) => ({
-	notifications: [],
-	isMuted: false,
-	add: notifications => {
-		logger.debug('Add new notifications');
-		if (!notifications.length) return;
-		// dismiss all notifications on mute
-		if (get().isMuted) {
-			logger.info('Mute all notifications');
+export const useNotifications: UseBoundStore<StoreApi<NotificationState>> =
+	create<NotificationState>((set, get) => ({
+		notifications: [],
+		isMuted: false,
+		add: notifications => {
+			logger.debug('Add new notifications');
+			if (!notifications.length) return;
+			// dismiss all notifications on mute
+			if (get().isMuted) {
+				logger.info('Mute all notifications');
+				notifications.forEach(notification => {
+					// eslint-disable-next-line no-param-reassign
+					notification.isDismissed = true;
+				});
+			}
+			set({ notifications: [...get().notifications, ...notifications] });
+		},
+		dismiss: notifications => {
+			logger.debug('Dismiss notifications');
+			if (!notifications.length) return;
+			const storeNotifications = get().notifications;
+			storeNotifications.forEach(current => {
+				if (notifications.includes(current)) {
+					// eslint-disable-next-line no-param-reassign
+					current.isDismissed = true;
+				}
+			});
+			set({ notifications: [...storeNotifications] });
+		},
+		showAll: () => {
+			logger.debug('Show all notifications');
+			const { notifications } = get();
+			notifications.forEach(current => {
+				// eslint-disable-next-line no-param-reassign
+				current.isDismissed = false;
+			});
+			set({ notifications: [...notifications] });
+		},
+		mute: () => {
+			logger.debug('Mute all further notifications');
+			const { notifications } = get();
 			notifications.forEach(notification => {
 				// eslint-disable-next-line no-param-reassign
-				notification.isDismissed = true;
+				notification.isDismissed = false;
 			});
+			set({ notifications: [...notifications], isMuted: true });
+		},
+		unmute: () => {
+			logger.debug('Unmute all further notifications');
+			set({ isMuted: false });
+		},
+		toggle: () => {
+			logger.debug('Toggle mute state to', !get().isMuted);
+			set({ isMuted: !get().isMuted });
 		}
-		set({ notifications: [...get().notifications, ...notifications] });
-	},
-	dismiss: notifications => {
-		logger.debug('Dismiss notifications');
-		if (!notifications.length) return;
-		const storeNotifications = get().notifications;
-		storeNotifications.forEach(current => {
-			if (notifications.includes(current)) {
-				// eslint-disable-next-line no-param-reassign
-				current.isDismissed = true;
-			}
-		});
-		set({ notifications: [...storeNotifications] });
-	},
-	showAll: () => {
-		logger.debug('Show all notifications');
-		const { notifications } = get();
-		notifications.forEach(current => {
-			// eslint-disable-next-line no-param-reassign
-			current.isDismissed = false;
-		});
-		set({ notifications: [...notifications] });
-	},
-	mute: () => {
-		logger.debug('Mute all further notifications');
-		const { notifications } = get();
-		notifications.forEach(notification => {
-			// eslint-disable-next-line no-param-reassign
-			notification.isDismissed = false;
-		});
-		set({ notifications: [...notifications], isMuted: true });
-	},
-	unmute: () => {
-		logger.debug('Unmute all further notifications');
-		set({ isMuted: false });
-	},
-	toggle: () => {
-		logger.debug('Toggle mute state to', !get().isMuted);
-		set({ isMuted: !get().isMuted });
-	}
-}));
+	}));

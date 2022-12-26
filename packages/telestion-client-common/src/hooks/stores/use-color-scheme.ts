@@ -1,4 +1,4 @@
-import create from 'zustand';
+import create, { StoreApi, UseBoundStore } from 'zustand';
 import { ColorSchemeState } from './use-color-scheme.model';
 
 /**
@@ -42,9 +42,10 @@ import { ColorSchemeState } from './use-color-scheme.model';
  * }
  * ```
  */
-export const useColorScheme = create<ColorSchemeState>(set => ({
-	colorScheme: 'system',
-	set: colorScheme => {
-		set({ colorScheme });
-	}
-}));
+export const useColorScheme: UseBoundStore<StoreApi<ColorSchemeState>> =
+	create<ColorSchemeState>(set => ({
+		colorScheme: 'system',
+		set: colorScheme => {
+			set({ colorScheme });
+		}
+	}));
