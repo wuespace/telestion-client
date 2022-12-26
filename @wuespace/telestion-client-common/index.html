@@ -4294,7 +4294,7 @@ and a setter function to update the dashboards for the current user.</p>
             :
 
             <!-- Variable type or any -->
-            any        </code>
+            UseBoundStore&lt;StoreApi&lt;ColorSchemeState&gt;&gt;        </code>
     </b>
 </p>
 
@@ -4538,8 +4538,8 @@ and rejects, when the user canceled the dialog</p>
 function MyComponent() {
 	const openDialog = () =&gt; {
 		showDialog('my-dialog', { title: 'My Dialog', content: 'Hello World' })
-			.then(() =&gt; alert(&quot;Confirmed&quot;))
-			.catch(() =&gt; alert(&quot;Canceled&quot;));
+			.then(() =&gt; alert('Confirmed'))
+			.catch(() =&gt; alert('Canceled'));
 	};
 
 	return &lt;button onClick={openDialog}&gt;Show Dialog&lt;/button&gt;;
@@ -4563,7 +4563,7 @@ function MyComponent() {
             :
 
             <!-- Variable type or any -->
-            any        </code>
+            UseBoundStore&lt;StoreApi&lt;DialogState&gt;&gt;        </code>
     </b>
 </p>
 
@@ -4674,8 +4674,8 @@ function MyComponent() {
 
 	const openDialog = () =&gt; {
 		show('my-dialog', { title: 'My Dialog', content: 'Hello World' })
-			.then(() =&gt; alert(&quot;Confirmed&quot;))
-			.catch(() =&gt; alert(&quot;Canceled&quot;));
+			.then(() =&gt; alert('Confirmed'))
+			.catch(() =&gt; alert('Canceled'));
 	};
 
 	return &lt;button onClick={openDialog}&gt;Show Dialog&lt;/button&gt;;
@@ -4699,7 +4699,7 @@ function MyComponent() {
             :
 
             <!-- Variable type or any -->
-            any        </code>
+            UseBoundStore&lt;StoreApi&lt;UserConfigState&gt;&gt;        </code>
     </b>
 </p>
 
