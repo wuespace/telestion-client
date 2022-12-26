@@ -45,14 +45,16 @@ jobs:
         run: |
           pnpm dlx verdaccio &
           sleep 10
-          pnpm config --global set registry http://localhost:4873
-          echo "pnpm registry: "
-          pnpm config --global get registry
+          printf 'Set pnpm registry...\n'
+          echo 'registry=http://localhost:4873/' >> "../../.npmrc"
+          printf 'pnpm registry (global): %s\n' "$(pnpm config --global get registry)"
+          printf 'pnpm registry (local):  %n\n' "$(pnpm config get registry)"
 
       - name: Login to verdaccio 🛂
-        run: pnpm dlx npm-cli-adduser -u thebox -p where -e thebox@nothere.com -r http://localhost:4873
-      - name: Npm get logged in user
-        run: pnpm whoami
+        run: |
+          pnpm dlx npm-cli-adduser --username thebox --password where --email 'thebox@nothere.com' --registry 'http://localhost:4873'
+          printf 'pnpm whoami: %s\n' "$(pnpm whoami)"
+
       - name: Bump version numbers to defeat caching
         run: |
           sed -i 's/"version": ".*"/"version": "999.999.999"/g' package.json packages/*/package.json
