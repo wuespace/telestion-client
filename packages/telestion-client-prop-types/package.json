@@ -11,9 +11,6 @@
 	"files": [
 		"dist"
 	],
-	"engines": {
-		"node": ">=14"
-	},
 	"scripts": {
 		"watch": "parcel watch",
 		"build": "parcel build",
