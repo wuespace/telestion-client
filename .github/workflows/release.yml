@@ -45,8 +45,8 @@ jobs:
         uses: changesets/action@v1
         with:
           version: pnpm ci:version
-          commit: "chore: Update versions"
-          title: "chore: Update versions"
+          commit: 'chore: Update versions'
+          title: 'chore: Update versions'
           publish: pnpm ci:publish
         env:
           GITHUB_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
