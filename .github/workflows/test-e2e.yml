@@ -48,7 +48,7 @@ jobs:
           printf 'Set pnpm registry...\n'
           echo 'registry=http://localhost:4873/' >> "../../.npmrc"
           printf 'pnpm registry (global): %s\n' "$(pnpm config --global get registry)"
-          printf 'pnpm registry (local):  %n\n' "$(pnpm config get registry)"
+          printf 'pnpm registry (local):  %s\n' "$(pnpm config get registry)"
 
       - name: Login to verdaccio 🛂
         run: |
