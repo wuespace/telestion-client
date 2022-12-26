@@ -12,7 +12,7 @@ on:
 
 # Defines which tool versions should be used in all workflow jobs
 env:
-  node: ['16', '18']
+  # node: 16 # matrix build, see below
   pnpm: '7'
 
 jobs:
@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node: ${{ env.node }}
+        node: ['16', '18']
     steps:
       - name: Checkout 📥
         uses: actions/checkout@v3.0.0
