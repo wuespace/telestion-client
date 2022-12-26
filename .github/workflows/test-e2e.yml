@@ -33,7 +33,6 @@ jobs:
         uses: actions/setup-node@v3.0.0
         with:
           node-version: ${{ matrix.node }}
-          cache: 'pnpm'
       - name: Setup git ⚙
         run: |
           git config --global user.name "${GITHUB_ACTOR}"
@@ -60,7 +59,7 @@ jobs:
       - name: Publish to verdaccio 📤
         run: pnpm publish -r --no-git-checks
       - name: Install CLI from verdaccio 🪤
-        run: pnpm add --global @wuespace/telestion-client-cli
+        run: pnpm add --global @wuespace/telestion-client-cli@999.999.999
         continue-on-error: true
       - name: Show help output of CLI
         run: tc-cli --help
