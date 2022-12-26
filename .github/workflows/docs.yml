@@ -8,8 +8,8 @@ on:
 
 # Defines which tool versions should be used in all workflow jobs
 env:
-  node: '16'
-  pnpm: '7.0.0-rc.3'
+  node: '18'
+  pnpm: '7'
 
 jobs:
   build-and-deploy:
