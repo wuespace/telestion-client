@@ -2,7 +2,7 @@
 	"name": "telestion-client",
 	"description": "Telestion frontend collection",
 	"license": "MIT",
-	"version": "0.18.1",
+	"version": "0.0.0",
 	"private": true,
 	"homepage": "https://telestion.wuespace.de/",
 	"engines": {
@@ -24,7 +24,6 @@
 		"style": "pnpm run style:fix",
 		"style:fix": "prettier --write .",
 		"style:check": "prettier --check .",
-		"style:ci": "prettier --list-different .",
 		"test": "pnpm run test:packages && pnpm run test:unit",
 		"test:packages": "pnpm run --recursive test",
 		"test:unit": "jest --coverage --outputFile=jest.results.json",
@@ -35,7 +34,10 @@
 		"docs": "pnpm run docs:build",
 		"docs:build": "pnpm run docs:types:build",
 		"docs:types:watch": "fliegdoc build --serve --port 4040",
-		"docs:types:build": "fliegdoc build"
+		"docs:types:build": "fliegdoc build",
+		"ci:style": "prettier --list-different .",
+		"ci:version": "changeset version && pnpm install --no-frozen-lockfile && git add .",
+		"ci:publish": "pnpm publish -r"
 	},
 	"repository": {
 		"type": "git",

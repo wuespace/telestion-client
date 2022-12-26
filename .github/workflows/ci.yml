@@ -28,7 +28,7 @@ jobs:
       - name: Install dependencies 📚
         run: pnpm install
       - name: Check code style 🧽
-        run: pnpm style:ci
+        run: pnpm ci:style
 
   lint:
     name: Lint

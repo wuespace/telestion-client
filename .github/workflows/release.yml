@@ -1,67 +1,37 @@
 name: Release
 
 # Events that trigger this workflow
-on: workflow_dispatch
+on:
+  push:
+    branches:
+      - main
+
+# Defines which tool versions should be used in all workflow jobs
+env:
+  node: '18'
+  pnpm: '7'
 
 jobs:
   release:
-    name: Release and publish a new project version
+    name: Release
     runs-on: ubuntu-latest
     steps:
-      # The credentials from the GitHub runner are not useful here,
-      # because we need to push to a restricted branch,
-      # so maintainer access is required.
-      # We also need to fetch the entire commit history because lerna builds a change log out of commit messages.
-      # More information:
-      # https://www.conventionalcommits.org/en/v1.0.0/
-      # https://github.com/lerna/lerna/tree/main/commands/version
       - name: Checkout 📥
         uses: actions/checkout@v3.0.0
+      - name: Setup PNPM 💿
+        uses: pnpm/action-setup@v2.2.1
         with:
-          persist-credentials: false
-          fetch-depth: 0
+          version: ${{ env.pnpm }}
       - name: Setup Node 💿
         uses: actions/setup-node@v3.0.0
         with:
-          node-version: 14
+          node-version: ${{ env.node }}
+          cache: 'pnpm'
 
-        # To push to the parent repository, git need a short setup workflow.
-        # The user who has triggered the workflow in the actions tab
-        # also "commits" the changelog and package.json updates.
-        # We also need to re-set the origin URL,
-        # because we make use of the pushing to GitHub repositories
-        # via an access token.
-      - name: Setup git ⚙
-        run: |
-          git config --local user.name "${GITHUB_ACTOR}"
-          git config --local user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-          git remote set-url origin "https://${GITHUB_ACTOR}:${GH_RELEASE_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          echo "Git remote origin URL: $(git remote get-url origin)"
-        env:
-          GH_RELEASE_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
+      - name: Install dependencies 📚
+        run: pnpm install
 
-      # Remove, when setup-node action supports specifying the node version
-      - name: Install npm v7 ⬆
-        run: npm install --global npm@v7
-
-      - name: Install lerna globally 🛒
-        run: npm install --global lerna
-      - name: Install development dependencies 📚
-        run: npm ci
-      - name: Add node_modules binaries to path ⛓
-        run: echo "${GITHUB_WORKSPACE}/node_modules/.bin" >> $GITHUB_PATH
-
-        # Lerna will create the change log from the conventional commits,
-        # increase to the necessary package version and push its changes.
-        # Additionally it generates a github release
-        # which also includes the current change log.
-      - name: Lerna version and GitHub release 🪡
-        run: lerna version --conventional-commits --create-release github --yes
-        env:
-          GH_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
-
-        # Build a .npmrc configuration file
-        # that will be used from npm and lerna
+        # Build a .npmrc configuration file that will be used by pnpm
         # to publish to the npm registry with the given token.
       - name: Setup npm 📀
         run: |
@@ -70,7 +40,13 @@ jobs:
           cat "${GITHUB_WORKSPACE}/.npmrc"
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-      - name: Publish to npm registry 🗜
-        # Skip access verification to circumvent lerna calling 'npm whoami'
-        # because we are not logged in with npm and use the npm token method instead.
-        run: lerna publish from-git --no-verify-access --yes
+
+      - name: Create and publish versions 🗜
+        uses: changesets/action@v1
+        with:
+          version: pnpm ci:version
+          commit: "chore: Update versions"
+          title: "chore: Update versions"
+          publish: pnpm ci:publish
+        env:
+          GITHUB_TOKEN: ${{ secrets.GH_RELEASE_TOKEN }}
