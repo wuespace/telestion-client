@@ -77,11 +77,17 @@
 <a href="package.json"><img src="https://img.shields.io/badge/node-%3E%3D14-brightgreen" alt="Node current"></a>
 <a href="package.json"><img src="https://img.shields.io/badge/npm-%3E%3D7-blue" alt="NPM current"></a>
 <a href="https://twitter.com/wuespace"><img src="https://img.shields.io/twitter/follow/wuespace?style=social" alt="Twitter Follow"></a></p>
-<p>This is the Telestion Client Library Monorepo. It contains, in basic terms, a framework for building so-called <em>Project-Specific-Clients</em> (PSCs), which are clients for the Telestion software that perfectly fit the mission's requirements.</p>
-<p><em>Telestion</em> is an ecosystem for Ground Station software that's easy to adjust to a mission's needs without re-inventing the wheel.</p>
+<p>This is the Telestion Client Library Monorepo. It contains, in basic terms, a framework for building so-called
+<em>Project-Specific-Clients</em> (PSCs), which are clients for the Telestion software that perfectly fit
+the mission's requirements.</p>
+<p><em>Telestion</em> is an ecosystem for Ground Station software that's easy to adjust to a mission's needs
+without re-inventing the wheel.</p>
 <h2>Getting Started with PSC development</h2>
-<p><strong>This is just a very basic guide for getting started. For more in-depth guides, reference, etc., please refer to the PSC Developer Manual.</strong></p>
-<p>To make it easy for you to develop PSCs, we provide a fully-featured CLI that, while keeping everything extensible, gives you a hand in creating new projects, generating boilerplate in the projects, running the project during development, and building the PSC, either for the web or as a native, Electron-based, app.</p>
+<p><strong>This is just a very basic guide for getting started. For more in-depth guides, reference, etc.,
+please refer to the <a href="https://docs.telestion.wuespace.de/">official Telestion documentation</a>.</strong></p>
+<p>To make it easy for you to develop PSCs, we provide a fully-featured CLI that, while keeping everything extensible,
+gives you a hand in creating new projects, generating boilerplate in the projects,
+running the project during development, and building the PSC, either for the web or as a native, Electron-based, app.</p>
 <h3>Before you begin</h3>
 <p>Before you begin, please make sure that you have the following tools installed on your system:</p>
 <ul>
@@ -94,26 +100,40 @@
 <pre><code class="language-shell">npm install --global @wuespace/telestion-client-cli
 </code></pre>
 <blockquote>
-<p>⚠ If, on UNIX-based systems (Linux or macOS), you run into permission issues when running this command, please try re-running it with <code>sudo</code>.</p>
+<p>⚠ If, on UNIX-based systems (Linux or macOS), you run into permission issues when running this command,
+please try re-running it with <code>sudo</code>.</p>
 </blockquote>
 <h3>Creating the PSC</h3>
-<p>With the CLI installed, we can create our first PSC project. Open a command line in a folder where you'd like to create your project and run:</p>
+<p>With the CLI installed, we can create our first PSC project.
+Open a command line in a folder where you'd like to create your project and run:</p>
 <pre><code class="language-shell">tc-cli init
 </code></pre>
-<p>You will then be asked one or more questions (like the project title). When everything's answered, the CLI will initialize a full PSC project for you, so ... sit back, relax, and enjoy the flight 😉.</p>
-<p>Oh! We're already on final approach, and now ... the command is finished. You will find that the CLI generated a PSC project into a folder matching the title you've given the project.</p>
+<p>You will then be asked one or more questions (like the project title).
+When everything's answered, the CLI will initialize a full PSC project for you, so ... sit back, relax,
+and enjoy the flight 😉.</p>
+<p>Oh! We're already on final approach, and now ... the command is finished.
+You will find that the CLI generated a PSC project into a folder matching the title you've given the project.</p>
 <h3>Running the PSC</h3>
 <p>You can now enter that folder and run the PSC by running:</p>
 <pre><code class="language-shell">npm start
 </code></pre>
 <p>Houston, Tranquility Base here, the Eagle has landed! You should, now, see a flashy PSC open in a new window.</p>
 <h3>Next steps</h3>
-<p>This might all seem a bit overwhelming, at first, but don't worry: We've got you covered and try to provide all the documentation and help you need to get going.</p>
-<p>To learn about how to develop the PSC, please take a look at the <em>PSC Developer Manual</em>, which contains guides, explanations of concepts, and reference for everything surrounding the topic. You can find the latest version as PDF in the <a href="https://github.com/wuespace/telestion-docs/releases/latest">Documentation Releases</a>. We are also working on providing this documentation on our website.</p>
-<p>For the always-up-to-date API reference for all the npm packages of this repository, please have a look at our <a href="https://wuespace.github.io/telestion-client/">Online API Reference</a>, powered by <a href="https://github.com/fliegwerk/fliegdoc">fliegdoc</a>. As Telestion is meant to be extensible, documentation is a high priority. Therefore, we have a high standard for the API Reference, as well, with every exposed API being fully documented with Doc Comments, including an example for every function, and so on.</p>
+<p>This might all seem a bit overwhelming, at first, but don't worry: We've got you covered
+and try to provide all the documentation and help you need to get going.</p>
+<p>To learn about how to develop the PSC, please take a look at the
+<a href="https://docs.telestion.wuespace.de/client/">client development documentation</a>, which contains guides,
+explanations of concepts, and reference for everything surrounding the topic.</p>
+<p>For the always-up-to-date API reference for all the npm packages of this repository, please have a look at our
+<a href="https://wuespace.github.io/telestion-client/">Online API Reference</a>,
+powered by <a href="https://github.com/fliegwerk/fliegdoc">fliegdoc</a>.
+As Telestion is meant to be extensible, documentation is a high priority.
+Therefore, we have a high standard for the API Reference, as well, with every exposed API being fully documented
+with Doc Comments, including an example for every function, and so on.</p>
 <p>Last, but not least, you should also consider taking a look at some of our already existing PSCs:</p>
 <ul>
-<li><a href="https://github.com/wuespace/telestion-rocketsound-psc">Project Rocketsound PSC</a></li>
+<li><a href="https://github.com/wuespace/telestion-project-rocketsound">Telestion Project RocketSound</a></li>
+<li><a href="https://github.com/wuespace/telestion-project-daedalus2">Telestion Project Daedalus2</a></li>
 </ul>
 <h2>This Repository</h2>
 <h3>Project Structure</h3>
@@ -122,8 +142,6 @@
 ├── .github
 │   ├── workflows (CI configuration)
 │   └── dependabot.yml (Dependabot config)
-├── .storybook
-│   └── main.js (Storybook configuration)
 ├── base-configs (configurations around the repo)
 │   ├── eslint.base.js
 │   └── [...]
@@ -141,24 +159,32 @@
 │   └── README.md
 ├── .fliegdocrc.js (Fliegdoc configuration for generating doc pages)
 ├── CHANGELOG.md (DON'T TOUCH! Automatically generated Changelog)
-├── lerna.json (Lerna configuration)
 ├── README.md (you're here :P)
 └── [...]
 </code></pre>
-<p><strong>Many folders, such as <a href="./scripts"><code>./scripts</code></a>, the individual packages in <a href="./packages"><code>./packages</code></a>, etc., contain their own <code>README.md</code> that documents their inner structure.</strong></p>
+<p><strong>Many folders, such as <a href="./scripts"><code>./scripts</code></a>, the individual packages in <a href="./packages"><code>./packages</code></a>, etc.,
+contain their own <code>README.md</code> that documents their inner structure.</strong></p>
 <h3>Packages</h3>
 <ul>
 <li><a href="./packages/telestion-client-cli"><code>@wuespace/telestion-client-cli</code></a> contains the CLI for developing PSCs.</li>
-<li><a href="./packages/telestion-client-core"><code>@wuespace/telestion-client-core</code></a> contains the core components of the Telestion Client that are essential for developing a Telestion frontend.</li>
-<li><a href="./packages/telestion-client-common"><code>@wuespace/telestion-client-common</code></a> contains more common components that not necessary for a working frontend project but are highly recommended by the Telestion development team.</li>
-<li><a href="./packages/telestion-client-prop-types"><code>@wuespace/telestion-client-prop-types</code></a> contains common PropTypes for the telestion-client ecosystem.</li>
-<li><a href="./packages/telestion-client-template"><code>@wuespace/telestion-client-template</code></a> contains the template structure for a future Telestion Client project.</li>
-<li><a href="./packages/telestion-client-types"><code>@wuespace/telestion-client-types</code></a> contains TypeScript definitions for common telestion-client types, used in different packages.</li>
-<li><a href="./packages/vertx-event-bus"><code>@wuespace/vertx-event-bus</code></a> contains a client for the VertX EventBus, including full TypeScript support.</li>
-<li><a href="./packages/vertx-mock-server"><code>@wuespace/vertx-mock-server</code></a> contains a mock server that simulates a connection with the Telestion backend only for testing purposes.</li>
+<li><a href="./packages/telestion-client-core"><code>@wuespace/telestion-client-core</code></a> contains the core components
+of the Telestion Client that are essential for developing a Telestion frontend.</li>
+<li><a href="./packages/telestion-client-common"><code>@wuespace/telestion-client-common</code></a> contains more common components
+that not necessary for a working frontend project but are highly recommended by the Telestion development team.</li>
+<li><a href="./packages/telestion-client-prop-types"><code>@wuespace/telestion-client-prop-types</code></a> contains common PropTypes
+for the telestion-client ecosystem.</li>
+<li><a href="./packages/telestion-client-template"><code>@wuespace/telestion-client-template</code></a> contains the template structure
+for a future Telestion Client project.</li>
+<li><a href="./packages/telestion-client-types"><code>@wuespace/telestion-client-types</code></a> contains TypeScript definitions
+for common telestion-client types, used in different packages.</li>
+<li><a href="./packages/vertx-event-bus"><code>@wuespace/vertx-event-bus</code></a> contains a client for the VertX EventBus,
+including full TypeScript support.</li>
+<li><a href="./packages/vertx-mock-server"><code>@wuespace/vertx-mock-server</code></a> contains a mock server that simulates a connection
+with the Telestion backend only for testing purposes.</li>
 </ul>
 <h3>Contributing</h3>
-<p>For the documentation on contributing to this repository, please take a look at the <a href="./CONTRIBUTING.md">Contributing Guidelines</a>.</p>
+<p>For the documentation on contributing to this repository,
+please take a look at the <a href="./CONTRIBUTING.md">Contributing Guidelines</a>.</p>
 <h2>Contributors</h2>
 <p>Thank you to all contributors of this repository:</p>
 <p><a href="https://github.com/wuespace/telestion-client/graphs/contributors"><img src="https://contrib.rocks/image?repo=wuespace/telestion-client" alt="Contributors"></a></p>

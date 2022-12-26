@@ -1766,7 +1766,7 @@ function AppHeader() {
 </code></pre>
 </div>
             </div>
-                                            <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"NavBar","declarations":[{"type":"function","name":"NavBar","declarations":[{"name":"NavBar","statements":[{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":39,"declarationKind":"const","declarations":[{"name":"title","initializer":"useTitle()","hasExclamationToken":false,"kind":38}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":39,"declarationKind":"const","declarations":[{"name":"{ items, selected, onSelectionChange, isHidden }","initializer":"useNavBarState(links)","hasExclamationToken":false,"kind":38}]},"if (isHidden) {\n\treturn <Heading level={4}>{title}</Heading>;\n}","return (\n\t<Tabs\n\t\titems={items}\n\t\tselectedKey={selected}\n\t\tonSelectionChange={onSelectionChange}\n\t>\n\t\t<TabList>\n\t\t\t{(item: Link) => (\n\t\t\t\t<Item title={item.title} key={item.path}>\n\t\t\t\t\t{/* Render tab list without content */}\n\t\t\t\t\t{/* eslint-disable-next-line react/jsx-no-useless-fragment */}\n\t\t\t\t\t<></>\n\t\t\t\t</Item>\n\t\t\t)}\n\t\t</TabList>\n\t</Tabs>\n);"],"parameters":[{"name":"{ links }","type":"NavBarProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":28,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nPart of the Telestion Client Common header.\n\nIt displays the given links in a React Spectrum tab list.\nIf no links are set the application title are shown instead.\n","tags":[{"text":"{@link https://react-spectrum.adobe.com/react-spectrum/Tabs.html}\n","tagName":"@see"},{"text":"{@link NavBarProps}\n","tagName":"@see"},{"text":"{@link Header}\n\n","tagName":"@see"},{"text":"\nDisplay only title:\n```ts\nfunction AppHeader() {\n\treturn (\n\t\t<Header\n\t\t\tleft={<NavBar />}\n\t\t/>\n\t);\n}\n```\n\nDisplay some links:\n```ts\nconst links: Array<Link> = [\n\t{\n\t\ttitle: 'Dashboards',\n\t\tpath: '/dashboard'\n\t},\n\t{\n\t\ttitle: 'Preferences',\n\t\tpath: '/preferences'\n\t}\n];\n\nfunction AppHeader() {\n\treturn (\n\t\t<Header\n\t\t\tleft={<NavBar links={links} />}\n\t\t/>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":11,"overloads":[]}]}]}-->
+                                            <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"NavBar","declarations":[{"type":"function","name":"NavBar","declarations":[{"name":"NavBar","statements":[{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":39,"declarationKind":"const","declarations":[{"name":"title","initializer":"useTitle()","hasExclamationToken":false,"kind":38}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":39,"declarationKind":"const","declarations":[{"name":"{ items, selected, onSelectionChange, isHidden }","initializer":"useNavBarState(links)","hasExclamationToken":false,"kind":38}]},"if (isHidden) {\n\treturn (\n\t\t<Heading level={4}>\n\t\t\t{typeof title === 'string' ? title : 'Invalid type'}\n\t\t</Heading>\n\t);\n}","return (\n\t<Tabs\n\t\titems={items}\n\t\tselectedKey={selected}\n\t\tonSelectionChange={onSelectionChange}\n\t>\n\t\t<TabList>\n\t\t\t{(item: Link) => (\n\t\t\t\t<Item title={item.title} key={item.path}>\n\t\t\t\t\t{/* Render tab list without content */}\n\t\t\t\t\t{/* eslint-disable-next-line react/jsx-no-useless-fragment */}\n\t\t\t\t\t<></>\n\t\t\t\t</Item>\n\t\t\t)}\n\t\t</TabList>\n\t</Tabs>\n);"],"parameters":[{"name":"{ links }","type":"NavBarProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":28,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nPart of the Telestion Client Common header.\n\nIt displays the given links in a React Spectrum tab list.\nIf no links are set the application title are shown instead.\n","tags":[{"text":"{@link https://react-spectrum.adobe.com/react-spectrum/Tabs.html}\n","tagName":"@see"},{"text":"{@link NavBarProps}\n","tagName":"@see"},{"text":"{@link Header}\n\n","tagName":"@see"},{"text":"\nDisplay only title:\n```ts\nfunction AppHeader() {\n\treturn (\n\t\t<Header\n\t\t\tleft={<NavBar />}\n\t\t/>\n\t);\n}\n```\n\nDisplay some links:\n```ts\nconst links: Array<Link> = [\n\t{\n\t\ttitle: 'Dashboards',\n\t\tpath: '/dashboard'\n\t},\n\t{\n\t\ttitle: 'Preferences',\n\t\tpath: '/preferences'\n\t}\n];\n\nfunction AppHeader() {\n\treturn (\n\t\t<Header\n\t\t\tleft={<NavBar links={links} />}\n\t\t/>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":11,"overloads":[]}]}]}-->
                         </div>
     <div class="card fluid">
         <!-- Name with anchor link -->
@@ -3669,7 +3669,7 @@ All props of this component get passed to the outer
             <!-- Type Parameters -->
             
             <!-- Extends -->
-                            extends ViewProps                    </code>
+                            extends ViewProps&lt;any&gt;                    </code>
     </b>
 </p>
 
@@ -3928,7 +3928,7 @@ instead of the default Telestion logo.</p>
     <b>Type:
         <code>
             <!-- Type -->
-            ReactElement | ReactElement[]        </code>
+            ReactNode        </code>
     </b>
 </p>
 
@@ -4294,7 +4294,7 @@ and a setter function to update the dashboards for the current user.</p>
             :
 
             <!-- Variable type or any -->
-            UseStore&lt;ColorSchemeState&gt;        </code>
+            any        </code>
     </b>
 </p>
 
@@ -4369,7 +4369,7 @@ to check for state updates on the picked elements</p>
             </div>
 
             <!-- Tag content -->
-            <div class="col-sm-10"><p><a href="#UseStore"><code>UseStore</code></a></p>
+            <div class="col-sm-10"><p><a href="#UseBoundStore"><code>UseBoundStore</code></a></p>
 </div>
                     <!-- Tag name -->
             <div class="col-sm-2">
@@ -4389,7 +4389,7 @@ to check for state updates on the picked elements</p>
             </div>
 
             <!-- Tag content -->
-            <div class="col-sm-10"><p>Get and set color scheme:</p>
+            <div class="col-sm-10"><p>Get and set the color scheme:</p>
 <pre><code class="language-ts">function ColorSchemeChanger() {
 	const { colorScheme, set } = useColorScheme(
 		state =&gt; ({
@@ -4563,7 +4563,7 @@ function MyComponent() {
             :
 
             <!-- Variable type or any -->
-            UseStore&lt;DialogState&gt;        </code>
+            any        </code>
     </b>
 </p>
 
@@ -4638,7 +4638,7 @@ to check for state updates on the picked elements</p>
             </div>
 
             <!-- Tag content -->
-            <div class="col-sm-10"><p><a href="#UseStore"><code>UseStore</code></a></p>
+            <div class="col-sm-10"><p><a href="#UseBoundStore"><code>UseBoundStore</code></a></p>
 </div>
                     <!-- Tag name -->
             <div class="col-sm-2">
@@ -4699,7 +4699,7 @@ function MyComponent() {
             :
 
             <!-- Variable type or any -->
-            UseStore&lt;UserConfigState&gt;        </code>
+            any        </code>
     </b>
 </p>
 
@@ -4774,7 +4774,7 @@ to check for state updates on the picked elements</p>
             </div>
 
             <!-- Tag content -->
-            <div class="col-sm-10"><p><a href="#UseStore"><code>UseStore</code></a></p>
+            <div class="col-sm-10"><p><a href="#UseBoundStore"><code>UseBoundStore</code></a></p>
 </div>
                     <!-- Tag name -->
             <div class="col-sm-2">
@@ -4875,7 +4875,7 @@ function MyComponent() {
 
 <!-- Docs -->
     <!-- Description -->
-    <p>Type of a valid color scheme:</p>
+    <p>Type of valid color scheme:</p>
 <ul>
 <li><code>light</code> - use always the light theme</li>
 <li><code>dark</code> - use always the dark theme</li>
@@ -4903,7 +4903,7 @@ function MyComponent() {
             <!-- Type Parameters -->
             
             <!-- Extends -->
-                            extends State                    </code>
+                    </code>
     </b>
 </p>
 
@@ -5059,7 +5059,7 @@ function MyComponent() {
 <!-- Docs -->
     <!-- Description -->
     <p>A function that provides the current state and a function to change it.
-It returns a valid react node.</p>
+It returns a valid React node.</p>
 
     <!-- Tags -->
     <div class="row">
@@ -5178,7 +5178,7 @@ created via the <a href="#DialogState.show"><code>DialogState.show</code></a> fu
 
 <!-- Docs -->
     <!-- Description -->
-    <p>The title of the dialog displayed in the upper left corner.</p>
+    <p>The title of the dialog displayed in the upper-left corner.</p>
 
     <!-- Tags -->
     <div class="row">
@@ -5454,7 +5454,7 @@ given via the <a href="#DialogState.show"><code>DialogState.show</code></a> func
             </div>
 
             <!-- Tag content -->
-            <div class="col-sm-10"><p>final - the final state which the resolved promise return</p>
+            <div class="col-sm-10"><p>final - the final state which the resolved promise returns</p>
 </div>
             </div>
     <a id="Dialog.onCancel" href="#Dialog.onCancel">
@@ -5497,7 +5497,7 @@ given via the <a href="#DialogState.show"><code>DialogState.show</code></a> func
             <!-- Type Parameters -->
             
             <!-- Extends -->
-                            extends State                    </code>
+                    </code>
     </b>
 </p>
 
@@ -5690,7 +5690,7 @@ when the user confirms and rejects, when the user canceled the dialog</p>
             <!-- Type Parameters -->
             
             <!-- Extends -->
-                            extends State                    </code>
+                    </code>
     </b>
 </p>
 
