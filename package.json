@@ -67,9 +67,6 @@
 			"url": "https://github.com/fussel178"
 		}
 	],
-	"alias": {
-		"process": false
-	},
 	"devDependencies": {
 		"@parcel/config-default": "^2.8.2",
 		"@parcel/core": "^2.8.2",
