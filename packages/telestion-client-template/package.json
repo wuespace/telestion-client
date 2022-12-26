@@ -4,9 +4,6 @@
 	"license": "MIT",
 	"version": "0.18.1",
 	"homepage": "https://telestion.wuespace.de/",
-	"engines": {
-		"node": ">=14"
-	},
 	"files": [
 		"template"
 	],
