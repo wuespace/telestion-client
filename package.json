@@ -37,7 +37,7 @@
 		"docs:types:build": "fliegdoc build",
 		"ci:style": "prettier --list-different .",
 		"ci:version": "changeset version && pnpm install --no-frozen-lockfile && git add .",
-		"ci:publish": "pnpm publish -r"
+		"ci:publish": "pnpm build && pnpm publish -r"
 	},
 	"repository": {
 		"type": "git",
