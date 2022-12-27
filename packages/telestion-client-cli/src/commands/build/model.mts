@@ -19,6 +19,11 @@ export interface BuildOptions extends BaseOptions {
 	 * A list of architectures to build the PSC for.
 	 */
 	arch: BuildArchOption[];
+
+	/**
+	 * Whether the PSC should get packaged as an Electron app.
+	 */
+	electron: boolean;
 }
 
 export const possiblePlatforms: BuildPlatformOption[] = [
@@ -81,5 +86,6 @@ export function getArchitecture(): BuildArchOption {
  */
 export const defaultBuildOptions: Partial<BuildOptions> = {
 	platform: [getPlatform()],
-	arch: [getArchitecture()]
+	arch: [getArchitecture()],
+	electron: true
 };

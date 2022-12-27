@@ -35,6 +35,14 @@ export const buildCommandBuilder: CommandBuilder = command => {
 				.choices(possibleArchitectures)
 				.default(defaultBuildOptions.arch)
 		)
+		.addOption(
+			new Option(
+				'-w, --no-electron',
+				'Do not package the PSC as Electron application'
+			)
+				.conflicts(['platform', 'arch'])
+				.default(defaultBuildOptions.electron)
+		)
 		.action(
 			async (
 				options: BaseWithPartial<BuildOptions>,

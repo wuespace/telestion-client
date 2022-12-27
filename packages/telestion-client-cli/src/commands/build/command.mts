@@ -1,7 +1,7 @@
 import inquirer from 'inquirer';
 
 import { BaseWithPartial } from '../../model/index.mjs';
-import { getLogger } from '../../lib/index.mjs';
+import { getLogger, getPSCConfig } from '../../lib/index.mjs';
 
 import {
 	BuildOptions,
@@ -33,6 +33,9 @@ export async function runBuildCommand(
 	const errors: unknown[] = [];
 	logger.debug('Received options:', options);
 
+	const pscConfig = await getPSCConfig();
+	const shouldPackageElectron = pscConfig.electron ?? options.electron;
+
 	const platform = options.platform.filter(
 		current => current !== null
 	) as PlatformOption[];
@@ -49,6 +52,13 @@ export async function runBuildCommand(
 	const projectDir = await getPSCRoot(options.workingDir);
 	const packageJson = await getPackageJson(projectDir);
 
+	await buildStage(projectDir);
+
+	if (!shouldPackageElectron) {
+		logger.info('Skipping Electron packaging');
+		return errors;
+	}
+
 	if (await hasWorkspaceTag(projectDir)) {
 		throw new Error(
 			'Sorry, projects with workspace links cannot be packaged ' +
@@ -56,7 +66,6 @@ export async function runBuildCommand(
 		);
 	}
 
-	await buildStage(projectDir);
 	await electronInstallStage(projectDir, packageJson);
 	await electronPackageStage(projectDir, { platform, arch });
 

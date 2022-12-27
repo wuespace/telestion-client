@@ -1,7 +1,7 @@
 import { lilconfigSync } from 'lilconfig';
 import { getPSCRoot } from '../actions/psc.mjs';
-import { Options } from 'electron-packager';
 import { getLogger } from './logger/index.mjs';
+import { TelestionClientCLIConfig } from '../model/index.mjs';
 
 let cache: TelestionClientCLIConfig | undefined;
 
@@ -18,7 +18,3 @@ export async function getPSCConfig(): Promise<TelestionClientCLIConfig> {
 	cache = loadedConfig;
 	return loadedConfig;
 }
-
-export type TelestionClientCLIConfig = Partial<
-	Omit<Options, 'dir' | 'platform' | 'arch'>
->;

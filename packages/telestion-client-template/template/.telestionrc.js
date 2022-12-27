@@ -2,6 +2,8 @@
  * @type {import('@wuespace/telestion-client-cli').TelestionClientCLIConfig}
  */
 module.exports = {
-	appCategoryType: 'public.app-category.reference',
-	name: 'Telestion Client Ground Station'
+	name: 'Telestion Client Ground Station',
+	appCategoryType: 'public.app-category.reference'
+	// Uncomment to disable packaging as an Electron app:
+	// electron: false,
 };
