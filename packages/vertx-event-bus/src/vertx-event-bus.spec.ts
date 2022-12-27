@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment */
-import { mocked } from 'ts-jest/utils';
 import {
 	ChannelAddress,
 	JsonSerializable,
@@ -22,7 +21,7 @@ import { EventBus } from './vertx-event-bus';
 
 jest.mock('./basic-event-bus');
 
-const mockedBus = mocked(BasicEventBus, true);
+const mockedBus = jest.mocked(BasicEventBus, true);
 
 const DEFAULT_URL = 'http://localhost:9870/bridge';
 

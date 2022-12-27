@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/ban-ts-comment,import/order */
-import { mocked } from 'ts-jest/utils';
 import { sampleMessages } from '../tests/constants';
 import { randInt, nonJsonString } from '../tests/lib';
 // mocks
@@ -12,8 +11,8 @@ import { ConnectionState } from './model';
 jest.mock('sockjs-client');
 jest.mock('./lib/validator');
 
-const mockedSockJS = mocked(SockJS, true);
-const mockedValidate = mocked(validate, false);
+const mockedSockJS = jest.mocked(SockJS, true);
+const mockedValidate = jest.mocked(validate, false);
 
 const DEFAULT_URL = 'http://localhost:9870/bridge';
 
