@@ -14,6 +14,7 @@ If you want to use the full feature set, you need to remove the workspace links 
 
 and the following development dependencies:
 
+- '@wuespace/parcel-optimizer-electron-require'
 - '@wuespace/parcel-reporter-tc-cli'
 - '@wuespace/parcel-resolver-react'
 - '@wuespace/telestion-client-cli'
