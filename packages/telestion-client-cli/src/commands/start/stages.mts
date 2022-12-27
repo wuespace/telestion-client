@@ -43,7 +43,8 @@ export function parcelWatchElectronStage(
 
 	return watch(
 		projectDir,
-		{ targets: ['electron'] },
+		// disable hot module replacement because it adds a random date to imports
+		{ targets: ['electron'], additionalArgs: ['--no-hmr'] },
 		(event, parcelProcess) => {
 			logger.debug('New build event in electron watch received:', event);
 

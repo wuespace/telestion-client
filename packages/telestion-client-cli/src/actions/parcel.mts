@@ -15,6 +15,11 @@ interface BaseOptions {
 	 * When `undefined` Parcel compiles all targets.
 	 */
 	targets: string[] | undefined;
+
+	/**
+	 * Additional arguments that are passed directly to the parcel executable.
+	 */
+	additionalArgs: string[] | undefined;
 }
 
 export interface ServeOptions extends BaseOptions {
@@ -37,16 +42,19 @@ export interface BuildOptions extends BaseOptions {
 
 export const defaultServeOptions: ServeOptions = {
 	targets: undefined,
-	port: 3100 // move away from default ports used by other tools,
+	port: 3100, // move away from default ports used by other tools
+	additionalArgs: []
 };
 
 export const defaultWatchOptions: WatchOptions = {
 	targets: undefined,
-	port: 3101 // move away from default ports used by other tools
+	port: 3101, // move away from default ports used by other tools
+	additionalArgs: []
 };
 
 export const defaultBuildOptions: BuildOptions = {
-	targets: undefined
+	targets: undefined,
+	additionalArgs: []
 };
 
 // TODO: Remove no-cache flag once Parcel no longer exits uncleanly
@@ -73,12 +81,15 @@ export function serve(
 		? ['--target', `${finalOptions.targets.join(',')}`]
 		: [];
 
+	const additionalArgs = finalOptions.additionalArgs ?? [];
+
 	const parcelProcess = forkParcel(projectDir, [
 		'serve',
 		...defaultParcelArgs,
 		'--port',
 		`${finalOptions.port}`,
-		...targetArgs
+		...targetArgs,
+		...additionalArgs
 	]);
 
 	// register event handlers
@@ -110,12 +121,15 @@ export function watch(
 		? ['--target', `${finalOptions.targets.join(',')}`]
 		: [];
 
+	const additionalArgs = finalOptions.additionalArgs ?? [];
+
 	const parcelProcess = forkParcel(projectDir, [
 		'watch',
 		...defaultParcelArgs,
 		'--port',
 		`${finalOptions.port}`,
-		...targetArgs
+		...targetArgs,
+		...additionalArgs
 	]);
 
 	// register event handlers
@@ -144,11 +158,14 @@ export async function build(
 		? ['--target', `${finalOptions.targets.join(',')}`]
 		: [];
 
+	const additionalArgs = finalOptions.additionalArgs ?? [];
+
 	return new Promise<void>((resolve, reject) => {
 		const parcelProcess = forkParcel(projectDir, [
 			'build',
 			...defaultParcelArgs,
-			...targetArgs
+			...targetArgs,
+			...additionalArgs
 		]);
 
 		parcelProcess.on('exit', (code, signal) =>
