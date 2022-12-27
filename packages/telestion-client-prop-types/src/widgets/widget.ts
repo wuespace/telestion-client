@@ -59,6 +59,6 @@ export const globalRendererPropsPropType = PropTypes.shape({
  */
 export const widgetPropType = PropTypes.shape({
 	name: PropTypes.string.isRequired,
-	Widget: PropTypes.node.isRequired,
-	ConfigControls: PropTypes.node
+	Widget: PropTypes.elementType.isRequired,
+	ConfigControls: PropTypes.elementType
 });

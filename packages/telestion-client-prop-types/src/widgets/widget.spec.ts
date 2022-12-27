@@ -73,8 +73,12 @@ describe('Tests for widgets', () => {
 
 	const fullWidget = {
 		name: 'RandomWidget',
-		Widget: createElement('div'),
-		ConfigControls: createElement('div')
+		Widget: function MyComponent() {
+			return createElement('div');
+		},
+		ConfigControls: function MyConfigControls() {
+			return createElement('div');
+		}
 	};
 
 	describe('Tests for Widget', () => {
@@ -88,18 +92,12 @@ describe('Tests for widgets', () => {
 					'MyWidget'
 				]),
 				...buildTestsWithValidObjectKeyValues(fullWidget, 'Widget', [
-					3.14,
-					'Hey there!',
-					[3.14, 'Hey there!'],
-					createElement('div')
+					fullWidget.Widget
 				]),
 				...buildTestsWithValidObjectKeyValues(fullWidget, 'ConfigControls', [
 					undefined,
 					null,
-					3.14,
-					'Hey there!',
-					[3.14, 'Hey there!'],
-					createElement('div')
+					fullWidget.ConfigControls
 				])
 			],
 			[
@@ -111,16 +109,14 @@ describe('Tests for widgets', () => {
 					'string'
 				]),
 				...buildTestsWithInvalidObjectKeyAtomics(fullWidget, 'Widget', [
-					'array',
-					'string',
-					'number'
+					'function',
+					'string'
 				]),
 				...buildTestsWithInvalidObjectKeyAtomics(fullWidget, 'ConfigControls', [
 					'undefined',
 					'null',
-					'array',
-					'string',
-					'number'
+					'function',
+					'string'
 				])
 			]
 		);
