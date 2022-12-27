@@ -66,6 +66,7 @@
 		}
 	],
 	"dependencies": {
+		"@electron/rebuild": "^3.2.10",
 		"@fliegwerk/dir-tree": "^1.0.0",
 		"@fliegwerk/logsemts": "^0.4.3",
 		"@wuespace/telestion-client-template": "workspace:^",
@@ -74,7 +75,6 @@
 		"commander": "^9.0.0",
 		"ejs": "^3.1.6",
 		"electron-packager": "^15.5.1",
-		"electron-rebuild": "^3.2.7",
 		"inquirer": "^8.2.0",
 		"lilconfig": "^2.0.6",
 		"ora": "^6.1.0",

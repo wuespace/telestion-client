@@ -1,5 +1,5 @@
 import packager from 'electron-packager';
-import { rebuild } from 'electron-rebuild';
+import { rebuild } from '@electron/rebuild';
 
 import { exists, getLogger, mkdir, rm } from '../lib/index.mjs';
 import { join } from 'path';
