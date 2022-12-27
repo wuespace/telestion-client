@@ -9,28 +9,28 @@ const logger = getLogger('Native');
  * @param url the URL to open
  */
 export async function openUrl(url: URL): Promise<void> {
-	let command: string;
-
 	switch (os.type()) {
 		case 'Darwin':
-			command = 'open';
+			logger.debug(
+				`Open URL '${url.href}' on platform 'Darwin' with command 'open'`
+			);
+			await spawn('open', [url.href]);
 			break;
 		case 'Windows_NT':
-			command = 'explorer.exe';
+			logger.debug(
+				`Open URL '${url.href}' on platform 'Windows_NT' with command 'explorer.exe'`
+			);
+			await spawn('explorer.exe', [url.href]);
 			break;
 		case 'Linux':
-			command = 'xdg-open';
+			logger.debug(
+				`Open URL '${url.href}' on platform 'Linux' with command 'xdg-open'`
+			);
+			await spawn('xdg-open', [url.href]);
 			break;
 		default:
 			throw new Error(
 				`Cannot open url '${url.href}'. Unsupported platform: ${os.type()}`
 			);
 	}
-
-	logger.debug(
-		`Open URL '${
-			url.href
-		}' on platform '${os.type()}' with command '${command}'`
-	);
-	await spawn(command, [url.href]);
 }
