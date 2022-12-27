@@ -6,6 +6,6 @@ import { Awaitable } from '../model/awaitable';
  */
 export const plugins: Awaitable<Plugin>[] = [
 	// Add your plugins here:
-	// require('./my-plugin'),
-	require('./test-plugin')
+	// import('./my-plugin'),
+	import('./test-plugin')
 ];
