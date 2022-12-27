@@ -1,5 +1,5 @@
 import { contextBridge, ipcRenderer } from 'electron';
-import { readFileSync } from 'fs';
+import { version } from '../../package.json';
 
 type IpcHandler = Parameters<typeof ipcRenderer.on>[1];
 
@@ -96,5 +96,5 @@ contextBridge.exposeInMainWorld('environment', {
 	electron: process.versions.electron,
 	node: process.version,
 	creationTime: process.getCreationTime(),
-	version: JSON.parse(readFileSync('package.json').toString())['version']
+	version
 });
