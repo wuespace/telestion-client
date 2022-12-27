@@ -324,7 +324,7 @@ importers:
       react-router-dom: ^5.3.1
       rimraf: 3.0.2
       typescript: 4.9.4
-      zustand: 4.1.4
+      zustand: '4.1.4 '
     dependencies:
       '@adobe/react-spectrum': 3.24.1_sfoxds7t5ydpegc3knd667wn6m
       '@fliegwerk/logsemts': 0.4.3
