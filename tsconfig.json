@@ -36,13 +36,20 @@
 		"esModuleInterop": true,
 		/* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
 		"paths": {
-			"@wuespace/vertx-event-bus": ["vertx-event-bus/src"],
-			"@wuespace/telestion-client-types": ["telestion-client-types/src"],
+			"@wuespace/parcel-optimizer-electron-require": [
+				"parcel-optimizer-electron-require/src"
+			],
+			"@wuespace/parcel-reporter-tc-cli": ["parcel-reporter-tc-cli/src"],
+			"@wuespace/parcel-resolver-react": ["parcel-resolver-react/src"],
+			"@wuespace/telestion-client-cli": ["telestion-client-cli/src"],
+			"@wuespace/telestion-client-common": ["telestion-client-common/src"],
+			"@wuespace/telestion-client-core": ["telestion-client-core/src"],
 			"@wuespace/telestion-client-prop-types": [
 				"telestion-client-prop-types/src"
 			],
-			"@wuespace/telestion-client-core": ["telestion-client-core/src"],
-			"@wuespace/telestion-client-common": ["telestion-client-common/src"]
+			"@wuespace/telestion-client-types": ["telestion-client-types/src"],
+			"@wuespace/vertx-event-bus": ["vertx-event-bus/src"],
+			"@wuespace/vertx-mock-server": ["vertx-mock-server/src"]
 		},
 
 		//
@@ -55,10 +62,16 @@
 	},
 	"exclude": ["node_modules"],
 	"references": [
-		{ "path": "./packages/vertx-event-bus" },
-		{ "path": "./packages/telestion-client-types" },
-		{ "path": "./packages/telestion-client-prop-types" },
+		{ "path": "./packages/parcel-optimizer-electron-require" },
+		{ "path": "./packages/parcel-reporter-tc-cli" },
+		{ "path": "./packages/parcel-resolver-react" },
+		{ "path": "./packages/telestion-client-cli" },
+		{ "path": "./packages/telestion-client-common" },
 		{ "path": "./packages/telestion-client-core" },
-		{ "path": "./packages/telestion-client-common" }
+		{ "path": "./packages/telestion-client-prop-types" },
+		{ "path": "./packages/telestion-client-template" },
+		{ "path": "./packages/telestion-client-types" },
+		{ "path": "./packages/vertx-event-bus" },
+		{ "path": "./packages/vertx-mock-server" }
 	]
 }

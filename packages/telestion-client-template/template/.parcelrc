@@ -6,7 +6,9 @@
 	},
 	"optimizers": {
 		// disable terser because it resolves badly
-		"*.{js,mjs,cjs}": []
+		"*.{mjs,cjs}": [],
+		// add optimizer to fix require in electron preload
+		"*.js": ["@wuespace/parcel-optimizer-electron-require"]
 	},
 	"reporters": ["...", "@wuespace/parcel-reporter-tc-cli"]
 }

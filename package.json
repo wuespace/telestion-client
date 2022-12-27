@@ -112,6 +112,9 @@
 		"typescript": "4.9.4"
 	},
 	"dependencies": {
+		"@wuespace/parcel-optimizer-electron-require": "workspace:^",
+		"@wuespace/parcel-reporter-tc-cli": "workspace:^",
+		"@wuespace/parcel-resolver-react": "workspace:^",
 		"@wuespace/telestion-client-cli": "workspace:^",
 		"@wuespace/telestion-client-common": "workspace:^",
 		"@wuespace/telestion-client-core": "workspace:^",

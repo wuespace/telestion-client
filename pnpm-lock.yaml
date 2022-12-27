@@ -25,6 +25,9 @@ importers:
       '@types/node': 17.0.45
       '@typescript-eslint/eslint-plugin': 5.47.1
       '@typescript-eslint/parser': 5.47.1
+      '@wuespace/parcel-optimizer-electron-require': workspace:^
+      '@wuespace/parcel-reporter-tc-cli': workspace:^
+      '@wuespace/parcel-resolver-react': workspace:^
       '@wuespace/telestion-client-cli': workspace:^
       '@wuespace/telestion-client-common': workspace:^
       '@wuespace/telestion-client-core': workspace:^
@@ -60,6 +63,9 @@ importers:
       ts-jest: 27.1.5
       typescript: 4.9.4
     dependencies:
+      '@wuespace/parcel-optimizer-electron-require': link:packages/parcel-optimizer-electron-require
+      '@wuespace/parcel-reporter-tc-cli': link:packages/parcel-reporter-tc-cli
+      '@wuespace/parcel-resolver-react': link:packages/parcel-resolver-react
       '@wuespace/telestion-client-cli': link:packages/telestion-client-cli
       '@wuespace/telestion-client-common': link:packages/telestion-client-common
       '@wuespace/telestion-client-core': link:packages/telestion-client-core
@@ -110,6 +116,17 @@ importers:
       rimraf: 3.0.2
       ts-jest: 27.1.5_llt55oiqarpqk3a6ko7ts5f3gi
       typescript: 4.9.4
+
+  packages/parcel-optimizer-electron-require:
+    specifiers:
+      '@parcel/core': 2.8.2
+      '@parcel/plugin': ^2.5.0
+      '@parcel/types': 2.8.2
+    dependencies:
+      '@parcel/plugin': 2.8.2_@parcel+core@2.8.2
+    devDependencies:
+      '@parcel/core': 2.8.2
+      '@parcel/types': 2.8.2_@parcel+core@2.8.2
 
   packages/parcel-reporter-tc-cli:
     specifiers:
@@ -304,6 +321,7 @@ importers:
       '@types/node': 17.0.45
       '@types/react': 17.0.43
       '@types/react-dom': 17.0.14
+      '@wuespace/parcel-optimizer-electron-require': workspace:^
       '@wuespace/parcel-reporter-tc-cli': workspace:^
       '@wuespace/parcel-resolver-react': workspace:^
       '@wuespace/telestion-client-cli': workspace:^
@@ -360,6 +378,7 @@ importers:
       '@types/node': 17.0.45
       '@types/react': 17.0.43
       '@types/react-dom': 17.0.14
+      '@wuespace/parcel-optimizer-electron-require': link:../parcel-optimizer-electron-require
       '@wuespace/parcel-reporter-tc-cli': link:../parcel-reporter-tc-cli
       '@wuespace/parcel-resolver-react': link:../parcel-resolver-react
       '@wuespace/telestion-client-cli': link:../telestion-client-cli
@@ -1754,7 +1773,7 @@ packages:
       '@parcel/fs-search': 2.5.0
       '@parcel/types': 2.5.0_@parcel+core@2.8.2
       '@parcel/utils': 2.5.0
-      '@parcel/watcher': 2.0.5
+      '@parcel/watcher': 2.0.7
       '@parcel/workers': 2.5.0_@parcel+core@2.8.2
     dev: false
 
@@ -2452,15 +2471,6 @@ packages:
       '@parcel/markdown-ansi': 2.8.2
       '@parcel/source-map': 2.1.1
       chalk: 4.1.2
-
-  /@parcel/watcher/2.0.5:
-    resolution: {integrity: sha512-x0hUbjv891omnkcHD7ZOhiyyUqUUR6MNjq89JhEI3BxppeKWAm6NPQsqqRrAkCJBogdT/o/My21sXtTI9rJIsw==}
-    engines: {node: '>= 10.0.0'}
-    requiresBuild: true
-    dependencies:
-      node-addon-api: 3.2.1
-      node-gyp-build: 4.4.0
-    dev: false
 
   /@parcel/watcher/2.0.7:
     resolution: {integrity: sha512-gc3hoS6e+2XdIQ4HHljDB1l0Yx2EWh/sBBtCEFNKGSMlwASWeAQsOY/fPbxOBcZ/pg0jBh4Ga+4xHlZc4faAEQ==}

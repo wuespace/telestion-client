@@ -1,0 +1,68 @@
+{
+	"name": "@wuespace/parcel-optimizer-electron-require",
+	"description": "Parcel Optimizer Plugin that polyfills the require function in an electron context",
+	"license": "MIT",
+	"version": "0.18.1",
+	"homepage": "https://telestion.wuespace.de/",
+	"source": "src/optimizer.ts",
+	"main": "dist/optimizer.js",
+	"files": [
+		"dist"
+	],
+	"engines": {
+		"parcel": "2.x"
+	},
+	"scripts": {
+		"watch": "parcel watch",
+		"build": "parcel build",
+		"lint": "eslint",
+		"check": "tsc --noEmit",
+		"style": "pnpm -w style",
+		"clean": "rimraf dist"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/wuespace/telestion-client.git",
+		"directory": "packages/parcel-optimizer-electron-require"
+	},
+	"bugs": {
+		"url": "https://github.com/wuespace/telestion-client/issues"
+	},
+	"author": {
+		"name": "wuespace",
+		"email": "kontakt@wuespace.de",
+		"url": "https://www.wuespace.de/"
+	},
+	"contributors": [
+		{
+			"name": "Liam Franssen",
+			"email": "liam.franssen@stud-mail.uni-wuerzburg.de",
+			"url": "https://github.com/leecemin"
+		},
+		{
+			"name": "Pablo Klaschka",
+			"email": "contact@pabloklaschka.de",
+			"url": "https://github.com/pklaschka"
+		},
+		{
+			"name": "Jan Tischhöfer",
+			"email": "jan.tischhoefer@gmail.com",
+			"url": "https://github.com/jantischhoefer"
+		},
+		{
+			"name": "Ludwig Richter",
+			"email": "richter@fliegwerk.com",
+			"url": "https://github.com/fussel178"
+		}
+	],
+	"dependencies": {
+		"@parcel/plugin": "^2.5.0"
+	},
+	"devDependencies": {
+		"@parcel/types": "2.8.2",
+		"@parcel/core": "2.8.2"
+	},
+	"publishConfig": {
+		"access": "public"
+	}
+}
