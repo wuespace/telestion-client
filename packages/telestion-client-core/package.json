@@ -62,7 +62,7 @@
 		"@wuespace/vertx-event-bus": "workspace:^",
 		"prop-types": "^15.7.2",
 		"react-router-dom": "^5.2.0",
-		"zustand": "4.1.4"
+		"zustand": "4.1.5"
 	},
 	"devDependencies": {
 		"@types/prop-types": "15.7.5",
