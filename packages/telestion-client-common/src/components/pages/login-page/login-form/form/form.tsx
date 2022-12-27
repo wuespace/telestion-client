@@ -62,7 +62,6 @@ export function Form({
 					autoFocus={focused === 0}
 					onNext={() => setFocused(1)}
 					label="Backend Server"
-					placeholder="Server URL"
 					initialValue={initialServerURL}
 					onChange={setServerUrl}
 					validator={isValidHttpUrl}
@@ -71,7 +70,6 @@ export function Form({
 					autoFocus={focused === 1}
 					onNext={() => setFocused(2)}
 					label="Username"
-					placeholder="Your username"
 					initialValue={initialUsername}
 					onChange={setUsername}
 					validator={isValidText}
@@ -80,7 +78,6 @@ export function Form({
 					autoFocus={focused === 2}
 					onNext={login}
 					label="Password"
-					placeholder="Your password"
 					type="password"
 					onChange={setPassword}
 					validator={isValidText}
