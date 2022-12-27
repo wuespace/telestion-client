@@ -96,37 +96,37 @@ jobs:
         run: pnpm build
 
       - name: Upload vertx-event-bus build artifact 📤
-        uses: actions/upload-artifact@v3.0.0
+        uses: actions/upload-artifact@v3.1.1
         with:
           name: packages_vertx-event-bus_dist-${{ github.run_number }}
           path: packages/vertx-event-bus/dist/
           retention-days: 7
       - name: Upload vertx-mock-server build artifact 📤
-        uses: actions/upload-artifact@v3.0.0
+        uses: actions/upload-artifact@v3.1.1
         with:
           name: packages_vertx-mock-server_dist-${{ github.run_number }}
           path: packages/vertx-mock-server/dist/
           retention-days: 7
       - name: Upload telestion-client-types build artifact 📤
-        uses: actions/upload-artifact@v3.0.0
+        uses: actions/upload-artifact@v3.1.1
         with:
           name: packages_telestion-client-types_types-${{ github.run_number }}
           path: packages/telestion-client-types/types/
           retention-days: 7
       - name: Upload telestion-client-prop-types build artifact 📤
-        uses: actions/upload-artifact@v3.0.0
+        uses: actions/upload-artifact@v3.1.1
         with:
           name: packages_telestion-client-prop-types_dist-${{ github.run_number }}
           path: packages/telestion-client-prop-types/dist/
           retention-days: 7
       - name: Upload telestion-client-core build artifact 📤
-        uses: actions/upload-artifact@v3.0.0
+        uses: actions/upload-artifact@v3.1.1
         with:
           name: packages_telestion-client-core_dist-${{ github.run_number }}
           path: packages/telestion-client-core/dist/
           retention-days: 7
       - name: Upload telestion-client-common build artifact 📤
-        uses: actions/upload-artifact@v3.0.0
+        uses: actions/upload-artifact@v3.1.1
         with:
           name: packages_telestion-client-common_dist-${{ github.run_number }}
           path: packages/telestion-client-common/dist/
