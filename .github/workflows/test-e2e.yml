@@ -86,3 +86,6 @@ jobs:
         run: |
           tc-cli build --help
           tc-cli build
+      - name: Run E2E test 🛃
+        working-directory: '../../psc'
+        run: pnpm test:e2e
