@@ -78,14 +78,183 @@
 <p>You can access these members by importing the module:</p>
 <pre><code>import { <i>member</i> } from '@wuespace/vertx-mock-server';</code></pre>
 
+<!--Table of contents for members-->
+    <ul>
+                    <li>
+                                <a href="#MockServer">
+                    <code>
+                        class                        MockServer                                            </code>
+                </a>
+                                <ul>
+                                                <li>
+                            <a href="#MockServer.undefined"><code>constructor</code></a>
+                        </li>
+                                                                                                <li>
+                            <a href="#MockServer.listen"><code>listen (...)</code></a>
+                        </li>
+                                                <li>
+                            <a href="#MockServer.close"><code>close (...)</code></a>
+                        </li>
+                                                <li>
+                            <a href="#MockServer.send"><code>send (...)</code></a>
+                        </li>
+                                                <li>
+                            <a href="#MockServer.sendError"><code>sendError (...)</code></a>
+                        </li>
+                                                <li>
+                            <a href="#MockServer.register"><code>register (...)</code></a>
+                        </li>
+                                                <li>
+                            <a href="#MockServer.unregister"><code>unregister (...)</code></a>
+                        </li>
+                                                <li>
+                            <a href="#MockServer.getConnections"><code>getConnections (...)</code></a>
+                        </li>
+                                            </ul>
+                                            </li>
+                    <li>
+                                <a href="#ErrorContent">
+                    <code>
+                        type                        ErrorContent                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#OnInit">
+                    <code>
+                        interface                        OnInit                                            </code>
+                </a>
+                                <ul>
+                                                                                                <li>
+                            <a href="#OnInit.onInit"><code>onInit (...)</code></a>
+                        </li>
+                                            </ul>
+                                            </li>
+                    <li>
+                                <a href="#OnConnection">
+                    <code>
+                        interface                        OnConnection                                            </code>
+                </a>
+                                <ul>
+                                                                                                <li>
+                            <a href="#OnConnection.onConnection"><code>onConnection (...)</code></a>
+                        </li>
+                                            </ul>
+                                            </li>
+                    <li>
+                                <a href="#OnMessage">
+                    <code>
+                        interface                        OnMessage                                            </code>
+                </a>
+                                <ul>
+                                                                                                <li>
+                            <a href="#OnMessage.onMessage"><code>onMessage (...)</code></a>
+                        </li>
+                                            </ul>
+                                            </li>
+                    <li>
+                                <a href="#OnClosedConnection">
+                    <code>
+                        interface                        OnClosedConnection                                            </code>
+                </a>
+                                <ul>
+                                                                                                <li>
+                            <a href="#OnClosedConnection.onClosedConnection"><code>onClosedConnection (...)</code></a>
+                        </li>
+                                            </ul>
+                                            </li>
+                    <li>
+                                <a href="#OnClose">
+                    <code>
+                        interface                        OnClose                                            </code>
+                </a>
+                                <ul>
+                                                                                                <li>
+                            <a href="#OnClose.onClose"><code>onClose (...)</code></a>
+                        </li>
+                                            </ul>
+                                            </li>
+                    <li>
+                                <a href="#SendCallbackArgs">
+                    <code>
+                        interface                        SendCallbackArgs                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#SendCallbackArgs.type"><code>type</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#SendCallbackArgs.respond"><code>respond</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#PublishCallbackArgs">
+                    <code>
+                        interface                        PublishCallbackArgs                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#PublishCallbackArgs.type"><code>type</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#CallbackArgs">
+                    <code>
+                        type                        CallbackArgs                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#Callback">
+                    <code>
+                        type                        Callback                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#CallbackId">
+                    <code>
+                        type                        CallbackId                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#ListenOptions">
+                    <code>
+                        interface                        ListenOptions                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#ListenOptions.port"><code>port</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#ListenOptions.hostname"><code>hostname</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#VertxMockServerOptions">
+                    <code>
+                        interface                        VertxMockServerOptions                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#VertxMockServerOptions.prefix"><code>prefix</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#VertxMockServerOptions.logger"><code>logger</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+            </ul>
+
 <!-- Members -->
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="MockServer" href="#MockServer">
-            <h3><code>MockServer</code></h3></a>
+            <h3><code>
+                    MockServer                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -944,12 +1113,13 @@ server.listen();
             </div>
                             </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ErrorContent" href="#ErrorContent">
-            <h3><code>ErrorContent</code></h3></a>
+            <h3><code>
+                    ErrorContent                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -981,12 +1151,13 @@ server.listen();
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="OnInit" href="#OnInit">
-            <h3><code>OnInit</code></h3></a>
+            <h3><code>
+                    OnInit                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1063,12 +1234,13 @@ and ready to handle incoming connections.</p>
             </div>
                             </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="OnConnection" href="#OnConnection">
-            <h3><code>OnConnection</code></h3></a>
+            <h3><code>
+                    OnConnection                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1170,12 +1342,13 @@ and all <a href="#MockServer.register"><code>MockServer.register</code></a> call
             </div>
                             </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="OnMessage" href="#OnMessage">
-            <h3><code>OnMessage</code></h3></a>
+            <h3><code>
+                    OnMessage                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1275,12 +1448,13 @@ when a new message arrives at the event bus.</p>
             </div>
                             </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="OnClosedConnection" href="#OnClosedConnection">
-            <h3><code>OnClosedConnection</code></h3></a>
+            <h3><code>
+                    OnClosedConnection                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1380,12 +1554,13 @@ when a connection to a client has closed.</p>
             </div>
                             </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="OnClose" href="#OnClose">
-            <h3><code>OnClose</code></h3></a>
+            <h3><code>
+                    OnClose                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1462,12 +1637,13 @@ and will shutdown now.</p>
             </div>
                             </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="SendCallbackArgs" href="#SendCallbackArgs">
-            <h3><code>SendCallbackArgs</code></h3></a>
+            <h3><code>
+                    SendCallbackArgs                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1546,12 +1722,13 @@ a <a href="#@wuespace/telestion-client-types#SendMessage"><code>@wuespace/telest
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="PublishCallbackArgs" href="#PublishCallbackArgs">
-            <h3><code>PublishCallbackArgs</code></h3></a>
+            <h3><code>
+                    PublishCallbackArgs                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1600,12 +1777,13 @@ a <a href="#@wuespace/telestion-client-types#PublishMessage"><code>@wuespace/tel
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="CallbackArgs" href="#CallbackArgs">
-            <h3><code>CallbackArgs</code></h3></a>
+            <h3><code>
+                    CallbackArgs                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1638,12 +1816,13 @@ from a client.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Callback" href="#Callback">
-            <h3><code>Callback</code></h3></a>
+            <h3><code>
+                    Callback                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1676,12 +1855,13 @@ from a client.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="CallbackId" href="#CallbackId">
-            <h3><code>CallbackId</code></h3></a>
+            <h3><code>
+                    CallbackId                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1712,12 +1892,13 @@ and unregistered with this value in <a href="#MockServer.unregister"><code>MockS
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ListenOptions" href="#ListenOptions">
-            <h3><code>ListenOptions</code></h3></a>
+            <h3><code>
+                    ListenOptions                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1790,12 +1971,13 @@ and unregistered with this value in <a href="#MockServer.unregister"><code>MockS
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="VertxMockServerOptions" href="#VertxMockServerOptions">
-            <h3><code>VertxMockServerOptions</code></h3></a>
+            <h3><code>
+                    VertxMockServerOptions                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>

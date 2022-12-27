@@ -78,14 +78,650 @@
 <p>You can access these members by importing the module:</p>
 <pre><code>import { <i>member</i> } from '@wuespace/telestion-client-common';</code></pre>
 
+<!--Table of contents for members-->
+    <ul>
+                    <li>
+                                <a href="#ContextMenu">
+                    <code>
+                        function                        ContextMenu                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#ContextMenuProps">
+                    <code>
+                        interface                        ContextMenuProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#ContextMenuProps.sections"><code>sections</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#ContextMenuProps.style"><code>style</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#ContextMenuProps.isOpen"><code>isOpen</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#ContextMenuProps.onClose"><code>onClose</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#ContextMenuProvider">
+                    <code>
+                        function                        ContextMenuProvider                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#ContextMenuProviderProps">
+                    <code>
+                        interface                        ContextMenuProviderProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#ContextMenuProviderProps.menu"><code>menu</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#ContextMenuProviderProps.children"><code>children</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#ContextMenuWrapper">
+                    <code>
+                        function                        ContextMenuWrapper                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#ContextMenuWrapperProps">
+                    <code>
+                        interface                        ContextMenuWrapperProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#ContextMenuWrapperProps.menuItems"><code>menuItems</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#ContextMenuWrapperProps.title"><code>title</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#ContextMenuWrapperProps.disableCascade"><code>disableCascade</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#ContextMenuWrapperProps.children"><code>children</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#useLogo">
+                    <code>
+                        function                        useLogo                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useWidgets">
+                    <code>
+                        function                        useWidgets                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#AccountControls">
+                    <code>
+                        function                        AccountControls                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#Actions">
+                    <code>
+                        function                        Actions                         (...)                     </code>
+                </a>
+                                                <a href="#Actions">
+                    <code>
+                        identifier                        Actions                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#ActionsProps">
+                    <code>
+                        interface                        ActionsProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#ActionsProps.children"><code>children</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#ActionDivider">
+                    <code>
+                        function                        ActionDivider                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#ColorSchemeAction">
+                    <code>
+                        function                        ColorSchemeAction                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#NotificationAction">
+                    <code>
+                        function                        NotificationAction                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#FullscreenAction">
+                    <code>
+                        function                        FullscreenAction                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#DashboardPicker">
+                    <code>
+                        function                        DashboardPicker                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#NavBar">
+                    <code>
+                        function                        NavBar                         (...)                     </code>
+                </a>
+                                                <a href="#NavBar">
+                    <code>
+                        identifier                        NavBar                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#NavBarProps">
+                    <code>
+                        interface                        NavBarProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#NavBarProps.links"><code>links</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#AppLogo">
+                    <code>
+                        function                        AppLogo                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#ConnectionIndicator">
+                    <code>
+                        function                        ConnectionIndicator                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#Header">
+                    <code>
+                        function                        Header                         (...)                     </code>
+                </a>
+                                                <a href="#Header">
+                    <code>
+                        identifier                        Header                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#HeaderProps">
+                    <code>
+                        interface                        HeaderProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#HeaderProps.left"><code>left</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#HeaderProps.center"><code>center</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#HeaderProps.right"><code>right</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#DashboardPage">
+                    <code>
+                        function                        DashboardPage                         (...)                     </code>
+                </a>
+                                                <a href="#DashboardPage">
+                    <code>
+                        identifier                        DashboardPage                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#LoginForm">
+                    <code>
+                        function                        LoginForm                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#LoginFormProps">
+                    <code>
+                        interface                        LoginFormProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#LoginFormProps.initialServerURL"><code>initialServerURL</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#LoginFormProps.initialUsername"><code>initialUsername</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#LoginDescription">
+                    <code>
+                        function                        LoginDescription                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#LoginDescriptionProps">
+                    <code>
+                        interface                        LoginDescriptionProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#LoginDescriptionProps.description"><code>description</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#LoginDescriptionProps.children"><code>children</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#LoginLogo">
+                    <code>
+                        function                        LoginLogo                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#LoginPage">
+                    <code>
+                        function                        LoginPage                         (...)                     </code>
+                </a>
+                                                <a href="#LoginPage">
+                    <code>
+                        identifier                        LoginPage                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#LoginPageProps">
+                    <code>
+                        interface                        LoginPageProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#LoginPageProps.children"><code>children</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#LoginTitle">
+                    <code>
+                        function                        LoginTitle                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#NotFoundPage">
+                    <code>
+                        function                        NotFoundPage                         (...)                     </code>
+                </a>
+                                                <a href="#NotFoundPage">
+                    <code>
+                        identifier                        NotFoundPage                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#LoadingIndicator">
+                    <code>
+                        function                        LoadingIndicator                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#LoadingIndicatorProps">
+                    <code>
+                        interface                        LoadingIndicatorProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#LoadingIndicatorProps.children"><code>children</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#LoadingIndicatorProps.dependencies"><code>dependencies</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#LoadingIndicatorProps.timeout"><code>timeout</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#OverflowFix">
+                    <code>
+                        function                        OverflowFix                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#OverflowFixProps">
+                    <code>
+                        interface                        OverflowFixProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#OverflowFixProps.children"><code>children</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#CommonWrapper">
+                    <code>
+                        function                        CommonWrapper                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#CommonWrapperProps">
+                    <code>
+                        interface                        CommonWrapperProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#CommonWrapperProps.appLogo"><code>appLogo</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#CommonWrapperProps.widgets"><code>widgets</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#CommonWrapperProps.children"><code>children</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#useCurrentDashboards">
+                    <code>
+                        function                        useCurrentDashboards                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useDarkColorScheme">
+                    <code>
+                        function                        useDarkColorScheme                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useDashboards">
+                    <code>
+                        function                        useDashboards                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#DispatchDashboards">
+                    <code>
+                        type                        DispatchDashboards                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useColorScheme">
+                    <code>
+                        variable                        useColorScheme                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#showDialog">
+                    <code>
+                        function                        showDialog                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useDialog">
+                    <code>
+                        variable                        useDialog                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useUserConfig">
+                    <code>
+                        variable                        useUserConfig                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#ColorScheme">
+                    <code>
+                        type                        ColorScheme                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#ColorSchemeState">
+                    <code>
+                        interface                        ColorSchemeState                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#ColorSchemeState.colorScheme"><code>colorScheme</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#ColorSchemeState.set"><code>set</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#CallableComponent">
+                    <code>
+                        type                        CallableComponent                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#DialogConfig">
+                    <code>
+                        interface                        DialogConfig                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#DialogConfig.title"><code>title</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#DialogConfig.header"><code>header</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#DialogConfig.content"><code>content</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#DialogConfig.footer"><code>footer</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#DialogConfig.initialState"><code>initialState</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#Dialog">
+                    <code>
+                        interface                        Dialog                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#Dialog.id"><code>id</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Dialog.config"><code>config</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Dialog.isOpen"><code>isOpen</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Dialog.onConfirm"><code>onConfirm</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Dialog.onCancel"><code>onCancel</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#DialogState">
+                    <code>
+                        interface                        DialogState                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#DialogState.dialogs"><code>dialogs</code></a>
+                            </li>
+                                                                        <li>
+                            <a href="#DialogState.show"><code>show (...)</code></a>
+                        </li>
+                                            </ul>
+                                            </li>
+                    <li>
+                                <a href="#UserConfigState">
+                    <code>
+                        interface                        UserConfigState                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#UserConfigState.userConfig"><code>userConfig</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#UserConfigState.addUser"><code>addUser</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#UserConfigState.removeUser"><code>removeUser</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#UserConfigState.updateUserInfo"><code>updateUserInfo</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#UserConfigState.set"><code>set</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#UserConfigState.clear"><code>clear</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#useBooleanState">
+                    <code>
+                        function                        useBooleanState                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#InitialState">
+                    <code>
+                        type                        InitialState                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#ReturnType">
+                    <code>
+                        type                        ReturnType                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useEvent">
+                    <code>
+                        function                        useEvent                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useStoredState">
+                    <code>
+                        function                        useStoredState                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useDependencyTimeout">
+                    <code>
+                        function                        useDependencyTimeout                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useSpectrumColor">
+                    <code>
+                        function                        useSpectrumColor                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useDesktopNotifications">
+                    <code>
+                        function                        useDesktopNotifications                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#Optional">
+                    <code>
+                        type                        Optional                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#SetPartialStateAction">
+                    <code>
+                        type                        SetPartialStateAction                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#Undefinable">
+                    <code>
+                        type                        Undefinable                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#StaticColorMap">
+                    <code>
+                        type                        StaticColorMap                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#ColorMap">
+                    <code>
+                        type                        ColorMap                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#staticColors">
+                    <code>
+                        variable                        staticColors                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#lightColors">
+                    <code>
+                        variable                        lightColors                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#darkColors">
+                    <code>
+                        variable                        darkColors                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#isDefinedValue">
+                    <code>
+                        function                        isDefinedValue                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#commonWidgets">
+                    <code>
+                        variable                        commonWidgets                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#eventbusDebugWidget">
+                    <code>
+                        variable                        eventbusDebugWidget                                            </code>
+                </a>
+                                            </li>
+            </ul>
+
 <!-- Members -->
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ContextMenu" href="#ContextMenu">
-            <h3><code>ContextMenu</code></h3></a>
+            <h3><code>
+                    ContextMenu                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -175,12 +811,13 @@ function App() {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ContextMenuProps" href="#ContextMenuProps">
-            <h3><code>ContextMenuProps</code></h3></a>
+            <h3><code>
+                    ContextMenuProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -314,12 +951,13 @@ function App() {
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ContextMenuProvider" href="#ContextMenuProvider">
-            <h3><code>ContextMenuProvider</code></h3></a>
+            <h3><code>
+                    ContextMenuProvider                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -426,12 +1064,13 @@ function App() {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ContextMenuProviderProps" href="#ContextMenuProviderProps">
-            <h3><code>ContextMenuProviderProps</code></h3></a>
+            <h3><code>
+                    ContextMenuProviderProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -572,12 +1211,13 @@ via the <a href="#ContextMenuWrapper"><code>ContextMenuWrapper</code></a> compon
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ContextMenuWrapper" href="#ContextMenuWrapper">
-            <h3><code>ContextMenuWrapper</code></h3></a>
+            <h3><code>
+                    ContextMenuWrapper                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -683,12 +1323,13 @@ function MyComponent({ children }: Props) {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ContextMenuWrapperProps" href="#ContextMenuWrapperProps">
-            <h3><code>ContextMenuWrapperProps</code></h3></a>
+            <h3><code>
+                    ContextMenuWrapperProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -824,12 +1465,13 @@ that are registered higher up in the tree.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useLogo" href="#useLogo">
-            <h3><code>useLogo</code></h3></a>
+            <h3><code>
+                    useLogo                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -902,12 +1544,13 @@ It can be replaced by a custom logo in the <a href="#CommonWrapper"><code>Common
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useWidgets" href="#useWidgets">
-            <h3><code>useWidgets</code></h3></a>
+            <h3><code>
+                    useWidgets                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -985,12 +1628,13 @@ It can be replaced by a custom logo in the <a href="#CommonWrapper"><code>Common
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="AccountControls" href="#AccountControls">
-            <h3><code>AccountControls</code></h3></a>
+            <h3><code>
+                    AccountControls                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1052,12 +1696,13 @@ as well as some further information about the event bus state.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Actions" href="#Actions">
-            <h3><code>Actions</code></h3></a>
+            <h3><code>
+                    Actions                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1189,15 +1834,22 @@ which gives the user direct access to the application settings.</p>
 </code></pre>
 </div>
             </div>
-                                            <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"Actions","declarations":[{"type":"function","name":"Actions","declarations":[{"name":"Actions","statements":["return (\n\t<Flex direction=\"row\" gap=\"size-50\">\n\t\t{children}\n\t</Flex>\n);"],"parameters":[{"name":"{ children }","type":"ActionsProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nPart of the Telestion Client Common header.\n\nIt displays customizable actions\nwhich gives the user direct access to the application settings.\n\nPredefined and ready-to-use actions are:\n- {@link ColorSchemeAction}\n- {@link FullscreenAction}\n- {@link NotificationAction}\n- {@link ActionDivider}\n","tags":[{"text":"{@link ActionsProps}\n","tagName":"@see"},{"text":"{@link ColorSchemeAction}\n","tagName":"@see"},{"text":"{@link FullscreenAction}\n","tagName":"@see"},{"text":"{@link NotificationAction}\n","tagName":"@see"},{"text":"{@link ActionDivider}\n","tagName":"@see"},{"text":"{@link Header}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction AppHeader() {\n\treturn (\n\t\t<Header\n\t\t\tright={\n\t\t\t\t<Actions>\n\t\t\t\t\t<ColorSchemeAction />\n\t\t\t\t\t<NotificationAction />\n\t\t\t\t</Actions>\n\t\t\t}\n\t\t/>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
+                            <!-- Name with an anchor link -->
+        <a id="Actions" href="#Actions">
+            <h3><code>
+                    Actions                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                        <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"Actions","declarations":[{"type":"function","name":"Actions","declarations":[{"name":"Actions","statements":["return (\n\t<Flex direction=\"row\" gap=\"size-50\">\n\t\t{children}\n\t</Flex>\n);"],"parameters":[{"name":"{ children }","type":"ActionsProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nPart of the Telestion Client Common header.\n\nIt displays customizable actions\nwhich gives the user direct access to the application settings.\n\nPredefined and ready-to-use actions are:\n- {@link ColorSchemeAction}\n- {@link FullscreenAction}\n- {@link NotificationAction}\n- {@link ActionDivider}\n","tags":[{"text":"{@link ActionsProps}\n","tagName":"@see"},{"text":"{@link ColorSchemeAction}\n","tagName":"@see"},{"text":"{@link FullscreenAction}\n","tagName":"@see"},{"text":"{@link NotificationAction}\n","tagName":"@see"},{"text":"{@link ActionDivider}\n","tagName":"@see"},{"text":"{@link Header}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction AppHeader() {\n\treturn (\n\t\t<Header\n\t\t\tright={\n\t\t\t\t<Actions>\n\t\t\t\t\t<ColorSchemeAction />\n\t\t\t\t\t<NotificationAction />\n\t\t\t\t</Actions>\n\t\t\t}\n\t\t/>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ActionsProps" href="#ActionsProps">
-            <h3><code>ActionsProps</code></h3></a>
+            <h3><code>
+                    ActionsProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1277,12 +1929,13 @@ which gives the user direct access to the application settings.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ActionDivider" href="#ActionDivider">
-            <h3><code>ActionDivider</code></h3></a>
+            <h3><code>
+                    ActionDivider                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1355,12 +2008,13 @@ for a better overview.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ColorSchemeAction" href="#ColorSchemeAction">
-            <h3><code>ColorSchemeAction</code></h3></a>
+            <h3><code>
+                    ColorSchemeAction                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1435,12 +2089,13 @@ of the application.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="NotificationAction" href="#NotificationAction">
-            <h3><code>NotificationAction</code></h3></a>
+            <h3><code>
+                    NotificationAction                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1511,12 +2166,13 @@ For more information take a look on the
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="FullscreenAction" href="#FullscreenAction">
-            <h3><code>FullscreenAction</code></h3></a>
+            <h3><code>
+                    FullscreenAction                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1574,12 +2230,13 @@ where the application or browser content is rendered over the entire screen.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="DashboardPicker" href="#DashboardPicker">
-            <h3><code>DashboardPicker</code></h3></a>
+            <h3><code>
+                    DashboardPicker                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1650,12 +2307,13 @@ to the necessary dashboard page.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="NavBar" href="#NavBar">
-            <h3><code>NavBar</code></h3></a>
+            <h3><code>
+                    NavBar                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1766,15 +2424,22 @@ function AppHeader() {
 </code></pre>
 </div>
             </div>
-                                            <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"NavBar","declarations":[{"type":"function","name":"NavBar","declarations":[{"name":"NavBar","statements":[{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"title","initializer":"useTitle()","hasExclamationToken":false,"kind":40}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"{ items, selected, onSelectionChange, isHidden }","initializer":"useNavBarState(links)","hasExclamationToken":false,"kind":40}]},"if (isHidden) {\n\treturn (\n\t\t<Heading level={4}>\n\t\t\t{typeof title === 'string' ? title : 'Invalid type'}\n\t\t</Heading>\n\t);\n}","return (\n\t<Tabs\n\t\titems={items}\n\t\tselectedKey={selected}\n\t\tonSelectionChange={onSelectionChange}\n\t>\n\t\t<TabList>\n\t\t\t{(item: Link) => (\n\t\t\t\t<Item title={item.title} key={item.path}>\n\t\t\t\t\t{/* Render tab list without content */}\n\t\t\t\t\t{/* eslint-disable-next-line react/jsx-no-useless-fragment */}\n\t\t\t\t\t<></>\n\t\t\t\t</Item>\n\t\t\t)}\n\t\t</TabList>\n\t</Tabs>\n);"],"parameters":[{"name":"{ links }","type":"NavBarProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nPart of the Telestion Client Common header.\n\nIt displays the given links in a React Spectrum tab list.\nIf no links are set the application title are shown instead.\n","tags":[{"text":"{@link https://react-spectrum.adobe.com/react-spectrum/Tabs.html}\n","tagName":"@see"},{"text":"{@link NavBarProps}\n","tagName":"@see"},{"text":"{@link Header}\n\n","tagName":"@see"},{"text":"\nDisplay only title:\n```ts\nfunction AppHeader() {\n\treturn (\n\t\t<Header\n\t\t\tleft={<NavBar />}\n\t\t/>\n\t);\n}\n```\n\nDisplay some links:\n```ts\nconst links: Array<Link> = [\n\t{\n\t\ttitle: 'Dashboards',\n\t\tpath: '/dashboard'\n\t},\n\t{\n\t\ttitle: 'Preferences',\n\t\tpath: '/preferences'\n\t}\n];\n\nfunction AppHeader() {\n\treturn (\n\t\t<Header\n\t\t\tleft={<NavBar links={links} />}\n\t\t/>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
+                            <!-- Name with an anchor link -->
+        <a id="NavBar" href="#NavBar">
+            <h3><code>
+                    NavBar                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                        <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"NavBar","declarations":[{"type":"function","name":"NavBar","declarations":[{"name":"NavBar","statements":[{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"title","initializer":"useTitle()","hasExclamationToken":false,"kind":40}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"{ items, selected, onSelectionChange, isHidden }","initializer":"useNavBarState(links)","hasExclamationToken":false,"kind":40}]},"if (isHidden) {\n\treturn (\n\t\t<Heading level={4}>\n\t\t\t{typeof title === 'string' ? title : 'Invalid type'}\n\t\t</Heading>\n\t);\n}","return (\n\t<Tabs\n\t\titems={items}\n\t\tselectedKey={selected}\n\t\tonSelectionChange={onSelectionChange}\n\t>\n\t\t<TabList>\n\t\t\t{(item: Link) => (\n\t\t\t\t<Item title={item.title} key={item.path}>\n\t\t\t\t\t{/* Render tab list without content */}\n\t\t\t\t\t{/* eslint-disable-next-line react/jsx-no-useless-fragment */}\n\t\t\t\t\t<></>\n\t\t\t\t</Item>\n\t\t\t)}\n\t\t</TabList>\n\t</Tabs>\n);"],"parameters":[{"name":"{ links }","type":"NavBarProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nPart of the Telestion Client Common header.\n\nIt displays the given links in a React Spectrum tab list.\nIf no links are set the application title are shown instead.\n","tags":[{"text":"{@link https://react-spectrum.adobe.com/react-spectrum/Tabs.html}\n","tagName":"@see"},{"text":"{@link NavBarProps}\n","tagName":"@see"},{"text":"{@link Header}\n\n","tagName":"@see"},{"text":"\nDisplay only title:\n```ts\nfunction AppHeader() {\n\treturn (\n\t\t<Header\n\t\t\tleft={<NavBar />}\n\t\t/>\n\t);\n}\n```\n\nDisplay some links:\n```ts\nconst links: Array<Link> = [\n\t{\n\t\ttitle: 'Dashboards',\n\t\tpath: '/dashboard'\n\t},\n\t{\n\t\ttitle: 'Preferences',\n\t\tpath: '/preferences'\n\t}\n];\n\nfunction AppHeader() {\n\treturn (\n\t\t<Header\n\t\t\tleft={<NavBar links={links} />}\n\t\t/>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="NavBarProps" href="#NavBarProps">
-            <h3><code>NavBarProps</code></h3></a>
+            <h3><code>
+                    NavBarProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1858,12 +2523,13 @@ If no links are set the application are shown.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="AppLogo" href="#AppLogo">
-            <h3><code>AppLogo</code></h3></a>
+            <h3><code>
+                    AppLogo                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1931,12 +2597,13 @@ the default Telestion Logo is used.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ConnectionIndicator" href="#ConnectionIndicator">
-            <h3><code>ConnectionIndicator</code></h3></a>
+            <h3><code>
+                    ConnectionIndicator                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -2032,12 +2699,13 @@ with a status light.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Header" href="#Header">
-            <h3><code>Header</code></h3></a>
+            <h3><code>
+                    Header                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -2202,15 +2870,22 @@ Components of the header can be left, center or right aligned.</p>
 </code></pre>
 </div>
             </div>
-                                            <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"Header","declarations":[{"type":"function","name":"Header","declarations":[{"name":"Header","statements":["return (\n\t\t<Provider flex={0} width=\"100%\" colorScheme=\"dark\" isQuiet>\n\t\t\t<View width=\"100%\" height=\"size-600\" backgroundColor=\"gray-200\">\n\t\t\t\t<Flex direction=\"row\" width=\"100%\" height=\"100%\" alignItems=\"center\">\n\t\t\t\t\t<Flex\n\t\t\t\t\t\tflex={1}\n\t\t\t\t\t\theight=\"100%\"\n\t\t\t\t\t\tmarginStart=\"size-200\"\n\t\t\t\t\t\tmarginEnd=\"size-200\"\n\t\t\t\t\t\tdirection=\"row\"\n\t\t\t\t\t\talignItems=\"center\"\n\t\t\t\t\t\tjustifyContent=\"start\"\n\t\t\t\t\t\tgap=\"size-200\"\n\t\t\t\t\t>\n\t\t\t\t\t\t{/* eslint-disable-next-line react/jsx-no-useless-fragment */}\n\t\t\t\t\t\t{left ?? <></>}\n\t\t\t\t\t</Flex>\n\n\t\t\t\t\t<Flex\n\t\t\t\t\t\tflex={1}\n\t\t\t\t\t\theight=\"100%\"\n\t\t\t\t\t\tmarginStart=\"size-200\"\n\t\t\t\t\t\tmarginEnd=\"size-200\"\n\t\t\t\t\t\tdirection=\"row\"\n\t\t\t\t\t\talignItems=\"center\"\n\t\t\t\t\t\tjustifyContent=\"center\"\n\t\t\t\t\t\tgap=\"size-200\"\n\t\t\t\t\t>\n\t\t\t\t\t\t{/* eslint-disable-next-line react/jsx-no-useless-fragment */}\n\t\t\t\t\t\t{center ?? <></>}\n\t\t\t\t\t</Flex>\n\n\t\t\t\t\t<Flex\n\t\t\t\t\t\tflex={1}\n\t\t\t\t\t\theight=\"100%\"\n\t\t\t\t\t\tmarginStart=\"size-200\"\n\t\t\t\t\t\tmarginEnd=\"size-200\"\n\t\t\t\t\t\tdirection=\"row\"\n\t\t\t\t\t\talignItems=\"center\"\n\t\t\t\t\t\tjustifyContent=\"end\"\n\t\t\t\t\t\tgap=\"size-200\"\n\t\t\t\t\t>\n\t\t\t\t\t\t{/* eslint-disable-next-line react/jsx-no-useless-fragment */}\n\t\t\t\t\t\t{right ?? <></>}\n\t\t\t\t\t</Flex>\n\t\t\t\t</Flex>\n\t\t\t</View>\n\t\t</Provider>\n\t);"],"parameters":[{"name":"{ left, center, right }","type":"HeaderProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nThe Header component of Telestion Client Common.\n\nIt displays a header in style of the Adobe Spectrum header pattern.\nComponents of the header can be left, center or right aligned.\n","tags":[{"text":"{@link https://spectrum.adobe.com/page/headers/}\n","tagName":"@see"},{"text":"{@link HeaderProps}\n","tagName":"@see"},{"text":"{@link AppLogo}\n","tagName":"@see"},{"text":"{@link NavBar}\n","tagName":"@see"},{"text":"{@link DashboardPicker}\n","tagName":"@see"},{"text":"{@link ConnectionIndicator}\n","tagName":"@see"},{"text":"{@link Actions}\n","tagName":"@see"},{"text":"{@link ColorSchemeAction}\n","tagName":"@see"},{"text":"{@link AccountControls}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction AppHeader() {\n\treturn (\n\t\t<Header\n\t\t\tleft={\n\t\t\t\t<>\n\t\t\t\t\t<AppLogo />\n\t\t\t\t\t<NavBar />\n\t\t\t\t</>\n\t\t\t}\n\t\t\tcenter={<DashboardPicker>}\n\t\t\tright={\n\t\t\t\t<>\n\t\t\t\t\t<ConnectionIndicator />\n\t\t\t\t\t<Actions>\n\t\t\t\t\t  <ColorSchemeAction />\n\t\t\t\t\t</Actions>\n\t\t\t\t\t<AccountControls />\n\t\t\t\t</>\n\t\t\t}\n\t\t/>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
+                            <!-- Name with an anchor link -->
+        <a id="Header" href="#Header">
+            <h3><code>
+                    Header                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                        <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"Header","declarations":[{"type":"function","name":"Header","declarations":[{"name":"Header","statements":["return (\n\t\t<Provider flex={0} width=\"100%\" colorScheme=\"dark\" isQuiet>\n\t\t\t<View width=\"100%\" height=\"size-600\" backgroundColor=\"gray-200\">\n\t\t\t\t<Flex direction=\"row\" width=\"100%\" height=\"100%\" alignItems=\"center\">\n\t\t\t\t\t<Flex\n\t\t\t\t\t\tflex={1}\n\t\t\t\t\t\theight=\"100%\"\n\t\t\t\t\t\tmarginStart=\"size-200\"\n\t\t\t\t\t\tmarginEnd=\"size-200\"\n\t\t\t\t\t\tdirection=\"row\"\n\t\t\t\t\t\talignItems=\"center\"\n\t\t\t\t\t\tjustifyContent=\"start\"\n\t\t\t\t\t\tgap=\"size-200\"\n\t\t\t\t\t>\n\t\t\t\t\t\t{/* eslint-disable-next-line react/jsx-no-useless-fragment */}\n\t\t\t\t\t\t{left ?? <></>}\n\t\t\t\t\t</Flex>\n\n\t\t\t\t\t<Flex\n\t\t\t\t\t\tflex={1}\n\t\t\t\t\t\theight=\"100%\"\n\t\t\t\t\t\tmarginStart=\"size-200\"\n\t\t\t\t\t\tmarginEnd=\"size-200\"\n\t\t\t\t\t\tdirection=\"row\"\n\t\t\t\t\t\talignItems=\"center\"\n\t\t\t\t\t\tjustifyContent=\"center\"\n\t\t\t\t\t\tgap=\"size-200\"\n\t\t\t\t\t>\n\t\t\t\t\t\t{/* eslint-disable-next-line react/jsx-no-useless-fragment */}\n\t\t\t\t\t\t{center ?? <></>}\n\t\t\t\t\t</Flex>\n\n\t\t\t\t\t<Flex\n\t\t\t\t\t\tflex={1}\n\t\t\t\t\t\theight=\"100%\"\n\t\t\t\t\t\tmarginStart=\"size-200\"\n\t\t\t\t\t\tmarginEnd=\"size-200\"\n\t\t\t\t\t\tdirection=\"row\"\n\t\t\t\t\t\talignItems=\"center\"\n\t\t\t\t\t\tjustifyContent=\"end\"\n\t\t\t\t\t\tgap=\"size-200\"\n\t\t\t\t\t>\n\t\t\t\t\t\t{/* eslint-disable-next-line react/jsx-no-useless-fragment */}\n\t\t\t\t\t\t{right ?? <></>}\n\t\t\t\t\t</Flex>\n\t\t\t\t</Flex>\n\t\t\t</View>\n\t\t</Provider>\n\t);"],"parameters":[{"name":"{ left, center, right }","type":"HeaderProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nThe Header component of Telestion Client Common.\n\nIt displays a header in style of the Adobe Spectrum header pattern.\nComponents of the header can be left, center or right aligned.\n","tags":[{"text":"{@link https://spectrum.adobe.com/page/headers/}\n","tagName":"@see"},{"text":"{@link HeaderProps}\n","tagName":"@see"},{"text":"{@link AppLogo}\n","tagName":"@see"},{"text":"{@link NavBar}\n","tagName":"@see"},{"text":"{@link DashboardPicker}\n","tagName":"@see"},{"text":"{@link ConnectionIndicator}\n","tagName":"@see"},{"text":"{@link Actions}\n","tagName":"@see"},{"text":"{@link ColorSchemeAction}\n","tagName":"@see"},{"text":"{@link AccountControls}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction AppHeader() {\n\treturn (\n\t\t<Header\n\t\t\tleft={\n\t\t\t\t<>\n\t\t\t\t\t<AppLogo />\n\t\t\t\t\t<NavBar />\n\t\t\t\t</>\n\t\t\t}\n\t\t\tcenter={<DashboardPicker>}\n\t\t\tright={\n\t\t\t\t<>\n\t\t\t\t\t<ConnectionIndicator />\n\t\t\t\t\t<Actions>\n\t\t\t\t\t  <ColorSchemeAction />\n\t\t\t\t\t</Actions>\n\t\t\t\t\t<AccountControls />\n\t\t\t\t</>\n\t\t\t}\n\t\t/>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="HeaderProps" href="#HeaderProps">
-            <h3><code>HeaderProps</code></h3></a>
+            <h3><code>
+                    HeaderProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -2323,12 +2998,13 @@ Components of the header can be left, center or right aligned.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="DashboardPage" href="#DashboardPage">
-            <h3><code>DashboardPage</code></h3></a>
+            <h3><code>
+                    DashboardPage                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -2427,15 +3103,22 @@ and render the page the right way:
 </code></pre>
 </div>
             </div>
-                                            <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"DashboardPage","declarations":[{"type":"function","name":"DashboardPage","declarations":[{"name":"DashboardPage","statements":[{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"clipState","initializer":"useState<ClipboardContent>()","hasExclamationToken":false,"kind":40}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"{ id }","initializer":"useParams<{ id: string }>()","hasExclamationToken":false,"kind":40}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"eventBus","initializer":"useEventBus(selector)","hasExclamationToken":false,"kind":40}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"[dashboards]","initializer":"useCurrentDashboards()","hasExclamationToken":false,"kind":40}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"idAsNumber","initializer":"useMemo(() => Number.parseInt(id, 10), [id])","hasExclamationToken":false,"kind":40}]},"if (!eventBus) {\n\treturn <MissingEventBus />;\n}","if (!dashboards) {\n\treturn <NoDashboardsMessage />;\n}","return (\n\t<ClipboardContext.Provider value={clipState}>\n\t\t<Dashboard dashboard={dashboards[idAsNumber]} />\n\t</ClipboardContext.Provider>\n);"],"parameters":[],"typeParameters":[],"docs":[{"description":"\nA Telestion Client page that renders a dashboard page.\nIt displays the currently active dashboard of an authenticated user.\n\nIt can be changed with the {@link DashboardPicker} component\nusually used in the application header.\nTo register a new dashboard for the user or change existing,\nuse the {@link useUserConfig} hook.\n\nIt only renders if someone is authenticated.\nOtherwise, it redirects to the login page.\n\n**Attention**\n\nIf you create your own dashboard page, please pass\nthe routing information so that the pages component read it\nand render the page the right way:\n`MyDashboardPage.routing = TCDashboardPage.routing;`\n","tags":[{"text":"{@link DashboardPicker}\n","tagName":"@see"},{"text":"{@link useUserConfig}\n","tagName":"@see"},{"text":"{@link @wuespace/telestion-client-types#UserConfig}\n","tagName":"@see"},{"text":"{@link @wuespace/telestion-client-core#Pages}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction App() {\n\treturn (\n\t\t<TelestionClient>\n\t\t\t<Pages>\n\t\t\t\t<LoginPage />\n\t\t\t\t<DashboardPage />\n\t\t\t\t<NotFoundPage />\n\t\t\t</Pages>\n\t\t</TelestionClient>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
+                            <!-- Name with an anchor link -->
+        <a id="DashboardPage" href="#DashboardPage">
+            <h3><code>
+                    DashboardPage                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                        <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"DashboardPage","declarations":[{"type":"function","name":"DashboardPage","declarations":[{"name":"DashboardPage","statements":[{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"clipState","initializer":"useState<ClipboardContent>()","hasExclamationToken":false,"kind":40}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"{ id }","initializer":"useParams<{ id: string }>()","hasExclamationToken":false,"kind":40}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"eventBus","initializer":"useEventBus(selector)","hasExclamationToken":false,"kind":40}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"[dashboards]","initializer":"useCurrentDashboards()","hasExclamationToken":false,"kind":40}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"idAsNumber","initializer":"useMemo(() => Number.parseInt(id, 10), [id])","hasExclamationToken":false,"kind":40}]},"if (!eventBus) {\n\treturn <MissingEventBus />;\n}","if (!dashboards) {\n\treturn <NoDashboardsMessage />;\n}","return (\n\t<ClipboardContext.Provider value={clipState}>\n\t\t<Dashboard dashboard={dashboards[idAsNumber]} />\n\t</ClipboardContext.Provider>\n);"],"parameters":[],"typeParameters":[],"docs":[{"description":"\nA Telestion Client page that renders a dashboard page.\nIt displays the currently active dashboard of an authenticated user.\n\nIt can be changed with the {@link DashboardPicker} component\nusually used in the application header.\nTo register a new dashboard for the user or change existing,\nuse the {@link useUserConfig} hook.\n\nIt only renders if someone is authenticated.\nOtherwise, it redirects to the login page.\n\n**Attention**\n\nIf you create your own dashboard page, please pass\nthe routing information so that the pages component read it\nand render the page the right way:\n`MyDashboardPage.routing = TCDashboardPage.routing;`\n","tags":[{"text":"{@link DashboardPicker}\n","tagName":"@see"},{"text":"{@link useUserConfig}\n","tagName":"@see"},{"text":"{@link @wuespace/telestion-client-types#UserConfig}\n","tagName":"@see"},{"text":"{@link @wuespace/telestion-client-core#Pages}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction App() {\n\treturn (\n\t\t<TelestionClient>\n\t\t\t<Pages>\n\t\t\t\t<LoginPage />\n\t\t\t\t<DashboardPage />\n\t\t\t\t<NotFoundPage />\n\t\t\t</Pages>\n\t\t</TelestionClient>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="LoginForm" href="#LoginForm">
-            <h3><code>LoginForm</code></h3></a>
+            <h3><code>
+                    LoginForm                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -2535,12 +3218,13 @@ MyLoginPage.routing = TCLoginPage.routing;
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="LoginFormProps" href="#LoginFormProps">
-            <h3><code>LoginFormProps</code></h3></a>
+            <h3><code>
+                    LoginFormProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -2635,12 +3319,13 @@ in the <a href="#LoginForm"><code>LoginForm</code></a> component.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="LoginDescription" href="#LoginDescription">
-            <h3><code>LoginDescription</code></h3></a>
+            <h3><code>
+                    LoginDescription                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -2737,12 +3422,13 @@ MyLoginPage.routing = TCLoginPage.routing;
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="LoginDescriptionProps" href="#LoginDescriptionProps">
-            <h3><code>LoginDescriptionProps</code></h3></a>
+            <h3><code>
+                    LoginDescriptionProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -2836,12 +3522,13 @@ and are rendered instead.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="LoginLogo" href="#LoginLogo">
-            <h3><code>LoginLogo</code></h3></a>
+            <h3><code>
+                    LoginLogo                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -2903,12 +3590,13 @@ MyLoginPage.routing = TCLoginPage.routing;
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="LoginPage" href="#LoginPage">
-            <h3><code>LoginPage</code></h3></a>
+            <h3><code>
+                    LoginPage                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -3050,15 +3738,22 @@ MyLoginPage.routing = TCLoginPage.routing;
 </code></pre>
 </div>
             </div>
-                                            <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"LoginPage","declarations":[{"type":"function","name":"LoginPage","declarations":[{"name":"LoginPage","statements":["return (\n\t<Flex\n\t\twidth=\"100%\"\n\t\theight=\"100%\"\n\t\tdirection=\"column\"\n\t\tjustifyContent=\"center\"\n\t\talignItems=\"center\"\n\t>\n\t\t<Flex direction=\"column\" maxWidth=\"size-4600\">\n\t\t\t{children}\n\t\t</Flex>\n\t</Flex>\n);"],"parameters":[{"name":"{ children }","type":"LoginPageProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nA Telestion Client page that renders a login page\nwhere the user typically enters their credentials\nto log into the application.\n\nIt only renders if nobody is authenticated.\nOtherwise, it redirects to the dashboard page.\n\nIt aligns its children vertically.\n\nPossible children components are:\n- {@link LoginTitle}\n- {@link LoginLogo}\n- {@link LoginDescription}\n- {@link LoginForm}\n\n* **Attention**\n\nIf you create your own login page, please pass\nthe routing information so that the pages component read it\nand render the page the right way:\n`MyLoginPage.routing = TCLoginPage.routing;`\n","tags":[{"text":"{@Link LoginPageProps}\n","tagName":"@see"},{"text":"{@link LoginTitle}\n","tagName":"@see"},{"text":"{@link LoginLogo}\n","tagName":"@see"},{"text":"{@link LoginDescription}\n","tagName":"@see"},{"text":"{@link LoginForm}\n","tagName":"@see"},{"text":"{@link @wuespace/telestion-client-core#Pages}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction MyLoginPage() {\n\treturn (\n\t\t<LoginPage>\n\t\t\t<LoginLogo />\n\t\t\t<LoginTitle />\n\t\t\t<LoginDescription />\n\t\t\t<LoginForm initialServerURL=\"http://localhost:9870/bridge\" />\n\t\t</LoginPage>\n\t);\n}\n\nMyLoginPage.routing = TCLoginPage.routing;\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
+                            <!-- Name with an anchor link -->
+        <a id="LoginPage" href="#LoginPage">
+            <h3><code>
+                    LoginPage                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                        <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"LoginPage","declarations":[{"type":"function","name":"LoginPage","declarations":[{"name":"LoginPage","statements":["return (\n\t<Flex\n\t\twidth=\"100%\"\n\t\theight=\"100%\"\n\t\tdirection=\"column\"\n\t\tjustifyContent=\"center\"\n\t\talignItems=\"center\"\n\t>\n\t\t<Flex direction=\"column\" maxWidth=\"size-4600\">\n\t\t\t{children}\n\t\t</Flex>\n\t</Flex>\n);"],"parameters":[{"name":"{ children }","type":"LoginPageProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nA Telestion Client page that renders a login page\nwhere the user typically enters their credentials\nto log into the application.\n\nIt only renders if nobody is authenticated.\nOtherwise, it redirects to the dashboard page.\n\nIt aligns its children vertically.\n\nPossible children components are:\n- {@link LoginTitle}\n- {@link LoginLogo}\n- {@link LoginDescription}\n- {@link LoginForm}\n\n* **Attention**\n\nIf you create your own login page, please pass\nthe routing information so that the pages component read it\nand render the page the right way:\n`MyLoginPage.routing = TCLoginPage.routing;`\n","tags":[{"text":"{@Link LoginPageProps}\n","tagName":"@see"},{"text":"{@link LoginTitle}\n","tagName":"@see"},{"text":"{@link LoginLogo}\n","tagName":"@see"},{"text":"{@link LoginDescription}\n","tagName":"@see"},{"text":"{@link LoginForm}\n","tagName":"@see"},{"text":"{@link @wuespace/telestion-client-core#Pages}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction MyLoginPage() {\n\treturn (\n\t\t<LoginPage>\n\t\t\t<LoginLogo />\n\t\t\t<LoginTitle />\n\t\t\t<LoginDescription />\n\t\t\t<LoginForm initialServerURL=\"http://localhost:9870/bridge\" />\n\t\t</LoginPage>\n\t);\n}\n\nMyLoginPage.routing = TCLoginPage.routing;\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="LoginPageProps" href="#LoginPageProps">
-            <h3><code>LoginPageProps</code></h3></a>
+            <h3><code>
+                    LoginPageProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3138,12 +3833,13 @@ MyLoginPage.routing = TCLoginPage.routing;
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="LoginTitle" href="#LoginTitle">
-            <h3><code>LoginTitle</code></h3></a>
+            <h3><code>
+                    LoginTitle                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -3205,12 +3901,13 @@ MyLoginPage.routing = TCLoginPage.routing;
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="NotFoundPage" href="#NotFoundPage">
-            <h3><code>NotFoundPage</code></h3></a>
+            <h3><code>
+                    NotFoundPage                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -3277,15 +3974,22 @@ and render the page the right way:
 </code></pre>
 </div>
             </div>
-                                            <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"NotFoundPage","declarations":[{"type":"function","name":"NotFoundPage","declarations":[{"name":"NotFoundPage","statements":["return <NotFoundMessage />;"],"parameters":[],"typeParameters":[],"docs":[{"description":"\nA Telestion Client page that renders a fallback page\nif the current route doesn't fit a page higher up in the list.\nThe component displays a _\"not found\"_ message and a button to return\nto the dashboard page if the user is logged in.\nOtherwise, the component redirects to the login page.\n\nIt renders regardless if the user is authenticated or not.\n\n**Attention**\n\nIf you create your own not found page, please pass\nthe routing information so that the pages component read it\nand render the page the right way:\n`MyNotFoundPage.routing = TCNotFoundPage.routing;`\n","tags":[{"text":"{@link @wuespace/telestion-client-core#Pages}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction App() {\n\treturn (\n\t\t<TelestionClient>\n\t\t\t<Pages>\n\t\t\t\t<LoginPage />\n\t\t\t\t<DashboardPage />\n\t\t\t\t<NotFoundPage />\n\t\t\t</Pages>\n\t\t</TelestionClient>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
+                            <!-- Name with an anchor link -->
+        <a id="NotFoundPage" href="#NotFoundPage">
+            <h3><code>
+                    NotFoundPage                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                        <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"NotFoundPage","declarations":[{"type":"function","name":"NotFoundPage","declarations":[{"name":"NotFoundPage","statements":["return <NotFoundMessage />;"],"parameters":[],"typeParameters":[],"docs":[{"description":"\nA Telestion Client page that renders a fallback page\nif the current route doesn't fit a page higher up in the list.\nThe component displays a _\"not found\"_ message and a button to return\nto the dashboard page if the user is logged in.\nOtherwise, the component redirects to the login page.\n\nIt renders regardless if the user is authenticated or not.\n\n**Attention**\n\nIf you create your own not found page, please pass\nthe routing information so that the pages component read it\nand render the page the right way:\n`MyNotFoundPage.routing = TCNotFoundPage.routing;`\n","tags":[{"text":"{@link @wuespace/telestion-client-core#Pages}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction App() {\n\treturn (\n\t\t<TelestionClient>\n\t\t\t<Pages>\n\t\t\t\t<LoginPage />\n\t\t\t\t<DashboardPage />\n\t\t\t\t<NotFoundPage />\n\t\t\t</Pages>\n\t\t</TelestionClient>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="LoadingIndicator" href="#LoadingIndicator">
-            <h3><code>LoadingIndicator</code></h3></a>
+            <h3><code>
+                    LoadingIndicator                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -3399,12 +4103,13 @@ return (
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="LoadingIndicatorProps" href="#LoadingIndicatorProps">
-            <h3><code>LoadingIndicatorProps</code></h3></a>
+            <h3><code>
+                    LoadingIndicatorProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3557,12 +4262,13 @@ if it is 0 it waits indefinitely.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="OverflowFix" href="#OverflowFix">
-            <h3><code>OverflowFix</code></h3></a>
+            <h3><code>
+                    OverflowFix                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -3653,12 +4359,13 @@ All props of this component get passed to the outer
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="OverflowFixProps" href="#OverflowFixProps">
-            <h3><code>OverflowFixProps</code></h3></a>
+            <h3><code>
+                    OverflowFixProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3731,12 +4438,13 @@ All props of this component get passed to the outer
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="CommonWrapper" href="#CommonWrapper">
-            <h3><code>CommonWrapper</code></h3></a>
+            <h3><code>
+                    CommonWrapper                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -3824,12 +4532,13 @@ function App() {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="CommonWrapperProps" href="#CommonWrapperProps">
-            <h3><code>CommonWrapperProps</code></h3></a>
+            <h3><code>
+                    CommonWrapperProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3944,12 +4653,13 @@ instead of the default Telestion logo.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useCurrentDashboards" href="#useCurrentDashboards">
-            <h3><code>useCurrentDashboards</code></h3></a>
+            <h3><code>
+                    useCurrentDashboards                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -4048,12 +4758,13 @@ and a setter function to update the dashboards for the current user.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useDarkColorScheme" href="#useDarkColorScheme">
-            <h3><code>useDarkColorScheme</code></h3></a>
+            <h3><code>
+                    useDarkColorScheme                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -4120,12 +4831,13 @@ from <code>useColorScheme</code> received</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useDashboards" href="#useDashboards">
-            <h3><code>useDashboards</code></h3></a>
+            <h3><code>
+                    useDashboards                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -4246,12 +4958,13 @@ and a setter function to update the dashboards for the current user.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="DispatchDashboards" href="#DispatchDashboards">
-            <h3><code>DispatchDashboards</code></h3></a>
+            <h3><code>
+                    DispatchDashboards                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4280,12 +4993,13 @@ and a setter function to update the dashboards for the current user.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useColorScheme" href="#useColorScheme">
-            <h3><code>useColorScheme</code></h3></a>
+            <h3><code>
+                    useColorScheme                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4411,12 +5125,13 @@ to check for state updates on the picked elements</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="showDialog" href="#showDialog">
-            <h3><code>showDialog</code></h3></a>
+            <h3><code>
+                    showDialog                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -4549,12 +5264,13 @@ function MyComponent() {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useDialog" href="#useDialog">
-            <h3><code>useDialog</code></h3></a>
+            <h3><code>
+                    useDialog                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4685,12 +5401,13 @@ function MyComponent() {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useUserConfig" href="#useUserConfig">
-            <h3><code>useUserConfig</code></h3></a>
+            <h3><code>
+                    useUserConfig                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4848,12 +5565,13 @@ function MyComponent() {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ColorScheme" href="#ColorScheme">
-            <h3><code>ColorScheme</code></h3></a>
+            <h3><code>
+                    ColorScheme                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4887,12 +5605,13 @@ function MyComponent() {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ColorSchemeState" href="#ColorSchemeState">
-            <h3><code>ColorSchemeState</code></h3></a>
+            <h3><code>
+                    ColorSchemeState                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -5014,12 +5733,13 @@ function MyComponent() {
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="CallableComponent" href="#CallableComponent">
-            <h3><code>CallableComponent</code></h3></a>
+            <h3><code>
+                    CallableComponent                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -5106,12 +5826,13 @@ It returns a valid React node.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="DialogConfig" href="#DialogConfig">
-            <h3><code>DialogConfig</code></h3></a>
+            <h3><code>
+                    DialogConfig                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -5308,12 +6029,13 @@ in the center of the dialog.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Dialog" href="#Dialog">
-            <h3><code>Dialog</code></h3></a>
+            <h3><code>
+                    Dialog                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -5481,12 +6203,13 @@ given via the <a href="#DialogState.show"><code>DialogState.show</code></a> func
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="DialogState" href="#DialogState">
-            <h3><code>DialogState</code></h3></a>
+            <h3><code>
+                    DialogState                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -5674,12 +6397,13 @@ when the user confirms and rejects, when the user canceled the dialog</p>
             </div>
                             </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="UserConfigState" href="#UserConfigState">
-            <h3><code>UserConfigState</code></h3></a>
+            <h3><code>
+                    UserConfigState                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -6019,12 +6743,13 @@ console.log(infos.dashboards);
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useBooleanState" href="#useBooleanState">
-            <h3><code>useBooleanState</code></h3></a>
+            <h3><code>
+                    useBooleanState                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -6108,12 +6833,13 @@ or switch between two different modes in your component.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="InitialState" href="#InitialState">
-            <h3><code>InitialState</code></h3></a>
+            <h3><code>
+                    InitialState                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -6143,12 +6869,13 @@ or switch between two different modes in your component.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ReturnType" href="#ReturnType">
-            <h3><code>ReturnType</code></h3></a>
+            <h3><code>
+                    ReturnType                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -6192,12 +6919,13 @@ or switch between two different modes in your component.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useEvent" href="#useEvent">
-            <h3><code>useEvent</code></h3></a>
+            <h3><code>
+                    useEvent                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -6320,12 +7048,13 @@ function MyComponent({ children }: Props) {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useStoredState" href="#useStoredState">
-            <h3><code>useStoredState</code></h3></a>
+            <h3><code>
+                    useStoredState                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -6437,12 +7166,13 @@ function MyComponent({ children }: Props) {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useDependencyTimeout" href="#useDependencyTimeout">
-            <h3><code>useDependencyTimeout</code></h3></a>
+            <h3><code>
+                    useDependencyTimeout                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -6584,12 +7314,13 @@ return &lt;p&gt;Waiting for incoming data&lt;/p&gt;;
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useSpectrumColor" href="#useSpectrumColor">
-            <h3><code>useSpectrumColor</code></h3></a>
+            <h3><code>
+                    useSpectrumColor                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -6667,12 +7398,13 @@ console.log(color2); // c4a600
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useDesktopNotifications" href="#useDesktopNotifications">
-            <h3><code>useDesktopNotifications</code></h3></a>
+            <h3><code>
+                    useDesktopNotifications                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -6735,12 +7467,13 @@ export function App() {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Optional" href="#Optional">
-            <h3><code>Optional</code></h3></a>
+            <h3><code>
+                    Optional                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -6838,12 +7571,13 @@ type FooWithOptional = Optional&lt;Foo, 'foo' | 'bar'&gt;;
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="SetPartialStateAction" href="#SetPartialStateAction">
-            <h3><code>SetPartialStateAction</code></h3></a>
+            <h3><code>
+                    SetPartialStateAction                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -6910,12 +7644,13 @@ and expects parts of a new state.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Undefinable" href="#Undefinable">
-            <h3><code>Undefinable</code></h3></a>
+            <h3><code>
+                    Undefinable                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -6973,12 +7708,13 @@ for more information.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="StaticColorMap" href="#StaticColorMap">
-            <h3><code>StaticColorMap</code></h3></a>
+            <h3><code>
+                    StaticColorMap                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -7007,12 +7743,13 @@ for more information.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ColorMap" href="#ColorMap">
-            <h3><code>ColorMap</code></h3></a>
+            <h3><code>
+                    ColorMap                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -7052,12 +7789,13 @@ for a specific spectrum color theme.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="staticColors" href="#staticColors">
-            <h3><code>staticColors</code></h3></a>
+            <h3><code>
+                    staticColors                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -7089,12 +7827,13 @@ for a specific spectrum color theme.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="lightColors" href="#lightColors">
-            <h3><code>lightColors</code></h3></a>
+            <h3><code>
+                    lightColors                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -7126,12 +7865,13 @@ for a specific spectrum color theme.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="darkColors" href="#darkColors">
-            <h3><code>darkColors</code></h3></a>
+            <h3><code>
+                    darkColors                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -7163,12 +7903,13 @@ for a specific spectrum color theme.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="isDefinedValue" href="#isDefinedValue">
-            <h3><code>isDefinedValue</code></h3></a>
+            <h3><code>
+                    isDefinedValue                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -7258,12 +7999,13 @@ myList.every(isDefinedValue); // false
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="commonWidgets" href="#commonWidgets">
-            <h3><code>commonWidgets</code></h3></a>
+            <h3><code>
+                    commonWidgets                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -7281,12 +8023,13 @@ myList.every(isDefinedValue); // false
     <p><small>No docs provided</small></p>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="eventbusDebugWidget" href="#eventbusDebugWidget">
-            <h3><code>eventbusDebugWidget</code></h3></a>
+            <h3><code>
+                    eventbusDebugWidget                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>

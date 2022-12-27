@@ -78,14 +78,370 @@
 <p>You can access these members by importing the module:</p>
 <pre><code>import { <i>member</i> } from '@wuespace/telestion-client-core';</code></pre>
 
+<!--Table of contents for members-->
+    <ul>
+                    <li>
+                                <a href="#TelestionClient">
+                    <code>
+                        function                        TelestionClient                         (...)                     </code>
+                </a>
+                                                <a href="#TelestionClient">
+                    <code>
+                        identifier                        TelestionClient                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#TelestionClientProps">
+                    <code>
+                        interface                        TelestionClientProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#TelestionClientProps.title"><code>title</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#TelestionClientProps.wrapper"><code>wrapper</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#TelestionClientProps.children"><code>children</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#Pages">
+                    <code>
+                        function                        Pages                         (...)                     </code>
+                </a>
+                                                <a href="#Pages">
+                    <code>
+                        identifier                        Pages                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#PagesProps">
+                    <code>
+                        interface                        PagesProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#PagesProps.preNodes"><code>preNodes</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#PagesProps.postNodes"><code>postNodes</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#PagesProps.children"><code>children</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#Preferences">
+                    <code>
+                        function                        Preferences                         (...)                     </code>
+                </a>
+                                                <a href="#Preferences">
+                    <code>
+                        identifier                        Preferences                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#PreferencesProps">
+                    <code>
+                        interface                        PreferencesProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#PreferencesProps.children"><code>children</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#Group">
+                    <code>
+                        function                        Group                         (...)                     </code>
+                </a>
+                                                <a href="#Group">
+                    <code>
+                        identifier                        Group                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#GroupProps">
+                    <code>
+                        interface                        GroupProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#GroupProps.name"><code>name</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#GroupProps.children"><code>children</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#Variable">
+                    <code>
+                        function                        Variable                         (...)                     </code>
+                </a>
+                                                <a href="#Variable">
+                    <code>
+                        identifier                        Variable                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#VariableProps">
+                    <code>
+                        interface                        VariableProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#VariableProps.name"><code>name</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#VariableProps.initialValue"><code>initialValue</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#VariableProps.children"><code>children</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#useBroadcast">
+                    <code>
+                        function                        useBroadcast                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useChannel">
+                    <code>
+                        function                        useChannel                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useChannelLatest">
+                    <code>
+                        function                        useChannelLatest                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useRequest">
+                    <code>
+                        function                        useRequest                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#SendFunction">
+                    <code>
+                        type                        SendFunction                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#usePrefValue">
+                    <code>
+                        function                        usePrefValue                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useTitle">
+                    <code>
+                        function                        useTitle                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useEventBusManager">
+                    <code>
+                        function                        useEventBusManager                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#EventBusManagerOptions">
+                    <code>
+                        interface                        EventBusManagerOptions                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#EventBusManagerOptions.options"><code>options</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#EventBusManagerOptions.onOpen"><code>onOpen</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#EventBusManagerOptions.onClose"><code>onClose</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#useAuth">
+                    <code>
+                        variable                        useAuth                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useEventBus">
+                    <code>
+                        variable                        useEventBus                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#useNotifications">
+                    <code>
+                        variable                        useNotifications                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#usePreferences">
+                    <code>
+                        variable                        usePreferences                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#PreferencesState">
+                    <code>
+                        interface                        PreferencesState                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#PreferencesState.preferences"><code>preferences</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#PreferencesState.setValue"><code>setValue</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#PreferencesState.setRenderer"><code>setRenderer</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#PreferencesState.removePreference"><code>removePreference</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#PreferencesState.removeGroup"><code>removeGroup</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#PreferencesState.setStore"><code>setStore</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#NotificationState">
+                    <code>
+                        interface                        NotificationState                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#NotificationState.notifications"><code>notifications</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#NotificationState.isMuted"><code>isMuted</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#NotificationState.add"><code>add</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#NotificationState.dismiss"><code>dismiss</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#NotificationState.showAll"><code>showAll</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#NotificationState.mute"><code>mute</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#NotificationState.unmute"><code>unmute</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#NotificationState.toggle"><code>toggle</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#ConnectionState">
+                    <code>
+                        type                        ConnectionState                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#EventBusState">
+                    <code>
+                        interface                        EventBusState                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#EventBusState.eventBus"><code>eventBus</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#EventBusState.connectionState"><code>connectionState</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#EventBusState.error"><code>error</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#EventBusState.lastErrorMessage"><code>lastErrorMessage</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#EventBusState.openEventBus"><code>openEventBus</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#EventBusState.closeEventBus"><code>closeEventBus</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#Authentication">
+                    <code>
+                        interface                        Authentication                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#Authentication.username"><code>username</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Authentication.authServerUrl"><code>authServerUrl</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Authentication.eventBusUrl"><code>eventBusUrl</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#AuthState">
+                    <code>
+                        interface                        AuthState                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#AuthState.auth"><code>auth</code></a>
+                            </li>
+                                                                        <li>
+                            <a href="#AuthState.signIn"><code>signIn (...)</code></a>
+                        </li>
+                                                <li>
+                            <a href="#AuthState.signOut"><code>signOut (...)</code></a>
+                        </li>
+                                            </ul>
+                                            </li>
+                    <li>
+                                <a href="#useLogger">
+                    <code>
+                        function                        useLogger                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#getLogger">
+                    <code>
+                        function                        getLogger                         (...)                     </code>
+                </a>
+                                            </li>
+            </ul>
+
 <!-- Members -->
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="TelestionClient" href="#TelestionClient">
-            <h3><code>TelestionClient</code></h3></a>
+            <h3><code>
+                    TelestionClient                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -159,15 +515,22 @@ ReactDOM.render(
 </code></pre>
 </div>
             </div>
-                                            <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"TelestionClient","declarations":[{"type":"function","name":"TelestionClient","declarations":[{"name":"TelestionClient","statements":[{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"update","initializer":"usePreferences(selector)","hasExclamationToken":false,"kind":40}]},"useEffect(() => {\n\tupdate('null', 'title', title);\n}, [title, update]);","return <>{wrapper ? wrapper(children) : children}</>;"],"parameters":[{"name":"{\n\ttitle = 'Telestion Client',\n\twrapper,\n\tchildren\n}","type":"TelestionClientProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nThe \"root\" component of a Telestion Client.\n\nEvery part of a Telestion Client application should be a child\nof this component.\n","tags":[{"text":"{@link TelestionClientProps}\n\n","tagName":"@see"},{"text":"\nA very simple Telestion Client\n```ts\nimport ReactDOM from 'react-dom';\n\nReactDOM.render(\n\t<TelestionClient />,\n\tdocument.getElementById('root')\n);\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
+                            <!-- Name with an anchor link -->
+        <a id="TelestionClient" href="#TelestionClient">
+            <h3><code>
+                    TelestionClient                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                        <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"TelestionClient","declarations":[{"type":"function","name":"TelestionClient","declarations":[{"name":"TelestionClient","statements":[{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"update","initializer":"usePreferences(selector)","hasExclamationToken":false,"kind":40}]},"useEffect(() => {\n\tupdate('null', 'title', title);\n}, [title, update]);","return <>{wrapper ? wrapper(children) : children}</>;"],"parameters":[{"name":"{\n\ttitle = 'Telestion Client',\n\twrapper,\n\tchildren\n}","type":"TelestionClientProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nThe \"root\" component of a Telestion Client.\n\nEvery part of a Telestion Client application should be a child\nof this component.\n","tags":[{"text":"{@link TelestionClientProps}\n\n","tagName":"@see"},{"text":"\nA very simple Telestion Client\n```ts\nimport ReactDOM from 'react-dom';\n\nReactDOM.render(\n\t<TelestionClient />,\n\tdocument.getElementById('root')\n);\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="TelestionClientProps" href="#TelestionClientProps">
-            <h3><code>TelestionClientProps</code></h3></a>
+            <h3><code>
+                    TelestionClientProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -315,12 +678,13 @@ It renders them in his context.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Pages" href="#Pages">
-            <h3><code>Pages</code></h3></a>
+            <h3><code>
+                    Pages                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -395,15 +759,22 @@ that is attached to the actual component.</p>
 </code></pre>
 </div>
             </div>
-                                            <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"Pages","declarations":[{"type":"function","name":"Pages","declarations":[{"name":"Pages","statements":[{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"isAuthenticated","initializer":"useAuth(selector)","hasExclamationToken":false,"kind":40}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"routes","initializer":"[]","type":"ReactNode[]","hasExclamationToken":false,"kind":40}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"lastRoutes","initializer":"[]","type":"ReactNode[]","hasExclamationToken":false,"kind":40}]},"Children.forEach(children, (child, index) => {\n\t\tif (isValidChild(child)) {\n\t\t\t// build valid routing object\n\t\t\tconst routing = {\n\t\t\t\t...defaultRouting,\n\t\t\t\t...parseRouting(child.type.name, child.type.routing)\n\t\t\t};\n\n\t\t\t// add required routes\n\t\t\troutes.push(buildRoute(routing, child, isAuthenticated));\n\t\t\trouting.additionalRedirects.forEach(redirect =>\n\t\t\t\tredirect.last\n\t\t\t\t\t? lastRoutes.push(buildRedirect(redirect))\n\t\t\t\t\t: routes.push(buildRedirect(redirect))\n\t\t\t);\n\t\t} else {\n\t\t\tthrow new TypeError(\n\t\t\t\t`Child No. ${index} is not a valid Page component in Pages renderer.` +\n\t\t\t\t\t'Please define a valid React Component and attach a routing object to the component.'\n\t\t\t);\n\t\t}\n\t});","return (\n\t<Router>\n\t\t{preNodes}\n\t\t<Switch>\n\t\t\t{routes}\n\t\t\t{lastRoutes}\n\t\t</Switch>\n\t\t{postNodes}\n\t</Router>\n);"],"parameters":[{"name":"{ preNodes, postNodes, children }","type":"PagesProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nThe router of the application.\nHere are all pages managed.\n\nEvery page defines a `routing` object\nthat is attached to the actual component.\n\nIf you want to write some pages, please take a look at\n{@link @wuespace/telestion-client-types#Routing} for more information.\n","tags":[{"text":"{@link PagesProps}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction MyPages() {\n\treturn (\n\t\t<Pages>\n\t\t\t<LoginPage />\n\t\t\t<DashboardPage />\n\t\t\t<NotFoundPage />\n\t\t</Pages>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
+                            <!-- Name with an anchor link -->
+        <a id="Pages" href="#Pages">
+            <h3><code>
+                    Pages                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                        <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"Pages","declarations":[{"type":"function","name":"Pages","declarations":[{"name":"Pages","statements":[{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"isAuthenticated","initializer":"useAuth(selector)","hasExclamationToken":false,"kind":40}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"routes","initializer":"[]","type":"ReactNode[]","hasExclamationToken":false,"kind":40}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"lastRoutes","initializer":"[]","type":"ReactNode[]","hasExclamationToken":false,"kind":40}]},"Children.forEach(children, (child, index) => {\n\t\tif (isValidChild(child)) {\n\t\t\t// build valid routing object\n\t\t\tconst routing = {\n\t\t\t\t...defaultRouting,\n\t\t\t\t...parseRouting(child.type.name, child.type.routing)\n\t\t\t};\n\n\t\t\t// add required routes\n\t\t\troutes.push(buildRoute(routing, child, isAuthenticated));\n\t\t\trouting.additionalRedirects.forEach(redirect =>\n\t\t\t\tredirect.last\n\t\t\t\t\t? lastRoutes.push(buildRedirect(redirect))\n\t\t\t\t\t: routes.push(buildRedirect(redirect))\n\t\t\t);\n\t\t} else {\n\t\t\tthrow new TypeError(\n\t\t\t\t`Child No. ${index} is not a valid Page component in Pages renderer.` +\n\t\t\t\t\t'Please define a valid React Component and attach a routing object to the component.'\n\t\t\t);\n\t\t}\n\t});","return (\n\t<Router>\n\t\t{preNodes}\n\t\t<Switch>\n\t\t\t{routes}\n\t\t\t{lastRoutes}\n\t\t</Switch>\n\t\t{postNodes}\n\t</Router>\n);"],"parameters":[{"name":"{ preNodes, postNodes, children }","type":"PagesProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nThe router of the application.\nHere are all pages managed.\n\nEvery page defines a `routing` object\nthat is attached to the actual component.\n\nIf you want to write some pages, please take a look at\n{@link @wuespace/telestion-client-types#Routing} for more information.\n","tags":[{"text":"{@link PagesProps}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction MyPages() {\n\treturn (\n\t\t<Pages>\n\t\t\t<LoginPage />\n\t\t\t<DashboardPage />\n\t\t\t<NotFoundPage />\n\t\t</Pages>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="PagesProps" href="#PagesProps">
-            <h3><code>PagesProps</code></h3></a>
+            <h3><code>
+                    PagesProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -529,12 +900,13 @@ The <a href="#Pages"><code>Pages</code></a> component renders them based on the 
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Preferences" href="#Preferences">
-            <h3><code>Preferences</code></h3></a>
+            <h3><code>
+                    Preferences                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -644,15 +1016,22 @@ which defining application preferences and their renderers.</p>
 </code></pre>
 </div>
             </div>
-                                            <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"Preferences","declarations":[{"type":"function","name":"Preferences","declarations":[{"name":"Preferences","statements":["return <>{children}</>;"],"parameters":[{"name":"{ children }","type":"PreferencesProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nWrapper component for {@link Group} and {@link Variable}\nwhich defining application preferences and their renderers.\n","tags":[{"text":"{@link Group}\n","tagName":"@see"},{"text":"{@link Variable}\n","tagName":"@see"},{"text":"{@link usePreferences}\n","tagName":"@see"},{"text":"{@link PreferencesProps}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction MyPreferences() {\n\treturn (\n\t\t<Preferences>\n\t\t\t<Variable name=\"myPref\">\n\t\t\t\t{(value, setValue) => (\n\t\t\t\t\t<input value={value} onChange={event => setValue(event.target.value)} />\n\t\t\t\t)}\n\t\t\t</Variable>\n\t\t\t<Group name=\"SomeGroup\">\n\t\t\t\t<Variable name=\"groupedPref\">\n\t\t\t\t\t{(value, setValue) => (\n\t\t\t\t\t\t<input value={value} onChange={event => setValue(event.target.value)} />\n\t\t\t\t\t)}\n\t\t\t\t</Variable>\n\t\t\t</Group>\n\t\t</Preferences>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
+                            <!-- Name with an anchor link -->
+        <a id="Preferences" href="#Preferences">
+            <h3><code>
+                    Preferences                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                        <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"Preferences","declarations":[{"type":"function","name":"Preferences","declarations":[{"name":"Preferences","statements":["return <>{children}</>;"],"parameters":[{"name":"{ children }","type":"PreferencesProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nWrapper component for {@link Group} and {@link Variable}\nwhich defining application preferences and their renderers.\n","tags":[{"text":"{@link Group}\n","tagName":"@see"},{"text":"{@link Variable}\n","tagName":"@see"},{"text":"{@link usePreferences}\n","tagName":"@see"},{"text":"{@link PreferencesProps}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction MyPreferences() {\n\treturn (\n\t\t<Preferences>\n\t\t\t<Variable name=\"myPref\">\n\t\t\t\t{(value, setValue) => (\n\t\t\t\t\t<input value={value} onChange={event => setValue(event.target.value)} />\n\t\t\t\t)}\n\t\t\t</Variable>\n\t\t\t<Group name=\"SomeGroup\">\n\t\t\t\t<Variable name=\"groupedPref\">\n\t\t\t\t\t{(value, setValue) => (\n\t\t\t\t\t\t<input value={value} onChange={event => setValue(event.target.value)} />\n\t\t\t\t\t)}\n\t\t\t\t</Variable>\n\t\t\t</Group>\n\t\t</Preferences>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="PreferencesProps" href="#PreferencesProps">
-            <h3><code>PreferencesProps</code></h3></a>
+            <h3><code>
+                    PreferencesProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -726,12 +1105,13 @@ to build an application preferences structure.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Group" href="#Group">
-            <h3><code>Group</code></h3></a>
+            <h3><code>
+                    Group                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -841,15 +1221,22 @@ It gives <a href="#Variable"><code>Variable</code></a> a group context.</p>
 </code></pre>
 </div>
             </div>
-                                            <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"Group","declarations":[{"type":"function","name":"Group","declarations":[{"name":"Group","statements":["return <GroupContext name={name}>{children}</GroupContext>;"],"parameters":[{"name":"{ name, children }","type":"GroupProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nDefines a group of variables which are typically {@link Variable} components.\nIt gives {@link Variable} a group context.\n","tags":[{"text":"{@link Variable}\n","tagName":"@see"},{"text":"{@link Preferences}\n","tagName":"@see"},{"text":"{@link usePreferences}\n","tagName":"@see"},{"text":"{@link GroupProps}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction MyPreferences() {\n\treturn (\n\t\t<Preferences>\n\t\t\t<Variable name=\"myPref\">\n\t\t\t\t{(value, setValue) => (\n\t\t\t\t\t<input value={value} onChange={event => setValue(event.target.value)} />\n\t\t\t\t)}\n\t\t\t</Variable>\n\t\t\t<Group name=\"SomeGroup\">\n\t\t\t\t<Variable name=\"groupedPref\">\n\t\t\t\t\t{(value, setValue) => (\n\t\t\t\t\t\t<input value={value} onChange={event => setValue(event.target.value)} />\n\t\t\t\t\t)}\n\t\t\t\t</Variable>\n\t\t\t</Group>\n\t\t</Preferences>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
+                            <!-- Name with an anchor link -->
+        <a id="Group" href="#Group">
+            <h3><code>
+                    Group                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                        <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"Group","declarations":[{"type":"function","name":"Group","declarations":[{"name":"Group","statements":["return <GroupContext name={name}>{children}</GroupContext>;"],"parameters":[{"name":"{ name, children }","type":"GroupProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nDefines a group of variables which are typically {@link Variable} components.\nIt gives {@link Variable} a group context.\n","tags":[{"text":"{@link Variable}\n","tagName":"@see"},{"text":"{@link Preferences}\n","tagName":"@see"},{"text":"{@link usePreferences}\n","tagName":"@see"},{"text":"{@link GroupProps}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction MyPreferences() {\n\treturn (\n\t\t<Preferences>\n\t\t\t<Variable name=\"myPref\">\n\t\t\t\t{(value, setValue) => (\n\t\t\t\t\t<input value={value} onChange={event => setValue(event.target.value)} />\n\t\t\t\t)}\n\t\t\t</Variable>\n\t\t\t<Group name=\"SomeGroup\">\n\t\t\t\t<Variable name=\"groupedPref\">\n\t\t\t\t\t{(value, setValue) => (\n\t\t\t\t\t\t<input value={value} onChange={event => setValue(event.target.value)} />\n\t\t\t\t\t)}\n\t\t\t\t</Variable>\n\t\t\t</Group>\n\t\t</Preferences>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="GroupProps" href="#GroupProps">
-            <h3><code>GroupProps</code></h3></a>
+            <h3><code>
+                    GroupProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -943,12 +1330,13 @@ to build an application preferences structure.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Variable" href="#Variable">
-            <h3><code>Variable</code></h3></a>
+            <h3><code>
+                    Variable                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1062,15 +1450,22 @@ otherwise for the preference in the global scope.</p>
 </code></pre>
 </div>
             </div>
-                                            <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"Variable","declarations":[{"type":"function","name":"Variable","declarations":[{"name":"Variable","statements":[{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"{ setRenderer, setValue }","initializer":"usePreferences(selector, shallow)","hasExclamationToken":false,"kind":40}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"group","initializer":"useGroup()","hasExclamationToken":false,"kind":40}]},"useEffect(() => {\n\tif (initialValue) {\n\t\t// if not in group context, use global scope\n\t\tsetValue(group, name, initialValue);\n\t}\n}, [group, name, initialValue, setValue]);","useEffect(() => {\n\t// if not in group context, use global scope\n\tsetRenderer(group, name, children);\n}, [group, name, children, setRenderer]);","return null;"],"parameters":[{"name":"{ name, initialValue, children }","type":"VariableProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nComponent to define a preference for the application\nand a renderer for this preference.\n\nIf it is wrapped in the {@link Group} component,\nthe renderer will be registered for\nthe preference in that group\notherwise for the preference in the global scope.\n","tags":[{"text":"{@link Group}\n","tagName":"@see"},{"text":"{@link Preferences}\n","tagName":"@see"},{"text":"{@link usePreferences}\n","tagName":"@see"},{"text":"{@link VariableProps}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction MyPreferences() {\n\treturn (\n\t\t<Preferences>\n\t\t\t<Variable name=\"myPref\">\n\t\t\t\t{(value, setValue) => (\n\t\t\t\t\t<input value={value} onChange={event => setValue(event.target.value)} />\n\t\t\t\t)}\n\t\t\t</Variable>\n\t\t\t<Group name=\"SomeGroup\">\n\t\t\t\t<Variable name=\"groupedPref\">\n\t\t\t\t\t{(value, setValue) => (\n\t\t\t\t\t\t<input value={value} onChange={event => setValue(event.target.value)} />\n\t\t\t\t\t)}\n\t\t\t\t</Variable>\n\t\t\t</Group>\n\t\t</Preferences>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
+                            <!-- Name with an anchor link -->
+        <a id="Variable" href="#Variable">
+            <h3><code>
+                    Variable                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                        <!-- UNRESOLVED TYPE: identifier with {"type":"identifier","name":"Variable","declarations":[{"type":"function","name":"Variable","declarations":[{"name":"Variable","statements":[{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"{ setRenderer, setValue }","initializer":"usePreferences(selector, shallow)","hasExclamationToken":false,"kind":40}]},{"isExported":false,"isDefaultExport":false,"hasDeclareKeyword":false,"docs":[],"kind":41,"declarationKind":"const","declarations":[{"name":"group","initializer":"useGroup()","hasExclamationToken":false,"kind":40}]},"useEffect(() => {\n\tif (initialValue) {\n\t\t// if not in group context, use global scope\n\t\tsetValue(group, name, initialValue);\n\t}\n}, [group, name, initialValue, setValue]);","useEffect(() => {\n\t// if not in group context, use global scope\n\tsetRenderer(group, name, children);\n}, [group, name, children, setRenderer]);","return null;"],"parameters":[{"name":"{ name, initialValue, children }","type":"VariableProps","isReadonly":false,"decorators":[],"hasQuestionToken":false,"hasOverrideKeyword":false,"kind":30,"isRestParameter":false}],"typeParameters":[],"docs":[{"description":"\nComponent to define a preference for the application\nand a renderer for this preference.\n\nIf it is wrapped in the {@link Group} component,\nthe renderer will be registered for\nthe preference in that group\notherwise for the preference in the global scope.\n","tags":[{"text":"{@link Group}\n","tagName":"@see"},{"text":"{@link Preferences}\n","tagName":"@see"},{"text":"{@link usePreferences}\n","tagName":"@see"},{"text":"{@link VariableProps}\n\n","tagName":"@see"},{"text":"\n```ts\nfunction MyPreferences() {\n\treturn (\n\t\t<Preferences>\n\t\t\t<Variable name=\"myPref\">\n\t\t\t\t{(value, setValue) => (\n\t\t\t\t\t<input value={value} onChange={event => setValue(event.target.value)} />\n\t\t\t\t)}\n\t\t\t</Variable>\n\t\t\t<Group name=\"SomeGroup\">\n\t\t\t\t<Variable name=\"groupedPref\">\n\t\t\t\t\t{(value, setValue) => (\n\t\t\t\t\t\t<input value={value} onChange={event => setValue(event.target.value)} />\n\t\t\t\t\t)}\n\t\t\t\t</Variable>\n\t\t\t</Group>\n\t\t</Preferences>\n\t);\n}\n```\n","tagName":"@example"}]}],"isExported":true,"isDefaultExport":false,"hasDeclareKeyword":false,"isGenerator":false,"isAsync":false,"kind":13,"overloads":[]}]}]}-->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="VariableProps" href="#VariableProps">
-            <h3><code>VariableProps</code></h3></a>
+            <h3><code>
+                    VariableProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1183,12 +1578,13 @@ otherwise for the preference in the global scope.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useBroadcast" href="#useBroadcast">
-            <h3><code>useBroadcast</code></h3></a>
+            <h3><code>
+                    useBroadcast                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1298,12 +1694,13 @@ return &lt;button onClick={handleClick}&gt;Broadcast a hello world&lt;/button&gt
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useChannel" href="#useChannel">
-            <h3><code>useChannel</code></h3></a>
+            <h3><code>
+                    useChannel                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1471,12 +1868,13 @@ return &lt;p&gt;Content: {state}&lt;/p&gt;;
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useChannelLatest" href="#useChannelLatest">
-            <h3><code>useChannelLatest</code></h3></a>
+            <h3><code>
+                    useChannelLatest                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1607,12 +2005,13 @@ return &lt;p&gt;Latest position: {latestPos}&lt;/p&gt;;
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useRequest" href="#useRequest">
-            <h3><code>useRequest</code></h3></a>
+            <h3><code>
+                    useRequest                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1756,12 +2155,13 @@ return (
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="SendFunction" href="#SendFunction">
-            <h3><code>SendFunction</code></h3></a>
+            <h3><code>
+                    SendFunction                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1815,12 +2215,13 @@ return (
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="usePrefValue" href="#usePrefValue">
-            <h3><code>usePrefValue</code></h3></a>
+            <h3><code>
+                    usePrefValue                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1932,12 +2333,13 @@ return &lt;div&gt;{myPref}&lt;/div&gt;;
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useTitle" href="#useTitle">
-            <h3><code>useTitle</code></h3></a>
+            <h3><code>
+                    useTitle                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -1998,12 +2400,13 @@ return &lt;p&gt;Application title: {title}&lt;/p&gt;;
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useEventBusManager" href="#useEventBusManager">
-            <h3><code>useEventBusManager</code></h3></a>
+            <h3><code>
+                    useEventBusManager                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -2087,12 +2490,13 @@ export function App() {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="EventBusManagerOptions" href="#EventBusManagerOptions">
-            <h3><code>EventBusManagerOptions</code></h3></a>
+            <h3><code>
+                    EventBusManagerOptions                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -2195,12 +2599,13 @@ and closes the event bus connection.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useAuth" href="#useAuth">
-            <h3><code>useAuth</code></h3></a>
+            <h3><code>
+                    useAuth                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -2355,12 +2760,13 @@ export function MyComponent(): ReactNode {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useEventBus" href="#useEventBus">
-            <h3><code>useEventBus</code></h3></a>
+            <h3><code>
+                    useEventBus                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -2517,12 +2923,13 @@ export function MyComponent(): ReactNode {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useNotifications" href="#useNotifications">
-            <h3><code>useNotifications</code></h3></a>
+            <h3><code>
+                    useNotifications                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -2679,12 +3086,13 @@ function MyComponent() {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="usePreferences" href="#usePreferences">
-            <h3><code>usePreferences</code></h3></a>
+            <h3><code>
+                    usePreferences                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -2844,12 +3252,13 @@ export function MyComponent(): ReactNode {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="PreferencesState" href="#PreferencesState">
-            <h3><code>PreferencesState</code></h3></a>
+            <h3><code>
+                    PreferencesState                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3341,12 +3750,13 @@ the preference in the global scope will be used.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="NotificationState" href="#NotificationState">
-            <h3><code>NotificationState</code></h3></a>
+            <h3><code>
+                    NotificationState                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3922,12 +4332,13 @@ to handle them as &quot;new&quot; notifications.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ConnectionState" href="#ConnectionState">
-            <h3><code>ConnectionState</code></h3></a>
+            <h3><code>
+                    ConnectionState                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3981,12 +4392,13 @@ and an error message was received</li>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="EventBusState" href="#EventBusState">
-            <h3><code>EventBusState</code></h3></a>
+            <h3><code>
+                    EventBusState                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4329,12 +4741,13 @@ return &lt;button onClick={() =&lt; close()}&gt;Close event bus&lt;/button&gt;;
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Authentication" href="#Authentication">
-            <h3><code>Authentication</code></h3></a>
+            <h3><code>
+                    Authentication                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4445,12 +4858,13 @@ return &lt;button onClick={() =&lt; close()}&gt;Close event bus&lt;/button&gt;;
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="AuthState" href="#AuthState">
-            <h3><code>AuthState</code></h3></a>
+            <h3><code>
+                    AuthState                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4820,12 +5234,13 @@ const signOut = () =&gt; {
             </div>
                             </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="useLogger" href="#useLogger">
-            <h3><code>useLogger</code></h3></a>
+            <h3><code>
+                    useLogger                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>
@@ -4929,12 +5344,13 @@ For a better understanding, please take a look at their
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="getLogger" href="#getLogger">
-            <h3><code>getLogger</code></h3></a>
+            <h3><code>
+                    getLogger                     (...)                 </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    
+        <!-- Description, based on the type -->
+                            
 <!-- Signature -->
 <p>
     <b>

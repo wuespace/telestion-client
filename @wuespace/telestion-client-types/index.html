@@ -78,14 +78,597 @@
 <p>You can access these members by importing the module:</p>
 <pre><code>import { <i>member</i> } from '@wuespace/telestion-client-types';</code></pre>
 
+<!--Table of contents for members-->
+    <ul>
+                    <li>
+                                <a href="#JsonSerializable">
+                    <code>
+                        type                        JsonSerializable                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#AbstractRouting">
+                    <code>
+                        interface                        AbstractRouting                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#AbstractRouting.path"><code>path</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#AbstractRouting.exact"><code>exact</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#AbstractRedirect">
+                    <code>
+                        interface                        AbstractRedirect                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#AbstractRedirect.redirectPath"><code>redirectPath</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#AdditionalRedirect">
+                    <code>
+                        interface                        AdditionalRedirect                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#AdditionalRedirect.last"><code>last</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#DefaultRouting">
+                    <code>
+                        interface                        DefaultRouting                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#DefaultRouting.type"><code>type</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#UnAuthRouting">
+                    <code>
+                        interface                        UnAuthRouting                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#UnAuthRouting.type"><code>type</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#AuthRouting">
+                    <code>
+                        interface                        AuthRouting                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#AuthRouting.type"><code>type</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#Routing">
+                    <code>
+                        type                        Routing                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#BasePropType">
+                    <code>
+                        type                        BasePropType                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#GenericProps">
+                    <code>
+                        interface                        GenericProps                                            </code>
+                </a>
+                                <ul>
+                                                                                            </ul>
+                                            </li>
+                    <li>
+                                <a href="#GenericComponent">
+                    <code>
+                        type                        GenericComponent                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#BaseRendererProps">
+                    <code>
+                        type                        BaseRendererProps                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#BaseConfigControlsProps">
+                    <code>
+                        interface                        BaseConfigControlsProps                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#BaseConfigControlsProps.currentProps"><code>currentProps</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#BaseConfigControlsProps.onUpdate"><code>onUpdate</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#Widget">
+                    <code>
+                        interface                        Widget                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#Widget.name"><code>name</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Widget.title"><code>title</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Widget.version"><code>version</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Widget.Widget"><code>Widget</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Widget.ConfigControls"><code>ConfigControls</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#WidgetDefinition">
+                    <code>
+                        interface                        WidgetDefinition                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#WidgetDefinition.id"><code>id</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#WidgetDefinition.width"><code>width</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#WidgetDefinition.height"><code>height</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#WidgetDefinition.widgetName"><code>widgetName</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#WidgetDefinition.initialProps"><code>initialProps</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#Dashboard">
+                    <code>
+                        interface                        Dashboard                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#Dashboard.title"><code>title</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Dashboard.columns"><code>columns</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Dashboard.rows"><code>rows</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Dashboard.widgets"><code>widgets</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#Username">
+                    <code>
+                        type                        Username                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#UserInformation">
+                    <code>
+                        interface                        UserInformation                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#UserInformation.dashboards"><code>dashboards</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#UserConfig">
+                    <code>
+                        type                        UserConfig                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#SignInResult">
+                    <code>
+                        interface                        SignInResult                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#SignInResult.type"><code>type</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#SignInResult.user"><code>user</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#SignInResult.eventBusUrl"><code>eventBusUrl</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#SignOutResult">
+                    <code>
+                        interface                        SignOutResult                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#SignOutResult.type"><code>type</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#AuthResult">
+                    <code>
+                        type                        AuthResult                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#Auth">
+                    <code>
+                        interface                        Auth                                            </code>
+                </a>
+                                <ul>
+                                                                                                <li>
+                            <a href="#Auth.signIn"><code>signIn (...)</code></a>
+                        </li>
+                                                <li>
+                            <a href="#Auth.signOut"><code>signOut (...)</code></a>
+                        </li>
+                                                <li>
+                            <a href="#Auth.onAuthStateChanged"><code>onAuthStateChanged (...)</code></a>
+                        </li>
+                                            </ul>
+                                            </li>
+                    <li>
+                                <a href="#Position">
+                    <code>
+                        type                        Position                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#MenuItem">
+                    <code>
+                        interface                        MenuItem                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#MenuItem.title"><code>title</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#MenuItem.icon"><code>icon</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#MenuItem.action"><code>action</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#Section">
+                    <code>
+                        interface                        Section                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#Section.title"><code>title</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Section.items"><code>items</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#PrefValue">
+                    <code>
+                        type                        PrefValue                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#PrefRenderer">
+                    <code>
+                        type                        PrefRenderer                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#Selector">
+                    <code>
+                        type                        Selector                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#PrefSelector">
+                    <code>
+                        type                        PrefSelector                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#GroupSelector">
+                    <code>
+                        type                        GroupSelector                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#Preference">
+                    <code>
+                        interface                        Preference                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#Preference.value"><code>value</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Preference.renderer"><code>renderer</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#PreferencesGroup">
+                    <code>
+                        type                        PreferencesGroup                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#PreferencesStore">
+                    <code>
+                        type                        PreferencesStore                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#NotificationType">
+                    <code>
+                        type                        NotificationType                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#Notification">
+                    <code>
+                        interface                        Notification                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#Notification.type"><code>type</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Notification.message"><code>message</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Notification.description"><code>description</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Notification.isDismissed"><code>isDismissed</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#AddressableMessage">
+                    <code>
+                        interface                        AddressableMessage                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#AddressableMessage.address"><code>address</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#AddressableMessage.headers"><code>headers</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#AddressableMessage.replyAddress"><code>replyAddress</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#AddressableMessage.reply"><code>reply</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#BaseMessage">
+                    <code>
+                        interface                        BaseMessage                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#BaseMessage.type"><code>type</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#Callback">
+                    <code>
+                        type                        Callback                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#ContentMessage">
+                    <code>
+                        interface                        ContentMessage                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#ContentMessage.body"><code>body</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#ErrorMessage">
+                    <code>
+                        interface                        ErrorMessage                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#ErrorMessage.type"><code>type</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#ErrorMessage.failureCode"><code>failureCode</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#ErrorMessage.failureType"><code>failureType</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#ErrorMessage.message"><code>message</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#Headers">
+                    <code>
+                        interface                        Headers                                            </code>
+                </a>
+                                <ul>
+                                                                                            </ul>
+                                            </li>
+                    <li>
+                                <a href="#Message">
+                    <code>
+                        type                        Message                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#PingMessage">
+                    <code>
+                        interface                        PingMessage                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#PingMessage.type"><code>type</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#PublishMessage">
+                    <code>
+                        interface                        PublishMessage                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#PublishMessage.type"><code>type</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#ReceiveMessage">
+                    <code>
+                        interface                        ReceiveMessage                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#ReceiveMessage.type"><code>type</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#RegisterMessage">
+                    <code>
+                        interface                        RegisterMessage                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#RegisterMessage.type"><code>type</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#SendMessage">
+                    <code>
+                        interface                        SendMessage                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#SendMessage.type"><code>type</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#UnregisterMessage">
+                    <code>
+                        interface                        UnregisterMessage                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#UnregisterMessage.type"><code>type</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#Options">
+                    <code>
+                        interface                        Options                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#Options.autoReconnect"><code>autoReconnect</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Options.pingInterval"><code>pingInterval</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Options.reconnectAttempts"><code>reconnectAttempts</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Options.reconnectExponent"><code>reconnectExponent</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Options.delayMin"><code>delayMin</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Options.delayMax"><code>delayMax</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Options.randomizationFactor"><code>randomizationFactor</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#Options.logger"><code>logger</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#ChannelAddress">
+                    <code>
+                        type                        ChannelAddress                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#StaticSpectrumColor">
+                    <code>
+                        type                        StaticSpectrumColor                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#SpectrumColor">
+                    <code>
+                        type                        SpectrumColor                                            </code>
+                </a>
+                                            </li>
+            </ul>
+
 <!-- Members -->
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="JsonSerializable" href="#JsonSerializable">
-            <h3><code>JsonSerializable</code></h3></a>
+            <h3><code>
+                    JsonSerializable                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -139,12 +722,13 @@
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="AbstractRouting" href="#AbstractRouting">
-            <h3><code>AbstractRouting</code></h3></a>
+            <h3><code>
+                    AbstractRouting                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -248,12 +832,13 @@ if the application route is exactly the same as the specified path above.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="AbstractRedirect" href="#AbstractRedirect">
-            <h3><code>AbstractRedirect</code></h3></a>
+            <h3><code>
+                    AbstractRedirect                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -346,12 +931,13 @@ if the routing type does not match current application state.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="AdditionalRedirect" href="#AdditionalRedirect">
-            <h3><code>AdditionalRedirect</code></h3></a>
+            <h3><code>
+                    AdditionalRedirect                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -448,12 +1034,13 @@ after the routing definition of the component.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="DefaultRouting" href="#DefaultRouting">
-            <h3><code>DefaultRouting</code></h3></a>
+            <h3><code>
+                    DefaultRouting                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -513,12 +1100,13 @@ and will always be reachable under the given
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="UnAuthRouting" href="#UnAuthRouting">
-            <h3><code>UnAuthRouting</code></h3></a>
+            <h3><code>
+                    UnAuthRouting                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -589,12 +1177,13 @@ otherwise the app will be redirected to the given
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="AuthRouting" href="#AuthRouting">
-            <h3><code>AuthRouting</code></h3></a>
+            <h3><code>
+                    AuthRouting                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -665,12 +1254,13 @@ otherwise the app will be redirected to the given
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Routing" href="#Routing">
-            <h3><code>Routing</code></h3></a>
+            <h3><code>
+                    Routing                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -742,12 +1332,13 @@ used in the
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="BasePropType" href="#BasePropType">
-            <h3><code>BasePropType</code></h3></a>
+            <h3><code>
+                    BasePropType                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -786,12 +1377,13 @@ used in the
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="GenericProps" href="#GenericProps">
-            <h3><code>GenericProps</code></h3></a>
+            <h3><code>
+                    GenericProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -862,12 +1454,13 @@ used in the
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="GenericComponent" href="#GenericComponent">
-            <h3><code>GenericComponent</code></h3></a>
+            <h3><code>
+                    GenericComponent                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -974,12 +1567,13 @@ export const myWidget: Widget&lt;WidgetProps&gt; = {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="BaseRendererProps" href="#BaseRendererProps">
-            <h3><code>BaseRendererProps</code></h3></a>
+            <h3><code>
+                    BaseRendererProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1117,12 +1711,13 @@ export const myWidget: Widget&lt;WidgetProps&gt; = {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="BaseConfigControlsProps" href="#BaseConfigControlsProps">
-            <h3><code>BaseConfigControlsProps</code></h3></a>
+            <h3><code>
+                    BaseConfigControlsProps                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1313,12 +1908,13 @@ with the current props to build the new props for the widget to use</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Widget" href="#Widget">
-            <h3><code>Widget</code></h3></a>
+            <h3><code>
+                    Widget                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1581,12 +2177,13 @@ Useful, when you have a breaking change in your widget props.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="WidgetDefinition" href="#WidgetDefinition">
-            <h3><code>WidgetDefinition</code></h3></a>
+            <h3><code>
+                    WidgetDefinition                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -1851,12 +2448,13 @@ Useful, when you have a breaking change in your widget props.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Dashboard" href="#Dashboard">
-            <h3><code>Dashboard</code></h3></a>
+            <h3><code>
+                    Dashboard                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -2086,12 +2684,13 @@ for more information.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Username" href="#Username">
-            <h3><code>Username</code></h3></a>
+            <h3><code>
+                    Username                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -2130,12 +2729,13 @@ for more information.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="UserInformation" href="#UserInformation">
-            <h3><code>UserInformation</code></h3></a>
+            <h3><code>
+                    UserInformation                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -2216,12 +2816,13 @@ for more information.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="UserConfig" href="#UserConfig">
-            <h3><code>UserConfig</code></h3></a>
+            <h3><code>
+                    UserConfig                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -2295,12 +2896,13 @@ these definitions for the logged in username.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="SignInResult" href="#SignInResult">
-            <h3><code>SignInResult</code></h3></a>
+            <h3><code>
+                    SignInResult                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -2448,12 +3050,13 @@ authenticator.signIn('http://localhost:9870/bridge', 'alice', '12345')
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="SignOutResult" href="#SignOutResult">
-            <h3><code>SignOutResult</code></h3></a>
+            <h3><code>
+                    SignOutResult                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -2543,12 +3146,13 @@ authenticator.signOut()
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="AuthResult" href="#AuthResult">
-            <h3><code>AuthResult</code></h3></a>
+            <h3><code>
+                    AuthResult                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -2610,12 +3214,13 @@ based on the current authentication state.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Auth" href="#Auth">
-            <h3><code>Auth</code></h3></a>
+            <h3><code>
+                    Auth                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3056,12 +3661,13 @@ export function signOut(): Promise&lt;void&gt; {
             </div>
                             </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Position" href="#Position">
-            <h3><code>Position</code></h3></a>
+            <h3><code>
+                    Position                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3091,12 +3697,13 @@ where the context menu should be rendered.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="MenuItem" href="#MenuItem">
-            <h3><code>MenuItem</code></h3></a>
+            <h3><code>
+                    MenuItem                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3234,12 +3841,13 @@ No icon gets displayed if the <code>icon</code> property is <code>undefined</cod
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Section" href="#Section">
-            <h3><code>Section</code></h3></a>
+            <h3><code>
+                    Section                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3364,12 +3972,13 @@ beside the section or the section separator.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="PrefValue" href="#PrefValue">
-            <h3><code>PrefValue</code></h3></a>
+            <h3><code>
+                    PrefValue                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3398,12 +4007,13 @@ beside the section or the section separator.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="PrefRenderer" href="#PrefRenderer">
-            <h3><code>PrefRenderer</code></h3></a>
+            <h3><code>
+                    PrefRenderer                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3468,12 +4078,13 @@ in a proper way.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Selector" href="#Selector">
-            <h3><code>Selector</code></h3></a>
+            <h3><code>
+                    Selector                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3522,12 +4133,13 @@ in a proper way.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="PrefSelector" href="#PrefSelector">
-            <h3><code>PrefSelector</code></h3></a>
+            <h3><code>
+                    PrefSelector                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3586,12 +4198,13 @@ in a proper way.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="GroupSelector" href="#GroupSelector">
-            <h3><code>GroupSelector</code></h3></a>
+            <h3><code>
+                    GroupSelector                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3650,12 +4263,13 @@ in a proper way.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Preference" href="#Preference">
-            <h3><code>Preference</code></h3></a>
+            <h3><code>
+                    Preference                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3782,12 +4396,13 @@ in a proper way</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="PreferencesGroup" href="#PreferencesGroup">
-            <h3><code>PreferencesGroup</code></h3></a>
+            <h3><code>
+                    PreferencesGroup                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3836,12 +4451,13 @@ in a proper way</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="PreferencesStore" href="#PreferencesStore">
-            <h3><code>PreferencesStore</code></h3></a>
+            <h3><code>
+                    PreferencesStore                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3913,12 +4529,13 @@ which do not have a group they belong to.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="NotificationType" href="#NotificationType">
-            <h3><code>NotificationType</code></h3></a>
+            <h3><code>
+                    NotificationType                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -3948,12 +4565,13 @@ A notification of this type will show in the app in a specific way.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Notification" href="#Notification">
-            <h3><code>Notification</code></h3></a>
+            <h3><code>
+                    Notification                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4069,12 +4687,13 @@ Usually contains more detailed information and can be multi-line.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="AddressableMessage" href="#AddressableMessage">
-            <h3><code>AddressableMessage</code></h3></a>
+            <h3><code>
+                    AddressableMessage                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4234,12 +4853,13 @@ if the sender reply again.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="BaseMessage" href="#BaseMessage">
-            <h3><code>BaseMessage</code></h3></a>
+            <h3><code>
+                    BaseMessage                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4292,12 +4912,13 @@ between received and sent messages</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Callback" href="#Callback">
-            <h3><code>Callback</code></h3></a>
+            <h3><code>
+                    Callback                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4383,12 +5004,13 @@ eventBus.onopen = () =&gt; {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ContentMessage" href="#ContentMessage">
-            <h3><code>ContentMessage</code></h3></a>
+            <h3><code>
+                    ContentMessage                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4439,12 +5061,13 @@ eventBus.onopen = () =&gt; {
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ErrorMessage" href="#ErrorMessage">
-            <h3><code>ErrorMessage</code></h3></a>
+            <h3><code>
+                    ErrorMessage                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4551,12 +5174,13 @@ eventBus.onopen = () =&gt; {
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Headers" href="#Headers">
-            <h3><code>Headers</code></h3></a>
+            <h3><code>
+                    Headers                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4587,12 +5211,13 @@ eventBus.onopen = () =&gt; {
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Message" href="#Message">
-            <h3><code>Message</code></h3></a>
+            <h3><code>
+                    Message                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4627,12 +5252,13 @@ eventBus.onopen = () =&gt; {
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="PingMessage" href="#PingMessage">
-            <h3><code>PingMessage</code></h3></a>
+            <h3><code>
+                    PingMessage                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4680,12 +5306,13 @@ to prove to the backend server that the client is still connected</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="PublishMessage" href="#PublishMessage">
-            <h3><code>PublishMessage</code></h3></a>
+            <h3><code>
+                    PublishMessage                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4732,12 +5359,13 @@ to prove to the backend server that the client is still connected</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ReceiveMessage" href="#ReceiveMessage">
-            <h3><code>ReceiveMessage</code></h3></a>
+            <h3><code>
+                    ReceiveMessage                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4784,12 +5412,13 @@ to prove to the backend server that the client is still connected</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="RegisterMessage" href="#RegisterMessage">
-            <h3><code>RegisterMessage</code></h3></a>
+            <h3><code>
+                    RegisterMessage                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4840,12 +5469,13 @@ use <a href="#UnregisterMessage"><code>UnregisterMessage</code></a></p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="SendMessage" href="#SendMessage">
-            <h3><code>SendMessage</code></h3></a>
+            <h3><code>
+                    SendMessage                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4893,12 +5523,13 @@ containing a reply address gets sent</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="UnregisterMessage" href="#UnregisterMessage">
-            <h3><code>UnregisterMessage</code></h3></a>
+            <h3><code>
+                    UnregisterMessage                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -4948,12 +5579,13 @@ to not receive any further messages from this channel</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="Options" href="#Options">
-            <h3><code>Options</code></h3></a>
+            <h3><code>
+                    Options                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -5161,12 +5793,13 @@ and debug messages.</p>
 <!-- Methods -->
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="ChannelAddress" href="#ChannelAddress">
-            <h3><code>ChannelAddress</code></h3></a>
+            <h3><code>
+                    ChannelAddress                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -5195,12 +5828,13 @@ and debug messages.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="StaticSpectrumColor" href="#StaticSpectrumColor">
-            <h3><code>StaticSpectrumColor</code></h3></a>
+            <h3><code>
+                    StaticSpectrumColor                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
@@ -5251,12 +5885,13 @@ and debug messages.</p>
             </div>
                         </div>
     <div class="card fluid">
-        <!-- Name with anchor link -->
+                <!-- Name with an anchor link -->
         <a id="SpectrumColor" href="#SpectrumColor">
-            <h3><code>SpectrumColor</code></h3></a>
+            <h3><code>
+                    SpectrumColor                                    </code></h3></a>
 
-        <!-- Description, based on type -->
-                                    <!-- Signature -->
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
 <p>
     <b>
         <code>
