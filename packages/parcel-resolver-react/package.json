@@ -59,9 +59,9 @@
 		"@parcel/plugin": "^2.5.0"
 	},
 	"devDependencies": {
-		"@parcel/types": "^2.5.0",
-		"@parcel/core": "^2.5.0",
-		"@types/node": "^17.0.0"
+		"@parcel/types": "2.8.2",
+		"@parcel/core": "2.8.2",
+		"@types/node": "17.0.45"
 	},
 	"publishConfig": {
 		"access": "public"

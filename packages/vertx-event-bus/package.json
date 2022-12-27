@@ -60,7 +60,7 @@
 		"sockjs-client": "^1.5.0"
 	},
 	"devDependencies": {
-		"@types/sockjs-client": "^1.5.1"
+		"@types/sockjs-client": "1.5.1"
 	},
 	"publishConfig": {
 		"access": "public"
