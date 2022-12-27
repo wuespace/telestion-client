@@ -6,7 +6,7 @@ module.exports = {
 			displayName: 'Telestion Client PropTypes',
 			globals: {
 				'ts-jest': {
-					//tsconfig: 'base-configs/tsconfig.spec.json'
+					tsconfig: 'packages/telestion-client-prop-types/tsconfig.json'
 				}
 			},
 			preset: 'ts-jest',
