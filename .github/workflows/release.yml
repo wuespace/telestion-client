@@ -2,9 +2,10 @@ name: Release
 
 # Events that trigger this workflow
 on:
-  push:
-    branches:
-      - main
+  #  push:
+  #    branches:
+  #      - main
+  workflow_dispatch:
 
 # Defines which tool versions should be used in all workflow jobs
 env:
