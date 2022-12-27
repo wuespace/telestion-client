@@ -21,6 +21,10 @@
 			"matchDepTypes": ["dependencies", "require"],
 			"semanticCommitType": "deps",
 			"semanticCommitScope": "prod"
+		},
+		{
+			"matchPackageNames": ["zustand"],
+			"automerge": false
 		}
 	]
 }
