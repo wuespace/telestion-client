@@ -13,7 +13,7 @@
 		"style": "prettier --write .",
 		"style:ci": "prettier --list-different .",
 		"lint": "eslint --ext .js,.jsx,.ts,.tsx --ignore-pattern node_modules/ --no-error-on-unmatched-pattern src",
-		"test:e2e": "concurrently --kill-others pnpm:test:e2e:serve pnpm:test:e2e:cypress",
+		"test:e2e": "concurrently --success last --kill-others pnpm:test:e2e:serve pnpm:test:e2e:cypress",
 		"test:e2e:serve": "tc-cli build --no-electron && serve --no-request-logging -p 8080 dist",
 		"test:e2e:cypress": "wait-on 'http://localhost:8080' && cypress run",
 		"check": "tsc",
