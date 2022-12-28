@@ -4,10 +4,13 @@ module.exports = {
 	projects: [
 		{
 			displayName: 'Telestion Client PropTypes',
-			globals: {
-				'ts-jest': {
-					tsconfig: 'packages/telestion-client-prop-types/tsconfig.json'
-				}
+			transform: {
+				'^.+\\.tsx?$': [
+					'ts-jest',
+					{
+						tsconfig: 'packages/telestion-client-prop-types/tsconfig.json'
+					}
+				]
 			},
 			preset: 'ts-jest',
 			testEnvironment: 'node',
@@ -28,10 +31,13 @@ module.exports = {
 		},
 		{
 			displayName: 'Vert.x Event Bus',
-			globals: {
-				'ts-jest': {
-					tsconfig: 'packages/vertx-event-bus/tsconfig.json'
-				}
+			transform: {
+				'^.+\\.tsx?$': [
+					'ts-jest',
+					{
+						tsconfig: 'packages/vertx-event-bus/tsconfig.json'
+					}
+				]
 			},
 			preset: 'ts-jest',
 			testEnvironment: 'node',
@@ -44,16 +50,17 @@ module.exports = {
 		// TODO: Uncomment when mock server has jest unit tests
 		// {
 		// 	displayName: 'MockServer',
-		// 	globals: {
-		// 		"ts-jest": {
-		// 			tsconfig: 'packages/vertx-mock-server/tsconfig.json'
-		// 		}
+		// 	transform: {
+		// 		'^.+\\.tsx?$': [
+		// 			'ts-jest',
+		// 			{
+		// 				tsconfig: 'packages/vertx-mock-server/tsconfig.json'
+		// 			}
+		// 		]
 		// 	},
 		// 	preset: 'ts-jest',
 		// 	testEnvironment: 'node',
-		// 	collectCoverageFrom: [
-		// 		'<rootDir>/packages/vertx-mock-server/src/**'
-		// 	],
+		// 	collectCoverageFrom: ['<rootDir>/packages/vertx-mock-server/src/**'],
 		// 	coveragePathIgnorePatterns: ['<rootDir>/packages/vertx-mock-server/dist'],
 		// 	testMatch: [
 		// 		'<rootDir>/packages/vertx-mock-server/src/**/*(*.)@(spec|test).[jt]s'

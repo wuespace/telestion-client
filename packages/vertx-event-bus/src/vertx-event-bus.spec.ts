@@ -21,7 +21,7 @@ import { EventBus } from './vertx-event-bus';
 
 jest.mock('./basic-event-bus');
 
-const mockedBus = jest.mocked(BasicEventBus, true);
+const mockedBus = jest.mocked(BasicEventBus);
 
 const DEFAULT_URL = 'http://localhost:9870/bridge';
 
