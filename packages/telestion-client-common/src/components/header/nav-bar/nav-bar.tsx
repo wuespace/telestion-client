@@ -73,7 +73,7 @@ export function NavBar({ links }: NavBarProps) {
 
 	if (isHidden) {
 		return (
-			<Heading level={4}>
+			<Heading level={4} data-testid="telestionClientNavBar-title">
 				{typeof title === 'string' ? title : 'Invalid type'}
 			</Heading>
 		);
@@ -86,10 +86,15 @@ export function NavBar({ links }: NavBarProps) {
 			items={items}
 			selectedKey={selected}
 			onSelectionChange={onSelectionChange}
+			data-testid="telestionClientNavBar-tabs"
 		>
 			<TabList>
 				{(item: Link) => (
-					<Item title={item.title} key={item.path}>
+					<Item
+						title={item.title}
+						key={item.path}
+						data-testid="telestionClientNavBar-tab"
+					>
 						{/* Render tab list without content */}
 						{/* eslint-disable-next-line react/jsx-no-useless-fragment */}
 						<></>

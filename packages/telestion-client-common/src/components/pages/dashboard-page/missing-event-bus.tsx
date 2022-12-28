@@ -29,6 +29,7 @@ export function MissingEventBus() {
 			direction="column"
 			justifyContent="center"
 			alignItems="center"
+			data-testid="telestionClientMissingEventBus"
 		>
 			<ProgressCircle
 				aria-label="Waiting for event bus instance…"

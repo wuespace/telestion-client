@@ -47,6 +47,7 @@ export function DashboardPicker() {
 				selectedKey={selected}
 				onSelectionChange={onSelectionChange}
 				width="auto"
+				data-testid="telestionClientDashboardPicker-picker"
 			>
 				{item => <Item key={item.key}>{item.title}</Item>}
 			</Picker>

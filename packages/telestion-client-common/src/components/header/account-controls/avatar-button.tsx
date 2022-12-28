@@ -24,12 +24,13 @@ import defaultAvatar from 'data-url:../../../media/default-avatar.png';
  */
 export function AvatarButton() {
 	return (
-		<ActionButton isQuiet>
+		<ActionButton isQuiet data-testid="telestionClientAvatarButton">
 			<View width="size-350" height="size-350">
 				<img
 					src={defaultAvatar}
 					alt="Avatar Symbol"
 					style={{ borderRadius: '50%', width: '100%', height: '100%' }}
+					data-testid="telestionClientAvatarButton-image"
 				/>
 			</View>
 		</ActionButton>

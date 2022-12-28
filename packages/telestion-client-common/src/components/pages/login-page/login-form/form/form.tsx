@@ -57,7 +57,12 @@ export function Form({
 
 	return (
 		<>
-			<RSForm maxWidth="100%" isRequired isDisabled={isLoading}>
+			<RSForm
+				maxWidth="100%"
+				isRequired
+				isDisabled={isLoading}
+				data-testid="telestionClientLoginForm"
+			>
 				<TextField
 					autoFocus={focused === 0}
 					onNext={() => setFocused(1)}
@@ -65,6 +70,7 @@ export function Form({
 					initialValue={initialServerURL}
 					onChange={setServerUrl}
 					validator={isValidHttpUrl}
+					data-testid="telestionClientLoginForm-textField-serverUrl"
 				/>
 				<TextField
 					autoFocus={focused === 1}
@@ -73,6 +79,7 @@ export function Form({
 					initialValue={initialUsername}
 					onChange={setUsername}
 					validator={isValidText}
+					data-testid="telestionClientLoginForm-textField-username"
 				/>
 				<TextField
 					autoFocus={focused === 2}
@@ -81,6 +88,7 @@ export function Form({
 					type="password"
 					onChange={setPassword}
 					validator={isValidText}
+					data-testid="telestionClientLoginForm-textField-password"
 				/>
 			</RSForm>
 

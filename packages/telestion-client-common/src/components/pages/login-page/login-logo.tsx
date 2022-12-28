@@ -35,6 +35,7 @@ export function LoginLogo() {
 			alt="Application logo"
 			width="size-1200"
 			height="size-1200"
+			data-testid="telestionClientLoginLogo"
 		/>
 	);
 }

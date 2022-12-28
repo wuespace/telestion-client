@@ -81,15 +81,24 @@ export function CopyPasteActions({
 			density="compact"
 			onAction={handle}
 			disabledKeys={isPasteDisabled ? ['paste'] : []}
+			data-testid="telestionClientCopyPasteActions"
 		>
 			<TooltipTrigger>
-				<Item key="copy" aria-label="Copy properties to clipboard">
+				<Item
+					key="copy"
+					aria-label="Copy properties to clipboard"
+					data-testid="telestionClientCopyPasteActions-copy"
+				>
 					<Copy />
 				</Item>
 				<Tooltip>Copy</Tooltip>
 			</TooltipTrigger>
 			<TooltipTrigger>
-				<Item key="paste" aria-label="Paste properties from clipboard">
+				<Item
+					key="paste"
+					aria-label="Paste properties from clipboard"
+					data-testid="telestionClientCopyPasteActions-paste"
+				>
 					<Paste />
 				</Item>
 				<Tooltip>Paste</Tooltip>

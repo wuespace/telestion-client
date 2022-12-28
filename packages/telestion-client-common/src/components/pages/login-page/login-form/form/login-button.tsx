@@ -74,6 +74,7 @@ export function LoginButton({
 			variant="cta"
 			onPress={onPress}
 			isDisabled={isDisabled || isLoading}
+			data-testid="telestionClientLoginButton"
 		>
 			{isLoading ? (
 				<ProgressCircle aria-label="Logging in…" isIndeterminate />

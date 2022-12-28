@@ -78,7 +78,11 @@ export function ColorSchemeAction() {
 
 	return (
 		<TooltipTrigger>
-			<ActionButton onPress={handleChange} isQuiet>
+			<ActionButton
+				onPress={handleChange}
+				isQuiet
+				data-testid="telestionClientColorSchemeAction"
+			>
 				<Icon />
 			</ActionButton>
 			<Tooltip>{colorSchemeTooltip[colorScheme]}</Tooltip>

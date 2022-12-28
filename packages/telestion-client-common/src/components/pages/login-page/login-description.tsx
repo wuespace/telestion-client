@@ -69,7 +69,7 @@ export function LoginDescription({
 	if (children) return <>{children}</>;
 
 	return (
-		<Text>
+		<Text data-testid="telestionClientLoginDescription">
 			{description ||
 				'Please enter the credentials assigned to you by the Ground Station team'}
 		</Text>

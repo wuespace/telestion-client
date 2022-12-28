@@ -60,7 +60,13 @@ export function ConfigHeader({ title, id, children }: ConfigHeaderProps) {
 
 	return (
 		<>
-			<View flexShrink={0} width="100%" paddingX="size-200" paddingY="size-100">
+			<View
+				flexShrink={0}
+				width="100%"
+				paddingX="size-200"
+				paddingY="size-100"
+				data-testid="telestionClientConfigHeader"
+			>
 				<Flex
 					direction="row"
 					width="100%"
@@ -68,10 +74,20 @@ export function ConfigHeader({ title, id, children }: ConfigHeaderProps) {
 					alignItems="center"
 				>
 					<Flex direction="row" alignItems="baseline" gap="size-100">
-						<Heading flexGrow={0} margin={0} level={3}>
+						<Heading
+							flexGrow={0}
+							margin={0}
+							level={3}
+							data-testid="telestionClientConfigHeader-title"
+						>
 							{title}
 						</Heading>
-						<em style={{ color: idColor }}>ID: {id}</em>
+						<em
+							style={{ color: idColor }}
+							data-testid="telestionClientConfigHeader-id"
+						>
+							ID: {id}
+						</em>
 					</Flex>
 
 					{children}

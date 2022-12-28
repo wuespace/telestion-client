@@ -124,12 +124,19 @@ export function ConfigRenderer({
 				/>
 			</ConfigHeader>
 			<Flex flex={1} minHeight={0} direction="column">
-				<View flex={1} overflow="auto">
+				<View
+					flex={1}
+					overflow="auto"
+					data-testid="telestionClientConfigRenderer-content"
+				>
 					{ConfigControls ? (
 						// @ts-ignore
 						<ConfigControls currentProps={local} onUpdate={update} />
 					) : (
-						<View padding="size-200">
+						<View
+							padding="size-200"
+							data-testid="telestionClientConfigRenderer-noConfigControls"
+						>
 							<em>
 								Sorry, the widget does not provide any configuration options.
 							</em>

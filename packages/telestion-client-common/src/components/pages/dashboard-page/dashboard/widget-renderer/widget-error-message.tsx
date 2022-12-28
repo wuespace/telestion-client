@@ -110,18 +110,24 @@ export function WidgetErrorMessage({
 			padding="size-100"
 			backgroundColor="gray-100"
 			borderRadius="regular"
+			data-testid="telestionClientWidgetErrorMessage"
 		>
 			<IllustratedMessage>
 				{image}
-				<Heading>{message}</Heading>
-				<Content>{children}</Content>
+				<Heading data-testid="telestionClientWidgetErrorMessage-heading">
+					{message}
+				</Heading>
+				<Content data-testid="telestionClientWidgetErrorMessage-content">
+					{children}
+				</Content>
 				{actions && (
-					<Content>
+					<Content data-testid="telestionClientWidgetErrorMessage-actions">
 						{actions.map(action => (
 							<Button
 								key={`${action.label}-${action.variant}`}
 								variant={action.variant}
 								onPress={action.action}
+								data-testid="telestionClientWidgetErrorMessage-action"
 							>
 								{action.label}
 							</Button>

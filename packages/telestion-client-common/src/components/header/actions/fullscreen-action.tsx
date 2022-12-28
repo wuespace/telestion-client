@@ -53,6 +53,7 @@ export function FullscreenAction() {
 				isDisabled={!documentRef.current.fullscreenEnabled}
 				onPress={toggleFullscreen}
 				isQuiet
+				data-testid="telestionClientFullscreenAction"
 			>
 				{isFullscreen ? <FullScreenExit /> : <FullScreen />}
 			</ActionButton>

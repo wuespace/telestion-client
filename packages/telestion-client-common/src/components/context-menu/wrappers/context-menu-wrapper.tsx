@@ -120,7 +120,11 @@ export function ContextMenuWrapper({
 
 	return (
 		<ContextMenuContext.Provider value={newState}>
-			<div style={style} ref={ref}>
+			<div
+				style={style}
+				ref={ref}
+				data-testid="telestionClientContextMenuWrapper"
+			>
 				{children}
 			</div>
 		</ContextMenuContext.Provider>

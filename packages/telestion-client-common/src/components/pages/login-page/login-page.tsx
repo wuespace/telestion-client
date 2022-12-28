@@ -79,7 +79,11 @@ export function LoginPage({ children }: LoginPageProps) {
 			justifyContent="center"
 			alignItems="center"
 		>
-			<Flex direction="column" maxWidth="size-4600">
+			<Flex
+				direction="column"
+				maxWidth="size-4600"
+				data-testid="telestionClientLoginPage"
+			>
 				{children}
 			</Flex>
 		</Flex>

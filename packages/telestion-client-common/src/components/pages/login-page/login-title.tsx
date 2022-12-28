@@ -28,7 +28,7 @@ import { useTitle } from '@wuespace/telestion-client-core';
 export function LoginTitle() {
 	const title = useTitle();
 	return (
-		<Heading level={2}>
+		<Heading level={2} data-testid="telestionClientLoginTitle">
 			{typeof title === 'string' ? title : 'Invalid type'}
 		</Heading>
 	);

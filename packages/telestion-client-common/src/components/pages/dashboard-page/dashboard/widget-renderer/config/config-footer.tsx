@@ -49,12 +49,30 @@ export function ConfigFooter({ onAbort, onConfirm }: ConfigFooterProps) {
 	return (
 		<>
 			<Divider size="S" />
-			<View flexShrink={0} width="100%" padding="size-200">
-				<ButtonGroup align="end" width="100%">
-					<Button variant="secondary" onPress={onAbort}>
+			<View
+				flexShrink={0}
+				width="100%"
+				padding="size-200"
+				data-testid="telestionClientConfigFooter"
+			>
+				<ButtonGroup
+					align="end"
+					width="100%"
+					data-testid="telestionClientConfigFooter-buttons"
+				>
+					<Button
+						variant="secondary"
+						onPress={onAbort}
+						data-testid="telestionClientConfigFooter-button--cancel"
+					>
 						Cancel
 					</Button>
-					<Button variant="cta" onPress={onConfirm} autoFocus>
+					<Button
+						variant="cta"
+						onPress={onConfirm}
+						autoFocus
+						data-testid="telestionClientConfigFooter-button--confirm"
+					>
 						Confirm
 					</Button>
 				</ButtonGroup>

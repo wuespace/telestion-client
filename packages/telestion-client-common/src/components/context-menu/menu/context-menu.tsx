@@ -83,6 +83,7 @@ export function ContextMenu({
 			hideArrow
 			onClose={onClose}
 			shouldCloseOnBlur
+			data-testid="telestionClientContextMenu"
 		>
 			<FocusScope restoreFocus>
 				<DismissButton onDismiss={onClose} />

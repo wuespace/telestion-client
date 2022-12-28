@@ -43,6 +43,7 @@ export function ConfigContainer({ children }: ConfigContainerProps) {
 				direction="column"
 				width="100%"
 				height="100%"
+				data-testid="telestionClientConfigContainer"
 			>
 				{children}
 			</Flex>

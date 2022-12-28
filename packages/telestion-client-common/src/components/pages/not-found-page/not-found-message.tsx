@@ -26,14 +26,21 @@ export function NotFoundMessage() {
 	const auth = useAuth(state => state.auth);
 
 	return (
-		<IllustratedMessage>
+		<IllustratedMessage data-testid="telestionClientNotFoundMessage">
 			<NotFound />
 			<Heading>Error 404: Page not found</Heading>
 			<Content>
 				{auth ? (
-					<Link to="/dashboard">Return to dashboards</Link>
+					<Link
+						to="/dashboard"
+						data-testid="telestionClientNotFound-link--dashboard"
+					>
+						Return to dashboards
+					</Link>
 				) : (
-					<Link to="/login">Return to dashboards</Link>
+					<Link to="/login" data-testid="telestionClientNotFound-link--login">
+						Log in
+					</Link>
 				)}
 			</Content>
 		</IllustratedMessage>

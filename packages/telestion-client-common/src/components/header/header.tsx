@@ -72,7 +72,13 @@ export interface HeaderProps {
  */
 export function Header({ left, center, right }: HeaderProps) {
 	return (
-		<Provider flex={0} width="100%" colorScheme="dark" isQuiet>
+		<Provider
+			flex={0}
+			width="100%"
+			colorScheme="dark"
+			isQuiet
+			data-testid="telestionClientHeader"
+		>
 			<View width="100%" height="size-600" backgroundColor="gray-200">
 				<Flex direction="row" width="100%" height="100%" alignItems="center">
 					<Flex
@@ -84,6 +90,7 @@ export function Header({ left, center, right }: HeaderProps) {
 						alignItems="center"
 						justifyContent="start"
 						gap="size-200"
+						data-testid="telestionClientHeader-area--left"
 					>
 						{/* eslint-disable-next-line react/jsx-no-useless-fragment */}
 						{left ?? <></>}
@@ -98,6 +105,7 @@ export function Header({ left, center, right }: HeaderProps) {
 						alignItems="center"
 						justifyContent="center"
 						gap="size-200"
+						data-testid="telestionClientHeader-area--center"
 					>
 						{/* eslint-disable-next-line react/jsx-no-useless-fragment */}
 						{center ?? <></>}
@@ -112,6 +120,7 @@ export function Header({ left, center, right }: HeaderProps) {
 						alignItems="center"
 						justifyContent="end"
 						gap="size-200"
+						data-testid="telestionClientHeader-area--right"
 					>
 						{/* eslint-disable-next-line react/jsx-no-useless-fragment */}
 						{right ?? <></>}

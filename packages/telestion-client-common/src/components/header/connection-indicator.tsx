@@ -68,6 +68,7 @@ export function ConnectionIndicator({
 			paddingStart="size-100"
 			paddingEnd="size-200"
 			paddingTop="size-50"
+			data-testid="telestionClientConnectionIndicator"
 		>
 			<StatusLight variant={variant[state]}>{label[state]}</StatusLight>
 		</View>

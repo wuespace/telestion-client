@@ -68,37 +68,45 @@ export function Dialog<T>({ config, onConfirm, onCancel }: DialogProps<T>) {
 	);
 
 	return (
-		<RSDialog>
-			<Heading>
+		<RSDialog data-testid="telestionClientDialog">
+			<Heading data-testid="telestionClientDialog-title">
 				<Entry state={state} setPartial={setPartial}>
 					{config.title}
 				</Entry>
 			</Heading>
 			{config.header && (
-				<Content>
+				<Content data-testid="telestionClientDialog-header">
 					<Entry state={state} setPartial={setPartial} textify>
 						{config.header}
 					</Entry>
 				</Content>
 			)}
 			<Divider />
-			<Content>
+			<Content data-testid="telestionClientDialog-content">
 				<Entry state={state} setPartial={setPartial} textify>
 					{config.content}
 				</Entry>
 			</Content>
 			{config.footer && (
-				<Footer>
+				<Footer data-testid="telestionClientDialog-footer">
 					<Entry state={state} setPartial={setPartial} textify>
 						{config.footer}
 					</Entry>
 				</Footer>
 			)}
-			<ButtonGroup>
-				<Button variant="secondary" onPress={onCancel}>
+			<ButtonGroup data-testid="telestionClientDialog-buttons">
+				<Button
+					variant="secondary"
+					onPress={onCancel}
+					data-testid="telestionClientDialog-button--cancel"
+				>
 					Cancel
 				</Button>
-				<Button variant="cta" onPress={() => onConfirm(state)}>
+				<Button
+					variant="cta"
+					onPress={() => onConfirm(state)}
+					data-testid="telestionClientDialog-button--confirm"
+				>
 					Confirm
 				</Button>
 			</ButtonGroup>

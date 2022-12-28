@@ -82,8 +82,13 @@ export function LoginForm({
 
 	return (
 		<>
-			{/* eslint-disable-next-line react/jsx-no-useless-fragment */}
-			{error ? <Well>{error.message}</Well> : <></>}
+			{error ? (
+				<Well data-testid="telestionClientLoginForm-error">
+					{error.message}
+				</Well>
+			) : (
+				''
+			)}
 			<Form
 				isLoading={isLoading}
 				onSubmit={handleSubmit}

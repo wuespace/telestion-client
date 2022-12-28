@@ -81,6 +81,7 @@ export function Dashboard({ dashboard }: DashboardProps) {
 				rows={rows}
 				columns={columns}
 				gap="size-100"
+				data-testid="telestionClientDashboard"
 			>
 				{dashboard.widgets.map(widget => (
 					<OverflowFix
@@ -89,6 +90,7 @@ export function Dashboard({ dashboard }: DashboardProps) {
 						gridColumnEnd={`span ${widget.width}`}
 						backgroundColor="gray-100"
 						borderRadius="regular"
+						data-testid="telestionClientDashboard-widget"
 					>
 						<WidgetSelector definition={widget} />
 					</OverflowFix>

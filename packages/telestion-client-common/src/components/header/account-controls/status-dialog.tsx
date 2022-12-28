@@ -73,14 +73,17 @@ export function StatusDialog() {
 
 	return (
 		<Provider colorScheme={colorScheme !== 'system' ? colorScheme : undefined}>
-			<Dialog>
-				<Heading>Status</Heading>
+			<Dialog data-testid="telestionClientStatusDialog">
+				<Heading data-testid="telestionClientStatusDialog-heading">
+					Status
+				</Heading>
 				<Divider />
 				<Content>
 					<Grid
 						columns="max-content auto"
 						columnGap="size-200"
 						rowGap="size-100"
+						data-testid="telestionClientStatusDialog-content"
 					>
 						{items}
 					</Grid>

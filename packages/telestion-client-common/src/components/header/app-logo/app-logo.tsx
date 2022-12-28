@@ -29,8 +29,18 @@ export function AppLogo() {
 	const appLogo = useLogo();
 
 	return (
-		<View width="size-400" height="size-400" ref={ref}>
-			<Image src={appLogo} alt="Application Logo" objectFit="contain" />
+		<View
+			width="size-400"
+			height="size-400"
+			ref={ref}
+			data-testid="telestionClientAppLogo"
+		>
+			<Image
+				src={appLogo}
+				alt="Application Logo"
+				objectFit="contain"
+				data-testid="telestionClientAppLogo-image"
+			/>
 			<FixedOverlay isOpen={isOpen} onClose={close} />
 		</View>
 	);

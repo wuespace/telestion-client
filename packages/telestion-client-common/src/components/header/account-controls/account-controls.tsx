@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { MenuTrigger, DialogContainer } from '@adobe/react-spectrum';
+import { MenuTrigger, DialogContainer, View } from '@adobe/react-spectrum';
 
 import { useBooleanState, showDialog } from '../../../hooks';
 import { AvatarButton } from './avatar-button';
@@ -48,15 +48,20 @@ export function AccountControls() {
 	}, []);
 
 	return (
-		<>
+		<View data-testid="telestionClientAccountControls">
 			<MenuTrigger>
 				<AvatarButton />
 				<AvatarMenu onStatusPress={openStatus} onResetPress={handleReset} />
 			</MenuTrigger>
 
-			<DialogContainer type="modal" isDismissable onDismiss={closeStatus}>
+			<DialogContainer
+				type="modal"
+				isDismissable
+				onDismiss={closeStatus}
+				data-testid="telestionClientAccountControls-dialogContainer"
+			>
 				{isStatusOpen && <StatusDialog />}
 			</DialogContainer>
-		</>
+		</View>
 	);
 }

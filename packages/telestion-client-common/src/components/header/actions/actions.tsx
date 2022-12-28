@@ -61,7 +61,7 @@ export interface ActionsProps {
  */
 export function Actions({ children }: ActionsProps) {
 	return (
-		<Flex direction="row" gap="size-50">
+		<Flex direction="row" gap="size-50" data-testid="telestionClientActions">
 			{children}
 		</Flex>
 	);

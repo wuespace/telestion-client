@@ -51,8 +51,16 @@ export function NotificationAction() {
 
 	return (
 		<TooltipTrigger>
-			<ActionButton onPress={toggle} isQuiet>
-				{isMuted ? <RemoveCircle /> : <Bell />}
+			<ActionButton
+				onPress={toggle}
+				isQuiet
+				data-testid="telestionClientNotificationAction"
+			>
+				{isMuted ? (
+					<RemoveCircle data-testid="telestionClientNotificationAction--muted" />
+				) : (
+					<Bell data-testid="telestionClientNotificationAction--normal" />
+				)}
 			</ActionButton>
 			<Tooltip>
 				{isMuted ? 'Allow notifications' : 'Block notifications'}

@@ -25,7 +25,7 @@ import NotFound from '@spectrum-icons/illustrations/NotFound';
  */
 export function NoDashboardsMessage() {
 	return (
-		<IllustratedMessage>
+		<IllustratedMessage data-testid="telestionClientNoDashboardsMessage">
 			<NotFound />
 			<Heading>No dashboards defined</Heading>
 			<Content>Lets create a dashboard!</Content>

@@ -84,25 +84,33 @@ export function AvatarMenu({ onStatusPress, onResetPress }: AvatarMenuProps) {
 	);
 
 	return (
-		<Menu onAction={handleAction}>
+		<Menu onAction={handleAction} data-testid="telestionClientAvatarMenu">
 			<Section title={auth ? `Hello ${auth.username}!` : `Sign in`}>
 				<Item key="status">
 					<InfoOutline size="S" />
-					<Text>Status</Text>
+					<Text data-testid="telestionClientAvatarMenu-item--status">
+						Status
+					</Text>
 				</Item>
 				<Item key="reset">
 					<PagesExclude size="S" />
-					<Text>Reset configuration</Text>
+					<Text data-testid="telestionClientAvatarMenu-item--reset">
+						Reset configuration
+					</Text>
 				</Item>
 				{!auth ? (
 					<Item key="login">
 						<Login size="S" />
-						<Text>Login</Text>
+						<Text data-testid="telestionClientAvatarMenu-item--login">
+							Login
+						</Text>
 					</Item>
 				) : (
 					<Item key="logout">
 						<LogOut size="S" />
-						<Text>Logout</Text>
+						<Text data-testid="telestionClientAvatarMenu-item--logout">
+							Logout
+						</Text>
 					</Item>
 				)}
 			</Section>

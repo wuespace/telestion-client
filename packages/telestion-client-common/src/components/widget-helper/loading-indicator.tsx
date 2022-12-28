@@ -84,6 +84,7 @@ export function LoadingIndicator<T extends readonly any[]>({
 			direction="column"
 			justifyContent="center"
 			alignItems="center"
+			data-testid="telestionClientCommonLoadingIndicator"
 		>
 			<ProgressCircle aria-label="Loading…" isIndeterminate />
 			<Heading level={2}>Loading…</Heading>
