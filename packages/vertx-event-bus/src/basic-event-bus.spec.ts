@@ -33,7 +33,7 @@ describe('Basic event bus', () => {
 			eventBus.close();
 
 			expect(mockedSockJS).toHaveBeenCalledTimes(1);
-			expect(mockedSockJS).toBeCalledWith(DEFAULT_URL);
+			expect(mockedSockJS).toHaveBeenCalledWith(DEFAULT_URL);
 		});
 
 		it('should call onOpen handler on socket open', () => {
@@ -153,8 +153,8 @@ describe('Basic event bus', () => {
 			// cleanup
 			eventBus.close();
 
-			expect(mockedSockJS).nthCalledWith(1, DEFAULT_URL);
-			expect(mockedSockJS).nthCalledWith(2, DEFAULT_URL);
+			expect(mockedSockJS).toHaveBeenNthCalledWith(1, DEFAULT_URL);
+			expect(mockedSockJS).toHaveBeenNthCalledWith(2, DEFAULT_URL);
 		});
 
 		it('should close the socket on explicit close', () => {
@@ -426,7 +426,7 @@ describe('Basic event bus', () => {
 			}
 
 			expect(instance.send).toHaveBeenCalledTimes(count);
-			expect(instance.send).toBeCalledWith('{"type":"ping"}');
+			expect(instance.send).toHaveBeenCalledWith('{"type":"ping"}');
 
 			// trigger close event
 			// @ts-ignore
@@ -439,7 +439,7 @@ describe('Basic event bus', () => {
 			eventBus.close();
 
 			expect(instance.send).toHaveBeenCalledTimes(count);
-			expect(instance.send).toBeCalledWith('{"type":"ping"}');
+			expect(instance.send).toHaveBeenCalledWith('{"type":"ping"}');
 		});
 
 		it('should send the message encoded on an open socket', () => {
@@ -453,7 +453,7 @@ describe('Basic event bus', () => {
 			for (let i = 0; i < count; i++) {
 				const sample = sampleMessages[randInt(0, sampleMessages.length - 1)];
 				eventBus.send(sample[0]);
-				expect(instance.send).lastCalledWith(sample[1]);
+				expect(instance.send).toHaveBeenLastCalledWith(sample[1]);
 			}
 
 			// cleanup
@@ -477,7 +477,7 @@ describe('Basic event bus', () => {
 			for (let i = 0; i < count; i++) {
 				const sample = sampleMessages[randInt(0, sampleMessages.length - 1)];
 				eventBus.send(sample[0]);
-				expect(instance.send).lastCalledWith(sample[1]);
+				expect(instance.send).toHaveBeenLastCalledWith(sample[1]);
 			}
 
 			expect(instance.send).toHaveBeenCalledTimes(count);
@@ -508,7 +508,7 @@ describe('Basic event bus', () => {
 			for (let i = 0; i < count; i++) {
 				const sample = sampleMessages[randInt(0, sampleMessages.length - 1)];
 				eventBus.send(sample[0], false);
-				expect(instance.send).lastCalledWith(sample[1]);
+				expect(instance.send).toHaveBeenLastCalledWith(sample[1]);
 			}
 
 			expect(instance.send).toHaveBeenCalledTimes(count);
@@ -595,7 +595,7 @@ describe('Basic event bus', () => {
 				const sample = sampleMessages[randInt(0, sampleMessages.length - 1)];
 				// @ts-ignore
 				instance.onmessage?.({ data: sample[1] });
-				expect(messageHandler).lastCalledWith(sample[0]);
+				expect(messageHandler).toHaveBeenLastCalledWith(sample[0]);
 			}
 			// cleanup
 			eventBus.close();
@@ -615,7 +615,7 @@ describe('Basic event bus', () => {
 				const invalidData = nonJsonString();
 				// @ts-ignore
 				instance.onmessage?.({ data: invalidData });
-				expect(messageHandler).lastCalledWith(
+				expect(messageHandler).toHaveBeenLastCalledWith(
 					expect.objectContaining({
 						type: 'err',
 						failureCode: 1,
@@ -654,7 +654,7 @@ describe('Basic event bus', () => {
 				const sample = sampleMessages[randInt(0, sampleMessages.length - 1)];
 				// @ts-ignore
 				instance.onmessage?.({ data: sample[1] });
-				expect(messageHandler).lastCalledWith(
+				expect(messageHandler).toHaveBeenLastCalledWith(
 					expect.objectContaining({
 						type: 'err',
 						failureCode: 2,

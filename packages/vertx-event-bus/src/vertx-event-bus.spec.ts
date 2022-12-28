@@ -53,7 +53,7 @@ describe('Vert.x Event Bus', () => {
 			// cleanup
 			eventBus.close();
 
-			expect(mockedBus).toBeCalledWith(DEFAULT_URL, options);
+			expect(mockedBus).toHaveBeenCalledWith(DEFAULT_URL, options);
 		});
 
 		it('should call onOpen handler on bus open', () => {
@@ -127,7 +127,7 @@ describe('Vert.x Event Bus', () => {
 			eventBus.close();
 
 			expect(messageHandler).toHaveBeenCalledTimes(1);
-			expect(messageHandler).toBeCalledWith(message);
+			expect(messageHandler).toHaveBeenCalledWith(message);
 		});
 
 		it('should call onError on bus error message', () => {
@@ -149,8 +149,8 @@ describe('Vert.x Event Bus', () => {
 			// cleanup
 			eventBus.close();
 
-			expect(errorHandler).toBeCalledTimes(1);
-			expect(errorHandler).lastCalledWith(message);
+			expect(errorHandler).toHaveBeenCalledTimes(1);
+			expect(errorHandler).toHaveBeenLastCalledWith(message);
 		});
 
 		it('should close bus on explicit close', () => {
@@ -305,8 +305,11 @@ describe('Vert.x Event Bus', () => {
 			// cleanup
 			eventBus.close();
 
-			expect(instance.send).toBeCalledTimes(1); // only once
-			expect(instance.send).lastCalledWith(registerMessage(channel), false);
+			expect(instance.send).toHaveBeenCalledTimes(1); // only once
+			expect(instance.send).toHaveBeenLastCalledWith(
+				registerMessage(channel),
+				false
+			);
 		});
 
 		it('should only send a unregister message on the last unregister', () => {
@@ -331,8 +334,11 @@ describe('Vert.x Event Bus', () => {
 			// cleanup
 			eventBus.close();
 
-			expect(instance.send).toBeCalledTimes(2);
-			expect(instance.send).lastCalledWith(unregisterMessage(channel), false);
+			expect(instance.send).toHaveBeenCalledTimes(2);
+			expect(instance.send).toHaveBeenLastCalledWith(
+				unregisterMessage(channel),
+				false
+			);
 		});
 
 		it('should send register messages on bus "open" event', () => {
@@ -348,7 +354,7 @@ describe('Vert.x Event Bus', () => {
 				eventBus.register(channels[i], () => {});
 			}
 
-			expect(instance.send).toBeCalledTimes(count);
+			expect(instance.send).toHaveBeenCalledTimes(count);
 			instance.send = jest.fn();
 
 			// open event bus
@@ -357,9 +363,9 @@ describe('Vert.x Event Bus', () => {
 			// cleanup
 			eventBus.close();
 
-			expect(instance.send).toBeCalledTimes(count);
+			expect(instance.send).toHaveBeenCalledTimes(count);
 			for (let i = 0; i < count; i++) {
-				expect(instance.send).nthCalledWith(
+				expect(instance.send).toHaveBeenNthCalledWith(
 					i + 1,
 					registerMessage(channels[i]),
 					false
@@ -398,8 +404,8 @@ describe('Vert.x Event Bus', () => {
 			eventBus.close();
 
 			for (let i = 0; i < registerCount; i++) {
-				expect(handlers[i]).toBeCalledTimes(messageCount);
-				expect(handlers[i]).lastCalledWith(content);
+				expect(handlers[i]).toHaveBeenCalledTimes(messageCount);
+				expect(handlers[i]).toHaveBeenLastCalledWith(content);
 			}
 		});
 
@@ -435,8 +441,8 @@ describe('Vert.x Event Bus', () => {
 			eventBus.close();
 
 			for (let i = 0; i < registerCount; i++) {
-				expect(handlers[i]).toBeCalledTimes(1);
-				expect(handlers[i]).lastCalledWith(contents[i]);
+				expect(handlers[i]).toHaveBeenCalledTimes(1);
+				expect(handlers[i]).toHaveBeenLastCalledWith(contents[i]);
 			}
 		});
 
@@ -453,8 +459,10 @@ describe('Vert.x Event Bus', () => {
 			// cleanup
 			eventBus.close();
 
-			expect(instance.send).toBeCalledTimes(1);
-			expect(instance.send).lastCalledWith(publishMessage(address, content));
+			expect(instance.send).toHaveBeenCalledTimes(1);
+			expect(instance.send).toHaveBeenLastCalledWith(
+				publishMessage(address, content)
+			);
 		});
 
 		it('should use send function and register callback on send call', () => {
@@ -498,8 +506,8 @@ describe('Vert.x Event Bus', () => {
 
 			for (let i = 0; i < count; i++) {
 				// send handlers should only be called once!
-				expect(handlers[i]).toBeCalledTimes(1);
-				expect(handlers[i]).lastCalledWith(contents[i]);
+				expect(handlers[i]).toHaveBeenCalledTimes(1);
+				expect(handlers[i]).toHaveBeenLastCalledWith(contents[i]);
 			}
 		});
 	});
