@@ -1,23 +1,10 @@
 import inquirer from 'inquirer';
 
 import { BaseWithPartial } from '../../model/index.mjs';
-import {
-	ChildProcess,
-	EventEmitter,
-	getLogger,
-	openUrl
-} from '../../lib/index.mjs';
-import { getPackageJson, getPSCRoot } from '../../actions/psc.mjs';
-import {
-	clearNativeDependencies,
-	startElectron
-} from '../../actions/electron.mjs';
+import { getLogger } from '../../lib/index.mjs';
+import { getPSCRoot } from '../../actions/psc.mjs';
 import { defaultStartOptions, StartOptions } from './model.mjs';
-import {
-	parcelServeFrontendStage,
-	parcelWatchElectronStage,
-	prepareElectronEnvironment
-} from './stages.mjs';
+import { findRunStrategy, RunStrategy } from './run-strategies/index.mjs';
 
 const logger = getLogger('Start');
 
@@ -27,77 +14,27 @@ const logger = getLogger('Start');
  */
 export async function runStartCommand(
 	options: StartOptions
-): Promise<EventEmitter> {
+): Promise<RunStrategy> {
 	logger.debug('Received options:', options);
 
 	const projectDir = await getPSCRoot(options.workingDir);
-	const packageJson = await getPackageJson(projectDir);
-	const eventEmitter = new EventEmitter();
+	const runStrategy = await findRunStrategy(projectDir, options);
+	await runStrategy.run();
+	registerInterrupts(runStrategy, ['SIGINT', 'SIGTERM', 'SIGHUP']);
 
-	const parcelFrontedProcess = parcelServeFrontendStage(
-		projectDir,
-		options,
-		() => {
-			// this gets called only on the first successful build
-			switch (options.target) {
-				case 'browser': {
-					logger.debug('Running browser target');
-					// 2a - launcher external browser
-					if (options.open) {
-						openUrl(new URL(`http://localhost:${options.port}/`));
-					}
-					break;
-				}
-				case 'electron': {
-					logger.debug('Running Electron target');
+	return runStrategy;
+}
 
-					clearNativeDependencies(projectDir).then(() => {
-						let disconnect: (() => ChildProcess) | undefined;
-						const parcelElectronProcess = parcelWatchElectronStage(
-							projectDir,
-							options,
-							() => {
-								// gets called on every successful build
-
-								disconnect?.().stop();
-								prepareElectronEnvironment(projectDir, packageJson).then(() => {
-									const electronProcess = startElectron(
-										projectDir,
-										options.port
-									);
-									disconnect = eventEmitter.connect(electronProcess);
-								});
-							}
-						);
-
-						eventEmitter.connect(parcelElectronProcess);
-					});
-
-					break;
-				}
-				default:
-					throw new Error(`Unknown target: ${options.target}`);
-			}
-		}
-	);
-
-	eventEmitter.connect(parcelFrontedProcess);
-
-	// register interrupt handlers
-	process.on('SIGINT', () => {
-		logger.debug("Main process received 'SIGINT'. Emit stop event");
-		eventEmitter.stop('SIGINT');
-	});
-	process.on('SIGTERM', () => {
-		logger.debug("Main process received 'SIGTERM'. Emit stop event");
-		eventEmitter.stop('SIGTERM');
-	});
-	process.on('SIGHUP', () => {
-		logger.debug("Main process received 'SIGHUP'. Emit stop event");
-		eventEmitter.stop('SIGHUP');
-	});
-
-	return eventEmitter;
+function registerInterrupts(
+	runStrategy: RunStrategy,
+	interrupts: NodeJS.Signals[]
+): void {
+	for (const interrupt of interrupts) {
+		process.on(interrupt, () => {
+			logger.debug(`Main process received '${interrupt}'. Emit stop event`);
+			runStrategy.stop(interrupt).finally();
+		});
+	}
 }
 
 /**
