@@ -54,7 +54,7 @@ importers:
       husky: 7.0.4
       jest: 27.5.1
       parcel: 2.8.2
-      prettier: 2.6.2
+      prettier: 2.8.1
       pretty-quick: 3.1.3
       react: 17.0.2
       react-dom: 17.0.2
@@ -100,7 +100,7 @@ importers:
       eslint-plugin-jest: 26.9.0_nm2ic5nngwviwdbcm2f7ah557u
       eslint-plugin-jsdoc: 38.1.6_eslint@8.30.0
       eslint-plugin-jsx-a11y: 6.6.1_eslint@8.30.0
-      eslint-plugin-prettier: 4.2.1_tamcvyscruykrykdvjnnxpqzdm
+      eslint-plugin-prettier: 4.2.1_kl4pe43v5b43npmso5hoplpbyi
       eslint-plugin-react: 7.31.11_eslint@8.30.0
       eslint-plugin-react-hooks: 4.6.0_eslint@8.30.0
       eslint-plugin-tsdoc: 0.2.17
@@ -108,8 +108,8 @@ importers:
       husky: 7.0.4
       jest: 27.5.1
       parcel: 2.8.2
-      prettier: 2.6.2
-      pretty-quick: 3.1.3_prettier@2.6.2
+      prettier: 2.8.1
+      pretty-quick: 3.1.3_prettier@2.8.1
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-test-renderer: 17.0.2_react@17.0.2
@@ -7680,7 +7680,7 @@ packages:
       semver: 6.3.0
     dev: true
 
-  /eslint-plugin-prettier/4.2.1_tamcvyscruykrykdvjnnxpqzdm:
+  /eslint-plugin-prettier/4.2.1_kl4pe43v5b43npmso5hoplpbyi:
     resolution: {integrity: sha512-f/0rXLXUt0oFYs8ra4w49wYZBG5GKZpAYsJSm6rnYL5uVDjd+zowwMwVZHnAjf4edNrKpCDYfXDgmRE/Ak7QyQ==}
     engines: {node: '>=12.0.0'}
     peerDependencies:
@@ -7693,7 +7693,7 @@ packages:
     dependencies:
       eslint: 8.30.0
       eslint-config-prettier: 8.5.0_eslint@8.30.0
-      prettier: 2.6.2
+      prettier: 2.8.1
       prettier-linter-helpers: 1.0.0
     dev: true
 
@@ -11259,12 +11259,6 @@ packages:
       fast-diff: 1.2.0
     dev: true
 
-  /prettier/2.6.2:
-    resolution: {integrity: sha512-PkUpF+qoXTqhOeWL9fu7As8LXsIUZ1WYaJiY/a7McAQzxjk82OF0tibkFXVCDImZtWxbvojFjerkiLb0/q8mew==}
-    engines: {node: '>=10.13.0'}
-    hasBin: true
-    dev: true
-
   /prettier/2.8.1:
     resolution: {integrity: sha512-lqGoSJBQNJidqCHE80vqZJHWHRFoNYsSpP9AjFhlhi9ODCJA541svILes/+/1GM3VaL/abZi7cpFzOpdR9UPKg==}
     engines: {node: '>=10.13.0'}
@@ -11283,22 +11277,6 @@ packages:
       ansi-regex: 5.0.1
       ansi-styles: 5.2.0
       react-is: 17.0.2
-    dev: true
-
-  /pretty-quick/3.1.3_prettier@2.6.2:
-    resolution: {integrity: sha512-kOCi2FJabvuh1as9enxYmrnBC6tVMoVOenMaBqRfsvBHB0cbpYHjdQEpSglpASDFEXVwplpcGR4CLEaisYAFcA==}
-    engines: {node: '>=10.13'}
-    hasBin: true
-    peerDependencies:
-      prettier: '>=2.0.0'
-    dependencies:
-      chalk: 3.0.0
-      execa: 4.1.0
-      find-up: 4.1.0
-      ignore: 5.2.0
-      mri: 1.2.0
-      multimatch: 4.0.0
-      prettier: 2.6.2
     dev: true
 
   /pretty-quick/3.1.3_prettier@2.8.1:
