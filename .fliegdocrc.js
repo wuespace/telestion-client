@@ -32,13 +32,27 @@ module.exports = {
 			package: './packages/telestion-client-common/package.json',
 			tsconfig: './packages/telestion-client-common/tsconfig.json',
 			mainFile: 'index.ts'
+		},
+		{
+			package: './packages/telestion-client-cli/package.json',
+			tsconfig: './packages/telestion-client-cli/tsconfig.json',
+			mainFile: 'api.mts'
+		},
+		{
+			package: './packages/parcel-optimizer-electron-require/package.json',
+			tsconfig: './packages/parcel-optimizer-electron-require/tsconfig.json',
+			mainFile: 'optimizer.ts'
+		},
+		{
+			package: './packages/parcel-reporter-tc-cli/package.json',
+			tsconfig: './packages/parcel-reporter-tc-cli/tsconfig.json',
+			mainFile: 'reporter.ts'
+		},
+		{
+			package: './packages/parcel-resolver-react/package.json',
+			tsconfig: './packages/parcel-resolver-react/tsconfig.json',
+			mainFile: 'resolver.ts'
 		}
-		// TODO: Comment in once ts-morph in fliegdoc supports TS 4.7
-		// {
-		// 	package: './packages/telestion-client-cli/package.json',
-		// 	tsconfig: './packages/telestion-client-cli/tsconfig.json',
-		// 	mainFile: 'api.mts'
-		// }
 	],
 	title: 'Telestion Client Monorepo',
 	externalLinks: {
