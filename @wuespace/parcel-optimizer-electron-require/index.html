@@ -1,0 +1,149 @@
+<html lang="en">
+<head>
+    <meta charset='UTF-8'>
+    <title>Telestion Client Monorepo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+    <style>
+        h5 {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        code {
+            line-height: inherit;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+        }
+
+        .spacer {
+            flex-grow: 1;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<header>
+    <a href="/telestion-client/" class="logo">Telestion Client Monorepo</a>
+            <a class="button" href="https://github.com/wuespace/telestion-client/" target="_blank">GitHub</a>
+            <a class="button" href="https://telestion.wuespace.de/" target="_blank">Homepage</a>
+            <a class="button" href="https://react-spectrum.adobe.com/" target="_blank">React Spectrum Libraries</a>
+            <a class="button" href="https://www.wuespace.de/legal-notice/" target="_blank">Legal Notice</a>
+        <div class="spacer"></div>
+    <button onclick="openSearch()"><span class="icon-search"></span> Search: <kbd>Ctrl</kbd>+<kbd>K</kbd></button>
+</header>
+<div class="container">
+    <div class="row">
+        <aside class="col-sm-12 col-md-4 col-lg-3">
+            <nav class="fixed">
+                <a href="/telestion-client/">Project README</a>
+                <span>Modules</span>
+                                    <a href="/telestion-client/@wuespace/vertx-event-bus">
+                        <code>
+                            @wuespace/vertx-event-bus                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/vertx-mock-server">
+                        <code>
+                            @wuespace/vertx-mock-server                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-types">
+                        <code>
+                            @wuespace/telestion-client-types                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-prop-types">
+                        <code>
+                            @wuespace/telestion-client-prop-types                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-core">
+                        <code>
+                            @wuespace/telestion-client-core                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-common">
+                        <code>
+                            @wuespace/telestion-client-common                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-cli">
+                        <code>
+                            @wuespace/telestion-client-cli                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/parcel-optimizer-electron-require">
+                        <code>
+                            @wuespace/parcel-optimizer-electron-require                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/parcel-reporter-tc-cli">
+                        <code>
+                            @wuespace/parcel-reporter-tc-cli                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/parcel-resolver-react">
+                        <code>
+                            @wuespace/parcel-resolver-react                        </code>
+                    </a>
+                            </nav>
+        </aside>
+        <div class="col-sm-12 col-md-8 col-lg-6">
+<h1><code>@wuespace/parcel-optimizer-electron-require</code></h1>
+
+<p>
+    Install using
+</p>
+<pre><code>npm install @wuespace/parcel-optimizer-electron-require</code></pre>
+
+<h2>Exported Members</h2>
+<p>You can access these members by importing the module:</p>
+<pre><code>import { <i>member</i> } from '@wuespace/parcel-optimizer-electron-require';</code></pre>
+
+<!--Table of contents for members-->
+    <ul>
+                    <li>
+                                <a href="#default">
+                    <code>
+                        unknown::NewExpression                        default                                            </code>
+                </a>
+                                            </li>
+            </ul>
+
+<!-- Members -->
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="default" href="#default">
+            <h3><code>
+                    default                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                        <!-- UNRESOLVED TYPE: unknown::NewExpression with {"type":"unknown::NewExpression","declarations":[],"name":"unknown"}-->
+                        </div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/flexsearch@0.6.32/dist/flexsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fliegwerk/search-popup@2.0.0/dist/bundle.js"></script>
+<script>
+    const searchIndex = new FlexSearch({
+        encode: q => (q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase() + ' ' + q.toLowerCase(),
+        // encode: q => (q.replace(/(.*)[\W.](.*)/g, "$1$2")).toLowerCase(),
+        tokenize: "full",
+        threshold: 0,
+        resolution: 9,
+        depth: 3,
+        doc: {
+            id: 'url',
+            field: ['name', 'text']
+        }
+    });
+
+    function search(q) {
+        q = q || '';
+        return searchIndex.search((q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase(), 5)
+    }
+
+    fetch('/telestion-client/search-index.json').then(r => r.json()).then(index => {
+        searchIndex.add(index)
+        const searchPopup = document.createElement('search-popup');
+        searchPopup.setAttribute('search', 'search')
+        document.body.appendChild(searchPopup);
+    });
+</script>
+</body>
+</html>

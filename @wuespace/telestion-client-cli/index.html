@@ -1,0 +1,4522 @@
+<html lang="en">
+<head>
+    <meta charset='UTF-8'>
+    <title>Telestion Client Monorepo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mini.css/3.0.1/mini-default.min.css">
+    <style>
+        h5 {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        code {
+            line-height: inherit;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+        }
+
+        .spacer {
+            flex-grow: 1;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<header>
+    <a href="/telestion-client/" class="logo">Telestion Client Monorepo</a>
+            <a class="button" href="https://github.com/wuespace/telestion-client/" target="_blank">GitHub</a>
+            <a class="button" href="https://telestion.wuespace.de/" target="_blank">Homepage</a>
+            <a class="button" href="https://react-spectrum.adobe.com/" target="_blank">React Spectrum Libraries</a>
+            <a class="button" href="https://www.wuespace.de/legal-notice/" target="_blank">Legal Notice</a>
+        <div class="spacer"></div>
+    <button onclick="openSearch()"><span class="icon-search"></span> Search: <kbd>Ctrl</kbd>+<kbd>K</kbd></button>
+</header>
+<div class="container">
+    <div class="row">
+        <aside class="col-sm-12 col-md-4 col-lg-3">
+            <nav class="fixed">
+                <a href="/telestion-client/">Project README</a>
+                <span>Modules</span>
+                                    <a href="/telestion-client/@wuespace/vertx-event-bus">
+                        <code>
+                            @wuespace/vertx-event-bus                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/vertx-mock-server">
+                        <code>
+                            @wuespace/vertx-mock-server                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-types">
+                        <code>
+                            @wuespace/telestion-client-types                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-prop-types">
+                        <code>
+                            @wuespace/telestion-client-prop-types                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-core">
+                        <code>
+                            @wuespace/telestion-client-core                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-common">
+                        <code>
+                            @wuespace/telestion-client-common                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/telestion-client-cli">
+                        <code>
+                            @wuespace/telestion-client-cli                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/parcel-optimizer-electron-require">
+                        <code>
+                            @wuespace/parcel-optimizer-electron-require                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/parcel-reporter-tc-cli">
+                        <code>
+                            @wuespace/parcel-reporter-tc-cli                        </code>
+                    </a>
+                                    <a href="/telestion-client/@wuespace/parcel-resolver-react">
+                        <code>
+                            @wuespace/parcel-resolver-react                        </code>
+                    </a>
+                            </nav>
+        </aside>
+        <div class="col-sm-12 col-md-8 col-lg-6">
+<h1><code>@wuespace/telestion-client-cli</code></h1>
+
+<p>
+    Install using
+</p>
+<pre><code>npm install @wuespace/telestion-client-cli</code></pre>
+
+<h2>Exported Members</h2>
+<p>You can access these members by importing the module:</p>
+<pre><code>import { <i>member</i> } from '@wuespace/telestion-client-cli';</code></pre>
+
+<!--Table of contents for members-->
+    <ul>
+                    <li>
+                                <a href="#actions">
+                    <code>
+                        unknown::SourceFile                        actions                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#commands">
+                    <code>
+                        unknown::SourceFile                        commands                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#LevelLogger">
+                    <code>
+                        function                        LevelLogger                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#getLogLevel">
+                    <code>
+                        function                        getLogLevel                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#setLogLevel">
+                    <code>
+                        function                        setLogLevel                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#LogLevel">
+                    <code>
+                        type                        LogLevel                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#logLevels">
+                    <code>
+                        variable                        logLevels                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#levelNames">
+                    <code>
+                        variable                        levelNames                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#getLogger">
+                    <code>
+                        function                        getLogger                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#sanitizeArgument">
+                    <code>
+                        function                        sanitizeArgument                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#getCmdShellString">
+                    <code>
+                        function                        getCmdShellString                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#exec">
+                    <code>
+                        function                        exec                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#spawn">
+                    <code>
+                        function                        spawn                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#fork">
+                    <code>
+                        function                        fork                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#ChildProcess">
+                    <code>
+                        interface                        ChildProcess                                            </code>
+                </a>
+                                <ul>
+                                                                                                <li>
+                            <a href="#ChildProcess.stop"><code>stop (...)</code></a>
+                        </li>
+                                            </ul>
+                                            </li>
+                    <li>
+                                <a href="#copyFile">
+                    <code>
+                        function                        copyFile                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#rm">
+                    <code>
+                        function                        rm                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#stat">
+                    <code>
+                        function                        stat                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#exists">
+                    <code>
+                        function                        exists                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#existsSync">
+                    <code>
+                        function                        existsSync                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#move">
+                    <code>
+                        function                        move                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#rmIfExists">
+                    <code>
+                        function                        rmIfExists                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#mkdir">
+                    <code>
+                        function                        mkdir                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#symlink">
+                    <code>
+                        function                        symlink                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#realPath">
+                    <code>
+                        function                        realPath                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#chmod">
+                    <code>
+                        function                        chmod                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#readFile">
+                    <code>
+                        function                        readFile                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#readFileSync">
+                    <code>
+                        function                        readFileSync                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#writeFile">
+                    <code>
+                        function                        writeFile                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#readDir">
+                    <code>
+                        function                        readDir                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#SymlinkOptions">
+                    <code>
+                        interface                        SymlinkOptions                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#SymlinkOptions.type"><code>type</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#SymlinkOptions.requireAbsolute"><code>requireAbsolute</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#defaultSymlinkOptions">
+                    <code>
+                        variable                        defaultSymlinkOptions                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#openUrl">
+                    <code>
+                        function                        openUrl                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#EventEmitter">
+                    <code>
+                        class                        EventEmitter                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#EventEmitter.STOP_EVENT"><code>STOP_EVENT</code></a>
+                            </li>
+                                                                        <li>
+                            <a href="#EventEmitter.connect"><code>connect (...)</code></a>
+                        </li>
+                                                <li>
+                            <a href="#EventEmitter.stop"><code>stop (...)</code></a>
+                        </li>
+                                            </ul>
+                                            </li>
+                    <li>
+                                <a href="#CompositeError">
+                    <code>
+                        class                        CompositeError                                            </code>
+                </a>
+                                <ul>
+                                                <li>
+                            <a href="#CompositeError.undefined"><code>constructor</code></a>
+                        </li>
+                                                                                            </ul>
+                                            </li>
+                    <li>
+                                <a href="#getName">
+                    <code>
+                        function                        getName                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#getDescription">
+                    <code>
+                        function                        getDescription                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#getVersion">
+                    <code>
+                        function                        getVersion                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#getBinaries">
+                    <code>
+                        function                        getBinaries                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#getDependencies">
+                    <code>
+                        function                        getDependencies                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#getDevDependencies">
+                    <code>
+                        function                        getDevDependencies                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#getElectronDependencies">
+                    <code>
+                        function                        getElectronDependencies                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#resolveElectronDependencies">
+                    <code>
+                        function                        resolveElectronDependencies                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#normalizeProjectName">
+                    <code>
+                        function                        normalizeProjectName                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#getPackageVersion">
+                    <code>
+                        function                        getPackageVersion                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#packageRootPath">
+                    <code>
+                        variable                        packageRootPath                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#packageJsonPath">
+                    <code>
+                        variable                        packageJsonPath                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#resourcesPath">
+                    <code>
+                        variable                        resourcesPath                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#wait">
+                    <code>
+                        function                        wait                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#lastAtLeast">
+                    <code>
+                        function                        lastAtLeast                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#getPackagePath">
+                    <code>
+                        function                        getPackagePath                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#getPSCConfig">
+                    <code>
+                        function                        getPSCConfig                         (...)                     </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#BaseOptions">
+                    <code>
+                        interface                        BaseOptions                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#BaseOptions.loglevel"><code>loglevel</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#BaseOptions.workingDir"><code>workingDir</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#BaseWithPartial">
+                    <code>
+                        type                        BaseWithPartial                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#CommandBuilder">
+                    <code>
+                        type                        CommandBuilder                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#BuildStartEvent">
+                    <code>
+                        interface                        BuildStartEvent                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#BuildStartEvent.type"><code>type</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#BuildProgressEvent">
+                    <code>
+                        interface                        BuildProgressEvent                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#BuildProgressEvent.type"><code>type</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#BuildProgressEvent.phase"><code>phase</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#BuildSuccessEvent">
+                    <code>
+                        interface                        BuildSuccessEvent                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#BuildSuccessEvent.type"><code>type</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#BuildSuccessEvent.buildTime"><code>buildTime</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#BuildSuccessEvent.numberOfBundles"><code>numberOfBundles</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#BuildFailureEvent">
+                    <code>
+                        interface                        BuildFailureEvent                                            </code>
+                </a>
+                                <ul>
+                                                                            <li>
+                                <a href="#BuildFailureEvent.type"><code>type</code></a>
+                            </li>
+                                                    <li>
+                                <a href="#BuildFailureEvent.diagnostics"><code>diagnostics</code></a>
+                            </li>
+                                                                    </ul>
+                                            </li>
+                    <li>
+                                <a href="#BuildEvent">
+                    <code>
+                        type                        BuildEvent                                            </code>
+                </a>
+                                            </li>
+                    <li>
+                                <a href="#TelestionClientCLIConfig">
+                    <code>
+                        type                        TelestionClientCLIConfig                                            </code>
+                </a>
+                                            </li>
+            </ul>
+
+<!-- Members -->
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="actions" href="#actions">
+            <h3><code>
+                    actions                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                        <!-- UNRESOLVED TYPE: unknown::SourceFile with {"type":"unknown::SourceFile","declarations":[],"name":"\"/home/runner/work/telestion-client/telestion-client/packages/telestion-client-cli/src/actions/index\""}-->
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="commands" href="#commands">
+            <h3><code>
+                    commands                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                        <!-- UNRESOLVED TYPE: unknown::SourceFile with {"type":"unknown::SourceFile","declarations":[],"name":"\"/home/runner/work/telestion-client/telestion-client/packages/telestion-client-cli/src/commands/index\""}-->
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="LevelLogger" href="#LevelLogger">
+            <h3><code>
+                    LevelLogger                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function LevelLogger
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                logger
+                
+                <!-- type -->
+                :
+                LogFunction
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                initial
+                
+                <!-- type -->
+                :
+                LogLevel
+                <!-- Default value -->
+                                = &#39;warn&#39;                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            LogFunction        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Uses an existing log function to wrap a level logging system around.
+Use <a href="#setLogLevel"><code>setLogLevel</code></a> to set the current log level.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>logger - the existing log function</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>initial - the initial log level (defaults to <code>'warn'</code>)</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@returns:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>the modified log function</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="getLogLevel" href="#getLogLevel">
+            <h3><code>
+                    getLogLevel                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function getLogLevel
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                                    )
+
+            <!-- Return type -->
+            :
+            LogLevel        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Returns the current log level.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="setLogLevel" href="#setLogLevel">
+            <h3><code>
+                    setLogLevel                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function setLogLevel
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                level
+                
+                <!-- type -->
+                :
+                LogLevel
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Sets the current log level of the <a href="#LevelLogger"><code>LevelLogger</code></a>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>level - the new log level (one of:</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="LogLevel" href="#LogLevel">
+            <h3><code>
+                    LogLevel                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type LogLevel
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            &#39;debug&#39; | &#39;info&#39; | &#39;warn&#39; | &#39;error&#39; | &#39;unknown&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Describes the log levels that the level logger can handle.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="logLevels" href="#logLevels">
+            <h3><code>
+                    logLevels                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Declaration Kind: const, let, or var -->
+            const
+            :
+
+            <!-- Variable type or any -->
+            Record&lt;LogLevel, number&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Maps a log level name to a log level priority number. (higher = more important)</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="levelNames" href="#levelNames">
+            <h3><code>
+                    levelNames                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Declaration Kind: const, let, or var -->
+            const
+            :
+
+            <!-- Variable type or any -->
+            any        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Maps a log level priority number to a log level name.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="getLogger" href="#getLogger">
+            <h3><code>
+                    getLogger                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function getLogger
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                componentName
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            ComponentLogger        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Returns a logger interface for the specified component.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>componentName - the name of the component</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="sanitizeArgument" href="#sanitizeArgument">
+            <h3><code>
+                    sanitizeArgument                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function sanitizeArgument
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                arg
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Sanitizes an argument for a CMD command.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>arg - the unsafe argument</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="getCmdShellString" href="#getCmdShellString">
+            <h3><code>
+                    getCmdShellString                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function getCmdShellString
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                executablePath
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                args
+                
+                <!-- type -->
+                :
+                string[]
+                <!-- Default value -->
+                                = []                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                disableSanitizer
+                
+                <!-- type -->
+                :
+                undefined
+                <!-- Default value -->
+                                = false                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Converts the executable and the arguments to a string
+that is executable by the CMD command.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>executablePath - path to the executable
+(can also be a filename that is available in the path)</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>args - arguments that the executable receives on execution</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>disableSanitizer - explicitly turn off the argument sanitizer
+(I sure hope you know what you're doing...)</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="exec" href="#exec">
+            <h3><code>
+                    exec                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function exec
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                executablePath
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                args
+                
+                <!-- type -->
+                :
+                string[]
+                <!-- Default value -->
+                                = []                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                options
+                
+                <!-- type -->
+                :
+                ExecOptions &amp; { disableSanitizer?: boolean }
+                <!-- Default value -->
+                                = {}                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;{ stdout: string | Buffer; stderr: string | Buffer }&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Execute an executable from the parent process.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>executablePath - path to the executable
+(can also be a filename that is available in the path)</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>args - arguments that the executable receives on execution</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>options - additional exec options</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="spawn" href="#spawn">
+            <h3><code>
+                    spawn                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function spawn
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                executablePath
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                args
+                
+                <!-- type -->
+                :
+                readonly string[]
+                <!-- Default value -->
+                                = []                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                options
+                
+                <!-- type -->
+                :
+                SpawnOptions
+                <!-- Default value -->
+                                = {}                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            ChildProcess        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Spawns an executable from the parent process.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>executablePath - path to the executable
+(can also be a filename that is available in the path)</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>args - arguments that the executable receives on spawning</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>options - additional spawn options</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="fork" href="#fork">
+            <h3><code>
+                    fork                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function fork
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                modulePath
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                args
+                ?
+                <!-- type -->
+                :
+                string[]
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                options
+                ?
+                <!-- type -->
+                :
+                ForkOptions
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            ChildProcess        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Forks a JS module from the parent process and opens an IPC channel
+between both processes.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>modulePath - path to the JS module to execute
+(can also be a filename that is available in the path)</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>args - arguments that the JS module receives on forking</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>options - additional fork options</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="ChildProcess" href="#ChildProcess">
+            <h3><code>
+                    ChildProcess                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            ChildProcess
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends NodeChildProcess                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+
+<!-- Methods -->
+    <h4>Methods</h4>
+            <a id="ChildProcess.stop" href="#ChildProcess.stop">
+            <h5><code>
+                                                                                                    stop                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function stop
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                signal
+                ?
+                <!-- type -->
+                :
+                NodeJS.Signals
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Stops the child process platform independently.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                            </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="copyFile" href="#copyFile">
+            <h3><code>
+                    copyFile                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function copyFile
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                sourcePath
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                destPath
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                overwrite
+                
+                <!-- type -->
+                :
+                undefined
+                <!-- Default value -->
+                                = false                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;void&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Copies a file from the source path to the destination path.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>sourcePath - the path to original file you want to copy</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>destPath - the path to the copy</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>overwrite - when the destination path is already &quot;occupied&quot; by a file, then replace it</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="rm" href="#rm">
+            <h3><code>
+                    rm                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function rm
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                path
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                recursive
+                
+                <!-- type -->
+                :
+                undefined
+                <!-- Default value -->
+                                = false                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;void&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Removes a file or directory at the specified path.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>path - the path to the file or directory you want to delete</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>recursive - if it is a directory you want to delete,
+recurse into it and delete its children too</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="stat" href="#stat">
+            <h3><code>
+                    stat                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function stat
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                path
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;Stats&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Scrapes information about a file.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>path - the path to the file to check</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="exists" href="#exists">
+            <h3><code>
+                    exists                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function exists
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                path
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;boolean&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Returns <code>true</code> if the path exists.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>path - the path to check for existence</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="existsSync" href="#existsSync">
+            <h3><code>
+                    existsSync                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function existsSync
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                path
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            boolean        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Returns <code>true</code> if the path exists. (synchronous version)</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>path - the path to check for existence</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="move" href="#move">
+            <h3><code>
+                    move                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function move
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                oldPath
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                newPath
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;void&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Moves a file from the old path to the new path.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>oldPath - the path to the file you want to move</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>newPath - the destination path the file should have once the function returns</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="rmIfExists" href="#rmIfExists">
+            <h3><code>
+                    rmIfExists                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function rmIfExists
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                path
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                recursive
+                
+                <!-- type -->
+                :
+                undefined
+                <!-- Default value -->
+                                = false                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;boolean&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Removes a file or directory if it exists.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>path - the path to the file or directory you want to delete</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>recursive - if it is a directory you want to delete,
+recurse into it and delete its children too</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="mkdir" href="#mkdir">
+            <h3><code>
+                    mkdir                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function mkdir
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                dirPath
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                recursive
+                
+                <!-- type -->
+                :
+                undefined
+                <!-- Default value -->
+                                = false                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;string | void&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Creates a directory.
+If the given path already exists and recursive is {@code false}, the function rejects.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>dirPath - the path to new directory</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>recursive - when {@code true} parent directory are created if they aren't exist yet</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="symlink" href="#symlink">
+            <h3><code>
+                    symlink                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function symlink
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                pointsTo
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                symlinkPath
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                options
+                
+                <!-- type -->
+                :
+                Partial&lt;SymlinkOptions&gt;
+                <!-- Default value -->
+                                = {}                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;void&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Creates a symlink at the specified path that points to another path.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>pointsTo - the path to which the link should point</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>symlinkPath - the path on which the link should be generated</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>options - additional options to configure the symlink process further</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="realPath" href="#realPath">
+            <h3><code>
+                    realPath                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function realPath
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                symlinkPath
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;string&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Determines the actual location of the symlink path.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>symlinkPath - the path to the symbolic link that should be resolved</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="chmod" href="#chmod">
+            <h3><code>
+                    chmod                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function chmod
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                filePath
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                mode
+                
+                <!-- type -->
+                :
+                number | string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;void&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Changes the access bits of a file.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>filePath - the file that receives the new access bits</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>mode - the access bits in an octal format (<code>1336</code>) or in a human-readable format (<code>&quot;755&quot;</code>)</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="readFile" href="#readFile">
+            <h3><code>
+                    readFile                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function readFile
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                filePath
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;string&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Reads the contents of a file and returns them as a string.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>filePath - the path to the file</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="readFileSync" href="#readFileSync">
+            <h3><code>
+                    readFileSync                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function readFileSync
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                filePath
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Reads the contents of a file and returns them as a string.
+(synchronous version)</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>filePath - the path to the file</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="writeFile" href="#writeFile">
+            <h3><code>
+                    writeFile                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function writeFile
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                filePath
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                content
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                append
+                
+                <!-- type -->
+                :
+                undefined
+                <!-- Default value -->
+                                = false                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;void&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Writes the given contents to a file.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>filePath - the path to the file</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>content - the new content</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>append - when {@code true} the new content is appended to the existing one</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="readDir" href="#readDir">
+            <h3><code>
+                    readDir                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function readDir
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                dirPath
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;string[]&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Reads the contents of a directory and returns the names of all elements.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>dirPath - the path to the directory</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="SymlinkOptions" href="#SymlinkOptions">
+            <h3><code>
+                    SymlinkOptions                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            SymlinkOptions
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="SymlinkOptions.type" href="#SymlinkOptions.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;dir&#39; | &#39;file&#39; | &#39;junction&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The type of the symbolic link to create.
+Only used on Windows systems.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="SymlinkOptions.requireAbsolute" href="#SymlinkOptions.requireAbsolute">
+        <h5><code>
+                                                                                requireAbsolute                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            boolean        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Requires the path to the destination file (where the link points)
+to be absolute. By default, the file linker resolves the destination file
+against the link directory.</p>
+<blockquote>
+<p>Note: On Windows systems this option is ignored.</p>
+</blockquote>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="defaultSymlinkOptions" href="#defaultSymlinkOptions">
+            <h3><code>
+                    defaultSymlinkOptions                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Declaration Kind: const, let, or var -->
+            const
+            :
+
+            <!-- Variable type or any -->
+            SymlinkOptions        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="openUrl" href="#openUrl">
+            <h3><code>
+                    openUrl                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function openUrl
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                url
+                
+                <!-- type -->
+                :
+                URL
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;void&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Opens the URL in the system's native browser.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>url the URL to open</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="EventEmitter" href="#EventEmitter">
+            <h3><code>
+                    EventEmitter                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            class
+            <!-- Name -->
+            EventEmitter
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends NodeEventEmitter                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>This class extends the functionality of Node's [<code>import('events') EventEmitter</code>](#import('events') EventEmitter)
+and adds some convenience functions to connect child processes and register
+process interrupt handlers.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+        <h4>Constructors</h4>
+    
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="EventEmitter.STOP_EVENT" href="#EventEmitter.STOP_EVENT">
+        <h5><code>
+                                static                                readonly                STOP_EVENT                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            undefined        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>This symbol defines the stop event that are emitted
+once all connected child processes should be stopped.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Methods -->
+    <h4>Methods</h4>
+            <a id="EventEmitter.connect" href="#EventEmitter.connect">
+            <h5><code>
+                                                                                                    connect                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function connect
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                childProcess
+                
+                <!-- type -->
+                :
+                ChildProcess
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            () =&gt; ChildProcess        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Connects the given child process to the event emitter.
+Once connected, the stop event automatically stops the child process and
+when the child process dies unexpectedly, it emits the stop event and
+stops all others connected child processes.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>childProcess the child process that you want to connect to the event emitter</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@return:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>a function that disconnects the child process from the event emitter
+and returns the child process instance</p>
+</div>
+            </div>
+            <a id="EventEmitter.stop" href="#EventEmitter.stop">
+            <h5><code>
+                                                                                                    stop                                        (...)
+                                    </code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function stop
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                signal
+                ?
+                <!-- type -->
+                :
+                NodeJS.Signals
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Explicitly stops all connected child processes.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>signal an optional signal that should be sent to all processes</p>
+</div>
+            </div>
+                            </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="CompositeError" href="#CompositeError">
+            <h3><code>
+                    CompositeError                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            class
+            <!-- Name -->
+            CompositeError
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                            extends Error                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>A generic error that has an error message and an additional payload.</p>
+<p>This error type can be used if you want to attach additional information to your error message.</p>
+<p>For example:</p>
+<pre><code>try {
+    await someMethodThatThrows();
+} catch (err) {
+    throw new CompositeError('Action xyz does not work', err);
+}
+</code></pre>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+        <h4>Constructors</h4>
+            <a id="CompositeError.constructor" href="#CompositeError.constructor">
+            <h5><code>constructor</code></h5>
+        </a>
+        
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function 
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                message
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                original
+                
+                <!-- type -->
+                :
+                unknown
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            any        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+    
+<!-- Properties -->
+<h4>Properties</h4>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="getName" href="#getName">
+            <h3><code>
+                    getName                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function getName
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                packageJson
+                
+                <!-- type -->
+                :
+                Record&lt;string, unknown&gt;
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;string&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Searches for the package name in a parsed <code>package.json</code> JSON object.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>packageJson - the parsed <code>package.json</code> JSON object</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="getDescription" href="#getDescription">
+            <h3><code>
+                    getDescription                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function getDescription
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                packageJson
+                
+                <!-- type -->
+                :
+                Record&lt;string, unknown&gt;
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;string&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Searches for the package description in a parsed <code>package.json</code> JSON object.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>packageJson - the parsed <code>package.json</code> JSON object</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="getVersion" href="#getVersion">
+            <h3><code>
+                    getVersion                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function getVersion
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                packageJson
+                
+                <!-- type -->
+                :
+                Record&lt;string, unknown&gt;
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;string&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Searches for the package version in a parsed <code>package.json</code> JSON object.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>packageJson - the parsed <code>package.json</code> JSON object</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="getBinaries" href="#getBinaries">
+            <h3><code>
+                    getBinaries                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function getBinaries
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                packageJson
+                
+                <!-- type -->
+                :
+                Record&lt;string, unknown&gt;
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;Record&lt;string, string&gt;&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Searches for exported binaries in a parsed <code>package.json</code> JSON object
+and returns an empty object if the <code>package.json</code> doesn't contain
+any exported binaries.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>packageJson - the parsed <code>package.json</code> JSON object</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="getDependencies" href="#getDependencies">
+            <h3><code>
+                    getDependencies                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function getDependencies
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                packageJson
+                
+                <!-- type -->
+                :
+                Record&lt;string, unknown&gt;
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;Record&lt;string, string&gt;&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Searches for production dependencies in a parsed <code>package.json</code> JSON object
+and returns an empty object if the <code>package.json</code> doesn't contain
+any production dependencies.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>packageJson - the parsed <code>package.json</code> JSON object</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="getDevDependencies" href="#getDevDependencies">
+            <h3><code>
+                    getDevDependencies                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function getDevDependencies
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                packageJson
+                
+                <!-- type -->
+                :
+                Record&lt;string, unknown&gt;
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;Record&lt;string, string&gt;&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Searches for development dependencies in a parsed <code>package.json</code> JSON object
+and returns an empty object if the <code>package.json</code> doesn't contain
+any development dependencies.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>packageJson - the parsed <code>package.json</code> JSON object</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="getElectronDependencies" href="#getElectronDependencies">
+            <h3><code>
+                    getElectronDependencies                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function getElectronDependencies
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                packageJson
+                
+                <!-- type -->
+                :
+                Record&lt;string, unknown&gt;
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;string[]&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Searches for Electron dependencies in a parsed <code>package.json</code> JSON object
+and returns an empty array if the <code>package.json</code> doesn't contain
+any Electron dependencies.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>packageJson - the parsed <code>package.json</code> JSON object</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="resolveElectronDependencies" href="#resolveElectronDependencies">
+            <h3><code>
+                    resolveElectronDependencies                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function resolveElectronDependencies
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                packageJson
+                
+                <!-- type -->
+                :
+                Record&lt;string, unknown&gt;
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;Record&lt;string, string&gt;&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Searches for production and Electron dependencies.
+The production dependencies are filtered through the Electron dependency list
+resulting in the final production dependencies
+that Electron needs in the main process.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>packageJson - the parsed <code>package.json</code> JSON object</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="normalizeProjectName" href="#normalizeProjectName">
+            <h3><code>
+                    normalizeProjectName                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function normalizeProjectName
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                prettyName
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;string&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Takes a pretty project name (e.g. from user input)
+and returns a valid npm project name.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>prettyName - the pretty project name to transform</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="getPackageVersion" href="#getPackageVersion">
+            <h3><code>
+                    getPackageVersion                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            
+            function getPackageVersion
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                                    )
+
+            <!-- Return type -->
+            :
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Returns the current version of the <code>@wuespace/telestion-client-cli</code> package.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="packageRootPath" href="#packageRootPath">
+            <h3><code>
+                    packageRootPath                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Declaration Kind: const, let, or var -->
+            const
+            :
+
+            <!-- Variable type or any -->
+            any        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="packageJsonPath" href="#packageJsonPath">
+            <h3><code>
+                    packageJsonPath                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Declaration Kind: const, let, or var -->
+            const
+            :
+
+            <!-- Variable type or any -->
+            any        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="resourcesPath" href="#resourcesPath">
+            <h3><code>
+                    resourcesPath                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Declaration Kind: const, let, or var -->
+            const
+            :
+
+            <!-- Variable type or any -->
+            any        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="wait" href="#wait">
+            <h3><code>
+                    wait                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function wait
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                duration
+                
+                <!-- type -->
+                :
+                number
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;void&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Returns a promise that waits the specified duration before it resolves.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>duration - the duration to wait in milliseconds</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="lastAtLeast" href="#lastAtLeast">
+            <h3><code>
+                    lastAtLeast                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function lastAtLeast
+            <!-- Type Parameters -->
+                <!-- opening angle bracket -->
+    &lt;
+
+            
+        <!-- Name -->
+        T
+        <!-- Constraints -->
+        
+        <!-- Default -->
+        
+        <!-- Comma if not last -->
+            
+    <!-- Closing angle bracket -->
+    &gt;
+
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                minDuration
+                
+                <!-- type -->
+                :
+                number
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                ,                             
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                promise
+                
+                <!-- type -->
+                :
+                PromiseLike&lt;T&gt;
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;T&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Accepts a list of promises and minimal duration.
+If the provided promises resolve or reject faster than the minimal duration,
+the returned promise lasts the minimal duration.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>minDuration - the minimal duration in milliseconds</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>promise - the promise to run</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@return:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>a new promise that resolves with the result from the passed promise</p>
+</div>
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@see:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>Promise.all</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="getPackagePath" href="#getPackagePath">
+            <h3><code>
+                    getPackagePath                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function getPackagePath
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                            
+                <br>
+                &nbsp;&nbsp;
+
+                                
+                <!-- parameter name -->
+                packageName
+                
+                <!-- type -->
+                :
+                string
+                <!-- Default value -->
+                
+                <!-- Comma if not last -->
+                                                        <br>
+                        )
+
+            <!-- Return type -->
+            :
+            Promise&lt;string&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Searches for an installed package and returns an absolute path to its install location.
+Throws ERR_MODULE_NOT_FOUND if the package is not installed.</p>
+
+    <!-- Tags -->
+    <div class="row">
+                    <!-- Tag name -->
+            <div class="col-sm-2">
+                <p>
+                    <mark class="tag">@param:</mark>
+                </p>
+            </div>
+
+            <!-- Tag content -->
+            <div class="col-sm-10"><p>packageName - the name of the package to search for</p>
+</div>
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="getPSCConfig" href="#getPSCConfig">
+            <h3><code>
+                    getPSCConfig                     (...)                 </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            
+<!-- Signature -->
+<p>
+    <b>
+        <code>
+            async
+            function getPSCConfig
+            <!-- Type Parameters -->
+            
+                        <!-- Parameters -->
+            (
+                                    )
+
+            <!-- Return type -->
+            :
+            Promise&lt;TelestionClientCLIConfig&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="BaseOptions" href="#BaseOptions">
+            <h3><code>
+                    BaseOptions                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            BaseOptions
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Every command receives this options by commander by default.
+Extend this interface if you've added more options to your command.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="BaseOptions.loglevel" href="#BaseOptions.loglevel">
+        <h5><code>
+                                                                                loglevel                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            LogLevel        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The current application loglevel.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+    <a id="BaseOptions.workingDir" href="#BaseOptions.workingDir">
+        <h5><code>
+                                                                                workingDir                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            string        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>The application working directory.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="BaseWithPartial" href="#BaseWithPartial">
+            <h3><code>
+                    BaseWithPartial                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type BaseWithPartial
+            <!-- Type Parameters -->
+                <!-- opening angle bracket -->
+    &lt;
+
+            
+        <!-- Name -->
+        T
+        <!-- Constraints -->
+                    : BaseOptions        
+        <!-- Default -->
+        
+        <!-- Comma if not last -->
+            
+    <!-- Closing angle bracket -->
+    &gt;
+        </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            Omit&lt;
+	Partial&lt;T&gt;,
+	keyof BaseOptions
+&gt; &amp;
+	BaseOptions        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Receives command options and make all options optional
+except the base options-</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="CommandBuilder" href="#CommandBuilder">
+            <h3><code>
+                    CommandBuilder                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type CommandBuilder
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            (command: Command) =&gt; void        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>A command builder receives the parent command
+and should attach his command, arguments and options on call.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="BuildStartEvent" href="#BuildStartEvent">
+            <h3><code>
+                    BuildStartEvent                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            BuildStartEvent
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="BuildStartEvent.type" href="#BuildStartEvent.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;buildStart&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="BuildProgressEvent" href="#BuildProgressEvent">
+            <h3><code>
+                    BuildProgressEvent                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            BuildProgressEvent
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="BuildProgressEvent.type" href="#BuildProgressEvent.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;buildProgress&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+    <a id="BuildProgressEvent.phase" href="#BuildProgressEvent.phase">
+        <h5><code>
+                                                                                phase                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;resolving&#39; | &#39;transforming&#39; | &#39;bundling&#39; | &#39;packaging&#39; | &#39;optimizing&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="BuildSuccessEvent" href="#BuildSuccessEvent">
+            <h3><code>
+                    BuildSuccessEvent                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            BuildSuccessEvent
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="BuildSuccessEvent.type" href="#BuildSuccessEvent.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;buildSuccess&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+    <a id="BuildSuccessEvent.buildTime" href="#BuildSuccessEvent.buildTime">
+        <h5><code>
+                                                                                buildTime                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            number        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+    <a id="BuildSuccessEvent.numberOfBundles" href="#BuildSuccessEvent.numberOfBundles">
+        <h5><code>
+                                                                                numberOfBundles                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            number        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="BuildFailureEvent" href="#BuildFailureEvent">
+            <h3><code>
+                    BuildFailureEvent                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Type -->
+            interface
+            <!-- Name -->
+            BuildFailureEvent
+            <!-- Type Parameters -->
+            
+            <!-- Extends -->
+                    </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Constructors -->
+
+<!-- Properties -->
+<h4>Properties</h4>
+    <a id="BuildFailureEvent.type" href="#BuildFailureEvent.type">
+        <h5><code>
+                                                                                type                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            &#39;buildFailure&#39;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+    <a id="BuildFailureEvent.diagnostics" href="#BuildFailureEvent.diagnostics">
+        <h5><code>
+                                                                                diagnostics                            </code></h5>
+    </a>
+    <!-- Signature -->
+<p>
+    <b>Type:
+        <code>
+            <!-- Type -->
+            Array&lt;Diagnostic&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+
+<!-- Methods -->
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="BuildEvent" href="#BuildEvent">
+            <h3><code>
+                    BuildEvent                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type BuildEvent
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            | BuildStartEvent
+	| BuildProgressEvent
+	| BuildSuccessEvent
+	| BuildFailureEvent        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- Description -->
+    <p>Build events received by the <code>@wuespace/parcel-reporter-tc-cli</code>.</p>
+
+    <!-- Tags -->
+    <div class="row">
+            </div>
+                        </div>
+    <div class="card fluid">
+                <!-- Name with an anchor link -->
+        <a id="TelestionClientCLIConfig" href="#TelestionClientCLIConfig">
+            <h3><code>
+                    TelestionClientCLIConfig                                    </code></h3></a>
+
+        <!-- Description, based on the type -->
+                            <!-- Signature -->
+<p>
+    <b>
+        <code>
+            <!-- Name -->
+            type TelestionClientCLIConfig
+            <!-- Type Parameters -->
+                    </code>
+    </b>
+</p>
+
+<!-- Definition -->
+<p>
+    <b>
+        Alias for:
+        <code>
+            Partial&lt;
+	Omit&lt;Options, &#39;dir&#39; | &#39;platform&#39; | &#39;arch&#39;&gt; &amp; {
+		/**
+		 * Whether the PSC should get packaged as an Electron app.
+		 */
+		electron: boolean;
+	}
+&gt;        </code>
+    </b>
+</p>
+
+<!-- Docs -->
+    <!-- no docs :( -->
+    <p><small>No docs provided</small></p>
+                        </div>
+</div>
+</div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/flexsearch@0.6.32/dist/flexsearch.min.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/fliegwerk/search-popup@2.0.0/dist/bundle.js"></script>
+<script>
+    const searchIndex = new FlexSearch({
+        encode: q => (q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase() + ' ' + q.toLowerCase(),
+        // encode: q => (q.replace(/(.*)[\W.](.*)/g, "$1$2")).toLowerCase(),
+        tokenize: "full",
+        threshold: 0,
+        resolution: 9,
+        depth: 3,
+        doc: {
+            id: 'url',
+            field: ['name', 'text']
+        }
+    });
+
+    function search(q) {
+        q = q || '';
+        return searchIndex.search((q.replace(/([a-z])([A-Z])/g, "$1 $2")).toLowerCase(), 5)
+    }
+
+    fetch('/telestion-client/search-index.json').then(r => r.json()).then(index => {
+        searchIndex.add(index)
+        const searchPopup = document.createElement('search-popup');
+        searchPopup.setAttribute('search', 'search')
+        document.body.appendChild(searchPopup);
+    });
+</script>
+</body>
+</html>
