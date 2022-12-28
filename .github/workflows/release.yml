@@ -2,10 +2,11 @@ name: Release
 
 # Events that trigger this workflow
 on:
-  #  push:
-  #    branches:
-  #      - main
-  workflow_dispatch:
+  push:
+    branches:
+      - main
+      
+concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 # Defines which tool versions should be used in all workflow jobs
 env:
@@ -37,7 +38,7 @@ jobs:
       - name: Setup npm 📀
         run: |
           touch "${GITHUB_WORKSPACE}/.npmrc"
-          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > "${GITHUB_WORKSPACE}/.npmrc"
+          echo "//registry.npmjs.org/:_authToken=NPM_TOKEN" > "${GITHUB_WORKSPACE}/.npmrc"
           cat "${GITHUB_WORKSPACE}/.npmrc"
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
