@@ -11,8 +11,8 @@ import { ConnectionState } from './model';
 jest.mock('sockjs-client');
 jest.mock('./lib/validator');
 
-const mockedSockJS = jest.mocked(SockJS, true);
-const mockedValidate = jest.mocked(validate, false);
+const mockedSockJS = jest.mocked(SockJS);
+const mockedValidate = jest.mocked(validate, { shallow: true });
 
 const DEFAULT_URL = 'http://localhost:9870/bridge';
 
