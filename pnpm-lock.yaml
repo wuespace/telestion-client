@@ -165,7 +165,7 @@ importers:
       '@types/ejs': 3.1.1
       '@types/inquirer': 8.2.5
       '@types/node': 17.0.45
-      '@types/validate-npm-package-name': 3.0.3
+      '@types/validate-npm-package-name': 4.0.0
       '@wuespace/telestion-client-template': workspace:^
       chalk: ^5.0.0
       change-case: ^4.1.2
@@ -195,7 +195,7 @@ importers:
       '@types/ejs': 3.1.1
       '@types/inquirer': 8.2.5
       '@types/node': 17.0.45
-      '@types/validate-npm-package-name': 3.0.3
+      '@types/validate-npm-package-name': 4.0.0
 
   packages/telestion-client-common:
     specifiers:
@@ -5591,8 +5591,8 @@ packages:
       '@types/node': 17.0.45
     dev: true
 
-  /@types/validate-npm-package-name/3.0.3:
-    resolution: {integrity: sha512-dLhCHEIjf9++/vHaHCo/ngJzGqGGbPh/f7HKwznEk3WFL64t/VKuRiVpyQH4afX93YkCV94I9M0Cx+DBLk1Dsg==}
+  /@types/validate-npm-package-name/4.0.0:
+    resolution: {integrity: sha512-RpO62vB2lkjEkyLbwTheA2+uwYmtVMWTr/kWRI++UAgVdZqNqdAuIQl/SxBCGeMKfdjWaXPbyhZbiCc4PAj+KA==}
     dev: true
 
   /@types/yargs-parser/21.0.0:
