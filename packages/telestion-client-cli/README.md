@@ -4,10 +4,10 @@ npm: [`@wuespace/telestion-client-cli`](https://www.npmjs.com/package/@wuespace/
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/5fb6ccd02dd3152ef03f/maintainability)](https://codeclimate.com/github/wuespace/telestion-client/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5fb6ccd02dd3152ef03f/test_coverage)](https://codeclimate.com/github/wuespace/telestion-client/test_coverage)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/wuespace/telestion-client/Test%20and%20Coverage?label=tests)](https://github.com/wuespace/telestion-client/actions?query=workflow%3A%22Test+and+Coverage%22)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/wuespace/telestion-client/CI)](https://github.com/wuespace/telestion-client/actions?query=workflow%3ACI)
+![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/wuespace/telestion-client/ci.yml?branch=main)
 [![GitHub](https://img.shields.io/github/license/wuespace/telestion-client)](LICENSE)
-[![Node current](https://img.shields.io/badge/node-%3E%3D14-brightgreen)](package.json)
+[![Node current](https://img.shields.io/badge/node-%3E%3D16-brightgreen)](package.json)
+[![PNPM current](https://img.shields.io/badge/pnpm-7-brightgreen)](package.json)
 [![Twitter Follow](https://img.shields.io/twitter/follow/wuespace?style=social)](https://twitter.com/wuespace)
 
 The command line interface for developing _Project-Specific Clients_ (PSCs) with the Telestion Client ecosystem.
@@ -19,12 +19,16 @@ The command line interface for developing _Project-Specific Clients_ (PSCs) with
 Simply install the command line interface globally in your workspace:
 
 ```shell
+pnpm add -g @wuespace/telestion-client-cli
+# or
 npm install --global @wuespace/telestion-client-cli
 ```
 
 Or, add it as a development dependency to your PSC project:
 
 ```shell
+pnpm add -D @wuespace/telestion-client-cli
+# or
 npm install @wuespace/telestion-client-cli
 ```
 
@@ -40,35 +44,31 @@ You can find the latest versions (in PDF format) in the [Documentation Repo Rele
 
 ## Package structure
 
-The package internally uses [yargs](http://yargs.js.org/) to build an interactive command line
+The package internally uses [commander](https://github.com/tj/commander.js) to build an interactive command line
 and does all the argument parsing.
 
-The main executable is located in the `bin` folder.
-All commands are defined in `src/commands` and must export some predefined variables.
-Utility and library functions are exported at `src/lib` that maybe used in the commands.
-
-Overall, the folder structure, therefore, looks like this:
+The folder looks like this:
 
 ```
 .
-├── bin
-│   └── cli.js (the CLI executable)
+├── resources (static files used by the CLI)
 ├── src
-│   ├── commands (the CLI commands)
-│   │   ├── build.js
-│   │   ├── docs.js
+│   ├── actions (specific actions related to topics used in the CLI)
+│   │   ├── electron.mts (actions required for interacting with electron)
 │   │   └── [...]
-│   ├── lib (library functions for CLI commands)
-│   │   ├── build
-│   │   │   ├── custom-webpack-loader
-│   │   │   │   └── electron-main-import-plugins.js (custom webpack loader for compiling the Electron main thread)
-│   │   │   ├── static
-│   │   │   │   └── electron-main.js (the Electron Main Thread file used when building Electron Apps from PSCs)
-│   │   │   └── [...]
-│   │   ├── [...]
-│   │   ├── async-exec.js
+│   ├── commands (the commands of the CLI)
+│   │   ├── _template (a template that you can copy to create a new command)
+│   │   │   ├── command.mts (the function that gets called when the command gets executed)
+│   │   │   ├── index.mts (the basic command definition)
+│   │   │   ├── model.mts (model classes/interfaces used by the command, e.g., command options)
+│   │   │   └── stages.mts (functions for execution stages of the command)
 │   │   └── [...]
-│   └── api.js (publicly exposed JS APIs of the CLI, undocumented except in code!)
+│   ├── lib (generic functionality used in the CLI)
+│   │   └── [...]
+│   ├── model (model interfaces used by the CLI)
+│   │   └── [...]
+│   ├── api.mts (the entrypoint of the module APIs for using the CLI programmatically)
+│   └── cli.mts (the entrypoint of the CLI)
 ├── CHANGELOG.md (DO NOT TOUCH! auto-generated changelog for the package)
 ├── LICENSE
 ├── package.json

@@ -4,11 +4,10 @@ npm: [`@wuespace/parcel-resolver-react`](https://www.npmjs.com/package/@wuespace
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/5fb6ccd02dd3152ef03f/maintainability)](https://codeclimate.com/github/wuespace/telestion-client/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5fb6ccd02dd3152ef03f/test_coverage)](https://codeclimate.com/github/wuespace/telestion-client/test_coverage)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/wuespace/telestion-client/Test%20and%20Coverage?label=tests)](https://github.com/wuespace/telestion-client/actions?query=workflow%3A%22Test+and+Coverage%22)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/wuespace/telestion-client/CI)](https://github.com/wuespace/telestion-client/actions?query=workflow%3ACI)
+![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/wuespace/telestion-client/ci.yml?branch=main)
 [![GitHub](https://img.shields.io/github/license/wuespace/telestion-client)](LICENSE)
-[![Node current](https://img.shields.io/badge/node-%3E%3D14-brightgreen)](package.json)
-[![NPM current](https://img.shields.io/badge/npm-%3E%3D7-blue)](package.json)
+[![Node current](https://img.shields.io/badge/node-%3E%3D16-brightgreen)](package.json)
+[![PNPM current](https://img.shields.io/badge/pnpm-7-brightgreen)](package.json)
 [![Twitter Follow](https://img.shields.io/twitter/follow/wuespace?style=social)](https://twitter.com/wuespace)
 
 Parcel Resolver that overrides any imports of [React.js](https://reactjs.org/) to include React only once and in one
@@ -27,6 +26,8 @@ plugin is already installed and integrated in Parcel.
 If that's not the case, install the plugin as development dependency:
 
 ```shell
+pnpm add -D @wuespace/parcel-resolver-react
+# or
 npm install --save-dev @wuespace/parcel-resolver-react
 ```
 

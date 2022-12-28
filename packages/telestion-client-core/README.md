@@ -4,13 +4,15 @@ npm: [`@wuespace/telestion-client-core`](https://www.npmjs.com/package/@wuespace
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/5fb6ccd02dd3152ef03f/maintainability)](https://codeclimate.com/github/wuespace/telestion-client/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5fb6ccd02dd3152ef03f/test_coverage)](https://codeclimate.com/github/wuespace/telestion-client/test_coverage)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/wuespace/telestion-client/Test%20and%20Coverage?label=tests)](https://github.com/wuespace/telestion-client/actions?query=workflow%3A%22Test+and+Coverage%22)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/wuespace/telestion-client/CI)](https://github.com/wuespace/telestion-client/actions?query=workflow%3ACI)
+![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/wuespace/telestion-client/ci.yml?branch=main)
 [![GitHub](https://img.shields.io/github/license/wuespace/telestion-client)](LICENSE)
-[![Node current](https://img.shields.io/badge/node-%3E%3D14-brightgreen)](package.json)
+[![Node current](https://img.shields.io/badge/node-%3E%3D16-brightgreen)](package.json)
+[![PNPM current](https://img.shields.io/badge/pnpm-7-brightgreen)](package.json)
 [![Twitter Follow](https://img.shields.io/twitter/follow/wuespace?style=social)](https://twitter.com/wuespace)
 
 Essential, core components for the development of _Project-Specific Clients_ (PSCs) with the Telestion Client Ecosystem.
+
+These components are not UI-specific and can be used in any UI framework.
 
 **This package is included in PSCs bootstrapped using the Telestion Client CLI by default.**
 
@@ -19,6 +21,8 @@ Essential, core components for the development of _Project-Specific Clients_ (PS
 First, add it as dependency to your project:
 
 ```shell
+pnpm add @wuespace/telestion-client-core
+# or
 npm install @wuespace/telestion-client-core
 ```
 

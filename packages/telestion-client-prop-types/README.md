@@ -4,13 +4,13 @@ npm: [`@wuespace/telestion-client-prop-types`](https://www.npmjs.com/package/@wu
 
 [![Maintainability](https://api.codeclimate.com/v1/badges/5fb6ccd02dd3152ef03f/maintainability)](https://codeclimate.com/github/wuespace/telestion-client/maintainability)
 [![Test Coverage](https://api.codeclimate.com/v1/badges/5fb6ccd02dd3152ef03f/test_coverage)](https://codeclimate.com/github/wuespace/telestion-client/test_coverage)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/wuespace/telestion-client/Test%20and%20Coverage?label=tests)](https://github.com/wuespace/telestion-client/actions?query=workflow%3A%22Test+and+Coverage%22)
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/wuespace/telestion-client/CI)](https://github.com/wuespace/telestion-client/actions?query=workflow%3ACI)
+![GitHub Workflow Status (with branch)](https://img.shields.io/github/actions/workflow/status/wuespace/telestion-client/ci.yml?branch=main)
 [![GitHub](https://img.shields.io/github/license/wuespace/telestion-client)](LICENSE)
-[![Node current](https://img.shields.io/badge/node-%3E%3D14-brightgreen)](package.json)
+[![Node current](https://img.shields.io/badge/node-%3E%3D16-brightgreen)](package.json)
+[![PNPM current](https://img.shields.io/badge/pnpm-7-brightgreen)](package.json)
 [![Twitter Follow](https://img.shields.io/twitter/follow/wuespace?style=social)](https://twitter.com/wuespace)
 
-Helpful PropTypes for types exported by the `@wuespace/telestion-client-types` package.
+Helpful [PropTypes](https://reactjs.org/docs/typechecking-with-proptypes.html) for types exported by the `@wuespace/telestion-client-types` package.
 
 **This package is included in PSCs bootstrapped using the Telestion Client CLI by default.**
 
@@ -19,6 +19,8 @@ Helpful PropTypes for types exported by the `@wuespace/telestion-client-types` p
 First, add it as dependency to your project:
 
 ```shell
+pnpm add @wuespace/telestion-client-prop-types
+# or
 npm install @wuespace/@wuespace/telestion-client-prop-types
 ```
 
