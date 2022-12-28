@@ -5,7 +5,7 @@ on:
   push:
     branches:
       - main
-      
+
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
 # Defines which tool versions should be used in all workflow jobs
