@@ -28,8 +28,8 @@ running the project during development, and building the PSC, either for the web
 
 Before you begin, please make sure that you have the following tools installed on your system:
 
-- [NodeJS](https://nodejs.org/en/) ([Download](https://nodejs.org/en/download/))
-- [npm](https://www.npmjs.com/) ([Installation instructions](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm))
+- [NodeJS](https://nodejs.org/en/) ([Download](https://nodejs.org/en/download/)), v16 or above
+- [pnpm](https://pnpm.io/) ([Installation instructions](https://pnpm.io/motivation)), v7 or above (an alternative package manager for packages in the [npm registry](https://www.npmjs.com/))
 
 With both installed, we're ready to take off 🚀:
 
@@ -38,7 +38,7 @@ With both installed, we're ready to take off 🚀:
 First, let's install the Telestion Client CLI. Open a command line and enter the following command:
 
 ```shell
-npm install --global @wuespace/telestion-client-cli
+pnpm add --global @wuespace/telestion-client-cli
 ```
 
 > ⚠ If, on UNIX-based systems (Linux or macOS), you run into permission issues when running this command,
@@ -65,7 +65,7 @@ You will find that the CLI generated a PSC project into a folder matching the ti
 You can now enter that folder and run the PSC by running:
 
 ```shell
-npm start
+pnpm start
 ```
 
 Houston, Tranquility Base here, the Eagle has landed! You should, now, see a flashy PSC open in a new window.
@@ -101,33 +101,26 @@ The overall file structure of this monorepo looks like this:
 .
 ├── .github
 │   ├── workflows (CI configuration)
-│   └── dependabot.yml (Dependabot config)
 ├── base-configs (configurations around the repo)
 │   ├── eslint.base.js
 │   └── [...]
 ├── packages (npm packages within this repo)
 │   ├── telestion-client-cli
-│   ├── telestion-client-common
-│   ├── telestion-client-core
-│   ├── telestion-client-prop-types
-│   ├── telestion-client-template
-│   ├── telestion-client-types
-│   ├── vertx-event-bus
-│   └── vertx-mock-server
-├── scripts
 │   ├── [...]
-│   └── README.md
 ├── .fliegdocrc.js (Fliegdoc configuration for generating doc pages)
 ├── CHANGELOG.md (DON'T TOUCH! Automatically generated Changelog)
 ├── README.md (you're here :P)
 └── [...]
 ```
 
-**Many folders, such as [`./scripts`](./scripts), the individual packages in [`./packages`](./packages), etc.,
+**Many folders, such as the individual packages in [`./packages`](./packages), etc.,
 contain their own `README.md` that documents their inner structure.**
 
 ### Packages
 
+- [`@wuespace/parcel-optimizer-electron-require`](./packages/parcel-optimizer-electron-require) - A Parcel optimizer that allows you to use `require` in your Electron app `preload` scripts.
+- [`@wuespace/parcel-reporter-tc-cli`](./packages/parcel-reporter-tc-cli) - A Parcel reporter that provides a nice CLI output for the Telestion Client CLI.
+- [`@wuespace/parcel-resolver-react`](./packages/parcel-resolver-react) - A Parcel resolver that allows you to use `react` imports in your PSC without fear of "duplicate" React instances.
 - [`@wuespace/telestion-client-cli`](./packages/telestion-client-cli) contains the CLI for developing PSCs.
 - [`@wuespace/telestion-client-core`](./packages/telestion-client-core) contains the core components
   of the Telestion Client that are essential for developing a Telestion frontend.
