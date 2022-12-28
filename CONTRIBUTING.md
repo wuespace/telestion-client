@@ -6,7 +6,7 @@ If anything's unclear, don't be afraid to ask.
 We are happy to answer any questions you might have or help you get your PRs merged.
 
 While we appreciate if you can follow our conventional commit structure, ensure that all styles are correct,
-every automated test written, etc., you contribution won't be rejected because of a lock of any of that.
+every automated test written, etc., your contribution won't be rejected because of a lock of any of that.
 **Therefore: Don't worry about doing it perfectly. We'll help you get it merged 😉!**
 
 > **⚠ NOTE:** While the most important principles for contributing to the `telestion-client` repository
@@ -127,6 +127,33 @@ pnpm start
 ```
 
 Happy developing!
+
+## Changelog Generation
+
+This project uses [Changesets](https://github.com/changesets/changesets) for version and changelog management.
+
+For any changes to the project that affect package users, you need to create a changeset.
+
+To create a changeset, run:
+
+```shell
+pnpm changeset
+```
+
+This will guide you through the process of creating a changeset.
+
+For breaking changes, press the return key when asked for the summary of the changeset.
+This opens an editor where you can write a longer description.
+Write a summary of your change in the first line.
+In the following lines, describe the breaking changes in detail, including a clear migration strategy.
+
+For example, if you change the API of a component, you can write:
+
+```text
+Add a `name` property to `MyComponent`
+
+To migrate, add a `name` property to all usages of the `MyComponent` component.
+```
 
 ## Build-Stack
 
