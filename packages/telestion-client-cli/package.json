@@ -74,7 +74,7 @@
 		"change-case": "^4.1.2",
 		"commander": "^9.0.0",
 		"ejs": "^3.1.6",
-		"electron-packager": "^15.5.1",
+		"electron-packager": "^17.0.0",
 		"inquirer": "^9.0.0",
 		"lilconfig": "^2.0.6",
 		"ora": "^6.1.0",
