@@ -89,13 +89,13 @@ running the project during development, and building the PSC, either for the web
 <h3>Before you begin</h3>
 <p>Before you begin, please make sure that you have the following tools installed on your system:</p>
 <ul>
-<li><a href="https://nodejs.org/en/">NodeJS</a> (<a href="https://nodejs.org/en/download/">Download</a>)</li>
-<li><a href="https://www.npmjs.com/">npm</a> (<a href="https://docs.npmjs.com/downloading-and-installing-node-js-and-npm">Installation instructions</a>)</li>
+<li><a href="https://nodejs.org/en/">NodeJS</a> (<a href="https://nodejs.org/en/download/">Download</a>), v16 or above</li>
+<li><a href="https://pnpm.io/">pnpm</a> (<a href="https://pnpm.io/motivation">Installation instructions</a>), v7 or above (an alternative package manager for packages in the <a href="https://www.npmjs.com/">npm registry</a>)</li>
 </ul>
 <p>With both installed, we're ready to take off 🚀:</p>
 <h3>Installing the CLI</h3>
 <p>First, let's install the Telestion Client CLI. Open a command line and enter the following command:</p>
-<pre><code class="language-shell">npm install --global @wuespace/telestion-client-cli
+<pre><code class="language-shell">pnpm add --global @wuespace/telestion-client-cli
 </code></pre>
 <blockquote>
 <p>⚠ If, on UNIX-based systems (Linux or macOS), you run into permission issues when running this command,
@@ -113,7 +113,7 @@ and enjoy the flight 😉.</p>
 You will find that the CLI generated a PSC project into a folder matching the title you've given the project.</p>
 <h3>Running the PSC</h3>
 <p>You can now enter that folder and run the PSC by running:</p>
-<pre><code class="language-shell">npm start
+<pre><code class="language-shell">pnpm start
 </code></pre>
 <p>Houston, Tranquility Base here, the Eagle has landed! You should, now, see a flashy PSC open in a new window.</p>
 <h3>Next steps</h3>
@@ -139,31 +139,24 @@ with Doc Comments, including an example for every function, and so on.</p>
 <pre><code>.
 ├── .github
 │   ├── workflows (CI configuration)
-│   └── dependabot.yml (Dependabot config)
 ├── base-configs (configurations around the repo)
 │   ├── eslint.base.js
 │   └── [...]
 ├── packages (npm packages within this repo)
 │   ├── telestion-client-cli
-│   ├── telestion-client-common
-│   ├── telestion-client-core
-│   ├── telestion-client-prop-types
-│   ├── telestion-client-template
-│   ├── telestion-client-types
-│   ├── vertx-event-bus
-│   └── vertx-mock-server
-├── scripts
 │   ├── [...]
-│   └── README.md
 ├── .fliegdocrc.js (Fliegdoc configuration for generating doc pages)
 ├── CHANGELOG.md (DON'T TOUCH! Automatically generated Changelog)
 ├── README.md (you're here :P)
 └── [...]
 </code></pre>
-<p><strong>Many folders, such as <a href="./scripts"><code>./scripts</code></a>, the individual packages in <a href="./packages"><code>./packages</code></a>, etc.,
+<p><strong>Many folders, such as the individual packages in <a href="./packages"><code>./packages</code></a>, etc.,
 contain their own <code>README.md</code> that documents their inner structure.</strong></p>
 <h3>Packages</h3>
 <ul>
+<li><a href="./packages/parcel-optimizer-electron-require"><code>@wuespace/parcel-optimizer-electron-require</code></a> - A Parcel optimizer that allows you to use <code>require</code> in your Electron app <code>preload</code> scripts.</li>
+<li><a href="./packages/parcel-reporter-tc-cli"><code>@wuespace/parcel-reporter-tc-cli</code></a> - A Parcel reporter that provides a nice CLI output for the Telestion Client CLI.</li>
+<li><a href="./packages/parcel-resolver-react"><code>@wuespace/parcel-resolver-react</code></a> - A Parcel resolver that allows you to use <code>react</code> imports in your PSC without fear of &quot;duplicate&quot; React instances.</li>
 <li><a href="./packages/telestion-client-cli"><code>@wuespace/telestion-client-cli</code></a> contains the CLI for developing PSCs.</li>
 <li><a href="./packages/telestion-client-core"><code>@wuespace/telestion-client-core</code></a> contains the core components
 of the Telestion Client that are essential for developing a Telestion frontend.</li>
