@@ -78,7 +78,7 @@
 		"inquirer": "^8.2.0",
 		"lilconfig": "^2.0.6",
 		"ora": "^6.1.0",
-		"validate-npm-package-name": "^4.0.0"
+		"validate-npm-package-name": "^5.0.0"
 	},
 	"devDependencies": {
 		"@parcel/diagnostic": "2.8.2",

@@ -175,7 +175,7 @@ importers:
       inquirer: ^8.2.0
       lilconfig: ^2.0.6
       ora: ^6.1.0
-      validate-npm-package-name: ^4.0.0
+      validate-npm-package-name: ^5.0.0
     dependencies:
       '@electron/rebuild': 3.2.10
       '@fliegwerk/dir-tree': 1.0.0
@@ -189,7 +189,7 @@ importers:
       inquirer: 8.2.2
       lilconfig: 2.0.6
       ora: 6.1.0
-      validate-npm-package-name: 4.0.0
+      validate-npm-package-name: 5.0.0
     devDependencies:
       '@parcel/diagnostic': 2.8.2
       '@types/ejs': 3.1.1
@@ -12807,9 +12807,9 @@ packages:
       spdx-correct: 3.1.1
       spdx-expression-parse: 3.0.1
 
-  /validate-npm-package-name/4.0.0:
-    resolution: {integrity: sha512-mzR0L8ZDktZjpX4OB46KT+56MAhl4EIazWP/+G/HPGuvfdaqg4YsCdtOm6U9+LOFyYDoh4dpnpxZRB9MQQns5Q==}
-    engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
+  /validate-npm-package-name/5.0.0:
+    resolution: {integrity: sha512-YuKoXDAhBYxY7SfOKxHBDoSyENFeW5VvIIQp2TGQuit8gpK6MnWaQelBKxso72DoxTZfZdcP3W90LqpSkgPzLQ==}
+    engines: {node: ^14.17.0 || ^16.13.0 || >=18.0.0}
     dependencies:
       builtins: 5.0.0
     dev: false
