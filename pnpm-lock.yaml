@@ -11,6 +11,7 @@ importers:
   .:
     specifiers:
       '@changesets/cli': 2.26.0
+      '@changesets/types': ^5.2.1
       '@parcel/config-default': 2.8.2
       '@parcel/core': 2.8.2
       '@parcel/optimizer-data-url': 2.8.2
@@ -76,6 +77,7 @@ importers:
       '@wuespace/vertx-mock-server': link:packages/vertx-mock-server
     devDependencies:
       '@changesets/cli': 2.26.0
+      '@changesets/types': 5.2.1
       '@parcel/config-default': 2.8.2_@parcel+core@2.8.2
       '@parcel/core': 2.8.2
       '@parcel/optimizer-data-url': 2.8.2_@parcel+core@2.8.2
@@ -12466,7 +12468,7 @@ packages:
     dev: false
 
   /whatwg-url/5.0.0:
-    resolution: {integrity: sha1-lmRU6HZUYuN2RNNib2dCzotwll0=}
+    resolution: {integrity: sha512-saE57nupxk6v3HY35+jzBwYa0rKSy0XR8JSxZPwgLr7ys0IBzhGviA1/TUGJLmSVqs8pb9AnvICXEuOHLprYTw==}
     dependencies:
       tr46: 0.0.3
       webidl-conversions: 3.0.1
