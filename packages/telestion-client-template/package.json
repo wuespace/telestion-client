@@ -89,7 +89,7 @@
 		"@wuespace/telestion-client-types": "workspace:^",
 		"cypress": "12.2.0",
 		"finalhandler": "1.2.0",
-		"husky": "8.0.2",
+		"husky": "8.0.3",
 		"parcel": "2.8.2",
 		"prettier": "2.8.1",
 		"pretty-quick": "3.1.3",
