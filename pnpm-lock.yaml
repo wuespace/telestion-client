@@ -331,7 +331,7 @@ importers:
       '@wuespace/telestion-client-core': workspace:^
       '@wuespace/telestion-client-prop-types': workspace:^
       '@wuespace/telestion-client-types': workspace:^
-      cypress: 12.2.0
+      cypress: 12.3.0
       electron: ^22.0.0
       electron-devtools-installer: ^3.2.0
       finalhandler: 1.2.0
@@ -388,7 +388,7 @@ importers:
       '@wuespace/parcel-resolver-react': link:../parcel-resolver-react
       '@wuespace/telestion-client-cli': link:../telestion-client-cli
       '@wuespace/telestion-client-types': link:../telestion-client-types
-      cypress: 12.2.0
+      cypress: 12.3.0
       finalhandler: 1.2.0
       husky: 8.0.3
       parcel: 2.8.2
@@ -6893,8 +6893,8 @@ packages:
       stream-transform: 2.1.3
     dev: true
 
-  /cypress/12.2.0:
-    resolution: {integrity: sha512-kvl95ri95KK8mAy++tEU/wUgzAOMiIciZSL97LQvnOinb532m7dGvwN0mDSIGbOd71RREtmT9o4h088RjK5pKw==}
+  /cypress/12.3.0:
+    resolution: {integrity: sha512-ZQNebibi6NBt51TRxRMYKeFvIiQZ01t50HSy7z/JMgRVqBUey3cdjog5MYEbzG6Ktti5ckDt1tfcC47lmFwXkw==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     hasBin: true
     requiresBuild: true
@@ -6936,7 +6936,7 @@ packages:
       pretty-bytes: 5.6.0
       proxy-from-env: 1.0.0
       request-progress: 3.0.0
-      semver: 7.3.7
+      semver: 7.3.8
       supports-color: 8.1.1
       tmp: 0.2.1
       untildify: 4.0.0
