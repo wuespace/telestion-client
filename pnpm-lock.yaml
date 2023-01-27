@@ -331,7 +331,7 @@ importers:
       '@wuespace/telestion-client-core': workspace:^
       '@wuespace/telestion-client-prop-types': workspace:^
       '@wuespace/telestion-client-types': workspace:^
-      cypress: 12.4.0
+      cypress: 12.4.1
       electron: ^22.0.0
       electron-devtools-installer: ^3.2.0
       finalhandler: 1.2.0
@@ -388,7 +388,7 @@ importers:
       '@wuespace/parcel-resolver-react': link:../parcel-resolver-react
       '@wuespace/telestion-client-cli': link:../telestion-client-cli
       '@wuespace/telestion-client-types': link:../telestion-client-types
-      cypress: 12.4.0
+      cypress: 12.4.1
       finalhandler: 1.2.0
       husky: 8.0.3
       parcel: 2.8.3
@@ -7032,8 +7032,8 @@ packages:
       stream-transform: 2.1.3
     dev: true
 
-  /cypress/12.4.0:
-    resolution: {integrity: sha512-//h93K/yGC/7pxv1KamlkADbKHLp5h3f9rZDE2McRjXZDagMETH0sXowOOanvhsH8cFt/JWspIcK+p9cuaoAqg==}
+  /cypress/12.4.1:
+    resolution: {integrity: sha512-IFMPzc1RJ22Fac+YbdqywtpcuqZXqQJh+JqZDXn+A15zG/dw99njfv8f0bTvD+WAHhP118+xWG/VwilkFg1rnA==}
     engines: {node: ^14.0.0 || ^16.0.0 || >=18.0.0}
     hasBin: true
     requiresBuild: true
