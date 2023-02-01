@@ -26,7 +26,7 @@ export const atomicTypes = [
 /**
  * an atomic type in JavaScript that a value in a object can have
  */
-export type AtomicType = typeof atomicTypes[number];
+export type AtomicType = (typeof atomicTypes)[number];
 export const sampleAtomicTypes: { [key in AtomicType]: Atomic } = {
 	undefined,
 	null: null,
