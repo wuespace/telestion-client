@@ -164,7 +164,7 @@ importers:
       '@fliegwerk/dir-tree': ^1.0.0
       '@fliegwerk/logsemts': ^0.4.3
       '@parcel/diagnostic': 2.8.3
-      '@types/ejs': 3.1.1
+      '@types/ejs': 3.1.2
       '@types/inquirer': 9.0.3
       '@types/node': 18.13.0
       '@types/validate-npm-package-name': 4.0.0
@@ -194,7 +194,7 @@ importers:
       validate-npm-package-name: 5.0.0
     devDependencies:
       '@parcel/diagnostic': 2.8.3
-      '@types/ejs': 3.1.1
+      '@types/ejs': 3.1.2
       '@types/inquirer': 9.0.3
       '@types/node': 18.13.0
       '@types/validate-npm-package-name': 4.0.0
@@ -5555,8 +5555,8 @@ packages:
       '@types/responselike': 1.0.0
     dev: false
 
-  /@types/ejs/3.1.1:
-    resolution: {integrity: sha512-RQul5wEfY7BjWm0sYY86cmUN/pcXWGyVxWX93DFFJvcrxax5zKlieLwA3T77xJGwNcZW0YW6CYG70p1m8xPFmA==}
+  /@types/ejs/3.1.2:
+    resolution: {integrity: sha512-ZmiaE3wglXVWBM9fyVC17aGPkLo/UgaOjEiI2FXQfyczrCefORPxIe+2dVmnmk3zkVIbizjrlQzmPGhSYGXG5g==}
     dev: true
 
   /@types/glob/7.2.0:
