@@ -87,7 +87,7 @@
 		"@wuespace/parcel-resolver-react": "workspace:^",
 		"@wuespace/telestion-client-cli": "workspace:^",
 		"@wuespace/telestion-client-types": "workspace:^",
-		"cypress": "12.8.0",
+		"cypress": "12.8.1",
 		"finalhandler": "1.2.0",
 		"husky": "8.0.3",
 		"parcel": "2.8.3",
