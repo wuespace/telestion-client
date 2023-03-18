@@ -22,7 +22,7 @@ importers:
       '@parcel/transformer-svg-react': 2.8.3
       '@parcel/transformer-typescript-types': 2.8.3
       '@testing-library/react-hooks': 7.0.2
-      '@types/jest': 29.4.4
+      '@types/jest': 29.5.0
       '@types/node': 18.15.3
       '@typescript-eslint/eslint-plugin': 5.55.0
       '@typescript-eslint/parser': 5.55.0
@@ -88,7 +88,7 @@ importers:
       '@parcel/transformer-svg-react': 2.8.3_@parcel+core@2.8.3
       '@parcel/transformer-typescript-types': 2.8.3_xscxxxiz63f5lkhm7jmoqp4aui
       '@testing-library/react-hooks': 7.0.2_7qv3rjnqa3j7exc7qtvho7thru
-      '@types/jest': 29.4.4
+      '@types/jest': 29.5.0
       '@types/node': 18.15.3
       '@typescript-eslint/eslint-plugin': 5.55.0_342y7v4tc7ytrrysmit6jo4wri
       '@typescript-eslint/parser': 5.55.0_vgl77cfdswitgr47lm5swmv43m
@@ -319,7 +319,7 @@ importers:
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 12.1.5
       '@testing-library/user-event': 14.4.3
-      '@types/jest': 29.4.4
+      '@types/jest': 29.5.0
       '@types/node': 18.15.3
       '@types/react': 17.0.43
       '@types/react-dom': 17.0.14
@@ -379,7 +379,7 @@ importers:
       '@testing-library/jest-dom': 5.16.5
       '@testing-library/react': 12.1.5_sfoxds7t5ydpegc3knd667wn6m
       '@testing-library/user-event': 14.4.3_yxlyej73nftwmh2fiao7paxmlm
-      '@types/jest': 29.4.4
+      '@types/jest': 29.5.0
       '@types/node': 18.15.3
       '@types/react': 17.0.43
       '@types/react-dom': 17.0.14
@@ -5856,8 +5856,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.4.4:
-    resolution: {integrity: sha512-qezb65VIH7X1wobSnd6Lvdve7PXSyQRa3dljTkhTtDhi603RvHQCshSlJcuyMLHJpeHgY3NKwvDJWxMOOHxGDQ==}
+  /@types/jest/29.5.0:
+    resolution: {integrity: sha512-3Emr5VOl/aoBwnWcH/EFQvlSAmjV+XtV9GGu5mwdYew5vhQh0IUZx/60x0TzHDu09Bi7HMx10t/namdJw5QIcg==}
     dependencies:
       expect: 29.5.0
       pretty-format: 29.5.0
@@ -5997,7 +5997,7 @@ packages:
   /@types/testing-library__jest-dom/5.14.3:
     resolution: {integrity: sha512-oKZe+Mf4ioWlMuzVBaXQ9WDnEm1+umLx0InILg+yvZVBBDmzV5KfZyLrCvadtWcx8+916jLmHafcmqqffl+iIw==}
     dependencies:
-      '@types/jest': 29.4.4
+      '@types/jest': 29.5.0
     dev: true
 
   /@types/through/0.0.30:
