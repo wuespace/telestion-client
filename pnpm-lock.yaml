@@ -10,7 +10,7 @@ importers:
 
   .:
     specifiers:
-      '@changesets/cli': 2.26.0
+      '@changesets/cli': 2.26.1
       '@changesets/types': 5.2.1
       '@parcel/config-default': 2.8.3
       '@parcel/core': 2.8.3
@@ -76,7 +76,7 @@ importers:
       '@wuespace/vertx-event-bus': link:packages/vertx-event-bus
       '@wuespace/vertx-mock-server': link:packages/vertx-mock-server
     devDependencies:
-      '@changesets/cli': 2.26.0
+      '@changesets/cli': 2.26.1
       '@changesets/types': 5.2.1
       '@parcel/config-default': 2.8.3_@parcel+core@2.8.3
       '@parcel/core': 2.8.3
@@ -899,8 +899,8 @@ packages:
       '@changesets/types': 5.2.1
     dev: true
 
-  /@changesets/cli/2.26.0:
-    resolution: {integrity: sha512-0cbTiDms+ICTVtEwAFLNW0jBNex9f5+fFv3I771nBvdnV/mOjd1QJ4+f8KtVSOrwD9SJkk9xbDkWFb0oXd8d1Q==}
+  /@changesets/cli/2.26.1:
+    resolution: {integrity: sha512-XnTa+b51vt057fyAudvDKGB0Sh72xutQZNAdXkCqPBKO2zvs2yYZx5hFZj1u9cbtpwM6Sxtcr02/FQJfZOzemQ==}
     hasBin: true
     dependencies:
       '@babel/runtime': 7.20.7
