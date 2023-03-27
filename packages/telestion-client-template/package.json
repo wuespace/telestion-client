@@ -80,7 +80,7 @@
 		"@testing-library/user-event": "14.4.3",
 		"@types/jest": "29.5.0",
 		"@types/node": "18.15.10",
-		"@types/react": "17.0.53",
+		"@types/react": "17.0.54",
 		"@types/react-dom": "17.0.19",
 		"@wuespace/parcel-optimizer-electron-require": "workspace:^",
 		"@wuespace/parcel-reporter-tc-cli": "workspace:^",
