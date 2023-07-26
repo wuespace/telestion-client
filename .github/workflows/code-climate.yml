@@ -24,7 +24,7 @@ jobs:
       - name: Checkout 📥
         uses: actions/checkout@v3.5.3
       - name: Setup PNPM 💿
-        uses: pnpm/action-setup@v2.3.0
+        uses: pnpm/action-setup@v2.4.0
         with:
           version: ${{ env.pnpm }}
       - name: Setup Node 💿
