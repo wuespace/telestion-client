@@ -318,7 +318,7 @@ importers:
       '@testing-library/dom': 8.20.1
       '@testing-library/jest-dom': 5.17.0
       '@testing-library/react': 12.1.5
-      '@testing-library/user-event': 14.5.0
+      '@testing-library/user-event': 14.5.1
       '@types/jest': 29.5.4
       '@types/node': 18.17.16
       '@types/react': 17.0.43
@@ -378,7 +378,7 @@ importers:
       '@testing-library/dom': 8.20.1
       '@testing-library/jest-dom': 5.17.0
       '@testing-library/react': 12.1.5_sfoxds7t5ydpegc3knd667wn6m
-      '@testing-library/user-event': 14.5.0_szfc7t2zqsdonxwckqxkjn2the
+      '@testing-library/user-event': 14.5.1_szfc7t2zqsdonxwckqxkjn2the
       '@types/jest': 29.5.4
       '@types/node': 18.17.16
       '@types/react': 17.0.43
@@ -6149,8 +6149,8 @@ packages:
       react-dom: 17.0.2_react@17.0.2
     dev: true
 
-  /@testing-library/user-event/14.5.0_szfc7t2zqsdonxwckqxkjn2the:
-    resolution: {integrity: sha512-nQRCteEZvULJJrlcGQuNhwGekz25TOUILA+sTWI9PB/vNKKivS+7K7XRTwoikw/2fmJPaM4pPKy+hLWEGg9+JA==}
+  /@testing-library/user-event/14.5.1_szfc7t2zqsdonxwckqxkjn2the:
+    resolution: {integrity: sha512-UCcUKrUYGj7ClomOo2SpNVvx4/fkd/2BbIHDCle8A0ax+P3bU7yJwDBDrS6ZwdTMARWTGODX1hEsCcO+7beJjg==}
     engines: {node: '>=12', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
