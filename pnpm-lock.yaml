@@ -210,7 +210,7 @@ importers:
       '@react-types/shared': ^3.16.0
       '@spectrum-icons/illustrations': ^3.5.3
       '@spectrum-icons/workflow': ^4.0.6
-      '@types/prop-types': 15.7.8
+      '@types/prop-types': 15.7.9
       '@types/react': 17.0.43
       '@types/react-router': ^5.1.0
       '@types/react-router-dom': 5.3.3
@@ -249,7 +249,7 @@ importers:
       zustand: 4.2.0_react@17.0.2
     devDependencies:
       '@react-spectrum/provider': 3.9.1_sfoxds7t5ydpegc3knd667wn6m
-      '@types/prop-types': 15.7.8
+      '@types/prop-types': 15.7.9
       '@types/react-router-dom': 5.3.3
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
@@ -257,7 +257,7 @@ importers:
   packages/telestion-client-core:
     specifiers:
       '@fliegwerk/logsemts': ^0.4.3
-      '@types/prop-types': 15.7.8
+      '@types/prop-types': 15.7.9
       '@types/react': 17.0.43
       '@types/react-router-dom': 5.3.3
       '@wuespace/telestion-client-prop-types': workspace:^
@@ -277,14 +277,14 @@ importers:
       react-router-dom: 5.3.1_react@17.0.2
       zustand: 4.2.0_react@17.0.2
     devDependencies:
-      '@types/prop-types': 15.7.8
+      '@types/prop-types': 15.7.9
       '@types/react-router-dom': 5.3.3
       react: 17.0.2
 
   packages/telestion-client-prop-types:
     specifiers:
       '@types/lodash': 4.14.200
-      '@types/prop-types': 15.7.8
+      '@types/prop-types': 15.7.9
       '@types/react': 17.0.43
       '@wuespace/vertx-event-bus': workspace:^
       lodash: 4.17.21
@@ -293,7 +293,7 @@ importers:
       '@wuespace/vertx-event-bus': link:../vertx-event-bus
     devDependencies:
       '@types/lodash': 4.14.200
-      '@types/prop-types': 15.7.8
+      '@types/prop-types': 15.7.9
       '@types/react': 17.0.43
       lodash: 4.17.21
       prop-types: 15.8.1
@@ -6267,8 +6267,8 @@ packages:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
     dev: true
 
-  /@types/prop-types/15.7.8:
-    resolution: {integrity: sha512-kMpQpfZKSCBqltAJwskgePRaYRFukDkm1oItcAbC3gNELR20XIBcN9VRgg4+m8DKsTfkWeA4m4Imp4DDuWy7FQ==}
+  /@types/prop-types/15.7.9:
+    resolution: {integrity: sha512-n1yyPsugYNSmHgxDFjicaI2+gCNjsBck8UX9kuofAKlc0h1bL+20oSF72KeNaW2DUlesbEVCFgyV2dPGTiY42g==}
 
   /@types/react-dom/17.0.14:
     resolution: {integrity: sha512-H03xwEP1oXmSfl3iobtmQ/2dHF5aBHr8aUMwyGZya6OW45G+xtdzmq6HkncefiBt5JU8DVyaWl/nWZbjZCnzAQ==}
@@ -6299,7 +6299,7 @@ packages:
   /@types/react/17.0.43:
     resolution: {integrity: sha512-8Q+LNpdxf057brvPu1lMtC5Vn7J119xrP1aq4qiaefNioQUYANF/CYeK4NsKorSZyUGJ66g0IM+4bbjwx45o2A==}
     dependencies:
-      '@types/prop-types': 15.7.8
+      '@types/prop-types': 15.7.9
       '@types/scheduler': 0.16.2
       csstype: 3.1.0
 
