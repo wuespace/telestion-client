@@ -409,7 +409,7 @@ importers:
 
   packages/vertx-event-bus:
     specifiers:
-      '@types/sockjs-client': 1.5.2
+      '@types/sockjs-client': 1.5.3
       '@wuespace/telestion-client-types': workspace:^
       ajv: ^8.0.2
       sockjs-client: ^1.5.0
@@ -418,7 +418,7 @@ importers:
       ajv: 8.11.0
       sockjs-client: 1.6.0
     devDependencies:
-      '@types/sockjs-client': 1.5.2
+      '@types/sockjs-client': 1.5.3
 
   packages/vertx-mock-server:
     specifiers:
@@ -6324,8 +6324,8 @@ packages:
     resolution: {integrity: sha512-JYM8x9EGF163bEyhdJBpR2QX1R5naCJHC8ucJylJ3w9/CVBaskdQ8WqBf8MmQrd1kRvp/a4TS8HJ+bxzR7ZJYQ==}
     dev: true
 
-  /@types/sockjs-client/1.5.2:
-    resolution: {integrity: sha512-KYM0HvjLD5OsyXGpISnydbwy/VU9T06rRKOJPs2WEPR19/sBNSNh+CUjulu3Qg0jmd8bINCqJILrSKDLDGzZMA==}
+  /@types/sockjs-client/1.5.3:
+    resolution: {integrity: sha512-U5DqdWpogbb3ocbyK9+Gzt343a0fTOMdX46WVHWpatEbWj7jO//kpWC9bGZ1bDDWqUnEw9DPsXJsa3bxeuKOlg==}
     dev: true
 
   /@types/sockjs/0.3.33:
