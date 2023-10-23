@@ -20,7 +20,7 @@ jobs:
         with:
           version: ${{ env.pnpm }}
       - name: Setup Node 💿
-        uses: actions/setup-node@v3.8.1
+        uses: actions/setup-node@v3.8.2
         with:
           node-version: ${{ env.node }}
           cache: 'pnpm'
@@ -41,7 +41,7 @@ jobs:
         with:
           version: ${{ env.pnpm }}
       - name: Setup Node 💿
-        uses: actions/setup-node@v3.8.1
+        uses: actions/setup-node@v3.8.2
         with:
           node-version: ${{ env.node }}
           cache: 'pnpm'
@@ -62,7 +62,7 @@ jobs:
         with:
           version: ${{ env.pnpm }}
       - name: Setup Node 💿
-        uses: actions/setup-node@v3.8.1
+        uses: actions/setup-node@v3.8.2
         with:
           node-version: ${{ env.node }}
           cache: 'pnpm'
@@ -85,7 +85,7 @@ jobs:
         with:
           version: ${{ env.pnpm }}
       - name: Setup Node 💿
-        uses: actions/setup-node@v3.8.1
+        uses: actions/setup-node@v3.8.2
         with:
           node-version: ${{ env.node }}
           cache: 'pnpm'
@@ -143,7 +143,7 @@ jobs:
         with:
           version: ${{ env.pnpm }}
       - name: Setup Node 💿
-        uses: actions/setup-node@v3.8.1
+        uses: actions/setup-node@v3.8.2
         with:
           node-version: ${{ env.node }}
           cache: 'pnpm'
