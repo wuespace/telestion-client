@@ -165,7 +165,7 @@ importers:
       '@fliegwerk/logsemts': ^0.4.3
       '@parcel/diagnostic': 2.10.2
       '@types/ejs': 3.1.5
-      '@types/inquirer': 9.0.6
+      '@types/inquirer': 9.0.7
       '@types/node': 18.18.8
       '@types/validate-npm-package-name': 4.0.1
       '@wuespace/telestion-client-template': workspace:^
@@ -195,7 +195,7 @@ importers:
     devDependencies:
       '@parcel/diagnostic': 2.10.2
       '@types/ejs': 3.1.5
-      '@types/inquirer': 9.0.6
+      '@types/inquirer': 9.0.7
       '@types/node': 18.18.8
       '@types/validate-npm-package-name': 4.0.1
 
@@ -6191,8 +6191,8 @@ packages:
     resolution: {integrity: sha512-SZs7ekbP8CN0txVG2xVRH6EgKmEm31BOxA07vkFaETzZz1xh+cbt8BcI0slpymvwhx5dlFnQG2rTlPVQn+iRPQ==}
     dev: false
 
-  /@types/inquirer/9.0.6:
-    resolution: {integrity: sha512-1Go1AAP/yOy3Pth5Xf1DC3nfZ03cJLCPx6E2YnSN/5I3w1jHBVH4170DkZ+JxfmA7c9kL9+bf9z3FRGa4kNAqg==}
+  /@types/inquirer/9.0.7:
+    resolution: {integrity: sha512-Q0zyBupO6NxGRZut/JdmqYKOnN95Eg5V8Csg3PGKkP+FnvsUZx1jAyK7fztIszxxMuoBA6E3KXWvdZVXIpx60g==}
     dependencies:
       '@types/through': 0.0.30
       rxjs: 7.8.0

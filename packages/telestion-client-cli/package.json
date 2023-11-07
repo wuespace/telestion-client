@@ -83,7 +83,7 @@
 	"devDependencies": {
 		"@parcel/diagnostic": "2.10.2",
 		"@types/ejs": "3.1.5",
-		"@types/inquirer": "9.0.6",
+		"@types/inquirer": "9.0.7",
 		"@types/node": "18.18.8",
 		"@types/validate-npm-package-name": "4.0.1"
 	},
