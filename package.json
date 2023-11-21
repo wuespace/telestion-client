@@ -81,7 +81,7 @@
 		"@parcel/transformer-svg-react": "2.10.3",
 		"@parcel/transformer-typescript-types": "2.10.3",
 		"@testing-library/react-hooks": "7.0.2",
-		"@types/jest": "29.5.8",
+		"@types/jest": "29.5.9",
 		"@types/node": "18.18.10",
 		"@typescript-eslint/eslint-plugin": "5.62.0",
 		"@typescript-eslint/parser": "5.62.0",

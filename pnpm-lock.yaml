@@ -22,7 +22,7 @@ importers:
       '@parcel/transformer-svg-react': 2.10.3
       '@parcel/transformer-typescript-types': 2.10.3
       '@testing-library/react-hooks': 7.0.2
-      '@types/jest': 29.5.8
+      '@types/jest': 29.5.9
       '@types/node': 18.18.10
       '@typescript-eslint/eslint-plugin': 5.62.0
       '@typescript-eslint/parser': 5.62.0
@@ -88,7 +88,7 @@ importers:
       '@parcel/transformer-svg-react': 2.10.3_@parcel+core@2.10.3
       '@parcel/transformer-typescript-types': 2.10.3_bbe534n3je2w3jtzjagqr5dyzm
       '@testing-library/react-hooks': 7.0.2_7qv3rjnqa3j7exc7qtvho7thru
-      '@types/jest': 29.5.8
+      '@types/jest': 29.5.9
       '@types/node': 18.18.10
       '@typescript-eslint/eslint-plugin': 5.62.0_mnedyn4jnvusybp6vtysly27t4
       '@typescript-eslint/parser': 5.62.0_tpmd5btwisapvfle77wdvjenui
@@ -319,7 +319,7 @@ importers:
       '@testing-library/jest-dom': 5.17.0
       '@testing-library/react': 12.1.5
       '@testing-library/user-event': 14.5.1
-      '@types/jest': 29.5.8
+      '@types/jest': 29.5.9
       '@types/node': 18.18.10
       '@types/react': 17.0.43
       '@types/react-dom': 17.0.14
@@ -379,7 +379,7 @@ importers:
       '@testing-library/jest-dom': 5.17.0
       '@testing-library/react': 12.1.5_sfoxds7t5ydpegc3knd667wn6m
       '@testing-library/user-event': 14.5.1_szfc7t2zqsdonxwckqxkjn2the
-      '@types/jest': 29.5.8
+      '@types/jest': 29.5.9
       '@types/node': 18.18.10
       '@types/react': 17.0.43
       '@types/react-dom': 17.0.14
@@ -6290,8 +6290,8 @@ packages:
       '@types/istanbul-lib-report': 3.0.0
     dev: true
 
-  /@types/jest/29.5.8:
-    resolution: {integrity: sha512-fXEFTxMV2Co8ZF5aYFJv+YeA08RTYJfhtN5c9JSv/mFEMe+xxjufCb+PHL+bJcMs/ebPUsBu+UNTEz+ydXrR6g==}
+  /@types/jest/29.5.9:
+    resolution: {integrity: sha512-zJeWhqBwVoPm83sP8h1/SVntwWTu5lZbKQGCvBjxQOyEWnKnsaomt2y7SlV4KfwlrHAHHAn00Sh4IAWaIsGOgQ==}
     dependencies:
       expect: 29.7.0
       pretty-format: 29.7.0
@@ -6420,7 +6420,7 @@ packages:
   /@types/testing-library__jest-dom/5.14.3:
     resolution: {integrity: sha512-oKZe+Mf4ioWlMuzVBaXQ9WDnEm1+umLx0InILg+yvZVBBDmzV5KfZyLrCvadtWcx8+916jLmHafcmqqffl+iIw==}
     dependencies:
-      '@types/jest': 29.5.8
+      '@types/jest': 29.5.9
     dev: true
 
   /@types/through/0.0.30:
