@@ -84,7 +84,7 @@
 		"@parcel/diagnostic": "2.10.3",
 		"@types/ejs": "3.1.5",
 		"@types/inquirer": "9.0.7",
-		"@types/node": "18.19.2",
+		"@types/node": "18.19.3",
 		"@types/validate-npm-package-name": "4.0.2"
 	},
 	"publishConfig": {
