@@ -59,8 +59,8 @@
 		"@parcel/plugin": "^2.5.0"
 	},
 	"devDependencies": {
-		"@parcel/types": "2.10.3",
-		"@parcel/core": "2.10.3",
+		"@parcel/types": "2.11.0",
+		"@parcel/core": "2.11.0",
 		"@types/node": "18.19.4",
 		"@wuespace/telestion-client-types": "workspace:^"
 	},
