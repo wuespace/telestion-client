@@ -82,7 +82,7 @@
 		"@parcel/transformer-typescript-types": "2.11.0",
 		"@testing-library/react-hooks": "7.0.2",
 		"@types/jest": "29.5.11",
-		"@types/node": "18.19.6",
+		"@types/node": "18.19.7",
 		"@typescript-eslint/eslint-plugin": "5.62.0",
 		"@typescript-eslint/parser": "5.62.0",
 		"concurrently": "7.6.0",
