@@ -61,7 +61,7 @@
 	"devDependencies": {
 		"@parcel/types": "2.11.0",
 		"@parcel/core": "2.11.0",
-		"@types/node": "18.19.10"
+		"@types/node": "18.19.11"
 	},
 	"publishConfig": {
 		"access": "public"
