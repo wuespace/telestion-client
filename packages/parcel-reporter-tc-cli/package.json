@@ -61,7 +61,7 @@
 	"devDependencies": {
 		"@parcel/types": "2.11.0",
 		"@parcel/core": "2.11.0",
-		"@types/node": "18.19.18",
+		"@types/node": "18.19.19",
 		"@wuespace/telestion-client-types": "workspace:^"
 	},
 	"publishConfig": {
