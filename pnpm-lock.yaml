@@ -225,7 +225,7 @@ importers:
       react-router: ^5.2.0
       react-router-dom: ^5.2.0
       react-use-gesture: ^9.1.3
-      zustand: 4.2.0
+      zustand: 4.5.2
     dependencies:
       '@adobe/react-spectrum': 3.24.1_sfoxds7t5ydpegc3knd667wn6m
       '@react-aria/focus': 3.10.1_react@17.0.2
@@ -246,7 +246,7 @@ importers:
       react-router: 5.3.1_react@17.0.2
       react-router-dom: 5.3.1_react@17.0.2
       react-use-gesture: 9.1.3_react@17.0.2
-      zustand: 4.2.0_react@17.0.2
+      zustand: 4.5.2_aouysqvxnrlxicuvopw3uli4ye
     devDependencies:
       '@react-spectrum/provider': 3.9.2_sfoxds7t5ydpegc3knd667wn6m
       '@types/prop-types': 15.7.12
@@ -266,7 +266,7 @@ importers:
       prop-types: ^15.7.2
       react: 17.0.2
       react-router-dom: ^5.2.0
-      zustand: 4.2.0
+      zustand: 4.5.2
     dependencies:
       '@fliegwerk/logsemts': 0.4.3
       '@types/react': 17.0.43
@@ -275,7 +275,7 @@ importers:
       '@wuespace/vertx-event-bus': link:../vertx-event-bus
       prop-types: 15.8.1
       react-router-dom: 5.3.1_react@17.0.2
-      zustand: 4.2.0_react@17.0.2
+      zustand: 4.5.2_aouysqvxnrlxicuvopw3uli4ye
     devDependencies:
       '@types/prop-types': 15.7.12
       '@types/react-router-dom': 5.3.3
@@ -347,7 +347,7 @@ importers:
       rimraf: 3.0.2
       serve-static: 1.15.0
       typescript: 4.9.5
-      zustand: 4.2.0
+      zustand: 4.5.2
     dependencies:
       '@adobe/react-spectrum': 3.24.1_sfoxds7t5ydpegc3knd667wn6m
       '@fliegwerk/logsemts': 0.4.3
@@ -364,7 +364,7 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-router-dom: 5.3.1_react@17.0.2
-      zustand: 4.2.0_react@17.0.2
+      zustand: 4.5.2_aouysqvxnrlxicuvopw3uli4ye
     devDependencies:
       '@parcel/config-default': 2.12.0_@parcel+core@2.12.0
       '@parcel/core': 2.12.0
@@ -14270,18 +14270,22 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zustand/4.2.0_react@17.0.2:
-    resolution: {integrity: sha512-eNwaDoD2FYVnMgtNxiMUhTJO780wonZUzJrPQTLYI0erSIMZF8cniWFW22kGQUECd8rdHRJ/ZJL2XO54c9Ttuw==}
+  /zustand/4.5.2_aouysqvxnrlxicuvopw3uli4ye:
+    resolution: {integrity: sha512-2cN1tPkDVkwCy5ickKrI7vijSjPksFRfqS6237NzT0vqSsztTNnQdHw9mmN7uBdk3gceVXU0a+21jFzFzAc9+g==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
-      immer: '>=9.0'
+      '@types/react': '>=16.8'
+      immer: '>=9.0.6'
       react: '>=16.8'
     peerDependenciesMeta:
+      '@types/react':
+        optional: true
       immer:
         optional: true
       react:
         optional: true
     dependencies:
+      '@types/react': 17.0.43
       react: 17.0.2
       use-sync-external-store: 1.2.0_react@17.0.2
     dev: false
