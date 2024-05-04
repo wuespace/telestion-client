@@ -58,7 +58,7 @@
 		"@wuespace/vertx-event-bus": "workspace:^"
 	},
 	"devDependencies": {
-		"@types/lodash": "4.17.0",
+		"@types/lodash": "4.17.1",
 		"@types/prop-types": "15.7.12",
 		"@types/react": "17.0.80",
 		"lodash": "4.17.21",
