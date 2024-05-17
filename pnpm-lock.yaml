@@ -283,7 +283,7 @@ importers:
 
   packages/telestion-client-prop-types:
     specifiers:
-      '@types/lodash': 4.17.3
+      '@types/lodash': 4.17.4
       '@types/prop-types': 15.7.12
       '@types/react': 17.0.80
       '@wuespace/vertx-event-bus': workspace:^
@@ -292,7 +292,7 @@ importers:
     dependencies:
       '@wuespace/vertx-event-bus': link:../vertx-event-bus
     devDependencies:
-      '@types/lodash': 4.17.3
+      '@types/lodash': 4.17.4
       '@types/prop-types': 15.7.12
       '@types/react': 17.0.80
       lodash: 4.17.21
@@ -6439,8 +6439,8 @@ packages:
       '@types/node': 18.19.33
     dev: false
 
-  /@types/lodash/4.17.3:
-    resolution: {integrity: sha512-zmNrEJaBvNskZXQWaUQq6bktF4IDGVfDS78M+YEk5aCn9M/b94/mB/6WCyfH2/MjwBdc6QuOor95CIlKWYRL3A==}
+  /@types/lodash/4.17.4:
+    resolution: {integrity: sha512-wYCP26ZLxaT3R39kiN2+HcJ4kTd3U1waI/cY7ivWYqFP6pW3ZNpvi6Wd6PHZx7T/t8z0vlkXMg3QYLa7DZ/IJQ==}
     dev: true
 
   /@types/minimatch/3.0.5:
