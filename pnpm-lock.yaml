@@ -48,7 +48,7 @@ importers:
       eslint-plugin-jsdoc: 39.9.1
       eslint-plugin-jsx-a11y: 6.8.0
       eslint-plugin-prettier: 4.2.1
-      eslint-plugin-react: 7.34.2
+      eslint-plugin-react: 7.34.3
       eslint-plugin-react-hooks: 4.6.2
       eslint-plugin-tsdoc: 0.3.0
       fliegdoc: 0.6.0
@@ -94,7 +94,7 @@ importers:
       '@typescript-eslint/parser': 5.62.0_4lxgoysztp3gakdxqfzw7vhg4u
       concurrently: 7.6.0
       eslint: 8.57.0
-      eslint-config-airbnb: 19.0.4_5tlyekldo5z3qsn3fuawjbott4
+      eslint-config-airbnb: 19.0.4_v4lq5jawo3exzvsrg27mdakjpq
       eslint-config-airbnb-base: 15.0.0_jrbq5spb6ym3vlo5mnlvtmgpyy
       eslint-config-airbnb-typescript: 17.1.0_bogqjejckhzc4pprie7up4myem
       eslint-config-prettier: 8.10.0_eslint@8.57.0
@@ -103,7 +103,7 @@ importers:
       eslint-plugin-jsdoc: 39.9.1_eslint@8.57.0
       eslint-plugin-jsx-a11y: 6.8.0_eslint@8.57.0
       eslint-plugin-prettier: 4.2.1_zlbnnhlbce3o4qxi3oryu4rewe
-      eslint-plugin-react: 7.34.2_eslint@8.57.0
+      eslint-plugin-react: 7.34.3_eslint@8.57.0
       eslint-plugin-react-hooks: 4.6.2_eslint@8.57.0
       eslint-plugin-tsdoc: 0.3.0
       fliegdoc: 0.6.0
@@ -6999,8 +6999,9 @@ packages:
       es-shim-unscopables: 1.0.2
     dev: true
 
-  /array.prototype.tosorted/1.1.3:
-    resolution: {integrity: sha512-/DdH4TiTmOKzyQbp/eadcCVexiCb36xJg7HshYOYJnNZFDj33GEv0P7GxsynpShhq4OLYJzbGcBDkLsDt7MnNg==}
+  /array.prototype.tosorted/1.1.4:
+    resolution: {integrity: sha512-p6Fx8B7b7ZhL/gmUsAy0D15WhvDccw3mnGNbZpi3pmeJdxtWsj2jEaI4Y6oo3XiHfzuSgPwKc04MYt6KgvC/wA==}
+    engines: {node: '>= 0.4'}
     dependencies:
       call-bind: 1.0.7
       define-properties: 1.2.1
@@ -8613,7 +8614,7 @@ packages:
       eslint-plugin-import: 2.29.1_bok4kcstaiu5mkejbz7cmlqj2q
     dev: true
 
-  /eslint-config-airbnb/19.0.4_5tlyekldo5z3qsn3fuawjbott4:
+  /eslint-config-airbnb/19.0.4_v4lq5jawo3exzvsrg27mdakjpq:
     resolution: {integrity: sha512-T75QYQVQX57jiNgpF9r1KegMICE94VYwoFQyMGhrvc+lB8YF2E/M/PYDaQe1AJcWaEgqLE+ErXV1Og/+6Vyzew==}
     engines: {node: ^10.12.0 || ^12.22.0 || ^14.17.0 || >=16.0.0}
     peerDependencies:
@@ -8627,7 +8628,7 @@ packages:
       eslint-config-airbnb-base: 15.0.0_jrbq5spb6ym3vlo5mnlvtmgpyy
       eslint-plugin-import: 2.29.1_bok4kcstaiu5mkejbz7cmlqj2q
       eslint-plugin-jsx-a11y: 6.8.0_eslint@8.57.0
-      eslint-plugin-react: 7.34.2_eslint@8.57.0
+      eslint-plugin-react: 7.34.3_eslint@8.57.0
       eslint-plugin-react-hooks: 4.6.2_eslint@8.57.0
       object.assign: 4.1.2
       object.entries: 1.1.5
@@ -8807,8 +8808,8 @@ packages:
       eslint: 8.57.0
     dev: true
 
-  /eslint-plugin-react/7.34.2_eslint@8.57.0:
-    resolution: {integrity: sha512-2HCmrU+/JNigDN6tg55cRDKCQWicYAPB38JGSFDQt95jDm8rrvSUo7YPkOIm5l6ts1j1zCvysNcasvfTMQzUOw==}
+  /eslint-plugin-react/7.34.3_eslint@8.57.0:
+    resolution: {integrity: sha512-aoW4MV891jkUulwDApQbPYTVZmeuSyFrudpbTAQuj5Fv8VL+o6df2xIGpw8B0hPjAaih1/Fb0om9grCdyFYemA==}
     engines: {node: '>=4'}
     peerDependencies:
       eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
@@ -8817,7 +8818,7 @@ packages:
       array.prototype.findlast: 1.2.5
       array.prototype.flatmap: 1.3.2
       array.prototype.toreversed: 1.1.2
-      array.prototype.tosorted: 1.1.3
+      array.prototype.tosorted: 1.1.4
       doctrine: 2.1.0
       es-iterator-helpers: 1.0.19
       eslint: 8.57.0
