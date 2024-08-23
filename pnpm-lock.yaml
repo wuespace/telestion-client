@@ -61,7 +61,7 @@ importers:
       react-dom: 17.0.2
       react-test-renderer: 17.0.2
       rimraf: 3.0.2
-      ts-jest: 29.2.4
+      ts-jest: 29.2.5
       typescript: 4.9.5
     dependencies:
       '@wuespace/parcel-optimizer-electron-require': link:packages/parcel-optimizer-electron-require
@@ -116,7 +116,7 @@ importers:
       react-dom: 17.0.2_react@17.0.2
       react-test-renderer: 17.0.2_react@17.0.2
       rimraf: 3.0.2
-      ts-jest: 29.2.4_67xnt3v64q2pgz6kguni4h37hu
+      ts-jest: 29.2.5_67xnt3v64q2pgz6kguni4h37hu
       typescript: 4.9.5
 
   packages/parcel-optimizer-electron-require:
@@ -12689,6 +12689,12 @@ packages:
     dependencies:
       lru-cache: 6.0.0
 
+  /semver/7.6.3:
+    resolution: {integrity: sha512-oVekP1cKtI+CTDvHWYFUcMtsK/00wmAEfyqKfNdARm8u1wNVhSgaX7A8d4UuIlUI5e84iEwOhs7ZPYRmzU9U6A==}
+    engines: {node: '>=10'}
+    hasBin: true
+    dev: true
+
   /send/0.18.0:
     resolution: {integrity: sha512-qqWzuOjSFOuqPjFe4NOsMLafToQQwBSOEpS+FwEt3A2V3vKubTquT3vmLTQpFgMXp8AlFWFuP1qKaJZOtPpVXg==}
     engines: {node: '>= 0.8.0'}
@@ -13289,8 +13295,8 @@ packages:
       escape-string-regexp: 1.0.5
     dev: false
 
-  /ts-jest/29.2.4_67xnt3v64q2pgz6kguni4h37hu:
-    resolution: {integrity: sha512-3d6tgDyhCI29HlpwIq87sNuI+3Q6GLTTCeYRHCs7vDz+/3GCMwEtV9jezLyl4ZtnBgx00I7hm8PCP8cTksMGrw==}
+  /ts-jest/29.2.5_67xnt3v64q2pgz6kguni4h37hu:
+    resolution: {integrity: sha512-KD8zB2aAZrcKIdGk4OwpJggeLcH1FgrICqDSROWqlnJXGCXK4Mn6FcdK2B6670Xr73lHMG1kHw8R87A0ecZ+vA==}
     engines: {node: ^14.15.0 || ^16.10.0 || ^18.0.0 || >=20.0.0}
     hasBin: true
     peerDependencies:
@@ -13321,7 +13327,7 @@ packages:
       json5: 2.2.3
       lodash.memoize: 4.1.2
       make-error: 1.3.6
-      semver: 7.6.0
+      semver: 7.6.3
       typescript: 4.9.5
       yargs-parser: 21.1.1
     dev: true
