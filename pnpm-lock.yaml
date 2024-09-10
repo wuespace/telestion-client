@@ -345,7 +345,7 @@ importers:
       react-dom: 17.0.2
       react-router-dom: ^5.3.1
       rimraf: 3.0.2
-      serve-static: 1.15.0
+      serve-static: 1.16.0
       typescript: 4.9.5
       zustand: 4.2.0
     dependencies:
@@ -396,7 +396,7 @@ importers:
       pretty-quick: 3.3.1_prettier@2.8.8
       process: 0.11.10
       rimraf: 3.0.2
-      serve-static: 1.15.0
+      serve-static: 1.16.0
       typescript: 4.9.5
 
   packages/telestion-client-types:
@@ -12692,6 +12692,18 @@ packages:
 
   /serve-static/1.15.0:
     resolution: {integrity: sha512-XGuRDNjXUijsUL0vl6nSD7cwURuzEgglbOaFuZM9g3kwDXOWVTck0jLzjPzGD+TazWbboZYu52/9/XPdUgne9g==}
+    engines: {node: '>= 0.8.0'}
+    dependencies:
+      encodeurl: 1.0.2
+      escape-html: 1.0.3
+      parseurl: 1.3.3
+      send: 0.18.0
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /serve-static/1.16.0:
+    resolution: {integrity: sha512-pDLK8zwl2eKaYrs8mrPZBJua4hMplRWJ1tIFksVC3FtBEBnl8dxgeHtsaMS8DhS9i4fLObaon6ABoc4/hQGdPA==}
     engines: {node: '>= 0.8.0'}
     dependencies:
       encodeurl: 1.0.2
