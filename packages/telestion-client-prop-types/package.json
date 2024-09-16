@@ -59,7 +59,7 @@
 	},
 	"devDependencies": {
 		"@types/lodash": "4.17.7",
-		"@types/prop-types": "15.7.12",
+		"@types/prop-types": "15.7.13",
 		"@types/react": "17.0.81",
 		"lodash": "4.17.21",
 		"prop-types": "15.8.1"
