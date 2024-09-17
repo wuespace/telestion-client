@@ -3,7 +3,7 @@ lockfileVersion: 5.4
 overrides:
   react: 17.0.2
   react-dom: 17.0.2
-  '@types/react': 17.0.81
+  '@types/react': 17.0.82
   '@types/react-dom': 17.0.25
 
 importers:
@@ -211,7 +211,7 @@ importers:
       '@spectrum-icons/illustrations': ^3.5.3
       '@spectrum-icons/workflow': ^4.0.6
       '@types/prop-types': 15.7.13
-      '@types/react': 17.0.81
+      '@types/react': 17.0.82
       '@types/react-router': ^5.1.0
       '@types/react-router-dom': 5.3.3
       '@wuespace/telestion-client-core': workspace:^
@@ -235,7 +235,7 @@ importers:
       '@react-types/shared': 3.16.0_react@17.0.2
       '@spectrum-icons/illustrations': 3.5.3_av56mgvec445klg7iduek242eq
       '@spectrum-icons/workflow': 4.0.6_ry7t2iljjvo3hogkctvui3nzea
-      '@types/react': 17.0.81
+      '@types/react': 17.0.82
       '@types/react-router': 5.1.18
       '@wuespace/telestion-client-core': link:../telestion-client-core
       '@wuespace/telestion-client-prop-types': link:../telestion-client-prop-types
@@ -258,7 +258,7 @@ importers:
     specifiers:
       '@fliegwerk/logsemts': ^0.4.3
       '@types/prop-types': 15.7.13
-      '@types/react': 17.0.81
+      '@types/react': 17.0.82
       '@types/react-router-dom': 5.3.3
       '@wuespace/telestion-client-prop-types': workspace:^
       '@wuespace/telestion-client-types': workspace:^
@@ -269,7 +269,7 @@ importers:
       zustand: 4.2.0
     dependencies:
       '@fliegwerk/logsemts': 0.4.3
-      '@types/react': 17.0.81
+      '@types/react': 17.0.82
       '@wuespace/telestion-client-prop-types': link:../telestion-client-prop-types
       '@wuespace/telestion-client-types': link:../telestion-client-types
       '@wuespace/vertx-event-bus': link:../vertx-event-bus
@@ -285,7 +285,7 @@ importers:
     specifiers:
       '@types/lodash': 4.17.7
       '@types/prop-types': 15.7.13
-      '@types/react': 17.0.81
+      '@types/react': 17.0.82
       '@wuespace/vertx-event-bus': workspace:^
       lodash: 4.17.21
       prop-types: 15.8.1
@@ -294,7 +294,7 @@ importers:
     devDependencies:
       '@types/lodash': 4.17.7
       '@types/prop-types': 15.7.13
-      '@types/react': 17.0.81
+      '@types/react': 17.0.82
       lodash: 4.17.21
       prop-types: 15.8.1
 
@@ -321,7 +321,7 @@ importers:
       '@testing-library/user-event': 14.5.2
       '@types/jest': 29.5.13
       '@types/node': 18.19.50
-      '@types/react': 17.0.81
+      '@types/react': 17.0.82
       '@types/react-dom': 17.0.25
       '@wuespace/parcel-optimizer-electron-require': workspace:^
       '@wuespace/parcel-reporter-tc-cli': workspace:^
@@ -381,7 +381,7 @@ importers:
       '@testing-library/user-event': 14.5.2_szfc7t2zqsdonxwckqxkjn2the
       '@types/jest': 29.5.13
       '@types/node': 18.19.50
-      '@types/react': 17.0.81
+      '@types/react': 17.0.82
       '@types/react-dom': 17.0.25
       '@wuespace/parcel-optimizer-electron-require': link:../parcel-optimizer-electron-require
       '@wuespace/parcel-reporter-tc-cli': link:../parcel-reporter-tc-cli
@@ -402,10 +402,10 @@ importers:
   packages/telestion-client-types:
     specifiers:
       '@fliegwerk/logsemts': ^0.4.3
-      '@types/react': 17.0.81
+      '@types/react': 17.0.82
     dependencies:
       '@fliegwerk/logsemts': 0.4.3
-      '@types/react': 17.0.81
+      '@types/react': 17.0.82
 
   packages/vertx-event-bus:
     specifiers:
@@ -6277,7 +6277,7 @@ packages:
         optional: true
     dependencies:
       '@babel/runtime': 7.20.7
-      '@types/react': 17.0.81
+      '@types/react': 17.0.82
       '@types/react-dom': 17.0.25
       '@types/react-test-renderer': 18.0.0
       react: 17.0.2
@@ -6475,14 +6475,14 @@ packages:
   /@types/react-dom/17.0.25:
     resolution: {integrity: sha512-urx7A7UxkZQmThYA4So0NelOVjx3V4rNFVJwp0WZlbIK5eM4rNJDiN3R/E9ix0MBh6kAEojk/9YL+Te6D9zHNA==}
     dependencies:
-      '@types/react': 17.0.81
+      '@types/react': 17.0.82
     dev: true
 
   /@types/react-router-dom/5.3.3:
     resolution: {integrity: sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 17.0.81
+      '@types/react': 17.0.82
       '@types/react-router': 5.1.18
     dev: true
 
@@ -6490,16 +6490,16 @@ packages:
     resolution: {integrity: sha512-YYknwy0D0iOwKQgz9v8nOzt2J6l4gouBmDnWqUUznltOTaon+r8US8ky8HvN0tXvc38U9m6z/t2RsVsnd1zM0g==}
     dependencies:
       '@types/history': 4.7.11
-      '@types/react': 17.0.81
+      '@types/react': 17.0.82
 
   /@types/react-test-renderer/18.0.0:
     resolution: {integrity: sha512-C7/5FBJ3g3sqUahguGi03O79b8afNeSD6T8/GU50oQrJCU0bVCCGQHaGKUbg2Ce8VQEEqTw8/HiS6lXHHdgkdQ==}
     dependencies:
-      '@types/react': 17.0.81
+      '@types/react': 17.0.82
     dev: true
 
-  /@types/react/17.0.81:
-    resolution: {integrity: sha512-So+arrwwUFFWCX/lqv4w8z1glovD1zLE0KVP1z4eFCPU8WE4yTCotHjssKbrcnZ3W5Fcxcsl1vkKTh6k6V+/2A==}
+  /@types/react/17.0.82:
+    resolution: {integrity: sha512-wTW8Lu/PARGPFE8tOZqCvprOKg5sen/2uS03yKn2xbCDFP9oLncm7vMDQ2+dEQXHVIXrOpW6u72xUXEXO0ypSw==}
     dependencies:
       '@types/prop-types': 15.7.13
       '@types/scheduler': 0.16.2
