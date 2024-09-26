@@ -95,7 +95,7 @@
 		"pretty-quick": "3.3.1",
 		"process": "0.11.10",
 		"rimraf": "3.0.2",
-		"serve-static": "1.16.0",
+		"serve-static": "1.16.2",
 		"typescript": "4.9.5"
 	},
 	"publishConfig": {
