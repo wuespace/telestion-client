@@ -10,7 +10,7 @@ importers:
 
   .:
     specifiers:
-      '@changesets/cli': 2.27.8
+      '@changesets/cli': 2.27.9
       '@changesets/types': 5.2.1
       '@parcel/config-default': 2.12.0
       '@parcel/core': 2.12.0
@@ -76,7 +76,7 @@ importers:
       '@wuespace/vertx-event-bus': link:packages/vertx-event-bus
       '@wuespace/vertx-mock-server': link:packages/vertx-mock-server
     devDependencies:
-      '@changesets/cli': 2.27.8
+      '@changesets/cli': 2.27.9
       '@changesets/types': 5.2.1
       '@parcel/config-default': 2.12.0_@parcel+core@2.12.0
       '@parcel/core': 2.12.0
@@ -911,8 +911,8 @@ packages:
       '@changesets/types': 6.0.0
     dev: true
 
-  /@changesets/cli/2.27.8:
-    resolution: {integrity: sha512-gZNyh+LdSsI82wBSHLQ3QN5J30P4uHKJ4fXgoGwQxfXwYFTJzDdvIJasZn8rYQtmKhyQuiBj4SSnLuKlxKWq4w==}
+  /@changesets/cli/2.27.9:
+    resolution: {integrity: sha512-q42a/ZbDnxPpCb5Wkm6tMVIxgeI9C/bexntzTeCFBrQEdpisQqk8kCHllYZMDjYtEc1ZzumbMJAG8H0Z4rdvjg==}
     hasBin: true
     dependencies:
       '@changesets/apply-release-plan': 7.0.5
@@ -930,14 +930,12 @@ packages:
       '@changesets/types': 6.0.0
       '@changesets/write': 0.3.2
       '@manypkg/get-packages': 1.1.3
-      '@types/semver': 7.5.0
       ansi-colors: 4.1.3
       ci-info: 3.9.0
       enquirer: 2.3.6
       external-editor: 3.1.0
       fs-extra: 7.0.1
       mri: 1.2.0
-      outdent: 0.5.0
       p-limit: 2.3.0
       package-manager-detector: 0.2.0
       picocolors: 1.1.0
@@ -7220,7 +7218,7 @@ packages:
       electron-to-chromium: 1.4.137
       escalade: 3.1.1
       node-releases: 2.0.4
-      picocolors: 1.0.0
+      picocolors: 1.1.0
 
   /bs-logger/0.2.6:
     resolution: {integrity: sha512-pd8DCoxmbgc7hyPKOvxtqNcjYoOsABPQdcCUjGp3d42VR2CX1ORhk2A87oqqu5R1kk+76nsxZupkmyd+MVtCog==}
@@ -11927,10 +11925,10 @@ packages:
 
   /picocolors/1.0.0:
     resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
+    dev: true
 
   /picocolors/1.1.0:
     resolution: {integrity: sha512-TQ92mBOW0l3LeMeyLV6mzy/kWr8lkd/hp3mTg7wYK7zJhuBStmGMBG0BdeDZS/dZx1IukaX6Bk11zcln25o1Aw==}
-    dev: true
 
   /picomatch/2.3.1:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
