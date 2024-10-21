@@ -2,7 +2,7 @@
 	"name": "@wuespace/parcel-optimizer-electron-require",
 	"description": "Parcel Optimizer Plugin that polyfills the require function in an electron context",
 	"license": "MIT",
-	"version": "0.18.1",
+	"version": "0.19.0",
 	"homepage": "https://telestion.wuespace.de/",
 	"source": "src/optimizer.ts",
 	"main": "dist/optimizer.js",
