@@ -28,7 +28,7 @@ jobs:
         with:
           version: ${{ env.pnpm }}
       - name: Setup Node 💿
-        uses: actions/setup-node@v3.8.2
+        uses: actions/setup-node@v3.9.1
         with:
           node-version: ${{ env.node }}
           cache: 'pnpm'
