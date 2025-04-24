@@ -222,7 +222,7 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2
       react-error-boundary: ^3.0.0
-      react-router: ^5.2.0
+      react-router: ^7.5.2
       react-router-dom: ^5.2.0
       react-use-gesture: ^9.1.3
       zustand: 4.2.0
@@ -243,7 +243,7 @@ importers:
       '@wuespace/vertx-event-bus': link:../vertx-event-bus
       prop-types: 15.8.1
       react-error-boundary: 3.1.4_react@17.0.2
-      react-router: 5.3.1_react@17.0.2
+      react-router: 7.5.2_sfoxds7t5ydpegc3knd667wn6m
       react-router-dom: 5.3.1_react@17.0.2
       react-use-gesture: 9.1.3_react@17.0.2
       zustand: 4.2.0_react@17.0.2
@@ -7745,6 +7745,11 @@ packages:
     engines: {node: '>= 0.6'}
     dev: true
 
+  /cookie/1.0.2:
+    resolution: {integrity: sha512-9Kr/j4O16ISv8zBBhJoi4bXOYNTkFLOqSL3UDB0njXxCXNezjeyVrJyGOWtgfs/q2km1gwBcfH8q1yEGoMYunA==}
+    engines: {node: '>=18'}
+    dev: false
+
   /core-util-is/1.0.2:
     resolution: {integrity: sha512-3lqz5YjWTYnW6dlDa5TLaTCcShfar1e40rmcJVwCBJC6mWlFuj0eCHIElmG1g5kyuJ/GD+8Wn4FFCcz4gJPfaQ==}
     dev: true
@@ -12572,6 +12577,23 @@ packages:
       tiny-warning: 1.0.3
     dev: false
 
+  /react-router/7.5.2_sfoxds7t5ydpegc3knd667wn6m:
+    resolution: {integrity: sha512-9Rw8r199klMnlGZ8VAsV/I8WrIF6IyJ90JQUdboupx1cdkgYqwnrYjH+I/nY/7cA1X5zia4mDJqH36npP7sxGQ==}
+    engines: {node: '>=20.0.0'}
+    peerDependencies:
+      react: '>=18'
+      react-dom: '>=18'
+    peerDependenciesMeta:
+      react-dom:
+        optional: true
+    dependencies:
+      cookie: 1.0.2
+      react: 17.0.2
+      react-dom: 17.0.2_react@17.0.2
+      set-cookie-parser: 2.7.1
+      turbo-stream: 2.4.0
+    dev: false
+
   /react-shallow-renderer/16.15.0_react@17.0.2:
     resolution: {integrity: sha512-oScf2FqQ9LFVQgA73vr86xl2NaOIX73rh+YFqcOp68CWj56tSfgtGKrEbyhCj0rSijyG9M1CYprTh39fBi5hzA==}
     peerDependencies:
@@ -13056,6 +13078,10 @@ packages:
 
   /set-blocking/2.0.0:
     resolution: {integrity: sha512-KiKBS8AnWGEyLzofFfmvKwpdPzqiy16LvQfK3yv/fVH7Bj13/wl3JSR1J+rfgRE9q7xUJK4qvgS8raSOeLUehw==}
+    dev: false
+
+  /set-cookie-parser/2.7.1:
+    resolution: {integrity: sha512-IOc8uWeOZgnb3ptbCURJWNjWUPcO3ZnTTdzsurqERrP6nPyv+paC55vJM0LpOlT2ne+Ix+9+CRG1MNLlyZ4GjQ==}
     dev: false
 
   /set-function-length/1.2.1:
@@ -13749,6 +13775,10 @@ packages:
     dependencies:
       safe-buffer: 5.2.1
     dev: true
+
+  /turbo-stream/2.4.0:
+    resolution: {integrity: sha512-FHncC10WpBd2eOmGwpmQsWLDoK4cqsA/UT/GqNoaKOQnT8uzhtCbg3EoUDMvqpOSAI0S26mr0rkjzbOO6S3v1g==}
+    dev: false
 
   /tweetnacl/0.14.5:
     resolution: {integrity: sha512-KXXFFdAbFXY4geFIwoyNK+f5Z1b7swfXABfL7HXCmoIWMKU3dmS26672A4EeQtDzLKy7SXmfBu51JolvEKwtGA==}
