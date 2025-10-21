@@ -332,7 +332,7 @@ importers:
       '@wuespace/telestion-client-prop-types': workspace:^
       '@wuespace/telestion-client-types': workspace:^
       cypress: 12.17.4
-      electron: ^22.0.0
+      electron: ^35.0.0
       electron-devtools-installer: ^3.2.0
       finalhandler: 1.3.1
       husky: 8.0.3
@@ -358,7 +358,7 @@ importers:
       '@wuespace/telestion-client-common': link:../telestion-client-common
       '@wuespace/telestion-client-core': link:../telestion-client-core
       '@wuespace/telestion-client-prop-types': link:../telestion-client-prop-types
-      electron: 22.3.25
+      electron: 35.7.5
       electron-devtools-installer: 3.2.0
       prop-types: 15.8.1
       react: 17.0.2
@@ -2319,29 +2319,9 @@ packages:
       '@parcel/utils': 2.12.0
       '@parcel/workers': 2.12.0_@parcel+core@2.12.0
       '@swc/core': 1.3.60
-      semver: 7.6.0
+      semver: 7.6.3
     transitivePeerDependencies:
       - '@swc/helpers'
-
-  /@parcel/package-manager/2.12.0_knsfuvnuzuw6me2gpg62avgc2m:
-    resolution: {integrity: sha512-0nvAezcjPx9FT+hIL+LS1jb0aohwLZXct7jAh7i0MLMtehOi0z1Sau+QpgMlA9rfEZZ1LIeFdnZZwqSy7Ccspw==}
-    engines: {node: '>= 12.0.0'}
-    peerDependencies:
-      '@parcel/core': ^2.12.0
-    dependencies:
-      '@parcel/core': 2.12.0
-      '@parcel/diagnostic': 2.12.0
-      '@parcel/fs': 2.12.0_@parcel+core@2.12.0
-      '@parcel/logger': 2.12.0
-      '@parcel/node-resolver-core': 3.3.0_@parcel+core@2.12.0
-      '@parcel/types': 2.12.0_@parcel+core@2.12.0
-      '@parcel/utils': 2.12.0
-      '@parcel/workers': 2.12.0_@parcel+core@2.12.0
-      '@swc/core': 1.3.60_@swc+helpers@0.5.1
-      semver: 7.6.0
-    transitivePeerDependencies:
-      - '@swc/helpers'
-    dev: true
 
   /@parcel/package-manager/2.5.0_@parcel+core@2.12.0:
     resolution: {integrity: sha512-zTuF55/lITUjw9dUU/X0HiF++589xbPXw/zUiG9T6s8BQThLvrxAhYP89S719pw7cTqDimGkTxnIuK+a0djEkg==}
@@ -2495,16 +2475,7 @@ packages:
       '@parcel/types': 2.12.0_@parcel+core@2.12.0
     transitivePeerDependencies:
       - '@parcel/core'
-
-  /@parcel/plugin/2.12.0_knsfuvnuzuw6me2gpg62avgc2m:
-    resolution: {integrity: sha512-nc/uRA8DiMoe4neBbzV6kDndh/58a4wQuGKw5oEoIwBCHUvE2W8ZFSu7ollSXUGRzfacTt4NdY8TwS73ScWZ+g==}
-    engines: {node: '>= 12.0.0'}
-    dependencies:
-      '@parcel/types': 2.12.0_knsfuvnuzuw6me2gpg62avgc2m
-    transitivePeerDependencies:
-      - '@parcel/core'
       - '@swc/helpers'
-    dev: true
 
   /@parcel/plugin/2.5.0_@parcel+core@2.12.0:
     resolution: {integrity: sha512-obtb6/Gql6YFQ86bdv75A2Noabx8679reFZeyfKKf0L7Lppx4DFQetXwM9XVy7Gx6hJ1Ekm3UMuuIyVJk33YHQ==}
@@ -2724,7 +2695,7 @@ packages:
     dependencies:
       '@parcel/core': 2.12.0
       '@parcel/diagnostic': 2.12.0
-      '@parcel/plugin': 2.12.0_knsfuvnuzuw6me2gpg62avgc2m
+      '@parcel/plugin': 2.12.0_@parcel+core@2.12.0
       '@parcel/rust': 2.12.0
       '@parcel/source-map': 2.1.1
       '@parcel/utils': 2.12.0
@@ -2909,21 +2880,6 @@ packages:
     transitivePeerDependencies:
       - '@parcel/core'
       - '@swc/helpers'
-
-  /@parcel/types/2.12.0_knsfuvnuzuw6me2gpg62avgc2m:
-    resolution: {integrity: sha512-8zAFiYNCwNTQcglIObyNwKfRYQK5ELlL13GuBOrSMxueUiI5ylgsGbTS1N7J3dAGZixHO8KhHGv5a71FILn9rQ==}
-    dependencies:
-      '@parcel/cache': 2.12.0_@parcel+core@2.12.0
-      '@parcel/diagnostic': 2.12.0
-      '@parcel/fs': 2.12.0_@parcel+core@2.12.0
-      '@parcel/package-manager': 2.12.0_knsfuvnuzuw6me2gpg62avgc2m
-      '@parcel/source-map': 2.1.1
-      '@parcel/workers': 2.12.0_@parcel+core@2.12.0
-      utility-types: 3.10.0
-    transitivePeerDependencies:
-      - '@parcel/core'
-      - '@swc/helpers'
-    dev: true
 
   /@parcel/types/2.5.0:
     resolution: {integrity: sha512-bA0fhG6aXSGYEVo5Dt96x6lseUQHeVZVzgmiRdZsvb614Gvx22ItfaKhPmAVbM9vzbObZDHl9l9G2Ovw8Xve4g==}
@@ -6190,30 +6146,6 @@ packages:
       '@swc/core-win32-ia32-msvc': 1.3.60
       '@swc/core-win32-x64-msvc': 1.3.60
 
-  /@swc/core/1.3.60_@swc+helpers@0.5.1:
-    resolution: {integrity: sha512-dWfic7sVjnrStzGcMWakHd2XPau8UXGPmFUTkx6xGX+DOVtfAQVzG6ZW7ohw/yNcTqI05w6Ser26XMTMGBgXdA==}
-    engines: {node: '>=10'}
-    requiresBuild: true
-    peerDependencies:
-      '@swc/helpers': ^0.5.0
-    peerDependenciesMeta:
-      '@swc/helpers':
-        optional: true
-    dependencies:
-      '@swc/helpers': 0.5.1
-    optionalDependencies:
-      '@swc/core-darwin-arm64': 1.3.60
-      '@swc/core-darwin-x64': 1.3.60
-      '@swc/core-linux-arm-gnueabihf': 1.3.60
-      '@swc/core-linux-arm64-gnu': 1.3.60
-      '@swc/core-linux-arm64-musl': 1.3.60
-      '@swc/core-linux-x64-gnu': 1.3.60
-      '@swc/core-linux-x64-musl': 1.3.60
-      '@swc/core-win32-arm64-msvc': 1.3.60
-      '@swc/core-win32-ia32-msvc': 1.3.60
-      '@swc/core-win32-x64-msvc': 1.3.60
-    dev: true
-
   /@swc/helpers/0.4.14:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
     dependencies:
@@ -6459,11 +6391,18 @@ packages:
 
   /@types/node/16.18.83:
     resolution: {integrity: sha512-TmBqzDY/GeCEmLob/31SunOQnqYE3ZiiuEh1U9o3HqE1E2cqKZQA5RQg4krEguCY3StnkXyDmCny75qyFLx/rA==}
+    dev: true
 
   /@types/node/18.19.51:
     resolution: {integrity: sha512-IIMkWEIVQDlBpi6pPeGqTqOx7KbzGC3EgIyH8NrxplXOwWw0uVl9vthJUMFrxD7kcEfcRp7jIkgpB28M6JnfWA==}
     dependencies:
       undici-types: 5.26.5
+
+  /@types/node/22.18.12:
+    resolution: {integrity: sha512-BICHQ67iqxQGFSzfCFTT7MRQ5XcBjG5aeKh5Ok38UBbPe5fxTyE+aHFxwVrGyr8GNlqFMLKD1D3P2K/1ks8tog==}
+    dependencies:
+      undici-types: 6.21.0
+    dev: false
 
   /@types/parse-json/4.0.0:
     resolution: {integrity: sha512-//oorEZjL6sbPcKUaCdIGlIUeH26mgzimjBB77G6XRgnDl/L5wOnpyBGRe/Mmf5CVW3PwEBE1NjiMZ/ssFh4wA==}
@@ -7228,6 +7167,7 @@ packages:
 
   /boolean/3.2.0:
     resolution: {integrity: sha512-d0II/GO9uf9lfUHH2BQsjxzRJZBdsjgsBiW4BvhWk/3qoKwQFjIDVN19PfX8F2D/r9PCMTtLWjYVCFrpeYUzsw==}
+    deprecated: Package no longer supported. Contact Support at https://www.npmjs.com/support for more info.
     dev: false
     optional: true
 
@@ -8319,14 +8259,14 @@ packages:
   /electron-to-chromium/1.4.137:
     resolution: {integrity: sha512-0Rcpald12O11BUogJagX3HsCN3FE83DSqWjgXoHo5a72KUKMSfI39XBgJpgNNxS9fuGzytaFjE06kZkiVFy2qA==}
 
-  /electron/22.3.25:
-    resolution: {integrity: sha512-AjrP7bebMs/IPsgmyowptbA7jycTkrJC7jLZTb5JoH30PkBC6pZx/7XQ0aDok82SsmSiF4UJDOg+HoLrEBiqmg==}
+  /electron/35.7.5:
+    resolution: {integrity: sha512-dnL+JvLraKZl7iusXTVTGYs10TKfzUi30uEDTqsmTm0guN9V2tbOjTzyIZbh9n3ygUjgEYyo+igAwMRXIi3IPw==}
     engines: {node: '>= 12.20.55'}
     hasBin: true
     requiresBuild: true
     dependencies:
       '@electron/get': 2.0.3
-      '@types/node': 16.18.83
+      '@types/node': 22.18.12
       extract-zip: 2.0.1
     transitivePeerDependencies:
       - supports-color
@@ -13915,6 +13855,10 @@ packages:
 
   /undici-types/5.26.5:
     resolution: {integrity: sha512-JlCMO+ehdEIKqlFxk6IfVoAUVmgz7cU7zD/h9XZ0qzeosSHmUJVOzSQvvYSYWXkFXC+IfLKSIffhv0sVZup6pA==}
+
+  /undici-types/6.21.0:
+    resolution: {integrity: sha512-iwDZqg0QAGrg9Rav5H4n0M64c3mkR59cJ6wQp+7C4nI0gsmExaedaYLNO44eT4AtBBwjbTiGPMlt2Md0T9H9JQ==}
+    dev: false
 
   /unique-filename/2.0.1:
     resolution: {integrity: sha512-ODWHtkkdx3IAR+veKxFV+VBkUMcN+FaqzUUd7IZzt+0zhDZFPFxhlqwPF3YQvMHx1TD0tdgYl+kuPnJ8E6ql7A==}
