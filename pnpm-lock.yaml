@@ -225,7 +225,7 @@ importers:
       react-router: ^5.2.0
       react-router-dom: ^5.2.0
       react-use-gesture: ^9.1.3
-      zustand: 4.2.0
+      zustand: 4.5.7
     dependencies:
       '@adobe/react-spectrum': 3.24.1_sfoxds7t5ydpegc3knd667wn6m
       '@react-aria/focus': 3.10.1_react@17.0.2
@@ -246,7 +246,7 @@ importers:
       react-router: 5.3.1_react@17.0.2
       react-router-dom: 5.3.1_react@17.0.2
       react-use-gesture: 9.1.3_react@17.0.2
-      zustand: 4.2.0_react@17.0.2
+      zustand: 4.5.7_giebhtz6uy3zjbzzh54v5f2luu
     devDependencies:
       '@react-spectrum/provider': 3.9.2_sfoxds7t5ydpegc3knd667wn6m
       '@types/prop-types': 15.7.14
@@ -266,7 +266,7 @@ importers:
       prop-types: ^15.7.2
       react: 17.0.2
       react-router-dom: ^5.2.0
-      zustand: 4.2.0
+      zustand: 4.5.7
     dependencies:
       '@fliegwerk/logsemts': 0.4.3
       '@types/react': 17.0.83
@@ -275,7 +275,7 @@ importers:
       '@wuespace/vertx-event-bus': link:../vertx-event-bus
       prop-types: 15.8.1
       react-router-dom: 5.3.1_react@17.0.2
-      zustand: 4.2.0_react@17.0.2
+      zustand: 4.5.7_giebhtz6uy3zjbzzh54v5f2luu
     devDependencies:
       '@types/prop-types': 15.7.14
       '@types/react-router-dom': 5.3.3
@@ -347,7 +347,7 @@ importers:
       rimraf: 3.0.2
       serve-static: 1.16.2
       typescript: 4.9.5
-      zustand: 4.2.0
+      zustand: 4.5.7
     dependencies:
       '@adobe/react-spectrum': 3.24.1_sfoxds7t5ydpegc3knd667wn6m
       '@fliegwerk/logsemts': 0.4.3
@@ -364,7 +364,7 @@ importers:
       react: 17.0.2
       react-dom: 17.0.2_react@17.0.2
       react-router-dom: 5.3.1_react@17.0.2
-      zustand: 4.2.0_react@17.0.2
+      zustand: 4.5.7_giebhtz6uy3zjbzzh54v5f2luu
     devDependencies:
       '@parcel/config-default': 2.12.0_@parcel+core@2.12.0
       '@parcel/core': 2.12.0
@@ -2323,26 +2323,6 @@ packages:
     transitivePeerDependencies:
       - '@swc/helpers'
 
-  /@parcel/package-manager/2.12.0_knsfuvnuzuw6me2gpg62avgc2m:
-    resolution: {integrity: sha512-0nvAezcjPx9FT+hIL+LS1jb0aohwLZXct7jAh7i0MLMtehOi0z1Sau+QpgMlA9rfEZZ1LIeFdnZZwqSy7Ccspw==}
-    engines: {node: '>= 12.0.0'}
-    peerDependencies:
-      '@parcel/core': ^2.12.0
-    dependencies:
-      '@parcel/core': 2.12.0
-      '@parcel/diagnostic': 2.12.0
-      '@parcel/fs': 2.12.0_@parcel+core@2.12.0
-      '@parcel/logger': 2.12.0
-      '@parcel/node-resolver-core': 3.3.0_@parcel+core@2.12.0
-      '@parcel/types': 2.12.0_@parcel+core@2.12.0
-      '@parcel/utils': 2.12.0
-      '@parcel/workers': 2.12.0_@parcel+core@2.12.0
-      '@swc/core': 1.3.60_@swc+helpers@0.5.1
-      semver: 7.6.0
-    transitivePeerDependencies:
-      - '@swc/helpers'
-    dev: true
-
   /@parcel/package-manager/2.5.0_@parcel+core@2.12.0:
     resolution: {integrity: sha512-zTuF55/lITUjw9dUU/X0HiF++589xbPXw/zUiG9T6s8BQThLvrxAhYP89S719pw7cTqDimGkTxnIuK+a0djEkg==}
     engines: {node: '>= 12.0.0'}
@@ -2495,16 +2475,7 @@ packages:
       '@parcel/types': 2.12.0_@parcel+core@2.12.0
     transitivePeerDependencies:
       - '@parcel/core'
-
-  /@parcel/plugin/2.12.0_knsfuvnuzuw6me2gpg62avgc2m:
-    resolution: {integrity: sha512-nc/uRA8DiMoe4neBbzV6kDndh/58a4wQuGKw5oEoIwBCHUvE2W8ZFSu7ollSXUGRzfacTt4NdY8TwS73ScWZ+g==}
-    engines: {node: '>= 12.0.0'}
-    dependencies:
-      '@parcel/types': 2.12.0_knsfuvnuzuw6me2gpg62avgc2m
-    transitivePeerDependencies:
-      - '@parcel/core'
       - '@swc/helpers'
-    dev: true
 
   /@parcel/plugin/2.5.0_@parcel+core@2.12.0:
     resolution: {integrity: sha512-obtb6/Gql6YFQ86bdv75A2Noabx8679reFZeyfKKf0L7Lppx4DFQetXwM9XVy7Gx6hJ1Ekm3UMuuIyVJk33YHQ==}
@@ -2724,7 +2695,7 @@ packages:
     dependencies:
       '@parcel/core': 2.12.0
       '@parcel/diagnostic': 2.12.0
-      '@parcel/plugin': 2.12.0_knsfuvnuzuw6me2gpg62avgc2m
+      '@parcel/plugin': 2.12.0_@parcel+core@2.12.0
       '@parcel/rust': 2.12.0
       '@parcel/source-map': 2.1.1
       '@parcel/utils': 2.12.0
@@ -2909,21 +2880,6 @@ packages:
     transitivePeerDependencies:
       - '@parcel/core'
       - '@swc/helpers'
-
-  /@parcel/types/2.12.0_knsfuvnuzuw6me2gpg62avgc2m:
-    resolution: {integrity: sha512-8zAFiYNCwNTQcglIObyNwKfRYQK5ELlL13GuBOrSMxueUiI5ylgsGbTS1N7J3dAGZixHO8KhHGv5a71FILn9rQ==}
-    dependencies:
-      '@parcel/cache': 2.12.0_@parcel+core@2.12.0
-      '@parcel/diagnostic': 2.12.0
-      '@parcel/fs': 2.12.0_@parcel+core@2.12.0
-      '@parcel/package-manager': 2.12.0_knsfuvnuzuw6me2gpg62avgc2m
-      '@parcel/source-map': 2.1.1
-      '@parcel/workers': 2.12.0_@parcel+core@2.12.0
-      utility-types: 3.10.0
-    transitivePeerDependencies:
-      - '@parcel/core'
-      - '@swc/helpers'
-    dev: true
 
   /@parcel/types/2.5.0:
     resolution: {integrity: sha512-bA0fhG6aXSGYEVo5Dt96x6lseUQHeVZVzgmiRdZsvb614Gvx22ItfaKhPmAVbM9vzbObZDHl9l9G2Ovw8Xve4g==}
@@ -6189,30 +6145,6 @@ packages:
       '@swc/core-win32-arm64-msvc': 1.3.60
       '@swc/core-win32-ia32-msvc': 1.3.60
       '@swc/core-win32-x64-msvc': 1.3.60
-
-  /@swc/core/1.3.60_@swc+helpers@0.5.1:
-    resolution: {integrity: sha512-dWfic7sVjnrStzGcMWakHd2XPau8UXGPmFUTkx6xGX+DOVtfAQVzG6ZW7ohw/yNcTqI05w6Ser26XMTMGBgXdA==}
-    engines: {node: '>=10'}
-    requiresBuild: true
-    peerDependencies:
-      '@swc/helpers': ^0.5.0
-    peerDependenciesMeta:
-      '@swc/helpers':
-        optional: true
-    dependencies:
-      '@swc/helpers': 0.5.1
-    optionalDependencies:
-      '@swc/core-darwin-arm64': 1.3.60
-      '@swc/core-darwin-x64': 1.3.60
-      '@swc/core-linux-arm-gnueabihf': 1.3.60
-      '@swc/core-linux-arm64-gnu': 1.3.60
-      '@swc/core-linux-arm64-musl': 1.3.60
-      '@swc/core-linux-x64-gnu': 1.3.60
-      '@swc/core-linux-x64-musl': 1.3.60
-      '@swc/core-win32-arm64-msvc': 1.3.60
-      '@swc/core-win32-ia32-msvc': 1.3.60
-      '@swc/core-win32-x64-msvc': 1.3.60
-    dev: true
 
   /@swc/helpers/0.4.14:
     resolution: {integrity: sha512-4C7nX/dvpzB7za4Ql9K81xK3HPxCpHMgwTZVyf+9JQ6VUbn9jjZVN7/Nkdz/Ugzs2CSjqnL/UPXroiVBVHUWUw==}
@@ -13984,10 +13916,10 @@ packages:
       querystringify: 2.2.0
       requires-port: 1.0.0
 
-  /use-sync-external-store/1.2.0_react@17.0.2:
-    resolution: {integrity: sha512-eEgnFxGQ1Ife9bzYs6VLi8/4X6CObHMw9Qr9tPY43iKwsPw8xE8+EFsf/2cFZ5S3esXgpWgtSCtLNS41F+sKPA==}
+  /use-sync-external-store/1.6.0_react@17.0.2:
+    resolution: {integrity: sha512-Pp6GSwGP/NrPIrxVFAIkOQeyw8lFenOHijQWkUTrDvrF4ALqylP2C/KCkeS9dpUM3KvYRQhna5vt7IL95+ZQ9w==}
     peerDependencies:
-      react: ^16.8.0 || ^17.0.0 || ^18.0.0
+      react: ^16.8.0 || ^17.0.0 || ^18.0.0 || ^19.0.0
     dependencies:
       react: 17.0.2
     dev: false
@@ -14255,18 +14187,22 @@ packages:
     engines: {node: '>=10'}
     dev: true
 
-  /zustand/4.2.0_react@17.0.2:
-    resolution: {integrity: sha512-eNwaDoD2FYVnMgtNxiMUhTJO780wonZUzJrPQTLYI0erSIMZF8cniWFW22kGQUECd8rdHRJ/ZJL2XO54c9Ttuw==}
+  /zustand/4.5.7_giebhtz6uy3zjbzzh54v5f2luu:
+    resolution: {integrity: sha512-CHOUy7mu3lbD6o6LJLfllpjkzhHXSBlX8B9+qPddUsIfeF5S/UZ5q0kmCsnRqT1UHFQZchNFDDzMbQsuesHWlw==}
     engines: {node: '>=12.7.0'}
     peerDependencies:
-      immer: '>=9.0'
+      '@types/react': '>=16.8'
+      immer: '>=9.0.6'
       react: '>=16.8'
     peerDependenciesMeta:
+      '@types/react':
+        optional: true
       immer:
         optional: true
       react:
         optional: true
     dependencies:
+      '@types/react': 17.0.83
       react: 17.0.2
-      use-sync-external-store: 1.2.0_react@17.0.2
+      use-sync-external-store: 1.6.0_react@17.0.2
     dev: false
